@@ -27,6 +27,7 @@ import xpsEnergy from './figs/xpsenergy.jsx';
 import ftirSpec from './figs/ftirspec.jsx';
 import oesSpec from './figs/oesspec.jsx';
 import langmuirIV from './figs/langmuiriv.jsx';
+import spacerSection from './figs/spacer.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -354,4 +355,5 @@ export const byCaption = {
   'FTIR 흡수 스펙트럼': ftirSpec,
   'OES 스펙트럼과 종말점': oesSpec,
   '랭뮤어 프로브 I-V 곡선': langmuirIV,
+  '스페이서 단면': spacerSection,
 };
