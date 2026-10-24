@@ -21,6 +21,7 @@ import yieldCurve from './figs/yield.jsx';
 import afsCycle from './figs/afscycle.jsx';
 import afsTemp from './figs/afstemp.jsx';
 import xpsFig from './figs/xps.jsx';
+import ellipsometry from './figs/ellipsometry.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -342,4 +343,5 @@ export const byCaption = {
   'AFS 형성·제거 사이클': afsCycle,
   'AFS 온도 지도': afsTemp,
   'AFS의 XPS 지문': xpsFig,
+  '엘립소미터 원리': ellipsometry,
 };

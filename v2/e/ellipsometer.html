@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>엘립소미터 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 계측·분석 › 두께·형상</div>
+  <h1 class="title">엘립소미터</h1>
+  <div class="en">Spectroscopic Ellipsometry</div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 두께·형상</span><span class="chip">#두께</span><span class="chip">#광학상수</span><span class="chip">#비파괴</span><span class="chip">#인라인</span></div>
+  <article><blockquote>
+<p>편광된 빛을 쏘고 반사광의 편광 상태 변화를 읽어, 박막의 두께와 굴절률(n·k)을 역산하는 비파괴 광학 계측기.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>증착·식각 뒤에 &quot;막이 몇 nm인가&quot;를 확인하는 가장 표준적인 방법이다. 빛을 쓰므로 시료를 망가뜨리지 않고, 접촉하지 않으며, 측정도 빠르다(점당 수 초). <a class="wiki" href="silicon-wafer.html">실리콘 웨이퍼</a> 위 블랭킷 막이나 측정용 패드에서 재는 것이 원칙이고, 인라인 장비는 팹 안에서 공정 직후 두께를 전수에 가깝게 감시한다.</p>
+<p>두께만 재는 반사계와 달리 엘립소미터는 두께와 광학상수를 함께 뽑는다. 대가로, 측정값 자체가 답이 아니라 <strong>광학 모델을 세워 거꾸로 풀어야</strong> 답이 나오는 간접 측정이라는 점을 이해해야 한다.</p>
+<h2 id="원리-편광의-변화를-재다">원리 — 편광의 변화를 재다</h2>
+<p>직선편광 빛을 비스듬히(보통 65~75°) 입사하면, 반사광은 일반적으로 타원편광이 된다. 표면에 수직인 성분(p)과 평행인 성분(s)이 막 안에서 겪는 반사·간섭이 서로 다르기 때문이다.</p>
+<p>엘립소미터가 실제로 재는 것은 반사계수 비 ρ = r_p/r_s = tanΨ · e^(iΔ) 의 두 각도, Ψ(진폭비)와 Δ(위상차)다. 분광형은 파장을 sweep하며 Ψ(λ)·Δ(λ) 스펙트럼 전체를 얻는다.</p>
+<figure class="fig"><svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="엘립소미터 원리"><text x="400" y="32" text-anchor="middle" font-size="16.5" font-weight="700" fill="var(--cds-text-primary)">엘립소미터 — 편광의 변화를 읽는다</text><line x1="118" y1="84" x2="252" y2="284" stroke="var(--cds-chart-categorical-2)" stroke-width="2.5"></line><line x1="268" y1="284" x2="402" y2="84" stroke="var(--cds-chart-categorical-2)" stroke-width="2.5"></line><line x1="260" y1="292" x2="260" y2="196" stroke="var(--cds-chart-axis)" stroke-width="1.2" stroke-dasharray="5 4"></line><rect x="88" y="58" width="52" height="24" rx="5" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.4"></rect><text x="114" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">광원·편광자</text><rect x="380" y="58" width="52" height="24" rx="5" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.4"></rect><text x="406" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">검광자·검출기</text><g stroke="var(--cds-chart-categorical-1)" stroke-width="2"><line x1="168" y1="158" x2="184" y2="186"></line><path d="M 162 168 l 6 -10 l 4 12 z" fill="var(--cds-chart-categorical-1)" stroke="none"></path><path d="M 190 176 l -6 10 l -4 -12 z" fill="var(--cds-chart-categorical-1)" stroke="none"></path></g><text x="128" y="196" font-size="12" font-weight="700" fill="var(--cds-chart-categorical-1)">직선편광 입사</text><ellipse cx="342" cy="172" rx="17" ry="7.5" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2" transform="rotate(-56 342 172)"></ellipse><text x="330" y="128" font-size="12" font-weight="700" fill="var(--cds-chart-categorical-1)">타원편광으로 반사</text><rect x="110" y="292" width="300" height="13" fill="var(--cds-chart-categorical-3)" fill-opacity="0.65"></rect><rect x="110" y="305" width="300" height="30" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.2"></rect><text x="424" y="303" font-size="12" fill="var(--cds-text-primary)">막 (두께·n·k)</text><text x="424" y="326" font-size="12" fill="var(--cds-text-secondary)">기판</text><text x="238" y="238" font-size="11.5" fill="var(--cds-text-secondary)">입사각 ≈ 70°</text><line x1="492" y1="308" x2="768" y2="308" stroke="var(--cds-chart-axis)" stroke-width="1.4"></line><line x1="492" y1="308" x2="492" y2="96" stroke="var(--cds-chart-axis)" stroke-width="1.4"></line><polyline points="492,218 499,221 506,224 513,227 520,230 527,232 533,233 540,234 547,234 554,233 561,232 568,231 575,228 582,226 589,223 596,220 602,216 609,213 616,210 623,208 630,205 637,204 644,202 651,202 658,202 665,203 671,204 678,206 685,209 692,212 699,215 706,218 713,221 720,224 727,227 734,230 740,232 747,233 754,234 761,234 768,233" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2.2"></polyline><polyline points="492,225 499,231 506,237 513,242 520,246 527,249 533,251 540,252 547,252 554,250 561,248 568,245 575,240 582,235 589,229 596,222 602,215 609,207 616,199 623,191 630,183 637,175 644,167 651,160 658,153 665,147 671,141 678,136 685,133 692,130 699,129 706,128 713,129 720,130 727,133 734,137 740,141 747,147 754,153 761,160 768,167" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2.2"></polyline><text x="700" y="196" font-size="13" font-weight="700" fill="var(--cds-chart-categorical-1)">Ψ (진폭비)</text><text x="688" y="140" font-size="13" font-weight="700" fill="var(--cds-chart-categorical-2)">Δ (위상차)</text><text x="630" y="330" text-anchor="middle" font-size="12" fill="var(--cds-text-secondary)">파장 (nm) →</text><text x="630" y="76" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--cds-text-primary)">측정량: Ψ(λ)·Δ(λ) 스펙트럼</text><text x="630" y="366" text-anchor="middle" font-size="12" fill="var(--cds-text-secondary)">ρ = tanΨ · e^(iΔ) — 스펙트럼을 모델로 역산해 두께·n·k를 얻는다</text></svg><figcaption>그림 1. 엘립소미터 원리 · 편광 변화와 Ψ·Δ</figcaption></figure>
+<h2 id="읽는-법-모델-피팅이-측정의-절반">읽는 법 — 모델 피팅이 측정의 절반</h2>
+<p>스펙트럼에서 두께가 바로 읽히지는 않는다. 절차는 이렇다.</p>
+<ol>
+<li><strong>층 모델을 세운다</strong> — 기판 / 막 / 표면 거칠기층처럼 실제 적층을 흉내 낸 구조를 가정한다.</li>
+<li><strong>분산식을 고른다</strong> — 막의 n(λ)·k(λ)를 파장의 함수로 표현한다. 투명막은 Cauchy 식, 흡수막은 Tauc-Lorentz 같은 발진자 모델을 쓴다.</li>
+<li><strong>피팅한다</strong> — 모델로 계산한 Ψ·Δ가 측정 스펙트럼과 가장 잘 맞도록 두께와 분산 파라미터를 조정한다 (적합도는 MSE로 본다).</li>
+</ol>
+<p>그래서 같은 웨이퍼라도 모델이 다르면 두께가 다르게 나온다. 특히 수 nm 이하의 얇은 막에서는 두께와 굴절률이 서로 얽혀(상관) 독립적으로 정해지지 않으므로, 다각도 측정이나 다른 계측과의 교차 확인이 필요하다.</p>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>입사각</td>
+<td>65~75° (Si의 Brewster각 부근에서 감도가 좋다)</td>
+</tr>
+<tr>
+<td>파장 범위 (분광형)</td>
+<td>약 190~1700 nm</td>
+</tr>
+<tr>
+<td>두께 범위</td>
+<td>약 0.1 nm ~ 수 µm</td>
+</tr>
+<tr>
+<td>반복 정밀도</td>
+<td>0.01 nm급 — 단, 정확도는 모델이 정한다</td>
+</tr>
+<tr>
+<td>측정 시간</td>
+<td>점당 수 초</td>
+</tr>
+</tbody></table></div>
+<h2 id="한계">한계</h2>
+<ul>
+<li><strong>모델 의존</strong> — 층 구조를 모르면 잴 수 없다. 미지의 막은 TEM·XPS 등 다른 측정으로 구조를 먼저 확정해야 한다.</li>
+<li><strong>패턴 측정 불가</strong> — 빛의 스폿이 커서 실제 소자 패턴이 아니라 블랭킷 영역·측정 패드에서 잰다.</li>
+<li><strong>거친 표면·두꺼운 흡수막</strong> — 편광이 깨지거나 빛이 닿지 않으면 신호가 무너진다.</li>
+<li><strong>다층막 상관</strong> — 층이 많을수록 파라미터 상관이 커져 해가 하나로 정해지지 않을 수 있다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><span class="wiki-missing">XRR</span> — X선 반사율로 두께·밀도·거칠기를 재는 상호 보완 계측</li>
+<li><span class="wiki-missing">반사계</span> — 간섭 스펙트럼만으로 두께를 재는 간이형</li>
+<li><a class="wiki" href="silicon-wafer.html">실리콘 웨이퍼</a> — 측정이 일어나는 기판</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>원리와 Ψ·Δ 정의, 분산 모델은 분광 엘립소메트리의 표준 교재 서술에 근거한다: Fujiwara, <em>Spectroscopic Ellipsometry: Principles and Applications</em> (Wiley, 2007).</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 재료 &gt; 기판·웨이퍼</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 재료 &gt; 기판·웨이퍼</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>
