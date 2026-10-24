@@ -204,6 +204,91 @@ export const hbm = () => {
   </svg>;
 };
 
+// 10장 — HKMG 게이트 스택 단면
+export const hkmg = () => {
+  const il = c3, hk = c1, cap = c5, wf = c2, fill = c4;
+  const layer = (y, hgt, c, op) => <rect x='170' y={y} width='300' height={hgt} fill={c} fillOpacity={op} stroke={c} strokeWidth='1.25' />;
+  const rLabel = (y, name, note) => <g><text x='506' y={y} fontWeight='600' fill={ink}>{name}</text><text x='506' y={y + 16} fontSize='11.5' fill={quiet}>{note}</text></g>;
+  const lLabel = (y, name, note) => <g><text x='134' y={y} textAnchor='end' fontWeight='600' fill={ink}>{name}</text><text x='134' y={y + 16} textAnchor='end' fontSize='11.5' fill={quiet}>{note}</text></g>;
+  const lead = (x1, x2, y) => <path d={`M${x1} ${y}H${x2}`} stroke={edge} strokeWidth='1' />;
+  return <svg viewBox='0 0 760 336' role='img' aria-label='게이트 스택은 계면층, High-k, 캡, 일함수 금속, 충진 금속의 적층이다' fontSize='13'>
+    <text x='24' y='28' fontSize='15' fontWeight='600' fill={ink}>게이트 스택 — 물리적으로 두껍게, 전기적으로 얇게 (EOT)</text>
+    <text x='24' y='48' fontSize='11.5' fill={quiet}>Si 채널 위 적층 단면. 층 두께는 개념도이며 실제는 층당 수 nm</text>
+    {layer(104, 56, fill, 0.25)}
+    {layer(160, 28, wf, 0.3)}
+    {layer(188, 10, cap, 0.55)}
+    {layer(198, 36, hk, 0.25)}
+    {layer(234, 12, il, 0.45)}
+    <rect x='170' y='246' width='300' height='38' fill={tint} stroke={edge} strokeWidth='1.25' />
+    <text x='320' y='269' textAnchor='middle' fill={ink}>Si 채널</text>
+    {lead(470, 498, 132)}{rLabel(126, '충진 금속 (W)', '게이트 저항 감소')}
+    {lead(470, 498, 174)}{rLabel(168, '일함수 금속 (TiAl·TiN)', '문턱전압과 밴드 정렬 결정')}
+    {lead(134, 170, 193)}{lLabel(180, 'TiN 캡', 'HfO₂ 보호막')}
+    {lead(470, 498, 216)}{rLabel(210, 'High-k (HfO₂)', '두껍게 쌓아도 EOT는 얇게')}
+    {lead(134, 170, 240)}{lLabel(227, '계면층 (SiO₂)', '이동도·신뢰성')}
+    <text x='380' y='316' textAnchor='middle' fontSize='11.5' fill={quiet}>EOT 0.6~1nm급 — 물리 두께의 합은 그 몇 배에 이른다</text>
+  </svg>;
+};
+
+// 12장 — SAC 자기정렬 컨택 단면
+export const sac = () => {
+  const gate = c1, sin = c2, plug = c4, sil = c5;
+  const gateStack = x => <g>
+    <rect x={x} y='150' width='80' height='102' fill={gate} fillOpacity='0.25' stroke={gate} strokeWidth='1.25' />
+    <rect x={x} y='134' width='80' height='16' fill={sin} fillOpacity='0.85' stroke={sin} strokeWidth='1' />
+    <rect x={x - 16} y='150' width='16' height='112' fill={sin} fillOpacity='0.85' stroke={sin} strokeWidth='1' />
+    <rect x={x + 80} y='150' width='16' height='112' fill={sin} fillOpacity='0.85' stroke={sin} strokeWidth='1' />
+  </g>;
+  return <svg viewBox='0 0 760 344' role='img' aria-label='컨택이 게이트 쪽으로 겹쳐도 SiN 캡과 스페이서가 단락을 막는다' fontSize='13'>
+    <text x='24' y='28' fontSize='15' fontWeight='600' fill={ink}>컨택이 옆으로 겹쳐도 SiN 캡이 단락을 막는다 — SAC</text>
+    <text x='24' y='48' fontSize='11.5' fill={quiet}>오정렬을 허용하는 대신 산화막/SiN 선택비로 버티는 구조 (단순화 단면)</text>
+    <rect x='90' y='84' width='580' height='178' fill={tint} stroke={edge} strokeWidth='1' />
+    <rect x='90' y='262' width='580' height='30' fill={tint} stroke={edge} strokeWidth='1' />
+    <rect x='272' y='252' width='216' height='10' fill={sil} fillOpacity='0.55' stroke={sil} strokeWidth='1' />
+    <rect x='262' y='92' width='100' height='160' fill={plug} fillOpacity='0.5' stroke={plug} strokeWidth='1.25' />
+    {gateStack(176)}{gateStack(504)}
+    <path d='M84 142H170' stroke={edge} strokeWidth='1' />
+    <path d='M84 202H170' stroke={edge} strokeWidth='1' />
+    <path d='M606 202H676' stroke={edge} strokeWidth='1' />
+    <path d='M494 257H676' stroke={edge} strokeWidth='1' />
+    <text x='312' y='76' textAnchor='middle' fontWeight='600' fill={ink}>S/D 컨택 (W)</text>
+    <text x='78' y='146' textAnchor='end' fontWeight='600' fill={ink}>SiN 캡</text>
+    <text x='78' y='206' textAnchor='end' fontWeight='600' fill={ink}>게이트</text>
+    <text x='682' y='206' fontWeight='600' fill={ink}>SiN 스페이서</text>
+    <text x='682' y='261' fontWeight='600' fill={ink}>실리사이드</text>
+    <text x='380' y='281' textAnchor='middle' fontSize='11.5' fill={quiet}>Si 기판 (아래는 S/D 영역)</text>
+    <text x='380' y='322' textAnchor='middle' fontSize='11.5' fill={quiet}>핵심은 선택비 — 산화막은 빠르게, SiN은 거의 깎이지 않게 (4장의 선택비가 여기서 쓰인다)</text>
+  </svg>;
+};
+
+// 13장 — Cu 듀얼 다마신 단면
+export const damascene = () => {
+  const cu = c4, bar = c5, capl = c2;
+  const cuShape = (x, y, w, hgt) => <g><rect x={x} y={y} width={w} height={hgt} fill={bar} fillOpacity='0.6' stroke={bar} strokeWidth='1' /><rect x={x + 4} y={y + 4} width={w - 8} height={hgt - 8} fill={cu} fillOpacity='0.5' stroke={cu} strokeWidth='1' /></g>;
+  return <svg viewBox='0 0 760 324' role='img' aria-label='듀얼 다마신은 비아와 트렌치를 한 번에 파서 Cu로 한 번에 채운다' fontSize='13'>
+    <text x='24' y='28' fontSize='15' fontWeight='600' fill={ink}>듀얼 다마신 — 두 번 파고, 한 번에 채운다</text>
+    <text x='24' y='48' fontSize='11.5' fill={quiet}>Cu는 식각이 어려워 '먼저 파고 나중에 채우는' 방식으로 만든다</text>
+    <rect x='170' y='96' width='420' height='172' fill={tint} stroke={edge} strokeWidth='1' />
+    <rect x='170' y='196' width='420' height='8' fill={capl} fillOpacity='0.5' stroke='none' />
+    {cuShape(300, 228, 160, 32)}
+    {cuShape(352, 146, 56, 86)}
+    {cuShape(306, 110, 148, 40)}
+    <rect x='170' y='100' width='420' height='8' fill={capl} fillOpacity='0.5' stroke='none' />
+    <text x='380' y='86' textAnchor='middle' fontWeight='600' fill={ink}>Cu 트렌치 (상부 배선 본체)</text>
+    <text x='158' y='112' textAnchor='end' fontSize='11.5' fill={quiet}>캡층 (SiCN)</text>
+    <text x='158' y='168' textAnchor='end' fontSize='11.5' fill={quiet}>low-k 절연막</text>
+    <text x='158' y='204' textAnchor='end' fontSize='11.5' fill={quiet}>식각정지막 (SiCN)</text>
+    <path d='M412 184H420' stroke={edge} strokeWidth='1' />
+    <path d='M412 210H420' stroke={edge} strokeWidth='1' />
+    <text x='424' y='188' fontWeight='600' fill={ink}>Cu 비아</text>
+    <text x='424' y='214' fontWeight='600' fill={ink}>배리어·라이너 (TaN/Ta)</text>
+    <text x='380' y='284' textAnchor='middle' fontWeight='600' fill={ink}>하부 Cu 배선 (M1)</text>
+    <rect x='196' y='296' width='14' height='12' rx='2' fill={cu} fillOpacity='0.5' stroke={cu} /><text x='216' y='306' fontSize='11.5' fill={quiet}>Cu</text>
+    <rect x='270' y='296' width='14' height='12' rx='2' fill={bar} fillOpacity='0.6' stroke={bar} /><text x='290' y='306' fontSize='11.5' fill={quiet}>배리어 (TaN/Ta)</text>
+    <rect x='430' y='296' width='14' height='12' rx='2' fill={tint} stroke={edge} /><text x='450' y='306' fontSize='11.5' fill={quiet}>low-k 절연막</text>
+  </svg>;
+};
+
 // 문서의 그림 캡션 → 그림 함수
 export const byCaption = {
   '전체 공정 흐름': flow,
@@ -214,4 +299,7 @@ export const byCaption = {
   'GAA 측면 단면': gaaRecess,
   '3D NAND 단면': nand,
   'HBM + GPU 2.5D 패키지': hbm,
+  'HKMG 게이트 스택 단면': hkmg,
+  'SAC 자기정렬 컨택 단면': sac,
+  'Cu 듀얼 다마신 단면': damascene,
 };

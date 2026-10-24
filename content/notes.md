@@ -107,6 +107,10 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 - [The World's Most Important Machine — Veritasium](https://www.youtube.com/watch?v=MiUHjLxm3V0) — 주석 액적 광원부터 ZEISS 거울까지, EUV 55분 심층 해설 (영어)
 - [ASML High-NA EUV 장비 영상](https://www.youtube.com/watch?v=h_zgURwr6nA) — TWINSCAN EXE High-NA 시스템 소개 (영어)
 
+**참고 논문**
+
+- [Extreme ultraviolet lithography: A review](https://doi.org/10.1116/1.2794048) — Wu & Kumar, J. Vac. Sci. Technol. B 25, 1743 (2007). EUV 광학·마스크·레지스트를 아우른 고전 리뷰
+
 ## 4. 플라즈마 식각 기초
 
 플라즈마 식각은 라디칼의 화학 반응과 이온의 방향성 에너지를 결합해, 원하는 막만 수직으로 깎는 기술이다. 둘을 따로 쓰면 각각 느리거나 선택비가 없지만, 함께 쓰면 식각 속도가 합보다 훨씬 커지는 **이온–라디칼 시너지**가 핵심이다.
@@ -167,6 +171,10 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 **영상으로 보기**
 
 - [Lam Research Sense.i 플라즈마 식각 플랫폼](https://www.youtube.com/watch?v=1tW_ebhUeIA) — 장비사 공식 식각 플랫폼 소개 (영어)
+
+**참고 논문**
+
+- [Ion- and electron-assisted gas-surface chemistry](https://doi.org/10.1063/1.326355) — Coburn & Winters, J. Appl. Phys. 50, 3182 (1979). 이온-중성 시너지, 즉 방향성 식각의 원전
 
 ## 5. 증착: 막을 올리는 방법들
 
@@ -242,6 +250,11 @@ EPC는 사이클당 식각 두께, A·B는 각 단계를 단독으로 돌렸을 
 **ALE가 주는 것.** 사이클 수로 깊이를 정하므로 종횡비에 덜 민감하고(ARDE 완화), 패턴 밀도와 무관하게 균일하며, 표면이 매끄럽다. Lam의 실험에서 연속 식각은 표면 거칠기를 원자 15층만큼 늘렸지만 ALE는 1층만 늘렸다. 대신 느리므로, 실제 공정은 대부분을 연속 식각으로 깎고 마지막 정밀 구간만 ALE로 처리하는 경우가 많다.
 
 ALE는 10nm급 로직 양산부터 도입되었다. GAA의 리세스(11장), 게이트 금속 리세스(12장), 차세대 금속 배선 직접 식각(13장)이 대표적인 수요처다.
+
+**참고 논문**
+
+- [Atomic Layer Deposition: An Overview](https://doi.org/10.1021/cr900056b) — George, Chem. Rev. 110, 111 (2010). ALD 표면화학의 표준 리뷰
+- [Overview of atomic layer etching in the semiconductor industry](https://doi.org/10.1116/1.4913379) — Kanarik et al., J. Vac. Sci. Technol. A 33, 020802 (2015). ALE의 산업 적용 관점 정리
 
 ## 7. 이온주입과 어닐
 
@@ -378,6 +391,8 @@ SiO₂를 1nm대까지 얇게 만들자 전자가 막을 뚫고 지나가는 터
 | 일함수 금속 | PMOS: TiN 계열 / NMOS: TiAl, TiAlC | 문턱전압 설정 |
 | 충진 금속 | W (또는 Al) | 게이트 저항 감소 |
 
+&#91;embedded content: HKMG 게이트 스택 단면 · 층별 역할과 EOT]
+
 여러 문턱전압(multi-Vt) 소자는 일함수 금속 두께·조성을 바꾸거나, La₂O₃(n형)·Al₂O₃(p형) 같은 **다이폴층**을 넣어 만든다. GAA에서는 시트 사이 틈이 좁아 금속을 두껍게 넣을 수 없으므로 다이폴 방식의 비중이 커진다.
 
 ### 10-4. Gate-first vs Gate-last (RMG)
@@ -396,6 +411,10 @@ SiO₂를 1nm대까지 얇게 만들자 전자가 막을 뚫고 지나가는 터
 3. 더미 poly 제거 (습식·건식) → GAA라면 이어서 채널 릴리스(11장)
 4. IL 형성 → HfO₂ ALD → 캡·일함수 금속 ALD → 충진 금속
 5. CMP로 게이트 높이 정리 → 금속 리세스 + SiN 캡 (12장 SAC로 연결)
+
+**참고 논문**
+
+- [High-K materials and metal gates for CMOS applications](https://doi.org/10.1016/j.mser.2014.11.001) — Robertson & Wallace, Mater. Sci. Eng. R 88, 1 (2015). High-k 밴드 정렬과 일함수의 표준 리뷰
 
 ## 11. GAA 심화: 구조와 리세스 공정
 
@@ -475,6 +494,10 @@ ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 
 
 **다음 구조.** nFET과 pFET 사이에 절연 벽을 세워 간격을 줄이는 **Forksheet**, nFET 위에 pFET을 수직으로 쌓는 **CFET**이 연구되고 있다. 둘 다 GAA의 시트 구조와 희생층·리세스 기법을 그대로 확장한다.
 
+**참고 논문**
+
+- [Stacked nanosheet gate-all-around transistor to enable scaling beyond FinFET](https://doi.org/10.23919/VLSIT.2017.7998183) — Loubet et al., Symp. VLSI Technol. (2017). 나노시트 GAA의 첫 실증 보고
+
 ## 12. MOL (Middle-Of-Line): 트랜지스터와 배선을 잇는 다리
 
 MOL은 트랜지스터의 세 단자(게이트, 소스, 드레인)를 첫 금속 배선층에 연결하는 국부 컨택 층이다. 과거에는 FEOL/BEOL 두 단계로만 나눴지만, 20nm대 이하에서 컨택 저항과 기생 커패시턴스가 성능을 좌우하면서 별도 단계로 분리됐다.
@@ -505,6 +528,8 @@ MOL은 트랜지스터의 세 단자(게이트, 소스, 드레인)를 첫 금속
 3. 산화막(ILD0) 위에 컨택 패턴을 노광한다. 오정렬로 패턴이 게이트 위에 걸쳐도 괜찮다.
 4. FC 플라즈마로 산화막만 깎는다. SiN 캡·스페이서는 거의 깎이지 않아 컨택이 게이트에 닿지 않는다.
 
+&#91;embedded content: SAC 자기정렬 컨택 단면 · SiN 캡과 스페이서가 단락을 막는 구조]
+
 **선택비의 원리 (4-4장의 응용).** C₄F₆·C₄F₈은 표면에 CFₓ 폴리머를 쌓는다. 산화막에서는 막의 산소가 폴리머를 태워 식각이 계속되고, SiN 위에서는 폴리머가 쌓여 식각이 멈춘다. 가장 취약한 곳은 캡의 모서리(숄더)다. 이온이 비스듬히 맞아 모서리가 깎이면(faceting) 게이트와 컨택이 단락된다. 그래서 숄더 손실량이 SAC 식각의 핵심 지표다.
 
 **COAG (Contact Over Active Gate).** 게이트 컨택을 소자 바깥이 아니라 활성 영역 바로 위에 두어 셀 높이를 줄이는 기술이다. 이를 위해 게이트 캡과 S/D 컨택 캡을 **서로 다른 물질**로 만든다. 게이트 컨택을 뚫을 때는 S/D 캡이 버티고, S/D 컨택을 뚫을 때는 게이트 캡이 버티는 **이중 선택비** 구조다. Intel이 10nm 세대에서 처음 도입한 것으로 알려져 있다.
@@ -534,6 +559,8 @@ Cu는 휘발성 할로겐 화합물을 만들지 않아 플라즈마로 직접 �
 4. Cu 시드 PVD → Cu 전해도금(ECP)으로 매립
 5. CMP로 여분 Cu 제거
 6. 캡층(SiCN, 선택적 Co 캡) — 전자이동(EM) 억제
+
+&#91;embedded content: Cu 듀얼 다마신 단면 · 비아와 트렌치의 일괄 매립]
 
 **RC 지연과 소재 경쟁**
 
@@ -673,6 +700,10 @@ DRAM은 트랜지스터 1개와 커패시터 1개(1T1C)로 1비트를 저장하�
 | SK hynix | 321층 (TLC 양산, QLC 2026년 하반기) | 375층 — Mo 워드라인, 2026년 말 양산 목표로 보도 |
 | Kioxia | 218층 BiCS8 | 332층 BiCS10 — CBA(본딩) 구조, 2026\~2027년 양산 |
 | Micron | 276층 (3덱) | — |
+
+**참고 논문**
+
+- [Bit Cost Scalable Technology with Punch and Plug Process for Ultra High Density Flash Memory](https://doi.org/10.1109/VLSIT.2007.4339708) — Tanaka et al., Symp. VLSI Technol. (2007). BiCS, 즉 3D NAND 적층 구조의 원전
 
 ## 16. 후공정 (Back-end): 테스트와 패키징
 
@@ -1011,7 +1042,13 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 
 ## 출처
 
-2026년 10월 25일 기준으로 검색해 확인한 최신 현황의 참고 자료다. 원리 설명은 일반 교재 수준의 내용이며, 표의 수치는 대략적인 값이다.
+2026년 10월 25일 기준으로 검색해 확인한 최신 현황의 참고 자료다. 원리 설명은 일반 교재 수준의 내용이며, 표의 수치는 대략적인 값이다. 각 장 끝의 '참고 논문'에는 장별 원전·리뷰 논문을 DOI 링크와 함께 표기했다.
+
+**교재**
+
+- S. A. Campbell, Fabrication Engineering at the Micro- and Nanoscale, 4th ed., Oxford University Press (2013)
+- M. A. Lieberman & A. J. Lichtenberg, Principles of Plasma Discharges and Materials Processing, 2nd ed., Wiley (2005)
+- S. M. Sze & K. K. Ng, Physics of Semiconductor Devices, 3rd ed., Wiley (2007)
 
 **3장 — 패터닝 / High-NA EUV**
 
