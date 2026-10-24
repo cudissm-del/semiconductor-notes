@@ -98,8 +98,15 @@
   $('.lb-close', lb).addEventListener('click', () => lb.close());
   lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
 
-  // ── 검색 ─────────────────────────────────
-  const index = JSON.parse($('#search-index').textContent);
+  // ── 검색 (색인은 별도 파일이라 처음 쓸 때만 불러온다) ──
+  let index = null, indexLoading = null;
+  const loadIndex = () => {
+    if (index || indexLoading) return;
+    indexLoading = fetch('search-index.json')
+      .then(r => r.json())
+      .then(d => { index = d; if (q.value.trim()) run(); })
+      .catch(() => { index = []; });
+  };
   const q = $('#q'), box = $('#results');
   const norm = s => s.toLowerCase();
   const escH = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -114,6 +121,7 @@
     const raw = q.value.trim();
     sel = -1;
     if (!raw) { box.hidden = true; box.innerHTML = ''; return; }
+    if (!index) { loadIndex(); box.innerHTML = `<div class="empty">검색 색인을 불러오는 중입니다…</div>`; box.hidden = false; return; }
     const terms = raw.split(/\s+/).filter(Boolean);
     const hits = [];
     for (const it of index) {
@@ -135,7 +143,7 @@
     box.hidden = false;
   };
   q.addEventListener('input', run);
-  q.addEventListener('focus', () => { if (q.value.trim()) run(); });
+  q.addEventListener('focus', () => { loadIndex(); if (q.value.trim()) run(); });
   q.addEventListener('keydown', e => {
     const items = $$('a', box);
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {

@@ -8,7 +8,7 @@
 ## 황금 규칙
 
 1. **수정은 소스에서만 한다.** `index.html`과 `assets/`는 빌드 결과물이므로 직접 고치지 않는다.
-2. **빌드하고, 소스와 결과물을 함께 커밋한다.** `npm run build` 후 변경된 소스 + `index.html`을 한 커밋에 넣는다. (KaTeX 에셋은 내용이 바뀐 경우에만 포함)
+2. **빌드하고, 소스와 결과물을 함께 커밋한다.** `npm run build` 후 변경된 소스 + `index.html` + `search-index.json`을 한 커밋에 넣는다. (KaTeX 에셋은 내용이 바뀐 경우에만 포함)
 3. **작업 전에 원격 최신 상태를 확인한다.** `git pull`로 시작하고, 끝난 뒤에는 바로 푸시한다. 동시에 두 작업자가 같은 파일을 고치면 충돌하니, 한 번에 한 작업자만 main에 푸시한다.
 4. **수치·주장은 확인하고 쓴다.** 장비 스펙, 층수, 일정 같은 수치는 출처를 확인하고 본문에 시점을 병기한다(예: "2026년 10월 기준"). 확인한 출처는 `content/notes.md`의 출처 장에 남긴다. 논문 DOI는 Crossref 등으로 실재를 대조한 뒤에만 기입한다 — DOI를 지어내지 않는다.
 
@@ -21,7 +21,8 @@
 | `src/glossary.js` | 용어 사전 `[표기, 풀이, 관련 장]` |
 | `src/template.html`, `src/site.css`, `src/site.js` | 페이지 틀·스타일·동작 (검색, 툴팁, 진행률 등) |
 | `src/jsx.js` | diagrams.jsx 전용 초소형 JSX→SVG 런타임 (빌드 전용) |
-| `build.mjs` | 빌드 스크립트 → `index.html` 단일 파일 생성 |
+| `build.mjs` | 빌드 스크립트 → `index.html` + `search-index.json` 생성 |
+| `search-index.json` | 검색 색인 (빌드 결과물 — 사이트가 검색을 처음 쓸 때만 fetch) |
 | `assets/katex` | 수식 렌더링 에셋 (빌드가 복사) |
 
 ```bash

@@ -127,7 +127,7 @@ main > * { max-width: var(--measure); margin-left: auto; margin-right: auto; }
 .meta { color: var(--ink-3); font-size: 13.5px; margin: 0; }
 
 /* ── 본문 ─────────────────────────────────── */
-.chapter { padding: 44px 0 20px; border-bottom: 1px solid var(--line); }
+.chapter { padding: 44px 0 20px; border-bottom: 1px solid var(--line); content-visibility: auto; contain-intrinsic-size: auto 1400px; }
 .ch-head { display: flex; align-items: flex-start; gap: 16px; justify-content: space-between; }
 .chapter h2 { font-size: clamp(23px, 3vw, 28px); line-height: 1.35; letter-spacing: -0.02em; margin: 0 0 18px; font-weight: 750; }
 .chapter h3 { font-size: 19.5px; line-height: 1.45; letter-spacing: -0.012em; margin: 38px 0 12px; font-weight: 700; }

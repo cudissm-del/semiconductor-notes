@@ -22,7 +22,7 @@
 | `src/glossary.js` | 용어 사전 |
 | `src/template.html`, `src/site.css`, `src/site.js` | 페이지 틀, 스타일, 동작 |
 | `build.mjs` | 빌드 스크립트 → `index.html` |
-| `index.html`, `assets/` | GitHub Pages가 그대로 서비스하는 결과물 |
+| `index.html`, `search-index.json`, `assets/` | GitHub Pages가 그대로 서비스하는 결과물 |
 
 ## 업데이트 방법
 

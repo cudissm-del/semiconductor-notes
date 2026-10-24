@@ -39,6 +39,9 @@ const LICENSES = {
   'CC0': 'https://creativecommons.org/publicdomain/zero/1.0/',
 };
 const escA = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+// 그림 SVG 다이어트: 좌표·경로 숫자를 소수 1자리로 (760px 폭에서 0.1px 차이는 안 보인다)
+const slimSvg = svg => svg.replace(/\b(d|points|transform|cx|cy|x|y|x1|x2|y1|y2)="([^"]*)"/g,
+  (_, a, v) => `${a}="${v.replace(/\d+\.\d+/g, n => String(Math.round(parseFloat(n) * 10) / 10))}"`);
 const FIG_RE = /&#91;embedded content: (.+?)\\?\]|^\*\*\\?\[이미지\\?\]\*\* \\?\[(.+?)\\?\]\((https:\/\/commons\.wikimedia\.org\/wiki\/File:[^)\s]+)\)\s*·\s*(.+)$/gm;
 let figNo = 0;
 md = md.replace(FIG_RE, (_, caption, imgCap, fileUrl, credit) => {
@@ -46,7 +49,7 @@ md = md.replace(FIG_RE, (_, caption, imgCap, fileUrl, credit) => {
     const key = Object.keys(byCaption).find(k => caption.startsWith(k));
     if (!key) { console.warn('⚠ 그림을 찾지 못함:', caption); return ''; }
     figNo += 1;
-    const svg = byCaption[key]().__html;
+    const svg = slimSvg(byCaption[key]().__html);
     return '\n' + slot(`<figure class="fig" tabindex="0" role="button" aria-label="그림 크게 보기: ${escA(caption)}">${svg}<figcaption>그림 ${figNo}. ${caption}</figcaption></figure>`) + '\n';
   }
   figNo += 1;
@@ -177,11 +180,12 @@ let page = fs.readFileSync(r('src/template.html'), 'utf8')
   .replace('{{TOC}}', () => toc)
   .replace('{{CONTENT}}', () => (intro || '') + content + gloss)
   .replace('{{CSS}}', () => fs.readFileSync(r('src/site.css'), 'utf8'))
-  .replace('{{JS}}', () => fs.readFileSync(r('src/site.js'), 'utf8'))
-  .replace('{{INDEX}}', () => JSON.stringify(index).replace(/</g, '\\u003c'));
+  .replace('{{JS}}', () => fs.readFileSync(r('src/site.js'), 'utf8'));
 page = page.replace(/@@SLOT(\d+)@@/g, (_, i) => slots[+i]);
 
 fs.writeFileSync(r('index.html'), page);
+// 검색 색인은 별도 파일로 — 사이트 자바스크립트가 검색을 처음 쓸 때만 불러온다
+fs.writeFileSync(r('search-index.json'), JSON.stringify(index));
 
 // KaTeX 스타일·글꼴 복사
 const kdist = path.join(path.dirname(fileURLToPath(import.meta.resolve('katex'))), '');
@@ -191,4 +195,4 @@ fs.copyFileSync(path.join(kroot, 'katex.min.css'), r('assets/katex/katex.min.css
 for (const f of fs.readdirSync(path.join(kroot, 'fonts')).filter(f => f.endsWith('.woff2')))
   fs.copyFileSync(path.join(kroot, 'fonts', f), r(`assets/katex/fonts/${f}`));
 
-console.log(`✓ index.html — ${numbered.length}개 장, 그림 ${figNo}개, 수식 ${slots.length - figNo}개, 용어 ${glossary.length}개 (${(page.length / 1024).toFixed(0)} KB)`);
+console.log(`✓ index.html — ${numbered.length}개 장, 그림 ${figNo}개, 수식 ${slots.length - figNo}개, 용어 ${glossary.length}개 (${(page.length / 1024).toFixed(0)} KB) + search-index.json (${(JSON.stringify(index).length / 1024).toFixed(0)} KB)`);
