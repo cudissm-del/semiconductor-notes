@@ -18,7 +18,7 @@
 | 경로 | 내용 |
 | --- | --- |
 | `content/notes.md` | 원본 — Claude 문서 "반도체 공정 기초: 구조 · 공정 · 물질"을 마크다운으로 내보낸 것 |
-| `src/diagrams.jsx` | 그림 11개 (빌드 시 정적 SVG로 변환) |
+| `src/diagrams.jsx`, `src/figs/` | 그림 15개 (빌드 시 정적 SVG로 변환). 이 밖에 Wikimedia Commons 자유 라이선스 이미지 7개를 본문에서 불러옴 |
 | `src/glossary.js` | 용어 사전 |
 | `src/template.html`, `src/site.css`, `src/site.js` | 페이지 틀, 스타일, 동작 |
 | `build.mjs` | 빌드 스크립트 → `index.html` |

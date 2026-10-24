@@ -1,6 +1,10 @@
 // 강의노트 그림 모음 — 빌드 시 정적 SVG 문자열로 렌더링된다.
 // 색은 사이트 CSS의 --cds-* 변수(라이트/다크 대응)를 그대로 쓴다.
 import { h as __h } from './jsx.js';
+import synergy from './figs/synergy.jsx';
+import fcfilm from './figs/fcfilm.jsx';
+import arde from './figs/arde.jsx';
+import selflimit from './figs/selflimit.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -302,4 +306,8 @@ export const byCaption = {
   'HKMG 게이트 스택 단면': hkmg,
   'SAC 자기정렬 컨택 단면': sac,
   'Cu 듀얼 다마신 단면': damascene,
+  '이온-라디칼 시너지': synergy,
+  'FC 막 두께와 식각 속도': fcfilm,
+  'ARDE: 일반 식각과 극저온 식각': arde,
+  '자기제한 포화 곡선과 ALE 창': selflimit,
 };

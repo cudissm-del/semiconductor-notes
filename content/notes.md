@@ -130,11 +130,21 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 2. **물리적 스퍼터링** — 이온 충돌로 원자를 튕겨냄. 이방성이지만 느리고 선택비가 거의 없다.
 3. **이온 보조 화학 식각 (RIE의 본질)** — 라디칼이 표면을 약하게 만들고 이온이 그 층을 걷어낸다. 이온이 닿는 바닥만 빠르게 깎이므로 이방성과 속도를 동시에 얻는다.
 
+&#91;embedded content: 이온-라디칼 시너지 · Coburn & Winters (1979) 재구성\]
+
+이 시너지를 처음 분명하게 보인 것이 Coburn과 Winters(1979)의 빔 실험이다. Si에 XeF₂ 가스만 흘리면 화학 식각이 느리게 일어나고, Ar⁺ 이온만 쏘면 스퍼터링으로 거의 깎이지 않는다. 그런데 둘을 동시에 쓰면 두 값의 합보다 훨씬 빠르게 깎였다. 오늘날의 RIE와 ALE는 모두 이 원리 위에 서 있다.
+
 ### 4-3. 수직 측벽은 어떻게 만들어지나
 
 - **방향성 이온**: 웨이퍼 위 시스(sheath)의 전기장이 이온을 수직으로 가속한다. 바닥은 이온을 많이 맞고, 측벽은 거의 안 맞는다.
 - **측벽 패시베이션**: 식각 중 생긴 폴리머(CFₓ, SiOₓClᵧ 등)가 측벽에 쌓여 라디칼의 옆 공격을 막는다. 바닥의 폴리머는 이온이 계속 걷어낸다.
 - 결국 \*\*"증착과 식각의 균형"\*\*이 프로파일을 정한다. 폴리머가 부족하면 측벽이 깎여 휘고(bowing, undercut), 과하면 바닥이 좁아지거나 멈춘다(etch stop, taper).
+
+**\[이미지\]** [측벽 보호 없이 시작한 Si DRIE 단면 — 처음엔 등방성으로 퍼지다가 C₄F₈ 보호를 켜자 수직으로 바뀐 모습](https://commons.wikimedia.org/wiki/File:DRIE_etch_fail.jpg) · Mgerlt, CC BY 4.0
+
+**\[이미지\]** [Bosch 공정으로 만든 Si 마이크로 필러 — 식각·보호를 번갈아 해서 생긴 측벽 물결무늬(스캘럽)와 아래로 좁아지는 각도](https://commons.wikimedia.org/wiki/File:Micro-Pillar.jpg) · Mgerlt, CC BY 4.0
+
+두 사진은 측벽 보호의 효과를 보여 준다. 보호막 없이 시작한 부분은 둥글게 퍼진다. 식각과 보호(C₄F₈ 폴리머 증착)를 번갈아 하는 Bosch 공정은 수직 측벽을 얻는 대신 스캘럽이라는 물결무늬를 남긴다(TSV 식각, 20장).
 
 ### 4-4. 선택비의 원리 — 플루오로카본(FC) 화학 예시
 
@@ -142,6 +152,10 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 - **SiO₂ 위**: 막 속의 산소가 폴리머의 탄소를 CO·CO₂로 태워 폴리머가 얇게 유지 → 식각이 계속된다.
 - **Si·SiN 위**: 산소가 없거나 적어 폴리머가 두껍게 쌓임 → 식각이 느려지거나 멈춘다.
 - 그래서 **F/C 비율**(가스의 탄소 대비 불소)이 낮을수록 폴리머가 많아져 선택비가 오르고, O₂를 넣으면 폴리머를 태워 속도가 오른다. 수소(CH₂F₂ 등)는 F를 HF로 묶어 F/C를 낮춘다. 반대로 SiN을 산화막보다 빨리 깎으려면 CH₃F/O₂처럼 H가 많은 조성을 쓴다.
+
+&#91;embedded content: FC 막 두께와 식각 속도 · Schaepkens et al. (1999) 재구성\]
+
+Schaepkens 등(1999)은 FC 플라즈마로 SiO₂, Si₃N₄, Si를 식각하면서 정상상태에서 표면에 남는 FC 막의 두께를 쟀다. 그 결과 기판 식각 속도는 이 막 두께에 반비례했다. SiO₂는 막 속 산소가 FC 막을 태워 막이 가장 얇게 유지되므로 가장 빨리 깎이고, 이 두께 차이가 곧 SiO₂ : SiN, SiO₂ : Si 선택비가 된다.
 
 ### 4-5. 장비 종류
 
@@ -152,6 +166,8 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 | 원격 플라즈마 (Downstream) | 이온은 걸러내고 라디칼만 웨이퍼로 | 등방성 선택 식각, 애싱, 프리클린 (GAA 측면 리세스) |
 | 펄스 플라즈마 | 전력을 켰다 껐다 하며 이온 에너지·라디칼 조성 제어 | 손상 최소화, 선택비 향상 |
 | 극저온 식각 | 웨이퍼를 영하로 냉각해 측벽 반응 억제 | 3D NAND 초고종횡비 채널홀 |
+
+**\[이미지\]** [연구실용 RIE 장비 (Plasma-Therm 790 Series)](https://commons.wikimedia.org/wiki/File:Reactive_Ion_Etcher.JPG) · AlabamaUSA, CC BY-SA 3.0
 
 ### 4-6. 공정 지표와 비이상 현상
 
@@ -166,15 +182,30 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 | Notching, 마이크로트렌칭 | 절연막 표면 전하로 이온이 휘어 바닥 모서리가 파임 |
 | 플라즈마 유도 손상 | 게이트 산화막 차징, UV에 의한 결합 절단, 이온에 의한 격자 손상 |
 
+**\[이미지\]** [폭이 다른 Si 미세 채널을 같은 조건으로 ICP-DRIE한 단면 — 좁은 채널일수록 얕게 깎인 ARDE](https://commons.wikimedia.org/wiki/File:Etch_depth.jpg) · Mgerlt, CC BY-SA 4.0
+
+&#91;embedded content: ARDE: 일반 식각과 극저온 식각 · Oehrlein et al. (2024) 재구성\]
+
+ARDE는 좁고 깊은 구조에서 라디칼과 이온이 바닥까지 덜 도달하고, 반응 생성물이 덜 빠져나오기 때문에 생긴다. 3D NAND 채널홀처럼 종횡비가 수십 : 1에 이르는 식각에서는 이 감소가 생산성을 좌우한다(15장). Oehrlein 등(2024)의 식각 로드맵 논문은 일반 식각과 극저온 식각의 종횡비 의존성을 비교하며, 극저온 식각을 고종횡비 식각의 유력한 방향으로 다룬다.
+
 **끝점 검출(EPD).** 식각이 하부막에 닿는 순간을 플라즈마 발광 스펙트럼(OES)이나 막 두께 간섭 신호로 잡아 멈춘다. 끝점 이후의 과식각(over-etch) 양과 그동안의 선택비가 실제 공정 마진을 정한다. 원자층 단위의 제어가 필요해지면 6장의 ALE로 넘어간다.
 
 **영상으로 보기**
 
 - [Lam Research Sense.i 플라즈마 식각 플랫폼](https://www.youtube.com/watch?v=1tW_ebhUeIA) — 장비사 공식 식각 플랫폼 소개 (영어)
 
+**원문 그림 보기**
+
+- 이온-라디칼 시너지의 원본 데이터 — Coburn & Winters (1979), [doi:10.1063/1.326355](https://doi.org/10.1063/1.326355)
+- FC 막 두께와 식각 속도 측정 — Schaepkens et al. (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108)
+- 고종횡비 식각의 문제(bowing, twisting)와 극저온 식각, 식각 기술 로드맵 전반 — Oehrlein et al. (2024, 오픈액세스), [doi:10.1116/6.0003579](https://doi.org/10.1116/6.0003579)
+
 **참고 논문**
 
-- [Ion- and electron-assisted gas-surface chemistry](https://doi.org/10.1063/1.326355) — Coburn & Winters, J. Appl. Phys. 50, 3182 (1979). 이온-중성 시너지, 즉 방향성 식각의 원전
+- [Ion- and electron-assisted gas-surface chemistry—An important effect in plasma etching](https://doi.org/10.1063/1.326355) — Coburn & Winters, J. Appl. Phys. 50, 3189 (1979). 이온-중성 시너지, 즉 방향성 식각의 원전
+- [Study of the SiO₂-to-Si₃N₄ etch selectivity mechanism in inductively coupled fluorocarbon plasmas and a comparison with the SiO₂-to-Si mechanism](https://doi.org/10.1116/1.582108) — Schaepkens et al., J. Vac. Sci. Technol. A 17, 26 (1999). FC 막 두께와 선택비의 관계
+- [Future of plasma etching for microelectronics: Challenges and opportunities](https://doi.org/10.1116/6.0003579) — Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024). 식각 로드맵 리뷰, CC BY 4.0 오픈액세스
+- *Principles of Plasma Discharges and Materials Processing* — Lieberman & Lichtenberg, 2nd ed., Wiley (2005). 플라즈마 물리와 식각의 표준 교재
 
 ## 5. 증착: 막을 올리는 방법들
 
@@ -212,6 +243,8 @@ ALD(원자층 증착)와 ALE(원자층 식각)는 반응을 두 단계로 나누
 3. **반응물 B 주입** — 흡착된 A와 반응해 막 한 층을 완성하고 다음 흡착 자리를 만든다.
 4. **퍼지** — 다시 비우고 1로 돌아간다.
 
+**\[이미지\]** [ALD 한 사이클의 네 단계 — 반응물 A 흡착, 퍼지, 반응물 B 반응, 퍼지](https://commons.wikimedia.org/wiki/File:ALD_cartoon_Steps_1-4_Reactant_A_with_three_ligands_no_inert.jpg) · Aristeidis Goulas, Riikka L. Puurunen, J. Ruud van Ommen, CC BY 4.0
+
 | 막 | 전구체 A | 반응물 B | 용도 |
 | --- | --- | --- | --- |
 | Al₂O₃ | TMA (트리메틸알루미늄) | H₂O, O₃ | 식각정지, 캡, 커패시터 유전체 |
@@ -219,8 +252,14 @@ ALD(원자층 증착)와 ALE(원자층 식각)는 반응을 두 단계로 나누
 | TiN | TiCl₄ | NH₃ | 일함수 금속, 배리어, DRAM 전극 |
 | SiO₂ / SiN | 아미노실란, 클로로실란 | O₂·N₂ 플라즈마, NH₃ | SADP 스페이서, 라이너, 내부 스페이서 |
 
+**\[이미지\]** [대표 ALD 공정의 단순화한 반응 경로 — (a) TMA/H₂O → Al₂O₃, (b) HfCl₄/H₂O → HfO₂, (c) MeCpPtMe₃/O₃ → Pt](https://commons.wikimedia.org/wiki/File:3-ALD-reaction-schemes.png) · J. Ruud van Ommen, Riikka L. Puurunen, CC BY 4.0
+
 - **열 ALD vs 플라즈마 ALD(PEALD)** — PEALD는 플라즈마 라디칼로 더 낮은 온도와 치밀한 막을 얻지만, 라디칼이 깊은 구조 바닥까지 덜 닿아 컨포멀성이 다소 떨어질 수 있다.
 - **영역 선택 증착(ASD)** — 특정 표면에만 자라도록 억제제를 쓰는 기술. 자기정렬 비아 등에 연구된다.
+
+**ALD 온도 창.** 자기제한이 성립하는 온도 범위가 있다. 너무 낮으면 전구체가 물리흡착으로 여러 층 쌓이거나(응축) 반응이 다 끝나지 않는다. 너무 높으면 전구체가 열분해되어 CVD처럼 계속 쌓이거나, 흡착된 종이 다시 떨어져 나간다. 그래서 공정 개발은 이 창 안에서 사이클당 성장량(GPC)이 일정한지 확인하는 것부터 시작한다.
+
+**\[이미지\]** [ALD 온도 창 개념 — 창 밖에서는 응축(L1)·불완전 반응(L2)·열분해(H1)·탈착(H2)으로 자기제한이 깨진다 (Suntola 1989의 그림을 재구성)](https://commons.wikimedia.org/wiki/File:Illustration_of_the_ALD_temperature_window.png) · Riikka L. Puurunen, J. Ruud van Ommen, CC BY 4.0
 
 ### 6-2. ALE — 한 층씩 깎기
 
@@ -241,6 +280,10 @@ EPC는 사이클당 식각 두께, A·B는 각 단계를 단독으로 돌렸을 
 
 **좋은 공정 창은 에너지 순서로 정해진다.** Lam Research의 Kanarik 등은 이상적인 ALE가 다음 순서를 만족해야 한다고 정리했다 — 개질 반응 장벽 < 개질 단계 에너지 < 개질층 탈착 에너지 < 제거 단계 이온 에너지 < 원래 막의 표면 결합 에너지. 즉 제거 이온은 개질층은 떼되 원래 막은 못 건드릴 만큼만 세야 한다.
 
+&#91;embedded content: 자기제한 포화 곡선과 ALE 창 · George (2010), Kanarik et al. (2015) 재구성\]
+
+왼쪽은 ALD가, 오른쪽은 ALE가 자기제한적인지 확인하는 대표적인 실험의 모양이다. ALD는 전구체를 더 오래 흘려도 GPC가 더 늘지 않아야 한다. ALE는 제거 단계 이온 에너지를 바꿔도 EPC가 거의 일정한 평탄 구간(ALE 창)이 있어야 한다. 창보다 낮은 에너지에서는 개질층이 떨어지지 않고, 높은 에너지에서는 개질되지 않은 막까지 스퍼터링된다.
+
 | ALE 종류 | 원리 | 특징 | 적용 예 |
 | --- | --- | --- | --- |
 | 방향성(플라즈마) ALE | 개질 + 이온 제거 | 이방성, 바닥만 깎음 | 게이트·SAC 컨택 바닥, 스페이서, 금속(Ru·Mo) 식각 |
@@ -251,10 +294,20 @@ EPC는 사이클당 식각 두께, A·B는 각 단계를 단독으로 돌렸을 
 
 ALE는 10nm급 로직 양산부터 도입되었다. GAA의 리세스(11장), 게이트 금속 리세스(12장), 차세대 금속 배선 직접 식각(13장)이 대표적인 수요처다.
 
+**원문 그림 보기**
+
+- ALE 공정 창, 시너지, 산업 적용 사례 — Kanarik et al. (2015), [doi:10.1116/1.4913379](https://doi.org/10.1116/1.4913379)
+- 열 ALE(불화 + 리간드 교환)의 반응 개념 — George & Lee (2016), [doi:10.1021/acsnano.6b02991](https://doi.org/10.1021/acsnano.6b02991)
+- 고종횡비 구조 속 ALD 컨포멀성 분석 — Cremers et al. (2019, 오픈액세스), [doi:10.1063/1.5060967](https://doi.org/10.1063/1.5060967)
+
 **참고 논문**
 
 - [Atomic Layer Deposition: An Overview](https://doi.org/10.1021/cr900056b) — George, Chem. Rev. 110, 111 (2010). ALD 표면화학의 표준 리뷰
+- [Surface chemistry of atomic layer deposition: A case study for the trimethylaluminum/water process](https://doi.org/10.1063/1.1940727) — Puurunen, J. Appl. Phys. 97, 121301 (2005). TMA/H₂O 공정으로 본 ALD 표면화학
+- [Conformality in atomic layer deposition: Current status overview of analysis and modelling](https://doi.org/10.1063/1.5060967) — Cremers, Puurunen & Dendooven, Appl. Phys. Rev. 6, 021302 (2019). 컨포멀성 리뷰, CC BY 4.0 오픈액세스
 - [Overview of atomic layer etching in the semiconductor industry](https://doi.org/10.1116/1.4913379) — Kanarik et al., J. Vac. Sci. Technol. A 33, 020802 (2015). ALE의 산업 적용 관점 정리
+- [Prospects for Thermal Atomic Layer Etching Using Sequential, Self-Limiting Fluorination and Ligand-Exchange Reactions](https://doi.org/10.1021/acsnano.6b02991) — George & Lee, ACS Nano 10, 4889 (2016). 열 ALE의 개념
+- [Future of plasma etching for microelectronics](https://doi.org/10.1116/6.0003579) — Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024). ALE 절(II L) 참고
 
 ## 7. 이온주입과 어닐
 

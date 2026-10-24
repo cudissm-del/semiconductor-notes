@@ -92,7 +92,7 @@
   const lb = $('#lightbox'), lbBody = $('.lb-body', lb);
   const openFig = f => { lbBody.innerHTML = f.innerHTML; lb.showModal(); };
   $$('.fig').forEach(f => {
-    f.addEventListener('click', () => openFig(f));
+    f.addEventListener('click', e => { if (!e.target.closest('a')) openFig(f); });
     f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFig(f); } });
   });
   $('.lb-close', lb).addEventListener('click', () => lb.close());

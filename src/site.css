@@ -218,3 +218,12 @@ dialog#lightbox::backdrop { background: rgb(10 12 16 / .6); }
 /* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 */
 table { overflow-wrap: normal; word-break: keep-all; }
 @media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* Wikimedia Commons 사진 */
+.fig.photo { padding: 10px; }
+.fig.photo img { display: block; width: 100%; max-height: 480px; object-fit: contain; border-radius: 6px; background: var(--panel); }
+.fig .credit { display: block; font-size: 12px; margin-top: 2px; color: var(--ink-3); }
+.fig .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.lb-body img { width: 100%; max-height: 80vh; object-fit: contain; display: block; }
+/* 참고문헌 목록 */
+.chapter h3[id$="-ref"] + ol, .refs { font-size: 14.5px; }

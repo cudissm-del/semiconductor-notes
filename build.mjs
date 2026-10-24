@@ -15,7 +15,7 @@ const r = p => path.join(ROOT, p);
 // ── 1. 그림 모듈(JSX)을 빌드해서 불러오기 ─────────────────────────
 await esbuild.build({
   entryPoints: [r('src/diagrams.jsx')], bundle: true, format: 'esm', platform: 'node',
-  outfile: r('.build/diagrams.mjs'), jsxFactory: '__h', logLevel: 'warning',
+  outfile: r('.build/diagrams.mjs'), jsxFactory: '__h', inject: [r('src/jsx-shim.js')], logLevel: 'warning',
 });
 const { byCaption } = await import(r('.build/diagrams.mjs') + `?t=${Date.now()}`);
 
@@ -28,13 +28,33 @@ md = md.replace(/^[A-Z][a-z]{2} \d{1,2}, \d{4} · @.+\n+/m, ''); // 문서 바�
 const slots = [];                                       // 그림·수식 자리표시
 const slot = html => `@@SLOT${slots.push(html) - 1}@@`;
 
+// 그림 두 종류를 문서 순서대로 번호 매김:
+//  1) 문서의 그림(embed)  →  src/diagrams.jsx 의 SVG
+//  2) 문서의 "**[이미지]** [설명](Commons 파일 링크) · 저작자, 라이선스" 줄  →  Wikimedia Commons 이미지
+const LICENSES = {
+  'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
+  'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
+  'CC BY-SA 3.0': 'https://creativecommons.org/licenses/by-sa/3.0/',
+  'CC0': 'https://creativecommons.org/publicdomain/zero/1.0/',
+};
+const escA = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const FIG_RE = /&#91;embedded content: (.+?)\\?\]|^\*\*\\?\[이미지\\?\]\*\* \\?\[(.+?)\\?\]\((https:\/\/commons\.wikimedia\.org\/wiki\/File:[^)\s]+)\)\s*·\s*(.+)$/gm;
 let figNo = 0;
-md = md.replace(/&#91;embedded content: (.+?)\\?\]/g, (_, caption) => {
-  const key = Object.keys(byCaption).find(k => caption.startsWith(k));
-  if (!key) { console.warn('⚠ 그림을 찾지 못함:', caption); return ''; }
+md = md.replace(FIG_RE, (_, caption, imgCap, fileUrl, credit) => {
+  if (caption) {
+    const key = Object.keys(byCaption).find(k => caption.startsWith(k));
+    if (!key) { console.warn('⚠ 그림을 찾지 못함:', caption); return ''; }
+    figNo += 1;
+    const svg = byCaption[key]().__html;
+    return '\n' + slot(`<figure class="fig" tabindex="0" role="button" aria-label="그림 크게 보기: ${escA(caption)}">${svg}<figcaption>그림 ${figNo}. ${caption}</figcaption></figure>`) + '\n';
+  }
   figNo += 1;
-  const svg = byCaption[key]().__html;
-  return '\n' + slot(`<figure class="fig" tabindex="0" role="button" aria-label="그림 크게 보기: ${caption}">${svg}<figcaption>그림 ${figNo}. ${caption}</figcaption></figure>`) + '\n';
+  const file = fileUrl.split('/wiki/File:')[1];
+  const src = `https://commons.wikimedia.org/wiki/Special:FilePath/${file}?width=1400`;
+  const lic = Object.keys(LICENSES).sort((a, b) => b.length - a.length).find(l => credit.includes(l));
+  const creditHtml = lic ? credit.trim().replace(lic, `<a href="${LICENSES[lic]}" target="_blank" rel="noopener">${lic}</a>`) : credit.trim();
+  return '\n' + slot(`<figure class="fig photo" tabindex="0" role="button" aria-label="그림 크게 보기: ${escA(imgCap)}"><img src="${src}" alt="${escA(imgCap)}" loading="lazy" decoding="async"><figcaption>그림 ${figNo}. ${imgCap}<span class="credit">${creditHtml} · <a href="${fileUrl}" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>`) + '\n';
 });
 
 md = md.replace(/```latex\n([\s\S]*?)```/g, (_, tex) =>
