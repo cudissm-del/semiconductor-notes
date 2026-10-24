@@ -5,6 +5,16 @@ import synergy from './figs/synergy.jsx';
 import fcfilm from './figs/fcfilm.jsx';
 import arde from './figs/arde.jsx';
 import selflimit from './figs/selflimit.jsx';
+import coverage from './figs/coverage.jsx';
+import implant from './figs/implant.jsx';
+import cmp from './figs/cmp.jsx';
+import cmos from './figs/cmos.jsx';
+import dramcell from './figs/dramcell.jsx';
+import cellarea from './figs/cellarea.jsx';
+import bond from './figs/bond.jsx';
+import pitch from './figs/pitch.jsx';
+import kvalue from './figs/kvalue.jsx';
+import metrology from './figs/metrology.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -310,4 +320,14 @@ export const byCaption = {
   'FC 막 두께와 식각 속도': fcfilm,
   'ARDE: 일반 식각과 극저온 식각': arde,
   '자기제한 포화 곡선과 ALE 창': selflimit,
+  '증착 방식별 스텝 커버리지': coverage,
+  '이온주입 깊이 분포와 어닐': implant,
+  'CMP 장비와 디싱 · 이로전': cmp,
+  'CMOS FEOL 단면': cmos,
+  'DRAM 1T1C 셀': dramcell,
+  '6F²와 4F² 셀 면적': cellarea,
+  '와이어 본딩과 플립칩': bond,
+  '연결 피치와 연결 밀도': pitch,
+  '절연막 유전율 비교': kvalue,
+  '공정별 계측 지도': metrology,
 };
