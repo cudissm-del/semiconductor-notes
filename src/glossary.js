@@ -15,6 +15,7 @@ export const glossary = [
   ['PMD', 'Pre-Metal Dielectric. 트랜지스터 위를 덮는 첫 절연막', 12],
   ['CMP', 'Chemical Mechanical Polishing. 슬러리와 패드로 표면을 평탄화하는 연마 공정', 8],
   ['ALD', 'Atomic Layer Deposition. 자기제한 반응을 한 층씩 반복하는 증착', 6],
+  ['SiOCN', '산소·탄소를 넣은 질화규소계 저유전 절연막(k 약 4~5). GAA·FinFET의 게이트 스페이서와 내부 스페이서에 쓰인다', 11],
   ['ALE', 'Atomic Layer Etching. 개질과 제거를 자기제한적으로 반복하는 식각', 6],
   ['EPC', 'Etch Per Cycle. ALE 한 사이클에서 깎이는 두께', 6],
   ['PECVD', 'Plasma-Enhanced CVD. 플라즈마로 반응을 도와 저온에서 막을 올리는 증착', 5],

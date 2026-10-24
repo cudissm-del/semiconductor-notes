@@ -542,6 +542,20 @@ GAA는 "희생층을 넣어 두었다가 나중에 빼고 그 자리에 게이�
 
 ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 바깥에 남은 막을 등방성으로 걷어내 오목부 안에만 남긴다. 이 에치백도 넓게 보면 "절연막 리세스"다. Si 시트 옆면이 깨끗이 드러나야 다음 S/D 에피가 잘 자란다.
 
+**스페이서 물질 — SiN에서 SiOCN · SiCO로**
+
+게이트 바깥 스페이서와 내부 스페이서는 게이트와 S/D·컨택 사이에 끼어 있어, 막의 유전율이 곧 기생 용량이다. 그래서 SiN(k≈7) 대신 O·C를 넣은 저유전 막이 쓰인다. 다만 스페이서는 이후의 더미 게이트 제거, SiGe 채널 릴리스, HF 세정을 모두 견뎌야 하므로, k만 낮아서는 안 되고 식각 내성이 함께 있어야 한다. 실제 양산 노드에서 어느 층에 어떤 막을 쓰는지는 공개되지 않았고, 아래는 특허·학회 논문·장비 업체 자료에 나타난 사용처다(2026년 10월 기준).
+
+| 물질 | k (대략) | GAA에서의 사용처 | 특징 |
+| --- | --- | --- | --- |
+| SiN | \~7 | 게이트 스페이서, 내부 스페이서 (기준) | 식각 내성이 가장 좋지만 기생 용량이 큼 |
+| SiOCN | \~4\~5 | 게이트 바깥 스페이서(SiBCN과 함께 대표 후보, SiN과 다층으로도 씀), 내부 스페이서 | N이 식각 내성을, O·C가 낮은 k를 맡는 절충형 |
+| SiCO (치밀형) | \~4\~4.5 | 저유전 스페이서 겸 측면 식각 정지막, 저온(400°C) 스페이서 | 가교된 C가 dHF·고온 인산 내성을 준다는 보고 |
+| SiOC (저유전형) | \~2.2\~3.0 | 게이트–컨택 사이 초저유전층(특허 예) | 고온에 약해 공정 후반에 넣음 |
+| SiO₂ / SiON | 3.9 / \~5 | 내부 스페이서(SiGe 오목부를 선택 산화·질화하는 방식의 특허 예) | 별도 증착 없이 오목부에만 형성 |
+
+**같은 "SiOC"라도 두 종류다.** 스페이서용 SiCO는 탄소가 Si–C–Si로 가교된 치밀한 막(k≈4\~4.5)이고, BEOL 층간막의 SiOC(H)·다공성 SiOCH는 메틸기와 기공으로 k를 2\~3까지 낮춘 무른 막이다(13-1장). 장비 업체 자료는 탄소 함량보다 **가교된 탄소의 비율**이 식각 선택비를 좌우한다고 설명한다. 내부 스페이서 에치백은 이런 막을 Si·SiGe에 대해 선택적으로 등방 식각해 오목부 안에만 남기는 공정이므로, 막 조성이 곧 식각 화학의 선택 조건이 된다(19-7장).
+
 **다른 곳의 리세스** — 리세스는 GAA 전용이 아니라 공정 곳곳에서 쓰는 일반 기법이다.
 
 | 리세스 | 하는 일 | 장 |
@@ -566,6 +580,8 @@ ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 
 **참고 논문**
 
 - [Stacked nanosheet gate-all-around transistor to enable scaling beyond FinFET](https://doi.org/10.23919/VLSIT.2017.7998183) — Loubet et al., Symp. VLSI Technol. (2017). 나노시트 GAA의 첫 실증 보고
+- [Study of Silicon Nitride Inner Spacer Formation in Process of Gate-all-around Nano-Transistors](https://doi.org/10.3390/nano10040793) — Li et al., Nanomaterials 10, 793 (2020). SiN 내부 스페이서의 증착·에치백 공정 실험, 오픈액세스
+- [Interest of SiCO low k=4.5 spacer deposited at low temperature (400°C) in the perspective of 3D VLSI integration](https://doi.org/10.1109/IEDM.2015.7409656) — Benoit et al., IEDM (2015), 8.6.1. SiN을 대체하는 저온 SiCO 스페이서
 
 ## 12. MOL (Middle-Of-Line): 트랜지스터와 배선을 잇는 다리
 
@@ -929,6 +945,7 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 | Si₃N₄ (SiN) | \~7 | STI 하드마스크·CMP 정지막, 게이트 스페이서, SAC 캡, 컨택 식각 정지막(CESL), 응력 라이너, 패시베이션 | FEOL·MOL·BEOL 최상부 |
 | SiON | 4\~7 | 반사방지막(DARC), 하드마스크, 과거 게이트 유전체(질화로 누설·붕소 침투 억제) | FEOL·리소 |
 | SiOCN / SiBCN | \~4\~5 | 저유전 스페이서 (게이트–컨택 기생 용량 감소) | FEOL·MOL (최신 노드) |
+| SiCO (치밀형) | \~4\~4.5 | 저유전 스페이서, 측면 식각 정지막 (BEOL의 다공성 SiOC와 다른 치밀한 막) | FEOL (GAA) |
 | HfO₂ (및 HfSiON) | \~20\~25 | High-k 게이트 유전체 | FEOL (HKMG) |
 | Al₂O₃ | \~9 | 문턱전압 조절층, 식각 정지막, 확산 방지·캡 | FEOL·BEOL·메모리 |
 | ZrO₂ | \~25\~40 | DRAM 커패시터 유전체 (ZrO₂/Al₂O₃/ZrO₂ 적층 등) | 메모리 |
@@ -1155,6 +1172,12 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 - [Designer atomic layer etching — Lam Research 특허 (USPTO)](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10566212)
 - [Directional Atomic Layer Etching — AVS 2017](https://www2.avs.org/symposium2017/Papers/Paper_PS+NS+SS+TF-ThM3.html)
 - [Atomic layer etching of SiO₂ using SF₆ and Ar plasma (arXiv)](https://arxiv.org/pdf/2412.20653)
+
+**11장 — GAA 스페이서 물질**
+
+- [US11664422B2 — Nanosheet transistor with ultra low-k spacer (IBM)](https://patents.google.com/patent/US11664422) — SiOCN 내부 스페이서, SiOC 초저유전층
+- [US10243060B2 — Uniform low-k inner spacer module in GAA transistors (IBM)](https://patents.google.com/patent/US10243060) — SiON 내부 스페이서, 스페이서 후보 SiN·SiOCN·SiBCN
+- [Next generation low-k films can address present & future fabrication challenges — Silicon Semiconductor (2022, Lam Research 기고)](https://siliconsemiconductor.net/article/115495/Next-generation_low-k_films_can_address_present_future_fabrication_challenges) — SiCO 스페이서의 k와 습식 식각 내성 (업체 자료)
 
 **13장 — BSPDN**
 
