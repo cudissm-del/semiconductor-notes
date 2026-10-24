@@ -40,6 +40,12 @@ Oct 22, 2026 · @김정식
 
 아래층 배선일수록 피치가 촘촘하고, 위로 갈수록 굵고 두꺼워진다.
 
+**영상으로 보기**
+
+- [How are Microchips Made? — Branch Education](https://www.youtube.com/watch?v=dX9CGRZwD-w) — 제조 전 과정을 3D 시각화로 보여주는 영상 (영어)
+- [반도체 라인 A to Z — 삼성반도체](https://www.youtube.com/watch?v=OhoagUtQD3c) — 실제 팹 라인과 8대 공정 투어 (한국어)
+- [How are microchips made? — TED-Ed](https://www.youtube.com/watch?v=IkRXpFIRUl4) — 5분 입문용 개요 (영어)
+
 ## 3. 패터닝: 리소그래피와 멀티패터닝
 
 패터닝은 회로 모양을 감광막(PR)에 새기고(노광) 식각으로 아래 막에 옮기는 과정이다. 한 번에 찍을 수 있는 최소 선폭(해상도)이 수십 년간 미세화 속도를 정해 왔다.
@@ -95,6 +101,11 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 - 입사각 문제로 **아나모픽 광학**(스캔 방향 4배, 수직 방향 8배 축소)을 써서, 한 번에 찍는 영역이 기존의 절반(26×16.5mm)이다. 큰 칩은 두 장을 이어 붙이는 스티칭이 필요하다.
 - 양산형 장비 **EXE:5200B**는 시간당 웨이퍼 175장, 오버레이 0.7nm 수준이다. Intel이 2025년 12월 인수 시험을 마쳤고, 14A 노드에서 2027년 위험생산, 2028년 양산을 계획한다.
 - TSMC는 A14에서도 0.33 NA EUV를 유지할 계획으로 알려져 있고, 삼성은 2028년 DRAM 생산에 High-NA 도입을 계획 중이라는 보도가 있다. ASML은 2026년 말 생산급 가용성을 예상하고 있다.
+
+**영상으로 보기**
+
+- [The World's Most Important Machine — Veritasium](https://www.youtube.com/watch?v=MiUHjLxm3V0) — 주석 액적 광원부터 ZEISS 거울까지, EUV 55분 심층 해설 (영어)
+- [ASML High-NA EUV 장비 영상](https://www.youtube.com/watch?v=h_zgURwr6nA) — TWINSCAN EXE High-NA 시스템 소개 (영어)
 
 ## 4. 플라즈마 식각 기초
 
@@ -152,6 +163,10 @@ SADP·SAQP의 선폭은 노광이 아니라 **스페이서 ALD 두께**가 정�
 | 플라즈마 유도 손상 | 게이트 산화막 차징, UV에 의한 결합 절단, 이온에 의한 격자 손상 |
 
 **끝점 검출(EPD).** 식각이 하부막에 닿는 순간을 플라즈마 발광 스펙트럼(OES)이나 막 두께 간섭 신호로 잡아 멈춘다. 끝점 이후의 과식각(over-etch) 양과 그동안의 선택비가 실제 공정 마진을 정한다. 원자층 단위의 제어가 필요해지면 6장의 ALE로 넘어간다.
+
+**영상으로 보기**
+
+- [Lam Research Sense.i 플라즈마 식각 플랫폼](https://www.youtube.com/watch?v=1tW_ebhUeIA) — 장비사 공식 식각 플랫폼 소개 (영어)
 
 ## 5. 증착: 막을 올리는 방법들
 
@@ -718,6 +733,10 @@ CoWoS(Chip-on-Wafer-on-Substrate)는 GPU 같은 로직 다이와 HBM을 인터�
 - **EMIB와의 차이** — CoWoS-L은 실리콘 브리지를 인터포저 안에 넣고, EMIB는 패키지 기판 안에 직접 묻는다.
 - **유리 기판** — 유기 기판보다 평탄하고 열팽창이 실리콘에 가까워, 더 큰 패키지와 더 미세한 배선을 위한 차세대 코어 소재로 연구되고 있다.
 
+**영상으로 보기**
+
+- [Why Wafer Bonding is the Future of Semiconductors — Asianometry](https://www.youtube.com/watch?v=2ACiuKgYUkI) — 웨이퍼 본딩이 왜 첨단 기술의 공통분모인지 (영어)
+
 ## 18. HBM: 적층 메모리
 
 HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이스 다이를 통해 GPU 옆 인터포저(17장)에 붙인 메모리다. I/O 수천 개를 짧은 거리로 연결해 대역폭을 크게 얻는다. 공정 경쟁의 초점은 **정해진 높이 안에 더 많은 다이를 쌓는 본딩 기술**이다.
@@ -759,6 +778,10 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 - **삼성전자** — 2026년 2월 HBM4 양산과 출하를 시작했다. 하이브리드 본딩 라인을 준비하며, 16단 HBM4E를 하이브리드 본딩으로 2028년까지 내놓는 방향으로 보도되었다.
 - **SK hynix** — 2026년 8월 Hot Chips에서 HBM4 12단은 양산 중, 16단은 고객 인증 단계라고 밝혔다. HBM4·HBM4E까지는 마이크로범프 기반 MR-MUF를 유지하고, 직접 본딩은 HBM5와 20단 이상 적층에 쓰는 로드맵을 제시했다.
 - **수요 측** — NVIDIA가 2026년 하반기 16단 공급을 요청하면서 세 업체 모두 16단 개발을 앞당기고 있다.
+
+**영상으로 보기**
+
+- [HBM Packaging Explained — AMS Tech](https://www.youtube.com/watch?v=3qK3Cvu6qbI) — HBM이 인터포저와 마이크로범프를 거쳐 GPU와 연결되는 구조 해설 (영어)
 
 ## 19. 공정에 쓰이는 주요 물질과 역할
 
