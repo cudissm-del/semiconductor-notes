@@ -333,6 +333,8 @@ ALE는 10nm급 로직 양산부터 도입되었다. GAA의 리세스(11장), 게
 - [Prospects for Thermal Atomic Layer Etching Using Sequential, Self-Limiting Fluorination and Ligand-Exchange Reactions](https://doi.org/10.1021/acsnano.6b02991) — George & Lee, ACS Nano 10, 4889 (2016). 열 ALE의 개념
 - [Future of plasma etching for microelectronics](https://doi.org/10.1116/6.0003579) — Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024). ALE 절(II L) 참고
 
+**연구 연결 — 암모늄염 ALE.** 이 장의 ALE 사이클(개질 → 제거)을 염 화학으로 구현한 대표 사례가 암모늄염 thermal-cyclic ALE다. 표면을 (NH₄)₂SiF₆ 염으로 바꾸는 단계가 자기제한적이고, 가열로 염을 분해하는 단계가 제거에 해당한다. Shinoda 등(2019)은 이 방식으로 Si₃N₄를 사이클 단위로 깎았고, 자세한 화학·선택비·진단은 [심화편](#deep-afs)에 따로 모았다.
+
 ## 7. 이온주입과 어닐
 
 이온주입은 도펀트를 원하는 양(도즈)만큼 원하는 깊이(에너지)에 정확히 넣는 공정이고, 어닐은 그로 인한 손상을 복구하고 도펀트를 전기적으로 활성화하는 열처리다. 목표는 하나로 요약된다 — **최대한 활성화하되, 최소한만 확산시킨다.**
@@ -418,6 +420,7 @@ RR은 연마 속도, P는 압력, V는 패드와 웨이퍼의 상대 속도, K�
 
 - **패턴 붕괴** — 고종횡비 구조는 세정 후 건조 시 액체 표면장력에 쓰러질 수 있다. 저표면장력 용매(IPA) 건조, 초임계 건조 등으로 대응한다.
 - **건식 프리클린**은 원격 플라즈마의 라디칼로 산화막을 염 형태로 바꾼 뒤 가열해 승화시키는 방식이다. 4장의 원격 플라즈마, 11장의 측면 리세스와 같은 계열의 화학이다.
+- 그 염의 정체가 바로 AFS((NH₄)₂SiF₆)다. 염이 남으면 입자가 되는데, Kwon과 Park(2022)은 HF 기상 식각 뒤 Si₃N₄ 표면에 생긴 AFS 분말의 완전 분해 조건(진공 오븐 170°C·120초 가열 + DIW 세정)을 제시했다. 이 화학을 선택 식각으로 확장한 이야기는 [심화편](#deep-afs)에 모았다.
 
 ## 9. FEOL (Front-End-Of-Line): 트랜지스터를 만드는 단계
 
@@ -573,6 +576,8 @@ ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 
 | SiO₂ / SiON | 3.9 / \~5 | 내부 스페이서(SiGe 오목부를 선택 산화·질화하는 방식의 특허 예) | 별도 증착 없이 오목부에만 형성 |
 
 **같은 "SiOC"라도 두 종류다.** 스페이서용 SiCO는 탄소가 Si–C–Si로 가교된 치밀한 막(k≈4\~4.5)이고, BEOL 층간막의 SiOC(H)·다공성 SiOCH는 메틸기와 기공으로 k를 2\~3까지 낮춘 무른 막이다(13-1장). 장비 업체 자료는 탄소 함량보다 **가교된 탄소의 비율**이 식각 선택비를 좌우한다고 설명한다. 내부 스페이서 에치백은 이런 막을 Si·SiGe에 대해 선택적으로 등방 식각해 오목부 안에만 남기는 공정이므로, 막 조성이 곧 식각 화학의 선택 조건이 된다(19-7장).
+
+**연구 연결.** 이런 low-k 막을 실제로 쓰려면, 원하지 않는 부분을 Si·SiGe·SiO₂·Si₃N₄에 대해 선택적으로 걷어내는 식각이 있어야 한다. NF₃/NH₃ 계열 화학으로 표면을 염(AFS)으로 바꿨다가 열로 날리는 선택 식각이 그 후보 중 하나이며, SiOCN 조성과 선택비가 어떻게 얽히는지는 [심화편](#deep-afs)에서 논문 중심으로 정리했다.
 
 **다른 곳의 리세스** — 리세스는 GAA 전용이 아니라 공정 곳곳에서 쓰는 일반 기법이다.
 
@@ -1111,6 +1116,8 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 
 **읽는 법.** 아래층(FEOL)으로 갈수록 "전기적 손상"과 원자 단위 정밀도(ALE 등)가 중요해지고, 위층·패키징으로 갈수록 "얼마나 빨리, 얼마나 깊게"가 중요해진다.
 
+표에 없는 축이 하나 더 있다. 이온을 쓰는가, 라디칼만 쓰는가다. 리모트·다운스트림 플라즈마는 이온 손상 없이 라디칼 화학만으로 표면을 바꾸는데, 건식 프리클린과 SiGe 릴리스가 그 예다. 이 라디칼 화학이 염(AFS) 형성과 만나면 선택 식각의 또 다른 계열이 되며, [심화편](#deep-afs)에서 깊이 다룬다.
+
 ## 21. 계측과 분석
 
 공정 결과는 측정으로만 확인할 수 있다. 계측은 크게 **라인 안에서 빠르게 매번 보는 인라인 계측**과, **웨이퍼를 잘라 깊이 보는 오프라인 분석**으로 나뉜다. 인라인은 공정 제어에, 오프라인은 원인 분석과 신공정 개발에 쓴다.
@@ -1178,6 +1185,103 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 7. 단위 공정(패터닝·식각·증착·주입·CMP)은 모든 구조의 공통 언어다. 새 구조가 나오면 "어떤 막을 무엇으로 쌓고, 무엇과 짝지어 깎는가"로 읽으면 된다.
 8. 메모리는 층수(3D NAND)와 셀 구조 전환(4F²·3D DRAM)으로, AI 패키징은 본딩 기술(HBM·CoWoS)로 한계를 넘고 있으며, 그 중심에는 고종횡비 식각과 웨이퍼 본딩이 있다.
 
+## 심화편: AFS 염 선택 식각 — SiOCN을 골라 깎는다는 것
+
+이 편은 본편의 원리들을 하나의 연구 주제로 모아 깊이 파는 심화 트랙이다. 주제는 플라즈마로 만든 염(鹽), AFS(ammonium fluorosilicate, (NH₄)₂SiF₆)를 이용해 특정 물질만 골라 깎는 선택 식각이다. 왜 그런 공정이 필요한지에서 출발해, 염이 생기고 사라지는 화학, 물질마다 갈리는 선택비, 염이 생겼는지 확인하는 진단, 그리고 아직 비어 있는 자리를 출판 논문을 근거로 따라간다.
+
+### S-1. 왜 SiOCN을 골라 깎아야 하나
+
+GAA 나노시트에서 내부 스페이서는 게이트와 S/D 에피 사이에 매립되는 절연막이다(11장). 이 막의 유전율이 곧 기생 용량이라, SiN(k≈7)보다 낮은 SiOCN(k≈4~5)·SiCO가 후보로 올라와 있다(19장). Gu 등(2020)은 FinFET 게이트 스페이서에 SiOCN(k = 4.5)을 통합해 겹침 용량을 P/NFET 각각 12%/11% 줄였다.
+
+그런데 low-k 스페이서를 쓰려면 막을 원하는 모양으로 깎는 공정 — 오목부를 파고(리세스), 바깥을 걷어내고(에치백), 필요하면 옆으로 다듬는(트림) — 이 Si·SiGe·SiO₂·Si₃N₄를 건드리지 않고 그 막에 대해서만 일어나야 한다. 내부 스페이서용 low-k는 아직 소자 실증이 없고(2026년 10월 기준, 이 편의 문헌 범위), 그 이유 중 하나가 이 형상 제어 식각의 어려움이다. 선택 식각 화학, 그중에서도 이 편이 다루는 AFS 염 화학이 이 자리의 후보로 연구된다.
+
+### S-2. AFS 화학 — 염을 만들었다 지우는 식각
+
+핵심 발상은 단순하다. 깎고 싶은 표면을 고체 염으로 바꿔 두었다가, 열로 날려 보낸다.
+
+**염 만들기.** NF₃/NH₃(또는 NF₃/H₂, CF₄/NH₃) 리모트·다운스트림 플라즈마는 이온이 거의 닿지 않는 영역에서 NH₄F와 HF를 만든다. Soriano 등(2020)은 다운스트림 반응기의 VUV 흡수 분광으로 NF₃/NH₃ 해리율과 HF 밀도를 재면서, 기체상에서 NH₄F가 형성될 가능성을 보였다. 이 NH₄F·HF가 Si 화합물 표면과 반응하면 고체 염 (NH₄)₂SiF₆가 표면에 자란다. Lill 등(2024)은 플라즈마 없이 HF 가스만으로도 Si₃N₄가 상온에서 자발적으로 식각됨을 보이고, 반응을 Si₃N₄ + 16HF → 2(NH₄)₂SiF₆ + SiF₄로 정리했다.
+
+**염 지우기.** (NH₄)₂SiF₆는 가열하면 (NH₄)₂SiF₆ → 2NH₃ + 2HF + SiF₄로 분해되어 기체로 떠난다. 분해가 시작되는 온도는 100°C 안팎이고, Miyoshi(2017)의 TDS(승온 탈착 분광)에서는 탈착이 130~230°C 구간에서 일어났으며 탈착 활성화 에너지는 종에 따라 0.71~0.96 eV였다. 즉 상온 부근에서 염을 만들고 100~200°C에서 지우는 온도 사이클이 이 화학의 기본 리듬이다.
+
+&#91;embedded content: AFS 형성·제거 사이클 · 염으로 바꿨다가 열로 날린다]
+
+&#91;embedded content: AFS 온도 지도 · 형성과 분해의 온도 구간]
+
+염 층의 두께는 스스로 제한된다. 염이 표면을 덮으면 반응종이 그 아래까지 닿기 어려워 성장이 멈추기 때문이다. Miyoshi(2017)는 AFS 층 두께를 1~2 nm로 추정했고, 이 자기제한성이 사이클당 식각량(EPC)을 일정하게 만드는 물리적 근거가 된다 — 6장의 ALE와 같은 사고방식이다.
+
+### S-3. 선택비는 어디서 갈리나
+
+같은 화학을 써도 어느 물질이 깎이는지는 조건에 따라 뒤집힌다. 문헌의 사례를 나란히 놓으면 선택비를 가르는 변수가 보인다.
+
+**SiN이 깎이고 SiO₂가 남는 경우.** Shinoda 등(2016)은 하이드로플루오로카본 라디칼 노출 + 100~120°C 어닐 사이클로 Si₃N₄를 사이클당 2.6 nm씩 깎으면서, SiO₂ 식각량은 검출한계 아래에 머물렀다. 해석의 핵심은 질소다. AFS는 (NH₄)⁺를 품은 염이라 형성에 질소 공급이 필요한데, 이 화학계에서는 SiO₂ 표면에서 그 경로가 성립하지 않는다는 것이다. Possémé 등(2016)은 NH₃/NF₃ 리모트 플라즈마로 SiN 박층을 선택 제거하는 공정을 XPS·IR로 해부해, 표면 개질과 제거를 나눈 2단계 구조를 보였다.
+
+**SiO₂가 깎이는 경우.** Cho 등(2020)은 CF₄/NH₃ 플라즈마로 SiO₂ 위에 AFS를 화학양론대로(F/Si = 6, N/Si = 2) 형성해 사이클당 2.7 nm를 깎았다. 같은 비교에서 NF₃/NH₃는 9.1 nm/cycle로 약 3배 빨랐다 — C–F 결합이 강해 F 공급이 적은 CF₄ 쪽이 느린 대신 얇게 제어하기 좋다. 플라즈마 쪽에서 NH₃로 질소를 대면 SiO₂도 염 경로에 올라탄다. 선택의 방향은 어느 쪽이 질소를 대는가와 F 공급량의 균형으로 정해진다.
+
+**초고선택의 설계.** Volynets 등(2020)은 NF₃/N₂/O₂/H₂ 리모트 플라즈마에서 Si₃N₄/SiO₂ 선택비 약 380을 보고했고, 선택비는 H₂ 유량에 대해 뾰족한 최대값을 가졌다. Barsukov 등(2017)은 NF₃/O₂ 계에서 자연히 생기는 NO가 F의 표면 이동을 도와 SiN 식각을 가속한다는 메커니즘을 제시했다.
+
+**SiCN·SiOCN의 경우.** Matsui 등(2021)은 NF₃/Ar 플라즈마에서 SiCN이 비교 물질들보다 빠르게 깎이며, 선택비는 깎지 않을 쪽에 보호층을 입히는 설계(산화층, Si 증착층, TiNₓFᵧ + ammonium fluoride층)로 만든다는 것을 보였다. Pranda 등(2023)은 SiCN·SiOCN·SiBCN의 식각률이 물질 자체의 질소 함량에 비례함을 보였고, Goya 등(2026)은 NF₃ 플라즈마에 H₂를 넣으면 적을 때는 F 증가와 산소 결핍층으로 SiOCN 식각이 빨라지다가, 많아지면(≥40 sccm) NHx 보호층이 생겨 느려지는 세 구간을 XPS로 구분했다.
+
+| 화학계 | 주로 깎이는 쪽 | 선택 거동 (보고값) | 출처 |
+| --- | --- | --- | --- |
+| HFC 라디칼 + 어닐 (열 사이클) | Si₃N₄ | EPC 2.6 nm/cycle, SiO₂는 검출한계 아래 | Shinoda 2016 |
+| NH₃/NF₃ 리모트 | Si₃N₄ 박층 | 개질 + 제거 2단계, 패턴 구조에서 평가 | Possémé 2016 |
+| CF₄/NH₃ | SiO₂ | EPC 2.7 nm/cycle (NF₃/NH₃는 9.1) | Cho 2020 |
+| NF₃/N₂/O₂/H₂ 리모트 | Si₃N₄ | SiO₂ 대비 선택비 ≈380 (H₂에서 최대) | Volynets 2020 |
+| NF₃/Ar + 첨가 가스 | SiCN | 보호층 설계로 상대 물질을 보호 | Matsui 2021 |
+| NF₃/Ar + H₂ | SiOCN | H₂ 양에 따라 가속 ↔ 보호층 3구간 | Goya 2026 |
+| HF 가스 (플라즈마 없음) | Si₃N₄·SiO₂ | 상온 자발 반응, H₂O가 가속 | Lill 2024 |
+
+### S-4. 염이 생겼는지 어떻게 아나
+
+AFS는 눈에 보이지 않는 수 nm 층이라 진단이 곧 공정 개발이다.
+
+- **XPS** — 염의 지문은 N 1s의 약 402 eV 피크다. Si₃N₄ 본래의 N 1s(약 397 eV)와 떨어져 나타나고, 어닐로 염이 분해되면 사라진다. Shinoda 등(2016)은 노출 후 402 eV 출현 → 100°C 어닐 후 소멸과 397 eV 복귀를 보였고, Cho 등(2020)은 402.2 eV 피크가 100°C를 넘기며 줄다가 160°C에서 완전히 사라짐을 확인했다. F/Si = 6, N/Si = 2, F/N = 3이라는 화학양론 비도 XPS 정량으로 검증한다.
+- **FTIR** — Possémé 등(2016)이 개질된 SiN과 플라즈마의 상호작용을 추적한 것처럼, 염과 모재의 결합 변화를 본다.
+- **플라즈마 진단** — OES와 VUV 흡수 분광(Soriano 2020)으로 어떤 종이 얼마나 있는지를 재면, 염 형성의 재료(NH₄F·HF) 공급을 정량할 수 있다.
+- **TDS** — 가열하며 날아가는 종(NH₃·HF·SiF₄)을 질량분석으로 세면 분해 온도와 활성화 에너지를 얻는다(Miyoshi 2017).
+
+&#91;embedded content: AFS의 XPS 지문 · N 1s 402 eV]
+
+### S-5. 공정으로 만들기
+
+연구실 화학을 공정으로 옮길 때의 쟁점은 세 가지다.
+
+**사이클화.** Shinoda 등(2019)은 CHF₃/O₂ 다운스트림 플라즈마에서 암모늄염의 자기제한 반응으로 Si₃N₄의 thermal-cyclic ALE를 구현했다. 제거 단계의 병목은 탈착 시간인데, Miyoshi(2017)는 IR 램프 어닐로 150°C까지 10초 안에 승온해 탈착 시간을 크게 줄였다.
+
+**잔류 염.** 염이 다 날아가지 않으면 입자가 된다. Kwon과 Park(2022)은 HF VPD(기상 식각)를 거친 Si₃N₄ 웨이퍼 표면에 (NH₄)₂SiF₆ 분말이 생기는 것을 확인했다. 분말 밀도는 Si₃N₄ 두께 30→70 nm 구간에서 317→2101개/mm²로 늘었고(지름 약 10 µm), 완전 분해 조건으로 진공 오븐 170°C·120초·120 Torr 가열과 25°C·30초 DIW 세정을 제시했다. 염을 쓰는 공정은 "만드는 조건"만큼 "남김없이 지우는 조건"이 공정 창의 절반이다.
+
+**온도 창.** 형성은 상온 안팎, 분해는 100~230°C — 이 사이에 소자가 견딜 열 예산과 처리량(탈착 시간)이 끼어든다. Lill 등(2024)의 DFT 계산은 물이 AFS 결합을 약화시켜(결합 에너지 0.47 → 0.35 eV) 분해 온도를 낮출 여지를 보였다. 제거 단계에 H₂O를 쓰는 설계로 이어지는 근거다.
+
+### S-6. 열린 문제 — 비어 있는 자리
+
+문헌을 모아 보면 지도의 빈칸이 보인다.
+
+- 내부 스페이서에 low-k(SiOCN·SiCO)를 넣은 **소자 실증은 아직 없다**. 소재 비교와 TCAD 평가는 있지만, 실제 나노시트 소자에서 형상 제어 식각까지 닫힌 보고는 이 편의 문헌 범위에서 확인되지 않는다.
+- SiOCN의 **조성(특히 N 함량)과 선택 식각 거동의 상관**은 Pranda(2023)의 비례 관계와 Goya(2026)의 보호층 경쟁이 양쪽에서 조여 오는 주제다. 염 형성(질소가 필요)과 보호층 형성(NHx)이 같은 질소를 두고 경쟁한다는 그림이 잡히면, 조성 설계와 공정 설계를 한 번에 할 수 있다.
+- AFS 화학은 원래 SiN·SiO₂의 이야기였다. 그것을 탄소를 품은 low-k 질화물로 확장할 때 선택비가 무엇으로 갈리는지 — 이 편이 모은 문헌이 그 질문에 대한 현재까지의 답이다.
+
+**원문 그림 보기**
+
+- AFS 형성과 탈착의 XPS·TDS 원본 데이터 — Miyoshi (2017), [doi:10.7567/JJAP.56.06HB01](https://doi.org/10.7567/JJAP.56.06HB01)
+- SiN thermal-cyclic ALE의 자기제한 곡선 — Shinoda et al. (2019), [doi:10.1116/1.5111663](https://doi.org/10.1116/1.5111663)
+- H₂ 첨가에 따른 SiOCN 식각 3구간과 XPS — Goya et al. (2026), [doi:10.1116/6.0005595](https://doi.org/10.1116/6.0005595)
+
+**참고 논문**
+
+- [Thin layer etching of silicon nitride: A comprehensive study of selective removal using NH₃/NF₃ remote plasma](https://doi.org/10.1116/1.4963072) — Possémé et al., J. Vac. Sci. Technol. A 34, 061301 (2016)
+- [Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate](https://doi.org/10.7567/APEX.9.106201) — Shinoda et al., Appl. Phys. Express 9, 106201 (2016)
+- [Thin layer etching of silicon nitride using infrared annealing for short desorption time of ammonium fluorosilicate](https://doi.org/10.7567/JJAP.56.06HB01) — Miyoshi, Jpn. J. Appl. Phys. 56, 06HB01 (2017)
+- [Role of NO in highly selective SiN/SiO₂ and SiN/Si etching with NF₃/O₂ remote plasma](https://doi.org/10.1116/1.5004546) — Barsukov et al., J. Vac. Sci. Technol. A 35, 061310 (2017)
+- [Self-limiting reactions of ammonium salt in CHF₃/O₂ downstream plasma for thermal-cyclic atomic layer etching of silicon nitride](https://doi.org/10.1116/1.5111663) — Shinoda et al., J. Vac. Sci. Technol. A 37, 051002 (2019)
+- [Layer etching of SiO₂ for surface cleaning using ammonium fluorosilicate with CF₄/NH₃ plasma](https://doi.org/10.1116/1.5132986) — Cho et al., J. Vac. Sci. Technol. A 38, 022604 (2020)
+- [Highly selective Si₃N₄/SiO₂ etching using an NF₃/N₂/O₂/H₂ remote plasma. I. Plasma source and critical fluxes](https://doi.org/10.1116/1.5125568) — Volynets et al., J. Vac. Sci. Technol. A 38, 023007 (2020)
+- [Vacuum ultraviolet-absorption spectroscopy and delocalized plasma-induced emission used for the species detection in a down-stream soft-etch plasma reactor](https://doi.org/10.1116/6.0000134) — Soriano et al., J. Vac. Sci. Technol. A 38, 043002 (2020)
+- [Mechanism of highly selective etching of SiCN by using NF₃/Ar-based plasma](https://doi.org/10.1116/6.0000711) — Matsui et al., J. Vac. Sci. Technol. A 39, 043008 (2021)
+- [Effective methods for eliminating (NH₄)₂SiF₆ powders generated on Si₃N₄ wafers processed by HF VPD](https://doi.org/10.1007/s40042-022-00625-5) — Kwon & Park, J. Korean Phys. Soc. 81, 903 (2022)
+- [Significance of plasma-surface interactions in the etch behavior of low-k materials](https://doi.org/10.1116/6.0003014) — Pranda et al., J. Vac. Sci. Technol. A 41, 063009 (2023)
+- [Low-temperature etching of silicon oxide and silicon nitride with hydrogen fluoride](https://doi.org/10.1116/6.0004019) — Lill et al., J. Vac. Sci. Technol. A 42, 063006 (2024)
+- [Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma](https://doi.org/10.1116/6.0005595) — Goya et al., J. Vac. Sci. Technol. A 44, 053213 (2026)
+
 ## 출처
 
 2026년 10월 25일 기준으로 검색해 확인한 최신 현황의 참고 자료다. 원리 설명은 일반 교재 수준의 내용이며, 표의 수치는 대략적인 값이다. 각 장 끝의 '참고 논문'에는 장별 원전·리뷰 논문을 DOI 링크와 함께 표기했다.
@@ -1244,3 +1348,8 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 - [HBM4 news — Samsung HBM4 mass production (DIGITIMES)](https://www.digitimes.com/tag/hbm4/00213922.html)
 - [HBM thickness rule eased — MR-MUF, TC-NCF upgrade race (Digital Today)](https://www.digitaltoday.co.kr/en/view/84721/hbm4-thickness-rule-eased-mr-muf-tc-ncf-upgrade-race-enters-new-phase)
 - [DRAM 301 — HBM generations and stacking (TrendForce, FMS 2025)](https://files.futurememorystorage.com/proceedings/2025/20250807_DRAM-301-1_Tom-Hsu.pdf)
+
+**심화편 — AFS 염 선택 식각**
+
+- 수치와 메커니즘은 각 절의 참고 논문(전부 Crossref로 DOI 확인)에 근거한다. 대표 근거: Shinoda et al., Appl. Phys. Express 9, 106201 (2016); Miyoshi, Jpn. J. Appl. Phys. 56, 06HB01 (2017); Cho et al., J. Vac. Sci. Technol. A 38, 022604 (2020); Volynets et al., J. Vac. Sci. Technol. A 38, 023007 (2020); Kwon & Park, J. Korean Phys. Soc. 81, 903 (2022); Lill et al., J. Vac. Sci. Technol. A 42, 063006 (2024); Goya et al., J. Vac. Sci. Technol. A 44, 053213 (2026).
+- "내부 스페이서 low-k 소자 실증 없음"은 2026년 10월 기준 보유 문헌(Zotero SiOC·low-k 컬렉션과 AFS 컬렉션) 범위의 확인이다.

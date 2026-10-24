@@ -70,6 +70,8 @@ const slug = t => {
   let m;
   if ((m = t.match(/^(\d{1,2})-(\d{1,2})\./))) return `s-${m[1]}-${m[2]}`;
   if ((m = t.match(/^(\d{1,2})\./))) return `ch-${m[1]}`;
+  if (t.startsWith('심화편')) return 'deep-afs';
+  if ((m = t.match(/^S-(\d{1,2})\./))) return `s-deep-${m[1]}`;
   if (t.startsWith('출처')) return 'sources';
   return 'h-' + t.replace(/[^\p{L}\p{N}]+/gu, '-').slice(0, 40);
 };
@@ -145,6 +147,7 @@ const toc = PARTS.map(([name, nums]) => `
   }).join('')}</ul></li>`).join('') + `
   <li class="part"><span class="part-name">부록</span><ul>
     <li class="toc-ch" data-ch="glossary"><a href="#glossary"><span class="num">A</span><span class="t">용어 사전</span></a></li>
+    ${byId['deep-afs'] ? `<li class="toc-ch" data-ch="deep-afs"><a href="#deep-afs"><span class="num">S</span><span class="t">심화편 — AFS 염 선택 식각</span></a>${byId['deep-afs'].subs.length ? `<ul class="subs">${byId['deep-afs'].subs.map(s => `<li><a href="#${s.id}">${s.title}</a></li>`).join('')}</ul>` : ''}</li>` : ''}
     ${byId.sources ? '<li class="toc-ch" data-ch="sources"><a href="#sources"><span class="num">B</span><span class="t">출처</span></a></li>' : ''}
   </ul></li>`;
 
