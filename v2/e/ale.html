@@ -77,6 +77,17 @@ footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(
 .card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .count { color: var(--sub); font-size: 13px; }
 code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -85,6 +96,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
   <h1 class="title">ALE (원자층 식각)</h1>
   <div class="en">Atomic Layer Etching</div>
   <div class="meta"><span class="chip cat">공정 &gt; 식각</span><span class="chip">#자기제한</span><span class="chip">#사이클</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>개질과 제거를 나눈 사이클로 한 층씩 깎는 자기제한 식각. ALD의 거울상이다.</p>
 </blockquote>
@@ -138,8 +150,24 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>열 ALE(불화 + 리간드 교환)의 반응 개념 — George &amp; Lee (2016), <a href="https://doi.org/10.1021/acsnano.6b02991" target="_blank" rel="noopener">doi:10.1021/acsnano.6b02991</a></li>
 <li>고종횡비 구조 속 ALD 컨포멀성 분석 — Cremers et al. (2019, 오픈액세스), <a href="https://doi.org/10.1063/1.5060967" target="_blank" rel="noopener">doi:10.1063/1.5060967</a></li>
 </ul>
+<h3 id="문헌에서-본-EPC와-변형들">문헌에서 본 EPC와 변형들</h3>
+<p>ALE의 사이클당 식각량(EPC)은 화학에 따라 Å 이하부터 nm 스케일까지 벌어진다. 보유 논문으로 확인한 대표값:</p>
+<ul>
+<li><strong>열 ALE (SiO₂)</strong> — DuMont 등(2017): TMA + HF, 300 °C에서 EPC 0.027~0.31 Å/cycle (정적 압력 0.1→4.0 Torr에서 압력 의존). XRR·엘립소메트리·in situ FTIR로 두 반쪽 반응의 자기제한을 확인했다.</li>
+<li><strong>열 ALE (Si₃N₄)</strong> — Abdulagatov 등(2020): 산화(O₂ 또는 O₃) → HF → TMA의 3단계, 290 °C에서 0.25 Å/cycle (O₂), 0.47 Å/cycle (O₃). in situ 엘립소메트리로 두께를 추적했다.</li>
+<li><strong>플럭스 제어형 사이클릭 ALE</strong> — Metzler 등(2016): 정상상태 Ar 플라즈마에 C₄F₈를 주기적으로 정밀 주입하고 낮은 에너지 Ar⁺ 충격을 동기화한다. 전구체를 CHF₃로 바꾸면 FC 막이 쌓이는 차이로 SiO₂/Si 선택 식각이 된다.</li>
+<li><strong>quasi-ALE</strong> — Wang 등(2017): FC 막 두께의 포화 곡선(S-curve)으로 SiO₂의 Si₃N₄ 대비 선택비를 최적화했고, 지형 구조에서는 폴리머 클로깅이 변수임을 보였다.</li>
+<li><strong>지형 선택적 ALE</strong> — Osonio 등(2023): 라디칼 불화로 표면을 개질한 뒤 Ar 이온 충격으로 수평면만 골라 제거하는 topographically-selective ALE.</li>
+<li><strong>분자 흡착형</strong> — Venugopal 등(2026): SF₆ 분자 흡착 + Ar 플라즈마 활성화, 상온 부근에서 EPC ≈ 1.4 Å/cycle, 반쪽 사이클 분리 실험으로 시너지 100%를 확인했다.</li>
+</ul>
 <p><strong>참고 논문</strong></p>
 <ul>
+<li><a href="https://doi.org/10.1021/acsami.7b01259" target="_blank" rel="noopener">Thermal Atomic Layer Etching of Silicon Dioxide Using Sequential, Self-Limiting Reactions</a> — DuMont et al., ACS Appl. Mater. Interfaces 9 (2017). SiO₂ 열 ALE의 EPC 압력 의존</li>
+<li><a href="https://doi.org/10.1116/1.5140481" target="_blank" rel="noopener">Thermal Atomic Layer Etching of Silicon Nitride Using an Oxidation, Fluorination, and Ligand-Exchange Reaction Mechanism</a> — Abdulagatov et al., J. Vac. Sci. Technol. A 38 (2020). Si₃N₄ 열 ALE</li>
+<li>Fluorocarbon Assisted Atomic Layer Etching of SiO₂ and Si Using Cyclic Ar/C₄F₈ and Ar/CHF₃ Plasma — Metzler et al., J. Vac. Sci. Technol. A 34 (2016). 플럭스 제어형 사이클릭 ALE</li>
+<li><a href="https://doi.org/10.1116/1.4978224" target="_blank" rel="noopener">Quasiatomic layer etching of silicon oxide selective to silicon nitride in topographic structures using fluorocarbon plasmas</a> — Wang et al., J. Vac. Sci. Technol. A 35 (2017). 포화 곡선으로 선택비 최적화</li>
+<li><a href="https://doi.org/10.35848/1347-4065/ad0c46" target="_blank" rel="noopener">Topographically-selective atomic layer etching of SiO₂ using radical fluorination of the surface followed by Ar ion bombardment</a> — Osonio et al., Jpn. J. Appl. Phys. 62, 121001 (2023)</li>
+<li><a href="https://doi.org/10.1039/D5TC03428K" target="_blank" rel="noopener">Atomic-layer precision etching of SiO₂ using sequential molecular adsorption and plasma activation</a> — Venugopal et al., J. Mater. Chem. C 14, 1009 (2026). SF₆ 흡착 + Ar 플라즈마, CC BY 4.0</li>
 <li><a href="https://doi.org/10.1021/cr900056b" target="_blank" rel="noopener">Atomic Layer Deposition: An Overview</a> — George, Chem. Rev. 110, 111 (2010). ALD 표면화학의 표준 리뷰</li>
 <li><a href="https://doi.org/10.1063/1.1940727" target="_blank" rel="noopener">Surface chemistry of atomic layer deposition: A case study for the trimethylaluminum/water process</a> — Puurunen, J. Appl. Phys. 97, 121301 (2005). TMA/H₂O 공정으로 본 ALD 표면화학</li>
 <li><a href="https://doi.org/10.1063/1.5060967" target="_blank" rel="noopener">Conformality in atomic layer deposition: Current status overview of analysis and modelling</a> — Cremers, Puurunen &amp; Dendooven, Appl. Phys. Rev. 6, 021302 (2019). 컨포멀성 리뷰, CC BY 4.0 오픈액세스</li>
@@ -155,7 +183,21 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="dry-etch.html">건식 식각</a> — ALE가 정밀도를 극단으로 민 형태</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "ale", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
 </body></html>

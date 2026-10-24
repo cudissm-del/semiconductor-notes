@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEM — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 계측·분석 › 두께·형상</div>
+  <h1 class="title">SEM</h1>
+  <div class="en">Scanning Electron Microscopy</div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 두께·형상</span><span class="chip">#형상</span><span class="chip">#단면</span><span class="chip">#CD</span><span class="chip">#비파괴성 제한</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <article><blockquote>
+<p>전자빔을 표면에 주사하고 튀어나오는 신호를 모아, 실제 형상을 나노미터 단위로 직접 눈으로 확인하는 계측기.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>빛의 회절 한계 아래로 내려가려면 파장이 짧은 전자를 써야 한다. SEM은 전자빔을 가늘게 집속해 시료 표면을 점 단위로 훑고, 각 점에서 나오는 신호를 영상으로 재구성한다. <a class="wiki" href="ellipsometer.html">엘립소미터</a> 같은 광학 계측이 &quot;모델로 역산한 두께&quot;라면, SEM은 패턴의 모양·프로파일·불량을 직접 보는 <strong>확증형 계측</strong>이다.</p>
+<p>용도는 크게 둘이다. 웨이퍼를 자르지 않고 선폭(CD)을 재는 인라인 CD-SEM, 그리고 시료를 쪼개 단면을 보는 단면 SEM이다. 둘은 같은 원리를 쓰지만 답하는 질문이 다르다.</p>
+<h2 id="원리-상호작용-부피에서-나오는-세-가지-신호">원리 — 상호작용 부피에서 나오는 세 가지 신호</h2>
+<p>전자빔이 시료에 닿으면 충돌이 일어나며, 에너지를 잃은 전자와 새 신호들이 바나나 모양의 <strong>상호작용 부피</strong>(interaction volume) 안에서 만들어진다. 깊이에 따라 지배적인 신호가 다르다.</p>
+<figure class="fig"><svg viewBox="0 0 800 452" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SEM 상호작용 부피와 신호 3종"><defs><marker id="sem-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker><marker id="sem-arrow-c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-categorical-2)"></path></marker><marker id="sem-arrow-c3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-categorical-3)"></path></marker><marker id="sem-arrow-c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-categorical-4)"></path></marker></defs><text x="400" y="32" text-anchor="middle" font-size="16.5" font-weight="700" fill="var(--cds-text-primary)">SEM — 상호작용 부피와 신호 3종</text><text x="212" y="62" font-size="12" font-weight="700" fill="var(--cds-text-primary)">전자빔 (수 keV)</text><line x1="200" y1="70" x2="200" y2="136" stroke="var(--cds-text-primary)" stroke-width="2.2" marker-end="url(#sem-arrow)"></line><line x1="192" y1="70" x2="192" y2="128" stroke="var(--cds-text-primary)" stroke-width="1"></line><line x1="208" y1="70" x2="208" y2="128" stroke="var(--cds-text-primary)" stroke-width="1"></line><rect x="80" y="142" width="250" height="218" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.4"></rect><line x1="80" y1="142" x2="330" y2="142" stroke="var(--cds-text-primary)" stroke-width="2"></line><text x="88" y="380" font-size="12" fill="var(--cds-text-secondary)">시료 단면 — 표면은 위쪽 직선</text><ellipse cx="200" cy="182" rx="34" ry="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.22"></ellipse><ellipse cx="200" cy="248" rx="66" ry="66" fill="var(--cds-chart-categorical-1)" fill-opacity="0.22"></ellipse><ellipse cx="200" cy="306" rx="46" ry="46" fill="var(--cds-chart-categorical-1)" fill-opacity="0.22"></ellipse><text x="200" y="252" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--cds-text-primary)">상호작용</text><text x="200" y="268" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--cds-text-primary)">부피</text><rect x="86" y="146" width="228" height="12" fill="var(--cds-chart-categorical-2)" fill-opacity="0.55"></rect><text x="96" y="156" font-size="10.5" font-weight="700" fill="var(--cds-text-primary)">SE 발생 (표면 극근처)</text><line x1="86" y1="238" x2="314" y2="238" stroke="var(--cds-chart-categorical-3)" stroke-width="1.2" stroke-dasharray="5 4"></line><text x="96" y="232" font-size="10.5" font-weight="700" fill="var(--cds-chart-categorical-3)">BSE 발생 (중간 깊이까지)</text><text x="96" y="344" font-size="10.5" font-weight="700" fill="var(--cds-chart-categorical-4)">특성 X선 발생 (깊은 곳까지)</text><path d="M 214 148 C 280 118, 340 112, 392 118" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2" marker-end="url(#sem-arrow-c2)"></path><path d="M 238 196 C 300 190, 340 204, 392 216" fill="none" stroke="var(--cds-chart-categorical-3)" stroke-width="2" marker-end="url(#sem-arrow-c3)"></path><path d="M 232 300 C 290 296, 340 300, 392 312" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="2" marker-end="url(#sem-arrow-c4)"></path><rect x="398" y="92" width="372" height="72" rx="8" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.4"></rect><text x="414" y="118" font-size="13.5" font-weight="700" fill="var(--cds-chart-categorical-2)">2차전자 (SE) — 표면 형상</text><text x="414" y="140" font-size="12" fill="var(--cds-text-primary)">에너지가 낮아 표면에서만 탈출 · 해상도 최고</text><text x="414" y="158" font-size="11.5" fill="var(--cds-text-secondary)">탈출 깊이 대략 ~수 nm</text><rect x="398" y="190" width="372" height="72" rx="8" fill="none" stroke="var(--cds-chart-categorical-3)" stroke-width="1.4"></rect><text x="414" y="216" font-size="13.5" font-weight="700" fill="var(--cds-chart-categorical-3)">후방산란전자 (BSE) — 조성(원자번호) 대비</text><text x="414" y="238" font-size="12" fill="var(--cds-text-primary)">무거운 원소일수록 강하게 산란 · 밝게 보인다</text><text x="414" y="256" font-size="11.5" fill="var(--cds-text-secondary)">탈출 깊이 대략 ~수백 nm</text><rect x="398" y="288" width="372" height="72" rx="8" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="1.4"></rect><text x="414" y="314" font-size="13.5" font-weight="700" fill="var(--cds-chart-categorical-4)">특성 X선 — 원소 분석 (EDX)</text><text x="414" y="336" font-size="12" fill="var(--cds-text-primary)">내각 전자가 튀어나간 자리를 채우며 방출</text><text x="414" y="354" font-size="11.5" fill="var(--cds-text-secondary)">탈출 깊이 대략 ~µm — 공간분해능은 가장 나쁨</text><text x="400" y="412" text-anchor="middle" font-size="12" fill="var(--cds-text-secondary)">같은 부피에서 나오지만 탈출 깊이가 달라, 보이는 정보(형상·조성·원소)가 갈린다</text><text x="400" y="434" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">깊이 값은 가속전압·재료에 따라 달라지는 대략값이다</text></svg><figcaption>그림 1. SEM 상호작용 부피 · 깊이마다 다른 신호</figcaption></figure>
+<ul>
+<li><strong>2차전자(secondary electron)</strong> — 빔 전자가 원자의 전자를 튕겨 내 만든 낮은 에너지 전자. 탈출 깊이가 수 nm로 얕아 <strong>표면 형상</strong>에 민감하다. 기울어진 면·모서리에서 많이 나와 경계가 밝게 보이는 edge 효과가 특징이며, 일반 SEM 영상의 주신호다.</li>
+<li><strong>후방산란전자(backscattered electron)</strong> — 빔 전자가 핵과 충돌해 방향을 바꿔 되돌아 나온 전자. 산란 확률이 원자번호(Z)에 커지므로 <strong>조성·Z 대비</strong>를 준다. 무거운 원소가 밝게 보인다.</li>
+<li><strong>특성 X선</strong> — 안쪽 껍질 전자가 빈자리가 나면, 위 껍질 전자가 내려오며 그 껍질 특유의 에너지를 가진 X선을 낸다. 이 에너지로 원소를 식별하는 것이 <a class="wiki" href="edx.html">EDX</a>다.</li>
+</ul>
+<p>상호작용 부피는 가속전압이 높을수록, 시료 원자번호가 낮을수록 커진다. 신호가 넓은 부피에서 나오면 영상 분해능은 빔 지름이 아니라 부피 크기가 정하게 된다.</p>
+<h2 id="읽는-법-CD-SEM과-단면-SEM은-다른-질문에-답한다">읽는 법 — CD-SEM과 단면 SEM은 다른 질문에 답한다</h2>
+<ul>
+<li><strong>CD-SEM (인라인 선폭 측정)</strong> — 웨이퍼를 깨지 않고 상면(top-down)으로 본다. 2차전자 프로파일의 피크 사이 간격을 선폭으로 읽어 공정 감시·전수 검사에 쓴다. 빠뜻하지만 보이는 것은 위에서 본 폭뿐이고, 측벽 각도·바닥 모양 같은 실제 프로파일은 알 수 없다. 읽은 CD는 신호 파형과 측정 알고리즘(threshold 등)에 의존한다.</li>
+<li><strong>단면 SEM (파괴 검사)</strong> — 시료를 절단·연마하거나 FIB로 파서 옆에서 본다. 테이퍼, 언더컷, 잔류막, 층 두께를 실제로 확인하는 유일에 가까운 방법이다. 대가로 시료가 파괴되고, 한 단면이 전체를 대표한다는 보장은 없다.</li>
+</ul>
+<p>공정 개발에서는 CD-SEM으로 추세를 감시하다가, 이상이 보이면 단면 SEM으로 원인을 확정하는 조합이 표준이다.</p>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>가속전압 (일반 SEM)</td>
+<td>약 0.5~30 kV</td>
+</tr>
+<tr>
+<td>가속전압 (CD-SEM)</td>
+<td>약 300~800 V (저전압)</td>
+</tr>
+<tr>
+<td>분해능</td>
+<td>약 1 nm급 (전계방출형, 고전압·도체 시료 기준)</td>
+</tr>
+<tr>
+<td>2차전자 탈출 깊이</td>
+<td>수 nm</td>
+</tr>
+<tr>
+<td>배율 범위</td>
+<td>수십 배 ~ 수십만 배</td>
+</tr>
+</tbody></table></div>
+<h2 id="한계">한계</h2>
+<ul>
+<li><strong>대전(charging)</strong> — 절연체는 들어온 전하가 빠져나가지 못해 표면이 대전되고, 영상이 찌그러지거나 빔이 휘며 밝기가 튄다. 대응은 금속(Au, Pt 등) 박막 코팅, 가속전압을 낮춰 입사·방출 전하의 균형점을 찾는 저전압 조건, 전도성 경로 확보 등이다. 단, 코팅은 CD를 그만큼 키우므로 정밀 선폭 측정에는 쓰기 어렵다.</li>
+<li><strong>빔 손상</strong> — 전자가 레지스트를 수축시키거나 유기막을 변형시킨다. 같은 자리를 반복 측정하면 CD가 줄어드는 현상이 대표적이라, 저전압·저선량 조건과 측정 횟수 관리가 필요하다.</li>
+<li><strong>진공 필요</strong> — 전자는 공기 중을 날 수 없어 챔버를 진공으로 유지해야 하고, 가스를 내는 시료·젖은 시료는 그대로 넣을 수 없다.</li>
+<li><strong>가속전압 트레이드오프</strong> — 고전압은 분해능이 좋지만 상호작용 부피가 커져 표면 정보가 묻히고 빔 손상·대전이 심해진다. 저전압은 표면 감도와 손상 저감에 유리하지만 분해능과 신호량이 떨어진다. 무엇을 보느냐에 따라 고르는 값이다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="edx.html">EDX</a> — 특성 X선으로 원소를 분석하는 SEM의 동반 기법</li>
+<li><a class="wiki" href="tem.html">TEM (투과전자현미경)</a> — 원자 단위까지 보는 대신 시료 준비가 가장 무거운 계측</li>
+<li><a class="wiki" href="cd-sem.html">CD-SEM</a> — 인라인 선폭 측정에 특화된 SEM</li>
+<li><a class="wiki" href="ellipsometer.html">엘립소미터</a> — 모델 역산으로 두께를 재는 비파괴 광학 계측 (상호 보완)</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>상호작용 부피와 신호별 발생 깊이, 가속전압·원자번호 의존성은 전자현미경 표준 교재 서술에 근거한다: Goldstein et al., <em>Scanning Electron Microscopy and X-ray Microanalysis</em> (Springer, 4th ed., 2018).</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "sem", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body></html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FTIR — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 계측·분석 › 조성·표면</div>
+  <h1 class="title">FTIR</h1>
+  <div class="en">Fourier Transform Infrared Spectroscopy</div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 조성·표면</span><span class="chip">#결합</span><span class="chip">#수소</span><span class="chip">#비파괴</span><span class="chip">#간섭계</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <article><blockquote>
+<p>적외선을 쏘아 분자 결합이 특정 파수에서 빛을 흡수하는 패턴을 읽고, 막 안에 어떤 결합이 얼마나 있는지를 재는 분광법.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p><a class="wiki" href="xps.html">XPS</a>가 &quot;어떤 원소가 어떤 산화 상태로 있는가&quot;를 본다면, FTIR은 &quot;어떤 결합이 존재하고 그 양이 어떻게 변하는가&quot;를 본다. 특히 XPS가 못 보는 <strong>수소</strong>를 Si-H 피크로 직접 잴 수 있어, 저유전율막·질화막의 수소 함량과 결합 구조 평가에 표준으로 쓰인다.</p>
+<p>비파괴이고 대기 중(또는 퍼지 환경)에서도 잴 수 있어 접근성이 좋지만, 피크가 겹치면 해석이 모호해지고 공간 분해능은 사실상 없다 — 웨이퍼 평균의 결합 지문을 얻는 도구다.</p>
+<h2 id="원리-간섭무늬를-스펙트럼으로-바꾸다">원리 — 간섭무늬를 스펙트럼으로 바꾸다</h2>
+<p>분자 결합은 용수철처럼 특정 진동수를 갖고 진동한다. 그 진동수와 맞는 적외선이 오면 에너지를 흡수해 진동이 커진다. 결합마다, 주변 환경마다 진동수가 다르므로, 파수(cm⁻¹)별 흡수 패턴이 곧 결합의 <strong>지문</strong>이 된다.</p>
+<p>FTIR의 &quot;FT&quot;는 측정 방식이다. 분광기를 거치지 않고, Michelson 간섭계로 두 갈래 빛의 경로차를 바꾸며 만든 간섭무늬(interferogram)를 통째로 기록한 뒤 <strong>푸리에 변환</strong>으로 파수별 스펙트럼을 복원한다. 전 파수를 동시에 재므로 빠르고 신호 대 잡음비가 좋다.</p>
+<figure class="fig"><svg viewBox="0 0 800 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FTIR 결합 진동 흡수 스펙트럼 개략"><text x="400" y="32" text-anchor="middle" font-size="16.5" font-weight="700" fill="var(--cds-text-primary)">FTIR — 결합 진동 흡수 스펙트럼 (개략)</text><line x1="76" y1="300" x2="764" y2="300" stroke="var(--cds-chart-axis)" stroke-width="1.4"></line><line x1="76" y1="300" x2="76" y2="82" stroke="var(--cds-chart-axis)" stroke-width="1.4"></line><text x="66" y="92" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">흡수도</text><text x="66" y="108" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">(흡수 ↓)</text><polyline points="76,118 82,118 87,118 93,118 99,118 105,118 110,118 116,118 122,118 128,118 133,118 139,118 145,118 151,118 156,118 162,118 168,118 173,118 179,118 185,118 191,118 196,118 202,118 208,118 214,118 219,118 225,118 231,118 237,118 242,118 248,118 254,119 259,121 265,126 271,138 277,154 282,167 288,169 294,159 300,143 305,129 311,122 317,119 323,118 328,118 334,118 340,118 345,118 351,118 357,118 363,118 368,118 374,118 380,118 386,118 391,118 397,118 403,118 409,118 414,119 420,125 426,140 431,164 437,183 443,178 449,156 454,134 460,122 466,119 472,118 477,118 483,118 489,118 495,118 500,118 506,118 512,118 517,118 523,118 529,118 535,118 540,118 546,118 552,118 558,118 563,118 569,118 575,119 581,126 586,146 592,179 598,197 603,182 609,156 615,151 621,168 626,198 632,225 638,236 644,225 649,198 655,168 661,147 667,145 672,170 678,207 684,224 689,203 695,163 701,134 707,121 712,118 718,118 724,118 730,118 735,118 741,118 747,118 753,118 758,118 764,118" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2.2"></polyline><line x1="286.2" y1="170" x2="286.2" y2="330" stroke="var(--cds-chart-categorical-2)" stroke-width="1" stroke-dasharray="4 3"></line><text x="286.2" y="350" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">C–H ~2900</text><line x1="439.1" y1="184" x2="439.1" y2="368" stroke="var(--cds-chart-categorical-2)" stroke-width="1" stroke-dasharray="4 3"></line><text x="439.1" y="388" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">Si–H ~2100</text><line x1="597.7" y1="196" x2="541.7" y2="330" stroke="var(--cds-chart-categorical-2)" stroke-width="1" stroke-dasharray="4 3"></line><text x="536.7" y="350" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">Si–CH₃ ~1270</text><line x1="637.9" y1="236" x2="606.9" y2="368" stroke="var(--cds-chart-categorical-2)" stroke-width="1" stroke-dasharray="4 3"></line><text x="596.9" y="388" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">Si–O–Si ~1060</text><line x1="679.9" y1="212" x2="695.9" y2="330" stroke="var(--cds-chart-categorical-2)" stroke-width="1" stroke-dasharray="4 3"></line><text x="695.9" y="350" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">Si–N ~840</text><line x1="687.6" y1="212" x2="720.6" y2="368" stroke="var(--cds-chart-categorical-2)" stroke-width="1" stroke-dasharray="4 3"></line><text x="725.6" y="388" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">Si–O–Si 굽힘 ~800</text><g><line x1="76" y1="300" x2="76" y2="307" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="76" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">4000</text></g><g><line x1="267.1" y1="300" x2="267.1" y2="307" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="267.1" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">3000</text></g><g><line x1="458.2" y1="300" x2="458.2" y2="307" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="458.2" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2000</text></g><g><line x1="649.3" y1="300" x2="649.3" y2="307" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="649.3" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">1000</text></g><g><line x1="764" y1="300" x2="764" y2="307" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="764" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">400</text></g><rect x="150" y="416" width="500" height="30" rx="8" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.2"></rect><text x="400" y="436" text-anchor="middle" font-size="12" fill="var(--cds-text-primary)">파수 (cm⁻¹) — 피크 위치는 물질·구조에 따라 이동한다 (개념 개략)</text></svg><figcaption>그림 1. FTIR 흡수 스펙트럼 · 결합이 만드는 지문</figcaption></figure>
+<p>측정 배치는 두 가지다.</p>
+<ul>
+<li><strong>투과법</strong> — 적외선이 웨이퍼를 관통한다. 양면 연마된 Si 웨이퍼는 중적외선에 대체로 투명하므로 막 전체를 통과한 흡수를 얻는다. 신호가 막 전체의 평균이라 <strong>정량에 유리</strong>하고, 기판 자체의 흡수·간섭은 기준 웨이퍼로 빼는 것이 관행이다.</li>
+<li><strong>ATR (전반사 감쇠법)</strong> — 고굴절률 결정(Ge, ZnSe 등)에 시료를 밀착시키고, 내부 전반사 때 표면으로 살짝 새는 소멸파(evanescent wave)로 흡수를 잰다. 새는 깊이가 µm 이하라 <strong>표면 감도</strong>가 좋고 두꺼운·불투명한 시료에도 쓸 수 있지만, 결정과의 접촉 상태가 신호를 좌우한다.</li>
+</ul>
+<h2 id="읽는-법-대표-피크와-수소-정량">읽는 법 — 대표 피크와 수소 정량</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>결합</th>
+<th>대표 피크 위치 (전형값)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si-O-Si 신축 (SiO₂)</td>
+<td>약 1060 cm⁻¹ (비대칭 신축, 강한 흡수)</td>
+</tr>
+<tr>
+<td>Si-H 신축</td>
+<td>약 2000~2250 cm⁻¹ (결합 환경에 따라 이동)</td>
+</tr>
+<tr>
+<td>N-H 신축</td>
+<td>약 3300 cm⁻¹ 부근</td>
+</tr>
+<tr>
+<td>Si-N 신축 (Si₃N₄)</td>
+<td>약 830~870 cm⁻¹ 부근</td>
+</tr>
+<tr>
+<td>O-H / 수분</td>
+<td>약 3200~3600 cm⁻¹ (넓은 밴드)</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>수소 함량 정량</strong> — Si-H 신축 피크의 면적을 적분하고 교정 상수를 곱하면 Si-H 결합 밀도, 나아가 막 중 수소 함량을 구한다. 피크 위치가 함께 중요하다: Si-H 피크가 어느 파수에 서 있는지는 그 수소가 어떤 이웃(예: 질소가 많은 환경인가)과 붙어 있는지를 알려 준다.</li>
+<li><strong>변화 추적</strong> — 절대 조성보다 &quot;공정 전후의 차이&quot;에 강하다. 플라즈마에 노출된 뒤 Si-O 피크가 이동·확장되면 결합각 분포가 흐트러진 것, 경화(큐어) 뒤 Si-H가 줄고 Si-O-Si 네트워크 피크가 커지면 막이 치밀해진 것으로 읽는 식이다. <a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>의 평가에서 Si-CH₃ 관련 피크 감소가 탄소 이탈의 증거로 쓰인다.</li>
+</ul>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>측정 파수 범위 (중적외선)</td>
+<td>약 400~4000 cm⁻¹</td>
+</tr>
+<tr>
+<td>파수 분해능</td>
+<td>약 0.5~4 cm⁻¹</td>
+</tr>
+<tr>
+<td>ATR 소멸파 침투 깊이</td>
+<td>약 0.5~2 µm</td>
+</tr>
+<tr>
+<td>측정 시간</td>
+<td>수 초 ~ 수 분 (스캔 누적에 따라)</td>
+</tr>
+</tbody></table></div>
+<h2 id="한계">한계</h2>
+<ul>
+<li><strong>피크 중첩</strong> — 여러 결합의 흡수가 같은 파수대에 겹치면 분해가 해석자의 몫이 된다. 밴드 분리(band deconvolution) 결과는 초기 가정 가설에 흔들릴 수 있다.</li>
+<li><strong>정량의 조건</strong> — 흡광도는 막 두께와 결합 밀도의 곱이다. 두께를 모르면(<a class="wiki" href="ellipsometer.html">엘립소미터</a> 병행 필요) 결합 밀도만 따로 뽑을 수 없다.</li>
+<li><strong>기판 간섭</strong> — 웨이퍼 내부 다중 반사가 만드는 간섭 프린지가 스펙트럼에 주기적 물결로 섞인다. 기준 스펙트럼 처리와 웨이퍼 조건 통일이 필요하다.</li>
+<li><strong>공간 정보 없음</strong> — 스폿이 커서 패턴 영역이 아닌 블랭킷 막의 평균만 본다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="xps.html">XPS</a> — 원소 조성과 화학 상태 (FTIR이 결합, XPS가 원자 관점)</li>
+<li><a class="wiki" href="sioc.html">SiOC</a> — Si-CH₃·Si-H 피크로 조성과 손상을 추적하는 대표 대상막</li>
+<li><a class="wiki" href="si3n4.html">Si₃N₄</a> — Si-N·Si-H 피크로 수소 함량을 평가하는 막</li>
+<li><a class="wiki" href="ellipsometer.html">엘립소미터</a> — 정량 해석에 필요한 두께를 제공하는 짝</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>간섭계 원리와 대표 결합 피크 위치는 적외 분광 표준 교재 서술에 근거한다: Griffiths &amp; de Haseth, <em>Fourier Transform Infrared Spectrometry</em> (Wiley, 2nd ed., 2007). Si-H 피크에 의한 수소 정량은 질화막·저유전율막 평가의 확립된 관행이다.</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "ftir", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body></html>

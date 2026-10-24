@@ -77,6 +77,17 @@ footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(
 .card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .count { color: var(--sub); font-size: 13px; }
 code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -85,6 +96,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
   <h1 class="title">MOL</h1>
   <div class="en">Middle-Of-Line</div>
   <div class="meta"><span class="chip cat">공정 &gt; 집적 흐름</span><span class="chip">#컨택</span><span class="chip">#집적</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>트랜지스터와 배선을 잇는 컨택층 (Middle-Of-Line)의 집적 흐름.</p>
 </blockquote>
@@ -112,7 +124,21 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="beol.html">BEOL</a> — MOL 뒷단</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "mol", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
 </body></html>

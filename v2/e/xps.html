@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XPS — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 계측·분석 › 조성·표면</div>
+  <h1 class="title">XPS</h1>
+  <div class="en">X-ray Photoelectron Spectroscopy</div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 조성·표면</span><span class="chip">#조성</span><span class="chip">#화학상태</span><span class="chip">#표면</span><span class="chip">#전하보정</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <article><blockquote>
+<p>X선을 쏘아 튀어나온 광전자의 운동에너지를 재고, 거꾸로 결합에너지를 읽어 표면 수 nm의 원소 조성과 결합 상태를 정량하는 분석법.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>표면이 &quot;무슨 원소로, 어떤 결합으로&quot; 이뤄졌는지를 아는 표준 도구다. 증착한 막의 조성비는 물론, 식각·세정 뒤 표면에 남은 잔류물, 산화 상태, 오염까지 본다. <a class="wiki" href="afs-chemistry.html">AFS 화학</a>처럼 표면에 얇은 반응층이 생겼다 없어지는 공정에서는, 그 층이 실제로 생겼는지를 확인하는 사실상 유일한 직접 수단이기도 하다.</p>
+<p>대가로 진공이 필요하고, 측정 면적이 넓어 패턴이 아닌 블랭킷 영역에서 재며, 정보 깊이가 수 nm라 그 아래는 보이지 않는다.</p>
+<h2 id="원리-광전효과로-결합에너지를-재다">원리 — 광전효과로 결합에너지를 재다</h2>
+<p>에너지 hν인 X선 광자가 원자의 내각 전자를 때려 내면, 전자는 운동에너지를 갖고 튀어나온다. 에너지 보존에서</p>
+<p><strong>hν = BE + KE + φ</strong></p>
+<ul>
+<li>hν — 입사 X선 에너지 (Al Kα 1486.6 eV가 표준)</li>
+<li>KE — 측정된 광전자의 운동에너지</li>
+<li>φ — 분석기(분광기)의 일함수</li>
+<li>BE — <strong>결합에너지</strong>. 원소와 껍질(1s, 2p 등)마다 고유한 값이라, BE 위치가 곧 원소의 지문이다.</li>
+</ul>
+<figure class="fig"><svg viewBox="0 0 800 452" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="XPS 광전자 방출과 결합에너지"><defs><marker id="xps-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker><marker id="xps-arrow-c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-categorical-1)"></path></marker><marker id="xps-arrow-c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-categorical-2)"></path></marker></defs><text x="400" y="32" text-anchor="middle" font-size="16.5" font-weight="700" fill="var(--cds-text-primary)">XPS — 광전자 방출과 결합에너지</text><text x="215" y="66" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--cds-text-primary)">시료의 에너지 준위</text><line x1="92" y1="338" x2="92" y2="84" stroke="var(--cds-chart-axis)" stroke-width="1.4" marker-end="url(#xps-arrow)"></line><text x="78" y="76" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">에너지</text><line x1="92" y1="104" x2="330" y2="104" stroke="var(--cds-chart-axis)" stroke-width="1.6"></line><text x="338" y="108" font-size="12" font-weight="700" fill="var(--cds-text-primary)">진공 준위</text><line x1="92" y1="216" x2="330" y2="216" stroke="var(--cds-chart-categorical-3)" stroke-width="1.8"></line><text x="338" y="220" font-size="12" font-weight="700" fill="var(--cds-chart-categorical-3)">Fermi 준위</text><line x1="150" y1="248" x2="330" y2="248" stroke="var(--cds-chart-axis)" stroke-width="1.2" stroke-dasharray="5 4"></line><text x="338" y="252" font-size="11.5" fill="var(--cds-text-secondary)">가전자대</text><line x1="150" y1="318" x2="330" y2="318" stroke="var(--cds-chart-categorical-1)" stroke-width="2.4"></line><circle cx="196" cy="318" r="6" fill="var(--cds-chart-categorical-1)"></circle><text x="338" y="322" font-size="12" font-weight="700" fill="var(--cds-chart-categorical-1)">내각 준위 (전자)</text><line x1="312" y1="104" x2="312" y2="216" stroke="var(--cds-text-secondary)" stroke-width="1.2"></line><line x1="306" y1="104" x2="318" y2="104" stroke="var(--cds-text-secondary)" stroke-width="1.2"></line><line x1="306" y1="216" x2="318" y2="216" stroke="var(--cds-text-secondary)" stroke-width="1.2"></line><text x="302" y="166" text-anchor="end" font-size="12" font-weight="700" fill="var(--cds-text-secondary)">φ</text><line x1="140" y1="216" x2="140" y2="318" stroke="var(--cds-text-secondary)" stroke-width="1.2"></line><line x1="134" y1="216" x2="146" y2="216" stroke="var(--cds-text-secondary)" stroke-width="1.2"></line><line x1="134" y1="318" x2="146" y2="318" stroke="var(--cds-text-secondary)" stroke-width="1.2"></line><text x="130" y="272" text-anchor="end" font-size="12" font-weight="700" fill="var(--cds-text-primary)">BE</text><line x1="118" y1="150" x2="186" y2="306" stroke="var(--cds-chart-categorical-2)" stroke-width="2.4" marker-end="url(#xps-arrow-c2)"></line><text x="96" y="138" font-size="13" font-weight="700" fill="var(--cds-chart-categorical-2)">X선 광자 hν</text><path d="M 204 310 C 236 250, 258 180, 282 96" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2.4" marker-end="url(#xps-arrow-c1)"></path><circle cx="282" cy="88" r="5" fill="var(--cds-chart-categorical-1)"></circle><text x="292" y="84" font-size="12" font-weight="700" fill="var(--cds-chart-categorical-1)">광전자</text><text x="268" y="196" font-size="12" font-weight="700" fill="var(--cds-chart-categorical-1)">운동에너지 KE</text><text x="613" y="66" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--cds-text-primary)">측정 스펙트럼 (개략)</text><line x1="470" y1="306" x2="756" y2="306" stroke="var(--cds-chart-axis)" stroke-width="1.4"></line><line x1="470" y1="306" x2="470" y2="96" stroke="var(--cds-chart-axis)" stroke-width="1.4"></line><polyline points="470,306 474,306 478,306 482,306 486,306 490,306 494,306 498,306 502,303 506,295 510,276 514,253 518,244 522,258 526,281 530,298 534,304 538,306 542,306 545,306 549,306 553,306 557,306 561,306 565,306 569,306 573,306 577,306 581,306 585,305 589,300 593,288 597,264 601,236 605,219 609,226 613,253 617,280 621,297 625,303 629,306 633,306 637,306 641,306 645,306 649,306 653,306 657,306 661,306 665,306 669,306 673,306 677,306 681,306 685,306 688,306 692,306 696,306 700,305 704,301 708,291 712,270 716,238 720,208 724,198 728,216 732,249 736,278 740,296 744,303 748,305 752,306 756,306" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2.2"></polyline><text x="452" y="110" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">세기</text><text x="517" y="206" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">Si 2p</text><text x="517" y="222" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">~99 eV</text><text x="606" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">C 1s</text><text x="606" y="196" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">~285 eV</text><text x="724" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cds-text-primary)">O 1s</text><text x="724" y="174" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">~532 eV</text><g><line x1="470" y1="306" x2="470" y2="312" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="470" y="330" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">0</text></g><g><line x1="565.3" y1="306" x2="565.3" y2="312" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="565.3" y="330" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">200</text></g><g><line x1="660.7" y1="306" x2="660.7" y2="312" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="660.7" y="330" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">400</text></g><g><line x1="756" y1="306" x2="756" y2="312" stroke="var(--cds-chart-axis)" stroke-width="1.2"></line><text x="756" y="330" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">600</text></g><text x="613" y="352" text-anchor="middle" font-size="12" fill="var(--cds-text-secondary)">결합에너지 (eV) →</text><text x="613" y="374" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">피크 위치 = 원소·화학상태의 지문</text><rect x="190" y="392" width="420" height="38" rx="8" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.2"></rect><text x="400" y="417" text-anchor="middle" font-size="15" font-weight="700" fill="var(--cds-text-primary)">hν = BE + KE + φ</text></svg><figcaption>그림 1. XPS 광전자 방출 · 결합에너지를 재는 법</figcaption></figure>
+<p>여기에 한 겹 더 있다. 같은 원소라도 결합 상대와 산화 상태가 다르면 주변 전하 분포가 달라져 BE가 수 eV까지 이동한다 — **화학 이동(chemical shift)**이다. 예컨대 Si 2p는 원소 Si(약 99 eV)와 SiO₂의 Si(약 103 eV)가 갈라져 보이고, 이 이동 덕분에 &quot;Si가 있다&quot;를 넘어 &quot;Si가 산소와 결합한 상태다&quot;까지 구분한다.</p>
+<h2 id="읽는-법-정량과-깊이-감도">읽는 법 — 정량과 깊이 감도</h2>
+<ul>
+<li><strong>정량 분석</strong> — 각 원소 피크의 면적에 상대감도인자(RSF, relative sensitivity factor)를 나눠 정규화하면 원자 농도(at%)가 된다. 통상 수 at% 수준의 검출 한계를 가지며, 수소는 원리상 검출되지 않는다.</li>
+<li><strong>정보 깊이</strong> — 광전자는 막 안에서 비탄성 산란으로 에너지를 잃기 쉽다. 손상 없이 빠져나올 수 있는 깊이(비탄성 평균자유행로의 수 배)가 곧 정보 깊이로, 보통 <strong>수 nm</strong>다. 그래서 XPS는 본질적으로 표면 분석이다.</li>
+<li><strong>깊이 감도 조절</strong> — 시료를 기울여 전자가 나오는 각도(take-off angle)를 바꾸면 실효 정보 깊이가 달라진다. 비스듬히(낮은 take-off angle) 보면 더 표면만, 수직에 가깝게 보면 더 깊이까지 본다. 파괴 없이 최표면과 그 아래를 가르는 각도 분해 측정(ARXPS)이 이 원리를 쓴다.</li>
+<li><strong>전하 보정</strong> — 절연체 시료는 광전자가 빠져나간 만큼 양으로 대전돼 전체 스펙트럼이 밀린다. 보정 기준은 표면 흡착 탄소의 C 1s를 <strong>284.8 eV</strong>로 맞추는 것이 관행이다. 이 기준이 흔들리면 화학 이동 해석 전체가 어긋나므로, 보정 근거를 항상 함께 기록해야 한다.</li>
+</ul>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>X선원</td>
+<td>Al Kα 1486.6 eV (Mg Kα 1253.6 eV도 사용)</td>
+</tr>
+<tr>
+<td>정보 깊이</td>
+<td>수 nm (대략 1~10 nm)</td>
+</tr>
+<tr>
+<td>검출 한계</td>
+<td>약 0.1~1 at%</td>
+</tr>
+<tr>
+<td>전하 보정 기준</td>
+<td>흡착 탄소 C 1s = 284.8 eV</td>
+</tr>
+<tr>
+<td>측정 면적</td>
+<td>수백 µm ~ mm급 스폿</td>
+</tr>
+</tbody></table></div>
+<h2 id="한계">한계</h2>
+<ul>
+<li><strong>스퍼터 깊이 프로파일의 함정</strong> — 깊이 방향 조성이 필요하면 Ar⁺ 이온으로 깎으며 반복 측정한다. 그러나 이온 충격이 결합을 끊고 산화 상태를 바꾸는 <strong>이온 손상</strong>, 원소마다 깎이는 속도가 달라 조성이 왜곡되는 <strong>선택 스퍼터링(preferential sputtering)</strong> 이 생긴다. 깊이 프로파일의 화학 상태는 원래 상태와 다를 수 있음을 전제하고 읽어야 한다.</li>
+<li><strong>수소·헬륨 불가</strong> — 광전 단면적이 너무 작아 사실상 검출되지 않는다. 수소 함량은 <a class="wiki" href="ftir.html">FTIR</a> 같은 다른 기법이 맡는다.</li>
+<li><strong>표면 오염의 지배</strong> — 정보 깊이가 얕은 만큼 대기 노출로 붙은 흡착 탄소·수분이 신호에 크게 섞인다. 시료 이송·보관 이력이 결과의 일부다.</li>
+<li><strong>느리고 좁다</strong> — 진공·긴 측정 시간 때문에 인라인 감시용이 아니라, 이상이 생겼을 때 원인을 파는 오프라인 분석용이다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="afs-chemistry.html">AFS 화학</a> — N 1s 약 402 eV 피크로 AFS 염의 NH₄⁺ 형성을 확인하는 대표 용도</li>
+<li><a class="wiki" href="ftir.html">FTIR</a> — 결합 진동으로 화학 결합과 수소를 보는 상호 보완 기법</li>
+<li><a class="wiki" href="sims.html">SIMS</a> — 스퍼터링으로 깊이 방향 조성을 파는 질량 분석 (감도는 훨씬 높고 정량은 어렵다)</li>
+<li><a class="wiki" href="ellipsometer.html">엘립소미터</a> — 층 구조를 먼저 확정해 XPS 해석을 돕는 관계</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>광전효과 식과 화학 이동, 정량·정보 깊이의 서술은 표면 분석 표준 교재에 근거한다: Briggs &amp; Grant (eds.), <em>Surface Analysis by Auger and X-ray Photoelectron Spectroscopy</em> (IM Publications, 2003); 전하 보정 C 1s 284.8 eV는 표면 분석 관행값이다.</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "xps", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body></html>

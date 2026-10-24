@@ -77,6 +77,17 @@ footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(
 .card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .count { color: var(--sub); font-size: 13px; }
 code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -85,6 +96,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
   <h1 class="title">절연막</h1>
   <div class="en">Dielectrics</div>
   <div class="meta"><span class="chip cat">재료 &gt; 절연막</span><span class="chip">#유전체</span><span class="chip">#low-k</span><span class="chip">#high-k</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>게이트 절연막부터 층간 절연막까지 — 유전율(k)을 낮추거나 높이는 경쟁 속의 절연 재료들.</p>
 </blockquote>
@@ -194,12 +206,30 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <p><strong>왜 SiO₂–Si₃N₄ 쌍이 중요한가.</strong> 두 막은 플라즈마 화학으로 서로 높은 선택비를 얻을 수 있어, 하나를 &quot;깎을 막&quot;, 다른 하나를 &quot;남길 막&quot;으로 번갈아 쓴다. STI CMP 정지, SAC 컨택 식각, 스페이서 식각, 3D NAND ON 적층과 질화막 제거(인산 습식)가 모두 이 대비를 이용한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
+<li><a class="wiki" href="sio2.html">SiO₂</a> — 모든 절연막의 기준</li>
+<li><a class="wiki" href="si3n4.html">Si₃N₄</a> — 식각 정지막·스페이서의 표준</li>
+<li><a class="wiki" href="sioc.html">SiOC</a> — low-k 층간막과 치밀 스페이서</li>
+<li><a class="wiki" href="siocn.html">SiOCN</a> — 첨단 노드 스페이서의 주력</li>
 <li><a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> — High-k의 대표 사용처</li>
 <li><a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a> — low-k의 약점</li>
 <li><a class="wiki" href="inner-spacer.html">내부 스페이서</a> — 절연막 소재 경쟁의 현장</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "dielectrics", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
 </body></html>

@@ -77,6 +77,17 @@ footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(
 .card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .count { color: var(--sub); font-size: 13px; }
 code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -85,6 +96,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
   <h1 class="title">수율 모델</h1>
   <div class="en">Yield Model</div>
   <div class="meta"><span class="chip cat">제조·품질 &gt; 수율</span><span class="chip">#Poisson</span><span class="chip">#결함 밀도</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>결함 밀도와 칩 면적으로 수율을 예측하는 모델. Poisson 모델과 Murphy 보정, 칩렛과의 관계.</p>
 </blockquote>
@@ -102,7 +114,21 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="advanced-packaging.html">첨단 패키징</a> — 칩렛이 수율을 바꾸는 방식</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 개요</span></li><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 개요</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 개요</span></li><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 개요</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "yield-model", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
 </body></html>

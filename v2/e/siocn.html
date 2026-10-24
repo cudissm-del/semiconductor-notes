@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiOCN — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 재료 › 절연막</div>
+  <h1 class="title">SiOCN</h1>
+  <div class="en">Silicon Oxycarbonitride</div>
+  <div class="meta"><span class="chip cat">재료 &gt; 절연막</span><span class="chip">#스페이서</span><span class="chip">#low-k</span><span class="chip">#AFS</span><span class="chip">#내부 스페이서</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <article><blockquote>
+<p><a class="wiki" href="sioc.html">SiOC</a>에 질소를 더한 막 — k를 4~5로 낮추면서 <a class="wiki" href="si3n4.html">Si₃N₄</a>의 내성을 되찾아, 첨단 노드 스페이서의 주력이 됐다.</p>
+</blockquote>
+<h3 id="개요-물성">개요·물성</h3>
+<p>Si–O 네트워크에 탄소와 질소가 함께 들어간 4원계 막이다. 탄소가 유전율을 낮추고 질소가 결합 강도와 식각 내성을 메우는 타협점이며, 조성비(O·C·N 비율)를 레시피로 연속 조절할 수 있는 것이 강점이다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>물성</th>
+<th>전형값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>유전율 k</td>
+<td>≈ 4.1~5.2</td>
+<td>조성 의존; 7 nm급 스페이서 적용에서 ≈ 4.5 보고</td>
+</tr>
+<tr>
+<td>굴절률</td>
+<td>≈ 1.65~2.2 범위에서 조절</td>
+<td>N₂/O₂ 비율로 SiOC↔SiNC 사이 연속 변화 (Szymanowski 2020)</td>
+</tr>
+<tr>
+<td>구조</td>
+<td>Si–O·Si–C·Si–N 혼합 네트워크</td>
+<td>결합 분포가 식각 거동을 결정</td>
+</tr>
+<tr>
+<td>기계·화학 내성</td>
+<td>SiOC보다 높음</td>
+<td>N 도입 효과</td>
+</tr>
+<tr>
+<td>위치</td>
+<td>SiN(k ≈ 7)과 SiOC 사이</td>
+<td>&quot;낮추되 버티는&quot; 자리</td>
+</tr>
+</tbody></table></div>
+<h3 id="형성법">형성법</h3>
+<ul>
+<li><strong>PECVD</strong> — 유기실란 전구체에 N₂·NH₃ 계열 가스를 섞어 O/C/N 비를 조절하는 주력 경로. RF PECVD에서 HMDSN(헥사메틸디실라잔) 같은 전구체로 N₂/O₂ 비율만 바꿔 SiOC에서 SiNC까지 굴절률 1.65~2.22의 연속 조성 제어가 실증됐다 (Szymanowski 2020).</li>
+<li><strong>PA-MLD</strong> — 플라즈마 보조 분자층 증착으로 분자 단위 조성을 설계하는 연구 경로. 컨포멀리티가 필요한 <a class="wiki" href="inner-spacer.html">내부 스페이서</a>를 겨냥한다.</li>
+<li>조성 균일도와 배치 재현성이 양산의 관문 — 원소 하나가 아니라 결합 분포 전체가 스펙이다.</li>
+</ul>
+<h3 id="응용">응용</h3>
+<ul>
+<li>게이트 스페이서 — <a class="wiki" href="si3n4.html">Si₃N₄</a> 대비 낮은 k로 기생 용량 감소, 7 nm급 FinFET 적용 사례 보고 (Gu 2020)</li>
+<li><a class="wiki" href="inner-spacer.html">내부 스페이서</a> (GAA) — 나노시트 사이를 채우는 저유전 절연체</li>
+<li>컨택 식각 정지막·하드마스크</li>
+<li>BEOL 캡·확산 방지 계열 (SiCN과 인접 영역)</li>
+</ul>
+<h3 id="식각법">식각법</h3>
+<p>이 막의 존재 이유는 식각에서 완성된다. 옆의 <a class="wiki" href="sio2.html">SiO₂</a>·<a class="wiki" href="si3n4.html">Si₃N₄</a>·poly-Si를 남기고 SiOCN만 골라 깎아야 스페이서 리세스가 되기 때문이다.</p>
+<ul>
+<li><strong>AFS 선택 식각</strong> — NF₃/NH₃ 계열 플라즈마가 만드는 <a class="wiki" href="afs-chemistry.html">AFS 염</a> 경로가 본진이다. NF₃/H₂/NH₃ 원격 플라즈마에서 H₂ 40 sccm 조건의 선택비는 SiO₂ 대비 14.0, SiN 대비 2.8, poly-Si 대비 1.5로 보고됐다 (Goya 2026). 막의 고유 질소 함량이 높을수록 식각률이 오르는데, Si–N 결합이 식각에 약한 고리이기 때문으로 해석된다 (Pranda 2023). 인접 조성인 SiCN에서는 베이스 선택비(Al₂O₃ 대비 &gt; 45)와 첨가 가스 보호층 전략이 정리돼 있다 (Matsui 2021).</li>
+<li><strong>건식</strong> — 불화탄소 플라즈마 식각도 가능하지만 선택비와 손상에서 AFS 경로가 앞선다.</li>
+<li>자세한 메커니즘과 조건표는 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>·<a class="wiki" href="afs-chemistry.html">AFS 화학</a> 항목에 있다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a> — 이 막을 골라 깎는 기술 (핵심 연결)</li>
+<li><a class="wiki" href="afs-chemistry.html">AFS 화학</a> — 염 형성의 화학</li>
+<li><a class="wiki" href="dielectrics.html">절연막</a> — 절연 재료 전체 지도</li>
+<li><a class="wiki" href="sioc.html">SiOC</a> — 질소 없는 형제막</li>
+<li><a class="wiki" href="sio2.html">SiO₂</a> · <a class="wiki" href="si3n4.html">Si₃N₄</a> — 선택 식각의 상대들</li>
+<li><a class="wiki" href="inner-spacer.html">내부 스페이서</a> — 대표 사용처</li>
+<li><a class="wiki" href="dry-etch.html">건식 식각</a></li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>Goya et al. 2026, JVST A 44, 053213 — H₂ 유량별 선택비 실측 (보유 논문 원문 확인).</li>
+<li>Pranda et al. 2023 — 질소 함량과 식각률의 관계, <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a> 항목 원전.</li>
+<li>Matsui et al. 2021, JVST A 39, 043008 — SiCN 선택 식각 (보유 논문 원문 확인).</li>
+<li>Szymanowski et al. 2020, Coatings — RF PECVD 조성–굴절률 제어 (보유 논문 원문 확인).</li>
+<li>k 범위 등 물성은 스페이서 문헌 보고값의 범위이며 조성에 따라 달라진다.</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "siocn", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body></html>

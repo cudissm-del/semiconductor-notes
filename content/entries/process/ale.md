@@ -47,8 +47,25 @@ ALE는 10nm급 로직 양산부터 도입되었다. GAA의 리세스, 게이트 
 - 열 ALE(불화 + 리간드 교환)의 반응 개념 — George & Lee (2016), [doi:10.1021/acsnano.6b02991](https://doi.org/10.1021/acsnano.6b02991)
 - 고종횡비 구조 속 ALD 컨포멀성 분석 — Cremers et al. (2019, 오픈액세스), [doi:10.1063/1.5060967](https://doi.org/10.1063/1.5060967)
 
+### 문헌에서 본 EPC와 변형들
+
+ALE의 사이클당 식각량(EPC)은 화학에 따라 Å 이하부터 nm 스케일까지 벌어진다. 보유 논문으로 확인한 대표값:
+
+- **열 ALE (SiO₂)** — DuMont 등(2017): TMA + HF, 300 °C에서 EPC 0.027~0.31 Å/cycle (정적 압력 0.1→4.0 Torr에서 압력 의존). XRR·엘립소메트리·in situ FTIR로 두 반쪽 반응의 자기제한을 확인했다.
+- **열 ALE (Si₃N₄)** — Abdulagatov 등(2020): 산화(O₂ 또는 O₃) → HF → TMA의 3단계, 290 °C에서 0.25 Å/cycle (O₂), 0.47 Å/cycle (O₃). in situ 엘립소메트리로 두께를 추적했다.
+- **플럭스 제어형 사이클릭 ALE** — Metzler 등(2016): 정상상태 Ar 플라즈마에 C₄F₈를 주기적으로 정밀 주입하고 낮은 에너지 Ar⁺ 충격을 동기화한다. 전구체를 CHF₃로 바꾸면 FC 막이 쌓이는 차이로 SiO₂/Si 선택 식각이 된다.
+- **quasi-ALE** — Wang 등(2017): FC 막 두께의 포화 곡선(S-curve)으로 SiO₂의 Si₃N₄ 대비 선택비를 최적화했고, 지형 구조에서는 폴리머 클로깅이 변수임을 보였다.
+- **지형 선택적 ALE** — Osonio 등(2023): 라디칼 불화로 표면을 개질한 뒤 Ar 이온 충격으로 수평면만 골라 제거하는 topographically-selective ALE.
+- **분자 흡착형** — Venugopal 등(2026): SF₆ 분자 흡착 + Ar 플라즈마 활성화, 상온 부근에서 EPC ≈ 1.4 Å/cycle, 반쪽 사이클 분리 실험으로 시너지 100%를 확인했다.
+
 **참고 논문**
 
+- [Thermal Atomic Layer Etching of Silicon Dioxide Using Sequential, Self-Limiting Reactions](https://doi.org/10.1021/acsami.7b01259) — DuMont et al., ACS Appl. Mater. Interfaces 9 (2017). SiO₂ 열 ALE의 EPC 압력 의존
+- [Thermal Atomic Layer Etching of Silicon Nitride Using an Oxidation, Fluorination, and Ligand-Exchange Reaction Mechanism](https://doi.org/10.1116/1.5140481) — Abdulagatov et al., J. Vac. Sci. Technol. A 38 (2020). Si₃N₄ 열 ALE
+- Fluorocarbon Assisted Atomic Layer Etching of SiO₂ and Si Using Cyclic Ar/C₄F₈ and Ar/CHF₃ Plasma — Metzler et al., J. Vac. Sci. Technol. A 34 (2016). 플럭스 제어형 사이클릭 ALE
+- [Quasiatomic layer etching of silicon oxide selective to silicon nitride in topographic structures using fluorocarbon plasmas](https://doi.org/10.1116/1.4978224) — Wang et al., J. Vac. Sci. Technol. A 35 (2017). 포화 곡선으로 선택비 최적화
+- [Topographically-selective atomic layer etching of SiO₂ using radical fluorination of the surface followed by Ar ion bombardment](https://doi.org/10.35848/1347-4065/ad0c46) — Osonio et al., Jpn. J. Appl. Phys. 62, 121001 (2023)
+- [Atomic-layer precision etching of SiO₂ using sequential molecular adsorption and plasma activation](https://doi.org/10.1039/D5TC03428K) — Venugopal et al., J. Mater. Chem. C 14, 1009 (2026). SF₆ 흡착 + Ar 플라즈마, CC BY 4.0
 - [Atomic Layer Deposition: An Overview](https://doi.org/10.1021/cr900056b) — George, Chem. Rev. 110, 111 (2010). ALD 표면화학의 표준 리뷰
 - [Surface chemistry of atomic layer deposition: A case study for the trimethylaluminum/water process](https://doi.org/10.1063/1.1940727) — Puurunen, J. Appl. Phys. 97, 121301 (2005). TMA/H₂O 공정으로 본 ALD 표면화학
 - [Conformality in atomic layer deposition: Current status overview of analysis and modelling](https://doi.org/10.1063/1.5060967) — Cremers, Puurunen & Dendooven, Appl. Phys. Rev. 6, 021302 (2019). 컨포멀성 리뷰, CC BY 4.0 오픈액세스

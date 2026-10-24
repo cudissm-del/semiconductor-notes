@@ -65,6 +65,7 @@ function parseEntry(file) {
     slug, title: fm.title || slug, en: fm.en || '', cat: fm.cat || '', sub: fm.sub || '',
     tags: (fm.tags || '').split(',').map(s => s.trim()).filter(Boolean),
     body: raw.slice(m[0].length),
+    dir: path.dirname(file),
   };
 }
 const entries = walk(r('content/entries')).map(parseEntry).filter(Boolean);
@@ -90,7 +91,18 @@ function renderEntry(e) {
   const slots = [];
   const slot = html => `@@SLOT${slots.push(html) - 1}@@`;
   let figNo = 0;
-  let md = e.body.replace(FIG_RE, (_, caption, imgCap, fileUrl, credit) => {
+  // 로컬 이미지: ![캡션](img/파일.png) → 항목 옆 img/ 파일을 v2/assets/<slug>/로 복사해 figure로
+  let md = e.body.replace(/^!\[([^\]]*)\]\((img\/[^)\s]+)\)[ \t]*$/gm, (_, cap, rel) => {
+    const srcF = path.join(e.dir, rel);
+    if (!fs.existsSync(srcF)) { console.warn(`⚠ [${e.slug}] 로컬 이미지 없음:`, rel); return ''; }
+    figNo += 1;
+    const outDir = path.join(OUT, 'assets', e.slug);
+    fs.mkdirSync(outDir, { recursive: true });
+    const base = path.basename(rel);
+    fs.copyFileSync(srcF, path.join(outDir, base));
+    return '\n' + slot(`<figure class="fig photo"><img src="../assets/${e.slug}/${base}" alt="${escA(cap)}" loading="lazy" decoding="async"><figcaption>그림 ${figNo}. ${cap}</figcaption></figure>`) + '\n';
+  });
+  md = md.replace(FIG_RE, (_, caption, imgCap, fileUrl, credit) => {
     if (caption) {
       const key = Object.keys(byCaption).find(k => caption.startsWith(k));
       if (!key) { console.warn(`⚠ [${e.slug}] 그림을 찾지 못함:`, caption); return ''; }
@@ -150,10 +162,25 @@ for (const e of entries) {
   <h1 class="title">${e.title}</h1>
   ${e.en ? `<div class="en">${e.en}</div>` : ''}
   <div class="meta"><span class="chip cat">${catName(e.cat)} &gt; ${e.sub}</span>${e.tags.map(t => `<span class="chip">#${t}</span>`).join('')}</div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article>${bodies.get(e.slug)}</article>
   <div class="links-box"><h3>이 항목에서 링크한 항목</h3>${linkList(outs)}<h3>이 항목을 링크한 항목</h3>${linkList(backs)}${siblings.length ? `<h3>같은 분류의 다른 항목</h3>${linkList(siblings)}` : ''}</div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "${e.slug}", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
 </body></html>`;
   fs.writeFileSync(path.join(OUT, 'e', `${e.slug}.html`), page);
 }
@@ -176,13 +203,38 @@ const indexPage = `<!DOCTYPE html>
 <main>
   <div class="hero"><h1>반도체 백과</h1><p>반도체 공정의 모든 것을 항목 단위로 쌓는 지식창고. 전체 ${entries.length}개 항목 (재편 진행 중 — 기존 강의노트는 <a href="../index.html">여기</a>).</p></div>
   <div class="search"><input id="q" type="search" placeholder="항목 검색 — 예: 엘립소미터, 식각, SiOCN" autocomplete="off"><div id="results"></div></div>
-  ${catSections}
+  <div class="tabs"><button class="tab on" id="tabAll" type="button">전체 분류</button><button class="tab" id="tabFav" type="button">★ 즐겨찾기</button></div>
+  <div id="allWrap">${catSections}</div>
+  <div id="favWrap" hidden><div class="cards" id="favCards"></div><p id="favEmpty" class="count" hidden>아직 즐겨찾기한 항목이 없습니다. 항목 페이지에서 ☆ 즐겨찾기 버튼을 눌러 추가하세요.</p></div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
 <script>
 const q = document.getElementById('q'), box = document.getElementById('results');
 let idx = null;
-q.addEventListener('focus', async () => { if (!idx) idx = await (await fetch('search-index.json')).json(); }, { once: true });
+const ensureIdx = async () => { if (!idx) idx = await (await fetch('search-index.json')).json(); return idx; };
+q.addEventListener('focus', ensureIdx, { once: true });
+const tabAll = document.getElementById('tabAll'), tabFav = document.getElementById('tabFav');
+const allWrap = document.getElementById('allWrap'), favWrap = document.getElementById('favWrap');
+const favCards = document.getElementById('favCards'), favEmpty = document.getElementById('favEmpty');
+const escH = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+function renderFav() {
+  let favs = [];
+  try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+  const map = {};
+  (idx || []).forEach(x => { map[x.slug] = x; });
+  const list = favs.map(s => map[s]).filter(Boolean);
+  favEmpty.hidden = list.length > 0;
+  favCards.innerHTML = list.map(x => '<a class="card" href="e/' + x.slug + '.html"><div class="t">' + escH(x.t) + '</div><div class="e">' + escH(x.en) + '</div><div class="d">' + escH(x.d || '') + '</div></a>').join('');
+}
+function showFav(on) {
+  tabAll.classList.toggle('on', !on);
+  tabFav.classList.toggle('on', on);
+  allWrap.hidden = on;
+  favWrap.hidden = !on;
+  if (on) ensureIdx().then(renderFav);
+}
+tabAll.addEventListener('click', () => showFav(false));
+tabFav.addEventListener('click', () => showFav(true));
 q.addEventListener('input', () => {
   const v = q.value.trim().toLowerCase();
   if (!v || !idx) { box.innerHTML = ''; return; }
@@ -194,7 +246,7 @@ q.addEventListener('input', () => {
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage);
 
 // ── 검색 색인 ────────────────────────────────────────────────────
-const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, cat: catName(e.cat), sub: e.sub, tags: e.tags, x: plain(bodies.get(e.slug)).slice(0, 4000) }));
+const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, cat: catName(e.cat), sub: e.sub, tags: e.tags, d: defOf(e), x: plain(bodies.get(e.slug)).slice(0, 4000) }));
 fs.writeFileSync(path.join(OUT, 'search-index.json'), JSON.stringify(index));
 
 console.log(`✓ v2 — 항목 ${entries.length}개, 위키 링크 ${[...outLinks.values()].reduce((a, s) => a + s.size, 0)}개`);
