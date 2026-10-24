@@ -30,6 +30,14 @@ Oct 22, 2026 · @김정식
 
 ## 2. 전체 흐름과 칩 단면
 
+**웨이퍼는 어디서 오나.** 팹의 출발점은 모래(규석)를 정제한 실리콘이다. 규석을 전기로에서 탄소로 환원하면 98% 순도의 야금급 실리콘이 되고, 이를 염화시켜 증류하는 지멘스(Siemens) 공정으로 99.9999999%(9N) 이상의 전자급 다결정 실리콘까지 정제한다.
+
+이 다결정을 단결정으로 길러내는 대표 방식이 CZ(초크랄스키)법이다. 석영 도가니에서 1414°C로 녹인 실리콘에 종자 결정을 담갔다가 회전시키며 천천히 끌어올리면, 용융액이 종자의 결정 방향을 따라 그대로 굳어 단결정 잉곳이 된다. 도펀트를 용융액에 넣어 웨이퍼의 저항률을 맞추고, 도가니의 석영에서 녹아든 산소가 결정에 조금 들어간다. 도가니 없이 전자기력으로 용융 구간을 떠받쳐 길러내는 FZ(부유대역)법은 더 순수하고 저항이 높아 전력 소자에 주로 쓴다.
+
+잉곳은 외형을 다듬은 뒤 다이아몬드 와이어소로 얇게 썰고(300mm 기준 두께 775µm), 모서리를 둥글리고 래핑·화학 에칭으로 가공 손상을 걷어낸 뒤 CMP로 거울처럼 연마해 웨이퍼가 된다. 표면에 단결정을 한 층 더 길러 올린 에피 웨이퍼, 절연막 위에 얇은 Si를 붙인 SOI 웨이퍼 같은 특수 기판도 있다.
+
+&#91;embedded content: CZ 단결정 성장과 웨이퍼 · 잉곳 인상 개념도]
+
 웨이퍼 한 장은 팹에서 FEOL → MOL → BEOL 순으로 회로가 완성된 뒤, 후공정에서 테스트·절단·연결·보호를 거쳐 칩이 된다.
 
 &#91;embedded content: 전체 공정 흐름 · 전공정 4단계, 후공정 5단계\]
@@ -236,7 +244,17 @@ ARDE는 좁고 깊은 구조에서 라디칼과 이온이 바닥까지 덜 도�
 
 &#91;embedded content: 증착 방식별 스텝 커버리지 · PVD · CVD · ALD\]
 
+**열산화 — 소모하며 자라는 막.** 표의 첫 줄인 열산화는 증착과 성격이 다르다. 재료를 위에 얹는 대신 기판의 Si 자체를 소모해 SiO₂로 바꾼다. 부피가 늘기 때문에 산화막 두께의 약 44%만큼 Si가 소모되고, 막과 기판의 경계는 원래 표면 아래로 내려간다. 덕분에 표면의 오염과 손상이 막 아래에 묻히고 계면이 깨끗해, 게이트 계면층처럼 품질이 중요한 자리에 쓴다.
+
+성장 속도는 Deal과 Grove의 모델(1965)로 설명된다. 산화제가 이미 자란 막을 통과해 경계에 닿아야 반응이 계속되므로, 얇을 때는 표면 반응이 병목이라 두께가 시간에 비례해 자라고(선형), 두꺼워지면 확산이 병목이 되어 시간의 제곱근에 비례하게 느려진다(포물선). 건식(O₂)은 느리지만 치밀하고, 습식(H₂O)은 수 배 빠른 대신 막질이 조금 떨어져 두꺼운 필드·마스크 산화막에 쓴다.
+
+&#91;embedded content: 열산화 성장 곡선 · Deal-Grove 선형-포물선 전이]
+
 **Cu 전해도금의 "슈퍼필".** 도금액의 첨가제(가속제·억제제·평탄제)가 트렌치 바닥에서는 성장을 빠르게, 입구에서는 느리게 만들어 보이드 없이 아래부터 차오른다. 다마신(13장)과 TSV(17·18장)가 이 원리에 기댄다.
+
+**참고 논문**
+
+- [General Relationship for the Thermal Oxidation of Silicon](https://doi.org/10.1063/1.1713945) — Deal & Grove, J. Appl. Phys. 36, 3770 (1965). 열산화 선형-포물선 모델의 원전
 
 ## 6. 원자층 공정: ALD와 ALE
 
@@ -542,20 +560,6 @@ GAA는 "희생층을 넣어 두었다가 나중에 빼고 그 자리에 게이�
 
 ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 바깥에 남은 막을 등방성으로 걷어내 오목부 안에만 남긴다. 이 에치백도 넓게 보면 "절연막 리세스"다. Si 시트 옆면이 깨끗이 드러나야 다음 S/D 에피가 잘 자란다.
 
-**스페이서 물질 — SiN에서 SiOCN · SiCO로**
-
-게이트 바깥 스페이서와 내부 스페이서는 게이트와 S/D·컨택 사이에 끼어 있어, 막의 유전율이 곧 기생 용량이다. 그래서 SiN(k≈7) 대신 O·C를 넣은 저유전 막이 쓰인다. 다만 스페이서는 이후의 더미 게이트 제거, SiGe 채널 릴리스, HF 세정을 모두 견뎌야 하므로, k만 낮아서는 안 되고 식각 내성이 함께 있어야 한다. 실제 양산 노드에서 어느 층에 어떤 막을 쓰는지는 공개되지 않았고, 아래는 특허·학회 논문·장비 업체 자료에 나타난 사용처다(2026년 10월 기준).
-
-| 물질 | k (대략) | GAA에서의 사용처 | 특징 |
-| --- | --- | --- | --- |
-| SiN | \~7 | 게이트 스페이서, 내부 스페이서 (기준) | 식각 내성이 가장 좋지만 기생 용량이 큼 |
-| SiOCN | \~4\~5 | 게이트 바깥 스페이서(SiBCN과 함께 대표 후보, SiN과 다층으로도 씀), 내부 스페이서 | N이 식각 내성을, O·C가 낮은 k를 맡는 절충형 |
-| SiCO (치밀형) | \~4\~4.5 | 저유전 스페이서 겸 측면 식각 정지막, 저온(400°C) 스페이서 | 가교된 C가 dHF·고온 인산 내성을 준다는 보고 |
-| SiOC (저유전형) | \~2.2\~3.0 | 게이트–컨택 사이 초저유전층(특허 예) | 고온에 약해 공정 후반에 넣음 |
-| SiO₂ / SiON | 3.9 / \~5 | 내부 스페이서(SiGe 오목부를 선택 산화·질화하는 방식의 특허 예) | 별도 증착 없이 오목부에만 형성 |
-
-**같은 "SiOC"라도 두 종류다.** 스페이서용 SiCO는 탄소가 Si–C–Si로 가교된 치밀한 막(k≈4\~4.5)이고, BEOL 층간막의 SiOC(H)·다공성 SiOCH는 메틸기와 기공으로 k를 2\~3까지 낮춘 무른 막이다(13-1장). 장비 업체 자료는 탄소 함량보다 **가교된 탄소의 비율**이 식각 선택비를 좌우한다고 설명한다. 내부 스페이서 에치백은 이런 막을 Si·SiGe에 대해 선택적으로 등방 식각해 오목부 안에만 남기는 공정이므로, 막 조성이 곧 식각 화학의 선택 조건이 된다(19-7장).
-
 **다른 곳의 리세스** — 리세스는 GAA 전용이 아니라 공정 곳곳에서 쓰는 일반 기법이다.
 
 | 리세스 | 하는 일 | 장 |
@@ -580,8 +584,6 @@ ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 
 **참고 논문**
 
 - [Stacked nanosheet gate-all-around transistor to enable scaling beyond FinFET](https://doi.org/10.23919/VLSIT.2017.7998183) — Loubet et al., Symp. VLSI Technol. (2017). 나노시트 GAA의 첫 실증 보고
-- [Study of Silicon Nitride Inner Spacer Formation in Process of Gate-all-around Nano-Transistors](https://doi.org/10.3390/nano10040793) — Li et al., Nanomaterials 10, 793 (2020). SiN 내부 스페이서의 증착·에치백 공정 실험, 오픈액세스
-- [Interest of SiCO low k=4.5 spacer deposited at low temperature (400°C) in the perspective of 3D VLSI integration](https://doi.org/10.1109/IEDM.2015.7409656) — Benoit et al., IEDM (2015), 8.6.1. SiN을 대체하는 저온 SiCO 스페이서
 
 ## 12. MOL (Middle-Of-Line): 트랜지스터와 배선을 잇는 다리
 
@@ -945,7 +947,6 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 | Si₃N₄ (SiN) | \~7 | STI 하드마스크·CMP 정지막, 게이트 스페이서, SAC 캡, 컨택 식각 정지막(CESL), 응력 라이너, 패시베이션 | FEOL·MOL·BEOL 최상부 |
 | SiON | 4\~7 | 반사방지막(DARC), 하드마스크, 과거 게이트 유전체(질화로 누설·붕소 침투 억제) | FEOL·리소 |
 | SiOCN / SiBCN | \~4\~5 | 저유전 스페이서 (게이트–컨택 기생 용량 감소) | FEOL·MOL (최신 노드) |
-| SiCO (치밀형) | \~4\~4.5 | 저유전 스페이서, 측면 식각 정지막 (BEOL의 다공성 SiOC와 다른 치밀한 막) | FEOL (GAA) |
 | HfO₂ (및 HfSiON) | \~20\~25 | High-k 게이트 유전체 | FEOL (HKMG) |
 | Al₂O₃ | \~9 | 문턱전압 조절층, 식각 정지막, 확산 방지·캡 | FEOL·BEOL·메모리 |
 | ZrO₂ | \~25\~40 | DRAM 커패시터 유전체 (ZrO₂/Al₂O₃/ZrO₂ 적층 등) | 메모리 |
@@ -1127,6 +1128,18 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 - 측정값 여러 개를 함께 써서 정확도를 높이는 **하이브리드 계측**, 장비 센서 데이터로 결과를 예측하는 **가상 계측**이 확대되고 있다.
 - 플라즈마 식각 연구에서는 **OES**(플라즈마 발광)로 공정 중 상태를, **XPS·FTIR**로 공정 후 표면 화학을 보는 조합이 표준적이다.
 
+### 21-3. 수율 모델 — 결함이 돈으로 바뀌는 지점
+
+계측이 결함을 세는 일이라면, 수율 모델은 그 결함이 수율, 곧 돈으로 어떻게 바뀌는지를 계산한다. 다이를 죽이는 결함(킬러 결함)이 웨이퍼에 무작위로 뿌려져 있을 때, 면적 A인 다이 하나가 결함을 하나도 맞지 않을 확률은 Poisson 분포를 따라 **Y = exp(−A·D₀)** 가 된다. D₀는 단위면적당 결함밀도다.
+
+숫자로 보면 감이 온다. D₀ = 0.5/cm²인 공정에서 1cm² 다이는 61%가 살고, 2cm² 다이는 37%, 4cm² 다이는 14%만 산다. 큰 다이는 수율에서 지수적인 벌칙을 받는 셈이고, 이것이 거대한 단일 다이 대신 칩을 쪼개는 칩렛 전략(17장)의 경제성 근거가 된다. 실제 결함은 무작위로 흩어지지 않고 뭉치는(클러스터링) 경향이 있어, Murphy 모델이나 음이항 모델처럼 클러스터링을 반영한 식이 양산 데이터와 더 잘 맞는다. 성숙 공정의 D₀는 0.1/cm² 이하로 관리된다.
+
+&#91;embedded content: 수율 곡선 · Poisson 모델 (면적 × 결함밀도)]
+
+**참고 논문**
+
+- [Cost-size optima of monolithic integrated circuits](https://doi.org/10.1109/PROC.1964.3442) — Murphy, Proc. IEEE 52, 1537 (1964). 수율 모델과 다이 크기의 경제학을 세운 원전
+
 ## 22. 요약
 
 | 단계 | 한 줄 정의 | 대표 소재 | 공정 온도 | 핵심 키워드 |
@@ -1172,12 +1185,6 @@ HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이�
 - [Designer atomic layer etching — Lam Research 특허 (USPTO)](https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10566212)
 - [Directional Atomic Layer Etching — AVS 2017](https://www2.avs.org/symposium2017/Papers/Paper_PS+NS+SS+TF-ThM3.html)
 - [Atomic layer etching of SiO₂ using SF₆ and Ar plasma (arXiv)](https://arxiv.org/pdf/2412.20653)
-
-**11장 — GAA 스페이서 물질**
-
-- [US11664422B2 — Nanosheet transistor with ultra low-k spacer (IBM)](https://patents.google.com/patent/US11664422) — SiOCN 내부 스페이서, SiOC 초저유전층
-- [US10243060B2 — Uniform low-k inner spacer module in GAA transistors (IBM)](https://patents.google.com/patent/US10243060) — SiON 내부 스페이서, 스페이서 후보 SiN·SiOCN·SiBCN
-- [Next generation low-k films can address present & future fabrication challenges — Silicon Semiconductor (2022, Lam Research 기고)](https://siliconsemiconductor.net/article/115495/Next-generation_low-k_films_can_address_present_future_fabrication_challenges) — SiCO 스페이서의 k와 습식 식각 내성 (업체 자료)
 
 **13장 — BSPDN**
 

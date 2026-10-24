@@ -15,6 +15,9 @@ import bond from './figs/bond.jsx';
 import pitch from './figs/pitch.jsx';
 import kvalue from './figs/kvalue.jsx';
 import metrology from './figs/metrology.jsx';
+import wafer from './figs/wafer.jsx';
+import oxidation from './figs/oxidation.jsx';
+import yieldCurve from './figs/yield.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -330,4 +333,7 @@ export const byCaption = {
   '연결 피치와 연결 밀도': pitch,
   '절연막 유전율 비교': kvalue,
   '공정별 계측 지도': metrology,
+  'CZ 단결정 성장과 웨이퍼': wafer,
+  '열산화 성장 곡선': oxidation,
+  '수율 곡선': yieldCurve,
 };
