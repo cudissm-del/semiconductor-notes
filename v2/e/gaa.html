@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAA 나노시트 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 소자·구조 › 트랜지스터</div>
+  <h1 class="title">GAA 나노시트</h1>
+  <div class="en">Gate-All-Around Nanosheet</div>
+  <div class="meta"><span class="chip cat">소자·구조 &gt; 트랜지스터</span><span class="chip">#나노시트</span><span class="chip">#트랜지스터</span></div>
+  <article><blockquote>
+<p>채널을 게이트가 사방으로 감싸는 나노시트 트랜지스터의 구조와 제조 흐름, 그리고 다음 단계.</p>
+</blockquote>
+<p>GAA(Gate-All-Around)는 게이트가 채널을 4면 모두 감싸는 트랜지스터로, 3nm·2nm급 최신 로직 공정의 표준 구조다. 이 장은 GAA가 왜 필요한지, 어떻게 만드는지, 그 중 핵심 단계인 리세스 공정을 다룬다.</p>
+<h3 id="GAA란-무엇이고-왜-필요한가">GAA란 무엇이고 왜 필요한가</h3>
+<p>트랜지스터는 게이트 전압으로 채널 전류를 켜고 끄는 스위치다. 게이트 길이가 짧아지면 드레인 전계가 채널에 직접 영향을 줘, 게이트가 꺼져 있어도 전류가 새는 <strong>단채널 효과</strong>(DIBL, 누설전류 증가)가 생긴다. 게이트가 채널을 감싸는 면이 넓을수록 통제력(정전기적 제어)이 강해져 더 짧은 게이트에서도 확실히 끌 수 있다.</p>
+<ul>
+<li><strong>Planar → FinFET</strong>: 채널을 세워 핀(fin)으로 만들고 게이트가 3면을 감쌌다.</li>
+<li><strong>FinFET의 한계</strong>: 핀을 더 얇고 높게 만들기 어렵고, 전류를 늘리려면 핀 개수를 늘려야 해 구동력이 정수 단위로만 조절된다(양자화).</li>
+<li><strong>GAA의 해법</strong>: 채널을 얇은 판(나노시트)으로 눕혀 여러 장 쌓고 게이트가 각 시트를 완전히 둘러싼다. 시트 폭을 연속적으로 바꿀 수 있어 저전력(좁게)과 고성능(넓게) 설계가 자유롭다.</li>
+</ul>
+<p>회사별 이름은 다르다 — 삼성 MBCFET(3nm급 최초 양산), TSMC N2 나노시트, Intel RibbonFET(20A/18A).</p>
+<figure class="fig"><svg viewBox="0 0 760 364" role="img" aria-label="게이트가 채널을 감싸는 면이 1, 3, 4면으로 늘어난다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">게이트가 채널을 감싸는 면이 1 → 3 → 4면으로 늘어난다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">전류가 흐르는 방향을 정면으로 본 단면</text><rect x="60" y="200" width="160" height="60" rx="4" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="80" y="200" width="120" height="10" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="90" y="150" width="100" height="48" rx="4" fill="var(--cds-chart-categorical-1)" fill-opacity="0.25" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><g><text x="140" y="100" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Planar</text><text x="140" y="290" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">게이트 1면</text><text x="140" y="308" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">~28nm급</text></g><rect x="300" y="230" width="160" height="30" rx="4" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="343" y="124" width="74" height="104" rx="4" fill="var(--cds-chart-categorical-1)" fill-opacity="0.25" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="365" y="142" width="30" height="88" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><g><text x="380" y="100" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">FinFET</text><text x="380" y="290" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">게이트 3면</text><text x="380" y="308" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">22nm ~ 3nm급</text></g><rect x="540" y="230" width="160" height="30" rx="4" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="570" y="112" width="100" height="116" rx="4" fill="var(--cds-chart-categorical-1)" fill-opacity="0.25" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="585" y="128" width="70" height="16" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="585" y="164" width="70" height="16" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="585" y="200" width="70" height="16" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><g><text x="620" y="100" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">GAA (나노시트)</text><text x="620" y="290" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">게이트 4면 (전체)</text><text x="620" y="308" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">3nm·2nm급 ~</text></g><rect x="220" y="334" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-1)" fill-opacity="0.25" stroke="var(--cds-chart-categorical-1)"></rect><text x="240" y="344" font-size="11.5" fill="var(--cds-text-secondary)">게이트</text><rect x="330" y="334" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><text x="350" y="344" font-size="11.5" fill="var(--cds-text-secondary)">채널 (Si)</text><rect x="460" y="334" width="14" height="12" rx="2" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)"></rect><text x="480" y="344" font-size="11.5" fill="var(--cds-text-secondary)">기판</text></svg><figcaption>그림 1. Planar · FinFET · GAA 단면 비교</figcaption></figure>
+<h3 id="GAA-공정-흐름">GAA 공정 흐름</h3>
+<p>GAA는 &quot;희생층을 넣어 두었다가 나중에 빼고 그 자리에 게이트를 채우는&quot; 방식으로 만든다. 19장의 물질 대부분이 이 흐름에 등장한다.</p>
+<ol>
+<li><strong>Si/SiGe 초격자 에피</strong> — Si와 SiGe를 수 nm씩 번갈아 쌓는다. Si는 채널, SiGe는 희생층이 된다.</li>
+<li><strong>핀 패터닝 + STI</strong> — 적층막을 핀 모양으로 식각하고 산화막으로 분리한다.</li>
+<li><strong>더미 poly 게이트 + 게이트 스페이서</strong> — 게이트 자리를 임시로 잡는다.</li>
+<li><strong>S/D 리세스</strong> — 게이트 양옆의 적층을 수직으로 파낸다. (11-3 ①)</li>
+<li><strong>SiGe 측면 리세스</strong> — 드러난 SiGe 끝만 옆으로 파낸다. (11-3 ②)</li>
+<li><strong>내부 스페이서 증착 + 에치백</strong> — 오목부에 절연막을 채운다. (11-3 ③)</li>
+<li><strong>S/D 에피</strong> — 캐비티에 Si:P(NMOS) / SiGe:B(PMOS)를 키운다.</li>
+<li><strong>더미 게이트 제거 → 채널 릴리스</strong> — 남은 SiGe 희생층을 Si에 대해 선택적으로 모두 제거해 시트를 띄운다.</li>
+<li><strong>HKMG 증착</strong> — 시트 사이 수 nm 틈까지 ALD로 HfO₂와 일함수 금속을 감싸듯 채운다.</li>
+<li><strong>MOL 이후</strong> — 게이트 캡, 컨택 형성으로 이어진다.</li>
+</ol>
+<h3 id="공정-난제와-다음-단계">공정 난제와 다음 단계</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>난제</th>
+<th>관련 단계</th>
+<th>왜 어려운가</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SiGe : Si 선택 식각</td>
+<td>측면 리세스, 채널 릴리스</td>
+<td>측면으로만 수십 nm를 등방적으로 파면서 Si 손실·손상은 거의 없어야 함</td>
+</tr>
+<tr>
+<td>리세스 깊이 균일도</td>
+<td>측면 리세스</td>
+<td>층마다 깊이가 다르면 시트마다 실효 게이트 길이가 달라짐</td>
+</tr>
+<tr>
+<td>에피 두께·조성 균일도</td>
+<td>초격자 에피</td>
+<td>두께·Ge 농도 편차가 그대로 소자 편차와 식각 속도 편차로 이어짐</td>
+</tr>
+<tr>
+<td>좁은 틈 속 ALD</td>
+<td>HKMG</td>
+<td>시트 위·아래·옆의 막 두께가 같아야 문턱전압이 맞음</td>
+</tr>
+<tr>
+<td>내부 스페이서 형상</td>
+<td>증착 + 에치백</td>
+<td>오목부를 빈틈없이 채우고 바깥은 깨끗이 걷어내야 함</td>
+</tr>
+</tbody></table></div>
+<p><strong>다음 구조.</strong> nFET과 pFET 사이에 절연 벽을 세워 간격을 줄이는 <strong>Forksheet</strong>, nFET 위에 pFET을 수직으로 쌓는 <strong>CFET</strong>이 연구되고 있다. 둘 다 GAA의 시트 구조와 희생층·리세스 기법을 그대로 확장한다.</p>
+<p><strong>참고 논문</strong></p>
+<ul>
+<li><a href="https://doi.org/10.23919/VLSIT.2017.7998183" target="_blank" rel="noopener">Stacked nanosheet gate-all-around transistor to enable scaling beyond FinFET</a> — Loubet et al., Symp. VLSI Technol. (2017). 나노시트 GAA의 첫 실증 보고</li>
+<li><a href="https://doi.org/10.3390/nano10040793" target="_blank" rel="noopener">Study of Silicon Nitride Inner Spacer Formation in Process of Gate-all-around Nano-Transistors</a> — Li et al., Nanomaterials 10, 793 (2020). SiN 내부 스페이서의 증착·에치백 공정 실험, 오픈액세스</li>
+<li><a href="https://doi.org/10.1109/IEDM.2015.7409656" target="_blank" rel="noopener">Interest of SiCO low k=4.5 spacer deposited at low temperature (400°C) in the perspective of 3D VLSI integration</a> — Benoit et al., IEDM (2015), 8.6.1. SiN을 대체하는 저온 SiCO 스페이서</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="recess.html">리세스와 채널 릴리스</a> — 나노시트를 띄우는 식각</li>
+<li><a class="wiki" href="inner-spacer.html">내부 스페이서</a> — GAA의 매립 절연막</li>
+<li><a class="wiki" href="feol.html">FEOL</a> — GAA가 만들어지는 흐름</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

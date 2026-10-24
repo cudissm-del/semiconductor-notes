@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>첨단 패키징 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 소자·구조 › 패키징·연결</div>
+  <h1 class="title">첨단 패키징</h1>
+  <div class="en">Advanced Packaging</div>
+  <div class="meta"><span class="chip cat">소자·구조 &gt; 패키징·연결</span><span class="chip">#CoWoS</span><span class="chip">#인터포저</span></div>
+  <article><blockquote>
+<p>인터포저와 적층으로 여러 칩을 하나의 시스템으로 묶는 패키징 기술 (CoWoS 계열 등).</p>
+</blockquote>
+<p>트랜지스터 미세화만으로는 성능 향상이 둔화되면서, 여러 칩을 짧고 촘촘하게 연결하는 첨단 패키징이 시스템 성능의 핵심 변수가 됐다. 방향은 하나다 — <strong>연결 거리를 줄이고, 연결 밀도(I/O 수)를 높이는 것.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>기술</th>
+<th>구조</th>
+<th>연결 피치(대략)</th>
+<th>대표 사례</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>와이어 본딩</td>
+<td>칩 가장자리 패드 → 금속 와이어 → 기판</td>
+<td>수십 µm 이상</td>
+<td>범용 칩, 저가 패키지</td>
+</tr>
+<tr>
+<td>플립칩 (Flip-chip)</td>
+<td>칩을 뒤집어 칩 전면의 범프로 기판에 직접 연결</td>
+<td>100µm 이상 (C4)</td>
+<td>CPU, GPU</td>
+</tr>
+<tr>
+<td>팬아웃 WLP</td>
+<td>웨이퍼 상태에서 RDL로 칩 바깥까지 배선을 펼침</td>
+<td>수 µm RDL</td>
+<td>TSMC InFO (모바일 AP)</td>
+</tr>
+<tr>
+<td>2.5D</td>
+<td>실리콘 인터포저/브리지 위에 로직과 HBM을 나란히 배치</td>
+<td>수십 µm 마이크로범프</td>
+<td>TSMC CoWoS (AI GPU), Intel EMIB</td>
+</tr>
+<tr>
+<td>3D 적층 (TSV)</td>
+<td>실리콘 관통 전극(TSV)으로 다이를 수직 적층</td>
+<td>수십 µm</td>
+<td>HBM (DRAM 다단 적층)</td>
+</tr>
+<tr>
+<td>하이브리드 본딩</td>
+<td>범프 없이 Cu–Cu, 절연막–절연막을 직접 접합</td>
+<td>10µm 이하</td>
+<td>TSMC SoIC, AMD 3D V-Cache, 3D NAND 웨이퍼 접합</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 760 336" role="img" aria-label="연결 피치가 줄면 단위 면적당 연결 수는 제곱으로 늘어난다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">연결 피치가 1/10이 되면 연결 수는 100배가 된다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">정사각 격자로 배열했을 때 단위 면적당 연결 수 = 1 / 피치² — 피치는 본문 표의 대략값</text><rect x="439.2" y="76" width="260.75279380565615" height="194" fill="var(--cds-chart-reference-tint)"></rect><text x="692" y="262" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">하이브리드 본딩 영역 (10µm 이하)</text><g stroke="var(--cds-chart-grid)"><line x1="100" y1="270" x2="700" y2="270"></line><line x1="100" y1="238.3" x2="700" y2="238.3"></line><line x1="100" y1="206.7" x2="700" y2="206.7"></line><line x1="100" y1="175" x2="700" y2="175"></line><line x1="100" y1="143.3" x2="700" y2="143.3"></line><line x1="100" y1="111.7" x2="700" y2="111.7"></line><line x1="100" y1="80" x2="700" y2="80"></line></g><g stroke="var(--cds-chart-axis)" stroke-width="1.25"><line x1="100" y1="270" x2="700" y2="270"></line><line x1="100" y1="76" x2="100" y2="270"></line></g><text x="100" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">200</text><text x="178.5" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">100</text><text x="257" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">50</text><text x="360.8" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">20</text><text x="439.2" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">10</text><text x="517.7" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">5</text><text x="621.5" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2</text><text x="700" y="288" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">1</text><text x="92" y="274" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">1</text><text x="92" y="242.3" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">10</text><text x="92" y="210.7" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">100</text><text x="92" y="179" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">1천</text><text x="92" y="147.3" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">1만</text><text x="92" y="115.7" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">10만</text><text x="92" y="84" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">100만</text><text x="700" y="308" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">연결 피치 (µm, 로그 눈금) — 오른쪽일수록 촘촘 →</text><text x="24" y="70" font-size="11.5" fill="var(--cds-text-secondary)">mm²당 연결 수</text><path d="M100 225.7L700 80" stroke="var(--cds-chart-categorical-1)" stroke-width="2" fill="none"></path><g><circle cx="132.6" cy="217.8" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="142.6" y="233.8" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">C4 플립칩</text><text x="142.6" y="247.8" font-size="11.5" fill="var(--cds-text-secondary)">피치 ~150µm → 약 44개/mm²</text></g><g><circle cx="282.3" cy="181.5" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="292.3" y="197.5" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">마이크로범프 (2.5D · HBM)</text><text x="292.3" y="211.5" font-size="11.5" fill="var(--cds-text-secondary)">피치 ~40µm → 약 625개/mm²</text></g><g><circle cx="439.2" cy="143.3" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="449.2" y="159.3" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">하이브리드 본딩</text><text x="449.2" y="173.3" font-size="11.5" fill="var(--cds-text-secondary)">피치 10µm → 1만 개/mm²</text></g><text x="24" y="328" font-size="11.5" fill="var(--cds-text-secondary)">와이어 본딩은 칩 가장자리 한두 줄만 쓰므로 이 면적 밀도 비교에서 빠진다.</text></svg><figcaption>그림 1. 연결 피치와 연결 밀도 · 1/피치²</figcaption></figure>
+<p><strong>핵심 요소 기술</strong></p>
+<ul>
+<li><strong>TSV (Through-Silicon Via)</strong> — 실리콘을 관통하는 수직 Cu 전극. 고종횡비 Si 식각(Bosch 공정) → 절연 라이너 → 배리어/시드 → Cu 도금 → 뒷면 연마로 노출.</li>
+<li><strong>마이크로범프 / 하이브리드 본딩</strong> — 범프 피치가 줄수록 단위 면적당 I/O가 제곱으로 늘어난다. 하이브리드 본딩은 표면 평탄도(CMP)와 플라즈마 표면 활성화가 접합 품질을 좌우한다.</li>
+<li><strong>인터포저 / RDL</strong> — 칩 사이를 잇는 미세 배선층. 사실상 &quot;패키지 안의 BEOL&quot;이다.</li>
+</ul>
+<p><strong>칩렛(Chiplet).</strong> 하나의 큰 칩 대신 기능별 작은 다이를 각각 최적 공정으로 만들고 패키지에서 합친다. 큰 다이 하나보다 수율이 높고, 공정 노드를 섞을 수 있다. 다이 간 연결 표준으로 UCIe가 있다.</p>
+<h3 id="CoWoS-계열과-인터포저-상세">CoWoS 계열과 인터포저 상세</h3>
+<p>CoWoS(Chip-on-Wafer-on-Substrate)는 GPU 같은 로직 다이와 HBM을 인터포저 위에 나란히 올린 뒤 패키지 기판에 붙이는 TSMC의 2.5D 패키징이다. 세 변형은 <strong>인터포저를 무엇으로 만드느냐</strong>가 다르다.</p>
+<p><strong>레티클 한계부터.</strong> 노광기가 한 번에 찍을 수 있는 영역(약 26 × 33mm, 약 858mm²)이 &quot;1 레티클&quot;이다. AI 칩은 로직 다이 + HBM 여러 개를 올려야 해서 인터포저가 레티클 몇 배 크기로 커지고, 이를 어떻게 만드느냐가 비용과 수율을 가른다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>CoWoS-S</th>
+<th>CoWoS-R</th>
+<th>CoWoS-L</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>인터포저</td>
+<td>통짜 실리콘 (TSV + 미세 Cu 배선)</td>
+<td>유기 RDL (폴리머 + Cu, InFO 기반)</td>
+<td>유기 RDL + 국부 실리콘 브리지(LSI)</td>
+</tr>
+<tr>
+<td>최대 크기 (대략)</td>
+<td>레티클 약 3.3배 (~2,700mm²)</td>
+<td>크게 확장 가능</td>
+<td>레티클 6배 이상 (&gt;5,000mm²)</td>
+</tr>
+<tr>
+<td>배선 밀도</td>
+<td>가장 높음</td>
+<td>가장 낮음</td>
+<td>브리지 구간만 높음</td>
+</tr>
+<tr>
+<td>비용</td>
+<td>면적당 가장 비쌈, 대형화 시 수율 손실</td>
+<td>가장 저렴</td>
+<td>중간, 대형 패키지에서 유리</td>
+</tr>
+<tr>
+<td>위상</td>
+<td>기존 주력, 비중 감소</td>
+<td>틈새</td>
+<td>현재 주류</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>TSMC 전체 CoWoS 용량 중 CoWoS-L이 2025년 4분기 54.6%로 가장 크고, CoWoS-S가 38.5%, CoWoS-R이 6.9%로 집계되었다.</li>
+<li>TrendForce는 CoWoS-L이 2028년까지 주류로 유지될 것으로 본다. 다만 대형 인터포저 비용과 TSMC 용량 제약 때문에 Intel EMIB에 대한 관심도 커지고 있다.</li>
+<li><strong>EMIB와의 차이</strong> — CoWoS-L은 실리콘 브리지를 인터포저 안에 넣고, EMIB는 패키지 기판 안에 직접 묻는다.</li>
+<li><strong>유리 기판</strong> — 유기 기판보다 평탄하고 열팽창이 실리콘에 가까워, 더 큰 패키지와 더 미세한 배선을 위한 차세대 코어 소재로 연구되고 있다.</li>
+</ul>
+<p><strong>영상으로 보기</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=2ACiuKgYUkI" target="_blank" rel="noopener">Why Wafer Bonding is the Future of Semiconductors — Asianometry</a> — 웨이퍼 본딩이 왜 첨단 기술의 공통분모인지 (영어)</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="hbm.html">HBM</a> — 첨단 패키징의 핵심 부품</li>
+<li><a class="wiki" href="packaging.html">패키징과 테스트</a> — 기본 후공정과의 차이</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 제조·품질 &gt; 수율</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

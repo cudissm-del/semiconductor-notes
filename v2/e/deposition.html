@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>증착 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 공정 › 증착·성막</div>
+  <h1 class="title">증착</h1>
+  <div class="en">Deposition</div>
+  <div class="meta"><span class="chip cat">공정 &gt; 증착·성막</span><span class="chip">#CVD</span><span class="chip">#PVD</span><span class="chip">#도금</span></div>
+  <article><blockquote>
+<p>기판 위에 막을 올리는 방법들의 비교 — CVD·PVD·전해도금·열산화를 단차 피복, 막질, 온도로 가른다.</p>
+</blockquote>
+<p>증착 방식은 &quot;얼마나 고르게 덮는가(컨포멀성)&quot;, &quot;몇 도에서 하는가(열 예산)&quot;, &quot;막질이 어떤가&quot;의 세 축으로 고른다. 같은 SiO₂라도 STI 갭필, 스페이서, BEOL 층간막은 각각 다른 방식으로 올린다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>방식</th>
+<th>원리</th>
+<th>온도(대략)</th>
+<th>컨포멀성</th>
+<th>대표 용도</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>열산화</td>
+<td>Si 표면을 O₂·H₂O로 직접 산화</td>
+<td>800~1100°C</td>
+<td>우수 (Si 소모)</td>
+<td>게이트 계면층, 패드 산화막</td>
+</tr>
+<tr>
+<td>LPCVD</td>
+<td>저압·고온에서 기체 반응</td>
+<td>600~800°C</td>
+<td>좋음</td>
+<td>poly-Si, SiN 하드마스크, 고품질 산화막</td>
+</tr>
+<tr>
+<td>PECVD</td>
+<td>플라즈마로 반응을 도와 저온 증착</td>
+<td>200~400°C</td>
+<td>보통</td>
+<td>BEOL 층간막·식각정지막, low-k, 패시베이션</td>
+</tr>
+<tr>
+<td>HDP-CVD</td>
+<td>고밀도 플라즈마로 증착과 스퍼터를 동시에</td>
+<td>~400°C</td>
+<td>바닥 위주</td>
+<td>구세대 STI·PMD 갭필</td>
+</tr>
+<tr>
+<td>FCVD (유동성 CVD)</td>
+<td>액체처럼 흐르는 막을 채운 뒤 경화</td>
+<td>저온 + 경화</td>
+<td>갭필 특화</td>
+<td>미세 STI·핀 사이 갭필</td>
+</tr>
+<tr>
+<td>PVD (스퍼터)</td>
+<td>타깃을 이온으로 때려 원자를 날려 보냄</td>
+<td>상온~수백°C</td>
+<td>낮음 (직진성)</td>
+<td>금속 배리어·라이너·시드, Al 패드</td>
+</tr>
+<tr>
+<td>ALD</td>
+<td>자기제한 반응을 한 층씩 반복</td>
+<td>상온~400°C</td>
+<td>최고</td>
+<td>HfO₂, TiN, 스페이서, 라이너, 3D NAND ONO</td>
+</tr>
+<tr>
+<td>에피택시</td>
+<td>기판 결정을 따라 단결정 성장</td>
+<td>500~800°C</td>
+<td>결정면 의존</td>
+<td>Si/SiGe 초격자, S/D 에피</td>
+</tr>
+<tr>
+<td>전해도금 (ECP)</td>
+<td>전해액에서 Cu를 전기화학적으로 석출</td>
+<td>상온</td>
+<td>바닥부터 채움</td>
+<td>Cu 배선·TSV 매립</td>
+</tr>
+</tbody></table></div>
+<p><strong>평가 지표</strong></p>
+<ul>
+<li><strong>스텝 커버리지 / 컨포멀성</strong> — 구조의 윗면·측벽·바닥 두께 비율. 종횡비가 클수록 ALD 외에는 어렵다.</li>
+<li><strong>갭필</strong> — 좁은 틈을 빈 곳 없이 채우는가. 입구가 먼저 막히면(오버행) 속에 보이드가 생기고, 양 벽이 만나는 자리엔 심(seam)이 남는다.</li>
+<li><strong>막질</strong> — 밀도, 불순물(H, C, Cl), 습식 식각 속도(WER), 절연 파괴 전압.</li>
+<li><strong>응력</strong> — 압축·인장 응력은 웨이퍼 휨과 소자 이동도에 영향을 준다(SiN 응력 라이너는 이를 일부러 쓴다).</li>
+</ul>
+<figure class="fig"><svg viewBox="0 0 760 356" role="img" aria-label="같은 트렌치라도 증착 방식에 따라 막이 덮이는 모양이 다르다" font-size="13"><defs><marker id="cov-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker></defs><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">같은 트렌치라도 증착 방식에 따라 막이 덮이는 모양이 다르다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">트렌치 단면 개념도 — 파란 부분이 새로 올린 막, 두께 차이는 과장해서 그림</text><g><path d="M40 130H110V250H170V130H240V270H40Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M40 116H106Q124 118 122 132Q120 140 112 142L112 246Q140 242 168 246L168 142Q160 140 158 132Q156 118 174 116H240V130H170V250H110V130H40Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75" stroke="none"></path><text x="140" y="298" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">PVD (스퍼터)</text><text x="140" y="316" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">직진하는 원자 → 입구 오버행, 측벽은 얇다</text></g><g><path d="M280 130H350V250H410V130H480V270H280Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M280 120H358L354 245H406L402 120H480V130H410V250H350V130H280Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75" stroke="none"></path><text x="380" y="298" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">CVD</text><text x="380" y="316" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">표면 반응 → 비교적 고르지만 바닥 쪽이 얇다</text></g><g><path d="M520 130H590V250H650V130H720V270H520Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M520 122H598V242H642V122H720V130H650V250H590V130H520Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75" stroke="none"></path><text x="620" y="298" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">ALD</text><text x="620" y="316" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">자기제한 반응 → 어디서나 같은 두께</text></g><g stroke="var(--cds-chart-axis)" stroke-width="1.25"><line x1="100" y1="66" x2="100" y2="98" marker-end="url(#cov-arrow)"></line><line x1="140" y1="66" x2="140" y2="98" marker-end="url(#cov-arrow)"></line><line x1="180" y1="66" x2="180" y2="98" marker-end="url(#cov-arrow)"></line></g><text x="166" y="152" font-size="11.5" fill="var(--cds-text-primary)">← 오버행</text><text x="380" y="96" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">기체가 구조 속으로 확산하며 반응</text><text x="620" y="96" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">한 사이클씩 표면 전체가 포화</text><g><rect x="24" y="334" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75"></rect><text x="42" y="344" font-size="11.5" fill="var(--cds-text-secondary)">증착된 막</text><rect x="118" y="334" width="12" height="12" rx="2" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)"></rect><text x="136" y="344" font-size="11.5" fill="var(--cds-text-secondary)">기판 (패턴된 구조)</text><text x="736" y="344" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">스텝 커버리지 = 측벽·바닥 두께 ÷ 윗면 두께</text></g></svg><figcaption>그림 1. 증착 방식별 스텝 커버리지 · PVD · CVD · ALD</figcaption></figure>
+<p><strong>열산화 — 소모하며 자라는 막.</strong> 표의 첫 줄인 열산화는 증착과 성격이 다르다. 재료를 위에 얹는 대신 기판의 Si 자체를 소모해 SiO₂로 바꾼다. 부피가 늘기 때문에 산화막 두께의 약 44%만큼 Si가 소모되고, 막과 기판의 경계는 원래 표면 아래로 내려간다. 덕분에 표면의 오염과 손상이 막 아래에 묻히고 계면이 깨끗해, 게이트 계면층처럼 품질이 중요한 자리에 쓴다.</p>
+<p>성장 속도는 Deal과 Grove의 모델(1965)로 설명된다. 산화제가 이미 자란 막을 통과해 경계에 닿아야 반응이 계속되므로, 얇을 때는 표면 반응이 병목이라 두께가 시간에 비례해 자라고(선형), 두꺼워지면 확산이 병목이 되어 시간의 제곱근에 비례하게 느려진다(포물선). 건식(O₂)은 느리지만 치밀하고, 습식(H₂O)은 수 배 빠른 대신 막질이 조금 떨어져 두꺼운 필드·마스크 산화막에 쓴다.</p>
+<figure class="fig"><svg viewBox="0 0 760 336" role="img" aria-label="열산화막 두께는 처음에는 시간에 비례하고 두꺼워지면 시간의 제곱근에 비례한다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">열산화 — 처음엔 선형으로, 두꺼워지면 포물선으로</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">Deal-Grove 모델: 병목이 표면 반응에서 산화제 확산으로 바뀐다</text><path d="M120 214H700" stroke="var(--cds-chart-grid)" stroke-width="1" stroke-dasharray="4 4"></path><path d="M120 168H700" stroke="var(--cds-chart-grid)" stroke-width="1" stroke-dasharray="4 4"></path><path d="M120 122H700" stroke="var(--cds-chart-grid)" stroke-width="1" stroke-dasharray="4 4"></path><path d="M120 76V260H700" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M120 260L134.5 250.1L149 241.5L163.5 233.9L178 226.9L192.5 220.5L207 214.5L221.5 208.8L236 203.5L250.5 198.3L265 193.5L279.5 188.8L294 184.2L308.5 179.9L323 175.6L337.5 171.5L352 167.5L366.5 163.7L381 159.9L395.5 156.2L410 152.6L424.5 149.1L439 145.6L453.5 142.2L468 138.9L482.5 135.6L497 132.5L511.5 129.3L526 126.2L540.5 123.2L555 120.2L569.5 117.3L584 114.4L598.5 111.5L613 108.7L627.5 105.9L642 103.2L656.5 100.5L671 97.8L685.5 95.2L700 92.6" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></path><path d="M120 260L134.5 254.3L149 249.4L163.5 245.1L178 241.1L192.5 237.4L207 234L221.5 230.8L236 227.7L250.5 224.8L265 222L279.5 219.3L294 216.7L308.5 214.2L323 211.8L337.5 209.4L352 207.2L366.5 204.9L381 202.8L395.5 200.7L410 198.6L424.5 196.6L439 194.6L453.5 192.7L468 190.8L482.5 188.9L497 187.1L511.5 185.3L526 183.6L540.5 181.8L555 180.1L569.5 178.4L584 176.8L598.5 175.2L613 173.5L627.5 172L642 170.4L656.5 168.8L671 167.3L685.5 165.8L700 164.3" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></path><text x="108" y="84" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">SiO₂ 두께</text><text x="700" y="284" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">산화 시간</text><text x="692" y="84" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">습식 (H₂O) — 수 배 빠름</text><text x="692" y="156" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">건식 (O₂) — 느리지만 치밀</text><text x="140" y="120" font-size="11.5" fill="var(--cds-text-secondary)">초기: 표면 반응 지배</text><text x="140" y="138" font-size="11.5" fill="var(--cds-text-secondary)">(두께 ∝ 시간)</text><text x="404" y="218" font-size="11.5" fill="var(--cds-text-secondary)">두꺼워지면: 산화제 확산 지배</text><text x="404" y="236" font-size="11.5" fill="var(--cds-text-secondary)">(두께 ∝ √시간)</text><text x="24" y="324" font-size="11.5" fill="var(--cds-text-secondary)">개념 재구성: B. E. Deal &amp; A. S. Grove, J. Appl. Phys. 36, 3770 (1965), doi:10.1063/1.1713945</text></svg><figcaption>그림 2. 열산화 성장 곡선 · Deal-Grove 선형-포물선 전이</figcaption></figure>
+<p><strong>Cu 전해도금의 &quot;슈퍼필&quot;.</strong> 도금액의 첨가제(가속제·억제제·평탄제)가 트렌치 바닥에서는 성장을 빠르게, 입구에서는 느리게 만들어 보이드 없이 아래부터 차오른다. 다마신과 TSV(17·18장)가 이 원리에 기댄다.</p>
+<p><strong>참고 논문</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1063/1.1713945" target="_blank" rel="noopener">General Relationship for the Thermal Oxidation of Silicon</a> — Deal &amp; Grove, J. Appl. Phys. 36, 3770 (1965). 열산화 선형-포물선 모델의 원전</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="ald.html">ALD (원자층 증착)</a> — 한 층씩 쌓는 증착</li>
+<li><a class="wiki" href="silicon-wafer.html">실리콘 웨이퍼</a> — 막이 올라가는 기판</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 재료 &gt; 기판·웨이퍼</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

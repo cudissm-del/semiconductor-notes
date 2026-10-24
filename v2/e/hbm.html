@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HBM — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 소자·구조 › 메모리</div>
+  <h1 class="title">HBM</h1>
+  <div class="en">High Bandwidth Memory</div>
+  <div class="meta"><span class="chip cat">소자·구조 &gt; 메모리</span><span class="chip">#적층</span><span class="chip">#TSV</span><span class="chip">#본딩</span></div>
+  <article><blockquote>
+<p>DRAM 다이를 TSV로 쌓고 본딩해 대역폭을 극대화한 메모리. 구조, 세대, 본딩 방식 비교.</p>
+</blockquote>
+<p>HBM은 DRAM 다이 여러 장을 TSV로 수직으로 쌓고, 맨 아래 베이스 다이를 통해 GPU 옆 인터포저에 붙인 메모리다. I/O 수천 개를 짧은 거리로 연결해 대역폭을 크게 얻는다. 공정 경쟁의 초점은 <strong>정해진 높이 안에 더 많은 다이를 쌓는 본딩 기술</strong>이다.</p>
+<h3 id="구조와-세대">구조와 세대</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>세대</th>
+<th>인터페이스 폭</th>
+<th>핀당 속도 (대략)</th>
+<th>적층 단수</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HBM3E</td>
+<td>1,024bit</td>
+<td>8.0~9.8 Gbps</td>
+<td>8 / 12단</td>
+<td>패키지 높이 약 720µm</td>
+</tr>
+<tr>
+<td>HBM4</td>
+<td>2,048bit</td>
+<td>8~10 Gbps</td>
+<td>12 / 16단</td>
+<td>채널 16 → 32, 높이 775µm, 16단·32Gb 다이로 최대 64GB</td>
+</tr>
+<tr>
+<td>HBM4E</td>
+<td>2,048bit</td>
+<td>&gt;12 Gbps</td>
+<td>12 / 16단</td>
+<td>고객 맞춤형 베이스 다이 본격화</td>
+</tr>
+<tr>
+<td>HBM5</td>
+<td>4,096bit (전망)</td>
+<td>—</td>
+<td>20단 이상</td>
+<td>하이브리드 본딩 도입 예상</td>
+</tr>
+</tbody></table></div>
+<p><strong>베이스 다이의 변화.</strong> HBM3E까지 베이스 다이는 DRAM 공정으로 만들었지만, HBM4부터는 TSMC 12nm·5nm, 삼성 4nm 같은 <strong>로직 공정</strong>으로 만든다. 메모리 업체와 파운드리의 협업이 필수가 되었다.</p>
+<figure class="fig"><svg viewBox="0 0 760 352" role="img" aria-label="HBM은 DRAM 다이를 TSV로 쌓아 GPU 바로 옆에 붙인다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">HBM은 DRAM 다이를 TSV로 쌓아 GPU 바로 옆에 붙인다</text><text x="24" y="46" font-size="11.5" fill="var(--cds-text-secondary)">단순화한 측면 단면 — 실제 코어 다이는 12~16단</text><rect x="80" y="150" width="260" height="92" rx="4" fill="var(--cds-chart-categorical-1)" fill-opacity="0.2" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><text x="210" y="200" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">GPU (로직 다이)</text><circle cx="100" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="140" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="180" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="220" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="260" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="300" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><rect x="410" y="88" width="260" height="154" rx="4" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1" stroke-dasharray="4 3"></rect><rect x="430" y="98" width="220" height="18" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="430" y="122" width="220" height="18" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="430" y="146" width="220" height="18" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="430" y="170" width="220" height="18" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="430" y="194" width="220" height="18" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><rect x="420" y="218" width="240" height="22" fill="var(--cds-chart-categorical-2)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-2)" stroke-width="1.25"></rect><rect x="450" y="98" width="4" height="120" fill="var(--cds-chart-categorical-4)"></rect><rect x="626" y="98" width="4" height="120" fill="var(--cds-chart-categorical-4)"></rect><circle cx="452" cy="119" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="628" cy="119" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="452" cy="143" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="628" cy="143" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="452" cy="167" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="628" cy="167" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="452" cy="191" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="628" cy="191" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="452" cy="215" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="628" cy="215" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="440" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="500" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="580" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><circle cx="640" cy="246" r="3" fill="var(--cds-chart-axis)"></circle><text x="540" y="80" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">HBM 스택 (몰딩으로 봉지)</text><text x="540" y="160" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">DRAM 코어 다이</text><text x="540" y="233" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">베이스 다이 (HBM4부터 로직 공정)</text><rect x="40" y="250" width="680" height="26" rx="4" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><path d="M300 263H470" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></path><text x="56" y="267" font-size="11.5" fill="var(--cds-text-primary)">인터포저 (CoWoS)</text><text x="600" y="267" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">짧고 촘촘한 연결</text><rect x="24" y="284" width="712" height="24" rx="4" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><text x="380" y="300" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">패키지 기판</text><rect x="220" y="324" width="4" height="14" fill="var(--cds-chart-categorical-4)"></rect><text x="232" y="335" font-size="11.5" fill="var(--cds-text-secondary)">TSV (실리콘 관통 전극)</text><circle cx="420" cy="331" r="3" fill="var(--cds-chart-axis)"></circle><text x="430" y="335" font-size="11.5" fill="var(--cds-text-secondary)">마이크로범프</text></svg><figcaption>그림 1. HBM + GPU 2.5D 패키지 측면 단면</figcaption></figure>
+<h3 id="적층-공정">적층 공정</h3>
+<ol>
+<li>DRAM 웨이퍼에 TSV 형성 (via-middle — 트랜지스터 후, BEOL 전)</li>
+<li>앞면 마이크로범프 형성 → 캐리어 웨이퍼에 임시 접합</li>
+<li>뒷면 박막화 — 12단 HBM3는 8단보다 다이가 약 40% 얇아야 했고, 이때 휨(warpage)이 주요 문제가 되었다</li>
+<li>뒷면 TSV 노출 + 범프 → 캐리어 분리 → 다이싱</li>
+<li>베이스 다이 위에 코어 다이를 차례로 적층·본딩 → 언더필·몰딩 → 테스트</li>
+</ol>
+<h3 id="본딩-방식-비교">본딩 방식 비교</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>방식</th>
+<th>원리</th>
+<th>장점</th>
+<th>단점</th>
+<th>사용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TC-NCF</td>
+<td>다이 사이에 비전도성 필름을 넣고, 한 층씩 열과 압력으로 접합</td>
+<td>휨 제어 용이, 범프 사이를 빈틈 없이 채움</td>
+<td>층마다 고온·고압 → 공정 시간 길다</td>
+<td>삼성전자, Micron</td>
+</tr>
+<tr>
+<td>MR-MUF</td>
+<td>다이를 임시로 쌓은 뒤 한꺼번에 리플로우, 액상 몰딩재로 사이를 채움</td>
+<td>일괄 처리로 효율적, 방열 우수</td>
+<td>범프 피치가 좁아지면 충진·휨 관리 어려움</td>
+<td>SK hynix</td>
+</tr>
+<tr>
+<td>Advanced MR-MUF</td>
+<td>층마다 저온·저압 TC로 가접합 + 일괄 리플로우, 방열 개선 몰딩재</td>
+<td>12단 이상에서 높이·방열 확보, 방열 약 1.6배 개선</td>
+<td>—</td>
+<td>SK hynix (12·16단)</td>
+</tr>
+<tr>
+<td>하이브리드 본딩</td>
+<td>범프 없이 Cu–Cu, 유전체–유전체를 직접 접합</td>
+<td>가장 얇음, 미세 피치, 방열</td>
+<td>CMP 평탄도·입자 관리·플라즈마 활성화 등 팹급 공정 필요</td>
+<td>20단 이상, HBM5 전망</td>
+</tr>
+</tbody></table></div>
+<p><strong>왜 하이브리드 본딩이 늦어지나.</strong> JEDEC이 HBM4 패키지 높이를 775µm로 완화하면서, 기존 범프 방식으로도 16단 적층이 가능해졌다. 그래서 각 업체는 기존 방식을 최대한 끌어올리고, 하이브리드 본딩은 HBM4E 이후를 겨냥해 수율을 확보하는 중이다. 범프 방식에서는 무플럭스 본딩도 대안으로 떠오르고 있다.</p>
+<h3 id="현황-2026년-10월-기준">현황 (2026년 10월 기준)</h3>
+<ul>
+<li><strong>삼성전자</strong> — 2026년 2월 HBM4 양산과 출하를 시작했다. 하이브리드 본딩 라인을 준비하며, 16단 HBM4E를 하이브리드 본딩으로 2028년까지 내놓는 방향으로 보도되었다.</li>
+<li><strong>SK hynix</strong> — 2026년 8월 Hot Chips에서 HBM4 12단은 양산 중, 16단은 고객 인증 단계라고 밝혔다. HBM4·HBM4E까지는 마이크로범프 기반 MR-MUF를 유지하고, 직접 본딩은 HBM5와 20단 이상 적층에 쓰는 로드맵을 제시했다.</li>
+<li><strong>수요 측</strong> — NVIDIA가 2026년 하반기 16단 공급을 요청하면서 세 업체 모두 16단 개발을 앞당기고 있다.</li>
+</ul>
+<p><strong>영상으로 보기</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=3qK3Cvu6qbI" target="_blank" rel="noopener">HBM Packaging Explained — AMS Tech</a> — HBM이 인터포저와 마이크로범프를 거쳐 GPU와 연결되는 구조 해설 (영어)</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="dram.html">DRAM</a> — HBM의 재료</li>
+<li><a class="wiki" href="advanced-packaging.html">첨단 패키징</a> — HBM이 올라가는 무대</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

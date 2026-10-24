@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BEOL — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 공정 › 집적 흐름</div>
+  <h1 class="title">BEOL</h1>
+  <div class="en">Back-End-Of-Line</div>
+  <div class="meta"><span class="chip cat">공정 &gt; 집적 흐름</span><span class="chip">#배선</span><span class="chip">#다마신</span></div>
+  <article><blockquote>
+<p>트랜지스터 위에 다층 금속 배선을 쌓는 후반부 흐름 (Back-End-Of-Line)과 다마신 공정.</p>
+</blockquote>
+<p>BEOL은 수십억 개 트랜지스터를 회로로 엮는 금속 배선망이며, 최신 로직 칩은 10~15층 이상의 금속층을 쌓는다. 금속이 들어간 뒤라 공정 온도는 약 400°C 이하로 제한된다.</p>
+<p><strong>계층 구조 — 아래는 촘촘하고 위로 갈수록 굵어진다</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>층</th>
+<th>역할</th>
+<th>피치/두께</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>하부 (M0~M2 부근, Local)</td>
+<td>셀 내부·인접 셀 연결</td>
+<td>가장 촘촘 (수십 nm 이하)</td>
+<td>EUV 패터닝, 저항 문제 가장 심각</td>
+</tr>
+<tr>
+<td>중간 (Intermediate)</td>
+<td>블록 간 신호 연결</td>
+<td>중간</td>
+<td>배선 대부분이 여기</td>
+</tr>
+<tr>
+<td>상부 (Global)</td>
+<td>전원망, 클럭, 장거리 신호</td>
+<td>굵고 두꺼움 (µm급)</td>
+<td>저항 최소화 우선</td>
+</tr>
+<tr>
+<td>최상부</td>
+<td>본딩 패드, 패시베이션</td>
+<td>—</td>
+<td>Al 패드, SiN/폴리이미드 보호막</td>
+</tr>
+</tbody></table></div>
+<p>금속층은 <strong>Mx</strong>(가로 배선), 층과 층 사이 수직 연결은 <strong>Vx</strong>(비아)로 부른다.</p>
+<p><strong>Cu 듀얼 다마신 (Dual Damascene) 공정</strong></p>
+<p>Cu는 휘발성 할로겐 화합물을 만들지 않아 플라즈마로 직접 식각하기 어렵다. 그래서 Al 시대의 &quot;금속 증착 → 금속 식각&quot;(subtractive) 대신, <strong>절연막에 홈을 파고 Cu를 채운 뒤 깎아내는</strong> 다마신 방식을 쓴다.</p>
+<ol>
+<li>식각 정지막(SiCN) + low-k 절연막 증착</li>
+<li>비아 + 트렌치를 플라즈마로 식각 (via-first 또는 trench-first)</li>
+<li>배리어(TaN) / 라이너(Ta, Co) PVD — Cu 확산 방지</li>
+<li>Cu 시드 PVD → Cu 전해도금(ECP)으로 매립</li>
+<li>CMP로 여분 Cu 제거</li>
+<li>캡층(SiCN, 선택적 Co 캡) — 전자이동(EM) 억제</li>
+</ol>
+<figure class="fig"><svg viewBox="0 0 760 324" role="img" aria-label="듀얼 다마신은 비아와 트렌치를 한 번에 파서 Cu로 한 번에 채운다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">듀얼 다마신 — 두 번 파고, 한 번에 채운다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">Cu는 식각이 어려워 '먼저 파고 나중에 채우는' 방식으로 만든다</text><rect x="170" y="96" width="420" height="172" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="170" y="196" width="420" height="8" fill="var(--cds-chart-categorical-2)" fill-opacity="0.5" stroke="none"></rect><g><rect x="300" y="228" width="160" height="32" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="304" y="232" width="152" height="24" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1"></rect></g><g><rect x="352" y="146" width="56" height="86" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="356" y="150" width="48" height="78" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1"></rect></g><g><rect x="306" y="110" width="148" height="40" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="310" y="114" width="140" height="32" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1"></rect></g><rect x="170" y="100" width="420" height="8" fill="var(--cds-chart-categorical-2)" fill-opacity="0.5" stroke="none"></rect><text x="380" y="86" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Cu 트렌치 (상부 배선 본체)</text><text x="158" y="112" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">캡층 (SiCN)</text><text x="158" y="168" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">low-k 절연막</text><text x="158" y="204" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">식각정지막 (SiCN)</text><path d="M412 184H420" stroke="var(--cds-chart-axis)" stroke-width="1"></path><path d="M412 210H420" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="424" y="188" font-weight="600" fill="var(--cds-text-primary)">Cu 비아</text><text x="424" y="214" font-weight="600" fill="var(--cds-text-primary)">배리어·라이너 (TaN/Ta)</text><text x="380" y="284" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">하부 Cu 배선 (M1)</text><rect x="196" y="296" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)"></rect><text x="216" y="306" font-size="11.5" fill="var(--cds-text-secondary)">Cu</text><rect x="270" y="296" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)"></rect><text x="290" y="306" font-size="11.5" fill="var(--cds-text-secondary)">배리어 (TaN/Ta)</text><rect x="430" y="296" width="14" height="12" rx="2" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)"></rect><text x="450" y="306" font-size="11.5" fill="var(--cds-text-secondary)">low-k 절연막</text></svg><figcaption>그림 1. Cu 듀얼 다마신 단면 · 비아와 트렌치의 일괄 매립</figcaption></figure>
+<p><strong>RC 지연과 소재 경쟁</strong></p>
+<p>배선 지연은 저항(R) × 커패시턴스(C)에 비례하므로 두 값을 모두 낮춰야 한다.</p>
+<ul>
+<li><strong>C를 낮추는 쪽 — Low-k 절연막.</strong> SiO₂(k≈4) → SiOF → SiOC(H)(k≈2.7~3.0) → 다공성 SiOC(k&lt;2.5) → 에어갭. k가 낮을수록 기계적 강도가 약하고, 플라즈마 식각·애싱 시 탄소가 빠져나가 k가 다시 올라가는 <strong>플라즈마 손상</strong>이 문제다.</li>
+<li><strong>R을 낮추는 쪽 — 금속.</strong> 선폭이 Cu 전자 평균자유행로(~40nm)보다 작아지면 표면·결정립계 산란으로 비저항이 급증하고, 얇아질 수 없는 배리어가 단면적을 잡아먹는다. 그래서 하부층에는 배리어가 거의 필요 없는 <strong>Ru, Mo</strong> 와 이를 직접 식각하는 반다마신(semi-damascene) 방식이 연구·도입되고 있다.</li>
+</ul>
+<p><strong>후면 전력 공급 (BSPDN, Backside Power Delivery).</strong> 전원 배선을 웨이퍼 뒷면으로 옮겨 앞면 BEOL은 신호 전용으로 쓰는 구조다. 신호 배선 혼잡과 전압 강하(IR drop)를 동시에 줄이며, 2nm급 이하 로직에서 도입이 진행 중이다(Intel PowerVia, TSMC Super Power Rail 등). 자세한 내용은 13-2장에서 다룬다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="cmp.html">CMP</a> — 다마신의 짝 공정</li>
+<li><a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a> — BEOL 절연막의 약점</li>
+<li><a class="wiki" href="metals.html">금속·도체</a> — 배선 재료들</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

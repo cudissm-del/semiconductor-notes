@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>패키징과 테스트 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 소자·구조 › 패키징·연결</div>
+  <h1 class="title">패키징과 테스트</h1>
+  <div class="en">Packaging & Test</div>
+  <div class="meta"><span class="chip cat">소자·구조 &gt; 패키징·연결</span><span class="chip">#후공정</span><span class="chip">#테스트</span></div>
+  <article><blockquote>
+<p>완성된 웨이퍼를 검사하고, 자르고, 연결하고, 보호해 칩으로 만드는 후공정.</p>
+</blockquote>
+<p>후공정은 완성된 웨이퍼를 검사하고 개별 칩으로 잘라, 외부와 전기적으로 연결되고 물리적으로 보호되는 패키지로 만드는 단계다. 칩을 보호하고, 신호·전원을 기판(PCB)과 이어주고, 열을 빼내는 세 가지 역할을 한다.</p>
+<p><strong>전통적 패키징 흐름 (와이어 본딩 기준)</strong></p>
+<ol>
+<li><strong>EDS (Electrical Die Sorting) / 웨이퍼 테스트</strong> — 프로브 카드를 패드에 대고 다이별 전기 특성을 측정해 불량을 표시한다. 메모리는 이 단계에서 예비 셀로 불량 셀을 대체하는 리페어를 한다. 수율이 처음 확정되는 지점이다.</li>
+<li><strong>백그라인딩 (Back Grinding)</strong> — 300mm 웨이퍼(약 775µm)를 패키지 두께에 맞게 뒷면부터 얇게 간다.</li>
+<li><strong>다이싱 (Dicing / Sawing)</strong> — 블레이드, 레이저, 스텔스 다이싱, 플라즈마 다이싱으로 칩을 개별 다이로 분리한다.</li>
+<li><strong>다이 어태치 (Die Attach)</strong> — 다이를 리드프레임이나 기판에 접착제/DAF로 붙인다.</li>
+<li><strong>인터커넥션</strong> — 칩 패드와 기판을 연결. <strong>와이어 본딩</strong>(Au·Cu 와이어) 또는 <strong>플립칩</strong>(범프로 뒤집어 붙임).</li>
+<li><strong>몰딩 (Molding)</strong> — EMC(에폭시 몰딩 컴파운드)로 감싸 외부 충격·습기로부터 보호한다.</li>
+<li><strong>마킹 · 솔더볼 부착 · 싱귤레이션</strong> — 제품 정보 각인, BGA 솔더볼 형성, 개별 패키지로 분리.</li>
+<li><strong>최종 테스트 (Final Test)</strong> — 패키지 상태로 기능·속도 등급 검사, 번인(고온·고전압 가속 스트레스)으로 초기 불량 선별.</li>
+</ol>
+<figure class="fig"><svg viewBox="0 0 760 330" role="img" aria-label="와이어 본딩은 칩 가장자리로, 플립칩은 칩 면 전체로 연결한다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">와이어 본딩은 칩 가장자리로, 플립칩은 칩 면 전체로 연결한다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">BGA 패키지 단면 개념도 — 크기 비율은 실제와 다름</text><g><rect x="60" y="112" width="280" height="108" rx="4" fill="var(--cds-chart-categorical-5)" fill-opacity="0.08" stroke="var(--cds-chart-axis)" stroke-dasharray="5 3"></rect><rect x="130" y="182" width="140" height="32" fill="var(--cds-chart-categorical-1)" fill-opacity="0.3" stroke="var(--cds-chart-axis)"></rect><rect x="130" y="214" width="140" height="6" fill="var(--cds-chart-categorical-3)" fill-opacity="0.6"></rect><rect x="134" y="178" width="10" height="4" fill="var(--cds-chart-categorical-2)"></rect><rect x="256" y="178" width="10" height="4" fill="var(--cds-chart-categorical-2)"></rect><path d="M139 178Q128 128 86 220M261 178Q272 128 314 220" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></path><rect x="50" y="220" width="300" height="20" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><circle cx="65" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="95" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="125" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="155" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="185" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="215" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="245" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="275" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="305" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="335" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle></g><text x="200" y="202" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">다이 (회로면 위)</text><text x="200" y="150" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">Au · Cu 와이어</text><text x="70" y="128" font-size="11.5" fill="var(--cds-text-secondary)">EMC 몰딩</text><g><rect x="480" y="156" width="160" height="34" fill="var(--cds-chart-categorical-1)" fill-opacity="0.3" stroke="var(--cds-chart-axis)"></rect><rect x="474" y="190" width="172" height="30" fill="var(--cds-chart-categorical-3)" fill-opacity="0.22"></rect><circle cx="492" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="509" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="526" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="543" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="560" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="577" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="594" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="611" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><circle cx="628" cy="202" r="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85"></circle><rect x="410" y="220" width="300" height="20" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><circle cx="425" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="455" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="485" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="515" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="545" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="575" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="605" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="635" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="665" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle><circle cx="695" cy="250" r="7" fill="var(--cds-chart-axis)" fill-opacity="0.55"></circle></g><text x="560" y="177" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">다이 (회로면 아래)</text><text x="652" y="202" font-size="11.5" fill="var(--cds-text-primary)">범프</text><text x="560" y="140" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">범프 사이는 언더필(초록)로 채워 응력 완화</text><text x="200" y="274" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">패키지 기판 + BGA 솔더볼</text><text x="560" y="274" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">패키지 기판 + BGA 솔더볼</text><text x="200" y="300" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">와이어 본딩</text><text x="200" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">가장자리 패드만 연결 → I/O 수 제한, 경로 김</text><text x="560" y="300" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">플립칩</text><text x="560" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">칩 면 전체를 범프로 연결 → I/O 많고 경로 짧음</text></svg><figcaption>그림 1. 와이어 본딩과 플립칩 · 패키지 단면</figcaption></figure>
+<figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chip_bond_wire.jpg?width=1400" alt="와이어 본딩된 CMOS 칩" loading="lazy" decoding="async"><figcaption>그림 2. 와이어 본딩된 CMOS 칩<span class="credit">Weirdmeister, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Chip_bond_wire.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+<p><strong>누가 하나.</strong> 삼성전자·SK하이닉스 같은 IDM은 자체 후공정 라인을 갖고, 많은 팹리스·파운드리 칩은 ASE, Amkor, JCET 같은 <strong>OSAT</strong>(외주 패키징·테스트 업체)가 맡는다.</p>
+<p><strong>중간 공정(Mid-end)의 등장.</strong> 범핑, RDL(재배선층), TSV처럼 팹 장비(노광·식각·도금·CMP)를 쓰는 패키징 공정이 늘면서, 전공정과 후공정 사이의 경계가 점점 흐려지고 있다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="advanced-packaging.html">첨단 패키징</a> — 패키징이 성능을 정하는 시대</li>
+<li><a class="wiki" href="process-flow.html">반도체 제조 전체 흐름</a> — 패키징의 위치</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

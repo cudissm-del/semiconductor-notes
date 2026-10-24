@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAM — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 소자·구조 › 메모리</div>
+  <h1 class="title">DRAM</h1>
+  <div class="en">DRAM</div>
+  <div class="meta"><span class="chip cat">소자·구조 &gt; 메모리</span><span class="chip">#셀</span><span class="chip">#커패시터</span></div>
+  <article><blockquote>
+<p>커패시터의 전하로 비트를 저장하는 휘발성 메모리. 셀 구조와 미세화 세대, 다음 구조들.</p>
+</blockquote>
+<p>DRAM은 트랜지스터 1개와 커패시터 1개(1T1C)로 1비트를 저장하는 메모리다. 커패시터의 전하가 조금씩 새므로 주기적으로 다시 써 주는 리프레시가 필요하다. 미세화의 병목은 &quot;좁은 면적에서 충분한 전하를 담는 커패시터&quot;와 &quot;누설이 적은 셀 트랜지스터&quot;다.</p>
+<h3 id="셀-구조">셀 구조</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구성 요소</th>
+<th>구조 / 물질</th>
+<th>역할과 난제</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>셀 트랜지스터 (BCAT)</td>
+<td>Si 트렌치에 게이트(워드라인)를 묻은 매립 채널 구조</td>
+<td>유효 채널을 길게 해 누설 감소</td>
+</tr>
+<tr>
+<td>비트라인</td>
+<td>셀 위를 가로지르는 배선</td>
+<td>좁은 피치, 기생 용량</td>
+</tr>
+<tr>
+<td>스토리지 노드 컨택</td>
+<td>셀 트랜지스터 ↔ 커패시터 연결</td>
+<td>비트라인 사이 좁은 틈에 정렬</td>
+</tr>
+<tr>
+<td>커패시터</td>
+<td>실린더·필라형, ZrO₂/Al₂O₃/ZrO₂ 유전체 + TiN 전극</td>
+<td>초고종횡비 식각, 쓰러짐 방지용 SiN 지지대</td>
+</tr>
+<tr>
+<td>주변회로 (peri)</td>
+<td>별도 CMOS 로직</td>
+<td>고속 DRAM은 HKMG 도입</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 760 404" role="img" aria-label="DRAM 셀 하나는 트랜지스터 1개와 커패시터 1개로 이뤄진다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">DRAM 셀 하나 = 트랜지스터 1개 + 커패시터 1개 (1T1C)</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">왼쪽: 회로 · 오른쪽: 활성 영역을 따라 자른 단면 개념도 — 실제 커패시터는 훨씬 가늘고 높다</text><g stroke="var(--cds-text-primary)" stroke-width="1.5" fill="none"><line x1="70" y1="96" x2="70" y2="320"></line><line x1="40" y1="146" x2="230" y2="146"></line><path d="M70 214H104V207M136 207V214H180V244"></path><line x1="100" y1="206" x2="140" y2="206" stroke-width="3"></line><line x1="100" y1="196" x2="140" y2="196"></line><line x1="120" y1="146" x2="120" y2="196"></line><line x1="158" y1="244" x2="202" y2="244" stroke-width="3"></line><line x1="158" y1="256" x2="202" y2="256" stroke-width="3"></line><path d="M180 256V284M164 284H196M170 291H190M176 298H184"></path></g><text x="70" y="88" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">비트라인 (BL)</text><text x="232" y="138" text-anchor="end" font-size="11.5" fill="var(--cds-text-primary)">워드라인 (WL)</text><text x="120" y="232" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">셀 트랜지스터</text><text x="208" y="254" font-size="11.5" fill="var(--cds-text-secondary)">커패시터</text><text x="136" y="330" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">전하 있음 = 1, 없음 = 0</text><text x="136" y="346" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">전하가 새므로 주기적 리프레시</text><g><rect x="300" y="122" width="430" height="8" fill="var(--cds-chart-axis)" fill-opacity="0.35"></rect><rect x="300" y="176" width="430" height="8" fill="var(--cds-chart-axis)" fill-opacity="0.35"></rect><g opacity="1"><rect x="345" y="80" width="34" height="150" rx="4" fill="var(--cds-chart-categorical-5)" fill-opacity="0.18" stroke="var(--cds-chart-categorical-4)" stroke-width="3" stroke-dasharray="none"></rect><rect x="355" y="90" width="14" height="130" rx="3" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="2"></rect></g><g opacity="0.45"><rect x="433" y="80" width="34" height="150" rx="4" fill="var(--cds-chart-categorical-5)" fill-opacity="0.18" stroke="var(--cds-chart-categorical-4)" stroke-width="3" stroke-dasharray="5 3"></rect><rect x="443" y="90" width="14" height="130" rx="3" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="2"></rect></g><g opacity="0.45"><rect x="573" y="80" width="34" height="150" rx="4" fill="var(--cds-chart-categorical-5)" fill-opacity="0.18" stroke="var(--cds-chart-categorical-4)" stroke-width="3" stroke-dasharray="5 3"></rect><rect x="583" y="90" width="14" height="130" rx="3" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="2"></rect></g><g opacity="1"><rect x="666" y="80" width="34" height="150" rx="4" fill="var(--cds-chart-categorical-5)" fill-opacity="0.18" stroke="var(--cds-chart-categorical-4)" stroke-width="3" stroke-dasharray="none"></rect><rect x="676" y="90" width="14" height="130" rx="3" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="2"></rect></g><rect x="300" y="280" width="430" height="80" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><g><rect x="430" y="280" width="30" height="60" fill="var(--cds-chart-axis)" fill-opacity="0.35"></rect><rect x="430" y="314" width="30" height="26" fill="var(--cds-chart-categorical-2)" fill-opacity="0.8"></rect></g><g><rect x="570" y="280" width="30" height="60" fill="var(--cds-chart-axis)" fill-opacity="0.35"></rect><rect x="570" y="314" width="30" height="26" fill="var(--cds-chart-categorical-2)" fill-opacity="0.8"></rect></g><rect x="349" y="230" width="26" height="50" fill="var(--cds-chart-categorical-3)" fill-opacity="0.6"></rect><rect x="670" y="230" width="26" height="50" fill="var(--cds-chart-categorical-3)" fill-opacity="0.6"></rect><rect x="503" y="240" width="24" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.6"></rect><rect x="488" y="218" width="54" height="22" rx="3" fill="var(--cds-chart-categorical-1)" fill-opacity="0.85"></rect></g><text x="520" y="70" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">실린더형 커패시터 (TiN / ZrO₂계 유전체 / TiN)</text><text x="520" y="118" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">SiN 지지대</text><text x="520" y="160" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">점선 = 이웃 셀</text><text x="515" y="210" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">비트라인</text><text x="722" y="354" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">Si 활성 영역</text><g font-size="11.5"><g><rect x="290" y="374" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-4)" fill-opacity="0.8"></rect><text x="308" y="384" fill="var(--cds-text-secondary)">커패시터 전극</text></g><g><rect x="386" y="374" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-3)" fill-opacity="0.8"></rect><text x="404" y="384" fill="var(--cds-text-secondary)">스토리지 노드 컨택</text></g><g><rect x="510" y="374" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-1)" fill-opacity="0.8"></rect><text x="528" y="384" fill="var(--cds-text-secondary)">비트라인 · 컨택</text></g><g><rect x="616" y="374" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-2)" fill-opacity="0.8"></rect><text x="634" y="384" fill="var(--cds-text-secondary)">매립 워드라인 (BCAT)</text></g></g></svg><figcaption>그림 1. DRAM 1T1C 셀 · 회로와 단면</figcaption></figure>
+<p><strong>커패시터가 핵심이다.</strong> 면적은 줄어도 필요한 전하량은 크게 줄지 않으므로, 커패시터를 위로 높이 세우고(종횡비 수십 : 1) 유전율이 높은 막을 쓴다. 이 HARC 식각과 높은 기둥이 쓰러지지 않게 잡아주는 지지 구조가 DRAM 공정의 대표 난제다.</p>
+<h3 id="미세화-세대">미세화 세대</h3>
+<ul>
+<li>10nm대 세대는 1x → 1y → 1z → 1a → 1b → 1c → 1d 순으로 부른다. 1a급부터 일부 핵심 층에 EUV가 들어갔다.</li>
+<li>1d 다음 세대는 <strong>10a</strong>로, 첫 10nm 미만 노드다. 실제 선폭은 9.5~9.7nm 수준으로 추정된다.</li>
+<li>현재 셀은 <strong>6F²</strong> 구조다(F = 최소 선폭, 셀 하나가 2F × 3F 면적).</li>
+</ul>
+<figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/MT4C1024-HD.jpg?width=1400" alt="1Mbit DRAM 칩(Micron MT4C1024)의 다이 사진" loading="lazy" decoding="async"><figcaption>그림 2. 1Mbit DRAM 칩(Micron MT4C1024)의 다이 사진<span class="credit">ZeptoBars, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a> · <a href="https://commons.wikimedia.org/wiki/File:MT4C1024-HD.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+<h3 id="다음-구조-4F²-VCT와-3D-DRAM">다음 구조 — 4F² VCT와 3D DRAM</h3>
+<ul>
+<li><strong>4F² (2F × 2F)</strong> — 셀 트랜지스터를 수직으로 세우고(VCT, SK hynix는 VG라고 부름) 커패시터를 그 바로 위에 올려 셀 면적을 약 2/3로 줄인다. 주변회로는 별도 웨이퍼에 만들어 셀 아래에 붙이는 <strong>웨이퍼 본딩</strong>이 함께 쓰인다.</li>
+<li><strong>채널 물질 전환</strong> — 삼성은 10a 4F² VCT에서 채널을 Si 대신 IGZO(인듐갈륨아연산화물)로 바꿔 누설을 줄였다고 알려졌다.</li>
+<li><strong>3D DRAM</strong> — 셀을 NAND처럼 층층이 쌓는 구조. 트랜지스터와 커패시터를 눕혀 여러 층으로 쌓으며, Si/SiGe 다층 에피와 희생층 제거 등 GAA와 같은 기법이 연구된다.</li>
+</ul>
+<figure class="fig"><svg viewBox="0 0 760 300" role="img" aria-label="4F² 셀은 6F² 셀보다 면적이 약 3분의 2" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">셀 하나가 차지하는 면적 — 6F²에서 4F²로</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">위에서 본 개념도. 점선 한 칸 = F × F (F: 최소 선폭)</text><g stroke="var(--cds-chart-grid)" stroke-dasharray="3 3"><line x1="120" y1="76" x2="120" y2="206"></line><line x1="146" y1="76" x2="146" y2="206"></line><line x1="172" y1="76" x2="172" y2="206"></line><line x1="198" y1="76" x2="198" y2="206"></line><line x1="224" y1="76" x2="224" y2="206"></line><line x1="250" y1="76" x2="250" y2="206"></line><line x1="276" y1="76" x2="276" y2="206"></line><line x1="120" y1="76" x2="276" y2="76"></line><line x1="120" y1="102" x2="276" y2="102"></line><line x1="120" y1="128" x2="276" y2="128"></line><line x1="120" y1="154" x2="276" y2="154"></line><line x1="120" y1="180" x2="276" y2="180"></line><line x1="120" y1="206" x2="276" y2="206"></line></g><rect x="172" y="102" width="52" height="78" fill="var(--cds-chart-categorical-1)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></rect><text x="198" y="196" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">2F</text><text x="232" y="145" font-size="11.5" fill="var(--cds-text-primary)">3F</text><g stroke="var(--cds-chart-grid)" stroke-dasharray="3 3"><line x1="470" y1="76" x2="470" y2="206"></line><line x1="496" y1="76" x2="496" y2="206"></line><line x1="522" y1="76" x2="522" y2="206"></line><line x1="548" y1="76" x2="548" y2="206"></line><line x1="574" y1="76" x2="574" y2="206"></line><line x1="600" y1="76" x2="600" y2="206"></line><line x1="626" y1="76" x2="626" y2="206"></line><line x1="470" y1="76" x2="626" y2="76"></line><line x1="470" y1="102" x2="626" y2="102"></line><line x1="470" y1="128" x2="626" y2="128"></line><line x1="470" y1="154" x2="626" y2="154"></line><line x1="470" y1="180" x2="626" y2="180"></line><line x1="470" y1="206" x2="626" y2="206"></line></g><g stroke="var(--cds-chart-axis)" stroke-width="1.5"><line x1="496" y1="76" x2="496" y2="206"></line><line x1="548" y1="76" x2="548" y2="206"></line><line x1="600" y1="76" x2="600" y2="206"></line><line x1="470" y1="115" x2="626" y2="115" stroke-dasharray="6 3"></line><line x1="470" y1="167" x2="626" y2="167" stroke-dasharray="6 3"></line></g><rect x="522" y="89" width="52" height="52" fill="var(--cds-chart-categorical-1)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></rect><circle cx="496" cy="115" r="5" fill="var(--cds-chart-categorical-2)"></circle><circle cx="496" cy="167" r="5" fill="var(--cds-chart-categorical-2)"></circle><circle cx="548" cy="115" r="5" fill="var(--cds-chart-categorical-2)"></circle><circle cx="548" cy="167" r="5" fill="var(--cds-chart-categorical-2)"></circle><circle cx="600" cy="115" r="5" fill="var(--cds-chart-categorical-2)"></circle><circle cx="600" cy="167" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="548" y="222" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">2F</text><text x="634" y="119" font-size="11.5" fill="var(--cds-text-primary)">2F</text><text x="198" y="246" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">6F² — 현재 주력</text><text x="198" y="264" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">셀 = 2F × 3F, 매립 게이트(BCAT)</text><text x="548" y="246" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">4F² — 차세대 (VCT)</text><text x="548" y="264" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">셀 = 2F × 2F, 면적 약 2/3</text><g font-size="11.5"><line x1="24" y1="288" x2="44" y2="288" stroke="var(--cds-chart-axis)" stroke-width="1.5"></line><text x="50" y="292" fill="var(--cds-text-secondary)">비트라인</text><line x1="112" y1="288" x2="132" y2="288" stroke="var(--cds-chart-axis)" stroke-width="1.5" stroke-dasharray="6 3"></line><text x="138" y="292" fill="var(--cds-text-secondary)">워드라인</text><circle cx="206" cy="288" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="216" y="292" fill="var(--cds-text-secondary)">교차점마다 수직 채널 트랜지스터 하나, 그 위에 커패시터</text></g></svg><figcaption>그림 3. 6F²와 4F² 셀 면적 · 위에서 본 개념도</figcaption></figure>
+<p><strong>현황 (2026년 10월 기준)</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>업체</th>
+<th>계획</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>삼성전자</td>
+<td>10a에 4F²·VCT 첫 적용, 2026년 개발 완료 → 2027년 품질 검증 → 2028년 양산 이관 목표. 10a~10c까지 4F², 10d부터 3D DRAM 전환 계획</td>
+</tr>
+<tr>
+<td>SK hynix</td>
+<td>4F² VG를 10b 노드부터 적용할 계획으로 알려짐. 장기 로드맵의 주축은 3D DRAM</td>
+</tr>
+<tr>
+<td>CXMT (중국)</td>
+<td>2026년 말 4F² 기반 서버 DRAM 출시 계획 발표</td>
+</tr>
+</tbody></table></div>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="nand-3d.html">3D NAND</a> — 또 다른 메모리 축</li>
+<li><a class="wiki" href="hbm.html">HBM</a> — DRAM을 쌓은 형태</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

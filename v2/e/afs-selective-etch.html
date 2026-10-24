@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFS 선택 식각 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 공정 › 식각</div>
+  <h1 class="title">AFS 선택 식각</h1>
+  <div class="en">AFS Selective Etching</div>
+  <div class="meta"><span class="chip cat">공정 &gt; 식각</span><span class="chip">#AFS</span><span class="chip">#선택비</span><span class="chip">#SiOCN</span></div>
+  <article><blockquote>
+<p>표면을 AFS 염으로 바꿨다가 열로 날리는 방식으로 특정 물질만 골라 깎는 선택 식각. 물질별 선택비와 문헌 데이터.</p>
+</blockquote>
+<h3 id="왜-SiOCN을-골라-깎아야-하나">왜 SiOCN을 골라 깎아야 하나</h3>
+<p>GAA 나노시트에서 내부 스페이서는 게이트와 S/D 에피 사이에 매립되는 절연막이다. 이 막의 유전율이 곧 기생 용량이라, SiN(k≈7)보다 낮은 SiOCN(k≈4~5)·SiCO가 후보로 올라와 있다. Gu 등(2020)은 FinFET 게이트 스페이서에 SiOCN(k = 4.5)을 통합해 겹침 용량을 P/NFET 각각 12%/11% 줄였다.</p>
+<p>그런데 low-k 스페이서를 쓰려면 막을 원하는 모양으로 깎는 공정 — 오목부를 파고(리세스), 바깥을 걷어내고(에치백), 필요하면 옆으로 다듬는(트림) — 이 Si·SiGe·SiO₂·Si₃N₄를 건드리지 않고 그 막에 대해서만 일어나야 한다. 내부 스페이서용 low-k는 아직 소자 실증이 없고(2026년 10월 기준, 이 편의 문헌 범위), 그 이유 중 하나가 이 형상 제어 식각의 어려움이다. 선택 식각 화학, 그중에서도 이 편이 다루는 AFS 염 화학이 이 자리의 후보로 연구된다.</p>
+<h3 id="선택비는-어디서-갈리나">선택비는 어디서 갈리나</h3>
+<p>같은 화학을 써도 어느 물질이 깎이는지는 조건에 따라 뒤집힌다. 문헌의 사례를 나란히 놓으면 선택비를 가르는 변수가 보인다.</p>
+<p><strong>SiN이 깎이고 SiO₂가 남는 경우.</strong> Shinoda 등(2016)은 하이드로플루오로카본 라디칼 노출 + 100~120°C 어닐 사이클로 Si₃N₄를 사이클당 2.6 nm씩 깎으면서, SiO₂ 식각량은 검출한계 아래에 머물렀다. 해석의 핵심은 질소다. AFS는 (NH₄)⁺를 품은 염이라 형성에 질소 공급이 필요한데, 이 화학계에서는 SiO₂ 표면에서 그 경로가 성립하지 않는다는 것이다. Possémé 등(2016)은 NH₃/NF₃ 리모트 플라즈마로 SiN 박층을 선택 제거하는 공정을 XPS·IR로 해부해, 표면 개질과 제거를 나눈 2단계 구조를 보였다.</p>
+<p><strong>SiO₂가 깎이는 경우.</strong> Cho 등(2020)은 CF₄/NH₃ 플라즈마로 SiO₂ 위에 AFS를 화학양론대로(F/Si = 6, N/Si = 2) 형성해 사이클당 2.7 nm를 깎았다. 같은 비교에서 NF₃/NH₃는 9.1 nm/cycle로 약 3배 빨랐다 — C–F 결합이 강해 F 공급이 적은 CF₄ 쪽이 느린 대신 얇게 제어하기 좋다. 플라즈마 쪽에서 NH₃로 질소를 대면 SiO₂도 염 경로에 올라탄다. 선택의 방향은 어느 쪽이 질소를 대는가와 F 공급량의 균형으로 정해진다.</p>
+<p><strong>초고선택의 설계.</strong> Volynets 등(2020)은 NF₃/N₂/O₂/H₂ 리모트 플라즈마에서 Si₃N₄/SiO₂ 선택비 약 380을 보고했고, 선택비는 H₂ 유량에 대해 뾰족한 최대값을 가졌다. Barsukov 등(2017)은 NF₃/O₂ 계에서 자연히 생기는 NO가 F의 표면 이동을 도와 SiN 식각을 가속한다는 메커니즘을 제시했다.</p>
+<p><strong>SiCN·SiOCN의 경우.</strong> Matsui 등(2021)은 NF₃/Ar 플라즈마에서 SiCN이 비교 물질들보다 빠르게 깎이며, 선택비는 깎지 않을 쪽에 보호층을 입히는 설계(산화층, Si 증착층, TiNₓFᵧ + ammonium fluoride층)로 만든다는 것을 보였다. Pranda 등(2023)은 SiCN·SiOCN·SiBCN의 식각률이 물질 자체의 질소 함량에 비례함을 보였고, Goya 등(2026)은 NF₃ 플라즈마에 H₂를 넣으면 적을 때는 F 증가와 산소 결핍층으로 SiOCN 식각이 빨라지다가, 많아지면(≥40 sccm) NHx 보호층이 생겨 느려지는 세 구간을 XPS로 구분했다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>화학계</th>
+<th>주로 깎이는 쪽</th>
+<th>선택 거동 (보고값)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HFC 라디칼 + 어닐 (열 사이클)</td>
+<td>Si₃N₄</td>
+<td>EPC 2.6 nm/cycle, SiO₂는 검출한계 아래</td>
+<td>Shinoda 2016</td>
+</tr>
+<tr>
+<td>NH₃/NF₃ 리모트</td>
+<td>Si₃N₄ 박층</td>
+<td>개질 + 제거 2단계, 패턴 구조에서 평가</td>
+<td>Possémé 2016</td>
+</tr>
+<tr>
+<td>CF₄/NH₃</td>
+<td>SiO₂</td>
+<td>EPC 2.7 nm/cycle (NF₃/NH₃는 9.1)</td>
+<td>Cho 2020</td>
+</tr>
+<tr>
+<td>NF₃/N₂/O₂/H₂ 리모트</td>
+<td>Si₃N₄</td>
+<td>SiO₂ 대비 선택비 ≈380 (H₂에서 최대)</td>
+<td>Volynets 2020</td>
+</tr>
+<tr>
+<td>NF₃/Ar + 첨가 가스</td>
+<td>SiCN</td>
+<td>보호층 설계로 상대 물질을 보호</td>
+<td>Matsui 2021</td>
+</tr>
+<tr>
+<td>NF₃/Ar + H₂</td>
+<td>SiOCN</td>
+<td>H₂ 양에 따라 가속 ↔ 보호층 3구간</td>
+<td>Goya 2026</td>
+</tr>
+<tr>
+<td>HF 가스 (플라즈마 없음)</td>
+<td>Si₃N₄·SiO₂</td>
+<td>상온 자발 반응, H₂O가 가속</td>
+<td>Lill 2024</td>
+</tr>
+</tbody></table></div>
+<h3 id="공정으로-만들기">공정으로 만들기</h3>
+<p>연구실 화학을 공정으로 옮길 때의 쟁점은 세 가지다.</p>
+<p><strong>사이클화.</strong> Shinoda 등(2019)은 CHF₃/O₂ 다운스트림 플라즈마에서 암모늄염의 자기제한 반응으로 Si₃N₄의 thermal-cyclic ALE를 구현했다. 제거 단계의 병목은 탈착 시간인데, Miyoshi(2017)는 IR 램프 어닐로 150°C까지 10초 안에 승온해 탈착 시간을 크게 줄였다.</p>
+<p><strong>잔류 염.</strong> 염이 다 날아가지 않으면 입자가 된다. Kwon과 Park(2022)은 HF VPD(기상 식각)를 거친 Si₃N₄ 웨이퍼 표면에 (NH₄)₂SiF₆ 분말이 생기는 것을 확인했다. 분말 밀도는 Si₃N₄ 두께 30→70 nm 구간에서 317→2101개/mm²로 늘었고(지름 약 10 µm), 완전 분해 조건으로 진공 오븐 170°C·120초·120 Torr 가열과 25°C·30초 DIW 세정을 제시했다. 염을 쓰는 공정은 &quot;만드는 조건&quot;만큼 &quot;남김없이 지우는 조건&quot;이 공정 창의 절반이다.</p>
+<p><strong>온도 창.</strong> 형성은 상온 안팎, 분해는 100~230°C — 이 사이에 소자가 견딜 열 예산과 처리량(탈착 시간)이 끼어든다. Lill 등(2024)의 DFT 계산은 물이 AFS 결합을 약화시켜(결합 에너지 0.47 → 0.35 eV) 분해 온도를 낮출 여지를 보였다. 제거 단계에 H₂O를 쓰는 설계로 이어지는 근거다.</p>
+<h3 id="열린-문제-비어-있는-자리">열린 문제 — 비어 있는 자리</h3>
+<p>문헌을 모아 보면 지도의 빈칸이 보인다.</p>
+<ul>
+<li>내부 스페이서에 low-k(SiOCN·SiCO)를 넣은 <strong>소자 실증은 아직 없다</strong>. 소재 비교와 TCAD 평가는 있지만, 실제 나노시트 소자에서 형상 제어 식각까지 닫힌 보고는 이 편의 문헌 범위에서 확인되지 않는다.</li>
+<li>SiOCN의 <strong>조성(특히 N 함량)과 선택 식각 거동의 상관</strong>은 Pranda(2023)의 비례 관계와 Goya(2026)의 보호층 경쟁이 양쪽에서 조여 오는 주제다. 염 형성(질소가 필요)과 보호층 형성(NHx)이 같은 질소를 두고 경쟁한다는 그림이 잡히면, 조성 설계와 공정 설계를 한 번에 할 수 있다.</li>
+<li>AFS 화학은 원래 SiN·SiO₂의 이야기였다. 그것을 탄소를 품은 low-k 질화물로 확장할 때 선택비가 무엇으로 갈리는지 — 이 편이 모은 문헌이 그 질문에 대한 현재까지의 답이다.</li>
+</ul>
+<p><strong>원문 그림 보기</strong></p>
+<ul>
+<li>AFS 형성과 탈착의 XPS·TDS 원본 데이터 — Miyoshi (2017), <a href="https://doi.org/10.7567/JJAP.56.06HB01" target="_blank" rel="noopener">doi:10.7567/JJAP.56.06HB01</a></li>
+<li>SiN thermal-cyclic ALE의 자기제한 곡선 — Shinoda et al. (2019), <a href="https://doi.org/10.1116/1.5111663" target="_blank" rel="noopener">doi:10.1116/1.5111663</a></li>
+<li>H₂ 첨가에 따른 SiOCN 식각 3구간과 XPS — Goya et al. (2026), <a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">doi:10.1116/6.0005595</a></li>
+</ul>
+<p><strong>참고 논문</strong></p>
+<ul>
+<li><a href="https://doi.org/10.1116/1.4963072" target="_blank" rel="noopener">Thin layer etching of silicon nitride: A comprehensive study of selective removal using NH₃/NF₃ remote plasma</a> — Possémé et al., J. Vac. Sci. Technol. A 34, 061301 (2016)</li>
+<li><a href="https://doi.org/10.7567/APEX.9.106201" target="_blank" rel="noopener">Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate</a> — Shinoda et al., Appl. Phys. Express 9, 106201 (2016)</li>
+<li><a href="https://doi.org/10.7567/JJAP.56.06HB01" target="_blank" rel="noopener">Thin layer etching of silicon nitride using infrared annealing for short desorption time of ammonium fluorosilicate</a> — Miyoshi, Jpn. J. Appl. Phys. 56, 06HB01 (2017)</li>
+<li><a href="https://doi.org/10.1116/1.5004546" target="_blank" rel="noopener">Role of NO in highly selective SiN/SiO₂ and SiN/Si etching with NF₃/O₂ remote plasma</a> — Barsukov et al., J. Vac. Sci. Technol. A 35, 061310 (2017)</li>
+<li><a href="https://doi.org/10.1116/1.5111663" target="_blank" rel="noopener">Self-limiting reactions of ammonium salt in CHF₃/O₂ downstream plasma for thermal-cyclic atomic layer etching of silicon nitride</a> — Shinoda et al., J. Vac. Sci. Technol. A 37, 051002 (2019)</li>
+<li><a href="https://doi.org/10.1116/1.5132986" target="_blank" rel="noopener">Layer etching of SiO₂ for surface cleaning using ammonium fluorosilicate with CF₄/NH₃ plasma</a> — Cho et al., J. Vac. Sci. Technol. A 38, 022604 (2020)</li>
+<li><a href="https://doi.org/10.1116/1.5125568" target="_blank" rel="noopener">Highly selective Si₃N₄/SiO₂ etching using an NF₃/N₂/O₂/H₂ remote plasma. I. Plasma source and critical fluxes</a> — Volynets et al., J. Vac. Sci. Technol. A 38, 023007 (2020)</li>
+<li><a href="https://doi.org/10.1116/6.0000134" target="_blank" rel="noopener">Vacuum ultraviolet-absorption spectroscopy and delocalized plasma-induced emission used for the species detection in a down-stream soft-etch plasma reactor</a> — Soriano et al., J. Vac. Sci. Technol. A 38, 043002 (2020)</li>
+<li><a href="https://doi.org/10.1116/6.0000711" target="_blank" rel="noopener">Mechanism of highly selective etching of SiCN by using NF₃/Ar-based plasma</a> — Matsui et al., J. Vac. Sci. Technol. A 39, 043008 (2021)</li>
+<li><a href="https://doi.org/10.1007/s40042-022-00625-5" target="_blank" rel="noopener">Effective methods for eliminating (NH₄)₂SiF₆ powders generated on Si₃N₄ wafers processed by HF VPD</a> — Kwon &amp; Park, J. Korean Phys. Soc. 81, 903 (2022)</li>
+<li><a href="https://doi.org/10.1116/6.0003014" target="_blank" rel="noopener">Significance of plasma-surface interactions in the etch behavior of low-k materials</a> — Pranda et al., J. Vac. Sci. Technol. A 41, 063009 (2023)</li>
+<li><a href="https://doi.org/10.1116/6.0004019" target="_blank" rel="noopener">Low-temperature etching of silicon oxide and silicon nitride with hydrogen fluoride</a> — Lill et al., J. Vac. Sci. Technol. A 42, 063006 (2024)</li>
+<li><a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma</a> — Goya et al., J. Vac. Sci. Technol. A 44, 053213 (2026)</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="afs-chemistry.html">AFS 화학</a> — 선택 식각의 바탕 화학</li>
+<li><a class="wiki" href="ale.html">ALE (원자층 식각)</a> — 사이클 사고방식의 원류</li>
+<li><a class="wiki" href="inner-spacer.html">내부 스페이서</a> — 응용이 겨냥하는 자리</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>

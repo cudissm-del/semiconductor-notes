@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FEOL — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › 공정 › 집적 흐름</div>
+  <h1 class="title">FEOL</h1>
+  <div class="en">Front-End-Of-Line</div>
+  <div class="meta"><span class="chip cat">공정 &gt; 집적 흐름</span><span class="chip">#트랜지스터</span><span class="chip">#집적</span></div>
+  <article><blockquote>
+<p>웨이퍼 위에 트랜지스터 자체를 만드는 전반부 집적 흐름 (Front-End-Of-Line).</p>
+</blockquote>
+<p>FEOL은 실리콘 기판 자체에 트랜지스터를 형성하는 단계로, 칩 성능(속도, 누설전류, 문턱전압)의 대부분이 여기서 결정된다. 금속이 들어가기 전 단계라 고온 공정(1000°C 전후 어닐)이 허용된다.</p>
+<p><strong>대표 공정 순서 (로직 CMOS 기준)</strong></p>
+<ol>
+<li><strong>소자 분리 (STI, Shallow Trench Isolation)</strong> — 패드 산화막/질화막 하드마스크 → Si 트렌치 플라즈마 식각 → 라이너 산화 → 산화막 갭필(HDP-CVD, FCVD) → CMP. 이웃 트랜지스터를 전기적으로 격리한다.</li>
+<li><strong>웰(Well) 형성</strong> — 이온주입으로 n-well/p-well을 만들고 문턱전압 조절 주입 후 어닐.</li>
+<li><strong>게이트 스택</strong> — 과거 SiO₂ + poly-Si → 45nm 세대부터 <strong>HKMG</strong>(High-k 유전체 HfO₂ + 금속 일함수층). 대부분 <em>gate-last(RMG)</em>: 더미 poly 게이트로 구조를 만든 뒤 나중에 제거하고 금속으로 채운다.</li>
+<li><strong>스페이서 + LDD/Halo 주입</strong> — 게이트 측벽에 SiN 스페이서를 세워 소스/드레인과의 간격을 자기정렬로 정한다.</li>
+<li><strong>소스/드레인 에피</strong> — PMOS는 SiGe(압축 응력 → 정공 이동도↑), NMOS는 Si:P(인장 응력)를 선택적 에피로 성장.</li>
+<li><strong>활성화 어닐</strong> — 스파이크/레이저 어닐로 도펀트 활성화, 확산은 최소화.</li>
+<li><strong>실리사이드</strong> — S/D 표면에 금속 실리사이드를 형성해 접촉 저항을 낮춤 (평면 세대 NiSi, 최신 세대는 Ti 계열 컨택 실리사이드).</li>
+</ol>
+<figure class="fig"><svg viewBox="0 0 760 372" role="img" aria-label="로직 CMOS의 FEOL 단면 — 공정 순서 번호가 각각 무엇을 만드는지" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">FEOL이 끝난 CMOS 단면 — 공정 단계마다 무엇이 생기나</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">평면형으로 단순화한 개념도 (최신 노드는 FinFET · GAA, 11장). 번호는 본문의 공정 순서</text><g><rect x="40" y="200" width="680" height="130" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><rect x="380" y="200" width="340" height="96" fill="var(--cds-chart-categorical-3)" fill-opacity="0.16"></rect><line x1="380" y1="296" x2="720" y2="296" stroke="var(--cds-chart-categorical-3)" stroke-dasharray="4 3"></line><rect x="60" y="200" width="40" height="50" fill="var(--cds-chart-categorical-5)" fill-opacity="0.28" stroke="var(--cds-chart-axis)"></rect><rect x="360" y="200" width="40" height="50" fill="var(--cds-chart-categorical-5)" fill-opacity="0.28" stroke="var(--cds-chart-axis)"></rect><rect x="660" y="200" width="40" height="50" fill="var(--cds-chart-categorical-5)" fill-opacity="0.28" stroke="var(--cds-chart-axis)"></rect></g><g><path d="M120 222V196Q120 188 130 188H192V222Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.45"></path><path d="M268 222V188H330Q340 188 340 196V222Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.45"></path><text x="156" y="214" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">Si:P</text><text x="304" y="214" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">Si:P</text><rect x="126" y="184" width="62" height="4" fill="var(--cds-text-primary)" fill-opacity="0.7"></rect><rect x="272" y="184" width="62" height="4" fill="var(--cds-text-primary)" fill-opacity="0.7"></rect><path d="M192 200V160Q192 150 204 150V200Z" fill="var(--cds-chart-axis)" fill-opacity="0.55"></path><path d="M268 200V160Q268 150 256 150V200Z" fill="var(--cds-chart-axis)" fill-opacity="0.55"></path><rect x="204" y="140" width="52" height="56" fill="var(--cds-chart-categorical-2)" fill-opacity="0.55" stroke="var(--cds-chart-axis)"></rect><rect x="204" y="196" width="52" height="4" fill="var(--cds-chart-categorical-1)"></rect><text x="230" y="240" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">채널</text></g><g><path d="M420 222V196Q420 188 430 188H492V222Z" fill="var(--cds-chart-categorical-4)" fill-opacity="0.45"></path><path d="M568 222V188H630Q640 188 640 196V222Z" fill="var(--cds-chart-categorical-4)" fill-opacity="0.45"></path><text x="456" y="214" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">SiGe:B</text><text x="604" y="214" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">SiGe:B</text><rect x="426" y="184" width="62" height="4" fill="var(--cds-text-primary)" fill-opacity="0.7"></rect><rect x="572" y="184" width="62" height="4" fill="var(--cds-text-primary)" fill-opacity="0.7"></rect><path d="M492 200V160Q492 150 504 150V200Z" fill="var(--cds-chart-axis)" fill-opacity="0.55"></path><path d="M568 200V160Q568 150 556 150V200Z" fill="var(--cds-chart-axis)" fill-opacity="0.55"></path><rect x="504" y="140" width="52" height="56" fill="var(--cds-chart-categorical-2)" fill-opacity="0.55" stroke="var(--cds-chart-axis)"></rect><rect x="504" y="196" width="52" height="4" fill="var(--cds-chart-categorical-1)"></rect><text x="530" y="240" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">채널</text></g><text x="380" y="268" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">① STI</text><text x="230" y="290" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">② p-well</text><text x="530" y="284" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">② n-well</text><text x="52" y="322" font-size="11.5" fill="var(--cds-text-secondary)">p형 Si 기판</text><g stroke="var(--cds-chart-axis)"><line x1="230" y1="140" x2="230" y2="108"></line><line x1="196" y1="166" x2="132" y2="132"></line><line x1="460" y1="186" x2="430" y2="130"></line><line x1="610" y1="192" x2="640" y2="128"></line></g><text x="230" y="100" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">③ 게이트 스택 (High-k + 금속)</text><text x="110" y="126" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">④ SiN 스페이서</text><text x="430" y="122" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">⑦ 실리사이드</text><text x="640" y="120" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">⑤ S/D 선택적 에피</text><text x="230" y="352" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">nMOS — 인장 응력 (Si:P)</text><text x="530" y="352" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">pMOS — 압축 응력 (SiGe)</text><text x="736" y="76" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">⑥ 활성화 어닐은 구조가 아니라 도펀트 상태를 바꾼다</text></svg><figcaption>그림 1. CMOS FEOL 단면 · 공정 단계별 구조</figcaption></figure>
+<p><strong>트랜지스터 구조의 진화</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구조</th>
+<th>게이트가 채널을 감싸는 면</th>
+<th>도입 시기(대략)</th>
+<th>핵심 이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Planar MOSFET</td>
+<td>1면(위)</td>
+<td>~28nm까지</td>
+<td>단순, 저비용</td>
+</tr>
+<tr>
+<td>FinFET</td>
+<td>3면</td>
+<td>22/16/14nm ~ 3nm급</td>
+<td>단채널 효과 억제, 누설↓</td>
+</tr>
+<tr>
+<td>GAA (나노시트, MBCFET, RibbonFET)</td>
+<td>4면</td>
+<td>3nm/2nm급</td>
+<td>정전기적 제어 극대화, 시트 폭 조절로 구동력 조정</td>
+</tr>
+<tr>
+<td>CFET (연구 단계)</td>
+<td>4면 + nFET/pFET 수직 적층</td>
+<td>차세대</td>
+<td>셀 면적 축소</td>
+</tr>
+</tbody></table></div>
+<p><strong>메모리의 FEOL은 다르다.</strong> DRAM은 매립 게이트 셀 트랜지스터(BCAT) 위에 고종횡비 커패시터를 세우고, 3D NAND는 산화막/질화막을 수백 층 쌓은 뒤 채널 홀을 한 번에 뚫는다. 그래서 메모리에서는 &quot;셀 공정 vs 주변회로(peri) 공정&quot; 구분이 더 자주 쓰인다. 자세한 구조와 공정은 14·15장에서 다룬다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="process-flow.html">반도체 제조 전체 흐름</a> — FEOL이 놓이는 자리</li>
+<li><a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> — FEOL의 핵심 구조</li>
+<li><a class="wiki" href="gaa.html">GAA 나노시트</a> — 현세대 트랜지스터</li>
+</ul>
+</article>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>
