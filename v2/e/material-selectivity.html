@@ -202,13 +202,21 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><strong>물리적 기원</strong> — 이온 에너지에 대한 스퍼터 임계값과 패시베이션 막 형성 속도의 차이에서 온다. FC 플라즈마에서 산화막 위 폴리머가 얇게 유지되고 질화막 위에서는 두꺼워지는 균형 차이가 대표적이다(Schaepkens 1999 계열의 고전적 그림). 에너지·압력 같은 물리 변수에 민감하며, 대개 화학적 선택비보다 작지만 이방성과 함께 얻어진다.</li>
 </ul>
 <p>실제 공정의 선택비는 두 기원의 합성이다. 어느 기원이 지배적인지 알아야 조건을 바꿨을 때 선택비가 어느 방향으로 움직일지 예측할 수 있다.</p>
+<h3 id="선택비를-정하는-물리량-정량-축으로-다시-보기">선택비를 정하는 물리량 — 정량 축으로 다시 보기</h3>
+<p>두 기원의 이야기는 결국 네 개의 물리량 축으로 분해된다. 조건을 바꿀 때 선택비가 어느 방향으로 움직이는지는, 어느 축이 지배적인 공정인가로 예측한다.</p>
+<p><strong>축 1 — 결합 에너지.</strong> 깎을 막의 결합이 약하고 남길 막의 결합이 강하면, 같은 공격에 대한 응답이 갈린다. 결합 해리 에너지의 전형값(교재 전형값, kJ/mol)은 Si–Si 226, Si–Ge 약 205, Ge–Ge 188인 데 비해 Si–O는 452, Si–F는 565에 이른다. SiGe가 Si보다 빨리 깎이는 것(<a class="wiki" href="recess.html">리세스와 채널 릴리스</a>), Si–O 결합이 강해 Cl 치환이 열역학적으로 불리한 것(<a class="wiki" href="ale.html">ALE (원자층 식각)</a>의 방향성 창)은 이 축의 사례다. 단, 결합 에너지는 &quot;끊기 쉬움&quot;의 지표일 뿐 속도를 직접 주지는 않는다 — 실제 속도는 아래 축들과의 곱으로 정해진다.</p>
+<p><strong>축 2 — 생성물의 휘발성.</strong> 반응이 일어나도 생성물이 표면을 떠나지 못하면 식각은 멈춘다. 생성물의 끓는점이 곧 그 물질 조합의 &quot;입장권&quot;이다(물성 상수, °C): SiF₄는 상온에서 기체, SiCl₄ 58, GeCl₄ 83, SiBr₄ 154, WF₆ 17, TiCl₄ 136. 같은 Si라도 불소 화학이 염소 화학보다 자발 식각이 잘 되는 이유, Br 계열이 이온 보조 없이는 느린 이유가 이 축에 있다. 끓는점이 공정 온도 근처에 있는 생성물은 온도에 특히 민감해진다.</p>
+<p><strong>축 3 — 온도.</strong> 화학 식각률은 막마다 활성화 에너지가 달라, 온도를 움직이면 두 막의 속도비가 지수함수 비율로 변한다. 이온 보조가 지배하는 거동은 온도 의존이 약하므로, 온도 스캔에서 선택비가 크게 움직이면 화학적 기원이 지배적이라는 서명이 된다. 극단적인 사례가 극저온 ALE로, 온도를 내리자 응축층의 안정성이 갈리면서 SiO₂/SiN 선택 방향 자체가 역전했다(Hsiao et al. 2026, <a class="wiki" href="ale.html">ALE (원자층 식각)</a>). HCl 기상 식각의 SiGe 선택비가 저온에서 커지는 것도 같은 축이다(<a class="wiki" href="recess.html">리세스와 채널 릴리스</a>).</p>
+<p><strong>축 4 — 이온 에너지 임계.</strong> 두 막의 스퍼터·개질 임계 에너지가 다르면, 이온 에너지를 그 사이에 놓는 것만으로 선택비가 생긴다. 문턱 아래에서는 개질된 층만, 위에서는 둘 다 깎인다. ALE의 에너지 창이 이 축의 극단적인 사용법이고, 연속 식각에서도 바이어스를 낮출수록 (물리적 기원의) 선택비가 오르고 속도가 떨어지는 트레이드오프가 이 축에서 온다. 임계값 자체는 대략 수십 eV 대에 몰려 있어 창이 좁다는 것이 이 축의 한계다.</p>
+<p><strong>판정 사례를 이 틀에 놓으면</strong> — AFS 화학의 Si₃N₄/SiO₂ 선택은 축 1·2의 화학적 기원에, 남길 막에서 반응 경로 자체가 성립하지 않는 자기제한이 겹친 경우다(<a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>). FC 폴리머 균형은 축 4 근처에서 패시베이션 두께 차이로 증폭되는 물리적 기원이다. Junige &amp; George (2024)의 선택 역전은 네 축 어디에도 속하지 않는다는 점이 핵심이다 — 조건이 아니라 <strong>표면에서 일하는 활성종 자체</strong>(F⁻ → HF₂⁻)가 바뀌었다. 축으로 설명이 안 되는 선택비 변화는 종의 교체를 의심하라는 것이 이 사례의 교훈이다.</p>
 <h3 id="무한-선택비라는-개념">무한 선택비라는 개념</h3>
 <p>남길 막의 식각률이 측정 검출한계 아래로 떨어지면 선택비는 사실상 무한대로 취급한다. 두 가지 경로가 있다.</p>
 <ol>
 <li><strong>자기제한 화학</strong> — 남길 막에서는 반응 경로 자체가 성립하지 않는 경우. AFS 화학에서 HFC 라디칼 조건의 SiO₂가 대표적이다: Shinoda 등(2016)은 Si₃N₄를 사이클당 2.6 nm 깎는 동안 SiO₂ 식각량이 검출한계 아래에 머물렀다고 보고했다(보유 논문 실측).</li>
 <li><strong>보호층 설계</strong> — 남길 막 위에 식각을 막는 층을 일부러 입히는 경우. 선택비를 물질 고유 성질이 아니라 공정 설계로 만드는 발상이며, <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>의 보호층 사례들이 이에 해당한다.</li>
 </ol>
-<p>단, 무한 선택비는 블랭킷 기준의 이야기인 경우가 많다. 패턴에서는 측벽·모서리에서 보호가 깨지거나 수송이 달라져 유한한 손실이 나타날 수 있으므로, 패턴 단면으로 확인하기 전까지는 공정 마진으로 전액 계산하지 않는 것이 안전하다.</p>
+<p>단, &quot;무한&quot;이라는 숫자에는 측정 쪽의 한계가 섞여 있다. 남길 막의 식각률이 검출한계 아래라는 말은, 측정이 분해할 수 있는 두께 변화(엘립소메트리 기준 0.1 nm 수준) ÷ 식각 시간보다 느리다는 뜻일 뿐이다. 예컨대 깎을 막이 100 nm/min으로 깎이고 남길 막의 손실이 10분 식각 뒤에도 0.1 nm 분해능으로 안 보이면 보고되는 선택비는 &quot;&gt;10,000&quot;이지만, 이것은 실측값이 아니라 <strong>하한</strong>이다(산술 예시). 공정 마진 계산에서는 하한을 그대로 쓰지 말고, 하한이 요구 선택비를 충분히 넘는지로만 판단하는 것이 안전하다.</p>
+<p>또 무한 선택비는 블랭킷 기준의 이야기인 경우가 많다. 패턴에서는 측벽·모서리에서 보호가 깨지거나 수송이 달라져 유한한 손실이 나타날 수 있으므로, 패턴 단면으로 확인하기 전까지는 공정 마진으로 전액 계산하지 않는 것이 안전하다.</p>
 <h3 id="공정-설계에서의-쓰임">공정 설계에서의 쓰임</h3>
 <ul>
 <li><strong>식각 정지층 설계</strong> — 선택비가 큰 쌍을 구조에 넣어 두면 과식각 여유를 구조가 흡수한다. SAC의 SiN 캡, CMP의 정지막이 그 예다(<a class="wiki" href="cmp.html">CMP</a>).</li>
@@ -218,6 +226,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>선택비 정의, 하부막 손실의 산술 관계, 화학적/물리적 기원의 구분 — 교재 전형 개념(교과서적 정의)으로, 특정 논문의 실측이 아니다.</li>
+<li>결합 해리 에너지와 생성물 끓는점 — 물성·교재 전형값. 검출한계와 선택비 하한의 관계는 그 값들로 만든 산술 예시이며 실측이 아니다.</li>
+<li>활성종 교체에 의한 선택 역전 — Junige &amp; George (2024), 극저온 선택 역전 — Hsiao et al. (2026), 둘 다 <a class="wiki" href="ale.html">ALE (원자층 식각)</a>의 참고 논문과 동일 출처.</li>
 <li>Si₃N₄ 2.6 nm/cycle 대 SiO₂ 검출한계 아래 — 보유 논문 실측: Shinoda et al. (2016).</li>
 <li>FC 막 두께와 선택비의 관계 — Schaepkens et al. (1999), <a class="wiki" href="etch-nonidealities.html">식각 비이상 현상</a>의 참고 논문과 동일 출처.</li>
 </ul>
@@ -228,7 +238,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a> — 선택비를 설계하는 사례</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>이 항목을 링크한 항목</h3><p style="color:var(--sub)">없음</p><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

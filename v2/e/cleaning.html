@@ -236,6 +236,43 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><p>그 염의 정체가 바로 AFS((NH₄)₂SiF₆)다. 염이 남으면 입자가 되는데, Kwon과 Park(2022)은 HF 기상 식각 뒤 Si₃N₄ 표면에 생긴 AFS 분말의 완전 분해 조건(진공 오븐 170°C·120초 가열 + DIW 세정)을 제시했다. 이 화학을 선택 식각으로 확장한 이야기는 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>에 모았다.</p>
 </li>
 </ul>
+<h3 id="건식-프리클린의-정량-COR-사이클의-온도와-시간-창">건식 프리클린의 정량 — COR 사이클의 온도와 시간 창</h3>
+<p>NH₃/NF₃ 계열 건식 프리클린은 COR(Chemical Oxide Removal)이라는 이름으로 불려 온 방식으로, 구조는 &quot;저온에서 반응시켜 염 층을 만들고(형성), 가열해 날리는(승화)&quot; 두 단계다. 염이 어떻게 생기고 분해되는가의 메커니즘은 <a class="wiki" href="afs-chemistry.html">AFS 화학</a>이, 남김없이 지우는 조건과 잔류물 문제는 <a class="wiki" href="afs-removal.html">AFS 염의 제거와 잔류물</a>이 맡는다. 여기서는 세정 공정으로서의 설계 숫자만 모은다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>사례</th>
+<th>형성 단계</th>
+<th>승화 단계</th>
+<th>제거 거동</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ogawa 2002 (원형)</td>
+<td>NH₃/NF₃ 혼합 가스를 800 °C로 가열해 노출, 시료 스테이지는 냉각 유지</td>
+<td>시료 가열 100 °C</td>
+<td>컨택홀 바닥의 자연 산화막(약 1 nm) 제거가 목적. 생성물이 남는 문제가 초기부터 지적됨</td>
+</tr>
+<tr>
+<td>Kim 2015</td>
+<td>NH₃/NF₃ 플라즈마, 35 °C·4 Torr 연속 노출</td>
+<td>180 °C에서 증발</td>
+<td>SiO₂ 식각률 310 Å/min vs Si₃N₄ 40 Å/min. 선택비는 노출 90초에서 최대 9.3, 그 뒤로는 Si₃N₄ 식각률이 올라가 창이 닫힘</td>
+</tr>
+<tr>
+<td>Park 2018</td>
+<td>OF₂/NH₃, 기판 약 0 °C에서 흡착·반응</td>
+<td>할로겐 램프 약 200 °C·2분</td>
+<td>Si₃N₄ 대비 선택비 &gt;30:1</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>온도 창의 모양</strong> — 형성은 상온 이하<del>수십 °C (염이 표면에 머물러 자라는 영역), 승화는 염의 분해가 시작되는 100 °C 위쪽이며 TDS 기준 130</del>230 °C 구간이 실무 창이다 (<a class="wiki" href="afs-removal.html">AFS 염의 제거와 잔류물</a>의 Miyoshi 데이터). 형성 온도가 높으면 염이 생기다 말고, 승화 온도가 낮으면 잔류가 남는다 — 두 창의 간격이 곧 사이클 설계다.</li>
+<li><strong>제거량 제어의 두 방식</strong> — 자연 산화막은 1~2 nm라 한 번의 형성·승화로 끝나는 경우가 많다. 노출 → 승화를 사이클로 나눈 방식에서는 사이클당 제거량(EPC)이 제어 단위가 되는데, 선택 식각 쪽의 실측은 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>의 통합 표에 있다 (예: Shinoda 2016의 2.6 nm/cycle). 연속 노출 방식 (Kim 2015)은 시간으로 제어하는 대신 선택비 자체가 시간의 함수가 된다 — 오래 노출할수록 걷을 막 너머로 반응이 번져, dwell 시간 상한이 공정 창을 정한다.</li>
+<li><strong>처리량의 병목은 승화 쪽</strong> — 형성보다 탈착이 시간을 잡아먹는 구조는 선택 식각과 같아서, 급속 승온 (IR·램프 어닐)이 처리량 설계의 핵심 수단이 된다. 형성 조건을 세게 잡아도 승화가 따라오지 못하면 웨이퍼당 시간은 줄지 않는다.</li>
+<li><strong>전후 공정 연결 (Q-time)</strong> — 프리클린으로 드러난 Si 표면은 대기와 수분에 다시 산화되므로, 프리클린은 보통 에피·실리사이드 모듈과 한 클러스터에 붙어 진공 안에서 바로 다음 공정으로 이어진다. 세정과 다음 공정 사이의 대기 시간이 곧 재오염 예산이라, 세정 모듈의 배치는 화학만큼이나 공정 설계의 일부다.</li>
+<li><strong>손상·잔류의 트레이드오프</strong> — 이온이 없으므로 Si 리세스·격자 손상은 스퍼터 프리클린 대비 사실상 없고, 액체가 없으므로 패턴 붕괴도 없다. 대신 실패 모드가 &quot;과하게 깎이는 것&quot;에서 &quot;남는 것&quot;으로 이동한다: 승화가 부족하면 F 잔류와 염 분말이 남아 접촉 저항·파티클이 된다 (Ogawa 2002가 이미 F 잔류 문제를 지적했고, 완전 제거 조건은 Kwon과 Park 2022가 정량했다). 습식 DHF의 실패 모드가 과식각이라면, COR의 실패 모드는 잔류다.</li>
+</ul>
 <h3 id="공정-윈도우와-트레이드오프">공정 윈도우와 트레이드오프</h3>
 <ul>
 <li><strong>청정도 vs 손상</strong> — 세정을 세게 할수록 오염은 줄지만, 거칠기·막 손실·패턴 손상은 는다. 단계마다 &quot;이 단계에서 반드시 지울 오염&quot;만 목표로 잡는 것이 원칙이다.</li>
@@ -253,10 +290,11 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <ul>
 <li>RCA 조성·온도, SPM·DHF·오존수: 세정 공정 교과서의 표준 처방값 (Kern의 RCA 체계). 조성비는 부피비 기준 전형값이다.</li>
 <li>보유 논문 실측: Ogawa 등(2002) NH₃/NF₃ 건식 프리클린, Kwon·Park(2022) AFS 분말 분해 조건(170 °C·120초 + DIW) — 기존 본문 인용을 보존했다.</li>
+<li>COR 정량 절의 수치는 보유 논문 원문 확인분이다: Kim 등(2015, Microelectron. Eng.) — 35 °C·4 Torr 연속 노출, SiO₂ 310 Å/min·Si₃N₄ 40 Å/min, 선택비 최대 9.3 (노출 90초), 180 °C 증발. Park 등(2018, J. Phys. D) — OF₂/NH₃, 기판 약 0 °C 반응 + 램프 약 200 °C·2분 승화, Si₃N₄ 대비 선택비 &gt;30:1. 승화 온도 창(130~230 °C)은 <a class="wiki" href="afs-removal.html">AFS 염의 제거와 잔류물</a>의 Miyoshi(2017) TDS 실측을 인용했다.</li>
 <li>염 화학의 상세 메커니즘은 <a class="wiki" href="afs-chemistry.html">AFS 화학</a>, 선택 식각으로의 확장은 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>에 분리해 두었다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 재료 &gt; 감광·화학 소재</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 재료 &gt; 감광·화학 소재</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
