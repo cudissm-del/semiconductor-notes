@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,63 +142,9 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">공정 영역의 주제 · 전체 5개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>웨이퍼 한 장이 FEOL → MOL → BEOL을 거쳐 칩이 되는 전체 순서와, 그 순서가 왜 그렇게 정해지는지.</p>
-</blockquote>
-<figure class="fig"><svg viewBox="0 0 760 358" role="img" aria-label="회로는 팹에서 완성되고, 칩은 후공정에서 만들어진다" font-size="13"><defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker></defs><text x="24" y="34" font-size="15" font-weight="600" fill="var(--cds-text-primary)">회로는 팹에서 완성되고, 칩은 후공정에서 만들어진다</text><rect x="24" y="56" width="712" height="128" rx="8" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><text x="40" y="80" font-weight="600" fill="var(--cds-text-primary)">전공정 (Front-end) · 웨이퍼 팹</text><rect x="24" y="224" width="712" height="110" rx="8" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><text x="720" y="248" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">후공정 (Back-end) · 테스트와 패키징</text><g fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"><path d="M186 140H218" marker-end="url(#flow-arrow)"></path><path d="M364 140H396" marker-end="url(#flow-arrow)"></path><path d="M542 140H574" marker-end="url(#flow-arrow)"></path><path d="M647 168V208H98V262" marker-end="url(#flow-arrow)"></path><path d="M156 290H181" marker-end="url(#flow-arrow)"></path><path d="M297 290H322" marker-end="url(#flow-arrow)"></path><path d="M438 290H463" marker-end="url(#flow-arrow)"></path><path d="M579 290H604" marker-end="url(#flow-arrow)"></path></g><text x="380" y="202" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">회로가 완성된 웨이퍼</text><g><rect x="40" y="112" width="146" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="113" y="136" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">웨이퍼 준비</text><text x="113" y="156" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">Si 웨이퍼 · 세정</text></g><g><rect x="218" y="112" width="146" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="291" y="136" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">FEOL</text><text x="291" y="156" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">트랜지스터 형성</text></g><g><rect x="396" y="112" width="146" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="469" y="136" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">MOL</text><text x="469" y="156" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">컨택 연결</text></g><g><rect x="574" y="112" width="146" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="647" y="136" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">BEOL</text><text x="647" y="156" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">다층 금속 배선</text></g><g><rect x="40" y="262" width="116" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="98" y="286" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">EDS</text><text x="98" y="306" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">다이별 검사</text></g><g><rect x="181" y="262" width="116" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="239" y="286" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">BG · 다이싱</text><text x="239" y="306" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">박막화 · 절단</text></g><g><rect x="322" y="262" width="116" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="380" y="286" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">본딩</text><text x="380" y="306" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">와이어 · 플립칩</text></g><g><rect x="463" y="262" width="116" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="521" y="286" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">몰딩</text><text x="521" y="306" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">EMC 봉지</text></g><g><rect x="604" y="262" width="116" height="56" rx="8" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text x="662" y="286" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">최종 테스트</text><text x="662" y="306" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">등급 · 번인</text></g></svg><figcaption>그림 1. 전체 공정 흐름 · 전공정 4단계, 후공정 5단계</figcaption></figure>
-<p>공정 순서는 곧 단면의 층 순서다. 고온이 필요한 트랜지스터를 먼저 만들고, 온도에 약한 금속 배선을 그 위에 쌓는다.</p>
-<figure class="fig"><svg viewBox="0 0 760 384" role="img" aria-label="칩 단면은 기판에서 위로 FEOL, MOL, BEOL, 범프 순으로 쌓인다" font-size="13"><defs><marker id="stack-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker></defs><text x="24" y="34" font-size="15" font-weight="600" fill="var(--cds-text-primary)">칩 단면은 기판에서 위로 FEOL → MOL → BEOL → 범프 순으로 쌓인다</text><path d="M150 356V68" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25" marker-end="url(#stack-arrow)"></path><text x="24" y="204" font-weight="600" fill="var(--cds-text-primary)">제조 순서</text><text x="24" y="222" font-size="11.5" fill="var(--cds-text-secondary)">아래에서 위로</text><rect x="184" y="60" width="320" height="36" rx="6" fill="var(--cds-chart-categorical-4)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-4)" stroke-width="1.25"></rect><text x="344" y="82" text-anchor="middle" fill="var(--cds-text-primary)">솔더 범프 · 패드 · 패시베이션</text><rect x="184" y="102" width="320" height="48" rx="6" fill="var(--cds-chart-categorical-1)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><text x="344" y="130" text-anchor="middle" fill="var(--cds-text-primary)">상부 배선 (Global): 전원망 · 클럭</text><rect x="184" y="156" width="320" height="40" rx="6" fill="var(--cds-chart-categorical-1)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><text x="344" y="180" text-anchor="middle" fill="var(--cds-text-primary)">중간 배선 (Intermediate)</text><rect x="184" y="202" width="320" height="32" rx="6" fill="var(--cds-chart-categorical-1)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><text x="344" y="222" text-anchor="middle" fill="var(--cds-text-primary)">하부 배선 M1·M2 (Local): 최소 피치</text><rect x="184" y="240" width="320" height="32" rx="6" fill="var(--cds-chart-categorical-2)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-2)" stroke-width="1.25"></rect><text x="344" y="260" text-anchor="middle" fill="var(--cds-text-primary)">컨택 플러그 W/Co · PMD 절연막</text><rect x="184" y="278" width="320" height="40" rx="6" fill="var(--cds-chart-categorical-3)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-3)" stroke-width="1.25"></rect><text x="344" y="302" text-anchor="middle" fill="var(--cds-text-primary)">트랜지스터: 게이트 · S/D · STI</text><rect x="184" y="324" width="320" height="36" rx="6" fill="var(--cds-chart-categorical-3)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-3)" stroke-width="1.25"></rect><text x="344" y="346" text-anchor="middle" fill="var(--cds-text-primary)">실리콘 기판</text><path d="M512 60H524V96H512" fill="none" stroke="var(--cds-chart-categorical-4)" stroke-width="1.5"></path><g><text x="540" y="76" font-weight="600" fill="var(--cds-text-primary)">후공정 · 패키징</text><text x="540" y="92" font-size="11.5" fill="var(--cds-text-secondary)">기판 · 인터포저와 연결</text></g><path d="M512 102H524V234H512" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="1.5"></path><g><text x="540" y="164" font-weight="600" fill="var(--cds-text-primary)">BEOL</text><text x="540" y="180" font-size="11.5" fill="var(--cds-text-secondary)">~400°C 이하 · Cu, low-k</text></g><path d="M512 240H524V272H512" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></path><g><text x="540" y="254" font-weight="600" fill="var(--cds-text-primary)">MOL</text><text x="540" y="270" font-size="11.5" fill="var(--cds-text-secondary)">컨택 저항 · SAC</text></g><path d="M512 278H524V360H512" fill="none" stroke="var(--cds-chart-categorical-3)" stroke-width="1.5"></path><g><text x="540" y="316" font-weight="600" fill="var(--cds-text-primary)">FEOL</text><text x="540" y="332" font-size="11.5" fill="var(--cds-text-secondary)">고온 공정 허용</text></g></svg><figcaption>그림 2. 칩 단면 층 구조 · FEOL / MOL / BEOL / 패키징</figcaption></figure>
-<p>아래층 배선일수록 피치가 촘촘하고, 위로 갈수록 굵고 두꺼워진다.</p>
-<h2 id="전체-지도-단계별-역할과-나가는-것">전체 지도 — 단계별 역할과 나가는 것</h2>
-<p>이 항목은 지도다. 각 단계의 상세는 연결된 항목이 맡고, 여기서는 순서·경계·판정 기준만 잡는다.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>단계</th>
-<th>하는 일</th>
-<th>들어가는 것 → 나가는 것</th>
-<th>핵심 판정</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>웨이퍼 제조</td>
-<td>단결정 성장·절단·연마로 기판 준비</td>
-<td>Si 잉곳 → 에피 웨이퍼</td>
-<td>결정 결함, 평탄도 (<a class="wiki" href="../e/silicon-wafer.html">실리콘 웨이퍼</a>)</td>
-</tr>
-<tr>
-<td>FEOL</td>
-<td>기판에 트랜지스터 형성</td>
-<td>웨이퍼 → 소자가 선 웨이퍼</td>
-<td>Vt·구동전류·누설 (<a class="wiki" href="../e/feol.html">FEOL</a>)</td>
-</tr>
-<tr>
-<td>MOL</td>
-<td>소자 단자를 첫 배선까지 연결</td>
-<td>트랜지스터 → 컨택 완성</td>
-<td>접촉 저항, 단락 여부 (<a class="wiki" href="../e/mol.html">MOL</a>)</td>
-</tr>
-<tr>
-<td>BEOL</td>
-<td>다층 금속 배선망 적층</td>
-<td>컨택 → 회로 완성 웨이퍼</td>
-<td>배선 저항·RC, EM 여유 (<a class="wiki" href="../e/beol.html">BEOL</a>)</td>
-</tr>
-<tr>
-<td>웨이퍼 테스트 (EDS/WAT)</td>
-<td>다이별 전기 검사와 공정 모니터 측정</td>
-<td>완성 웨이퍼 → 양/불량 지도</td>
-<td>수율, 파라미터 산포 (<a class="wiki" href="../e/wat.html">WAT</a>·<a class="wiki" href="../e/yield-model.html">수율 모델</a>)</td>
-</tr>
-<tr>
-<td>패키징·최종 테스트</td>
-<td>절단·접합·봉지 후 완제품 검사</td>
-<td>웨이퍼 → 칩 제품</td>
-<td>조립 수율, 최종 불량률 (<a class="wiki" href="../e/packaging.html">패키징과 테스트</a>)</td>
-</tr>
-</tbody></table></div>
-<p>경계는 온도와 물질이 가른다. FEOL/MOL 경계는 실리사이드와 첫 절연막(PMD), MOL/BEOL 경계는 첫 금속 배선층이다. 후공정(패키징) 경계는 웨이퍼가 다이로 잘리는 지점이며, 그 뒤로는 300 mm 웨이퍼 단위 공정이 아니라 개별 칩 단위 조립이 된다 — <a class="wiki" href="../e/advanced-packaging.html">첨단 패키징</a>처럼 이 경계가 흐려지는 흐름(HBM 적층 등)도 늘고 있다.</p>
-</article><p class="count">위 개요는 이 주제의 허브 항목 <a href="../e/process-flow.html">반도체 제조 전체 흐름</a> 본문의 앞부분(정의와 개요)입니다.</p>
+</blockquote><p>공정 순서는 곧 단면의 층 순서다. 고온이 필요한 트랜지스터를 먼저 만들고, 온도에 약한 금속 배선을 그 위에 쌓는다.</p></article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/process-flow.html">반도체 제조 전체 흐름</a>의 정의와 개요까지만 실었다. <a href="../e/process-flow.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/process-flow.html"><span class="t">반도체 제조 전체 흐름</span></a> <span class="badge">허브</span><div class="e">Process Flow</div><div class="d"></div></li><li><a href="../e/feol.html"><span class="t">FEOL</span></a><div class="e">Front-End-Of-Line</div><div class="d"></div></li><li><a href="../e/mol.html"><span class="t">MOL</span></a><div class="e">Middle-Of-Line</div><div class="d"></div></li><li><a href="../e/beol.html"><span class="t">BEOL</span></a><div class="e">Back-End-Of-Line</div><div class="d"></div></li><li><a href="../e/rmg.html"><span class="t">RMG (Gate-last)</span></a><div class="e">Replacement Metal Gate</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/feol.html"><span class="t">FEOL</span></a><div class="e">Front-End-Of-Line</div><div class="d">웨이퍼 위에 트랜지스터 자체를 만드는 전반부 집적 흐름 (Front-End-Of-Line).</div></li><li><a href="../e/mol.html"><span class="t">MOL</span></a><div class="e">Middle-Of-Line</div><div class="d">트랜지스터와 배선을 잇는 컨택층 (Middle-Of-Line)의 집적 흐름.</div></li><li><a href="../e/beol.html"><span class="t">BEOL</span></a><div class="e">Back-End-Of-Line</div><div class="d">트랜지스터 위에 다층 금속 배선을 쌓는 후반부 흐름 (Back-End-Of-Line)과 다마신 공정.</div></li><li><a href="../e/rmg.html"><span class="t">RMG (Gate-last)</span></a><div class="e">Replacement Metal Gate</div><div class="d">더미 게이트로 소자를 만든 뒤 그것을 들어내고 진짜 금속 게이트를 채우는 gate-last 흐름.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

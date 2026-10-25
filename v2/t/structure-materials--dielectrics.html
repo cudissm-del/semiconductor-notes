@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,173 +142,9 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">구조·재료 영역의 주제 · 전체 5개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>게이트 절연막부터 층간 절연막까지 — 유전율(k)을 낮추거나 높이는 경쟁 속의 절연 재료들.</p>
-</blockquote>
-<h3 id="절연막-유전체">절연막 (유전체)</h3>
-<p>전류를 막고, 전기장을 걸고, 다른 막을 보호하는 물질들이다. 칩 부피의 상당 부분이 절연막이며, 유전율(k)과 식각 선택비가 선택 기준이 된다.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>물질</th>
-<th>k (대략)</th>
-<th>역할</th>
-<th>쓰이는 곳</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>SiO₂ (열산화막)</td>
-<td>3.9</td>
-<td>게이트 계면층(IL), 패드 산화막, 스크린 산화막</td>
-<td>FEOL</td>
-</tr>
-<tr>
-<td>SiO₂ (CVD/HDP/FCVD/ALD)</td>
-<td>3.9~4.2</td>
-<td>STI 갭필, PMD, 층간 절연막, 스페이서 일부, 하드마스크</td>
-<td>FEOL·MOL·BEOL</td>
-</tr>
-<tr>
-<td>PSG / BPSG</td>
-<td>~4</td>
-<td>PMD (평탄화·리플로우, 이동 이온 게터링)</td>
-<td>MOL (주로 구세대·메모리)</td>
-</tr>
-<tr>
-<td>Si₃N₄ (SiN)</td>
-<td>~7</td>
-<td>STI 하드마스크·CMP 정지막, 게이트 스페이서, SAC 캡, 컨택 식각 정지막(CESL), 응력 라이너, 패시베이션</td>
-<td>FEOL·MOL·BEOL 최상부</td>
-</tr>
-<tr>
-<td>SiON</td>
-<td>4~7</td>
-<td>반사방지막(DARC), 하드마스크, 과거 게이트 유전체(질화로 누설·붕소 침투 억제)</td>
-<td>FEOL·리소</td>
-</tr>
-<tr>
-<td>SiOCN / SiBCN</td>
-<td>~4~5</td>
-<td>저유전 스페이서 (게이트–컨택 기생 용량 감소)</td>
-<td>FEOL·MOL (최신 노드)</td>
-</tr>
-<tr>
-<td>SiCO (치밀형)</td>
-<td>~4~4.5</td>
-<td>저유전 스페이서, 측면 식각 정지막 (BEOL의 다공성 SiOC와 다른 치밀한 막)</td>
-<td>FEOL (GAA)</td>
-</tr>
-<tr>
-<td>HfO₂ (및 HfSiON)</td>
-<td>~20~25</td>
-<td>High-k 게이트 유전체</td>
-<td>FEOL (HKMG)</td>
-</tr>
-<tr>
-<td>Al₂O₃</td>
-<td>~9</td>
-<td>문턱전압 조절층, 식각 정지막, 확산 방지·캡</td>
-<td>FEOL·BEOL·메모리</td>
-</tr>
-<tr>
-<td>ZrO₂</td>
-<td>~25~40</td>
-<td>DRAM 커패시터 유전체 (ZrO₂/Al₂O₃/ZrO₂ 적층 등)</td>
-<td>메모리</td>
-</tr>
-<tr>
-<td>SiCN / SiC(N)</td>
-<td>~4.5~5</td>
-<td>Cu 캡·확산 방지 + 식각 정지막</td>
-<td>BEOL</td>
-</tr>
-<tr>
-<td>SiOF (FSG)</td>
-<td>~3.5</td>
-<td>1세대 low-k 층간 절연막</td>
-<td>BEOL (구세대)</td>
-</tr>
-<tr>
-<td>SiOC(H)</td>
-<td>2.7~3.0</td>
-<td>표준 low-k 층간 절연막</td>
-<td>BEOL</td>
-</tr>
-<tr>
-<td>다공성 SiOC (p-SiOCH)</td>
-<td>2.2~2.5</td>
-<td>ULK 층간 절연막 (포로젠 제거로 기공 형성)</td>
-<td>BEOL 하부층</td>
-</tr>
-<tr>
-<td>에어갭</td>
-<td>~1</td>
-<td>배선 사이 공기층으로 최저 용량</td>
-<td>BEOL (선택적 적용)</td>
-</tr>
-</tbody></table></div>
-<figure class="fig"><svg viewBox="0 0 760 352" role="img" aria-label="배선 사이에는 k가 낮은 막을, 게이트와 커패시터에는 k가 높은 막을 쓴다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">배선 사이엔 k가 낮은 막, 게이트·커패시터엔 k가 높은 막</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">주요 절연막의 유전율 (19-2 표의 대략값, 로그 눈금) — 증착 방법과 조성에 따라 달라진다</text><g font-size="11.5"><g><rect x="24" y="62" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-1)"></rect><text x="42" y="72" fill="var(--cds-text-secondary)">low-k — 배선 기생 용량↓ (BEOL)</text></g><g><rect x="270" y="62" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-4)"></rect><text x="288" y="72" fill="var(--cds-text-secondary)">범용 절연막</text></g><g><rect x="380" y="62" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-2)"></rect><text x="398" y="72" fill="var(--cds-text-secondary)">high-k — 같은 두께에 더 큰 용량 (게이트 · DRAM)</text></g></g><g stroke="var(--cds-chart-grid)"><line x1="200" y1="82" x2="200" y2="302"></line><line x1="292.1" y1="82" x2="292.1" y2="302"></line><line x1="346" y1="82" x2="346" y2="302"></line><line x1="384.3" y1="82" x2="384.3" y2="302"></line><line x1="413.9" y1="82" x2="413.9" y2="302"></line><line x1="458.7" y1="82" x2="458.7" y2="302"></line><line x1="506.1" y1="82" x2="506.1" y2="302"></line><line x1="598.2" y1="82" x2="598.2" y2="302"></line><line x1="652.1" y1="82" x2="652.1" y2="302"></line><line x1="720" y1="82" x2="720" y2="302"></line></g><line x1="380.9" y1="82" x2="380.9" y2="302" stroke="var(--cds-chart-axis)" stroke-dasharray="4 3"></line><line x1="200" y1="302" x2="720" y2="302" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><text x="200" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">1</text><text x="292.1" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2</text><text x="346" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">3</text><text x="384.3" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">4</text><text x="413.9" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">5</text><text x="458.7" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">7</text><text x="506.1" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">10</text><text x="598.2" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">20</text><text x="652.1" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">30</text><text x="720" y="318" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">50</text><text x="720" y="338" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">유전율 k (로그 눈금) · 점선 = SiO₂ 3.9 기준</text><g><text x="24" y="96" font-size="12" fill="var(--cds-text-primary)">에어갭</text><text x="192" y="96" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">~1</text><circle cx="200" cy="92" r="6" fill="var(--cds-chart-categorical-1)"></circle></g><g><text x="24" y="118" font-size="12" fill="var(--cds-text-primary)">다공성 SiOCH (ULK)</text><text x="192" y="118" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">2.2–2.5</text><rect x="300.8" y="108" width="24.992066021315452" height="12" rx="6" fill="var(--cds-chart-categorical-1)"></rect></g><g><text x="24" y="140" font-size="12" fill="var(--cds-text-primary)">SiOC(H)</text><text x="192" y="140" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">2.7–3</text><rect x="328" y="130" width="22.00489415988841" height="12" rx="6" fill="var(--cds-chart-categorical-1)"></rect></g><g><text x="24" y="162" font-size="12" fill="var(--cds-text-primary)">SiOF (FSG)</text><text x="192" y="162" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">~3.5</text><circle cx="366.5" cy="158" r="6" fill="var(--cds-chart-categorical-1)"></circle></g><g><text x="24" y="184" font-size="12" fill="var(--cds-text-primary)">SiO₂</text><text x="192" y="184" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">3.9–4.2</text><rect x="376.9" y="174" width="17.850695015459905" height="12" rx="6" fill="var(--cds-chart-categorical-4)"></rect></g><g><text x="24" y="206" font-size="12" fill="var(--cds-text-primary)">SiCN</text><text x="192" y="206" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">4.5–5</text><rect x="395.9" y="196" width="22.00489415988835" height="12" rx="6" fill="var(--cds-chart-categorical-4)"></rect></g><g><text x="24" y="228" font-size="12" fill="var(--cds-text-primary)">Si₃N₄</text><text x="192" y="228" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">~7</text><circle cx="458.7" cy="224" r="6" fill="var(--cds-chart-categorical-4)"></circle></g><g><text x="24" y="250" font-size="12" fill="var(--cds-text-primary)">Al₂O₃</text><text x="192" y="250" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">~9</text><circle cx="492.1" cy="246" r="6" fill="var(--cds-chart-categorical-2)"></circle></g><g><text x="24" y="272" font-size="12" fill="var(--cds-text-primary)">HfO₂</text><text x="192" y="272" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">20–25</text><rect x="594.2" y="262" width="37.66103382377469" height="12" rx="6" fill="var(--cds-chart-categorical-2)"></rect></g><g><text x="24" y="294" font-size="12" fill="var(--cds-text-primary)">ZrO₂</text><text x="192" y="294" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">25–40</text><rect x="623.9" y="284" width="70.47455264671544" height="12" rx="6" fill="var(--cds-chart-categorical-2)"></rect></g></svg><figcaption>그림 1. 절연막 유전율 비교 · low-k와 high-k</figcaption></figure>
-<p><strong>왜 SiO₂–Si₃N₄ 쌍이 중요한가.</strong> 두 막은 플라즈마 화학으로 서로 높은 선택비를 얻을 수 있어, 하나를 &quot;깎을 막&quot;, 다른 하나를 &quot;남길 막&quot;으로 번갈아 쓴다. STI CMP 정지, SAC 컨택 식각, 스페이서 식각, 3D NAND ON 적층과 질화막 제거(인산 습식)가 모두 이 대비를 이용한다.</p>
-<h3 id="k만으로-고르지-않는다-나머지-선택-기준">k만으로 고르지 않는다 — 나머지 선택 기준</h3>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>기준</th>
-<th>무엇을 보나</th>
-<th>대표 트레이드오프</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>절연파괴·누설</td>
-<td>밴드갭, 결함 밀도, 두께당 전계</td>
-<td>k를 낮추려 기공을 넣으면 파괴 강도도 함께 떨어진다</td>
-</tr>
-<tr>
-<td>기계적 강도</td>
-<td>영률·경도, CMP·패키징 응력</td>
-<td>다공성 ULK는 강도가 낮아 CMP 압력과 본딩에 취약</td>
-</tr>
-<tr>
-<td>열·공정 내성</td>
-<td>후공정 최고 온도와 화학 노출</td>
-<td>스페이서막은 S/D 에피·세정·식각을 모두 견뎌야 한다</td>
-</tr>
-<tr>
-<td>식각 선택비</td>
-<td>이웃 막 대비 깎이는 속도 차이</td>
-<td>정지막은 k보다 선택비가 먼저인 자리도 많다</td>
-</tr>
-<tr>
-<td>수분·확산 배리어</td>
-<td>흡습, Cu·이온 이동 차단</td>
-<td>low-k는 흡습 시 k가 오르고 신뢰성이 떨어진다</td>
-</tr>
-</tbody></table></div>
-<p>즉 게이트에서는 &quot;같은 두께에서 용량을 키우는&quot; high-k가, 배선 사이에서는 &quot;같은 간격에서 용량을 줄이는&quot; low-k가 필요하고, 스페이서·정지막에서는 k와 내성을 함께 본다. 같은 SiOC라도 BEOL에서는 기공을 넣어 k를 내리고, 스페이서에서는 기공 없이 치밀하게 만드는 이유가 여기에 있다 (<a class="wiki" href="../e/sioc.html">SiOC</a>).</p>
-<h3 id="형성법의-지도">형성법의 지도</h3>
-<ul>
-<li><strong>열산화</strong> — Si를 직접 산화하는 유일한 경로로, 계면 품질이 필요한 자리에만 쓴다. 증착막과 달리 아래 Si를 소모하며 자란다.</li>
-<li><strong>CVD·PECVD</strong> — 절연막의 주력. 온도 예산이 있는 BEOL·MOL에서는 플라즈마로 온도를 낮춘 PECVD, 갭필이 필요하면 HDP-CVD·FCVD를 쓴다.</li>
-<li><strong>ALD</strong> — high-k 게이트막과 수 nm급 정지막처럼 두께 자체가 스펙인 자리. 느리지만 원자층 단위 제어와 컨포멀리티를 준다 (<a class="wiki" href="../e/ald.html">ALD (원자층 증착)</a>).</li>
-<li><strong>스핀온·FCVD</strong> — 유동성 전구체로 좁은 갭을 메운 뒤 경화하는 경로로, STI 같은 고종횡비 갭필에서 쓴다.</li>
-</ul>
-<h3 id="한계-이슈">한계·이슈</h3>
-<ul>
-<li><strong>low-k의 딜레마</strong> — k를 낮출수록 기공이 늘고 강도·배리어성·플라즈마 내성이 함께 나빠진다. 배선 지연 이득과 신뢰성 손실이 같은 원인에서 나온다 (<a class="wiki" href="../e/lowk-damage.html">low-k 플라즈마 손상</a>).</li>
-<li><strong>high-k의 대가</strong> — HfO₂는 k가 크지만 SiO₂보다 밴드갭이 작고 계면층이 따로 필요해, 실제 이득은 EOT(등가 산화막 두께) 기준으로 할인된다. 문턱전압 고정과 이동도 저하도 함께 관리해야 한다 (<a class="wiki" href="../e/gate-stack.html">게이트 스택 (HKMG)</a>).</li>
-<li><strong>스페이서에서의 절충</strong> — k ≈ 7인 <a class="wiki" href="../e/si3n4.html">Si₃N₄</a>를 k 4~5대 <a class="wiki" href="../e/siocn.html">SiOCN</a>로 바꾸면 기생 용량은 줄지만 후공정 데미지 내성이 떨어진다. 소재별 실증 비교는 <a class="wiki" href="../e/spacer-materials.html">스페이서 소재 비교</a>에 있다.</li>
-</ul>
-<h2 id="관련-항목">관련 항목</h2>
-<ul>
-<li><a class="wiki" href="../e/sio2.html">SiO₂</a> — 모든 절연막의 기준</li>
-<li><a class="wiki" href="../e/si3n4.html">Si₃N₄</a> — 식각 정지막·스페이서의 표준</li>
-<li><a class="wiki" href="../e/sioc.html">SiOC</a> — low-k 층간막과 치밀 스페이서</li>
-<li><a class="wiki" href="../e/siocn.html">SiOCN</a> — 첨단 노드 스페이서의 주력</li>
-<li><a class="wiki" href="../e/gate-stack.html">게이트 스택 (HKMG)</a> — High-k의 대표 사용처</li>
-<li><a class="wiki" href="../e/lowk-damage.html">low-k 플라즈마 손상</a> — low-k의 약점</li>
-<li><a class="wiki" href="../e/inner-spacer.html">내부 스페이서</a> — 절연막 소재 경쟁의 현장</li>
-</ul>
-</article><p class="count">위 개요는 이 주제의 허브 항목 <a href="../e/dielectrics.html">절연막</a> 본문의 앞부분(정의와 개요)입니다.</p>
+</blockquote><p>전류를 막고, 전기장을 걸고, 다른 막을 보호하는 물질들이다. 칩 부피의 상당 부분이 절연막이며, 유전율(k)과 식각 선택비가 선택 기준이 된다.</p></article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/dielectrics.html">절연막</a>의 정의와 개요까지만 실었다. <a href="../e/dielectrics.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/dielectrics.html"><span class="t">절연막</span></a> <span class="badge">허브</span><div class="e">Dielectrics</div><div class="d"></div></li><li><a href="../e/sio2.html"><span class="t">SiO₂</span></a><div class="e">Silicon Dioxide</div><div class="d"></div></li><li><a href="../e/si3n4.html"><span class="t">Si₃N₄</span></a><div class="e">Silicon Nitride</div><div class="d"></div></li><li><a href="../e/sioc.html"><span class="t">SiOC</span></a><div class="e">Silicon Oxycarbide</div><div class="d"></div></li><li><a href="../e/siocn.html"><span class="t">SiOCN</span></a><div class="e">Silicon Oxycarbonitride</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/sio2.html"><span class="t">SiO₂</span></a><div class="e">Silicon Dioxide</div><div class="d">모든 유전율의 기준점(k = 3.9)이자 반도체 공정에서 가장 오래 쓰인 절연막 — 깎기도, 남기기도 가장 쉬운 막.</div></li><li><a href="../e/si3n4.html"><span class="t">Si₃N₄</span></a><div class="e">Silicon Nitride</div><div class="d">k ≈ 7의 치밀한 질화막 — SiO₂ 와 번갈아 &quot;깎을 막 / 남길 막&quot;이 되는 식각 정지막의 표준.</div></li><li><a href="../e/sioc.html"><span class="t">SiOC</span></a><div class="e">Silicon Oxycarbide</div><div class="d">Si–O 네트워크에 탄소를 넣은 저유전막 — BEOL의 다공성 층간막과 GAA 스페이서의 치밀막, 이름은 같아도 다른 두 막.</div></li><li><a href="../e/siocn.html"><span class="t">SiOCN</span></a><div class="e">Silicon Oxycarbonitride</div><div class="d">SiOC 에 질소를 더한 막 — k를 4~5로 낮추면서 Si₃N₄ 의 내성을 되찾아, 첨단 노드 스페이서의 주력이 됐다.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

@@ -92,6 +92,9 @@ const topicEntries = (d, t) => entries.filter(e => e.domain === d && e.topic ===
 // ── 렌더링 ───────────────────────────────────────────────────────
 const hSlug = t => t.replace(/<[^>]+>/g, '').trim().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').slice(0, 40);
 marked.use({ gfm: true, renderer: { heading({ tokens, depth, text }) { return `<h${depth} id="${hSlug(text)}">${this.parser.parseInline(tokens)}</h${depth}>\n`; } } });
+// 취소선 파싱 끄기 — 숫자 범위 표기(4~4.5, 2.2~3.0)의 ~가 GFM 취소선으로 렌더돼 본문에 줄이 그어지는 문제 (이슈 #1 검토).
+// 백과 본문에 의도적 취소선은 없으므로 전역으로 끈다 (DESIGN.md 빌드 규칙에도 명시).
+marked.use({ tokenizer: { del() { return undefined; } } });
 
 const PROTECT = /<(a|h[1-6]|code|pre)\b[^>]*>[\s\S]*?<\/\1>/g;
 function onText(src, fn) {
@@ -134,18 +137,19 @@ function renderEntry(e) {
     return '\n' + slot(`<figure class="fig photo"><img src="${src}" alt="${escA(imgCap)}" loading="lazy" decoding="async"><figcaption>그림 ${figNo}. ${imgCap}<span class="credit">${creditHtml} · <a href="${fileUrl}" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>`) + '\n';
   });
   md = md.replace(/```latex\n([\s\S]*?)```/g, (_, tex) => '\n' + slot(`<div class="math">${katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false })}</div>`) + '\n');
+  // 위키 링크는 마크다운 처리 전에 슬롯으로 치환한다 — 뒤에 괄호가 붙은 [[CMP]](평탄화)를 marked가 일반 링크로
+  // 해석해 깨진 링크(e/평탄화)를 만드는 문제를 막기 위해서다 (이슈 #1 검토). 헤딩·코드 안의 [[...]]는 본문에 없다.
+  const linked = new Set(), missing = [];
+  md = md.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m0, name, label) => {
+    const target = resolveWiki(name);
+    if (!target) { missing.push(name.trim()); return slot(`<span class="wiki-missing">${label || name}</span>`); }
+    if (target.slug !== e.slug) linked.add(target.slug);
+    return slot(`<a class="wiki" href="${target.slug}.html">${label || name}</a>`);
+  });
   let html = marked.parse(md);
   html = html.replace(/<p>(@@SLOT\d+@@)<\/p>/g, '$1');
   html = html.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
   html = html.replace(/<a href="(https?:[^"]+)"/g, '<a href="$1" target="_blank" rel="noopener"');
-  // 위키 링크
-  const linked = new Set(), missing = [];
-  html = onText(html, t => t.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m0, name, label) => {
-    const target = resolveWiki(name);
-    if (!target) { missing.push(name.trim()); return `<span class="wiki-missing">${label || name}</span>`; }
-    if (target.slug !== e.slug) linked.add(target.slug);
-    return `<a class="wiki" href="${target.slug}.html">${label || name}</a>`;
-  }));
   outLinks.set(e.slug, linked);
   if (missing.length) missLinks.set(e.slug, missing);
   html = html.replace(/@@SLOT(\d+)@@/g, (_, i) => slots[+i]);
@@ -190,6 +194,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 `;
 const updated = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());
 const plain = s => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
@@ -207,9 +220,24 @@ for (const e of entries) bodies.set(e.slug, renderEntry(e));
 // 역링크
 const backlinks = new Map(entries.map(e => [e.slug, []]));
 for (const [from, set] of outLinks) for (const to of set) backlinks.get(to)?.push(bySlug.get(from));
-const defOf = e => { const m = bodies.get(e.slug).match(/<blockquote><p>([\s\S]*?)<\/p><\/blockquote>/); return m ? plain(m[1]) : ''; };
-// 허브 개요: 본문 렌더링 결과에서 두 번째 h2 앞까지 (정의 인용 + 개요 절)
-const overviewOf = html => html.split(/(?=<h2 )/).slice(0, 2).join('');
+const defOf = e => { const m = bodies.get(e.slug).match(/<blockquote>\s*<p>([\s\S]*?)<\/p>/); return m ? plain(m[1]) : ''; };
+// 태그 사용 횟수 — 2회 이상 쓰인 태그만 태그 페이지·목록에 노출하고, 1회용 태그는 항목 페이지에 링크 없는 칩으로만 표시한다 (이슈 #1 검토)
+const tagCount = new Map();
+for (const e of entries) for (const t of e.tags) tagCount.set(t, (tagCount.get(t) || 0) + 1);
+const tagChip = t => (tagCount.get(t) || 0) >= 2
+  ? `<a class="chip" href="../tag/${encodeURIComponent(t)}.html">#${t}</a>`
+  : `<span class="chip">#${t}</span>`;
+// 허브 개요: 정의 인용 + '## 개요' 절 (개요로 시작하는 h2)까지만. 개요 절이 없는 허브는 정의 + 첫 문단으로 폴백한다.
+const hubFallbacks = [];
+const overviewOf = (html, slug) => {
+  const bq = (html.match(/<blockquote>[\s\S]*?<\/blockquote>/) || [''])[0];
+  const segs = html.split(/(?=<h2 )/);
+  const gae = segs.find(s => s.startsWith('<h2') && plain(s.slice(0, s.indexOf('</h2>'))).startsWith('개요'));
+  if (gae) return bq + gae;
+  hubFallbacks.push(slug);
+  const firstPara = ((segs[0] || '').replace(bq, '').match(/<p>[\s\S]*?<\/p>/) || [''])[0];
+  return bq + firstPara;
+};
 // 항목 본문을 e/ 밖의 페이지(영역·주제)에 삽입할 때 위키 링크의 기준 경로를 ../e/로 재조정
 // (로컬 이미지 ../assets/ 경로는 모든 페이지가 v2 바로 아래 한 단계라 그대로 맞는다)
 const rebaseBody = html => html.replace(/<a class="wiki" href="/g, '<a class="wiki" href="../e/');
@@ -249,12 +277,12 @@ for (const e of entries) {
   const page = `${head(`${e.title} — 반도체 백과`, '../')}
 <main class="wide">
  <div class="layout">
-  <aside class="side">${treeHtml(e)}</aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body">${treeHtml(e)}</div></aside>
   <div class="content">
   <div class="crumb">${crumb}</div>
   <h1 class="title">${e.title}</h1>
   ${e.en ? `<div class="en">${e.en}</div>` : ''}
-  <div class="meta"><span class="chip cat">${domainName(e.domain)} &gt; ${topicName(e)}</span>${e.hub ? '<span class="badge">주제 허브</span>' : ''}${e.domainHub ? '<span class="badge">영역 허브</span>' : ''}${e.tags.map(t => `<a class="chip" href="../tag/${encodeURIComponent(t)}.html">#${t}</a>`).join('')}</div>
+  <div class="meta"><span class="chip cat">${domainName(e.domain)} &gt; ${topicName(e)}</span>${e.hub ? '<span class="badge">주제 허브</span>' : ''}${e.domainHub ? '<span class="badge">영역 허브</span>' : ''}${e.tags.map(tagChip).join('')}</div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article>${bodies.get(e.slug)}</article>
   ${prevNext}
@@ -265,6 +293,12 @@ for (const e of entries) {
 ${footOpen}
 <script>
 (function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
   var slug = "${e.slug}", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
@@ -306,9 +340,11 @@ ${foot}`;
 for (const d of DOMAINS) for (const t of d.topics) {
   const items = topicEntries(d.id, t.id);
   const hub = items.find(x => x.hub);
-  const listHtml = `<ol class="tlist">${items.map(x => `<li><a href="../e/${x.slug}.html"><span class="t">${x.title}</span></a>${x.hub ? ' <span class="badge">허브</span>' : ''}<div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></li>`).join('')}</ol>`;
+  // 읽는 순서 목록에서 허브 자신은 제외한다 — 허브는 위 개요와 전문 읽기 링크가 맡는다 (이슈 #1 검토)
+  const listItems = hub ? items.filter(x => !x.hub) : items;
+  const listHtml = `<ol class="tlist">${listItems.map(x => `<li><a href="../e/${x.slug}.html"><span class="t">${x.title}</span></a><div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></li>`).join('')}</ol>`;
   const overview = hub
-    ? `<article>${rebaseBody(overviewOf(bodies.get(hub.slug)))}</article><p class="count">위 개요는 이 주제의 허브 항목 <a href="../e/${hub.slug}.html">${hub.title}</a> 본문의 앞부분(정의와 개요)입니다.</p>`
+    ? `<article>${rebaseBody(overviewOf(bodies.get(hub.slug), hub.slug))}</article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/${hub.slug}.html">${hub.title}</a>의 정의와 개요까지만 실었다. <a href="../e/${hub.slug}.html">전문 읽기 →</a></p>`
     : `<p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>`;
   const page = `${head(`${t.name} — ${d.name} · 반도체 백과`, '../')}
 <main>
@@ -327,17 +363,19 @@ ${foot}`;
 const tagMap = new Map();
 for (const e of entries) for (const t of e.tags) { if (!tagMap.has(t)) tagMap.set(t, []); tagMap.get(t).push(e); }
 const tagList = [...tagMap.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'ko'));
+// 노출 규칙: 2개 이상 항목에 쓰인 태그만 목록·페이지를 만든다. 1회용 태그는 항목 페이지의 링크 없는 칩으로만 남는다.
+const exposedTags = tagList.filter(([, list]) => list.length >= 2);
 const tagsPage = `${head('태그 — 반도체 백과', '')}
 <main>
   <div class="crumb"><a href="index.html">대문</a> › 태그</div>
   <h1 class="title">태그</h1>
-  <p style="color:var(--sub)">위계를 가로지르는 횡단 묶음은 태그가 맡는다. 전체 ${tagList.length}개 태그.</p>
-  <div class="tagrows">${tagList.map(([t, list]) => `<a href="tag/${encodeURIComponent(t)}.html">#${t} <span class="count">${list.length}</span></a>`).join('')}</div>
+  <p style="color:var(--sub)">위계를 가로지르는 횡단 묶음은 태그가 맡는다. 전체 ${tagList.length}개 태그 중 2개 이상 항목에 쓰인 ${exposedTags.length}개만 모았다 (1개 항목에만 쓰인 태그는 항목 페이지에 텍스트 칩으로만 표시).</p>
+  <div class="tagrows">${exposedTags.map(([t, list]) => `<a href="tag/${encodeURIComponent(t)}.html">#${t} <span class="count">${list.length}</span></a>`).join('')}</div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
 </body></html>`;
 fs.writeFileSync(path.join(OUT, 'tags.html'), tagsPage);
-for (const [t, list] of tagList) {
+for (const [t, list] of exposedTags) {
   const sections = DOMAINS.map(d => {
     const items = list.filter(e => e.domain === d.id).sort((a, b) => a.order - b.order);
     if (!items.length) return '';
@@ -372,6 +410,15 @@ const domainSections = DOMAINS.map(d => {
   }).join('');
   return `<section class="cat-sec"><h2><a href="d/${d.id}.html" style="color:inherit">${d.name}</a> <span class="count">${list.length}개 항목</span></h2>${hubBlock}${topicBlocks}</section>`;
 }).join('');
+// 입문 경로 — 처음 읽는 순서 (허브 항목 위주). 실제 항목으로만 구성한다.
+const introPath = [
+  [byTitle.get('반도체 제조 전체 흐름'), '반도체 제조 전체 흐름'],
+  [byTitle.get('리소그래피'), '리소그래피'],
+  [byTitle.get('건식 식각'), '건식 식각'],
+  [bySlug.get('ale'), 'ALE'],
+  [bySlug.get('metrology-overview'), '계측 개요'],
+].filter(([x]) => x);
+const pathLine = `<div class="pathline"><span class="pl-t">입문 경로</span>${introPath.map(([x, label]) => `<a href="e/${x.slug}.html">${label}</a>`).join(' → ')}</div>`;
 const indexPage = `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>반도체 백과</title><style>${css}${extraCss}</style></head>
@@ -380,9 +427,10 @@ const indexPage = `<!DOCTYPE html>
 <main>
   <div class="hero"><h1>반도체 백과</h1><p>반도체 공정의 모든 것을 항목 단위로 쌓는 지식창고. 전체 ${entries.length}개 항목 (재편 진행 중 — 기존 강의노트는 <a href="../index.html">여기</a>). 위계를 가로지르는 묶음은 <a href="tags.html">태그</a>에서.</p></div>
   <div class="dtiles">${tiles}</div>
+  ${pathLine}
   <div class="search"><input id="q" type="search" placeholder="항목 검색 — 예: 엘립소미터, 식각, SiOCN" autocomplete="off"><div id="results"></div></div>
   <div class="tabs"><button class="tab on" id="tabAll" type="button">전체 분류</button><button class="tab" id="tabFav" type="button">★ 즐겨찾기</button></div>
-  <div id="allWrap">${domainSections}</div>
+  <div id="allWrap"><details class="allfold"><summary>전체 분류 — 영역·주제별 전체 ${entries.length}개 항목 펼치기</summary>${domainSections}</details></div>
   <div id="favWrap" hidden><div class="cards" id="favCards"></div><p id="favEmpty" class="count" hidden>아직 즐겨찾기한 항목이 없습니다. 항목 페이지에서 ☆ 즐겨찾기 버튼을 눌러 추가하세요.</p></div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
@@ -428,5 +476,6 @@ const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, cat: domai
 fs.writeFileSync(path.join(OUT, 'search-index.json'), JSON.stringify(index));
 
 const topicCount = DOMAINS.reduce((a, d) => a + d.topics.length, 0);
-console.log(`✓ v2 — 항목 ${entries.length}개, 위키 링크 ${[...outLinks.values()].reduce((a, s) => a + s.size, 0)}개, 영역 ${DOMAINS.length}개, 주제 ${topicCount}개, 태그 ${tagList.length}개 페이지`);
+console.log(`✓ v2 — 항목 ${entries.length}개, 위키 링크 ${[...outLinks.values()].reduce((a, s) => a + s.size, 0)}개, 영역 ${DOMAINS.length}개, 주제 ${topicCount}개, 태그 ${exposedTags.length}개 페이지 (전체 태그 ${tagList.length}개 중 2회 이상)`);
+if (hubFallbacks.length) console.log(`  · 개요 절이 없어 정의+첫 문단으로 폴백한 허브: ${hubFallbacks.join(', ')}`);
 for (const [slug, miss] of missLinks) console.log(`  · ${slug}: 미작성 링크 ${miss.join(', ')}`);

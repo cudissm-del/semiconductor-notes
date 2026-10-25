@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,7 +142,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">계측·분석 영역의 주제 · 전체 7개 항목을 읽는 순서대로.</p>
   <p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/xps.html"><span class="t">XPS</span></a><div class="e">X-ray Photoelectron Spectroscopy</div><div class="d"></div></li><li><a href="../e/aes.html"><span class="t">AES</span></a><div class="e">Auger Electron Spectroscopy</div><div class="d"></div></li><li><a href="../e/sims.html"><span class="t">SIMS</span></a><div class="e">Secondary Ion Mass Spectrometry</div><div class="d"></div></li><li><a href="../e/edx.html"><span class="t">EDX</span></a><div class="e">Energy-Dispersive X-ray Spectroscopy</div><div class="d"></div></li><li><a href="../e/ftir.html"><span class="t">FTIR</span></a><div class="e">Fourier Transform Infrared Spectroscopy</div><div class="d"></div></li><li><a href="../e/raman.html"><span class="t">라만 분광</span></a><div class="e">Raman Spectroscopy</div><div class="d"></div></li><li><a href="../e/xrd.html"><span class="t">XRD</span></a><div class="e">X-ray Diffraction</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/xps.html"><span class="t">XPS</span></a><div class="e">X-ray Photoelectron Spectroscopy</div><div class="d">X선을 쏘아 튀어나온 광전자의 운동에너지를 재고, 거꾸로 결합에너지를 읽어 표면 수 nm의 원소 조성과 결합 상태를 정량하는 분석법.</div></li><li><a href="../e/aes.html"><span class="t">AES</span></a><div class="e">Auger Electron Spectroscopy</div><div class="d">전자빔으로 여기된 원자가 방출하는 오제 전자의 운동에너지를 재 표면 수 nm의 원소를 분석하는 표면 분석 기법.</div></li><li><a href="../e/sims.html"><span class="t">SIMS</span></a><div class="e">Secondary Ion Mass Spectrometry</div><div class="d">1차 이온빔으로 표면을 스퍼터하면서 튀어나온 2차 이온을 질량 분석해, 깊이 방향 원소·도펀트 분포를 재는 기법.</div></li><li><a href="../e/edx.html"><span class="t">EDX</span></a><div class="e">Energy-Dispersive X-ray Spectroscopy</div><div class="d">SEM · TEM (투과전자현미경) 에 붙여 전자빔이 만든 특성 X선의 에너지로 원소를 분석하는 검출기 기반 기법.</div></li><li><a href="../e/ftir.html"><span class="t">FTIR</span></a><div class="e">Fourier Transform Infrared Spectroscopy</div><div class="d">적외선을 쏘아 분자 결합이 특정 파수에서 빛을 흡수하는 패턴을 읽고, 막 안에 어떤 결합이 얼마나 있는지를 재는 분광법.</div></li><li><a href="../e/raman.html"><span class="t">라만 분광</span></a><div class="e">Raman Spectroscopy</div><div class="d">단색광의 비탄성 산란(라만 산란)으로 분자 진동·결정성·응력을 재는 비파괴 광학 분광법.</div></li><li><a href="../e/xrd.html"><span class="t">XRD</span></a><div class="e">X-ray Diffraction</div><div class="d">X선 회절 패턴으로 결정 구조·상(phase)·결정성·응력을 읽는 비파괴 분석 기법.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

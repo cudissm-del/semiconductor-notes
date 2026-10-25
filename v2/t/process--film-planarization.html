@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,151 +142,9 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">공정 영역의 주제 · 전체 3개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>기판 위에 막을 올리는 방법들의 비교 — CVD·PVD·전해도금·열산화를 단차 피복, 막질, 온도로 가른다.</p>
-</blockquote>
-<p>증착 방식은 &quot;얼마나 고르게 덮는가(컨포멀성)&quot;, &quot;몇 도에서 하는가(열 예산)&quot;, &quot;막질이 어떤가&quot;의 세 축으로 고른다. 같은 SiO₂라도 STI 갭필, 스페이서, BEOL 층간막은 각각 다른 방식으로 올린다.</p>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>방식</th>
-<th>원리</th>
-<th>온도(대략)</th>
-<th>컨포멀성</th>
-<th>대표 용도</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>열산화</td>
-<td>Si 표면을 O₂·H₂O로 직접 산화</td>
-<td>800~1100°C</td>
-<td>우수 (Si 소모)</td>
-<td>게이트 계면층, 패드 산화막</td>
-</tr>
-<tr>
-<td>LPCVD</td>
-<td>저압·고온에서 기체 반응</td>
-<td>600~800°C</td>
-<td>좋음</td>
-<td>poly-Si, SiN 하드마스크, 고품질 산화막</td>
-</tr>
-<tr>
-<td>PECVD</td>
-<td>플라즈마로 반응을 도와 저온 증착</td>
-<td>200~400°C</td>
-<td>보통</td>
-<td>BEOL 층간막·식각정지막, low-k, 패시베이션</td>
-</tr>
-<tr>
-<td>HDP-CVD</td>
-<td>고밀도 플라즈마로 증착과 스퍼터를 동시에</td>
-<td>~400°C</td>
-<td>바닥 위주</td>
-<td>구세대 STI·PMD 갭필</td>
-</tr>
-<tr>
-<td>FCVD (유동성 CVD)</td>
-<td>액체처럼 흐르는 막을 채운 뒤 경화</td>
-<td>저온 + 경화</td>
-<td>갭필 특화</td>
-<td>미세 STI·핀 사이 갭필</td>
-</tr>
-<tr>
-<td>PVD (스퍼터)</td>
-<td>타깃을 이온으로 때려 원자를 날려 보냄</td>
-<td>상온~수백°C</td>
-<td>낮음 (직진성)</td>
-<td>금속 배리어·라이너·시드, Al 패드</td>
-</tr>
-<tr>
-<td>ALD</td>
-<td>자기제한 반응을 한 층씩 반복</td>
-<td>상온~400°C</td>
-<td>최고</td>
-<td>HfO₂, TiN, 스페이서, 라이너, 3D NAND ONO</td>
-</tr>
-<tr>
-<td>에피택시</td>
-<td>기판 결정을 따라 단결정 성장</td>
-<td>500~800°C</td>
-<td>결정면 의존</td>
-<td>Si/SiGe 초격자, S/D 에피</td>
-</tr>
-<tr>
-<td>전해도금 (ECP)</td>
-<td>전해액에서 Cu를 전기화학적으로 석출</td>
-<td>상온</td>
-<td>바닥부터 채움</td>
-<td>Cu 배선·TSV 매립</td>
-</tr>
-</tbody></table></div>
-<p><strong>평가 지표</strong></p>
-<ul>
-<li><strong>스텝 커버리지 / 컨포멀성</strong> — 구조의 윗면·측벽·바닥 두께 비율. 종횡비가 클수록 ALD 외에는 어렵다.</li>
-<li><strong>갭필</strong> — 좁은 틈을 빈 곳 없이 채우는가. 입구가 먼저 막히면(오버행) 속에 보이드가 생기고, 양 벽이 만나는 자리엔 심(seam)이 남는다.</li>
-<li><strong>막질</strong> — 밀도, 불순물(H, C, Cl), 습식 식각 속도(WER), 절연 파괴 전압.</li>
-<li><strong>응력</strong> — 압축·인장 응력은 웨이퍼 휨과 소자 이동도에 영향을 준다(SiN 응력 라이너는 이를 일부러 쓴다).</li>
-</ul>
-<figure class="fig"><svg viewBox="0 0 760 356" role="img" aria-label="같은 트렌치라도 증착 방식에 따라 막이 덮이는 모양이 다르다" font-size="13"><defs><marker id="cov-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker></defs><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">같은 트렌치라도 증착 방식에 따라 막이 덮이는 모양이 다르다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">트렌치 단면 개념도 — 파란 부분이 새로 올린 막, 두께 차이는 과장해서 그림</text><g><path d="M40 130H110V250H170V130H240V270H40Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M40 116H106Q124 118 122 132Q120 140 112 142L112 246Q140 242 168 246L168 142Q160 140 158 132Q156 118 174 116H240V130H170V250H110V130H40Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75" stroke="none"></path><text x="140" y="298" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">PVD (스퍼터)</text><text x="140" y="316" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">직진하는 원자 → 입구 오버행, 측벽은 얇다</text></g><g><path d="M280 130H350V250H410V130H480V270H280Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M280 120H358L354 245H406L402 120H480V130H410V250H350V130H280Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75" stroke="none"></path><text x="380" y="298" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">CVD</text><text x="380" y="316" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">표면 반응 → 비교적 고르지만 바닥 쪽이 얇다</text></g><g><path d="M520 130H590V250H650V130H720V270H520Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M520 122H598V242H642V122H720V130H650V250H590V130H520Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75" stroke="none"></path><text x="620" y="298" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">ALD</text><text x="620" y="316" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">자기제한 반응 → 어디서나 같은 두께</text></g><g stroke="var(--cds-chart-axis)" stroke-width="1.25"><line x1="100" y1="66" x2="100" y2="98" marker-end="url(#cov-arrow)"></line><line x1="140" y1="66" x2="140" y2="98" marker-end="url(#cov-arrow)"></line><line x1="180" y1="66" x2="180" y2="98" marker-end="url(#cov-arrow)"></line></g><text x="166" y="152" font-size="11.5" fill="var(--cds-text-primary)">← 오버행</text><text x="380" y="96" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">기체가 구조 속으로 확산하며 반응</text><text x="620" y="96" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">한 사이클씩 표면 전체가 포화</text><g><rect x="24" y="334" width="12" height="12" rx="2" fill="var(--cds-chart-categorical-1)" fill-opacity="0.75"></rect><text x="42" y="344" font-size="11.5" fill="var(--cds-text-secondary)">증착된 막</text><rect x="118" y="334" width="12" height="12" rx="2" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)"></rect><text x="136" y="344" font-size="11.5" fill="var(--cds-text-secondary)">기판 (패턴된 구조)</text><text x="736" y="344" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">스텝 커버리지 = 측벽·바닥 두께 ÷ 윗면 두께</text></g></svg><figcaption>그림 1. 증착 방식별 스텝 커버리지 · PVD · CVD · ALD</figcaption></figure>
-<h3 id="원리-1-PVD-직진-비행이-만드는-한계">원리 1 — PVD: 직진 비행이 만드는 한계</h3>
-<p>PVD는 고체 타깃에서 원자를 떼어내 진공 속을 날려 기판에 붙이는 물리 증착이다. 스퍼터링은 Ar⁺ 이온으로 타깃을 때려 원자를 튕겨내고, 증발(evaporation)은 타깃을 가열해 증기를 만든다. 어느 쪽이든 챔버 안에서는 원자가 거의 직진하므로, 구조 안쪽으로 들어가려면 입사 방향이 맞아야 한다. 그래서 PVD의 스텝 커버리지는 종횡비가 조금만 커져도 급격히 나빠진다 — 윗면은 두껍고 측벽은 얇으며, 바닥 모서리가 가장 얇다. 입구가 먼저 두꺼워지는 오버행이 생기면 그 아래는 그림자가 져 비게 된다. 대가로 얻는 것은 조성 충실도(타깃 조성이 막으로 옮겨감), 낮은 공정 온도와 금속 막의 순도라서, 평탄한 면 위의 배리어·시드·패드처럼 직진이 문제가 되지 않는 자리에 쓴다. 이온화 PVD 같은 하드웨어 변형은 커버리지를 다소 개선하지만 직진성이라는 본질은 바꾸지 못한다 — 깊은 구조의 라이너가 <a class="wiki" href="../e/ald.html">ALD (원자층 증착)</a>로 넘어간 이유다.</p>
-<h3 id="원리-2-CVD-가장-느린-단계가-속도를-정한다">원리 2 — CVD: 가장 느린 단계가 속도를 정한다</h3>
-<p>CVD는 기체 전구체가 표면에서 화학 반응해 고체 막이 되는 과정으로, 단계가 사슬처럼 이어진다. ① 전구체가 기판 근처까지 운송되고 ② 경계층을 확산해 표면에 닿고 ③ 흡착한 뒤 ④ 표면 반응으로 막이 되며 ⑤ 부산물이 떨어져 나가 배출된다. 전체 속도는 이 중 가장 느린 단계가 정한다.</p>
-<ul>
-<li><strong>표면반응 율속 (저온 쪽)</strong> — 반응 상수가 아레니우스형 k ∝ exp(−Eₐ/k_BT)라 온도에 민감하다. 온도를 조금만 올려도 속도가 크게 늘고, 웨이퍼 안 온도 편차가 곧 두께 편차가 된다. 대신 전구체가 구조 안까지 충분히 공급되므로 컨포멀성이 좋다. LPCVD가 이 영역에서 동작하도록 설계된 이유다.</li>
-<li><strong>물질전달 율속 (고온 쪽)</strong> — 표면 반응이 너무 빨라 전구체가 닿는 즉시 소모되므로, 공급량이 속도이자 균일도를 정한다. 온도를 올려도 속도는 거의 늘지 않고, 가스 흐름·압력·웨이퍼 배치에 민감해진다. 입구에서 다 소모되면 깊은 구조 바닥은 굶으므로 컨포멀성도 나빠진다.</li>
-</ul>
-<p>PECVD는 플라즈마 라디칼이 반응 장벽을 대신 넘어 저온에서도 표면 반응이 돌게 한 것이고, HDP-CVD는 증착과 동시에 이온 스퍼터로 입구를 깎아 갭필을 돕는 변형이다. 어느 CVD든 점착 계수(sticking coefficient)가 낮을수록 — 표면에 닿아도 바로 붙지 않고 여러 번 반사할수록 — 깊은 곳까지 전구체가 퍼져 컨포멀성이 좋아진다. <a class="wiki" href="../e/ald.html">ALD (원자층 증착)</a>는 이 반응을 자기제한으로 바꿔 컨포멀성을 극단까지 민 경우다.</p>
-<h3 id="속도론으로-다시-읽기-직렬-저항-점착-계수-재스퍼터">속도론으로 다시 읽기 — 직렬 저항, 점착 계수, 재스퍼터</h3>
-<p>원리 2의 사슬은 직렬 저항으로 바꿔 쓸 수 있다. 표면 반응 속도상수 k_s와 경계층 물질전달 계수 h_g가 직렬로 걸리면 성장 속도는 둘 중 작은 쪽에 끌려간다.</p>
-<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mo>∝</mo><mfrac><mrow><msub><mi>k</mi><mi>s</mi></msub><mo>⋅</mo><msub><mi>h</mi><mi>g</mi></msub></mrow><mrow><msub><mi>k</mi><mi>s</mi></msub><mo>+</mo><msub><mi>h</mi><mi>g</mi></msub></mrow></mfrac><mo>⋅</mo><msub><mi>C</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">G \propto \frac{k_s \cdot h_g}{k_s + h_g} \cdot C_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.3435em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></div>
-<ul>
-<li><strong>경계가 공정 설계를 가른다</strong> — k_s만 아레니우스형이므로, k_s ≪ h_g인 저온에서는 기울기가 E_a를 그대로 반영하고(표면반응 율속), k_s ≫ h_g인 고온에서는 온도에 둔감한 h_g가 천장이 된다(물질전달 율속). 아레니우스 그림에서 꺾이는 지점이 두 영역의 경계다. 표면반응 율속에서는 두께 편차 = 온도 편차다 — E_a ≈ 1.7 eV(실란 LPCVD poly-Si의 교과서 값)로 두면 600°C 부근에서 온도가 1°C 달라질 때 속도가 약 2.5% 달라진다(계산값). LPCVD가 튜브 안 온도 균일도에 목을 매는 이유이며, 대신 전구체 소모가 적어 여러 장을 한 번에 넣는 배치가 가능하다. 물질전달 율속에서는 편차 = 흐름·배치 형상의 문제라 단매엽·샤워헤드 설계가 중요해진다.</li>
-<li><strong>압력이 경계를 움직인다</strong> — h_g는 확산계수를 경계층 두께로 나눈 값이라 압력에 반비례한다(확산계수 ∝ 1/P). 저압으로 가면 h_g가 커져 표면반응 율속 영역이 넓어지는 것이 LPCVD의 또 하나의 설계 이유다.</li>
-<li><strong>점착 계수와 컨포멀성</strong> — 점착 계수 s는 표면에 닿은 분자가 반응해 붙을 확률이다. s가 1에 가까우면 처음 닿은 자리에서 붙어 입구와 윗면이 먼저 먹고 바닥은 굶는다 — PVD 원자(s ≈ 1)의 직진성과 같은 그림이다. s가 작으면 분자는 붙기까지 평균 1/s번 튀어 다니며 방향이 무작위화되고, 깊은 구조 바닥까지 도달할 확률이 남는다. 바닥 도달분은 대략 종횡비와 s의 곱만큼 깎이므로, 컨포멀 CVD의 전구체 선택은 반응성(속도)과 점착 계수(퍼짐) 사이의 절충이다 — 반응이 너무 잘 되는 전구체는 빨라도 입구에서 소진돼 컨포멀성이 무너진다. <a class="wiki" href="../e/ald.html">ALD (원자층 증착)</a>는 이 절충을 우회한다. 반쪽 반응이 자기제한이라 도달만 하면 표면이 포화돼 기다려 주므로, 균일도를 정하는 것은 s가 아니라 노출량(압력×시간)이다.</li>
-<li><strong>PVD의 재스퍼터 — 직진성에 대한 이온의 반격</strong> — 바이어스를 걸어 이온을 함께 때리면(이온화 PVD·바이어스 스퍼터), 먼저 붙은 원자가 다시 튕겨 나가는 재스퍼터가 일어난다. 스퍼터 수율은 비스듬한 입사에서 커지므로 입구 모서리·오버행이 골라 깎이고, 튕긴 원자 일부는 바닥으로 재배치된다. 대가로 막에 Ar이 섞이고 응력이 압축 쪽으로 기운다. 즉 PVD의 커버리지 개선은 방향성을 버리는 것이 아니라, 재배치와 식각을 섞어 직진성의 청구서를 나눠 내는 방식이다.</li>
-</ul>
-<p>ECP 슈퍼필도 같은 언어로 읽힌다. 억제제(PEG+Cl)는 분자가 커서 좁은 트렌치 안으로 확산해 들어가기 느리고, 가속제(SPS)는 작고 빨라 바닥에 먼저 닿는다. 여기에 아래 CEAC 절의 면적 효과가 겹쳐, 입구는 억제제가, 바닥은 가속제가 지배하는 구배가 유지된다 — 슈퍼필은 첨가제의 경쟁인 동시에 수송 속도의 경쟁이다. 석출 속도 자체는 패러데이 법칙으로 환산되며, Cu 기준 전류밀도 10 mA/cm²에서 약 220 nm/min 수준이다(계산값).</p>
-<h3 id="스텝-커버리지와-컨포멀리티를-숫자로">스텝 커버리지와 컨포멀리티를 숫자로</h3>
-<p>스텝 커버리지는 윗면 두께에 대한 비율로 적는다. 측벽 커버리지 = 측벽 두께/윗면 두께, 바닥 커버리지 = 바닥 두께/윗면 두께다. 컨포멀리티는 구조 안 최소 두께/최대 두께로 정의하며 1이면 완전 균일이다. 종횡비 AR = 깊이/폭이 커질수록 PVD는 측벽 커버리지가 먼저 무너지고, CVD는 율속 영역과 점착 계수에 따라 기울기가 갈리며, ALD는 사이클 수만으로 고종횡비 구조에서도 1에 가까운 값을 노릴 수 있는 것이 세 방식의 정량적 차이다. 갭필 평가는 여기서 한 걸음 더 나아가, 채우는 도중 입구가 닫히지 않는가(보이드·심이 없는가)를 본다.</p>
-<p><strong>열산화 — 소모하며 자라는 막.</strong> 표의 첫 줄인 열산화는 증착과 성격이 다르다. 재료를 위에 얹는 대신 기판의 Si 자체를 소모해 SiO₂로 바꾼다. 부피가 늘기 때문에 산화막 두께의 약 44%만큼 Si가 소모되고, 막과 기판의 경계는 원래 표면 아래로 내려간다. 덕분에 표면의 오염과 손상이 막 아래에 묻히고 계면이 깨끗해, 게이트 계면층처럼 품질이 중요한 자리에 쓴다.</p>
-<p>성장 속도는 Deal과 Grove의 모델(1965)로 설명된다. 산화제가 이미 자란 막을 통과해 경계에 닿아야 반응이 계속되므로, 얇을 때는 표면 반응이 병목이라 두께가 시간에 비례해 자라고(선형), 두꺼워지면 확산이 병목이 되어 시간의 제곱근에 비례하게 느려진다(포물선). 건식(O₂)은 느리지만 치밀하고, 습식(H₂O)은 수 배 빠른 대신 막질이 조금 떨어져 두꺼운 필드·마스크 산화막에 쓴다.</p>
-<figure class="fig"><svg viewBox="0 0 760 336" role="img" aria-label="열산화막 두께는 처음에는 시간에 비례하고 두꺼워지면 시간의 제곱근에 비례한다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">열산화 — 처음엔 선형으로, 두꺼워지면 포물선으로</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">Deal-Grove 모델: 병목이 표면 반응에서 산화제 확산으로 바뀐다</text><path d="M120 214H700" stroke="var(--cds-chart-grid)" stroke-width="1" stroke-dasharray="4 4"></path><path d="M120 168H700" stroke="var(--cds-chart-grid)" stroke-width="1" stroke-dasharray="4 4"></path><path d="M120 122H700" stroke="var(--cds-chart-grid)" stroke-width="1" stroke-dasharray="4 4"></path><path d="M120 76V260H700" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M120 260L134.5 250.1L149 241.5L163.5 233.9L178 226.9L192.5 220.5L207 214.5L221.5 208.8L236 203.5L250.5 198.3L265 193.5L279.5 188.8L294 184.2L308.5 179.9L323 175.6L337.5 171.5L352 167.5L366.5 163.7L381 159.9L395.5 156.2L410 152.6L424.5 149.1L439 145.6L453.5 142.2L468 138.9L482.5 135.6L497 132.5L511.5 129.3L526 126.2L540.5 123.2L555 120.2L569.5 117.3L584 114.4L598.5 111.5L613 108.7L627.5 105.9L642 103.2L656.5 100.5L671 97.8L685.5 95.2L700 92.6" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></path><path d="M120 260L134.5 254.3L149 249.4L163.5 245.1L178 241.1L192.5 237.4L207 234L221.5 230.8L236 227.7L250.5 224.8L265 222L279.5 219.3L294 216.7L308.5 214.2L323 211.8L337.5 209.4L352 207.2L366.5 204.9L381 202.8L395.5 200.7L410 198.6L424.5 196.6L439 194.6L453.5 192.7L468 190.8L482.5 188.9L497 187.1L511.5 185.3L526 183.6L540.5 181.8L555 180.1L569.5 178.4L584 176.8L598.5 175.2L613 173.5L627.5 172L642 170.4L656.5 168.8L671 167.3L685.5 165.8L700 164.3" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></path><text x="108" y="84" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">SiO₂ 두께</text><text x="700" y="284" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">산화 시간</text><text x="692" y="84" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">습식 (H₂O) — 수 배 빠름</text><text x="692" y="156" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">건식 (O₂) — 느리지만 치밀</text><text x="140" y="120" font-size="11.5" fill="var(--cds-text-secondary)">초기: 표면 반응 지배</text><text x="140" y="138" font-size="11.5" fill="var(--cds-text-secondary)">(두께 ∝ 시간)</text><text x="404" y="218" font-size="11.5" fill="var(--cds-text-secondary)">두꺼워지면: 산화제 확산 지배</text><text x="404" y="236" font-size="11.5" fill="var(--cds-text-secondary)">(두께 ∝ √시간)</text><text x="24" y="324" font-size="11.5" fill="var(--cds-text-secondary)">개념 재구성: B. E. Deal &amp; A. S. Grove, J. Appl. Phys. 36, 3770 (1965), doi:10.1063/1.1713945</text></svg><figcaption>그림 2. 열산화 성장 곡선 · Deal-Grove 선형-포물선 전이</figcaption></figure>
-<p><strong>Cu 전해도금의 &quot;슈퍼필&quot;.</strong> 도금액의 첨가제(가속제·억제제·평탄제)가 트렌치 바닥에서는 성장을 빠르게, 입구에서는 느리게 만들어 보이드 없이 아래부터 차오른다. 다마신과 TSV(<a class="wiki" href="../e/advanced-packaging.html">첨단 패키징</a>)가 이 원리에 기댄다.</p>
-<p>메커니즘은 첨가제의 역할 분담으로 설명된다. 억제제(염소와 함께 작용하는 폴리에테르 계열)는 윗면과 입구에 흡착해 석출을 늦추고, 가속제(황 계열)는 바닥에 모여 석출을 빠르게 하며, 평탄제는 튀어나온 곳의 성장을 골라 늦춘다. 바닥이 차오를수록 가속제가 덮은 면적이 줄어들어 단위 면적당 가속 효과가 커지는 곡률 강화(CEAC) 모델이, 입구보다 바닥이 빨리 자라는 현상을 정량적으로 설명한다. 석출량 자체는 패러데이 법칙을 따라 전하량에 비례하므로 두께 제어는 전류×시간으로 한다. PVD Cu 시드 위에 이 도금을 올리고 <a class="wiki" href="../e/cmp.html">CMP</a>로 위를 깎아내는 흐름이 다마신 배선의 뼈대다.</p>
-<p><strong>참고 논문</strong></p>
-<ul>
-<li><a href="https://doi.org/10.1063/1.1713945" target="_blank" rel="noopener">General Relationship for the Thermal Oxidation of Silicon</a> — Deal &amp; Grove, J. Appl. Phys. 36, 3770 (1965). 열산화 선형-포물선 모델의 원전</li>
-</ul>
-<h3 id="막질을-결정하는-요소">막질을 결정하는 요소</h3>
-<ul>
-<li><strong>밀도와 미세구조</strong> — 증착 원자가 표면에서 움직일 여유가 없을수록(저온, 이온 보조 없음) 막은 기둥 구조와 기공을 품어 밀도가 낮아진다. 온도와 이온 보조가 이를 메우는 손잡이며, 밀도는 습식 식각 속도(WER)와 굴절률로 간접 감시한다(측정은 <a class="wiki" href="../e/ellipsometer.html">엘립소미터</a>·<a class="wiki" href="../e/xrr.html">XRR</a>).</li>
-<li><strong>응력</strong> — 막이 자라며 생기는 내재 응력과, 식은 뒤 기판과의 열팽창 차이로 생기는 열 응력으로 나뉜다. 부호와 크기는 조성·온도·이온 충격으로 조절하며, 웨이퍼 휨에서 스토니(Stoney) 식으로 거꾸로 읽는다. 과한 응력은 크랙·박리와 소자 특성 이동으로 돌아온다.</li>
-<li><strong>조성과 불순물</strong> — 전구체의 리간드가 다 떨어져 나가지 않으면 H·C·Cl이 막에 남는다. PECVD 질화막의 수소, LPCVD의 염소 잔류처럼 불순물은 밀도·WER·전기 특성을 함께 움직이므로, &#39;막 종류&#39;보다 &#39;어떤 조건의 막인가&#39;가 실무 단위다.</li>
-</ul>
-<h3 id="공정-윈도우와-트레이드오프">공정 윈도우와 트레이드오프</h3>
-<p>온도를 올리면 막질은 좋아지지만 열 예산이 소자 — 이미 만든 접합의 확산, 금속 배선, low-k — 를 공격한다. 속도를 올리면 물질전달 율속으로 넘어가 균일도와 컨포멀성이 무너진다. 갭필을 서두르면 심·보이드가 남고, 응력을 0으로 맞추려다 밀도를 잃기도 한다. 그래서 같은 SiO₂라도 고온 LPCVD, 저온 PECVD, 갭필 전용 FCVD·HDP가 공존한다 — 위 표의 행이 많은 것 자체가 트레이드오프의 증거다.</p>
-<h3 id="한계와-결함-모드">한계와 결함 모드</h3>
-<ul>
-<li><strong>보이드·심</strong> — 갭필 실패의 두 얼굴. 후공정 식각·<a class="wiki" href="../e/cmp.html">CMP</a>에서 열려 결함으로 드러난다.</li>
-<li><strong>크랙·박리</strong> — 응력×두께가 한계를 넘을 때 생긴다. 두꺼운 막일수록 응력 예산이 먼저 바닥난다.</li>
-<li><strong>핀홀·입자</strong> — 얇은 게이트·커패시터 유전체에서 치명적이라, 증착 전 세정과 챔버 입자 관리가 막질의 일부다(<a class="wiki" href="../e/cleaning.html">세정</a>).</li>
-<li><strong>계면 문제</strong> — 접착이 나쁜 계면, 자연산화막 위 증착처럼 막 자체보다 경계가 특성을 정하는 경우가 많다.</li>
-</ul>
-<h2 id="관련-항목">관련 항목</h2>
-<ul>
-<li><a class="wiki" href="../e/ald.html">ALD (원자층 증착)</a> — 한 층씩 쌓는 증착</li>
-<li><a class="wiki" href="../e/cmp.html">CMP</a> — 쌓은 막을 평평하게 깎는 짝 공정</li>
-<li><a class="wiki" href="../e/silicon-wafer.html">실리콘 웨이퍼</a> — 막이 올라가는 기판</li>
-<li><a class="wiki" href="../e/dielectrics.html">절연막</a> — 증착으로 만드는 대표 막들</li>
-</ul>
-<h3 id="근거">근거</h3>
-<ul>
-<li><strong>교과서 전형값</strong> — 방식별 온도 범위는 위 비교 표의 대략값이며, CVD의 율속 전이, PVD의 직진성, 미세구조와 온도의 관계 같은 메커니즘 서술은 박막 증착 교과서의 일반 설명을 따랐다.</li>
-<li><strong>문헌</strong> — 열산화의 선형-포물선 모델과 Si 소모 비율(약 44%)은 Deal &amp; Grove (1965)에, Cu 슈퍼필의 곡률 강화 설명은 CEAC 모델의 정설에 근거한다. ALD 컨포멀성의 정량 논의는 <a class="wiki" href="../e/ald.html">ALD (원자층 증착)</a>와 그 참고 문헌(Cremers et al. 2019)이 맡는다.</li>
-<li><strong>속도론 절의 수치</strong> — 직렬 저항 모델과 율속 전이는 CVD 교과서의 표준 모형이다. E_a ≈ 1.7 eV는 실란 LPCVD poly-Si의 교과서 전형값이고, &quot;1°C에 약 2.5%&quot;와 ECP &quot;10 mA/cm²에서 약 220 nm/min&quot;은 그 값들을 아레니우스 식·패러데이 법칙에 넣어 얻은 계산값이다. 점착 계수의 반사 그림과 재스퍼터의 각도 의존성은 박막 증착 교과서의 정성 서술 범위에서 썼다.</li>
-</ul>
-</article><p class="count">위 개요는 이 주제의 허브 항목 <a href="../e/deposition.html">증착</a> 본문의 앞부분(정의와 개요)입니다.</p>
+</blockquote><p>증착 방식은 &quot;얼마나 고르게 덮는가(컨포멀성)&quot;, &quot;몇 도에서 하는가(열 예산)&quot;, &quot;막질이 어떤가&quot;의 세 축으로 고른다. 같은 SiO₂라도 STI 갭필, 스페이서, BEOL 층간막은 각각 다른 방식으로 올린다.</p></article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/deposition.html">증착</a>의 정의와 개요까지만 실었다. <a href="../e/deposition.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/deposition.html"><span class="t">증착</span></a> <span class="badge">허브</span><div class="e">Deposition</div><div class="d"></div></li><li><a href="../e/ald.html"><span class="t">ALD (원자층 증착)</span></a><div class="e">Atomic Layer Deposition</div><div class="d"></div></li><li><a href="../e/cmp.html"><span class="t">CMP</span></a><div class="e">Chemical Mechanical Polishing</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/ald.html"><span class="t">ALD (원자층 증착)</span></a><div class="e">Atomic Layer Deposition</div><div class="d">전구체와 반응 가스를 번갈아 넣어 표면 반응의 자기제한성으로 한 층씩 쌓는 증착.</div></li><li><a href="../e/cmp.html"><span class="t">CMP</span></a><div class="e">Chemical Mechanical Polishing</div><div class="d">화학 반응과 기계적 연마를 함께 써 표면을 평탄하게 깎는 공정. 다마신과 웨이퍼 연마의 기반이다.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

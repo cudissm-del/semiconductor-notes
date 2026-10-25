@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -131,7 +140,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #엔드포인트</div>
   <h1 class="title">#엔드포인트</h1>
   <p style="color:var(--sub)">2개 항목에 붙은 태그.</p>
-  <div class="sub-name">계측·분석</div><div class="cards"><a class="card" href="../e/oes.html"><div class="t">OES</div><div class="e">Optical Emission Spectroscopy</div><div class="d"></div></a><a class="card" href="../e/interferometric-endpoint.html"><div class="t">간섭 엔드포인트</div><div class="e">Interferometric Endpoint</div><div class="d"></div></a></div>
+  <div class="sub-name">계측·분석</div><div class="cards"><a class="card" href="../e/oes.html"><div class="t">OES</div><div class="e">Optical Emission Spectroscopy</div><div class="d">플라즈마가 스스로 내는 빛을 분광해, 안에 어떤 반응종이 있는지와 식각이 끝났는지를 실시간으로 읽는 비침습 진단법.</div></a><a class="card" href="../e/interferometric-endpoint.html"><div class="t">간섭 엔드포인트</div><div class="e">Interferometric Endpoint</div><div class="d">식각·연마가 진행되는 동안 레이저 반사 간섭 신호의 진동을 세어 제거 깊이를 실시간으로 추적하고 종말점을 검출하는 기법.</div></a></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

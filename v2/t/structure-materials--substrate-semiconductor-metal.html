@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,7 +142,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">구조·재료 영역의 주제 · 전체 5개 항목을 읽는 순서대로.</p>
   <p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/silicon-wafer.html"><span class="t">실리콘 웨이퍼</span></a><div class="e">Silicon Wafer</div><div class="d"></div></li><li><a href="../e/channel-materials.html"><span class="t">반도체·채널 물질</span></a><div class="e">Semiconductor & Channel Materials</div><div class="d"></div></li><li><a href="../e/dopants-memory-materials.html"><span class="t">도펀트와 메모리 물질</span></a><div class="e">Dopants & Memory Materials</div><div class="d"></div></li><li><a href="../e/metals.html"><span class="t">금속·도체</span></a><div class="e">Metals & Conductors</div><div class="d"></div></li><li><a href="../e/sacrificial-materials.html"><span class="t">공정 보조·희생 물질</span></a><div class="e">Sacrificial & Assist Materials</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/silicon-wafer.html"><span class="t">실리콘 웨이퍼</span></a><div class="e">Silicon Wafer</div><div class="d">반도체 제조의 출발점이 되는 단결정 실리콘 원판. 모래에서 정제해 결정으로 길러 얇게 썰고 거울처럼 연마한 것이다.</div></li><li><a href="../e/channel-materials.html"><span class="t">반도체·채널 물질</span></a><div class="e">Semiconductor & Channel Materials</div><div class="d">기판과 채널에 쓰이는 반도체 물질들 — Si를 중심으로 SiGe와 화합물 반도체까지.</div></li><li><a href="../e/dopants-memory-materials.html"><span class="t">도펀트와 메모리 물질</span></a><div class="e">Dopants & Memory Materials</div><div class="d">전기적 성질을 정하는 도펀트와, 메모리 소자 전용 물질 (강유전체·상변화·자성 재료 등).</div></li><li><a href="../e/metals.html"><span class="t">금속·도체</span></a><div class="e">Metals & Conductors</div><div class="d">배선과 전극에 쓰이는 금속·배리어·라이너 재료들과 각각의 역할.</div></li><li><a href="../e/sacrificial-materials.html"><span class="t">공정 보조·희생 물질</span></a><div class="e">Sacrificial & Assist Materials</div><div class="d">최종 칩에 남지 않고 공정 중에만 쓰였다 사라지는 물질들 — 하드마스크, 희생층, 감광막 등.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

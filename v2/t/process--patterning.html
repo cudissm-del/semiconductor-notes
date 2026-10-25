@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,8 +142,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">공정 영역의 주제 · 전체 4개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>빛으로 감광막에 패턴을 새겨 이후 공정의 모양을 정하는 공정. 해상도를 정하는 세 변수부터 공정 순서까지.</p>
-</blockquote>
-<h2 id="개요">개요</h2>
+</blockquote><h2 id="개요">개요</h2>
 <p>패터닝은 회로 모양을 감광막(PR)에 새기고(노광) 식각으로 아래 막에 옮기는 과정이다. 한 번에 찍을 수 있는 최소 선폭(해상도)이 수십 년간 미세화 속도를 정해 왔다.</p>
 <p>리소그래피는 팹에서 가장 많이 반복되는 공정 단위이기도 하다. 층마다 &quot;코팅 → 노광 → 현상 → 검사&quot;가 돌아가고, 그 사이사이에 <a class="wiki" href="../e/dry-etch.html">건식 식각</a>·<a class="wiki" href="../e/deposition.html">증착</a>·<a class="wiki" href="../e/cmp.html">CMP</a>가 끼는 구조가 <a class="wiki" href="../e/process-flow.html">반도체 제조 전체 흐름</a>의 기본 리듬이다. 이 항목은 총론이다 — 노광 원리와 해상도 식, 광원의 진화, 레지스트 화학, 해상도 향상 기술을 한곳에 정리하고, 세부 기술인 <a class="wiki" href="../e/euv.html">EUV</a>·<a class="wiki" href="../e/high-na-euv.html">High-NA EUV</a>·<a class="wiki" href="../e/multipatterning.html">멀티패터닝</a>은 각 항목으로 넘긴다.</p>
 <h3 id="해상도를-정하는-세-변수">해상도를 정하는 세 변수</h3>
@@ -190,9 +198,9 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <td>2nm 이하 로직, 2027년 이후 양산 적용</td>
 </tr>
 </tbody></table></div>
-</article><p class="count">위 개요는 이 주제의 허브 항목 <a href="../e/lithography.html">리소그래피</a> 본문의 앞부분(정의와 개요)입니다.</p>
+</article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/lithography.html">리소그래피</a>의 정의와 개요까지만 실었다. <a href="../e/lithography.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/lithography.html"><span class="t">리소그래피</span></a> <span class="badge">허브</span><div class="e">Lithography</div><div class="d"></div></li><li><a href="../e/euv.html"><span class="t">EUV</span></a><div class="e">Extreme Ultraviolet Lithography</div><div class="d"></div></li><li><a href="../e/high-na-euv.html"><span class="t">High-NA EUV</span></a><div class="e">High-NA EUV</div><div class="d"></div></li><li><a href="../e/multipatterning.html"><span class="t">멀티패터닝</span></a><div class="e">Multipatterning</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/euv.html"><span class="t">EUV</span></a><div class="e">Extreme Ultraviolet Lithography</div><div class="d">13.5 nm 극자외선으로 해상도 한계를 넘는 노광 기술. 광원·거울 광학·레지스트가 무엇이 다른가.</div></li><li><a href="../e/high-na-euv.html"><span class="t">High-NA EUV</span></a><div class="e">High-NA EUV</div><div class="d">개구수를 0.33에서 0.55로 올린 차세대 EUV의 원리와 도입 현황.</div></li><li><a href="../e/multipatterning.html"><span class="t">멀티패터닝</span></a><div class="e">Multipatterning</div><div class="d">한 번의 노광으로 찍을 수 없는 촘촘한 패턴을 여러 번으로 나눠 찍어 합치는 기술.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

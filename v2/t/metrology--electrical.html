@@ -124,6 +124,15 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
@@ -133,7 +142,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   <p style="color:var(--sub)">계측·분석 영역의 주제 · 전체 5개 항목을 읽는 순서대로.</p>
   <p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/four-point-probe.html"><span class="t">4점 탐침</span></a><div class="e">Four-Point Probe</div><div class="d"></div></li><li><a href="../e/cv.html"><span class="t">C-V 측정</span></a><div class="e">Capacitance–Voltage Measurement</div><div class="d"></div></li><li><a href="../e/hall.html"><span class="t">홀 측정</span></a><div class="e">Hall Effect Measurement</div><div class="d"></div></li><li><a href="../e/kelvin-tlm.html"><span class="t">Kelvin·TLM</span></a><div class="e">Kelvin & Transfer Length Method</div><div class="d"></div></li><li><a href="../e/wat.html"><span class="t">WAT</span></a><div class="e">Wafer Acceptance Test</div><div class="d"></div></li></ol>
+  <ol class="tlist"><li><a href="../e/four-point-probe.html"><span class="t">4점 탐침</span></a><div class="e">Four-Point Probe</div><div class="d">등간격으로 늘어선 4개 탐침으로 전류를 흘리고 전압을 재 면저항을 구하는 가장 기본적인 전기 계측.</div></li><li><a href="../e/cv.html"><span class="t">C-V 측정</span></a><div class="e">Capacitance–Voltage Measurement</div><div class="d">MOS 커패시터에 전압을 sweep하며 정전용량을 재, 산화막 두께·도핑·계면 상태를 읽는 측정.</div></li><li><a href="../e/hall.html"><span class="t">홀 측정</span></a><div class="e">Hall Effect Measurement</div><div class="d">전류가 흐르는 시료에 자기장을 걸어 생기는 홀 전압으로 캐리어 농도·이동도·전도형을 판정하는 측정.</div></li><li><a href="../e/kelvin-tlm.html"><span class="t">Kelvin·TLM</span></a><div class="e">Kelvin & Transfer Length Method</div><div class="d">간격을 달리한 접촉 패턴(TLM)과 4단자 구조(Kelvin)로 접촉저항과 막 면저항을 분리해 추출하는 테스트 구조 측정.</div></li><li><a href="../e/wat.html"><span class="t">WAT</span></a><div class="e">Wafer Acceptance Test</div><div class="d">웨이퍼 스크라이브 라인의 테스트 구조를 프로빙해 전기 파라미터로 공정 합격 여부를 판정하는 측정 단계.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>
