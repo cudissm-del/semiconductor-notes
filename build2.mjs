@@ -1,5 +1,5 @@
-// 반도체 백과 빌더 (재편 프리뷰) — content/entries/<분류>/<슬러그>.md → v2/
-// 설계: DESIGN.md. 기존 build.mjs(강의노트)는 이관 완료까지 병행 유지.
+// 반도체 백과 빌더 — content/entries/<영역>/<주제>/<슬러그>.md → v2/
+// 설계: DESIGN.md (영역 4 > 주제(허브형·목록형) > 항목, 3단 통일). 기존 build.mjs(강의노트)는 전환까지 병행 유지.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,18 +10,27 @@ import katex from 'katex';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const r = p => path.join(ROOT, p);
 const OUT = r('v2');
-fs.mkdirSync(path.join(OUT, 'e'), { recursive: true });
+for (const d of ['e', 'd', 't', 'tag']) fs.mkdirSync(path.join(OUT, d), { recursive: true });
 
-export const CATS = [
-  { id: 'process', name: '공정', subs: ['리소그래피', '식각', '증착·성막', '열처리·확산', '이온주입', 'CMP·평탄화', '세정', '집적 흐름'] },
-  { id: 'metrology', name: '계측·분석', subs: ['두께·형상', '조성·표면', '결함·오염', '전기 측정', '플라즈마 진단'] },
-  { id: 'materials', name: '재료', subs: ['기판·웨이퍼', '절연막', '반도체막', '금속·배리어', '감광·화학 소재'] },
-  { id: 'devices', name: '소자·구조', subs: ['트랜지스터', '메모리', '패키징·연결', '구성 요소'] },
-  { id: 'phenomena', name: '현상·원리', subs: ['플라즈마', '표면·계면 반응', '수송·확산', '응력·변형', '방사선·빔 상호작용'] },
-  { id: 'equipment', name: '장비', subs: ['노광 장비', '식각 장비', '증착 장비', '주입·열처리 장비'] },
-  { id: 'manufacturing', name: '제조·품질', subs: ['수율', '결함 관리', '오염 관리', '클린룸·환경', '공정 제어'] },
+// ── 분류 체계 (DESIGN.md와 일치시킬 것) ──────────────────────────
+export const DOMAINS = [
+  { id: 'process', name: '공정', desc: '만드는 방법 — 웨이퍼 위에 구조를 쌓고, 새기고, 깎는 모든 공정.', topics: [
+    { id: 'flow', name: '집적 흐름' }, { id: 'patterning', name: '패터닝' }, { id: 'etch', name: '식각' },
+    { id: 'film-planarization', name: '막 형성·평탄화' }, { id: 'doping-thermal-cleaning', name: '도핑·열처리·세정' } ] },
+  { id: 'structure-materials', name: '구조·재료', desc: '무엇을 만드나 — 소자의 구조와, 그 구조를 이루는 물질 그 자체.', topics: [
+    { id: 'transistor', name: '트랜지스터' }, { id: 'spacer', name: '스페이서' }, { id: 'memory', name: '메모리' },
+    { id: 'packaging', name: '패키징' }, { id: 'dielectrics', name: '절연막' }, { id: 'substrate-semiconductor-metal', name: '기판·반도체·금속' } ] },
+  { id: 'metrology', name: '계측·분석', desc: '재는 방법 — 형상·두께·조성·결함·전기와 플라즈마를 재는 계측·분석 기법. 주제는 측정 대상별로 묶고, 원리 묶음(전자빔·X선·광학·탐침)은 태그로 단다.', topics: [
+    { id: 'shape-dimension', name: '형상·치수' }, { id: 'film-thickness', name: '박막 두께' }, { id: 'composition', name: '조성·화학' },
+    { id: 'defect-contamination', name: '결함·오염' }, { id: 'electrical', name: '전기 측정' }, { id: 'plasma-diagnostics', name: '플라즈마 진단' } ] },
+  { id: 'principles-ops', name: '원리·운영', desc: '왜 일어나는가(원리)와 어떻게 굴리는가(운영).', topics: [
+    { id: 'plasma', name: '플라즈마' }, { id: 'surface-selectivity', name: '표면 반응·선택비' }, { id: 'yield-quality', name: '수율·품질' } ] },
 ];
-const catName = id => (CATS.find(c => c.id === id) || {}).name || id;
+const domainOf = id => DOMAINS.find(d => d.id === id);
+const domainName = id => (domainOf(id) || {}).name || id;
+const topicOf = (d, t) => (domainOf(d) || { topics: [] }).topics.find(x => x.id === t);
+const topicName = e => e.domainHub ? '영역 허브' : (topicOf(e.domain, e.topic) || {}).name || e.topic || '';
+const topicPage = (d, t) => `t/${d}--${t}.html`;
 
 // ── 그림 번들 (build.mjs와 동일 방식) ─────────────────────────────
 await esbuild.build({
@@ -57,21 +66,28 @@ function parseEntry(file) {
   if (!m) { console.warn('⚠ 프론트매터 없음:', file); return null; }
   const fm = {};
   for (const line of m[1].split('\n')) {
-    const kv = line.match(/^(\w+):\s*(.+)$/);
+    const kv = line.match(/^([\w-]+):\s*(.+)$/);
     if (kv) fm[kv[1]] = kv[2].trim();
   }
   const slug = path.basename(file, '.md');
-  return {
-    slug, title: fm.title || slug, en: fm.en || '', cat: fm.cat || '', sub: fm.sub || '',
+  const e = {
+    slug, title: fm.title || slug, en: fm.en || '',
+    domain: fm.domain || '', topic: fm.topic || '',
+    order: Number.isFinite(parseInt(fm.order, 10)) ? parseInt(fm.order, 10) : 99,
+    hub: fm.hub === 'true', domainHub: fm.domain_hub === 'true',
     tags: (fm.tags || '').split(',').map(s => s.trim()).filter(Boolean),
     body: raw.slice(m[0].length),
     dir: path.dirname(file),
   };
+  if (!domainOf(e.domain)) console.warn(`⚠ [${slug}] 알 수 없는 domain:`, e.domain);
+  else if (!e.domainHub && !topicOf(e.domain, e.topic)) console.warn(`⚠ [${slug}] 알 수 없는 topic:`, e.topic);
+  return e;
 }
 const entries = walk(r('content/entries')).map(parseEntry).filter(Boolean);
 const byTitle = new Map(), bySlug = new Map();
 for (const e of entries) { byTitle.set(e.title, e); bySlug.set(e.slug, e); if (e.en) byTitle.set(e.en, e); }
 const resolveWiki = name => byTitle.get(name.trim()) || bySlug.get(name.trim().toLowerCase());
+const topicEntries = (d, t) => entries.filter(e => e.domain === d && e.topic === t).sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug));
 
 // ── 렌더링 ───────────────────────────────────────────────────────
 const hSlug = t => t.replace(/<[^>]+>/g, '').trim().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').slice(0, 40);
@@ -137,36 +153,116 @@ function renderEntry(e) {
 }
 
 const css = fs.readFileSync(r('src/wiki.css'), 'utf8');
+// 구조 재편 페이지 (영역·주제·태그·사이드 트리·이전/다음) 전용 보충 스타일
+const extraCss = `
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+`;
 const updated = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());
 const plain = s => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+const head = (title, prefix) => `<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title><style>${css}${extraCss}</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="${prefix}index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>`;
+const foot = `<footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+</body></html>`;
+const footOpen = foot.replace(/\n<\/body><\/html>$/, ''); // 스크립트가 뒤에 오는 항목 페이지용 (닫는 태그 제외)
 
 const bodies = new Map();
 for (const e of entries) bodies.set(e.slug, renderEntry(e));
 // 역링크
 const backlinks = new Map(entries.map(e => [e.slug, []]));
 for (const [from, set] of outLinks) for (const to of set) backlinks.get(to)?.push(bySlug.get(from));
+const defOf = e => { const m = bodies.get(e.slug).match(/<blockquote><p>([\s\S]*?)<\/p><\/blockquote>/); return m ? plain(m[1]) : ''; };
+// 허브 개요: 본문 렌더링 결과에서 두 번째 h2 앞까지 (정의 인용 + 개요 절)
+const overviewOf = html => html.split(/(?=<h2 )/).slice(0, 2).join('');
+// 항목 본문을 e/ 밖의 페이지(영역·주제)에 삽입할 때 위키 링크의 기준 경로를 ../e/로 재조정
+// (로컬 이미지 ../assets/ 경로는 모든 페이지가 v2 바로 아래 한 단계라 그대로 맞는다)
+const rebaseBody = html => html.replace(/<a class="wiki" href="/g, '<a class="wiki" href="../e/');
+
+// ── 왼쪽 트리 (항목 페이지용 — 현재 영역·주제만 펼침) ────────────
+function treeHtml(cur) {
+  return DOMAINS.map(d => {
+    const list = entries.filter(e => e.domain === d.id);
+    const head = `<div class="tn-d"><a href="../d/${d.id}.html">${d.name}</a> <span class="count">${list.length}</span></div>`;
+    if (d.id !== cur.domain) return `<div class="tn">${head}</div>`;
+    const dHub = list.find(e => e.domainHub);
+    const hubLine = dHub ? `<div class="tn-t${cur.domainHub ? ' open' : ''}"><a href="${dHub.slug}.html">${dHub.title}</a></div>` : '';
+    const topics = d.topics.map(t => {
+      const items = topicEntries(d.id, t.id);
+      if (t.id === cur.topic && !cur.domainHub) {
+        return `<div class="tn-t open"><a href="../${topicPage(d.id, t.id)}">${t.name}</a><ul>${items.map(x => `<li${x.slug === cur.slug ? ' class="cur"' : ''}><a href="${x.slug}.html">${x.title}</a></li>`).join('')}</ul></div>`;
+      }
+      return `<div class="tn-t"><a href="../${topicPage(d.id, t.id)}">${t.name}</a></div>`;
+    }).join('');
+    return `<div class="tn">${head}${hubLine}${topics}</div>`;
+  }).join('');
+}
 
 // ── 항목 페이지 ──────────────────────────────────────────────────
 for (const e of entries) {
   const outs = [...(outLinks.get(e.slug) || [])].map(s => bySlug.get(s)).filter(Boolean);
   const backs = backlinks.get(e.slug) || [];
-  const siblings = entries.filter(x => x.cat === e.cat && x.sub === e.sub && x.slug !== e.slug);
-  const linkList = list => list.length ? `<ul>${list.map(x => `<li><a href="${x.slug}.html">${x.title}</a> <span style="color:var(--sub)">— ${catName(x.cat)} &gt; ${x.sub}</span></li>`).join('')}</ul>` : '<p style="color:var(--sub)">없음</p>';
-  const page = `<!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${e.title} — 반도체 백과</title><style>${css}</style></head>
-<body>
-<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
-  <div class="crumb"><a href="../index.html">대문</a> › ${catName(e.cat)} › ${e.sub}</div>
+  const siblings = e.topic ? topicEntries(e.domain, e.topic).filter(x => x.slug !== e.slug) : [];
+  const linkList = list => list.length ? `<ul>${list.map(x => `<li><a href="${x.slug}.html">${x.title}</a> <span style="color:var(--sub)">— ${domainName(x.domain)} &gt; ${topicName(x)}</span></li>`).join('')}</ul>` : '<p style="color:var(--sub)">없음</p>';
+  const sibs = e.topic ? topicEntries(e.domain, e.topic) : [];
+  const idx = sibs.findIndex(x => x.slug === e.slug);
+  const prev = idx > 0 ? sibs[idx - 1] : null, next = idx >= 0 && idx < sibs.length - 1 ? sibs[idx + 1] : null;
+  const prevNext = (prev || next) ? `<nav class="prevnext">${prev ? `<a href="${prev.slug}.html">← 이전 · ${prev.title}</a>` : '<span></span>'}${next ? `<a href="${next.slug}.html">다음 · ${next.title} →</a>` : '<span></span>'}</nav>` : '';
+  const crumb = e.domainHub
+    ? `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › ${e.title}`
+    : `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › <a href="../${topicPage(e.domain, e.topic)}">${topicName(e)}</a> › ${e.title}`;
+  const page = `${head(`${e.title} — 반도체 백과`, '../')}
+<main class="wide">
+ <div class="layout">
+  <aside class="side">${treeHtml(e)}</aside>
+  <div class="content">
+  <div class="crumb">${crumb}</div>
   <h1 class="title">${e.title}</h1>
   ${e.en ? `<div class="en">${e.en}</div>` : ''}
-  <div class="meta"><span class="chip cat">${catName(e.cat)} &gt; ${e.sub}</span>${e.tags.map(t => `<span class="chip">#${t}</span>`).join('')}</div>
+  <div class="meta"><span class="chip cat">${domainName(e.domain)} &gt; ${topicName(e)}</span>${e.hub ? '<span class="badge">주제 허브</span>' : ''}${e.domainHub ? '<span class="badge">영역 허브</span>' : ''}${e.tags.map(t => `<a class="chip" href="../tag/${encodeURIComponent(t)}.html">#${t}</a>`).join('')}</div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article>${bodies.get(e.slug)}</article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3>${linkList(outs)}<h3>이 항목을 링크한 항목</h3>${linkList(backs)}${siblings.length ? `<h3>같은 분류의 다른 항목</h3>${linkList(siblings)}` : ''}</div>
+  ${prevNext}
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3>${linkList(outs)}<h3>이 항목을 링크한 항목</h3>${linkList(backs)}${siblings.length ? `<h3>같은 주제의 다른 항목</h3>${linkList(siblings)}` : ''}</div>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+${footOpen}
 <script>
 (function () {
   var slug = "${e.slug}", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
@@ -185,26 +281,108 @@ for (const e of entries) {
   fs.writeFileSync(path.join(OUT, 'e', `${e.slug}.html`), page);
 }
 
+// ── 영역 페이지 ──────────────────────────────────────────────────
+for (const d of DOMAINS) {
+  const list = entries.filter(e => e.domain === d.id);
+  const dHub = list.find(e => e.domainHub);
+  const topicCards = d.topics.map(t => {
+    const items = topicEntries(d.id, t.id);
+    const hub = items.find(x => x.hub);
+    return `<a class="card" href="../${topicPage(d.id, t.id)}"><div class="t">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></div><div class="e">${items.length}개 항목${hub ? ` · 허브: ${hub.title}` : ''}</div><div class="d">${items.map(x => x.title).join(' · ')}</div></a>`;
+  }).join('');
+  const page = `${head(`${d.name} — 반도체 백과`, '../')}
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › ${d.name}</div>
+  <h1 class="title">${d.name}</h1>
+  <p style="color:var(--sub)">${d.desc} 전체 ${list.length}개 항목 · 주제 ${d.topics.length}개.</p>
+  ${dHub ? `<article>${rebaseBody(bodies.get(dHub.slug))}</article><p class="count">영역 허브 항목 <a href="../e/${dHub.slug}.html">${dHub.title}</a>의 본문입니다. 항목 페이지에서도 볼 수 있습니다.</p>` : ''}
+  <section class="cat-sec"><h2>주제</h2><div class="cards">${topicCards}</div></section>
+</main>
+${foot}`;
+  fs.writeFileSync(path.join(OUT, 'd', `${d.id}.html`), page);
+}
+
+// ── 주제 페이지 ──────────────────────────────────────────────────
+for (const d of DOMAINS) for (const t of d.topics) {
+  const items = topicEntries(d.id, t.id);
+  const hub = items.find(x => x.hub);
+  const listHtml = `<ol class="tlist">${items.map(x => `<li><a href="../e/${x.slug}.html"><span class="t">${x.title}</span></a>${x.hub ? ' <span class="badge">허브</span>' : ''}<div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></li>`).join('')}</ol>`;
+  const overview = hub
+    ? `<article>${rebaseBody(overviewOf(bodies.get(hub.slug)))}</article><p class="count">위 개요는 이 주제의 허브 항목 <a href="../e/${hub.slug}.html">${hub.title}</a> 본문의 앞부분(정의와 개요)입니다.</p>`
+    : `<p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>`;
+  const page = `${head(`${t.name} — ${d.name} · 반도체 백과`, '../')}
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/${d.id}.html">${d.name}</a> › ${t.name}</div>
+  <h1 class="title">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></h1>
+  <p style="color:var(--sub)">${d.name} 영역의 주제 · 전체 ${items.length}개 항목을 읽는 순서대로.</p>
+  ${overview}
+  <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
+  ${listHtml}
+</main>
+${foot}`;
+  fs.writeFileSync(path.join(OUT, 't', `${d.id}--${t.id}.html`), page);
+}
+
+// ── 태그 페이지 (횡단 묶음) ──────────────────────────────────────
+const tagMap = new Map();
+for (const e of entries) for (const t of e.tags) { if (!tagMap.has(t)) tagMap.set(t, []); tagMap.get(t).push(e); }
+const tagList = [...tagMap.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0], 'ko'));
+const tagsPage = `${head('태그 — 반도체 백과', '')}
+<main>
+  <div class="crumb"><a href="index.html">대문</a> › 태그</div>
+  <h1 class="title">태그</h1>
+  <p style="color:var(--sub)">위계를 가로지르는 횡단 묶음은 태그가 맡는다. 전체 ${tagList.length}개 태그.</p>
+  <div class="tagrows">${tagList.map(([t, list]) => `<a href="tag/${encodeURIComponent(t)}.html">#${t} <span class="count">${list.length}</span></a>`).join('')}</div>
+</main>
+<footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
+</body></html>`;
+fs.writeFileSync(path.join(OUT, 'tags.html'), tagsPage);
+for (const [t, list] of tagList) {
+  const sections = DOMAINS.map(d => {
+    const items = list.filter(e => e.domain === d.id).sort((a, b) => a.order - b.order);
+    if (!items.length) return '';
+    return `<div class="sub-name">${d.name}</div><div class="cards">${items.map(x => `<a class="card" href="../e/${x.slug}.html"><div class="t">${x.title}</div><div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></a>`).join('')}</div>`;
+  }).join('');
+  const page = `${head(`#${t} — 반도체 백과`, '../')}
+<main>
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #${t}</div>
+  <h1 class="title">#${t}</h1>
+  <p style="color:var(--sub)">${list.length}개 항목에 붙은 태그.</p>
+  ${sections}
+</main>
+${foot}`;
+  fs.writeFileSync(path.join(OUT, 'tag', `${t}.html`), page);
+}
+
 // ── 대문 ─────────────────────────────────────────────────────────
-const defOf = e => { const m = bodies.get(e.slug).match(/<blockquote><p>([\s\S]*?)<\/p><\/blockquote>/); return m ? plain(m[1]) : ''; };
-const catSections = CATS.map(c => {
-  const list = entries.filter(e => e.cat === c.id);
+const tiles = DOMAINS.map(d => {
+  const list = entries.filter(e => e.domain === d.id);
+  return `<div class="dtile"><div class="t"><a href="d/${d.id}.html">${d.name}</a></div><div class="c">${list.length}개 항목 · 주제 ${d.topics.length}개</div><p>${d.desc}</p><div class="tchips">${d.topics.map(t => `<a href="${topicPage(d.id, t.id)}">${t.name}</a>`).join('')}</div></div>`;
+}).join('');
+const domainSections = DOMAINS.map(d => {
+  const list = entries.filter(e => e.domain === d.id);
   if (!list.length) return '';
-  const subs = [...new Set([...c.subs, ...list.map(e => e.sub)])].filter(s => list.some(e => e.sub === s));
-  return `<section class="cat-sec"><h2>${c.name} <span class="count">${list.length}개 항목</span></h2>${subs.map(s => `
-    <div class="sub-name">${s}</div><div class="cards">${list.filter(e => e.sub === s).map(e => `
-      <a class="card" href="e/${e.slug}.html"><div class="t">${e.title}</div><div class="e">${e.en}</div><div class="d">${escA(defOf(e))}</div></a>`).join('')}</div>`).join('')}</section>`;
+  const dHub = list.find(e => e.domainHub);
+  const card = x => `<a class="card" href="e/${x.slug}.html"><div class="t">${x.title}</div><div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></a>`;
+  const hubBlock = dHub ? `<div class="sub-name">영역 허브</div><div class="cards">${card(dHub)}</div>` : '';
+  const topicBlocks = d.topics.map(t => {
+    const items = topicEntries(d.id, t.id);
+    if (!items.length) return '';
+    return `<div class="sub-name"><a href="${topicPage(d.id, t.id)}" style="color:inherit">${t.name}</a></div><div class="cards">${items.map(card).join('')}</div>`;
+  }).join('');
+  return `<section class="cat-sec"><h2><a href="d/${d.id}.html" style="color:inherit">${d.name}</a> <span class="count">${list.length}개 항목</span></h2>${hubBlock}${topicBlocks}</section>`;
 }).join('');
 const indexPage = `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>반도체 백과</title><style>${css}</style></head>
+<title>반도체 백과</title><style>${css}${extraCss}</style></head>
 <body>
 <header class="top"><div class="in"><span class="brand">반도체 백과</span><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main>
-  <div class="hero"><h1>반도체 백과</h1><p>반도체 공정의 모든 것을 항목 단위로 쌓는 지식창고. 전체 ${entries.length}개 항목 (재편 진행 중 — 기존 강의노트는 <a href="../index.html">여기</a>).</p></div>
+  <div class="hero"><h1>반도체 백과</h1><p>반도체 공정의 모든 것을 항목 단위로 쌓는 지식창고. 전체 ${entries.length}개 항목 (재편 진행 중 — 기존 강의노트는 <a href="../index.html">여기</a>). 위계를 가로지르는 묶음은 <a href="tags.html">태그</a>에서.</p></div>
+  <div class="dtiles">${tiles}</div>
   <div class="search"><input id="q" type="search" placeholder="항목 검색 — 예: 엘립소미터, 식각, SiOCN" autocomplete="off"><div id="results"></div></div>
   <div class="tabs"><button class="tab on" id="tabAll" type="button">전체 분류</button><button class="tab" id="tabFav" type="button">★ 즐겨찾기</button></div>
-  <div id="allWrap">${catSections}</div>
+  <div id="allWrap">${domainSections}</div>
   <div id="favWrap" hidden><div class="cards" id="favCards"></div><p id="favEmpty" class="count" hidden>아직 즐겨찾기한 항목이 없습니다. 항목 페이지에서 ☆ 즐겨찾기 버튼을 눌러 추가하세요.</p></div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
@@ -246,8 +424,9 @@ q.addEventListener('input', () => {
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage);
 
 // ── 검색 색인 ────────────────────────────────────────────────────
-const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, cat: catName(e.cat), sub: e.sub, tags: e.tags, d: defOf(e), x: plain(bodies.get(e.slug)).slice(0, 4000) }));
+const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, cat: domainName(e.domain), sub: topicName(e), tags: e.tags, d: defOf(e), x: plain(bodies.get(e.slug)).slice(0, 4000) }));
 fs.writeFileSync(path.join(OUT, 'search-index.json'), JSON.stringify(index));
 
-console.log(`✓ v2 — 항목 ${entries.length}개, 위키 링크 ${[...outLinks.values()].reduce((a, s) => a + s.size, 0)}개`);
+const topicCount = DOMAINS.reduce((a, d) => a + d.topics.length, 0);
+console.log(`✓ v2 — 항목 ${entries.length}개, 위키 링크 ${[...outLinks.values()].reduce((a, s) => a + s.size, 0)}개, 영역 ${DOMAINS.length}개, 주제 ${topicCount}개, 태그 ${tagList.length}개 페이지`);
 for (const [slug, miss] of missLinks) console.log(`  · ${slug}: 미작성 링크 ${miss.join(', ')}`);

@@ -1,8 +1,8 @@
 ---
 title: 계측 개요 — 무엇을 무엇으로 재나
 en: Metrology Overview
-cat: metrology
-sub: 개요
+domain: metrology
+domain_hub: true
 tags: 계측, 지도
 ---
 
