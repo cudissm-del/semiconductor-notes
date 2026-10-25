@@ -88,14 +88,53 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 .fav-btn:hover { border-color: var(--star); }
 .fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
 #favWrap { margin-top: 18px; }
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
-  <div class="crumb"><a href="../index.html">대문</a> › 공정 › 집적 흐름</div>
+<main class="wide">
+ <div class="layout">
+  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div><div class="tn-t open"><a href="../t/process--flow.html">집적 흐름</a><ul><li><a href="process-flow.html">반도체 제조 전체 흐름</a></li><li><a href="feol.html">FEOL</a></li><li class="cur"><a href="mol.html">MOL</a></li><li><a href="beol.html">BEOL</a></li><li><a href="rmg.html">RMG (Gate-last)</a></li></ul></div><div class="tn-t"><a href="../t/process--patterning.html">패터닝</a></div><div class="tn-t"><a href="../t/process--etch.html">식각</a></div><div class="tn-t"><a href="../t/process--film-planarization.html">막 형성·평탄화</a></div><div class="tn-t"><a href="../t/process--doping-thermal-cleaning.html">도핑·열처리·세정</a></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/process.html">공정</a> › <a href="../t/process--flow.html">집적 흐름</a> › MOL</div>
   <h1 class="title">MOL</h1>
   <div class="en">Middle-Of-Line</div>
-  <div class="meta"><span class="chip cat">공정 &gt; 집적 흐름</span><span class="chip">#컨택</span><span class="chip">#집적</span></div>
+  <div class="meta"><span class="chip cat">공정 &gt; 집적 흐름</span><a class="chip" href="../tag/%EC%BB%A8%ED%83%9D.html">#컨택</a><a class="chip" href="../tag/%EC%A7%91%EC%A0%81.html">#집적</a></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>트랜지스터와 배선을 잇는 컨택층 (Middle-Of-Line)의 집적 흐름.</p>
@@ -190,9 +229,12 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>좁은 단면에서의 금속 비저항 상승(평균자유행로 효과)은 <a class="wiki" href="beol.html">BEOL</a>·<a class="wiki" href="metals.html">금속·도체</a>와 같은 교과서 전형 물리를 적용했다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <nav class="prevnext"><a href="feol.html">← 이전 · FEOL</a><a href="beol.html">다음 · BEOL →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
   var slug = "mol", KEY = 'wiki-favs', btn = document.getElementById('favBtn');

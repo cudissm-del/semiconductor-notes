@@ -88,14 +88,53 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 .fav-btn:hover { border-color: var(--star); }
 .fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
 #favWrap { margin-top: 18px; }
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
-  <div class="crumb"><a href="../index.html">대문</a> › 소자·구조 › 패키징·연결</div>
+<main class="wide">
+ <div class="layout">
+  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t open"><a href="../t/structure-materials--packaging.html">패키징</a><ul><li class="cur"><a href="packaging.html">패키징과 테스트</a></li><li><a href="advanced-packaging.html">첨단 패키징</a></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a></li><li><a href="packaging-materials.html">패키징 소재</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › <a href="../t/structure-materials--packaging.html">패키징</a> › 패키징과 테스트</div>
   <h1 class="title">패키징과 테스트</h1>
   <div class="en">Packaging & Test</div>
-  <div class="meta"><span class="chip cat">소자·구조 &gt; 패키징·연결</span><span class="chip">#후공정</span><span class="chip">#테스트</span></div>
+  <div class="meta"><span class="chip cat">구조·재료 &gt; 패키징</span><span class="badge">주제 허브</span><a class="chip" href="../tag/%ED%9B%84%EA%B3%B5%EC%A0%95.html">#후공정</a><a class="chip" href="../tag/%ED%85%8C%EC%8A%A4%ED%8A%B8.html">#테스트</a></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>완성된 웨이퍼를 검사하고, 자르고, 연결하고, 보호해 칩으로 만드는 후공정.</p>
@@ -167,9 +206,12 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="process-flow.html">반도체 제조 전체 흐름</a> — 패키징의 위치</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
+  <nav class="prevnext"><span></span><a href="advanced-packaging.html">다음 · 첨단 패키징 →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li></ul></div>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
   var slug = "packaging", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
