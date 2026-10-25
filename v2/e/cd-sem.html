@@ -124,17 +124,26 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide">
  <div class="layout">
-  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t open"><a href="../t/metrology--shape-dimension.html">형상·치수</a><ul><li><a href="optical-microscope.html">광학 현미경</a></li><li><a href="sem.html">SEM</a></li><li class="cur"><a href="cd-sem.html">CD-SEM</a></li><li><a href="fib-sem.html">FIB-SEM</a></li><li><a href="tem.html">TEM (투과전자현미경)</a></li><li><a href="afm.html">AFM</a></li><li><a href="profilometer.html">단차계</a></li></ul></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t open"><a href="../t/metrology--shape-dimension.html">형상·치수</a><ul><li><a href="optical-microscope.html">광학 현미경</a></li><li><a href="sem.html">SEM</a></li><li class="cur"><a href="cd-sem.html">CD-SEM</a></li><li><a href="fib-sem.html">FIB-SEM</a></li><li><a href="tem.html">TEM (투과전자현미경)</a></li><li><a href="afm.html">AFM</a></li><li><a href="profilometer.html">단차계</a></li></ul></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/metrology.html">계측·분석</a> › <a href="../t/metrology--shape-dimension.html">형상·치수</a> › CD-SEM</div>
   <h1 class="title">CD-SEM</h1>
   <div class="en">Critical Dimension SEM</div>
-  <div class="meta"><span class="chip cat">계측·분석 &gt; 형상·치수</span><a class="chip" href="../tag/CD.html">#CD</a><a class="chip" href="../tag/%EC%84%A0%ED%8F%AD.html">#선폭</a><a class="chip" href="../tag/%EC%9D%B8%EB%9D%BC%EC%9D%B8.html">#인라인</a><a class="chip" href="../tag/%EB%B9%84%ED%8C%8C%EA%B4%B4.html">#비파괴</a><a class="chip" href="../tag/%EC%A0%84%EC%9E%90%EB%B9%94.html">#전자빔</a></div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 형상·치수</span><a class="chip" href="../tag/CD.html">#CD</a><span class="chip">#선폭</span><a class="chip" href="../tag/%EC%9D%B8%EB%9D%BC%EC%9D%B8.html">#인라인</a><a class="chip" href="../tag/%EB%B9%84%ED%8C%8C%EA%B4%B4.html">#비파괴</a><a class="chip" href="../tag/%EC%A0%84%EC%9E%90%EB%B9%94.html">#전자빔</a></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>실제 소자 패턴의 선폭(CD)을 재도록 특화된 인라인 전용 SEM으로, 팹 양산 계측의 표준 도구.</p>
@@ -213,6 +222,12 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
   var slug = "cd-sem", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }

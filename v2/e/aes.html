@@ -124,17 +124,26 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide">
  <div class="layout">
-  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t"><a href="../t/metrology--shape-dimension.html">형상·치수</a></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t open"><a href="../t/metrology--composition.html">조성·화학</a><ul><li><a href="xps.html">XPS</a></li><li class="cur"><a href="aes.html">AES</a></li><li><a href="sims.html">SIMS</a></li><li><a href="edx.html">EDX</a></li><li><a href="ftir.html">FTIR</a></li><li><a href="raman.html">라만 분광</a></li><li><a href="xrd.html">XRD</a></li></ul></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t"><a href="../t/metrology--shape-dimension.html">형상·치수</a></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t open"><a href="../t/metrology--composition.html">조성·화학</a><ul><li><a href="xps.html">XPS</a></li><li class="cur"><a href="aes.html">AES</a></li><li><a href="sims.html">SIMS</a></li><li><a href="edx.html">EDX</a></li><li><a href="ftir.html">FTIR</a></li><li><a href="raman.html">라만 분광</a></li><li><a href="xrd.html">XRD</a></li></ul></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/metrology.html">계측·분석</a> › <a href="../t/metrology--composition.html">조성·화학</a> › AES</div>
   <h1 class="title">AES</h1>
   <div class="en">Auger Electron Spectroscopy</div>
-  <div class="meta"><span class="chip cat">계측·분석 &gt; 조성·화학</span><a class="chip" href="../tag/%ED%91%9C%EB%A9%B4%EB%B6%84%EC%84%9D.html">#표면분석</a><a class="chip" href="../tag/%EC%9B%90%EC%86%8C%EC%A1%B0%EC%84%B1.html">#원소조성</a><a class="chip" href="../tag/%EB%A7%B5%ED%95%91.html">#맵핑</a></div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 조성·화학</span><a class="chip" href="../tag/%ED%91%9C%EB%A9%B4%EB%B6%84%EC%84%9D.html">#표면분석</a><span class="chip">#원소조성</span><span class="chip">#맵핑</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>전자빔으로 여기된 원자가 방출하는 오제 전자의 운동에너지를 재 표면 수 nm의 원소를 분석하는 표면 분석 기법.</p>
@@ -144,7 +153,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <p>반면 절연체는 빔 조사로 대전(차징)이 생겨 피크가 흔들리고, 정량은 표준 시료 없이는 대략적인 수준에 머문다.</p>
 <h2 id="원리-오제-천이와-탈출-깊이">원리 — 오제 천이와 탈출 깊이</h2>
 <p>1차 전자빔이 내각 전자를 튕겨내면 외각 전자가 그 빈자리를 채우고, 남은 에너지는 X선으로 나가거나 다른 외각 전자를 방출하는 데 쓰인다. 후자가 오제 전자로, 가벼운 원소일수록 이 경로가 우세하다. 천이에 관여한 세 준위로 이름을 붙이며(예: KLL), 방출 전자의 운동에너지는 빔 에너지와 무관하게 준위들로만 정해지므로 원소의 지문이 된다.</p>
-<p>오제 전자의 에너지는 대략 20<del>2,000 eV에 분포하는데, 이 구간은 전자의 비탄성 평균자유행로가 수 Å</del>수 nm로 가장 짧은 구간과 겹친다. 깊은 곳에서 생긴 오제 전자는 산란으로 에너지를 잃어 바탕신호에 묻히고, 온전한 피크는 최표면 수 nm에서 나온 것만으로 이뤄진다. 정보 깊이가 얕은 이유다.</p>
+<p>오제 전자의 에너지는 대략 20~2,000 eV에 분포하는데, 이 구간은 전자의 비탄성 평균자유행로가 수 Å~수 nm로 가장 짧은 구간과 겹친다. 깊은 곳에서 생긴 오제 전자는 산란으로 에너지를 잃어 바탕신호에 묻히고, 온전한 피크는 최표면 수 nm에서 나온 것만으로 이뤄진다. 정보 깊이가 얕은 이유다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -218,6 +227,12 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
   var slug = "aes", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }

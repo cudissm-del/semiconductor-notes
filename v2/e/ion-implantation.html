@@ -124,17 +124,26 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide">
  <div class="layout">
-  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div><div class="tn-t"><a href="../t/process--flow.html">집적 흐름</a></div><div class="tn-t"><a href="../t/process--patterning.html">패터닝</a></div><div class="tn-t"><a href="../t/process--etch.html">식각</a></div><div class="tn-t"><a href="../t/process--film-planarization.html">막 형성·평탄화</a></div><div class="tn-t open"><a href="../t/process--doping-thermal-cleaning.html">도핑·열처리·세정</a><ul><li class="cur"><a href="ion-implantation.html">이온주입</a></li><li><a href="annealing.html">어닐과 확산</a></li><li><a href="cleaning.html">세정</a></li></ul></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div><div class="tn-t"><a href="../t/process--flow.html">집적 흐름</a></div><div class="tn-t"><a href="../t/process--patterning.html">패터닝</a></div><div class="tn-t"><a href="../t/process--etch.html">식각</a></div><div class="tn-t"><a href="../t/process--film-planarization.html">막 형성·평탄화</a></div><div class="tn-t open"><a href="../t/process--doping-thermal-cleaning.html">도핑·열처리·세정</a><ul><li class="cur"><a href="ion-implantation.html">이온주입</a></li><li><a href="annealing.html">어닐과 확산</a></li><li><a href="cleaning.html">세정</a></li></ul></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/process.html">공정</a> › <a href="../t/process--doping-thermal-cleaning.html">도핑·열처리·세정</a> › 이온주입</div>
   <h1 class="title">이온주입</h1>
   <div class="en">Ion Implantation</div>
-  <div class="meta"><span class="chip cat">공정 &gt; 도핑·열처리·세정</span><a class="chip" href="../tag/%EB%8F%84%ED%95%91.html">#도핑</a><a class="chip" href="../tag/%EA%B0%80%EC%86%8D.html">#가속</a></div>
+  <div class="meta"><span class="chip cat">공정 &gt; 도핑·열처리·세정</span><a class="chip" href="../tag/%EB%8F%84%ED%95%91.html">#도핑</a><span class="chip">#가속</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>도펀트 이온을 전압으로 가속해 기판에 박아 넣는 도핑 방법. 에너지와 도즈가 깊이와 농도를 정한다.</p>
@@ -243,7 +252,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <td>표면을 비정질화해 채널링 방지, 얕은 접합</td>
 </tr>
 </tbody></table></div>
-<p>도즈 감각을 목적별로 보면, 문턱전압 조정은 10¹¹<del>10¹² 수준의 낮은 도즈, 웰은 10¹²</del>10¹³ 수준, S/D는 10¹⁵ 수준의 고도즈가 전형이다. 도즈가 곧 빔을 쏘는 시간이므로, 고도즈 공정은 처리량과 웨이퍼 발열이 조건을 제한한다.</p>
+<p>도즈 감각을 목적별로 보면, 문턱전압 조정은 10¹¹~10¹² 수준의 낮은 도즈, 웰은 10¹²~10¹³ 수준, S/D는 10¹⁵ 수준의 고도즈가 전형이다. 도즈가 곧 빔을 쏘는 시간이므로, 고도즈 공정은 처리량과 웨이퍼 발열이 조건을 제한한다.</p>
 <h3 id="채널링과-비정질화">채널링과 비정질화</h3>
 <ul>
 <li><strong>채널링</strong> — 이온이 결정 격자의 빈 통로를 따라 예상보다 깊이 들어가는 현상. 웨이퍼를 약 7° 기울이거나 PAI로 표면을 비정질화해 막는다.</li>
@@ -300,7 +309,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <li><strong>왜 달라지나</strong> — 비정질·손상층은 결합이 이미 끊겨 있고 밀도가 결정보다 낮으며, 재결정화에 해당하는 저장 에너지를 품고 있다. 화학 반응이 넘어야 할 장벽이 그만큼 낮아 습식·건식 모두에서 제거 속도가 달라진다. 대표 사례가 산화막이다. 이온이 통과한 SiO₂는 HF에서 눈에 띄게 빨리 녹으므로, 주입 뒤 세정에서는 산화막이 예산보다 더 깎인다 — 게이트 산화막을 관통하는 주입 뒤의 HF 세정 횟수가 마진 문제로 직결되는 이유다. 이 식각률 증가는 거꾸로 손상량을 읽는 주입 모니터에도 쓰인다.</li>
 <li><strong>도핑이 손상 효과를 뒤집기도 한다</strong> — 고농도 B 도핑층(p++)은 알칼리 식각액(KOH 등)에서 식각이 수십~수백 배 느려지는 식각 정지층이 된다. 손상은 속도를 올리고 무거운 도핑은 내리는 식이라, 주입층의 식각 거동은 손상량 하나가 아니라 손상과 도핑 농도를 함께 읽어야 정해진다.</li>
 <li><strong>마진 관리의 실제</strong> — 손상층이 분포하는 깊이 대역은 대략 Rp와 ΔRp가 정하는 대역과 겹친다. 리세스·식각 단계가 이 대역을 지나면 속도와 프로파일이 바뀌고, 계면 아래 남은 EOR 결함은 식각으로 지워지지 않는다. 표면 손상을 통째로 걷어내는 고전적 수법은 희생 산화(손상층을 산화시켜 소모한 뒤 그 산화막을 제거)이며, 세정·식각 순서를 짤 때 손상층의 위치를 먼저 정의해 두는 것이 설계의 일부다.</li>
-<li><strong><a class="wiki" href="ale.html">ALE (원자층 식각)</a>의 개질과 닮은 점, 다른 점</strong> — 둘 다 &quot;표면을 바꿔 놓고, 바꾼 층만 걷는&quot; 분리 구조다. 그러나 ALE의 개질은 수십 eV 수준의 이온·라디칼로 표면 <del>1 nm를 자기제한적으로 바꾸는 반면, 주입은 keV</del>MeV 이온이 캐스케이드로 수십~수백 nm를 바꾸고, 바꾼 양이 도즈에 비례해 쌓이며 자기제한이 없다. 결정적으로 주입은 바꾼 층 아래에 EOR 손상이라는 꼬리를 남긴다 — ALE가 피하려 한 바로 그 손상이, 주입에서는 피할 수 없는 부산물로 따라온다.</li>
+<li><strong><a class="wiki" href="ale.html">ALE (원자층 식각)</a>의 개질과 닮은 점, 다른 점</strong> — 둘 다 &quot;표면을 바꿔 놓고, 바꾼 층만 걷는&quot; 분리 구조다. 그러나 ALE의 개질은 수십 eV 수준의 이온·라디칼로 표면 ~1 nm를 자기제한적으로 바꾸는 반면, 주입은 keV~MeV 이온이 캐스케이드로 수십~수백 nm를 바꾸고, 바꾼 양이 도즈에 비례해 쌓이며 자기제한이 없다. 결정적으로 주입은 바꾼 층 아래에 EOR 손상이라는 꼬리를 남긴다 — ALE가 피하려 한 바로 그 손상이, 주입에서는 피할 수 없는 부산물로 따라온다.</li>
 </ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
@@ -322,6 +331,12 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
   var slug = "ion-implantation", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }

@@ -124,17 +124,26 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide">
  <div class="layout">
-  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li class="cur"><a href="plasma-basics.html">플라즈마 기초</a></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li class="cur"><a href="plasma-basics.html">플라즈마 기초</a></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--plasma.html">플라즈마</a> › 플라즈마 기초</div>
   <h1 class="title">플라즈마 기초</h1>
   <div class="en">Plasma Fundamentals</div>
-  <div class="meta"><span class="chip cat">원리·운영 &gt; 플라즈마</span><span class="badge">주제 허브</span><a class="chip" href="../tag/%ED%94%8C%EB%9D%BC%EC%A6%88%EB%A7%88.html">#플라즈마</a><a class="chip" href="../tag/%EB%9D%BC%EB%94%94%EC%B9%BC.html">#라디칼</a><a class="chip" href="../tag/%EC%9D%B4%EC%98%A8.html">#이온</a></div>
+  <div class="meta"><span class="chip cat">원리·운영 &gt; 플라즈마</span><span class="badge">주제 허브</span><a class="chip" href="../tag/%ED%94%8C%EB%9D%BC%EC%A6%88%EB%A7%88.html">#플라즈마</a><a class="chip" href="../tag/%EB%9D%BC%EB%94%94%EC%B9%BC.html">#라디칼</a><span class="chip">#이온</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>기체에 에너지를 가해 이온·전자·라디칼·중성종이 공존하게 된 상태 — 플라즈마의 구성원과 기본 성질.</p>
@@ -142,7 +151,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <p>플라즈마 식각은 라디칼의 화학 반응과 이온의 방향성 에너지를 결합해, 원하는 막만 수직으로 깎는 기술이다. 둘을 따로 쓰면 각각 느리거나 선택비가 없지만, 함께 쓰면 식각 속도가 합보다 훨씬 커지는 <strong>이온–라디칼 시너지</strong>가 핵심이다.</p>
 <h2 id="개요-약하게-이온화된-평형이-아닌-기체">개요 — 약하게 이온화된, 평형이 아닌 기체</h2>
 <p>공정 플라즈마는 기체에 RF·마이크로파 전력을 가해 만든 <strong>저온·약전리 플라즈마</strong>다. 중성 기체가 대부분을 차지하고, 이온화된 비율은 대략 10⁻⁴~10⁻² 수준에 불과하다. 그런데도 전기적 거동은 하전 입자가 지배한다 — 전자가 가볍고 빠르기 때문이다.</p>
-<p>가장 중요한 특징은 <strong>비열평형</strong>이다. 전자온도 Tₑ는 1<del>10 eV(온도로 환산하면 약 1만</del>10만 K)이지만, 이온과 중성 기체의 온도는 상온 부근(수백 K, 0.03<del>0.1 eV 수준)에 머문다. RF 전기장은 가벼운 전자만 따라 흔들며 에너지를 주고, 무거운 이온·중성은 충돌로도 그 에너지를 거의 나눠 받지 못한다. 덕분에 웨이퍼와 챔버를 녹이지 않으면서도, 전자만큼은 수 eV</del>수십 eV의 화학 반응(해리·이온화)을 일으킬 에너지를 갖는다. 플라즈마 공정이 &quot;차가운데 반응성이 높은&quot; 이유가 여기에 있다.</p>
+<p>가장 중요한 특징은 <strong>비열평형</strong>이다. 전자온도 Tₑ는 1~10 eV(온도로 환산하면 약 1만~10만 K)이지만, 이온과 중성 기체의 온도는 상온 부근(수백 K, 0.03~0.1 eV 수준)에 머문다. RF 전기장은 가벼운 전자만 따라 흔들며 에너지를 주고, 무거운 이온·중성은 충돌로도 그 에너지를 거의 나눠 받지 못한다. 덕분에 웨이퍼와 챔버를 녹이지 않으면서도, 전자만큼은 수 eV~수십 eV의 화학 반응(해리·이온화)을 일으킬 에너지를 갖는다. 플라즈마 공정이 &quot;차가운데 반응성이 높은&quot; 이유가 여기에 있다.</p>
 <h3 id="플라즈마-안에-있는-것">플라즈마 안에 있는 것</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -188,7 +197,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <td>약함 (벌크에 구속)</td>
 </tr>
 </tbody></table></div>
-<p>밀도 감각도 잡아 두자. 수<del>수십 mTorr 공정 압력에서 중성 기체 밀도는 10¹⁴</del>10¹⁵ cm⁻³ 수준이고, 전자밀도 nₑ는 10⁹<del>10¹² cm⁻³이다. 즉 전자는 중성 10만</del>100만 개당 하나꼴이지만, 그 하나가 나머지 전체의 반응을 연쇄로 일으킨다.</p>
+<p>밀도 감각도 잡아 두자. 수~수십 mTorr 공정 압력에서 중성 기체 밀도는 10¹⁴~10¹⁵ cm⁻³ 수준이고, 전자밀도 nₑ는 10⁹~10¹² cm⁻³이다. 즉 전자는 중성 10만~100만 개당 하나꼴이지만, 그 하나가 나머지 전체의 반응을 연쇄로 일으킨다.</p>
 <h2 id="원리-1-준중성과-디바이-길이">원리 1 — 준중성과 디바이 길이</h2>
 <p>벌크 플라즈마는 양전하와 음전하가 거의 같은 <strong>준중성(quasi-neutrality)</strong> 상태다: nᵢ ≈ nₑ (+ 음이온이 많으면 nᵢ ≈ nₑ + n₋). 어느 한쪽 전하가 국소적으로 쏠리면 강한 전기장이 즉시 생겨 쏠림을 되돌리기 때문이다.</p>
 <p>이 차폐가 미치는 거리가 <strong>디바이 길이(Debye length)</strong> 다.</p>
@@ -269,7 +278,7 @@ h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span
 </tr>
 </tbody></table></div>
 <p>핵심은 <strong>문턱의 순서</strong>다. 평균 전자 에너지(수 eV)는 이온화 문턱(10수 eV)보다 한참 낮다. 그런데도 이온화가 유지되는 것은, 전자 에너지분포의 <strong>고에너지 꼬리</strong>에 든 소수 전자가 문턱을 넘기 때문이다. 그래서 분포의 꼬리 모양이 플라즈마 전체의 이온화율·해리율을 좌우한다.</p>
-<p>충돌 빈도를 가늠하는 양이 <strong>평균자유행로(mean free path)</strong> λ = 1/(n_g σ) (n_g는 중성 밀도, σ는 충돌 단면적)다. 공정 압력 수<del>수십 mTorr에서는 전자의 평균자유행로가 cm</del>수십 cm 수준으로 챔버 크기와 견줄 만하고, 이온도 쉬스 두께와 견줄 만한 수준이다. 이 &quot;충돌이 드문&quot; 조건 덕분에 이온은 쉬스에서 방향을 잃지 않고, 라디칼은 벽에 몇 번 부딪히며 웨이퍼까지 수송된다. 압력을 올리면 충돌이 잦아져 이온 방향성이 무너지고(등방화), 기상 반응·파티클 생성 쪽으로 거동이 기운다 — 압력이 식각 프로파일의 손잡이인 이유다.</p>
+<p>충돌 빈도를 가늠하는 양이 <strong>평균자유행로(mean free path)</strong> λ = 1/(n_g σ) (n_g는 중성 밀도, σ는 충돌 단면적)다. 공정 압력 수~수십 mTorr에서는 전자의 평균자유행로가 cm~수십 cm 수준으로 챔버 크기와 견줄 만하고, 이온도 쉬스 두께와 견줄 만한 수준이다. 이 &quot;충돌이 드문&quot; 조건 덕분에 이온은 쉬스에서 방향을 잃지 않고, 라디칼은 벽에 몇 번 부딪히며 웨이퍼까지 수송된다. 압력을 올리면 충돌이 잦아져 이온 방향성이 무너지고(등방화), 기상 반응·파티클 생성 쪽으로 거동이 기운다 — 압력이 식각 프로파일의 손잡이인 이유다.</p>
 <h2 id="원리-5-전자-에너지분포함수-EEDF">원리 5 — 전자 에너지분포함수 (EEDF)</h2>
 <p>전자 전체가 하나의 온도로 기술되는 경우는 이상에 가깝다. 실제 분포함수 f(E)의 모양은 방전 방식과 압력에 따라 달라진다.</p>
 <ul>
@@ -353,6 +362,12 @@ h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
   var slug = "plasma-basics", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }

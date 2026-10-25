@@ -124,17 +124,26 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
 .tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide">
  <div class="layout">
-  <aside class="side"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t"><a href="../t/metrology--shape-dimension.html">형상·치수</a></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t open"><a href="../t/metrology--defect-contamination.html">결함·오염</a><ul><li><a href="optical-inspection.html">광학 웨이퍼 검사</a></li><li><a href="ebeam-inspection.html">e-beam 검사</a></li><li><a href="txrf.html">TXRF</a></li><li class="cur"><a href="vpd-icp-ms.html">VPD-ICP-MS</a></li></ul></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t"><a href="../t/metrology--shape-dimension.html">형상·치수</a></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t open"><a href="../t/metrology--defect-contamination.html">결함·오염</a><ul><li><a href="optical-inspection.html">광학 웨이퍼 검사</a></li><li><a href="ebeam-inspection.html">e-beam 검사</a></li><li><a href="txrf.html">TXRF</a></li><li class="cur"><a href="vpd-icp-ms.html">VPD-ICP-MS</a></li></ul></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/metrology.html">계측·분석</a> › <a href="../t/metrology--defect-contamination.html">결함·오염</a> › VPD-ICP-MS</div>
   <h1 class="title">VPD-ICP-MS</h1>
   <div class="en">Vapor Phase Decomposition ICP-MS</div>
-  <div class="meta"><span class="chip cat">계측·분석 &gt; 결함·오염</span><a class="chip" href="../tag/%EA%B8%88%EC%86%8D%EC%98%A4%EC%97%BC.html">#금속오염</a><a class="chip" href="../tag/%EA%B7%B9%EB%AF%B8%EB%9F%89%EB%B6%84%EC%84%9D.html">#극미량분석</a><a class="chip" href="../tag/%ED%8C%8C%EA%B4%B4%EB%B6%84%EC%84%9D.html">#파괴분석</a></div>
+  <div class="meta"><span class="chip cat">계측·분석 &gt; 결함·오염</span><a class="chip" href="../tag/%EA%B8%88%EC%86%8D%EC%98%A4%EC%97%BC.html">#금속오염</a><span class="chip">#극미량분석</span><span class="chip">#파괴분석</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   <article><blockquote>
 <p>HF 증기로 웨이퍼 표면 산화막을 분해·회수한 액적을 ICP-MS로 분석해 극미량 금속 오염을 정량하는 기법.</p>
@@ -143,7 +152,7 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <p>VPD(Vapor Phase Decomposition)는 웨이퍼를 HF 증기에 노출해 표면 자연산화막과 그 안의 금속 오염을 함께 녹이고, 주사액으로 그 액적을 모아 ICP-MS(유도결합 플라즈마 질량분석)로 원소별 농도를 재는 전처리다. 웨이퍼 전면을 한 번에 모으므로 <a class="wiki" href="txrf.html">TXRF</a>보다 낮은 검출 한계가 가능하다.</p>
 <p>반면 웨이퍼 표면을 소모하는 파괴 분석이고 전처리에 시간이 걸리며, 회수율이 원소마다 달라 정량 해석에 주의가 필요하다.</p>
 <h2 id="원리-전처리가-만드는-감도">원리 — 전처리가 만드는 감도</h2>
-<p>감도는 질량분석기만큼 전처리에서 온다. HF 증기는 SiO₂를 선택적으로 녹이므로, 웨이퍼 전면(수백 cm²)의 자연산화막에 갇혀 있던 금속을 풀어낸다. 그 표면을 주사액 방울로 훑어 모으면 전 표면의 오염이 소량의 액체에 농축되고, ICP(유도결합 플라즈마, 약 6,000<del>10,000 K)에서 이온화된 원소를 질량대 전하비로 세는 ICP-MS가 ppt(ng/L)급 용액 농도까지 읽는다. 전 면적을 모아 농축한 만큼, 표면 농도로 환산한 검출 한계가 <a class="wiki" href="txrf.html">TXRF</a>보다 2</del>3자리 낮아지는 것이 전형적이다.</p>
+<p>감도는 질량분석기만큼 전처리에서 온다. HF 증기는 SiO₂를 선택적으로 녹이므로, 웨이퍼 전면(수백 cm²)의 자연산화막에 갇혀 있던 금속을 풀어낸다. 그 표면을 주사액 방울로 훑어 모으면 전 표면의 오염이 소량의 액체에 농축되고, ICP(유도결합 플라즈마, 약 6,000~10,000 K)에서 이온화된 원소를 질량대 전하비로 세는 ICP-MS가 ppt(ng/L)급 용액 농도까지 읽는다. 전 면적을 모아 농축한 만큼, 표면 농도로 환산한 검출 한계가 <a class="wiki" href="txrf.html">TXRF</a>보다 2~3자리 낮아지는 것이 전형적이다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -209,6 +218,12 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
   var slug = "vpd-icp-ms", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
   function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
