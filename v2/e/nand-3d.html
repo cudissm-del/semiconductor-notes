@@ -159,13 +159,114 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <ul>
 <li><a href="https://doi.org/10.1109/VLSIT.2007.4339708" target="_blank" rel="noopener">Bit Cost Scalable Technology with Punch and Plug Process for Ultra High Density Flash Memory</a> — Tanaka et al., Symp. VLSI Technol. (2007). BiCS, 즉 3D NAND 적층 구조의 원전</li>
 </ul>
+<h3 id="차지-트랩-셀은-어떻게-비트를-기억하나">차지 트랩 셀은 어떻게 비트를 기억하나</h3>
+<p>플로팅 게이트 대신 SiN 트랩층을 쓰는 이유가 3D 구조와 맞물려 있다. 인접 셀 사이의 플로팅 게이트 커플링이 없고, 트랩층이 절연체라 터널 산화막에 결함이 생겨도 전하가 한 번에 다 빠지지 않으며, 무엇보다 채널홀 벽에 ONO를 얇게 연속 증착하는 공정이 수직 구조와 잘 맞는다.</p>
+<ul>
+<li><strong>프로그램(쓰기)</strong> — 워드라인에 높은 전압(전형적으로 15~20 V대, 교재 전형값)을 걸면 채널의 전자가 터널 산화막을 FN(Fowler–Nordheim) 터널링으로 넘어 SiN에 잡히고, 문턱전압이 오른다.</li>
+<li><strong>소거(지우기)</strong> — 채널 쪽에 높은 전압을 걸어 트랩된 전자를 빼내거나 정공을 넣어 문턱전압을 내린다. 셀 단위가 아니라 블록 단위로만 지워지는 것이 NAND의 기본 제약이다.</li>
+<li><strong>읽기</strong> — 선택 셀에 중간 전압, 나머지 셀에는 통과 전압을 걸어 직렬 스트링의 도통 여부로 문턱전압 구간을 판정한다. TLC·QLC는 이 구간이 8개·16개로 촘촘해져 읽기 전압 단계와 보정(리드 리트라이)이 늘어난다.</li>
+<li><strong>ISPP</strong> — 펄스를 조금씩 높이며 쓰고 중간에 검증하는 증분 스텝 펄스 프로그램으로 문턱전압 분포 폭을 좁힌다. 분포 폭이 곧 다치화의 한계다.</li>
+</ul>
+<h3 id="간섭과-열화-촘촘한-분포를-흔드는-것들">간섭과 열화 — 촘촘한 분포를 흔드는 것들</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>현상</th>
+<th>메커니즘</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>셀 간 간섭 (program disturb·커플링)</td>
+<td>이웃 셀 프로그램 시 부유 전위·용량 결합으로 문턱전압 이동</td>
+<td>분포 겹침 → 읽기 오류, QLC에서 특히 치명적</td>
+</tr>
+<tr>
+<td>읽기 방해 (read disturb)</td>
+<td>통과 전압이 반복 인가되며 약한 프로그램 효과 누적</td>
+<td>장기 사용 시 분포 이동</td>
+</tr>
+<tr>
+<td>전하 손실·디트랩</td>
+<td>트랩 전하가 시간·온도에 따라 빠짐</td>
+<td>리텐션 열화, 고온에서 가속</td>
+</tr>
+<tr>
+<td>P/E 사이클링 열화</td>
+<td>터널 산화막에 트랩·결함이 쌓임</td>
+<td>창(window) 축소. 내구 횟수는 SLC &gt; MLC &gt; TLC &gt; QLC 순으로 급감</td>
+</tr>
+</tbody></table></div>
+<p>층이 쌓일수록 같은 스트링 안에서도 위층과 아래층 셀의 채널홀 지름이 달라(테이퍼) 문턱전압 분포와 프로그램 속도가 층마다 달라지므로, 층별 보상(프로그램 조건 차등)이 필수 공정·회로 기술이 됐다.</p>
+<h3 id="단수를-늘릴-때의-트레이드오프">단수를 늘릴 때의 트레이드오프</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>늘리면 좋아지는 것</th>
+<th>대가</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>비트/면적 (원가 하락이 본질적 목적)</td>
+<td>몰드 적층 두께 증가 → 채널홀 종횡비 상승, 식각 시간·휨·바닥 CD 축소</td>
+</tr>
+<tr>
+<td>—</td>
+<td>계단 영역이 길어져 칩 면적에서 셀이 차지하는 비율 감소</td>
+</tr>
+<tr>
+<td>—</td>
+<td>층간 정렬·두께 편차가 수율로 직결, 검사·계측 난도 상승</td>
+</tr>
+<tr>
+<td>—</td>
+<td>워드라인 층간 간격 축소 압력 → 층간 절연 신뢰성, 워드라인 저항</td>
+</tr>
+</tbody></table></div>
+<p>그래서 단수 경쟁은 식각 장비의 깊이 한계와 직결되고, 한 번에 뚫는 깊이를 나눠 갖는 <strong>스트링 스태킹(멀티 덱)</strong> 이 표준 해법이 됐다. 덱을 나눈 대가는 덱 경계에서의 연결(상하 채널홀 정렬, 접합부 저항)과 공정 단계 증가다. 덱 수를 늘릴수록 정렬 오차가 쌓이므로, 스태킹은 식각 한계를 정렬 한계와 맞바꾸는 기술이기도 하다.</p>
+<h3 id="설계-변수-요약">설계 변수 요약</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>변수</th>
+<th>키우면</th>
+<th>리스크</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>층수(단수)</td>
+<td>비트 밀도 ↑, 원가 ↓</td>
+<td>종횡비·계단 면적·수율</td>
+</tr>
+<tr>
+<td>셀당 비트 (SLC→QLC)</td>
+<td>비트 밀도 ↑</td>
+<td>분포 마진, 내구·리텐션, 읽기 속도</td>
+</tr>
+<tr>
+<td>워드라인 간격(층 피치) 축소</td>
+<td>같은 높이에 더 많은 층</td>
+<td>층간 절연 신뢰성, 간섭</td>
+</tr>
+<tr>
+<td>채널홀 지름 축소</td>
+<td>평면 밀도 ↑</td>
+<td>채널 이동도, 층별 특성 편차</td>
+</tr>
+</tbody></table></div>
+<p>즉 3D NAND의 미세화는 평면 축소가 아니라 &quot;높이·간격·분포 마진&quot;의 3축 최적화이며, 공정 한계(식각 깊이)가 설계 한계(분포·간섭)와 같은 테이블에서 결정된다. 단수가 정체되면 셀당 비트(QLC, 그 너머 PLC 검토)나 본딩 기반 적층으로 밀도를 버는 방향이 병행되는 이유도 여기에 있다.</p>
+<h3 id="근거">근거</h3>
+<ul>
+<li>차지 트랩·FN 터널링·ISPP·간섭 현상은 플래시 메모리 교재의 표준 설명이다. 프로그램 전압 등 수치는 <strong>교재 전형값</strong>이다.</li>
+<li>층수 현황 표와 업체 동향은 기존 본문의 정리(2026년 10월 기준, 보도 기반)를 그대로 따르며, 특정 세대의 양산 실측 데이터가 아니다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="dram.html">DRAM</a> — 평면 미세화와의 대조</li>
 <li><a class="wiki" href="dry-etch.html">건식 식각</a> — 채널홀의 고종횡비 식각</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 재료 &gt; 감광·화학 소재</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

@@ -173,13 +173,115 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>2026년 말 4F² 기반 서버 DRAM 출시 계획 발표</td>
 </tr>
 </tbody></table></div>
+<h3 id="동작과-리프레시-전하가-새는-속도와의-싸움">동작과 리프레시 — 전하가 새는 속도와의 싸움</h3>
+<p>읽기는 파괴적이다. 워드라인을 열어 셀 트랜지스터를 켜면 커패시터 전하가 비트라인과 나뉘어(charge sharing) 작은 전압 변화(수십~100 mV 수준, 교재 전형값)를 만들고, 센스 앰프가 이를 증폭해 다시 셀에 써 넣는다(restore). 저장 전하는 접합 누설, 셀 트랜지스터의 서브스레숄드·GIDL 누설, 유전체 누설로 계속 빠져나가므로, 전 셀이 규정 리프레시 주기(전형적으로 64 ms, 고온에서는 32 ms — JEDEC 관행값) 안에 한 번씩 다시 읽혀야 한다. 리프레시에 쓰는 시간과 전력이 곧 DRAM의 고정 비용이며, 셀 누설이 줄면 리프레시 전력이 줄고 고온 동작 마진이 는다.</p>
+<h3 id="셀-트랜지스터에-요구되는-것">셀 트랜지스터에 요구되는 것</h3>
+<p>주변회로 트랜지스터와 정반대의 최적화다. 속도는 느려도 되지만 <strong>꺼졌을 때 새는 전류가 극단적으로 작아야</strong> 한다.</p>
+<ul>
+<li><strong>긴 유효 채널</strong> — BCAT는 트렌치 안에 U자형 채널을 만들어 평면 면적보다 긴 채널을 확보하고, 게이트가 채널을 감싸는 정도를 높여 단채널 효과를 눌러 누설을 줄인다.</li>
+<li><strong>GIDL 억제</strong> — 게이트-드레인 겹침 구간의 밴드간 터널링이 스토리지 노드 전하를 빼는 주요 경로라, 겹침 설계와 도핑 프로파일이 리텐션을 좌우한다.</li>
+<li><strong>행 해머(row hammer)</strong> — 같은 워드라인을 반복해 열면 이웃 셀의 전하가 흔들리는 현상. 미세할수록 셀 간 간격이 좁아져 간섭이 커지며, 이를 막는 회로(TRR 등)가 세대마다 무거워진다.</li>
+</ul>
+<h3 id="커패시터를-더-깊이-보면">커패시터를 더 깊이 보면</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값·구조 (교재 전형값)</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>셀 정전용량 Cs</td>
+<td>대략 10 fF 안팎까지 감소 추세 (초기 세대는 수십 fF)</td>
+<td>감지 마진 ΔV ≈ (Cs/(Cs+Cb))·V/2 를 정함. 작아질수록 센싱이 어려워짐</td>
+</tr>
+<tr>
+<td>종횡비</td>
+<td>수십 : 1 (높이 수 µm, 개구 수십 nm)</td>
+<td>면적 없이 용량을 버는 유일한 방법. HARC 식각·쓰러짐이 한계</td>
+</tr>
+<tr>
+<td>유전체</td>
+<td>ZrO₂/Al₂O₃/ZrO₂ (ZAZ), k는 ZrO₂ 기준 대략 30~40</td>
+<td>박막 결정상(정방정계) 유지가 고유전율의 조건. Al₂O₃ 층이 누설을 막음</td>
+</tr>
+<tr>
+<td>전극</td>
+<td>TiN</td>
+<td>유전체와의 계면과 일함수 조합으로 누설·신뢰성 결정</td>
+</tr>
+</tbody></table></div>
+<p>유전체 누설은 두께를 줄일수록 지수적으로 커지므로, 물리 두께는 사실상 하한이 있고 용량은 종횡비와 k로만 벌어야 한다. 이것이 DRAM 미세화가 로직과 달리 &quot;커패시터를 얼마나 높이, 안 쓰러지게 세우나&quot;의 문제로 수렴하는 이유다. 쓰러짐 방지 지지대 패턴 자체가 개구율을 먹고, 지지대를 세우는 추가 마스크가 비용이 된다.</p>
+<h3 id="스케일링-한계-정리">스케일링 한계 정리</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>한계</th>
+<th>내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>커패시터</td>
+<td>종횡비 한계(식각·쓰러짐), 유전체 누설 하한 → Cs 확보 곤란</td>
+</tr>
+<tr>
+<td>셀 트랜지스터</td>
+<td>BCAT 채널 길이·누설의 한계, 워드라인 저항 증가</td>
+</tr>
+<tr>
+<td>간섭</td>
+<td>셀 간 기생 용량, 행 해머, 비트라인 센싱 마진 축소</td>
+</tr>
+<tr>
+<td>주변회로·배선</td>
+<td>셀 영역 아래/옆 회로 집적과 배선 저항</td>
+</tr>
+</tbody></table></div>
+<p>평면 6F²에서 이 한계들을 한 번에 우회하려는 것이 위의 4F² VCT(트랜지스터를 세워 면적을 줄이고 채널 누설을 산화물 채널 등으로 개선)와 3D DRAM(층수로 용량을 버는 방향 전환)이다. 어느 쪽도 커패시터 자체는 남으므로, 고종횡비 성막·식각 기술은 구조가 바뀌어도 계속 핵심이다.</p>
+<h3 id="설계-변수-요약">설계 변수 요약</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>변수</th>
+<th>방향</th>
+<th>맞바꾸는 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>커패시터 높이(종횡비) ↑</td>
+<td>Cs 확보</td>
+<td>식각·쓰러짐·공정 시간, 지지대 면적 손실</td>
+</tr>
+<tr>
+<td>유전체 물리 두께 ↓</td>
+<td>Cs 증가</td>
+<td>유전체 누설·신뢰성(TDDB) 마진</td>
+</tr>
+<tr>
+<td>BCAT 채널 길이 ↑</td>
+<td>누설·리텐션 개선</td>
+<td>셀 면적·워드라인 저항·동작 속도</td>
+</tr>
+<tr>
+<td>리프레시 주기 ↑ (누설 저감 시)</td>
+<td>대기 전력 감소</td>
+<td>셀 설계 난도, 고온 리텐션 보장</td>
+</tr>
+</tbody></table></div>
+<p>결국 DRAM 설계는 &quot;Cs × 리텐션&quot;이라는 하나의 곱을 면적 안에서 버티는 문제이며, 공정(고종횡비 식각·ALD 성막)·소자(BCAT·신채널)·회로(센싱·리프레시 제어)가 그 곱을 나눠 맡는다.</p>
+<h3 id="근거">근거</h3>
+<ul>
+<li>셀 구조·BCAT·ZAZ 커패시터·6F²→4F² 흐름은 DRAM 교재와 업체 기술 발표에서 공통으로 확인되는 구조 설명이다.</li>
+<li>리프레시 주기 64 ms, Cs·감지 전압 등 수치는 <strong>교과서·규격 전형값</strong>이며 특정 제품의 실측값이 아니다. 업체별 양산 계획 표는 기존 본문의 보도 기반 정리(2026년 10월 기준)를 그대로 따른다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="nand-3d.html">3D NAND</a> — 또 다른 메모리 축</li>
 <li><a class="wiki" href="hbm.html">HBM</a> — DRAM을 쌓은 형태</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

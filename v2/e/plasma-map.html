@@ -192,13 +192,35 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 </tbody></table></div>
 <p><strong>읽는 법.</strong> 아래층(FEOL)으로 갈수록 &quot;전기적 손상&quot;과 원자 단위 정밀도(ALE 등)가 중요해지고, 위층·패키징으로 갈수록 &quot;얼마나 빨리, 얼마나 깊게&quot;가 중요해진다.</p>
 <p>표에 없는 축이 하나 더 있다. 이온을 쓰는가, 라디칼만 쓰는가다. 리모트·다운스트림 플라즈마는 이온 손상 없이 라디칼 화학만으로 표면을 바꾸는데, 건식 프리클린과 SiGe 릴리스가 그 예다. 이 라디칼 화학이 염(AFS) 형성과 만나면 선택 식각의 또 다른 계열이 되며, <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>에서 깊이 다룬다.</p>
+<h2 id="왜-단계마다-요구가-갈리나-원리">왜 단계마다 요구가 갈리나 — 원리</h2>
+<p>표의 차이는 결국 세 변수 — 이온 에너지, 라디칼 조성, 허용 손상량 — 의 배합 차이로 환원된다.</p>
+<ul>
+<li><strong>FEOL</strong>은 채널과 게이트 절연막이 바로 옆에 있어 허용 손상량이 가장 작다. 수 nm의 리세스 오차나 격자 손상이 곧 소자 특성 산포가 되므로, 정밀도와 저손상이 처리량에 우선한다. 그래서 사이클 단위 제어(<a class="wiki" href="ale.html">ALE (원자층 식각)</a>)가 이 층에서 먼저 요구된다.</li>
+<li><strong>MOL</strong>은 서로 다른 막이 좁은 간격으로 맞닿는 층이라 선택비가 지배 변수다. SAC 식각처럼 한 막만 골라 파고 이웃 막에서 멈추는 공정이 몰려 있다.</li>
+<li><strong>BEOL</strong>은 깎는 대상 자체가 약하다. low-k는 플라즈마에 상하고(<a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>), Cu는 부식·산화 관리가 붙는다. 허용 온도가 낮은 것도 이 층의 공통 제약이라 저온 화학이 기본값이 된다.</li>
+<li><strong>메모리·패키징</strong>은 깊이가 지배 변수다. 채널홀·TSV처럼 종횡비가 큰 구조에서는 바닥까지의 수송이 병목이라 고전력·고속 화학을 쓰되, 그 대가인 프로파일 이상(<a class="wiki" href="etch-nonidealities.html">식각 비이상 현상</a>)을 관리하는 쪽으로 공정 개발이 기운다.</li>
+</ul>
+<h3 id="이온-축으로-다시-읽기">이온 축으로 다시 읽기</h3>
+<p>같은 표를 &quot;이온을 얼마나 쓰는가&quot;로 정렬하면 또 다른 지도가 된다. 이온 충격이 강한 직접 플라즈마는 이방성과 속도를 주고 손상을 남기며, 이온을 걸러 낸 리모트·다운스트림은 등방성 화학과 무손상을 주는 대신 느리고 프로파일 제어가 어렵다. 단계별 선택은 대개 이 축 위의 위치 선택이다: FEOL의 릴리스·프리클린은 리모트 쪽, 게이트·STI 식각은 직접 쪽, BEOL은 그 중간에서 손상 예산에 따라 정해진다.</p>
+<h3 id="트레이드오프-지도-전체를-관통하는-긴장">트레이드오프 — 지도 전체를 관통하는 긴장</h3>
+<ul>
+<li><strong>속도 ↔ 손상</strong> — 전력을 올리면 깊이는 빨리 나오지만 VUV·이온 손상과 마스크 소모가 함께 커진다.</li>
+<li><strong>선택비 ↔ 프로파일</strong> — 패시베이션을 세게 하면 선택비와 측벽 보호가 좋아지는 대신 개구 막힘과 식각 정지 위험이 커진다.</li>
+<li><strong>균일도 ↔ 처리량</strong> — 웨이퍼 전역 균일도를 조이면 조건 창이 좁아져 배치 처리량과 충돌한다.</li>
+</ul>
+<p>새 공정을 지도에 올릴 때는 이 세 긴장 중 무엇이 그 단계의 지배 변수인지를 먼저 정하는 것이 순서다 — 표의 &quot;핵심 이슈&quot; 열이 바로 그 답을 단계별로 적어 둔 것이다.</p>
+<h2 id="근거">근거</h2>
+<ul>
+<li>단계별 핵심 이슈와 화학 — 기존 표의 정리(교재·공정 전형 지식)에 따르며, 특정 논문의 실측 수치는 새로 넣지 않았다.</li>
+<li>종횡비 50:1 이상 등 구조 수치 — 기존 본문에 있던 전형값 유지.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="plasma-basics.html">플라즈마 기초</a> — 지도의 바탕 원리</li>
 <li><a class="wiki" href="dry-etch.html">건식 식각</a> — 지도에서 가장 큰 영역</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

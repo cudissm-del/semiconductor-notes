@@ -146,6 +146,51 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><strong>실릴레이션 복구</strong> — 실라놀을 다시 메틸기로 바꾸는 약품 처리.</li>
 <li><strong>저손상 식각</strong> — 저에너지·펄스 플라즈마, ALE, 극저온 식각.</li>
 </ul>
+<h3 id="손상원별로-나눠-보기">손상원별로 나눠 보기</h3>
+<p>세 손상원은 도달 깊이와 선택성이 서로 다르다. 그래서 &quot;손상층 두께&quot;는 어느 손상원이 지배적인지에 따라 정해진다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>손상원</th>
+<th>작용</th>
+<th>도달 범위</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>라디칼 (O, H, F 등)</td>
+<td>Si–CH₃ 공격, 탄소 추출, 표면 산화</td>
+<td>다공성 막에서는 기공을 따라 깊이 확산</td>
+<td>화학적 손상 — 조성 자체가 바뀐다</td>
+</tr>
+<tr>
+<td>VUV 광자</td>
+<td>결합 에너지보다 큰 광자 에너지로 Si–C·C–H 결합 직접 절단</td>
+<td>흡수 깊이 내, 기공 유무와 무관하게 침투</td>
+<td>플라즈마가 닿지 않는 곳도 손상, 차폐가 어렵다</td>
+</tr>
+<tr>
+<td>이온</td>
+<td>물리적 충돌로 표면 치밀화, 스퍼터</td>
+<td>표면 수 nm</td>
+<td>방향성 — 수평면에 집중, 측벽은 상대적으로 경미</td>
+</tr>
+</tbody></table></div>
+<p>교재 전형값으로 보면, VUV 광자의 에너지는 수 eV<del>10 eV 안팎으로 Si–C·C–H 결합 에너지(약 3</del>4 eV, 교재 전형값)를 웃돌기 때문에 광자만으로도 결합 절단이 일어난다. 반면 치밀한(비다공성) SiOC에서는 라디칼 확산이 표면에서 막혀 손상층이 얇게 머물고, 기공이 연결된 다공성 막에서는 라디칼이 기공 네트워크를 타고 들어가 손상층이 훨씬 두꺼워지는 것이 전형적인 대조다.</p>
+<h3 id="k가-오르는-경로와-회복의-화학">k가 오르는 경로와 회복의 화학</h3>
+<p>손상의 종착지는 탄소 고갈층이다. 메틸기가 빠진 자리는 Si–OH로 채워지고, 이 친수성 층이 공정 후 대기에서 수분을 빨아들인다. 물의 k가 약 80(교재 전형값)으로 막 자체(k≈2.5~3.0 안팎이 전형적인 low-k 목표, 교재 전형값)보다 압도적으로 크므로, 소량의 수분 흡착만으로도 실효 k가 눈에 띄게 오른다. 즉 손상은 &quot;막이 깎였다&quot;가 아니라 &quot;막의 조성이 다른 재료로 바뀌었다&quot;는 문제다.</p>
+<p><strong>실릴화 복구</strong>는 이 경로를 거꾸로 밟는다. 실릴화제는 Si–OH의 H를 –Si(CH₃)₃ 같은 메틸 함유기로 치환해 표면을 다시 소수성으로 돌리고 흡착수 자리를 없앤다. 다만 이미 빠져나간 막 내부 탄소와 무너진 기공 구조까지는 되돌리지 못하므로, 복구는 부분적이다 — 그래서 복구보다 예방(환원성 애싱, 하드마스크, 포어 실링)이 먼저다.</p>
+<h3 id="트레이드오프와-한계">트레이드오프와 한계</h3>
+<ul>
+<li>손상을 줄이는 저에너지·저라디칼 조건은 대개 식각률과 PR 제거 속도를 함께 낮춘다. 애싱에서는 &quot;깨끗이 벗기기&quot;와 &quot;막을 안 상하게 하기&quot;가 정면으로 충돌한다.</li>
+<li>스페이서용 SiOCN·SiCN 계열에서도 같은 플라즈마-표면 상호작용이 선택비를 가른다. Pranda 등(2023)은 NF₃ 계열 플라즈마에서 low-k 질화물들의 식각률이 물질 고유의 질소 함량에 비례함을 보였다 — 손상과 선택 식각이 같은 표면 화학의 양면임을 보여 주는 사례다(보유 논문 실측). 자세한 선택 거동은 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>에 모았다.</li>
+<li>손상층은 전기적으로는 k 상승으로, 신뢰성으로는 누설·절연파괴 여유 감소로 나타난다. 표면 분석만으로 양호해 보여도 C–V에서 k가 남아 있는 경우가 있어, 분석과 전기 측정을 함께 봐야 한다.</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>결합 에너지·물의 k·low-k 목표 k 범위 — 교재 전형값으로, 특정 논문의 실측이 아니다.</li>
+<li>low-k 식각률과 질소 함량의 비례 관계 — 보유 논문 실측: Pranda et al. (2023).</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="beol.html">BEOL</a> — 손상이 일어나는 무대</li>
@@ -153,7 +198,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="dry-etch.html">건식 식각</a> — 손상을 일으키는 공정</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

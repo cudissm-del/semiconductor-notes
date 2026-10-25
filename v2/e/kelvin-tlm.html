@@ -132,6 +132,38 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>컨택·실리사이드 공정 평가, <a class="wiki" href="mol.html">MOL</a> 접촉 개발</td>
 </tr>
 </tbody></table></div>
+<h2 id="원리">원리</h2>
+<p>TLM 패턴의 전체 저항은 접촉 두 개의 저항과 그 사이 막 저항의 합이다. 간격 L을 바꾸면 막 저항만 L에 비례해 변하므로, 저항–간격 그래프가 직선이 된다. 전류는 접촉 아래 전체 면적에 고르게 들어가지 않고 앞부분에 몰리는데(전류 밀집), 이 유효 길이가 전달 길이 LT이며 접촉의 좋고 나쁨을 정하는 핵심 길이이다.</p>
+<h2 id="핵심-수치-조건">핵심 수치·조건</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>추출량</th>
+<th>추출 방식</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>면저항 Rs</td>
+<td>R–L 직선의 기울기 = Rs/W (W는 접촉 폭)</td>
+</tr>
+<tr>
+<td>접촉저항 Rc</td>
+<td>L=0 절편 = 2Rc, 즉 절편의 절반</td>
+</tr>
+<tr>
+<td>전달 길이 LT</td>
+<td>직선을 R=0으로 외삽한 음의 절편 = −2LT, LT = √(ρc/Rs)</td>
+</tr>
+<tr>
+<td>비접촉저항률 ρc</td>
+<td>ρc = Rc·W·LT [Ω·cm²] — 접촉 면적이 아니라 W×LT가 유효 면적</td>
+</tr>
+</tbody></table></div>
+<p>Kelvin 구조는 접촉 하나에 전류 강제 단자와 전압 검출 단자를 분리해, 전압 단자 쪽 선저항과 프로브 접촉저항을 제거한 단일 접촉 전압 강하를 직접 나눈다.</p>
+<h2 id="읽는-법-해석">읽는 법·해석</h2>
+<p>ρc가 공정 비교의 본질 지표다 — Rc는 패턴 폭과 LT에 따라 달라지는 겉보기 값이므로 폭이 다른 결과를 Rc로 직접 비교하지 않는다. LT가 실제 접촉 길이보다 길면 접촉 끝까지 전류가 닿지 않아 접촉을 길게 만들어도 이득이 없고, 짧으면 접촉 전체가 쓰인다. R–L 점들이 직선에서 벗어나면 접촉마다 Rc가 다르거나 접촉 아래 막이 본래 막과 달라졌다는 신호로 읽는다.</p>
+<h2 id="한계-주의점">한계·주의점</h2>
+<p>추출은 모든 접촉의 Rc가 같고 접촉 아래 면저항이 사이 영역과 같다는 가정에 서 있다. 실리사이드화처럼 접촉 아래 막이 공정 중 바뀌면 두 면저항이 달라져 단순 외삽이 틀어지며, 이를 분리하는 변형 구조가 따로 있다. 정렬 오차로 실제 L이 설계값과 다르면 기울기와 절편이 함께 흔들리고, 낮은 Rc일수록 프로브·선저항과 측정 분해능이 절편 오차를 지배한다. Kelvin 구조도 전압 탭 위치와 전류 퍼짐 기하에 따라 겉보기 값이 달라져 구조 설계 표준을 지켜야 한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="mol.html">MOL</a> — 접촉저항이 핵심인 중간 배선 공정</li>
@@ -143,7 +175,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>TLM 추출식과 Kelvin 구조는 반도체 전기 계측 표준 교재 서술에 근거한다: Schroder, <em>Semiconductor Material and Device Characterization</em> (Wiley).</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="cv.html">C-V 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="hall.html">홀 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="cv.html">C-V 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="hall.html">홀 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

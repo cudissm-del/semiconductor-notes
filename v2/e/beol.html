@@ -148,11 +148,80 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>캡층(SiCN, 선택적 Co 캡) — 전자이동(EM) 억제</li>
 </ol>
 <figure class="fig"><svg viewBox="0 0 760 324" role="img" aria-label="듀얼 다마신은 비아와 트렌치를 한 번에 파서 Cu로 한 번에 채운다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">듀얼 다마신 — 두 번 파고, 한 번에 채운다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">Cu는 식각이 어려워 '먼저 파고 나중에 채우는' 방식으로 만든다</text><rect x="170" y="96" width="420" height="172" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="170" y="196" width="420" height="8" fill="var(--cds-chart-categorical-2)" fill-opacity="0.5" stroke="none"></rect><g><rect x="300" y="228" width="160" height="32" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="304" y="232" width="152" height="24" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1"></rect></g><g><rect x="352" y="146" width="56" height="86" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="356" y="150" width="48" height="78" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1"></rect></g><g><rect x="306" y="110" width="148" height="40" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="310" y="114" width="140" height="32" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1"></rect></g><rect x="170" y="100" width="420" height="8" fill="var(--cds-chart-categorical-2)" fill-opacity="0.5" stroke="none"></rect><text x="380" y="86" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Cu 트렌치 (상부 배선 본체)</text><text x="158" y="112" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">캡층 (SiCN)</text><text x="158" y="168" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">low-k 절연막</text><text x="158" y="204" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">식각정지막 (SiCN)</text><path d="M412 184H420" stroke="var(--cds-chart-axis)" stroke-width="1"></path><path d="M412 210H420" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="424" y="188" font-weight="600" fill="var(--cds-text-primary)">Cu 비아</text><text x="424" y="214" font-weight="600" fill="var(--cds-text-primary)">배리어·라이너 (TaN/Ta)</text><text x="380" y="284" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">하부 Cu 배선 (M1)</text><rect x="196" y="296" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)"></rect><text x="216" y="306" font-size="11.5" fill="var(--cds-text-secondary)">Cu</text><rect x="270" y="296" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-5)" fill-opacity="0.6" stroke="var(--cds-chart-categorical-5)"></rect><text x="290" y="306" font-size="11.5" fill="var(--cds-text-secondary)">배리어 (TaN/Ta)</text><rect x="430" y="296" width="14" height="12" rx="2" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)"></rect><text x="450" y="306" font-size="11.5" fill="var(--cds-text-secondary)">low-k 절연막</text></svg><figcaption>그림 1. Cu 듀얼 다마신 단면 · 비아와 트렌치의 일괄 매립</figcaption></figure>
+<p>듀얼 다마신이 표준이 된 이유는 <strong>비아와 배선을 한 번의 매립으로 동시에 만들기</strong> 때문이다. 층마다 같은 사이클이 반복되므로, BEOL은 본질적으로 같은 모듈을 10회 이상 쌓는 공정이다.</p>
 <p><strong>RC 지연과 소재 경쟁</strong></p>
 <p>배선 지연은 저항(R) × 커패시턴스(C)에 비례하므로 두 값을 모두 낮춰야 한다.</p>
 <ul>
 <li><strong>C를 낮추는 쪽 — Low-k 절연막.</strong> SiO₂(k≈4) → SiOF → SiOC(H)(k≈2.7~3.0) → 다공성 SiOC(k&lt;2.5) → 에어갭. k가 낮을수록 기계적 강도가 약하고, 플라즈마 식각·애싱 시 탄소가 빠져나가 k가 다시 올라가는 <strong>플라즈마 손상</strong>이 문제다.</li>
 <li><strong>R을 낮추는 쪽 — 금속.</strong> 선폭이 Cu 전자 평균자유행로(~40nm)보다 작아지면 표면·결정립계 산란으로 비저항이 급증하고, 얇아질 수 없는 배리어가 단면적을 잡아먹는다. 그래서 하부층에는 배리어가 거의 필요 없는 <strong>Ru, Mo</strong> 와 이를 직접 식각하는 반다마신(semi-damascene) 방식이 연구·도입되고 있다.</li>
+</ul>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cu 벌크 비저항</td>
+<td>약 1.7 µΩ·cm</td>
+<td>좁은 배선에서는 산란으로 수 배까지 상승</td>
+</tr>
+<tr>
+<td>Cu 전자 평균자유행로</td>
+<td>약 40 nm</td>
+<td>이보다 좁으면 비저항 급증이 시작</td>
+</tr>
+<tr>
+<td>Al 벌크 비저항</td>
+<td>약 2.7 µΩ·cm</td>
+<td>Cu 도입 전 표준 배선 금속</td>
+</tr>
+<tr>
+<td>SiO₂ 유전율 k</td>
+<td>약 3.9~4.0</td>
+<td>low-k 경쟁의 기준점 (<a class="wiki" href="sio2.html">SiO₂</a>)</td>
+</tr>
+<tr>
+<td>다공성 low-k k</td>
+<td>2.5 미만 목표</td>
+<td>강도·손상과 맞바꾼 값</td>
+</tr>
+<tr>
+<td>BEOL 공정 온도 상한</td>
+<td>약 400°C</td>
+<td>금속·low-k가 정하는 한계</td>
+</tr>
+<tr>
+<td>금속층 수 (최신 로직)</td>
+<td>10~15층 이상</td>
+<td>세대가 갈수록 증가 경향</td>
+</tr>
+</tbody></table></div>
+<p>배선 지연에는 <strong>비아 저항의 누적</strong>도 들어간다. 비아는 단면이 작고 배리어 비율이 높아, 층을 많이 오르내리는 경로일수록 비아 개수가 지연과 발열을 지배한다.</p>
+<h2 id="신뢰성-일렉트로마이그레이션과-절연-파괴">신뢰성 — 일렉트로마이그레이션과 절연 파괴</h2>
+<p>BEOL의 고장은 대부분 시간이 지나며 자란다.</p>
+<ul>
+<li><strong>일렉트로마이그레이션 (EM, electromigration)</strong> — 높은 전류밀도로 흐르는 전자가 금속 원자를 바람 방향으로 밀어내, 음극 쪽에 보이드(→ 단선), 양극 쪽에 힐록·돌출(→ 단락)을 만든다. 수명은 Black의 식으로 기술된다: 전류밀도의 거듭제곱에 반비례하고, 온도에 대해 아레니우스형(활성화에너지)으로 급격히 짧아진다. 그래서 전원망처럼 전류가 한 방향으로 계속 흐르는 배선이 신호 배선보다 먼저 EM 설계 검증을 받는다. 대응은 단면 확대, Cu 캡(Co 선택 캡), 배리어/라이너 계면 관리다 — EM은 주로 Cu와 캡 계면을 따라 일어나기 때문이다.</li>
+<li><strong>응력 마이그레이션 (SM)</strong> — 전류 없이도 열응력만으로 보이드가 자라는 현상. 비아 아래에서 특히 잘 생긴다.</li>
+<li><strong>TDDB (시간 의존 절연파괴)</strong> — 배선 간 간격이 좁아지며 low-k 절연막에 걸리는 전계가 커져, 절연막이 시간과 함께 열화·파괴된다. k를 낮추려고 다공성으로 만든 막일수록 취약하다.</li>
+<li><strong>Cu 확산</strong> — 배리어가 뚫리면 Cu가 절연막과 하부 소자로 퍼져 누설·소자 열화를 일으킨다.</li>
+</ul>
+<h2 id="층수-스케일링이-만드는-것">층수 스케일링이 만드는 것</h2>
+<p>트랜지스터가 줄어도 배선층은 줄지 않는다. 셀 내부 연결 수요는 피치 축소와 함께 오히려 늘기 때문이다. 층수가 늘면 마스크 수·CMP 횟수·검사 부담이 누적되어 BEOL이 전체 원가와 사이클 타임에서 차지하는 비중이 커진다. 이 혼잡을 구조로 푸는 시도가 후면 전원 분리(<a class="wiki" href="bspdn.html">BSPDN</a>)이고, 소재로 푸는 시도가 Ru·Mo 반다마신과 에어갭이다.</p>
+<h2 id="트레이드오프">트레이드오프</h2>
+<ul>
+<li><strong>k vs 강도·신뢰성</strong> — 다공성은 k를 내리지만 기계적 강도, CMP 내성, TDDB 여유를 함께 깎는다. 손상 복구까지 포함한 &quot;유효 k&quot;로 비교해야 한다 (<a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>).</li>
+<li><strong>배리어 두께 vs 유효 단면</strong> — 배리어를 두껍게 하면 확산·EM은 안전해지지만 Cu가 흐를 단면이 줄어 저항이 오른다. 하부층일수록 이 충돌이 극단적이다.</li>
+<li><strong>비아 중복도 vs 면적</strong> — 비아를 이중화하면 신뢰성은 오르지만 배선 자원과 커패시턴스를 먹는다.</li>
+</ul>
+<h2 id="한계-결함-모드">한계·결함 모드</h2>
+<ul>
+<li><strong>CMP 디싱·침식</strong> — 넓은 Cu 패턴이 오목하게 파이고(dishing), 조밀 패턴 영역이 통째로 낮아지는(erosion) 현상. 층간 평탄도를 무너뜨려 위층 리소 초점을 어긋나게 한다 (<a class="wiki" href="cmp.html">CMP</a>).</li>
+<li><strong>도금 보이드·시드 단절</strong> — 고종횡비 비아에서 시드가 끊기면 내부 보이드가 남아 EM 수명을 급격히 깎는다.</li>
+<li><strong>비아–배선 정렬 어긋남</strong> — 오버레이가 나쁘면 비아가 배선 가장자리에 걸쳐 유효 단면이 줄고 단락 위험이 커진다.</li>
 </ul>
 <p><strong>후면 전력 공급 (BSPDN, Backside Power Delivery).</strong> 전원 배선을 웨이퍼 뒷면으로 옮겨 앞면 BEOL은 신호 전용으로 쓰는 구조다. 신호 배선 혼잡과 전압 강하(IR drop)를 동시에 줄이며, 2nm급 이하 로직에서 도입이 진행 중이다(Intel PowerVia, TSMC Super Power Rail 등). 자세한 내용은 <a class="wiki" href="bspdn.html">BSPDN</a>에서 다룬다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -160,9 +229,18 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="cmp.html">CMP</a> — 다마신의 짝 공정</li>
 <li><a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a> — BEOL 절연막의 약점</li>
 <li><a class="wiki" href="metals.html">금속·도체</a> — 배선 재료들</li>
+<li><a class="wiki" href="mol.html">MOL</a> — BEOL 아래, 컨택을 만드는 단계</li>
+<li><a class="wiki" href="bspdn.html">BSPDN</a> — 전원망을 뒷면으로 빼는 구조</li>
+<li><a class="wiki" href="parasitic-capacitance.html">기생 커패시턴스</a> — 배선 간 커패시턴스가 회로에 미치는 영향</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>Cu·Al 벌크 비저항, Cu 평균자유행로(약 40 nm), 유전율 계열은 반도체 공정·배선 표준 교재의 전형값이다. Black의 식에 의한 EM 수명 기술은 배선 신뢰성의 표준 모형이다.</li>
+<li>층수와 온도 상한은 업계 공개 자료의 전형 범위이며, 비공개 세부 치수는 싣지 않았다.</li>
+<li>low-k 손상 메커니즘의 상세는 <a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a> 항목의 근거를 따른다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

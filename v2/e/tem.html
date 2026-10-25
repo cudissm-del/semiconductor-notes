@@ -103,6 +103,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>수백 kV로 가속한 전자는 파장이 원자 간격보다 짧아, 박편 시편을 투과시킨 상에서 격자 줄무늬와 원자 배열이 직접 보인다. 막 두께, 계면의 거칠기와 반응층, 결정 결함을 실측으로 확정할 수 있어, <a class="wiki" href="ellipsometer.html">엘립소미터</a>·<a class="wiki" href="xrr.html">XRR</a> 같은 간접 계측의 모델이 맞는지 검증하는 최종 심판 역할을 한다. 주사 모드(STEM)에 <a class="wiki" href="edx.html">EDX</a>를 결합하면 원소 분포까지 함께 얻는다.</p>
 <p>대가도 가장 크다. 전자빔이 투과하려면 시편이 수십 nm 두께의 박편이어야 해서, <a class="wiki" href="fib-sem.html">FIB-SEM</a>으로 목표 지점을 잘라내는 시편 제작이 전체 시간의 병목이고, 그 부위는 파괴된다. 고비용·저처리량이라 양산 감시가 아닌 개발·불량 분석의 기준 데이터 확보에 쓴다.</p>
+<h2 id="원리">원리</h2>
+<p>수백 kV로 가속한 전자의 드브로이 파장은 pm급이다(300 kV에서 약 2 pm). 그런데 실제 분해능은 파장이 아니라 자기 렌즈의 구면수차와 시편에서의 산란이 정한다. 얇은 시편을 투과한 파와 결정면에서 회절한 파가 간섭하면 격자 줄무늬 상이 생기고, 회절 패턴 자체는 결정 구조와 방위를 준다. 주사 모드(STEM)에서는 가늘게 집속한 빔을 훑으며 위치별 투과 신호를 모아 상을 만들고, 무거운 원자일수록 강하게 산란하는 성질을 이용한 환형 암시야 상은 원자번호 대비를 준다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -135,7 +137,23 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>한계</td>
 <td>보는 영역이 극히 좁아 대표성·통계 확보 불가</td>
 </tr>
+<tr>
+<td>가속 전압</td>
+<td>수백 kV급이 전형 — 높을수록 투과력↑, 시편 손상 양상도 달라짐</td>
+</tr>
+<tr>
+<td>전자 파장</td>
+<td>300 kV에서 약 2 pm — 분해능의 한계는 파장이 아닌 렌즈 수차</td>
+</tr>
+<tr>
+<td>시편 두께</td>
+<td>투과가 가능한 수십 nm급 — 두꺼우면 다중 산란으로 상이 흐려짐</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법-해석">읽는 법·해석</h2>
+<p>격자 줄무늬의 간격이 곧 결정면 간격이므로, 층 두께와 계면 위치를 원자 열 단위로 확정할 수 있고 계면 반응층의 유무도 직접 확인한다. 다만 상의 명암은 조성만이 아니라 시편 두께·결정 방위·초점 조건에도 좌우되므로, 명암만으로 조성을 단정하지 않고 원소 분석을 병행해 해석한다. 투영상이므로 깊이 방향으로 겹친 구조는 한 장의 상에서 분리되지 않는다는 점도 전제다.</p>
+<h2 id="한계-주의점">한계·주의점</h2>
+<p>고에너지 전자빔 자체가 시편을 손상시켜(원자 변위·가열) 원래 구조와 달라진 상을 볼 수 있다. 박편 제작 과정에서 생긴 손상과 실제 구조의 구분도 필요하다. 무엇보다 보는 영역이 µm 이하로 좁아, 그 단면이 웨이퍼 전체를 대표하는지는 TEM만으로는 답할 수 없어 다른 계측의 통계와 함께 읽어야 한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="fib-sem.html">FIB-SEM</a> — TEM 박편 시편을 제작하는 전단 장비</li>
@@ -145,6 +163,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>투과 전자빔 회절·격자상 해석은 TEM의 표준 교재 서술에 근거한다: Williams &amp; Carter, <em>Transmission Electron Microscopy</em> (Springer).</li>
+<li>추가한 원리·전형값의 출처 구분: 가속 전압·파장 전형값은 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
   <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>

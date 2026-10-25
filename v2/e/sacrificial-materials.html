@@ -172,13 +172,67 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>UV 경화로 빠져나가며 기공을 남김</td>
 </tr>
 </tbody></table></div>
+<h3 id="희생-물질의-설계-조건-사라지는-법까지가-스펙">희생 물질의 설계 조건 — 사라지는 법까지가 스펙</h3>
+<p>희생 물질은 &quot;잘 버티는 것&quot;과 &quot;깨끗이 사라지는 것&quot;을 동시에 요구받는다. 남길 물질보다 조건이 까다로운 이유다.</p>
+<ol>
+<li><strong>놓인 동안의 내성</strong> — 후공정의 열·플라즈마·습식 화학을 견뎌야 한다. 더미 게이트는 S/D 에피와 어닐을 버틴 뒤에야 제거되고, 3D NAND 희생 질화막은 수백 층 적층과 채널 식각을 버텨야 한다.</li>
+<li><strong>선택 제거</strong> — 제거 단계에서는 이웃 막 대비 선택비가 전부다. SiGe 희생층은 Si 채널을, 희생 <a class="wiki" href="si3n4.html">Si₃N₄</a>는 <a class="wiki" href="sio2.html">SiO₂</a>를 남기고 빠져야 한다. 선택비가 모자라면 남길 구조가 함께 깎여 형상이 무너진다.</li>
+<li><strong>잔류물·손상 없음</strong> — 제거 뒤 표면이 다음 공정(게이트 증착, 금속 치환)의 출발점이 된다. 잔류 폴리머·산화·거칠기가 그대로 소자 특성으로 이어진다.</li>
+<li><strong>접근 경로</strong> — 매립된 희생층은 입구가 좁고 제거 거리가 길다. 등방 식각의 도달 거리와 반응물 수송이 형상 균일도를 정한다 (<a class="wiki" href="recess.html">리세스와 채널 릴리스</a>).</li>
+</ol>
+<h3 id="제거법의-지도">제거법의 지도</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>제거 방식</th>
+<th>대표 사례</th>
+<th>특징</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>습식 선택 식각</td>
+<td>열인산으로 희생 SiN 제거 (3D NAND), HF 계열로 산화막 희생층 제거</td>
+<td>선택비가 크고 등방적; 건조 시 패턴 붕괴(스티킹) 관리 필요</td>
+</tr>
+<tr>
+<td>건식·리모트 플라즈마</td>
+<td>SiGe 측면 제거, 더미 게이트 제거 보조</td>
+<td>방향·반응종 제어가 가능; 손상과 선택비의 균형</td>
+</tr>
+<tr>
+<td>애싱 (O₂ 플라즈마)</td>
+<td>PR 스트립, ACL 카본 마스크 제거</td>
+<td>유기물은 빠르게 타지만, 드러난 low-k·금속이 산화 손상을 입을 수 있다</td>
+</tr>
+<tr>
+<td>열분해·큐어 아웃</td>
+<td>포로젠 제거 (다공성 low-k)</td>
+<td>식각이 아니라 &quot;빠져나가며 빈자리를 남기는&quot; 제거</td>
+</tr>
+</tbody></table></div>
+<h3 id="하드마스크-희생이-아니라-전사층">하드마스크 — 희생이 아니라 전사층</h3>
+<p>하드마스크는 희생층과 결이 다르다. PR이 못 버티는 긴 식각을 대신 버티며 패턴을 아래로 옮기는 것이 일이며, 전사가 끝나면 역시 제거된다. 핵심 지표는 목표막 대비 식각 선택비와, 제거 시 아래 막 손상이다. SOC–SiARC 같은 다층 스택은 해상도를 받는 층(PR)과 내성을 담당하는 층(카본)을 분리한 설계이고, 금속 하드마스크(TiN)는 PR 애싱이 low-k를 상하게 하는 BEOL에서 애싱 자체를 피하려고 쓴다.</p>
+<h3 id="한계-이슈">한계·이슈</h3>
+<ul>
+<li><strong>선택비의 천장</strong> — 희생/본체 쌍의 화학이 비슷할수록(예: SiGe의 Ge 조성이 낮을수록) 선택비가 모자란다. 조성은 소자 요구와 제거 창이 함께 정한다.</li>
+<li><strong>제거 후 형상</strong> — 등방 제거는 입구 쪽이 먼저 열리는 수송 구배를 만들어, 깊은 곳과 얕은 곳의 제거량이 갈린다. 내부 스페이서의 층별 길이 편차가 여기서 온다.</li>
+<li><strong>마스크 침식</strong> — 긴 고종횡비 식각에서는 마스크도 함께 깎여 패턴이 넓어지거나 무너진다. 마스크 두께는 식각 깊이와 선택비로 역산해 정한다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="lithography.html">리소그래피</a> — 감광막이 쓰이는 곳</li>
 <li><a class="wiki" href="recess.html">리세스와 채널 릴리스</a> — 희생층(SiGe)의 제거</li>
+<li><a class="wiki" href="dry-etch.html">건식 식각</a> · <a class="wiki" href="cleaning.html">세정</a> — 제거 공정의 양대 축</li>
+<li><a class="wiki" href="nand-3d.html">3D NAND</a> — 희생 질화막 치환의 대표 구조</li>
+<li><a class="wiki" href="rmg.html">RMG (Gate-last)</a> — 더미 게이트를 걷어내고 채우는 흐름</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>희생층·하드마스크의 역할과 제거 방식은 표준 공정 교재의 일반 서술로 정리했다. 열인산의 SiN 선택 제거와 SiGe 선택 식각은 <a class="wiki" href="si3n4.html">Si₃N₄</a>·<a class="wiki" href="recess.html">리세스와 채널 릴리스</a> 항목의 기존 서술과 정합한다.</li>
+<li>특정 논문의 선택비 실측은 이 항목에 새로 인용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><p style="color:var(--sub)">없음</p></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><p style="color:var(--sub)">없음</p></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

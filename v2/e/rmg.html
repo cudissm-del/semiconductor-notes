@@ -130,6 +130,9 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>FinFET·GAA 표준</td>
 </tr>
 </tbody></table></div>
+<h2 id="개요-왜-게이트를-두-번-만드나">개요 — 왜 게이트를 두 번 만드나</h2>
+<p>RMG(Replacement Metal Gate)의 출발점은 온도 충돌이다. S/D 도펀트 활성화에는 1000°C 전후의 어닐이 필요하지만, HKMG의 일함수 금속과 high-k 막은 그 온도를 겪으면 일함수가 이동하고 막질이 열화되어 문턱전압(Vt)이 설계값에서 벗어난다. 해법은 역할을 나누는 것이다: <strong>고온을 견디는 가짜 게이트(더미 poly)로 소자 구조를 먼저 완성하고, 고온 공정이 모두 끝난 뒤 가짜를 들어내고 진짜 게이트를 상온에 가까운 조건으로 채운다.</strong> 대가로 공정 단계가 늘고, 좁은 게이트 트렌치를 빈틈없이 채우는 갭필 문제가 생긴다.</p>
+<p>더미 게이트는 희생 구조이면서 동시에 자기정렬의 기준이다. 스페이서·LDD·S/D 에피는 모두 더미 게이트의 가장자리를 기준으로 정렬되므로(<a class="wiki" href="feol.html">FEOL</a>), 더미 게이트의 CD와 프로파일 정확도가 최종 소자에 그대로 새겨진다.</p>
 <p><strong>RMG 흐름</strong></p>
 <ol>
 <li>더미 poly 게이트 + 스페이서 → S/D 형성·활성화 어닐 (고온 공정 모두 완료)</li>
@@ -138,6 +141,69 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>IL 형성 → HfO₂ ALD → 캡·일함수 금속 ALD → 충진 금속</li>
 <li>CMP로 게이트 높이 정리 → 금속 리세스 + SiN 캡 (<a class="wiki" href="sac.html">SAC</a>로 연결)</li>
 </ol>
+<h2 id="단계별-원리와-조건">단계별 원리와 조건</h2>
+<ul>
+<li><strong>더미 제거</strong> — poly-Si를 채널·스페이서·ILD에 손상을 주지 않고 선택적으로 빼내야 한다. 습식(TMAH 등)과 건식 플라즈마를 조합하며, 잔류 poly가 남으면 그 자리가 게이트 결함이 된다. GAA에서는 이 개구부를 통해 희생층(SiGe)을 옆으로 깎아 나노시트를 띄우는 채널 릴리스가 이어진다 (<a class="wiki" href="recess.html">리세스와 채널 릴리스</a>).</li>
+<li><strong>계면층(IL)과 HfO₂</strong> — 열린 트렌치 바닥의 채널 표면에 얇은 SiO₂ 계면층을 화학 산화로 다시 기르고, 그 위에 HfO₂를 ALD로 입힌다. 트렌치 안쪽 벽면까지 균일해야 하므로 증착법은 사실상 <a class="wiki" href="ald.html">ALD (원자층 증착)</a>로 고정된다. 층 구성과 EOT 계산은 <a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a>에서 다룬다.</li>
+<li><strong>일함수 금속</strong> — Vt는 게이트 금속의 유효 일함수가 정한다. NMOS는 Si 전도대 근처(약 4.1 eV), PMOS는 가전자대 근처(약 5.2 eV)의 일함수가 필요하며, PMOS 쪽은 TiN 계열, NMOS 쪽은 TiAl·TiAlC 계열이 대표 조합이다. 여러 Vt(multi-Vt) 소자는 일함수 금속의 두께를 바꾸거나 La₂O₃·Al₂O₃ 같은 다이폴층을 넣어 만든다. 패터닝으로 일함수 금속을 영역마다 다르게 남기는 과정이 RMG에서 마스크를 가장 많이 먹는 구간이다.</li>
+<li><strong>충진과 마감</strong> — 일함수 금속까지는 ALD로 얇게 입히고, 남은 공간은 저항이 낮은 충진 금속(W 등)으로 메운 뒤 CMP로 높이를 맞춘다. 마지막에 금속 윗부분을 리세스하고 SiN 캡을 채워, 다음 단계인 <a class="wiki" href="mol.html">MOL</a>의 자기정렬 컨택이 기댈 캡 구조를 완성한다.</li>
+</ul>
+<h2 id="갭필이-어려운-이유">갭필이 어려운 이유</h2>
+<p>게이트 트렌치는 폭이 수십 nm 이하면서 깊이는 그 수 배인 고종횡비 개구부다. 문제는 구조가 진화할수록 심해진다.</p>
+<ul>
+<li><strong>FinFET</strong> — 핀을 감싸야 하므로 트렌치 내부 형상이 요철투성이이고, 핀 사이 좁은 틈에 보이드 없이 금속을 넣어야 한다.</li>
+<li><strong>GAA 나노시트</strong> — 띄워진 시트들 사이의 간격은 수~십수 nm 수준으로, 일함수 금속 + 충진 금속을 다층으로 넣을 물리적 공간 자체가 부족하다. 그래서 시트 간격이 좁은 소자일수록 일함수 금속을 얇게 쓰고 다이폴로 Vt를 미는 비중이 커진다 (<a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a>). 시트 사이 충전이 불완전하면 그 시트만 게이트 제어를 잃는 국소 결함이 된다.</li>
+<li><strong>입구 폐쇄(pinch-off)</strong> — 증착이 입구에서 먼저 두꺼워지면 내부가 비는 심·보이드가 남는다. ALD의 컨포멀성이 RMG에서 선택이 아니라 필수인 이유다.</li>
+</ul>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값·수준</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>활성화 어닐 (더미 단계)</td>
+<td>1000°C 전후 (스파이크)</td>
+<td>RMG가 이 고온을 게이트보다 앞에 두는 구조</td>
+</tr>
+<tr>
+<td>목표 유효 일함수 (NMOS)</td>
+<td>약 4.1 eV</td>
+<td>Si 전도대 가장자리 근처</td>
+</tr>
+<tr>
+<td>목표 유효 일함수 (PMOS)</td>
+<td>약 5.2 eV</td>
+<td>Si 가전자대 가장자리 근처</td>
+</tr>
+<tr>
+<td>High-k</td>
+<td>HfO₂, k ≈ 20 수준</td>
+<td>EOT 환산은 <a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> 참고</td>
+</tr>
+<tr>
+<td>게이트 트렌치 충전</td>
+<td>ALD 중심 (IL·HfO₂·일함수 금속)</td>
+<td>컨포멀성이 공정 성립 조건</td>
+</tr>
+</tbody></table></div>
+<h2 id="트레이드오프">트레이드오프</h2>
+<ul>
+<li><strong>Vt 자유도 vs 단계 수</strong> — multi-Vt를 늘릴수록 일함수 금속의 패터닝·제거 단계가 곱으로 늘어난다. 다이폴 방식은 단계를 아끼는 대신 Vt 이동 폭이 제한된다.</li>
+<li><strong>일함수 금속 두께 vs 저항·공간</strong> — 두껍게 넣으면 일함수 포화가 확실하지만 충진 금속 공간이 줄고, GAA에서는 아예 넣을 공간이 없다.</li>
+<li><strong>더미 제거 선택비 vs 잔류</strong> — 채널·스페이서 보호를 우선하면 제거가 보수적이 되어 잔류가 늘고, 제거를 세게 하면 채널 표면이 손상되어 IL 품질이 떨어진다.</li>
+</ul>
+<h2 id="한계-결함-모드">한계·결함 모드</h2>
+<ul>
+<li><strong>잔류 더미 (poly stringer)</strong> — 트렌치 모서리나 시트 아래에 poly가 남으면 그 부분에 진짜 게이트가 닿지 않아 국소적으로 Vt가 어긋나거나 게이트가 끊긴다.</li>
+<li><strong>충전 보이드·심</strong> — 충진 금속 내부의 빈 공간은 게이트 저항을 올리고, CMP·리세스 때 열리면 이후 공정 물질이 파고드는 통로가 된다.</li>
+<li><strong>IL 재성장·표면 손상</strong> — 더미 제거와 세정 사이에서 채널 표면이 산화·거칠어지면 계면 트랩이 늘어 이동도와 신뢰성(BTI)이 나빠진다.</li>
+<li><strong>금속 리세스 불균일</strong> — 마감 리세스 깊이가 웨이퍼 안에서 흔들리면 SiN 캡 두께가 달라져 <a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a> 식각 여유가 위치마다 달라진다.</li>
+<li><strong>일함수 금속의 열 이력</strong> — RMG 이후에도 MOL·BEOL의 수백 °C 열 이력이 남아 있어, 일함수 이동이 완전히 0은 아니다.</li>
+</ul>
 <p><strong>참고 논문</strong></p>
 <ul>
 <li><a href="https://doi.org/10.1016/j.mser.2014.11.001" target="_blank" rel="noopener">High-K materials and metal gates for CMOS applications</a> — Robertson &amp; Wallace, Mater. Sci. Eng. R 88, 1 (2015). High-k 밴드 정렬과 일함수의 표준 리뷰</li>
@@ -146,9 +212,17 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <ul>
 <li><a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> — RMG가 만드는 구조</li>
 <li><a class="wiki" href="feol.html">FEOL</a> — RMG가 들어가는 흐름</li>
+<li><a class="wiki" href="ald.html">ALD (원자층 증착)</a> — 트렌치를 채우는 증착법</li>
+<li><a class="wiki" href="recess.html">리세스와 채널 릴리스</a> — GAA에서 RMG와 붙어 있는 단계</li>
+<li><a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a> — RMG 마감 캡이 가능하게 하는 다음 구조</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>Gate-first/gate-last 비교와 흐름 순서는 HKMG 집적의 표준 교재·리뷰 서술에 근거한다 (Robertson &amp; Wallace 2015 포함).</li>
+<li>일함수 목표값(약 4.1 eV / 약 5.2 eV)과 HfO₂ k값은 <a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> 항목의 전형값과 맞췄다. 특정 파운드리의 금속 조성·두께 같은 비공개 수치는 싣지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 재료 &gt; 감광·화학 소재</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

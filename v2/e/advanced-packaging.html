@@ -208,13 +208,27 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <ul>
 <li><a href="https://www.youtube.com/watch?v=2ACiuKgYUkI" target="_blank" rel="noopener">Why Wafer Bonding is the Future of Semiconductors — Asianometry</a> — 웨이퍼 본딩이 왜 첨단 기술의 공통분모인지 (영어)</li>
 </ul>
+<h2 id="설계-변수와-트레이드오프">설계 변수와 트레이드오프</h2>
+<ul>
+<li><strong>대역폭 밀도 vs 비용</strong> — 피치를 절반으로 줄이면 단위 면적당 I/O는 약 4배(1/피치²)가 되지만, 정렬·평탄도·검사 난도가 함께 올라 수율 손실이 비용을 먹는다. 그래서 모든 연결을 가장 미세하게 만들지 않고, 대역폭이 꼭 필요한 구간(로직–HBM 사이)만 실리콘급으로, 나머지는 유기 RDL이나 기판으로 나누는 혼합 설계가 일반적이다.</li>
+<li><strong>열</strong> — 다이를 쌓을수록 아래 다이의 열이 빠져나갈 길이 길어진다. 2.5D는 다이를 옆으로 벌려 방열이 상대적으로 쉽고, 3D 적층은 성능·밀도 대신 열 밀도와 핫스폿 관리가 대가가 된다.</li>
+<li><strong>기계적 응력</strong> — 실리콘(CTE 약 2.6 ppm/K, 교재 전형값)과 유기 기판·몰딩재(수십 ppm/K급)의 열팽창 차이가 휨(warpage)과 범프 피로를 만든다. 패키지가 커질수록 이 차이가 누적돼 대형 CoWoS에서 휨 제어가 수율을 가른다.</li>
+<li><strong>테스트 가능성</strong> — 합치기 전에 각 다이를 검사하는 known-good-die 전략이 필수다. 비싼 로직 다이에 불량 메모리를 붙이면 패키지 전체를 버리게 되므로, 적층 중간 단계 테스트와 리페어 여부가 전체 수율 경제성을 좌우한다.</li>
+</ul>
+<h2 id="한계-이슈">한계·이슈</h2>
+<p>인터포저 대형화는 레티클 스티칭, 대형 기판 공급, 검사 시간이라는 세 병목을 동시에 키운다. 또 첨단 패키징 병목은 기술보다 <strong>용량</strong>인 경우가 많아, CoWoS 같은 공정은 파운드리 증설 속도가 곧 AI 칩 출하 속도가 되는 구조가 됐다.</p>
+<h2 id="근거">근거</h2>
+<ul>
+<li>연결 피치·CoWoS 변형·용량 비중은 본문 표와 현황 절에 인용한 업계 집계·보도 기준이다.</li>
+<li>CTE 등 재료 상수는 교재 전형값이며, 특정 제품의 실측값이 아니다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="hbm.html">HBM</a> — 첨단 패키징의 핵심 부품</li>
 <li><a class="wiki" href="packaging.html">패키징과 테스트</a> — 기본 후공정과의 차이</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 제조·품질 &gt; 수율</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="hbm.html">HBM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 제조·품질 &gt; 수율</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging.html">패키징과 테스트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

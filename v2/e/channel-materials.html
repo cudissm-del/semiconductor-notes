@@ -157,13 +157,84 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 </tbody></table></div>
 <figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Monocrystalline_silicon_ingot.jpg?width=1400" alt="단결정 Si 잉곳 — 이 잉곳을 얇게 잘라 웨이퍼를 만든다 (뮌헨 광물학 박물관)" loading="lazy" decoding="async"><figcaption>그림 1. 단결정 Si 잉곳 — 이 잉곳을 얇게 잘라 웨이퍼를 만든다 (뮌헨 광물학 박물관)<span class="credit">ArticCynda, <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0</a> · <a href="https://commons.wikimedia.org/wiki/File:Monocrystalline_silicon_ingot.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
 <p><strong>참고 — 전력·화합물 반도체.</strong> SiC, GaN, GaAs, InP 같은 화합물 반도체는 로직 CMOS가 아니라 전력 소자, RF, 광소자에 쓰인다. 공정 흐름은 비슷하지만 소재와 식각 화학이 크게 다르다.</p>
+<h3 id="핵심-수치-왜-Si가-표준인가">핵심 수치 — 왜 Si가 표준인가</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>물성 (상온, 교재 전형값)</th>
+<th>Si</th>
+<th>Ge</th>
+<th>GaAs</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>밴드갭</td>
+<td>1.12 eV</td>
+<td>0.66 eV</td>
+<td>1.42 eV</td>
+<td>Ge는 누설, GaAs는 광·RF에 유리</td>
+</tr>
+<tr>
+<td>전자 이동도</td>
+<td>≈ 1,350 cm²/V·s</td>
+<td>≈ 3,900</td>
+<td>≈ 8,500</td>
+<td>저도핑 벌크 기준</td>
+</tr>
+<tr>
+<td>정공 이동도</td>
+<td>≈ 480 cm²/V·s</td>
+<td>≈ 1,900</td>
+<td>≈ 400</td>
+<td>PMOS에서 Ge·SiGe가 주목받는 이유</td>
+</tr>
+<tr>
+<td>격자상수</td>
+<td>5.431 Å</td>
+<td>5.658 Å</td>
+<td>5.653 Å</td>
+<td>Si 대비 Ge 약 +4% — 응력의 출발점</td>
+</tr>
+<tr>
+<td>유전율</td>
+<td>≈ 11.7</td>
+<td>≈ 16</td>
+<td>≈ 12.9</td>
+<td>소자 용량·전계 분포에 개입</td>
+</tr>
+</tbody></table></div>
+<p>수치만 보면 Si는 이동도에서 진다. 그럼에도 표준인 이유는 이동도가 아니라 <strong>계면</strong>이다 — 열산화만으로 결함이 적은 Si/SiO₂ 계면을 얻을 수 있고, 대구경 단결정을 싸게 기를 수 있으며, n·p 도핑 모두 안정적이기 때문이다. 대체 채널은 이 세 가지를 동시에 넘지 못해, 전면 교체가 아니라 SiGe 응력·에피처럼 Si 위에 얹는 형태로 먼저 들어왔다.</p>
+<h3 id="형성법">형성법</h3>
+<ul>
+<li><strong>벌크 기판</strong> — CZ법으로 기른 단결정 웨이퍼가 기본이다 (<a class="wiki" href="silicon-wafer.html">실리콘 웨이퍼</a>). 채널 자체는 기판 표면이거나 그 위에 기른 에피층이다.</li>
+<li><strong>선택 에피 성장 (SEG)</strong> — S/D 영역만 파내고 Si:P·Si:C:P·SiGe:B를 그 자리에서 도핑까지 끝내며 기른다 (in-situ 도핑). 응력, 접합 깊이, 접촉 저항을 한 공정에서 정한다.</li>
+<li><strong>초격자와 희생층</strong> — <a class="wiki" href="gaa.html">GAA 나노시트</a>에서는 Si와 SiGe를 번갈아 쌓은 뒤 SiGe만 골라 제거해 채널 시트를 띄운다 (<a class="wiki" href="recess.html">리세스와 채널 릴리스</a>). 따라서 SiGe는 채널 재료인 동시에 희생 재료이며, Ge 조성(보통 수십 %)이 선택 식각 여유와 응력을 함께 정한다.</li>
+<li><strong>SOI</strong> — BOX 위에 얇은 Si층을 옮긴 기판으로, FD-SOI·RF에서 채널 두께 자체를 기판이 규정한다.</li>
+</ul>
+<h3 id="식각-가공에서-갈리는-점">식각·가공에서 갈리는 점</h3>
+<p>채널 물질은 &quot;깎는 대상&quot;보다 &quot;남아야 하는 몸체&quot;인 경우가 많다. SiGe 희생층 제거에서는 Si 채널을 거의 안 깎으면서 SiGe만 등방으로 걷어내야 하고, 반대로 Si 리세스에서는 결정면에 따라 식각률이 달라지는 이방성이 프로파일을 만든다. Ge 함량이 높을수록 선택 식각은 쉬워지지만 결함·응력 완화 리스크는 커지므로, 조성은 식각 창과 소자 신뢰성 사이에서 정해진다.</p>
+<h3 id="한계-이슈">한계·이슈</h3>
+<ul>
+<li><strong>미세화의 벽</strong> — 채널이 수 nm로 얇아지면 표면 거칠기와 두께 변동이 이동도와 문턱전압 변동을 직접 만든다. 물질 교체보다 형상 균일도가 병목이 되는 구간이다.</li>
+<li><strong>Ge·화합물의 계면</strong> — Ge는 좋은 산화막을 스스로 만들지 못해 계면층 공정이 추가로 필요하고, 이는 고이동도 이득을 갉아먹는다.</li>
+<li><strong>응력의 양면성</strong> — SiGe 압축 응력은 정공 이동도를 올리지만, 과하면 전위(dislocation)가 생겨 누설 경로가 된다. 스트레서는 &quot;많이&quot;가 아니라 &quot;결함 없이&quot;가 기준이다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="silicon-wafer.html">실리콘 웨이퍼</a> — 가장 기본의 채널 물질</li>
 <li><a class="wiki" href="dopants-memory-materials.html">도펀트와 메모리 물질</a> — 성질을 정하는 첨가물</li>
+<li><a class="wiki" href="gaa.html">GAA 나노시트</a> — Si/SiGe 초격자가 채널이 되는 구조</li>
+<li><a class="wiki" href="recess.html">리세스와 채널 릴리스</a> — SiGe 희생층을 골라 걷어내는 공정</li>
+<li><a class="wiki" href="ion-implantation.html">이온주입</a> · <a class="wiki" href="annealing.html">어닐과 확산</a> — 도핑을 넣고 활성화하는 법</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>이동도·밴드갭·격자상수·유전율은 반도체 물성 교재의 상온 전형값이다 (저도핑 벌크 기준; 실제 값은 도핑·온도·응력에 따라 달라진다).</li>
+<li>SiGe 격자 부정합 약 4%와 선택 식각 역할은 기존 본문 및 <a class="wiki" href="recess.html">리세스와 채널 릴리스</a> 항목의 서술과 정합하게 정리했다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 재료 &gt; 기판·웨이퍼</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 재료 &gt; 기판·웨이퍼</span></li><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 재료 &gt; 기판·웨이퍼</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

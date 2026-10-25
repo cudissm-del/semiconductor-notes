@@ -196,13 +196,70 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>MRAM</td>
 </tr>
 </tbody></table></div>
+<h3 id="도펀트-넣는-양과-활성화가-따로-논다">도펀트 — 넣는 양과 활성화가 따로 논다</h3>
+<p>도펀트 공정에서 정해야 하는 것은 원소만이 아니다. <strong>농도, 깊이(접합 프로파일), 활성화 비율</strong> 세 가지가 따로 움직인다.</p>
+<ul>
+<li><strong>농도 창</strong> — 채널·Vt 조절은 대략 10¹⁶~10¹⁸ cm⁻³, S/D 고농도 영역은 10²⁰ cm⁻³ 안팎까지 올라간다 (교재 전형 범위). 고상 용해도를 넘겨 넣으면 석출·클러스터로 비활성화돼, 넣은 양만큼 전기적으로 일하지 않는다.</li>
+<li><strong>깊이</strong> — As처럼 무거운 원소는 얕게 멈춰 얕은 접합에 유리하고, B처럼 가벼운 원소는 깊이·채널링을 관리해야 한다. 그래서 B는 BF₂ 분자 주입이나 사전 비정질화(PAI)와 함께 쓰는 경우가 많다.</li>
+<li><strong>확산</strong> — 주입 뒤 어닐에서 도펀트가 움직이면 설계한 접합이 번진다. C 공동 주입으로 B 확산을 억제하는 식의 &quot;도펀트끼리의 간섭&quot;도 설계 변수다 (<a class="wiki" href="annealing.html">어닐과 확산</a>).</li>
+</ul>
+<p>활성화 어닐은 손상 회복·활성화와 확산 억제 사이의 줄다리기다. 온도를 올리면 활성화는 좋아지지만 프로파일이 번지므로, 최신 노드는 짧고 뜨거운 스파이크·레이저 어닐로 시간을 줄이는 방향으로 갔다.</p>
+<h3 id="메모리-물질-저장-원리가-곧-재료-조건">메모리 물질 — 저장 원리가 곧 재료 조건</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>저장 원리</th>
+<th>상태를 무엇으로 나누나</th>
+<th>재료에 걸리는 조건</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>전하 저장 (NAND)</td>
+<td>트랩층에 잡힌 전하량</td>
+<td>트랩 밀도, 리텐션(누설 차단), 반복 기록에 따른 막 열화</td>
+</tr>
+<tr>
+<td>커패시터 (DRAM)</td>
+<td>유전체 양단의 전하</td>
+<td>높은 k와 낮은 누설을 동시에 — 박막화하면 누설이 먼저 샌다</td>
+</tr>
+<tr>
+<td>강유전체 (FeRAM·FeFET)</td>
+<td>자발분극의 방향</td>
+<td>HZO의 강유전 상(orthorhombic) 안정화, 피로·임프린트, 웨이크업 거동</td>
+</tr>
+<tr>
+<td>상변화 (PCM)</td>
+<td>비정질/결정질 저항 차이</td>
+<td>GST의 빠른 결정화와 비정질 안정성 사이의 절충, 반복 스위칭 내구성</td>
+</tr>
+<tr>
+<td>자성 (MRAM)</td>
+<td>자유층 자화 방향</td>
+<td>MgO 터널 배리어의 균일도, CoFeB 계면 수직자기이방성 유지</td>
+</tr>
+</tbody></table></div>
+<p>공통점은 셀이 작아질수록 <strong>부피가 아니라 계면과 상(phase)이 성능을 정한다</strong>는 것이다. HZO는 조성(Hf:Zr ≈ 1:1)뿐 아니라 두께·전극 응력·어닐로 강유전 상을 잡아야 하고, DRAM 유전체는 ZrO₂/Al₂O₃ 적층처럼 &quot;k가 큰 층&quot;과 &quot;누설을 막는 층&quot;을 나눠 쌓는 식으로 절충한다.</p>
+<h3 id="한계-이슈">한계·이슈</h3>
+<ul>
+<li><strong>랜덤 도펀트 변동 (RDF)</strong> — 채널 부피가 작아지면 도펀트 원자 수 자체가 수십~수백 개 수준이 돼, 개수와 위치의 통계적 흔들림이 Vt 산포가 된다. 미세 소자에서 채널 무도핑 설계가 선호되는 배경이다.</li>
+<li><strong>메모리 재료의 신뢰성</strong> — 저장 원리가 원자 재배열(상변화·분극 반전)에 기대는 재료는 반복 동작에서 피로가 쌓인다. 용량·속도보다 내구성과 리텐션이 양산의 문턱인 경우가 많다.</li>
+<li><strong>공정 오염</strong> — 도펀트와 금속 불순물은 의도한 자리 밖에서는 수명을 깎는 오염원이다. 메모리 물질 전용 장비·교차오염 관리가 별도 라인 규율이 된다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="ion-implantation.html">이온주입</a> — 도펀트를 넣는 법</li>
 <li><a class="wiki" href="channel-materials.html">반도체·채널 물질</a> — 도펀트가 들어가는 몸체</li>
+<li><a class="wiki" href="annealing.html">어닐과 확산</a> — 활성화와 프로파일 번짐의 줄다리기</li>
+<li><a class="wiki" href="dram.html">DRAM</a> · <a class="wiki" href="nand-3d.html">3D NAND</a> — 메모리 물질의 대표 사용처</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>도펀트 농도 범위는 공정 교재의 전형 구간이며, 소자·노드별 설계값이 아니다.</li>
+<li>메모리 물질의 역할 구분은 기존 표의 소자 대응을 기준으로 정리했고, 특정 논문의 실측 수치는 새로 넣지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 소자·구조 &gt; 메모리</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

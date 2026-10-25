@@ -100,7 +100,34 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
   <article><blockquote>
 <p>플라즈마를 만드는 방식에 따라 나뉘는 식각 장비 (CCP·ICP·ECR 등)의 종류와 특징.</p>
 </blockquote>
-<h3 id="장비-종류">장비 종류</h3>
+<p>이 항목은 하드웨어를 다룬다. 플라즈마 안에서 왜 이온과 라디칼이 그렇게 거동하는지는 <a class="wiki" href="plasma-basics.html">플라즈마 기초</a>, 그 플라즈마로 무엇을 어떻게 깎는지는 <a class="wiki" href="dry-etch.html">건식 식각</a>이 맡는다. 장비 항목의 질문은 하나다: 원하는 플라즈마를 <strong>균일하게, 재현성 있게, 웨이퍼를 붙든 채로</strong> 만들려면 어떤 부품이 필요한가.</p>
+<h2 id="챔버와-전극-공통-골격">챔버와 전극 — 공통 골격</h2>
+<p>방식과 무관하게 식각 장비는 다음 부품으로 이뤄진다.</p>
+<ul>
+<li><strong>진공 챔버</strong> — 알루미늄 등 금속 용기에 석영·세라믹 라이너를 댄 구조. 벽면은 플라즈마에 직접 닿아 폴리머 증착과 식각을 함께 겪으므로, 벽 상태 자체가 공정 변수가 된다(시즌닝 항목 참고).</li>
+<li><strong>전극·안테나</strong> — 전력을 플라즈마에 넣는 부품. 평행 평판 전극(CCP), 챔버 위 코일(ICP), 도파관+자석(ECR)으로 방식이 갈린다.</li>
+<li><strong>상부 전극·샤워헤드</strong> — 가스를 웨이퍼 전면에 고르게 뿌리는 분배판이 전극을 겸하는 경우가 많다. 가스 분배 균일도가 곧 식각 균일도의 절반이다.</li>
+<li><strong>하부 전극·웨이퍼 스테이지</strong> — 바이어스 전력이 들어가는 자리이자 웨이퍼를 붙드는 ESC가 앉는 자리다.</li>
+<li><strong>진공·배기계</strong> — 아래 진공 시스템 절 참고.</li>
+<li><strong>진단 창과 센서</strong> — 발광을 뽑는 뷰포트(<a class="wiki" href="oes.html">OES</a>), 종말점 검출기, 바이어스 전압·전류 모니터가 챔버에 붙는다.</li>
+</ul>
+<h2 id="RF-발생과-매칭">RF 발생과 매칭</h2>
+<p>표준 RF 주파수는 ISM 대역인 <strong>13.56 MHz</strong> 다. 소스 전력에는 13.56 MHz 외에 27.12·60 MHz(VHF)를, 바이어스에는 이온 에너지 제어를 위해 더 낮은 2 MHz급을 섞어 쓰는 다중 주파수 구성이 흔하다. 낮은 주파수일수록 이온이 RF 주기를 더 잘 따라가 이온 에너지 분포가 넓어지고, 높은 주파수일수록 분포가 좁아지는 것이 주파수 선택의 물리적 배경이다 (<a class="wiki" href="plasma-basics.html">플라즈마 기초</a>의 쉬스 논의 참고).</p>
+<p>발전기(제너레이터)와 챔버 사이에는 <strong>매칭 네트워크</strong>가 반드시 낀다. 플라즈마의 임피던스는 점화 전후, 그리고 공정 중에도 계속 변하는 부하라, 발전기의 50 Ω 출력과 그대로는 맞지 않는다. 매칭 네트워크(가변 커패시터·인덕터의 L형 네트워크, 자동 매칭 유닛)는 이 임피던스를 실시간으로 변환해 <strong>반사 전력을 최소로</strong> 만든다. 매칭이 어긋나면 같은 설정 전력이라도 플라즈마에 실제로 들어가는 전력이 달라지므로, 반사 전력 증가는 곧 공정 드리프트의 신호다. 점화(ignition) 시퀀스 — 낮은 압력·특정 가스에서 먼저 불을 붙인 뒤 공정 조건으로 이동하는 절차 — 도 매칭이 잡히는 조건을 찾기 위한 하드웨어 운용이다.</p>
+<h2 id="진공-시스템과-가스-패널">진공 시스템과 가스 패널</h2>
+<ul>
+<li><strong>펌프 계열</strong> — 공정 압력(대략 수 mTorr~수백 mTorr 영역)을 만드는 주 펌프는 터보분자펌프(TMP)이고, 그 뒤를 드라이 펌프가 받치는(backing) 2단 구성이 표준이다. 반응성·응축성 부산물이 많은 식각에서는 펌프 입구의 가열과 질소 퍼지로 응축을 막는다.</li>
+<li><strong>압력 제어</strong> — 펌프 앞에 있는 스로틀 밸브(버터플라이 밸브)의 열림을 자동 압력 제어(APC)로 조절해, 가스 유량이 바뀌어도 챔버 압력을 설정값에 묶어 둔다. 압력은 평균자유행로와 이온 방향성을 정하는 변수라 (<a class="wiki" href="plasma-basics.html">플라즈마 기초</a>), 유량과 독립으로 제어할 수 있어야 한다.</li>
+<li><strong>가스 패널</strong> — 식각 가스(CF₄·C₄F₈·Cl₂·HBr·O₂·Ar 등)는 가스 캐비닛에서 MFC(질량유량제어기)로 유량을 맞춰 들어간다. MFC의 정확도와 응답 속도가 가스 조성 재현성을 정하고, 독성·부식성 가스라 배관 재질과 누설 감지가 안전 설계의 핵심이다. 빠른 가스 전환이 필요한 사이클릭 공정(<a class="wiki" href="ale.html">ALE (원자층 식각)</a>)에서는 밸브 응답과 배관 데드 볼륨이 사이클 시간을 좌우한다.</li>
+</ul>
+<h2 id="ESC-정전척-붙들고-식히고-바이어스를-건다">ESC (정전척) — 붙들고, 식히고, 바이어스를 건다</h2>
+<p>웨이퍼는 기계 클램프가 아니라 <strong>정전척(ESC, Electrostatic Chuck)</strong> 이 정전기력으로 붙든다. 세라믹 유전체 안에 묻힌 전극에 전압을 걸어 웨이퍼를 끌어당기는 방식으로, 쿨롱형과 존슨–라벡(Johnsen–Rahbek)형이 있다. ESC의 역할은 셋이다.</p>
+<ol>
+<li><strong>고정과 평탄 유지</strong> — 웨이퍼 휨을 펴서 전면에 균일한 간격을 만든다.</li>
+<li><strong>온도 제어</strong> — 플라즈마가 때리는 열을 빼지 못하면 웨이퍼 온도가 공정 중 계속 오른다. ESC 뒷면과 웨이퍼 사이에 헬륨을 수 Torr 수준으로 채워(백사이드 He) 열전달을 만들고, 척 내부 냉각 채널로 온도를 묶어 둔다. He 압력이 새면 그 자리부터 온도가 뜨는 국소 핫스폿이 된다.</li>
+<li><strong>바이어스 통로</strong> — RF 바이어스가 ESC를 통해 웨이퍼에 전달되므로, 척의 유전체 두께·물성이 이온 에너지 재현성에 들어간다.</li>
+</ol>
+<h2 id="장비-종류">장비 종류</h2>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -120,6 +147,11 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>Si·poly·금속 식각, 게이트·핀</td>
 </tr>
 <tr>
+<td>ECR (전자 사이클로트론 공명)</td>
+<td>마이크로파 2.45 GHz + 공명 자기장(약 875 G)으로 고밀도·저압 플라즈마. 이온 에너지가 낮고 균일 제어가 어려움</td>
+<td>연구용 고밀도 식각, 저손상 식각 (양산 주류에서는 ICP에 밀림)</td>
+</tr>
+<tr>
 <td>원격 플라즈마 (Downstream)</td>
 <td>이온은 걸러내고 라디칼만 웨이퍼로</td>
 <td>등방성 선택 식각, 애싱, 프리클린 (GAA 측면 리세스)</td>
@@ -135,14 +167,71 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>3D NAND 초고종횡비 채널홀</td>
 </tr>
 </tbody></table></div>
+<p>방식 선택의 축은 결국 <strong>밀도와 이온 에너지의 독립성</strong>이다. CCP는 한 전력이 둘을 함께 정해 이온 에너지가 세지만 제어가 얽히고, ICP는 코일(소스)과 하부 전극(바이어스)을 나눠 플럭스와 에너지를 따로 잡는다. ECR은 저압에서도 고밀도를 내지만 자기장 균일도와 장비 복잡도가 대가다. 원격 플라즈마는 이온을 버리는 대신 손상 없는 라디칼 화학만 가져간다. 밀도·온도의 전형 범위는 <a class="wiki" href="plasma-basics.html">플라즈마 기초</a>의 핵심 수치 표와 맞물린다.</p>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>표준 RF 주파수</td>
+<td>13.56 MHz (ISM)</td>
+<td>바이어스용 2 MHz급, 소스용 27.12·60 MHz 병용</td>
+</tr>
+<tr>
+<td>ECR 공명 조건</td>
+<td>2.45 GHz ↔ 약 875 G</td>
+<td>전자 사이클로트론 공명의 확정 관계</td>
+</tr>
+<tr>
+<td>공정 압력 영역</td>
+<td>대략 수 mTorr~수백 mTorr</td>
+<td>방식·공정 따라 다름</td>
+</tr>
+<tr>
+<td>주 진공 펌프</td>
+<td>터보분자펌프 + 드라이 펌프 배킹</td>
+<td>2단 구성</td>
+</tr>
+<tr>
+<td>백사이드 He</td>
+<td>수 Torr 수준</td>
+<td>ESC 열전달 매질</td>
+</tr>
+<tr>
+<td>반사 전력</td>
+<td>매칭 정상 시 인가 전력 대비 수 % 이하 유지가 운용 기준</td>
+<td>증가 자체가 이상 신호</td>
+</tr>
+</tbody></table></div>
+<h2 id="유지-고장-모드">유지·고장 모드</h2>
+<p>식각 장비의 재현성은 챔버가 &quot;어제와 같은 상태&quot;인가에 달려 있다.</p>
+<ul>
+<li><strong>벽면 폴리머와 시즌닝 (seasoning)</strong> — FC 공정에서는 챔버 벽에 폴리머가 쌓였다 떨어지기를 반복하며 라디칼 수지를 바꾼다. 세정(습식 클린) 직후의 맨벽은 공정을 다르게 만들므로, 본공정 전에 더미 웨이퍼로 벽 상태를 길들이는 시즌닝을 거친다. 벽 상태 드리프트는 식각률·선택비가 서서히 미끄러지는 가장 흔한 원인이다.</li>
+<li><strong>파티클</strong> — 벽 폴리머의 박리, ESC 가장자리 침식, 가스 응축물이 대표 발생원이다. 파티클은 패턴 결함으로 직결되므로 주기적 클린과 파티클 모니터가 유지 주기를 정한다.</li>
+<li><strong>매칭 드리프트</strong> — 전극·라이너가 침식되며 임피던스가 바뀌면 매칭 포인트가 이동하고 반사 전력이 는다. 같은 레시피인데 결과가 달라졌을 때 먼저 보는 하드웨어 신호다.</li>
+<li><strong>ESC 열화</strong> — 유전체 침식으로 척킹력이 떨어지거나 백사이드 He가 새면 온도 균일도가 무너져 웨이퍼 가장자리부터 식각률이 어긋난다.</li>
+<li><strong>창 오염</strong> — OES 뷰포트에 막이 쌓이면 종말점 신호가 약해져 검출이 늦어진다. 진단의 한계가 곧 장비 유지 항목이 되는 지점이다 (<a class="wiki" href="oes.html">OES</a>).</li>
+</ul>
 <figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Reactive_Ion_Etcher.JPG?width=1400" alt="연구실용 RIE 장비 (Plasma-Therm 790 Series)" loading="lazy" decoding="async"><figcaption>그림 1. 연구실용 RIE 장비 (Plasma-Therm 790 Series)<span class="credit">AlabamaUSA, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Reactive_Ion_Etcher.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="dry-etch.html">건식 식각</a> — 이 장비들이 하는 일</li>
 <li><a class="wiki" href="plasma-basics.html">플라즈마 기초</a> — 장비가 만드는 것</li>
+<li><a class="wiki" href="oes.html">OES</a> — 챔버 창에 붙는 대표 진단</li>
+<li><a class="wiki" href="ale.html">ALE (원자층 식각)</a> — 가스 전환·펄스 제어를 극단으로 요구하는 공정</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>RF 주파수(13.56 MHz ISM), ECR 공명 관계(2.45 GHz ↔ 875 G), 펌프 구성과 매칭 네트워크의 역할은 플라즈마 공정 장비의 표준 교재 전형 서술에 근거한다: Lieberman &amp; Lichtenberg, <em>Principles of Plasma Discharges and Materials Processing</em> (Wiley, 2nd ed., 2005).</li>
+<li>압력·He 압력 같은 운용 수치는 장비 운용의 전형 범위로 적었고, 특정 제조사의 모델별 사양 수치는 싣지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><p style="color:var(--sub)">없음</p></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

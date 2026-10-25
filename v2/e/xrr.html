@@ -103,6 +103,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>X선은 물질에서 굴절률이 1보다 아주 조금 작아, 임계각 이하의 얕은 입사각에서는 전반사가 일어난다. 입사각을 스캔하면 임계각의 위치에서 막의 전자 밀도를, 반사율 곡선에 겹쳐 나타나는 Kiessig 프린지의 주기에서 두께를, 프린지 감쇠에서 표면·계면 거칠기를 얻을 수 있다. 수 Å 수준까지 두께를 가르는 분해능이 강점이다.</p>
 <p>주로 수 nm~100 nm급 초박막과 다층막의 개발·교정 단계에서 쓴다. <a class="wiki" href="ellipsometer.html">엘립소미터</a>의 광학 모델을 검증하는 기준값으로 자주 동원되며, 빛이 닿지 않는 매몰 계면도 볼 수 있다.</p>
+<h2 id="원리">원리</h2>
+<p>X선 영역에서 물질의 굴절률은 n = 1 − δ + iβ로, δ가 10⁻⁵ 수준으로 작아 1보다 아주 조금 작다. 그래서 임계각 θc ≈ √(2δ) 이하의 얕은 입사각에서는 공기가 광학적으로 더 밀한 매질이 되어 전반사가 일어난다. δ는 전자 밀도에 비례하므로 임계각 위치가 막의 밀도를 준다. 임계각보다 큰 각도에서는 표면 반사파와 계면 반사파가 간섭해 Kiessig 프린지가 생기고, 그 각도 간격에서 d ≈ λ/(2Δθ)(작은 각 근사) 관계로 두께를 얻는다. 프린지 진폭이 각도와 함께 감쇠하는 정도는 표면·계면 거칠기를 반영한다. 다층막의 정밀 산출은 층마다 굴절·반사를 재귀적으로 계산하는 Parratt 형식으로 이론 곡선을 만들어 피팅한다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -135,7 +137,23 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>한계</td>
 <td>넓고 평탄한 측정 영역 필요, 거친 표면에서는 프린지가 사라짐</td>
 </tr>
+<tr>
+<td>입사각 범위</td>
+<td>임계각 부근 수 ° 이하의 얕은 각도 영역을 스캔</td>
+</tr>
+<tr>
+<td>측정 영역</td>
+<td>mm급의 넓고 평탄한 영역 — 빔 풋프린트가 길게 늘어남</td>
+</tr>
+<tr>
+<td>신호 조건</td>
+<td>거칠기가 수 nm를 넘으면 프린지 대비가 급격히 나빠짐</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법-해석">읽는 법·해석</h2>
+<p>반사율 곡선에서 읽는 정보는 위치별로 갈린다. 임계각의 각도 위치는 밀도, 프린지의 주기는 두께, 프린지가 사라져 가는 기울기는 거칠기로 분리해 읽는다. 층이 여러 개면 주기가 다른 프린지가 겹쳐 뛰는 듯한 비팅 패턴이 나타나며, 이를 층별 두께로 분해하는 것이 피팅의 일이다. 피팅에서는 두께·밀도·거칠기 파라미터가 서로 상관하므로, 한 파라미터를 다른 계측값으로 고정하면 나머지 해가 안정된다.</p>
+<h2 id="한계-주의점">한계·주의점</h2>
+<p>측정과 피팅에 시간이 걸려 양산 전수 감시에는 쓰지 않는다. 표면이 거칠거나 웨이퍼 휨이 크면 프린지가 뭉개져 해석 자체가 불가능해지고, 조성이 비슷한 층끼리는 전자 밀도 대비가 작아 계면이 잘 안 보인다. X선원을 쓰는 장비이므로 차폐와 안전 관리도 전제 조건이다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="ellipsometer.html">엘립소미터</a> — 일상 두께 측정의 표준, XRR로 모델을 교정한다</li>
@@ -145,9 +163,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>임계각·Kiessig 프린지 해석은 X선 반사율법의 표준 교재 서술에 근거한다: Birkholz, <em>Thin Film Analysis by X-Ray Scattering</em> (Wiley-VCH, 2006).</li>
+<li>추가한 원리·전형값의 출처 구분: 임계각·프린지 관계는 교재 전형 서술이며, 보유 논문의 특정 시료 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

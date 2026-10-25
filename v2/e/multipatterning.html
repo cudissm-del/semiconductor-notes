@@ -100,6 +100,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
   <article><blockquote>
 <p>한 번의 노광으로 찍을 수 없는 촘촘한 패턴을 여러 번으로 나눠 찍어 합치는 기술.</p>
 </blockquote>
+<h2 id="개요">개요</h2>
+<p>멀티패터닝은 목표 피치가 단일 노광 해상도(k₁ 하한, <a class="wiki" href="lithography.html">리소그래피</a> 참조) 아래로 내려갔을 때 패턴을 나눠 찍어 합치는 기술의 총칭이다. ArF 액침(하프피치 약 38nm)이 10nm급 노드까지 버틴 것도 이 기술 덕분이다. 노광 반복 분해 계열(LELE)과 증착 두께로 피치를 나누는 자기정렬 계열(SADP·SAQP)로 갈리며, 오버레이에 대한 태도가 정반대인 점이 핵심 대조다.</p>
 <h3 id="멀티패터닝-한-번에-못-찍으면-나눠-찍는다">멀티패터닝 — 한 번에 못 찍으면 나눠 찍는다</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -129,15 +131,104 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>공정 수·비용 급증, 편차 누적</td>
 </tr>
 </tbody></table></div>
-<p>SADP·SAQP의 선폭은 노광이 아니라 <strong>스페이서 ALD 두께</strong>가 정한다. 그래서 컨포멀 증착(<a class="wiki" href="deposition.html">증착</a>·<a class="wiki" href="ald.html">ALD</a>)과 스페이서 식각의 정밀도가 곧 패턴 정밀도다.</p>
+<p>SADP·SAQP의 선폭은 노광이 아니라 <strong>스페이서 ALD 두께</strong>가 정한다. 컨포멀 증착(<a class="wiki" href="deposition.html">증착</a>·<a class="wiki" href="ald.html">ALD (원자층 증착)</a>)과 스페이서 식각의 정밀도가 곧 패턴 정밀도다.</p>
 <figure class="fig"><svg viewBox="0 0 760 276" role="img" aria-label="SADP는 선 2개를 찍어 4개를 얻는다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">SADP는 선 2개를 찍어 4개를 얻는다 — 피치가 절반으로</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">선폭을 정하는 것은 노광이 아니라 스페이서 ALD 두께</text><g><rect x="34" y="170" width="116" height="10" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="34" y="150" width="116" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><g><rect x="48" y="110" width="28" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="108" y="110" width="28" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect></g><g><text x="92" y="206" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">① 맨드릴 패턴</text><text x="92" y="224" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">노광·식각</text></g></g><g><rect x="178" y="170" width="116" height="10" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="178" y="150" width="116" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><g><rect x="185" y="103" width="42" height="47" fill="var(--cds-chart-categorical-3)" fill-opacity="0.7" stroke="var(--cds-chart-categorical-3)"></rect><rect x="245" y="103" width="42" height="47" fill="var(--cds-chart-categorical-3)" fill-opacity="0.7" stroke="var(--cds-chart-categorical-3)"></rect><rect x="178" y="143" width="116" height="7" fill="var(--cds-chart-categorical-3)" fill-opacity="0.7" stroke="var(--cds-chart-categorical-3)"></rect></g><g><rect x="192" y="110" width="28" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="252" y="110" width="28" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect></g><g><text x="236" y="206" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">② 스페이서 ALD</text><text x="236" y="224" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">컨포멀하게 덮음</text></g></g><g><rect x="322" y="170" width="116" height="10" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="322" y="150" width="116" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><g><rect x="336" y="110" width="28" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="396" y="110" width="28" height="40" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect></g><g><rect x="329" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><rect x="364" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><rect x="389" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><rect x="424" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect></g><g><text x="380" y="206" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">③ 에치백</text><text x="380" y="224" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">측벽만 남김</text></g></g><g><rect x="466" y="170" width="116" height="10" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="466" y="150" width="116" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><g><rect x="473" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><rect x="508" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><rect x="533" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><rect x="568" y="110" width="7" height="40" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect></g><g><text x="524" y="206" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">④ 맨드릴 제거</text><text x="524" y="224" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">스페이서가 마스크</text></g></g><g><rect x="610" y="170" width="116" height="10" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><g><rect x="617" y="150" width="7" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)"></rect><rect x="652" y="150" width="7" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)"></rect><rect x="677" y="150" width="7" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)"></rect><rect x="712" y="150" width="7" height="20" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)"></rect></g><g><text x="668" y="206" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">⑤ 하부막 전사</text><text x="668" y="224" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">선 4개, 피치 1/2</text></g></g><rect x="200" y="248" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-1)" fill-opacity="0.35" stroke="var(--cds-chart-categorical-1)"></rect><text x="220" y="258" font-size="11.5" fill="var(--cds-text-secondary)">맨드릴</text><rect x="300" y="248" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-3)" stroke="var(--cds-chart-categorical-3)"></rect><text x="320" y="258" font-size="11.5" fill="var(--cds-text-secondary)">스페이서</text><rect x="410" y="248" width="14" height="12" rx="2" fill="var(--cds-chart-categorical-5)" fill-opacity="0.45" stroke="var(--cds-chart-categorical-5)"></rect><text x="430" y="258" font-size="11.5" fill="var(--cds-text-secondary)">패터닝할 하부막</text></svg><figcaption>그림 1. SADP 5단계 · 피치 1/2</figcaption></figure>
+<h2 id="원리">원리</h2>
+<h3 id="LELE-나눠-찍고-두-번-새긴다">LELE — 나눠 찍고 두 번 새긴다</h3>
+<p>레이아웃을 두 마스크로 색칠하듯 분해(coloring)한다. 한 번에 못 찍는 이웃 패턴끼리 다른 마스크에 배정하고 노광 → 식각을 두 번 반복해 합친다. 세 번 나누면 LELELE다.</p>
+<ul>
+<li><strong>분해 문제</strong> — 이웃 관계가 홀수 고리를 만들면 2개 마스크로는 배정이 충돌한다(conflict). 패턴을 자르거나 레이아웃을 고쳐야 한다.</li>
+<li><strong>오버레이가 곧 오차</strong> — 두 번째 노광이 어긋나면 그만큼 이웃 간격이 틀어진다. nm 단위 오버레이가 간격 산포의 지배 인자가 되는 것이 LELE의 구조적 약점이다. 대신 2차원 패턴을 비교적 자유롭게 배치할 수 있어 모양이 다양한 층에 강하다.</li>
+</ul>
+<h3 id="SADP-스페이서가-피치를-반으로-나눈다">SADP — 스페이서가 피치를 반으로 나눈다</h3>
+<p>자기정렬 더블 패터닝은 증착으로 피치를 나눈다.</p>
+<ol>
+<li><strong>맨드릴(mandrel) 노광</strong> — 목표 피치의 2배인 느슨한 피치로 희생 패턴을 찍는다. 해상도 여유가 있는 노광이다.</li>
+<li><strong>스페이서 증착</strong> — 맨드릴 전체에 절연막을 컨포멀하게 덮는다. 측벽 막 두께가 최종 선폭이라 균일도가 곧 선폭 균일도이며, 원자층 단위 제어 <a class="wiki" href="ald.html">ALD (원자층 증착)</a>가 쓰이는 이유다.</li>
+<li><strong>에치백</strong> — 이방성 식각으로 평탄부 막을 제거하고 측벽 스페이서만 남긴다. 소자 측벽 <a class="wiki" href="spacer.html">스페이서</a>의 &quot;증착 + 에치백&quot;과 같은 원리로, 상세는 <a class="wiki" href="spacer.html">스페이서</a>에 정리돼 있다.</li>
+<li><strong>맨드릴 제거(pull)</strong> — 맨드릴만 걷어내면 절반 간격으로 스페이서가 2배 밀도로 남는다.</li>
+<li><strong>전사 + 컷</strong> — 스페이서를 하드마스크로 아래 막을 새긴다. 스페이서는 닫힌 고리(loop)로 남으므로, 연결을 끊는 컷(cut/block) 마스크가 별도로 필요하다.</li>
+</ol>
+<p>핵심은 <strong>자기정렬</strong>이다. 두 번째 선 위치를 노광이 아니라 첫 패턴의 측벽이 정하므로 노광 간 오버레이가 피치 오차로 들어오지 않는다. 대가는 모양 제약 — 기본 단위가 등간격 직선 배열이라 2차원 형상은 컷 마스크를 겹쳐 만들어야 한다.</p>
+<h3 id="SAQP-SADP를-한-번-더">SAQP — SADP를 한 번 더</h3>
+<p>SADP로 만든 선을 다시 맨드릴로 삼아 반복하면 피치가 1/4이 된다. ArF 액침 맨드릴에서 10nm대 하프피치에 도달하는 경로이며 핀(fin) 같은 극규칙 배열에 쓰였다. 반복할수록 편차 누적이 커져 적용 층은 가장 촘촘한 층으로 좁혀진다.</p>
+<h3 id="Pitch-walking-자기정렬에도-오차는-있다">Pitch walking — 자기정렬에도 오차는 있다</h3>
+<p>SADP의 간격은 두 종류가 번갈아 나타난다. 맨드릴 선폭 W, 스페이서 두께 t, 피치 P라 두면 두 간격은 W와 P − W − 2t다. 맨드릴 CD가 벗어나면 두 간격이 반대로 어긋나 짝·홀 간격이 번갈아 틀어지는 <strong>pitch walking</strong>이 생긴다. 오버레이에서는 자유롭지만 맨드릴 CD 오차를 간격 오차로 바꿔 받는 셈이다. SAQP에서는 모집단이 4종류로 는다. 산포는 <a class="wiki" href="cd-sem.html">CD-SEM</a>으로 모집단별로 관리한다.</p>
+<h2 id="핵심-수치-조건-표">핵심 수치·조건 표</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>LELE</th>
+<th>SADP</th>
+<th>SAQP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>피치 분할</td>
+<td>1/2 (LELELE는 1/3)</td>
+<td>1/2</td>
+<td>1/4</td>
+</tr>
+<tr>
+<td>선폭을 정하는 것</td>
+<td>노광 (두 번 모두)</td>
+<td>스페이서 증착 두께</td>
+<td>스페이서 증착 두께 (2회)</td>
+</tr>
+<tr>
+<td>오버레이 민감도</td>
+<td>높음 — 간격 오차로 직결</td>
+<td>낮음 — 자기정렬</td>
+<td>낮음 — 자기정렬</td>
+</tr>
+<tr>
+<td>지배 오차</td>
+<td>노광 간 오버레이</td>
+<td>맨드릴 CD → pitch walking</td>
+<td>pitch walking 누적</td>
+</tr>
+<tr>
+<td>패턴 자유도</td>
+<td>2차원 형상에 강함</td>
+<td>단방향 라인 + 컷 마스크</td>
+<td>단방향 라인 + 컷 마스크</td>
+</tr>
+<tr>
+<td>추가 공정</td>
+<td>노광·식각 반복</td>
+<td>증착·에치백·맨드릴 제거·컷</td>
+<td>SADP 전체를 2회</td>
+</tr>
+</tbody></table></div>
+<h2 id="공정-윈도우-트레이드오프">공정 윈도우·트레이드오프</h2>
+<h3 id="EUV와의-분담">EUV와의 분담</h3>
+<p><a class="wiki" href="euv.html">EUV</a>가 들어오면서 역할은 &quot;전부 대체&quot;가 아니라 &quot;층별 재배치&quot;로 바뀌었다. EUV는 LELE식 분해가 필요하던 2차원 임계층을 단일 노광으로 되돌려 마스크 수와 오버레이 누적을 없애는 데 효과가 가장 크다. 반대로 SADP/SAQP가 자리 잡은 극규칙 배열에서는 DUV 멀티패터닝이 층당 비용에서 경쟁력이 있어 남는다. EUV는 &quot;나눠 찍는 비용이 가장 큰 층&quot;부터 배정된다. <a class="wiki" href="high-na-euv.html">High-NA EUV</a>가 들어오면 EUV 담당 층이 넓어진다 — 멀티패터닝은 해상도가 부족할 때마다 돌아오는 일반 해법이다.</p>
+<h3 id="비용-사이클-타임-오버레이-예산">비용·사이클 타임·오버레이 예산</h3>
+<p>대가는 노광 횟수만이 아니다. LELE는 식각 포함 풀 패스가 반복되고 SADP 계열은 증착·에치백·제거·컷이 한 층에 붙어, 공정 수가 늘수록 사이클 타임과 결함 기회가 늘고 층당 수율이 깎인다 (<a class="wiki" href="yield-model.html">수율 모델</a> 참조). 그럼에도 쓰인 이유는 비교 대상이 &quot;더 비싼 다음 세대 노광기&quot;이거나 &quot;존재하지 않는 노광기&quot;였기 때문이다. 오버레이 예산도 핵심이다 — LELE에서는 간격 산포에서 오버레이 몫을 뺀 나머지가 CD 예산이다. SADP는 그 항목 대신 맨드릴 CD와 컷 위치 오버레이를 얻는다.</p>
+<h2 id="한계-결함-모드">한계·결함 모드</h2>
+<ul>
+<li><strong>컷 마스크 결함</strong> — 컷이 덜 끊기면 브리징이, 과하면 단선이 생긴다. 본 패턴보다 컷 공정에서 수율이 결정되는 경우가 많다.</li>
+<li><strong>맨드릴 결함의 복제</strong> — 맨드릴의 끊김·브리징은 2배로 복제돼 전사된다. 자기정렬은 위치 오차를 없앨 뿐 결함은 못 없앤다.</li>
+<li><strong>에치백 잔류·푸팅</strong> — 에치백이 부족하면 잔류막이 전사를 막고, 과하면 상부가 깎여 선폭이 변한다. <a class="wiki" href="spacer.html">스페이서</a> 형상 문제와 같은 계열이다.</li>
+<li><strong>분해 충돌과 설계 제약</strong> — 분해가 안 되는 레이아웃은 설계 단계에서 금지돼, 회로 설계 자유도를 직접 제한한다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="lithography.html">리소그래피</a> — 패터닝의 기본 공정</li>
 <li><a class="wiki" href="euv.html">EUV</a> — 멀티패터닝을 줄여 주는 대안</li>
+<li><a class="wiki" href="high-na-euv.html">High-NA EUV</a> — 단일 노광 영역을 다시 넓히는 세대</li>
+<li><a class="wiki" href="spacer.html">스페이서</a> — SADP와 같은 증착+에치백 원리를 쓰는 소자 구조</li>
+<li><a class="wiki" href="ald.html">ALD (원자층 증착)</a> — 스페이서 두께를 정하는 증착</li>
+<li><a class="wiki" href="dry-etch.html">건식 식각</a> — 에치백과 패턴 전사</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>LELE·SADP·SAQP의 원리와 pitch walking 관계(W와 P − W − 2t)는 패터닝 교재의 전형 서술에 근거한다: Mack, <em>Fundamental Principles of Optical Lithography</em> 등.</li>
+<li>보유 논문의 스페이서 소재 문헌은 소자용 스페이서(<a class="wiki" href="spacer.html">스페이서</a>·<a class="wiki" href="spacer-materials.html">스페이서 소재 비교</a>)의 근거로, 원리가 같다는 연결에만 참고했다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 제조·품질 &gt; 수율</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

@@ -103,6 +103,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>VPD(Vapor Phase Decomposition)는 웨이퍼를 HF 증기에 노출해 표면 자연산화막과 그 안의 금속 오염을 함께 녹이고, 주사액으로 그 액적을 모아 ICP-MS(유도결합 플라즈마 질량분석)로 원소별 농도를 재는 전처리다. 웨이퍼 전면을 한 번에 모으므로 <a class="wiki" href="txrf.html">TXRF</a>보다 낮은 검출 한계가 가능하다.</p>
 <p>반면 웨이퍼 표면을 소모하는 파괴 분석이고 전처리에 시간이 걸리며, 회수율이 원소마다 달라 정량 해석에 주의가 필요하다.</p>
+<h2 id="원리-전처리가-만드는-감도">원리 — 전처리가 만드는 감도</h2>
+<p>감도는 질량분석기만큼 전처리에서 온다. HF 증기는 SiO₂를 선택적으로 녹이므로, 웨이퍼 전면(수백 cm²)의 자연산화막에 갇혀 있던 금속을 풀어낸다. 그 표면을 주사액 방울로 훑어 모으면 전 표면의 오염이 소량의 액체에 농축되고, ICP(유도결합 플라즈마, 약 6,000<del>10,000 K)에서 이온화된 원소를 질량대 전하비로 세는 ICP-MS가 ppt(ng/L)급 용액 농도까지 읽는다. 전 면적을 모아 농축한 만큼, 표면 농도로 환산한 검출 한계가 <a class="wiki" href="txrf.html">TXRF</a>보다 2</del>3자리 낮아지는 것이 전형적이다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -131,7 +133,23 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>용도</td>
 <td>초미량 금속 오염 인증, 세정 공정 검증</td>
 </tr>
+<tr>
+<td>용액 검출 한계</td>
+<td>ICP-MS 기준 ppt(ng/L)급 농도</td>
+</tr>
 </tbody></table></div>
+<h2 id="절차와-해석">절차와 해석</h2>
+<ul>
+<li><strong>분해</strong> — HF 증기 노출 조건과 산화막 상태가 회수량을 정한다. 산화막이 없는 표면에서는 분해가 성립하지 않아, 필요하면 산화막을 먼저 형성해 측정한다.</li>
+<li><strong>회수</strong> — 묽은 HF에 산화제를 더한 주사액이 전형적이며, 방울 상태로 전면을 스캔해 모은다. Si 표면에 석출되기 쉬운 Cu 같은 원소는 회수율이 낮아질 수 있어 원소별 회수 보정이 필요하다.</li>
+<li><strong>해석</strong> — 보고값은 시약과 환경에서 오는 절차 바탕값(blank)을 뺀 값으로 읽는다. 극미량 영역에서는 시료보다 blank 수준이 실질적인 검출 한계를 정하고, 값은 전면 평균이라 위치 정보는 없다.</li>
+</ul>
+<h2 id="한계-주의점">한계·주의점</h2>
+<ul>
+<li><strong>파괴와 대표성</strong> — 웨이퍼 표면을 소모하므로 같은 웨이퍼를 반복 측정하거나 후공정에 쓸 수 없어, 보통 모니터 웨이퍼로 운용한다.</li>
+<li><strong>원소별 편향</strong> — 회수율이 낮은 원소는 낮게 나온 값이 곧 &#39;깨끗함&#39;을 보장하지 않는다.</li>
+<li><strong>시간</strong> — 전처리와 분석에 수 시간이 걸리는 오프라인 인증용이지 인라인 감시용이 아니다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="txrf.html">TXRF</a> — 비파괴로 먼저 보는 표면 금속 오염 계측</li>
@@ -141,9 +159,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>VPD 전처리와 ICP-MS 정량의 절차는 반도체 웨이퍼 오염 분석의 표준 서술에 근거한다: Kern (ed.), <em>Handbook of Semiconductor Wafer Cleaning Technology</em> (Noyes) 계열 일반 서술.</li>
+<li>본문에 더한 수치(플라즈마 온도, ppt급 용액 검출 한계, TXRF 대비 자리수)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

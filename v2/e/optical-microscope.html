@@ -103,6 +103,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>공정이 끝난 웨이퍼를 가장 먼저 눈으로 확인하는 단계가 광학 현미경 관찰이다. 패턴이 제대로 형성됐는지, 잔사·이물·스크래치가 있는지, 정렬 마크가 맞는지를 빠르고 넓게 본다. 명시야·암시야 조명, 미분간섭(DIC) 같은 관찰법을 바꾸면 단차나 미세 요철의 대비를 키울 수 있다.</p>
 <p>분해능은 빛의 회절이 정한다 — 가시광에서는 약 0.2 µm가 한계라 그보다 작은 패턴 형상 자체는 <a class="wiki" href="sem.html">SEM</a>의 영역이다. 그래도 비파괴·고속·대면적이라는 장점 덕에 자동 결함 검사 장비의 기본 원리로도 계속 쓰인다.</p>
+<h2 id="원리">원리</h2>
+<p>분해능은 대물렌즈가 모으는 빛의 각도 범위, 개구수 NA = n sinθ가 정한다. Abbe 기준 분해 한계는 d = λ/(2NA), Rayleigh 기준으로는 0.61λ/NA로 쓰며, 파장을 짧게 하거나 NA를 키울수록 작아진다. 가시광과 건식 대물렌즈의 조합에서 한계가 약 0.2 µm가 되는 이유다. NA를 키우면 초점 심도가 함께 얕아지므로, 해상도와 높이 방향 허용 폭은 맞바꾸는 관계다. 조명법도 원리의 일부다. 명시야는 정반사광으로, 암시야는 기울여 쏜 빛의 산란광만 모아 이물과 스크래치를 강조하고, 미분간섭(DIC)은 편광 간섭으로 높이 기울기를 명암으로 바꾼다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -135,7 +137,23 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>강점</td>
 <td>넓은 시야를 즉시 확인, 전처리 불필요</td>
 </tr>
+<tr>
+<td>개구수</td>
+<td>건식 대물렌즈에서 0.9 이하급이 상한, 클수록 분해능↑·초점심도↓</td>
+</tr>
+<tr>
+<td>배율과 분해능</td>
+<td>배율은 확대율일 뿐, 해상 정보는 NA와 파장이 결정</td>
+</tr>
+<tr>
+<td>관찰법</td>
+<td>명시야·암시야·DIC를 결함 종류에 따라 교체해 사용</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법-해석">읽는 법·해석</h2>
+<p>색의 변화는 대개 박막 간섭색의 변화, 즉 막 두께나 잔막의 불균일을 뜻하므로 색 경계는 공정 불균일의 지도로 읽는다. 암시야에서만 빛나는 점은 산란을 일으키는 이물·요철이고, 명시야에서만 보이는 얼룩은 흡수·반사율 차이에 의한 오염이나 잔사에 가깝다. 관찰법을 바꿔 가며 결함 종류를 가른 뒤에야, 확대 관찰이 필요한 지점을 골라 전자현미경 단계로 넘긴다.</p>
+<h2 id="한계-주의점">한계·주의점</h2>
+<p>회절 한계 아래 패턴의 형상 자체는 원리상 볼 수 없고, 높이의 정량값도 얻을 수 없다. 투명한 잔막처럼 주변과 반사율이 비슷한 결함은 대비가 낮아 놓치기 쉽다. 자동 검사로 확장한 경우에도 판정은 기준 웨이퍼와 레시피에 의존하므로, 레시피가 낡으면 새 결함 양상을 분류하지 못한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="sem.html">SEM</a> — 회절 한계 이하를 보는 전자빔 관찰</li>
@@ -145,6 +163,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>회절 한계와 조명법에 의한 대비 향상은 광학 현미경의 표준 교재 서술에 근거한다: Hecht, <em>Optics</em> (Pearson) 등 일반 서술.</li>
+<li>추가한 원리·전형값의 출처 구분: Abbe·Rayleigh 분해 한계는 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
   <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 제조·품질 &gt; 수율</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>

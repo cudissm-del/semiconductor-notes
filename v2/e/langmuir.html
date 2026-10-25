@@ -112,6 +112,13 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><strong>전자 포화 영역</strong> — 탐침이 충분히 양이 되면 닿을 수 있는 전자가 모두 닿아 다시 포화된다. 곡선이 꺾이는 무릎 부근이 <strong>플라즈마 전위</strong>(V_p)다.</li>
 </ol>
 <p>곡선 중간, 순전류가 0이 되는 전압은 <strong>부유 전위</strong>(V_f)다. 절연된 물체를 플라즈마에 넣으면 스스로 이 전위에 앉는다 — 가벼운 전자가 먼저 몰려 물체를 음으로 대전시키기 때문이다. 부유 전위와 플라즈마 전위의 차이가 대략 전자온도에 비례하는 것도 같은 이치다.</p>
+<p>수식으로 정리하면 이렇다.</p>
+<ul>
+<li><strong>전자온도</strong> — 전자 지연 영역에서 전자전류는 I_e ∝ exp(eV/kT_e) 로 자란다. ln I_e 대 V 그래프의 기울기가 e/kT_e이므로, 기울기의 역수가 곧 T_e(eV)다.</li>
+<li><strong>이온 포화전류와 밀도</strong> — 탐침 앞에는 쉬스가 서고, 이온은 Bohm 속도로 쉬스에 들어간다. 이온 포화전류는 I_i,sat ≈ 0.61 · e · n_e · A · √(kT_e/m_i) (A는 탐침 수집 면적, m_i는 이온 질량)로 주어지므로, T_e를 먼저 구하면 n_e가 따라 나온다. 어느 이온종을 m_i에 넣을지가 다종 이온 플라즈마에서는 오차의 큰 몫을 차지한다.</li>
+<li><strong>부유 전위와 플라즈마 전위</strong> — 두 전위의 차는 V_p − V_f ≈ (kT_e/2e) · ln(m_i/2πm_e) 로, Ar 플라즈마에서는 대략 5 × T_e(eV) 수준의 전압(V)이 된다. T_e를 아는 상태에서 V_f만 재도 V_p를 어림할 수 있는 근거다.</li>
+<li><strong>쉬스 두께의 감각</strong> — 탐침 주변 쉬스는 Debye 길이 λ_D = √(ε₀kT_e/n_e e²) 의 수 배 두께다. 공정 플라즈마의 전형 조건에서는 λ_D가 수십 µm 수준이라, 지름 0.1~1 mm 팁은 쉬스보다 충분히 커서 평면 수집에 가까운 해석이 성립한다.</li>
+</ul>
 <h2 id="읽는-법-숫자-뽑는-순서">읽는 법 — 숫자 뽑는 순서</h2>
 <ol>
 <li>I-V 곡선을 그리고 로그 전류 그래프에서 전자 지연 영역의 직선 구간을 찾는다.</li>
@@ -120,6 +127,11 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>꺾이는 점에서 플라즈마 전위, 전류 0 교차점에서 부유 전위를 읽는다.</li>
 </ol>
 <p>같은 챔버라도 재는 위치를 옮기면 값이 달라진다 — 그게 단점이 아니라, 프로브가 <strong>국소 측정</strong>이라는 장점이다. 웨이퍼 위 플라즈마의 공간 분포를 지도처럼 그릴 수 있다.</p>
+<p>변형도 알아 둘 가치가 있다. 기준 전극을 대기 어려운 계에서는 크기가 같은 탐침 둘을 마주 세운 <strong>이중 탐침(double probe)</strong> 을 쓴다 — 둘 사이에 전압을 걸면 한쪽이 모은 이온전류가 다른 쪽의 전자전류와 맞물려 전체로 부유 상태가 유지되므로, 챔버 벽을 기준으로 삼지 않고 T_e와 밀도를 뽑을 수 있다. 대가는 포화전류가 이온 쪽으로 제한돼 신호가 작고, 전자 포화 영역을 볼 수 없다는 점이다.</p>
+<p>해석에서 자주 걸리는 함정은 셋이다. 첫째, 전자가 맥스웰 분포에서 벗어난 경우다 — 로그 그래프의 직선 구간이 두 기울기로 갈라지면 전자군이 둘로 나뉜 것으로 읽고, 하나의 T_e로 뭉개지 않는다. 둘째, 전자 포화 영역에서는 탐침이 큰 전류를 끌어 플라즈마를 교란하기 쉬워, 실제로는 이온 포화와 지연 영역만으로 해석하는 경우가 많다. 셋째, 2차 미분법으로 전자 에너지분포함수(EEDF) 자체를 뽑는 확장 해석(Druyvesteyn 방법)도 있지만, 미분이 잡음을 키우므로 곡선의 매끈함이 전제다.</p>
+<h2 id="공정-플라즈마에서의-자리-이온-전자-조건을-숫자로">공정 플라즈마에서의 자리 — 이온·전자 조건을 숫자로</h2>
+<p>식각에서 프로브 값이 의미를 갖는 경로는 이온을 통해서다. 웨이퍼에 닿는 이온 에너지는 대략 플라즈마 전위와 쉬스 전압 강하가 정하고, 이온 플럭스는 전자밀도와 Bohm 속도의 곱으로 스케일한다. 따라서 T_e·n_e·V_p를 알면 바이어스 조건을 바꿨을 때 이온 에너지와 플럭스가 어느 방향으로 움직이는지를 정량으로 예측할 수 있고, <a class="wiki" href="oes.html">OES</a>의 액티노메트리로 본 라디칼 상대 밀도와 나란히 놓으면 &quot;라디칼이 늘어서인가, 이온이 세져서인가&quot;를 가르는 근거가 된다.</p>
+<p>플라즈마 ALE처럼 이온 에너지 창이 좁은 공정에서는 이 분해가 특히 중요하다. 제거 단계 이온이 개질층만 떼는 창 안에 있는지는 결국 V_p와 쉬스 전압의 합으로 정해지기 때문이다(<a class="wiki" href="ale.html">ALE (원자층 식각)</a>의 에너지 순서 참고). 반대로 리모트·다운스트림 계에서는 웨이퍼 위치에 플라즈마 자체가 없어 프로브를 꽂을 대상이 없고, 진단은 발광·흡수 계열이 맡는다 — 프로브가 닿는 범위가 곧 이 진단의 적용 범위다.</p>
 <h2 id="핵심-수치">핵심 수치</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -144,6 +156,14 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>탐침 팁 크기</td>
 <td>지름 0.1~1 mm급 금속선</td>
 </tr>
+<tr>
+<td>Debye 길이 λ_D (전형 조건)</td>
+<td>수십 µm 수준 — 쉬스는 이 수 배</td>
+</tr>
+<tr>
+<td>V_p − V_f (Ar)</td>
+<td>대략 5 × T_e 수준</td>
+</tr>
 </tbody></table></div>
 <h2 id="한계">한계</h2>
 <ul>
@@ -164,7 +184,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>I-V 곡선의 세 영역 해석과 전자온도·밀도 추출은 플라즈마 진단의 표준 교재 서술에 근거한다: Lieberman &amp; Lichtenberg, <em>Principles of Plasma Discharges and Materials Processing</em> (Wiley, 2nd ed., 2005); Chen, <em>Introduction to Plasma Physics and Controlled Fusion</em> (Springer, 3rd ed., 2016)의 프로브 이론.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="qms.html">QMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="qms.html">QMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

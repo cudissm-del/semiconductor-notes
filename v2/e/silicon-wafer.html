@@ -136,18 +136,52 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>결정 방향</td>
 <td>(100)이 표준 — 게이트 산화막 계면 특성이 가장 좋다</td>
 </tr>
+<tr>
+<td>밴드갭 (상온)</td>
+<td>1.12 eV</td>
+</tr>
+<tr>
+<td>격자상수</td>
+<td>5.431 Å (다이아몬드 구조)</td>
+</tr>
+<tr>
+<td>밀도</td>
+<td>2.33 g/cm³</td>
+</tr>
+<tr>
+<td>비저항 범위</td>
+<td>도핑으로 대략 0.001~10⁴ Ω·cm까지 설계 — 기판 선택의 핵심 변수</td>
+</tr>
 </tbody></table></div>
+<h2 id="기판의-종류-벌크에서-에피-SOI로">기판의 종류 — 벌크에서 에피·SOI로</h2>
+<ul>
+<li><strong>벌크 웨이퍼</strong> — 잉곳을 그대로 썬 기본형. 가장 싸고 강하지만, 래치업·누설 경로는 기판 설계(웰·가드링)로 막아야 한다.</li>
+<li><strong>에피 웨이퍼</strong> — 고저항 또는 고농도 기판 위에 반대 성격의 얇은 단결정층을 기른 형태. 표면 결함이 적고, 기판과 에피층의 도핑을 따로 설계할 수 있어 전력 소자와 CMOS 모두에서 쓴다. 에피층이 곧 소자가 만들어지는 자리라 두께와 저항률 균일도가 스펙이다.</li>
+<li><strong>SOI 웨이퍼</strong> — BOX(매립 산화막) 위에 얇은 Si층을 붙인 구조. 소자가 기판과 절연돼 누설과 기생 용량이 줄고, FD-SOI에서는 Si층 두께 자체가 채널 두께를 정한다. 대신 열 방출이 BOX에 막히고 기판 가격이 비싸다.</li>
+</ul>
+<p>어느 기판이든 공통 스펙은 평탄도(나노미터급), 결정 결함(전위·COP), 금속 오염, 산소 농도다. 특히 CZ 웨이퍼의 산소는 석출물 형태로 내부 게터링(오염을 소자 영역에서 먼 곳에 가두는 효과)을 제공하지만, 과하면 휨과 결함의 원인이 돼 농도 창을 관리한다.</p>
+<h2 id="웨이퍼-표기와-방향">웨이퍼 표기와 방향</h2>
+<p>웨이퍼에는 결정 방향을 알리는 플랫(flat) 또는 노치(notch)가 있다. 300mm는 노치가 표준이며, 노광 정렬과 결정면 식각(이방성 습식 식각 등)에서 기준이 된다. (100) 면이 표준인 이유는 산화막 계면의 결함 밀도가 가장 낮고 이동도가 확보되기 때문이며, 결정면이 다르면 같은 공정에서도 식각률과 계면 특성이 달라진다.</p>
+<h2 id="한계-이슈">한계·이슈</h2>
+<ul>
+<li><strong>450mm 전환 무산</strong> — 지름을 키우면 장당 칩 수는 늘지만 장비 전체를 교체해야 해, 업계는 300mm에 머물렀다. 대구경화 대신 웨이퍼 재사용·박형화·패키징 쪽으로 효율을 찾는 흐름이다.</li>
+<li><strong>휨과 응력</strong> — 막 증착과 열 이력이 쌓이면 웨이퍼가 휘어 노광 초점과 본딩 정렬이 틀어진다. 기판 두께와 뒷면 상태도 공정 변수가 된다.</li>
+<li><strong>원가 구조</strong> — 웨이퍼 자체보다 &quot;웨이퍼 위에서 버리는 면적&quot;이 문제다. 엣지 제외(edge exclusion) 영역과 테스트·얼라인 마크가 실효 면적을 깎는다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="ellipsometer.html">엘립소미터</a> — 웨이퍼 위 막의 두께를 재는 대표 계측기</li>
 <li><a class="wiki" href="cmp.html">CMP</a> — 웨이퍼 연마와 공정 중 평탄화에 쓰이는 공정</li>
+<li><a class="wiki" href="channel-materials.html">반도체·채널 물질</a> — 웨이퍼 위에서 채널이 되는 물질들</li>
 </ul>
+<p>참고로 웨이퍼 뒷면과 베벨(모서리)도 관리 대상이다. 뒷면 오염은 노광 척킹과 열전달을 흔들고, 베벨 손상은 공정 중 파티클의 진원지가 된다. 앞면 품질만으로 웨이퍼 스펙이 끝나지 않는 이유다.</p>
 <h2 id="근거">근거</h2>
 <ul>
 <li>본문 수치는 지멘스 공정·CZ법의 일반 교과서 서술에 근거한다 (교재: Campbell, <em>Fabrication Engineering at the Micro and Nanoscale</em>).</li>
+<li>밴드갭·격자상수·밀도·비저항 범위는 반도체 물성 교재의 전형값이며, 비저항은 도핑 농도로 설계되는 범위 값이다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

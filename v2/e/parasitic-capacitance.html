@@ -129,6 +129,45 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><strong>Miller 효과</strong> — 게이트–드레인 사이 용량은 입력에서 볼 때 (1 + 전압 이득) 배로 증폭돼 보이는 Miller 효과 때문에, 같은 크기라도 게이트–소스 쪽 용량보다 스위칭에 더 무겁다.</li>
 <li><strong>실측으로 확인되는 이득</strong> — <a class="wiki" href="air-spacer.html">에어 스페이서</a> (Cheng 2016): Cov −15<del>25%, Ceff −10</del>15%. <a class="wiki" href="siocn.html">SiOCN</a> 스페이서 (Gu 2020): COV −12/−11% (P/N), CEFF −3%. 소재를 바꿨을 때 소자·회로 지표가 이 용량들을 통해 움직인다는 것이 실증으로 닫혀 있다.</li>
 </ul>
+<h2 id="정량으로-보는-손잡이들">정량으로 보는 손잡이들</h2>
+<p>평판 근사를 식으로 쓰면 소재 경쟁의 크기가 보인다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo>≈</mo><msub><mi>ε</mi><mn>0</mn></msub><mtext> </mtext><mi>k</mi><mtext> </mtext><mfrac><mi>A</mi><mi>d</mi></mfrac><mo separator="true">,</mo><mspace width="2em"/><mi>τ</mi><mo>≈</mo><mi>R</mi><mo>⋅</mo><msub><mi>C</mi><mtext>total</mtext></msub></mrow><annotation encoding="application/x-tex">C \approx \varepsilon_0 \, k \, \frac{A}{d}, \qquad \tau \approx R \cdot C_{\text{total}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mord mathnormal">ε</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">total</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></div>
+<ul>
+<li><strong>k의 레버</strong> — 스페이서 소재의 k를 SiN의 약 7(교재 전형값)에서 SiOCN의 4.5로 바꾸면, 같은 형상에서 그 성분의 용량은 비례해서 약 36% 줄어드는 계산이 된다(산술 예시). 에어 스페이서는 유전체가 공기(k≈1)라 이 레버의 극단이다.</li>
+<li><strong>두께의 레버</strong> — d를 키우면 C는 반비례로 줄지만, 그만큼 게이트와 S/D 사이 거리가 벌어져 직렬 저항과 단채널 제어가 나빠진다. 그래서 두께는 소자 설계가 정하고, 남은 자유도가 k라는 것이 low-k 스페이서 경쟁의 구도다.</li>
+<li><strong>Miller 가중</strong> — 게이트–드레인 용량 Cgd는 입력 환산 시 (1 + |Av|)배로 보인다. 따라서 같은 Cov라도 드레인 쪽 성분을 줄이는 편이 지연 개선에 더 크게 기여한다.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>소재</th>
+<th>k</th>
+<th>성격</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si₃N₄</td>
+<td>약 7</td>
+<td>기준 소재 (교재 전형값)</td>
+</tr>
+<tr>
+<td>SiBCN</td>
+<td>5.2</td>
+<td>보유 논문 실측 (Ko 2008)</td>
+</tr>
+<tr>
+<td>SiOCN</td>
+<td>4.5</td>
+<td>보유 논문 실측 (Gu 2020)</td>
+</tr>
+<tr>
+<td>공기 (에어 스페이서)</td>
+<td>약 1</td>
+<td>교재 전형값</td>
+</tr>
+</tbody></table></div>
+<h2 id="측정으로-확인하는-법">측정으로 확인하는 법</h2>
+<p>Cov와 Ceff는 직접 재는 값이 아니라 추출하는 값이다. Cov는 소자 C–V와 구조 시뮬레이션을 맞춰 분리하고, Ceff는 링 오실레이터의 발진 주기와 스테이지 전류로부터 환산하는 것이 전형적이다. 그래서 논문의 개선율은 측정 회로와 추출 가정에 붙어 다니는 숫자이며, 서로 다른 논문의 %를 그대로 나란히 비교할 때는 그 전제를 함께 봐야 한다.</p>
 <h2 id="한계-용량만-줄이면-되는가">한계 — 용량만 줄이면 되는가</h2>
 <p>기생용량을 줄이는 손잡이는 반대쪽 대가를 부른다. 스페이서를 두껍게 하면 S/D 직렬 저항이 오르고, k를 낮추면 막의 강도·공정 내성이 떨어지며 (<a class="wiki" href="spacer-materials.html">스페이서 소재 비교</a>의 요구조건 문제), 내부 스페이서에서는 에피 응력 같은 다른 성능 변수와 충돌한다 (Rawat 2021: 기생 C 감소보다 epi stress 확보가 더 중요). 즉 기생 커패시턴스는 최적화의 <strong>목적 함수 중 하나</strong>이지 전부가 아니다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -145,7 +184,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>Ko et al. 2008, Symp. VLSI Technology — SiBCN 스페이서 링 속도 +20% (보유 논문 원문 확인).</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="air-spacer.html">에어 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="air-spacer.html">에어 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="air-spacer.html">에어 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="air-spacer.html">에어 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

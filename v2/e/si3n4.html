@@ -161,6 +161,50 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><strong>건식</strong> — 불화탄소 플라즈마. SiO₂와 조건에 따라 서로 선택비를 주고받는다 (<a class="wiki" href="dry-etch.html">건식 식각</a>).</li>
 <li><strong>ALE·AFS 경로</strong> — NF₃/NH₃ 리모트 플라즈마는 표면에 <a class="wiki" href="afs-chemistry.html">AFS 염((NH₄)₂SiF₆)</a>을 만들어 가열로 제거한다. Shinoda 2016은 EPC 2.6 nm/cycle에 SiO₂ 식각이 검출 한계 아래인 고선택을, Volynets 2020은 선택비 ≈ 380을 보고했다. 열 ALE로는 O₂–HF–TMA 시퀀스가 290°C에서 0.25 Å/cycle을 보인다 (Abdulagatov 2020). 단 극저온에서는 얘기가 뒤집힌다 — −60°C 부근에서는 AFS 층이 치밀한 패시베이션이 되어 오히려 SiN 식각을 억제한다 (Bang 2026).</li>
 </ul>
+<h3 id="막-종류가-다르면-같은-SiN이-아니다">막 종류가 다르면 같은 SiN이 아니다</h3>
+<p>&quot;SiN&quot;이라는 이름 아래에는 조성이 다른 막들이 섞여 있다. 형성법이 다르면 수소 함량·밀도·응력이 달라지고, 습식 식각률과 유전율까지 함께 움직이므로 스펙은 이름이 아니라 레시피로 읽어야 한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>LPCVD Si₃N₄</th>
+<th>PECVD SiNₓ:H</th>
+<th>보는 포인트</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>조성</td>
+<td>화학양론에 가까움</td>
+<td>수소 10~20% 포함, x 가변</td>
+<td>굴절률로 빠르게 가늠 (높을수록 Si-rich)</td>
+</tr>
+<tr>
+<td>밀도·내화학성</td>
+<td>높음 — 인산 식각률이 기준점</td>
+<td>낮고 레시피 의존이 큼</td>
+<td>같은 인산 조건에서도 식각률이 갈린다</td>
+</tr>
+<tr>
+<td>응력</td>
+<td>인장 ≈ 1 GPa</td>
+<td>조성으로 인장~압축 조절 가능</td>
+<td>라이너 응력 설계 vs 크랙 리스크</td>
+</tr>
+<tr>
+<td>주 사용처</td>
+<td>스페이서·정지막·희생층</td>
+<td>패시베이션·BEOL 온도 제한 자리</td>
+<td>열 예산이 선택을 가른다</td>
+</tr>
+</tbody></table></div>
+<p>스페이서 자리를 <a class="wiki" href="siocn.html">SiOCN</a>에 넘기는 흐름에서도 비교 대상은 이 LPCVD급 치밀막이다. 반대로 패시베이션처럼 &quot;덮는 것&quot;이 일인 자리에서는 PECVD막의 수소와 낮은 공정 온도가 오히려 장점이 된다.</p>
+<h3 id="한계-이슈">한계·이슈</h3>
+<ul>
+<li><strong>높은 k의 대가</strong> — k ≈ 7은 게이트 옆 스페이서에서 기생 용량으로 직결된다. 내성만 보면 SiN이 정답이지만, 노드가 갈수록 용량 페널티가 커져 low-k 교체 압력이 생긴다 (<a class="wiki" href="spacer-materials.html">스페이서 소재 비교</a>).</li>
+<li><strong>응력과 크랙</strong> — LPCVD막의 큰 인장 응력은 스트레서로는 자산이지만, 두껍게 쌓으면 크랙·박리와 웨이퍼 휨의 원인이 된다. 두께에는 응력이 정한 상한이 있다.</li>
+<li><strong>수소와 전하</strong> — PECVD막의 수소는 후공정에서 빠져나가며 특성을 바꾸고, 질화막 자체의 트랩은 전하 저장(CTF에서는 자산, 절연막에서는 Vt 이동 요인)으로 양면성을 갖는다.</li>
+<li><strong>누설</strong> — 밴드갭이 SiO₂보다 작아 같은 두께에서 누설에 불리하다. 절연이 주목적인 자리에서는 두께나 적층으로 메워야 한다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="dielectrics.html">절연막</a> — 절연 재료 전체 지도</li>
@@ -179,7 +223,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>Bang et al. 2026, JVST A 44, 033209 — 극저온에서 AFS의 패시베이션 전환, DOI 10.1116/6.0005206.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 재료 &gt; 감광·화학 소재</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

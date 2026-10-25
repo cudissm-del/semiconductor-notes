@@ -109,6 +109,62 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>빔을 웨이퍼에 스캔 — <strong>도즈(이온/cm²)가 농도</strong>를 정한다</li>
 </ol>
 <figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ion_implantation_machine_at_LAAS_0522.jpg?width=1400" alt="연구용 클린룸의 이온주입 장비 앞단 (LAAS-CNRS)" loading="lazy" decoding="async"><figcaption>그림 1. 연구용 클린룸의 이온주입 장비 앞단 (LAAS-CNRS)<span class="credit">Guillaume Paumier, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Ion_implantation_machine_at_LAAS_0522.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+<h3 id="주입-프로파일-Rp와-ΔRp-그리고-LSS-그림">주입 프로파일 — Rp와 ΔRp, 그리고 LSS 그림</h3>
+<p>기판에 들어간 이온은 원자핵·전자와의 충돌로 에너지를 잃으며 멈춘다. 이 정지 과정을 정리한 것이 LSS(Lindhard–Scharff–Schiøtt) 이론의 골격이다.</p>
+<ul>
+<li><strong>핵 정지(nuclear stopping)</strong> — 원자핵과의 탄성 충돌. 에너지를 크게 잃고 방향이 꺾이며, 격자 원자를 튕겨내는 손상의 주범이다. 저에너지 구간에서 지배적이다.</li>
+<li><strong>전자 정지(electronic stopping)</strong> — 전자구름과의 비탄성 상호작용. 마찰처럼 에너지를 조금씩 잃고 손상은 거의 만들지 않는다. 고에너지 구간에서 지배적이다.</li>
+<li>두 정지의 합이 비정(총 이동 거리)을 정하고, 깊이 방향 투영값이 <strong>투사 비정 Rp</strong>, 그 산포가 <strong>스트래글 ΔRp</strong>다.</li>
+</ul>
+<p>멈춘 이온의 깊이 분포는 1차 근사로 가우시안이다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mi mathvariant="normal">Φ</mi><mrow><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><mtext> </mtext><mi mathvariant="normal">Δ</mi><msub><mi>R</mi><mi>p</mi></msub></mrow></mfrac><mi>exp</mi><mo>⁡</mo><mrow><mo fence="true">[</mo><mo>−</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><msub><mi>R</mi><mi>p</mi></msub><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi mathvariant="normal">Δ</mi><msubsup><mi>R</mi><mi>p</mi><mn>2</mn></msubsup></mrow></mfrac><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">N(x) = \frac{\Phi}{\sqrt{2\pi}\,\Delta R_p} \exp\left[-\frac{(x-R_p)^2}{2\Delta R_p^2}\right]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.5744em;vertical-align:-1.0833em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.2028em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Φ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0833em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">exp</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0691em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></div>
+<p>Φ는 도즈(이온/cm²), N(x)는 깊이 x에서의 농도다. 피크 농도는 x = Rp에서 Φ/(√(2π)·ΔRp)로 정해지므로, 같은 도즈라도 에너지가 커서 ΔRp가 넓어지면 피크 농도는 낮아진다. 실제 프로파일은 표면 쪽 꼬리(채널링)와 비대칭 때문에 가우시안에서 벗어나며, 정밀 모델링에는 Pearson 분포나 몬테카를로 시뮬레이션을 쓴다 (농도 분포의 측정법은 <a class="wiki" href="sims.html">SIMS</a> 항목 참조).</p>
+<h3 id="핵심-파라미터와-전형-범위-교과서-전형값">핵심 파라미터와 전형 범위 (교과서 전형값)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>역할</th>
+<th>전형 범위·수준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>에너지</td>
+<td>깊이(Rp) 결정</td>
+<td>수 keV(얕은 접합) ~ MeV급(깊은 웰)</td>
+</tr>
+<tr>
+<td>도즈 Φ</td>
+<td>총량, 피크 농도 결정</td>
+<td>10¹¹~10¹⁶ ions/cm² (용도별, 아래 표)</td>
+</tr>
+<tr>
+<td>틸트(tilt)</td>
+<td>채널링 회피, 그림자 제어</td>
+<td>보통 수 ° (전형 7°), 3D 구조에서는 큰 각도도 사용</td>
+</tr>
+<tr>
+<td>트위스트(twist)</td>
+<td>틸트와 조합해 축 채널링까지 회피</td>
+<td>틸트와 함께 지정</td>
+</tr>
+<tr>
+<td>빔 전류</td>
+<td>처리량, 도즈율</td>
+<td>높으면 빠르지만 웨이퍼 가열·대전(차징) 문제</td>
+</tr>
+</tbody></table></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -148,8 +204,54 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>표면을 비정질화해 채널링 방지, 얕은 접합</td>
 </tr>
 </tbody></table></div>
+<p>도즈 감각을 목적별로 보면, 문턱전압 조정은 10¹¹<del>10¹² 수준의 낮은 도즈, 웰은 10¹²</del>10¹³ 수준, S/D는 10¹⁵ 수준의 고도즈가 전형이다. 도즈가 곧 빔을 쏘는 시간이므로, 고도즈 공정은 처리량과 웨이퍼 발열이 조건을 제한한다.</p>
+<h3 id="채널링과-비정질화">채널링과 비정질화</h3>
 <ul>
 <li><strong>채널링</strong> — 이온이 결정 격자의 빈 통로를 따라 예상보다 깊이 들어가는 현상. 웨이퍼를 약 7° 기울이거나 PAI로 표면을 비정질화해 막는다.</li>
+<li>채널링이 생기면 프로파일에 긴 꼬리가 붙어 접합 깊이가 설계보다 깊어지고 웨이퍼 간 재현성이 무너진다. 틸트만으로는 면 채널링을 다 못 막아 트위스트를 병용하고, 그것도 부족한 얕은 접합에서는 PAI(pre-amorphization implant)로 표면층을 아예 비정질로 만들어 이온이 결정축을 &quot;보지 못하게&quot; 한다. 대가는 비정질/결정 계면 아래 남는 EOR 손상이며, 이는 <a class="wiki" href="annealing.html">어닐과 확산</a>에서 회복 조건을 정할 때 함께 고려한다.</li>
+</ul>
+<h3 id="손상-무엇을-깨고-어닐이-무엇을-고치는가">손상 — 무엇을 깨고, 어닐이 무엇을 고치는가</h3>
+<p>날아든 이온 하나는 핵 충돌로 수백~수천 개의 격자 원자를 자리에서 밀어낸다(변위 캐스케이드). 빈자리-격자간 원자 쌍(프렌켈 결함)이 기본 단위이고, 도즈가 쌓이면 손상 영역이 겹쳐 표면부터 비정질층이 된다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>손상 형태</th>
+<th>설명</th>
+<th>어닐 후 거동</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>점결함 (프렌켈 쌍)</td>
+<td>빈자리 + 격자간 원자</td>
+<td>대부분 재결합·소멸</td>
+</tr>
+<tr>
+<td>비정질층</td>
+<td>고도즈에서 손상이 겹쳐 결정성 상실</td>
+<td>고상 에피택시(SPE)로 재결정화, 도펀트 활성화 동반</td>
+</tr>
+<tr>
+<td>EOR 결함</td>
+<td>비정질/결정 계면 아래의 전위 루프 ({311} 결함 포함)</td>
+<td>통상 어닐로 다 없어지지 않음 — 접합 누설원</td>
+</tr>
+<tr>
+<td>과잉 격자간 원자</td>
+<td>비정질층 아래 남은 손상</td>
+<td>어닐 초기 TED(과도 증속 확산)의 원인</td>
+</tr>
+</tbody></table></div>
+<p>즉 주입 조건은 도핑 프로파일만 정하는 것이 아니라, 뒤이은 어닐이 고쳐야 할 손상의 양과 종류까지 함께 정한다. 손상 회복과 활성화의 상세는 <a class="wiki" href="annealing.html">어닐과 확산</a>에 분리해 두었다.</p>
+<h3 id="마스킹-어디에-넣고-어디를-막을-것인가">마스킹 — 어디에 넣고 어디를 막을 것인가</h3>
+<p>주입은 마스크 개구부로만 들어간다. 마스크가 이온을 막으려면, 그 이온이 마스크 안에서 완전히 멈출 만큼 두꺼워야 한다.</p>
+<ul>
+<li><strong>포토레지스트</strong> — 통상 주입의 표준 마스크. 필요한 두께는 에너지와 이온 질량에 따라 정해지며, 가벼운 이온·고에너지일수록 두껍게 발라야 한다. 고도즈·고에너지에서는 레지스트가 경화·탄화되어 제거가 어려워지는 것이 실무적 한계다.</li>
+<li><strong>하드마스크 (산화막·질화막 등)</strong> — 레지스트로 못 막는 고에너지 주입이나, 레지스트가 버티지 못하는 조건에서 쓴다. 막 자체의 정지능이 높아 얇게도 막을 수 있지만, 패터닝 공정이 추가된다.</li>
+<li>마스크 가장자리에서는 이온이 옆으로 흩어지는 측면 스트래글만큼 프로파일이 번진다. 개구가 좁아질수록 이 번짐이 도핑 형상을 좌우한다.</li>
+</ul>
+<h3 id="빔-스캔과-균일도">빔 스캔과 균일도</h3>
+<p>빔 스폿은 웨이퍼보다 훨씬 작으므로, 정전기·자기 스캔으로 빔을 래스터하거나 웨이퍼를 기계적으로 움직여 전면을 훑는다(하이브리드 스캔). 도즈는 빔 전류를 시간 적분해 패러데이 컵으로 측정·제어하며, 웨이퍼 면내 균일도는 % 이하 수준까지 관리하는 것이 전형적 목표다. 빔이 절연막을 때리면 표면이 대전(차징)되어 게이트 산화막을 손상시킬 수 있어, 전자 샤워 같은 중화 수단을 병용한다.</p>
+<ul>
 <li><strong>3D 구조의 한계</strong> — 핀·나노시트는 그림자 효과로 이온이 고르게 닿지 않는다. 그래서 FinFET·GAA 세대는 S/D를 주입 대신 <strong>in-situ 도핑 에피</strong>로 만들고, 컨포멀 도핑이 필요하면 플라즈마 도핑(PLAD)을 쓴다.</li>
 </ul>
 <figure class="fig"><svg viewBox="0 0 760 330" role="img" aria-label="에너지는 깊이를, 도즈는 농도를 정하고, 어닐은 분포를 넓힌다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">에너지는 깊이를, 도즈는 농도를 정하고, 어닐은 분포를 넓힌다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">주입된 도펀트의 깊이 분포 개념도 (가우시안 근사) — 분포가 기판 도핑과 만나는 깊이가 접합 깊이 Xj</text><g><line x1="90" y1="270" x2="700" y2="270" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><line x1="90" y1="66" x2="90" y2="270" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><line x1="222" y1="66" x2="222" y2="270" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><line x1="90" y1="220" x2="700" y2="220" stroke="var(--cds-chart-axis)" stroke-dasharray="2 3"></line></g><text x="80" y="76" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">농도</text><text x="80" y="90" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">(로그)</text><text x="700" y="290" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">표면으로부터의 깊이 →</text><text x="90" y="290" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">표면</text><text x="98" y="214" font-size="11.5" fill="var(--cds-text-secondary)">기판(웰) 도핑 농도</text><text x="228" y="80" font-size="11.5" fill="var(--cds-text-primary)">Rp (평균 깊이) — 가속 에너지가 정함</text><path d="M90 174.8L93 171.6L96 168.5L99 165.4L102 162.4L105 159.5L108 156.7L111 153.9L114 151.2L117 148.6L120 146L123 143.6L126 141.1L129 138.8L132 136.6L135 134.4L138 132.3L141 130.3L144 128.3L147 126.4L150 124.6L153 122.9L156 121.2L159 119.6L162 118.1L165 116.7L168 115.3L171 114L174 112.8L177 111.6L180 110.6L183 109.6L186 108.7L189 107.8L192 107L195 106.3L198 105.7L201 105.1L204 104.7L207 104.3L210 103.9L213 103.7L216 103.5L219 103.4L222 103.3L225 103.4L228 103.5L231 103.7L234 103.9L237 104.3L240 104.7L243 105.1L246 105.7L249 106.3L252 107L255 107.8L258 108.7L261 109.6L264 110.6L267 111.6L270 112.8L273 114L276 115.3L279 116.7L282 118.1L285 119.6L288 121.2L291 122.9L294 124.6L297 126.4L300 128.3L303 130.3L306 132.3L309 134.4L312 136.6L315 138.8L318 141.1L321 143.6L324 146L327 148.6L330 151.2L333 153.9L336 156.7L339 159.5L342 162.4L345 165.4L348 168.5L351 171.6L354 174.8L357 178.1L360 181.5L363 184.9L366 188.4L369 192L372 195.7L375 199.4L378 203.2L381 207.1L384 211L387 215L390 219.1L393 223.3L396 227.6L399 231.9L402 236.3L405 240.8L408 245.3L411 249.9L414 254.6L417 259.4L420 264.2L423 269.1" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2" stroke-dasharray="none"></path><path d="M90 154.6L93 152.5L96 150.3L99 148.2L102 146.2L105 144.2L108 142.3L111 140.4L114 138.6L117 136.8L120 135.1L123 133.4L126 131.8L129 130.2L132 128.7L135 127.2L138 125.8L141 124.4L144 123.1L147 121.8L150 120.6L153 119.4L156 118.3L159 117.2L162 116.2L165 115.2L168 114.3L171 113.4L174 112.6L177 111.8L180 111.1L183 110.4L186 109.8L189 109.2L192 108.6L195 108.2L198 107.7L201 107.4L204 107L207 106.8L210 106.5L213 106.4L216 106.2L219 106.2L222 106.1L225 106.2L228 106.2L231 106.4L234 106.5L237 106.8L240 107L243 107.4L246 107.7L249 108.2L252 108.6L255 109.2L258 109.8L261 110.4L264 111.1L267 111.8L270 112.6L273 113.4L276 114.3L279 115.2L282 116.2L285 117.2L288 118.3L291 119.4L294 120.6L297 121.8L300 123.1L303 124.4L306 125.8L309 127.2L312 128.7L315 130.2L318 131.8L321 133.4L324 135.1L327 136.8L330 138.6L333 140.4L336 142.3L339 144.2L342 146.2L345 148.2L348 150.3L351 152.5L354 154.6L357 156.9L360 159.1L363 161.5L366 163.9L369 166.3L372 168.8L375 171.3L378 173.9L381 176.5L384 179.2L387 181.9L390 184.7L393 187.5L396 190.4L399 193.3L402 196.3L405 199.3L408 202.4L411 205.6L414 208.7L417 212L420 215.2L423 218.6L426 222L429 225.4L432 228.9L435 232.4L438 236L441 239.6L444 243.3L447 247L450 250.8L453 254.6L456 258.5L459 262.5L462 266.4" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2" stroke-dasharray="none"></path><path d="M90 129L93 128.4L96 127.8L99 127.2L102 126.6L105 126.1L108 125.5L111 125L114 124.5L117 124L120 123.5L123 123L126 122.5L129 122.1L132 121.7L135 121.2L138 120.8L141 120.5L144 120.1L147 119.7L150 119.4L153 119L156 118.7L159 118.4L162 118.1L165 117.9L168 117.6L171 117.3L174 117.1L177 116.9L180 116.7L183 116.5L186 116.3L189 116.2L192 116L195 115.9L198 115.8L201 115.6L204 115.6L207 115.5L210 115.4L213 115.4L216 115.3L219 115.3L222 115.3L225 115.3L228 115.3L231 115.4L234 115.4L237 115.5L240 115.6L243 115.6L246 115.8L249 115.9L252 116L255 116.2L258 116.3L261 116.5L264 116.7L267 116.9L270 117.1L273 117.3L276 117.6L279 117.9L282 118.1L285 118.4L288 118.7L291 119L294 119.4L297 119.7L300 120.1L303 120.5L306 120.8L309 121.2L312 121.7L315 122.1L318 122.5L321 123L324 123.5L327 124L330 124.5L333 125L336 125.5L339 126.1L342 126.6L345 127.2L348 127.8L351 128.4L354 129L357 129.6L360 130.3L363 130.9L366 131.6L369 132.3L372 133L375 133.7L378 134.4L381 135.2L384 135.9L387 136.7L390 137.5L393 138.3L396 139.1L399 139.9L402 140.7L405 141.6L408 142.5L411 143.4L414 144.3L417 145.2L420 146.1L423 147L426 148L429 149L432 149.9L435 150.9L438 151.9L441 153L444 154L447 155.1L450 156.1L453 157.2L456 158.3L459 159.4L462 160.5L465 161.7L468 162.8L471 164L474 165.2L477 166.4L480 167.6L483 168.8L486 170L489 171.3L492 172.6L495 173.8L498 175.1L501 176.4L504 177.8L507 179.1L510 180.4L513 181.8L516 183.2L519 184.6L522 186L525 187.4L528 188.8L531 190.3L534 191.8L537 193.2L540 194.7L543 196.2L546 197.7L549 199.3L552 200.8L555 202.4L558 204L561 205.6L564 207.2L567 208.8L570 210.4L573 212.1L576 213.7L579 215.4L582 217.1L585 218.8L588 220.5L591 222.2L594 224L597 225.7L600 227.5L603 229.3L606 231.1L609 232.9L612 234.8L615 236.6L618 238.5L621 240.3L624 242.2L627 244.1L630 246L633 248L636 249.9L639 251.9L642 253.8L645 255.8L648 257.8L651 259.8L654 261.9L657 263.9L660 266L663 268" fill="none" stroke="var(--cds-chart-categorical-3)" stroke-width="2" stroke-dasharray="6 4"></path><path d="M318 141.1L540 236.7" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="1.5" stroke-dasharray="3 3"></path><line x1="300" y1="238" x2="358" y2="163" stroke="var(--cds-chart-axis)"></line><text x="236" y="252" font-size="11.5" fill="var(--cds-text-primary)">채널링 꼬리 (점선)</text><g><line x1="390.6" y1="215" x2="390.6" y2="225" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></line><text x="390.6" y="240" text-anchor="middle" font-size="11.5" fill="var(--cds-chart-categorical-1)">Xj</text></g><g><line x1="424.3" y1="215" x2="424.3" y2="225" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></line><text x="424.3" y="240" text-anchor="middle" font-size="11.5" fill="var(--cds-chart-categorical-2)">Xj</text></g><g><line x1="587.1" y1="215" x2="587.1" y2="225" stroke="var(--cds-chart-categorical-3)" stroke-width="2"></line><text x="587.1" y="240" text-anchor="middle" font-size="11.5" fill="var(--cds-chart-categorical-3)">Xj</text></g><g><g><line x1="440" y1="86" x2="470" y2="86" stroke="var(--cds-chart-categorical-1)" stroke-width="2" stroke-dasharray="none"></line><text x="478" y="90" font-size="11.5" fill="var(--cds-text-primary)">주입 직후</text></g><g><line x1="440" y1="106" x2="470" y2="106" stroke="var(--cds-chart-categorical-2)" stroke-width="2" stroke-dasharray="none"></line><text x="478" y="110" font-size="11.5" fill="var(--cds-text-primary)">스파이크·밀리초 어닐 — 확산 거의 없음</text></g><g><line x1="440" y1="126" x2="470" y2="126" stroke="var(--cds-chart-categorical-3)" stroke-width="2" stroke-dasharray="6 4"></line><text x="478" y="130" font-size="11.5" fill="var(--cds-text-primary)">퍼니스 어닐 — 넓게 퍼짐</text></g></g><text x="24" y="316" font-size="11.5" fill="var(--cds-text-secondary)">곡선의 폭은 ΔRp(퍼짐), 곡선 아래 넓이는 도즈. 어닐 시간이 길수록 도즈는 그대로인 채 분포가 낮고 넓어진다.</text></svg><figcaption>그림 2. 이온주입 깊이 분포와 어닐 · Rp, 접합 깊이, 채널링</figcaption></figure>
@@ -158,8 +260,13 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><a class="wiki" href="annealing.html">어닐과 확산</a> — 주입 뒤에 필요한 열처리</li>
 <li><a class="wiki" href="dopants-memory-materials.html">도펀트와 메모리 물질</a> — 넣는 물질들</li>
 </ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>LSS 정지 그림, 가우시안 프로파일과 Rp·ΔRp, 도즈·에너지 전형 범위, 틸트 7°, 마스킹·스캔 방식: 이온 주입 교과서의 전형 정리. 특정 장비 스펙 수치는 쓰지 않았다.</li>
+<li>손상 형태(SPE, EOR, {311}, TED 연결)는 <a class="wiki" href="annealing.html">어닐과 확산</a>과 짝을 이루는 표준 서술로, 활성화·확산 상세는 그쪽에 분리했다.</li>
+</ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="hall.html">홀 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 재료 &gt; 반도체막</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="hall.html">홀 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 열처리·확산</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

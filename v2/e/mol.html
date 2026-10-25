@@ -116,15 +116,81 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li>금속(W, Co) 매립</li>
 <li>CMP로 위를 깎아 플러그만 남김</li>
 </ol>
+<h2 id="컨택-저항은-어디서-생기나">컨택 저항은 어디서 생기나</h2>
+<p>컨택 하나의 저항은 직렬 합이다: <strong>실리사이드–반도체 계면의 접촉 저항 + 라이너/배리어 저항 + 플러그 금속 자체의 저항</strong>. 트랜지스터가 줄수록 지배 항이 바뀐다.</p>
+<ul>
+<li><strong>계면 접촉 저항 (비접촉저항 ρc)</strong> — 금속–반도체 계면에는 쇼트키 장벽이 서고, 전류는 주로 터널링으로 건넌다. 장벽을 사실상 없애는 법은 반도체 표면을 고농도로 도핑해 장벽을 얇게 만드는 것과, 일함수가 맞는 실리사이드를 고르는 것이다. S/D 에피를 고농도 in-situ 도핑으로 성장시키는 이유 중 하나가 여기에 있다. 첨단 노드에서는 ρc를 10⁻⁹ Ω·cm² 오더까지 내리는 것이 로드맵 수준의 요구로 거론된다 — 접촉 면적 자체가 수십 nm × 수십 nm로 작아, ρc가 곧바로 소자 온저항을 지배하기 때문이다.</li>
+<li><strong>실리사이드의 자리</strong> — 실리사이드는 이 계면 저항을 낮추는 층인 동시에, 컨택 식각의 착지점이자 금속 확산의 완충이다. 형성 자체는 <a class="wiki" href="feol.html">FEOL</a> 말미에서 시작되고, MOL에서는 그 위에 정확히 착지하는 식각과 세정이 핵심이 된다. 착지 면적이 에피 팍셋(facet) 형상에 좌우되는 GAA에서는, 에피 윗면을 얼마나 넓게 확보하느냐가 접촉 저항과 직결된다.</li>
+<li><strong>라이너와 플러그</strong> — Ti/TiN 라이너는 접착과 확산 방지를 맡지만 자체가 저항이다. 플러그 금속은 단면이 작을수록 비저항 상승(표면·결정립계 산란)을 겪는데, 이 효과는 평균자유행로가 긴 W·Co에서 먼저 문제가 되고, 평균자유행로가 짧은 Ru·Mo가 대안으로 오르는 이유이기도 하다 (<a class="wiki" href="metals.html">금속·도체</a>의 배선 재료 논의와 같은 물리다). 전기적 검증법은 <a class="wiki" href="kelvin-tlm.html">Kelvin·TLM</a> 항목에서 다룬다.</li>
+</ul>
+<h2 id="로컬-배선과-게이트-컨택">로컬 배선과 게이트 컨택</h2>
+<p>MOL은 &quot;플러그만 있는 층&quot;이 아니다. 첫 배선층(M0 수준)까지 포함해 셀 내부의 짧은 연결을 함께 만든다. S/D 컨택(TS)에서 올라온 전류가 로컬 배선을 타고 게이트 컨택(CB)나 첫 비아로 넘어가는 구조라, MOL 내부 배선의 저항·커패시턴스가 표준 셀 성능에 직접 들어간다.</p>
+<p><strong>게이트 컨택 (CB)과 COAG.</strong> 전통적으로 게이트 컨택은 활성 영역 바깥, 게이트 연장부 위에 뒀다 — S/D 컨택과 게이트가 붙는 사고를 피하기 위해서다. COAG는 게이트 컨택을 활성 영역 바로 위로 올려 셀 높이를 줄이는 대신, 게이트 캡과 S/D 캡 사이에 서로를 지키는 이중 선택비를 요구한다. 이 구조의 단면과 식각 선택비는 <a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a>에서 상세히 다룬다. MOL에서 게이트 컨택을 뚫는 식각이 S/D 컨택 식각과 물질 선택 조건을 공유할 수 없는 이유가 여기에 있다.</p>
 <p><strong>핵심 난제 — 자기정렬 컨택 (SAC, Self-Aligned Contact).</strong> 게이트 피치가 좁아지면 S/D 컨택이 게이트와 붙을 위험이 커진다. 그래서 게이트 위에 SiN 캡을 씌우고, 컨택 식각 시 SiO₂만 빠르게 깎고 SiN은 거의 깎지 않는 <strong>높은 산화막:질화막 선택비</strong>로 오정렬을 흡수한다.</p>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값·수준</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>비접촉저항 ρc 요구 수준</td>
+<td>10⁻⁹ Ω·cm² 오더 (첨단 노드 로드맵)</td>
+<td>접촉 면적 축소로 요구가 급격히 세짐</td>
+</tr>
+<tr>
+<td>전통 컨택 플러그</td>
+<td>Ti/TiN 라이너 + W CVD</td>
+<td>갭필 신뢰성이 강점, 저항이 약점</td>
+</tr>
+<tr>
+<td>대체 플러그</td>
+<td>Co, Ru, Mo 도입 확대</td>
+<td>좁은 단면에서의 비저항·갭필 경쟁</td>
+</tr>
+<tr>
+<td>게이트 캡·스페이서</td>
+<td>SiN 계열</td>
+<td>SAC 선택비의 기준 물질</td>
+</tr>
+<tr>
+<td>PMD</td>
+<td>산화막 계열</td>
+<td>평탄화(CMP) 후 컨택 식각</td>
+</tr>
+</tbody></table></div>
+<h2 id="트레이드오프">트레이드오프</h2>
+<ul>
+<li><strong>컨택 저항 vs 기생 커패시턴스</strong> — 컨택을 게이트에 바짝 붙이면(SAC·COAG) 셀은 줄지만 게이트–S/D 간 기생 커패시턴스가 커져 스위칭 에너지가 는다. <a class="wiki" href="parasitic-capacitance.html">기생 커패시턴스</a> 항목의 주요 발생 지점이 바로 이 간격이다.</li>
+<li><strong>라이너 두께 vs 저항</strong> — 라이너를 두껍게 하면 확산·접착은 안전하지만 플러그 유효 단면이 줄고, 얇게 하면 반대로 신뢰성이 흔들린다. <a class="wiki" href="beol.html">BEOL</a> 배리어 문제의 MOL판이다.</li>
+<li><strong>착지 여유 vs 에피 크기</strong> — 접촉 면적을 넓히려면 S/D 에피를 키워야 하지만, 이웃 게이트와의 간격과 에피 병합(merge) 위험이 따라온다.</li>
+</ul>
+<h2 id="한계-결함-모드">한계·결함 모드</h2>
+<ul>
+<li><strong>컨택 오픈</strong> — 컨택 홀 바닥의 잔류 산화막·식각 잔사, 또는 매립 보이드로 연결이 끊기는 결함. 착지 직전 세정(프리클린)이 품질을 좌우한다.</li>
+<li><strong>게이트 단락</strong> — SAC 캡의 모서리(숄더)가 식각 중 깎여 나가면 컨택 금속이 게이트에 닿는다. 숄더 손실 관리가 SAC 식각의 핵심 지표다 (<a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a>).</li>
+<li><strong>W 매립 결함</strong> — CVD W의 심(seam)·보이드와 불소 잔류에 의한 라이너 침식이 고전적 결함 모드다. Co·Ru 전환 동인 중 하나다.</li>
+<li><strong>미스랜딩</strong> — 오버레이가 나쁘면 컨택이 에피 가장자리에 걸쳐 접촉 면적이 줄고 저항이 튄다. 전기 검사(<a class="wiki" href="wat.html">WAT</a>)에서 패턴으로 드러난다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a> — MOL의 대표 구조</li>
 <li><a class="wiki" href="feol.html">FEOL</a> — MOL 앞단</li>
 <li><a class="wiki" href="beol.html">BEOL</a> — MOL 뒷단</li>
+<li><a class="wiki" href="parasitic-capacitance.html">기생 커패시턴스</a> — 컨택 간격이 만드는 대가</li>
+<li><a class="wiki" href="kelvin-tlm.html">Kelvin·TLM</a> — 접촉 저항을 재는 법</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>컨택 구조·COAG·SAC의 서술은 본 항목군의 <a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a>·<a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a>와 맞춘 집적 흐름 전형 서술이다.</li>
+<li>ρc 10⁻⁹ Ω·cm² 오더는 IRDS 로드맵 계열에서 첨단 노드 컨택 요구로 거론되는 수준을 &quot;요구 수준&quot;으로 표기한 것으로, 특정 제품의 실측값이 아니다.</li>
+<li>좁은 단면에서의 금속 비저항 상승(평균자유행로 효과)은 <a class="wiki" href="beol.html">BEOL</a>·<a class="wiki" href="metals.html">금속·도체</a>와 같은 교과서 전형 물리를 적용했다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 재료 &gt; 금속·배리어</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

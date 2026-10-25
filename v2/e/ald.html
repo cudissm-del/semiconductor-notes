@@ -150,13 +150,143 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 </ul>
 <p><strong>ALD 온도 창.</strong> 자기제한이 성립하는 온도 범위가 있다. 너무 낮으면 전구체가 물리흡착으로 여러 층 쌓이거나(응축) 반응이 다 끝나지 않는다. 너무 높으면 전구체가 열분해되어 CVD처럼 계속 쌓이거나, 흡착된 종이 다시 떨어져 나간다. 그래서 공정 개발은 이 창 안에서 사이클당 성장량(GPC)이 일정한지 확인하는 것부터 시작한다.</p>
 <figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Illustration_of_the_ALD_temperature_window.png?width=1400" alt="ALD 온도 창 개념 — 창 밖에서는 응축(L1)·불완전 반응(L2)·열분해(H1)·탈착(H2)으로 자기제한이 깨진다 (Suntola 1989의 그림을 재구성)" loading="lazy" decoding="async"><figcaption>그림 3. ALD 온도 창 개념 — 창 밖에서는 응축(L1)·불완전 반응(L2)·열분해(H1)·탈착(H2)으로 자기제한이 깨진다 (Suntola 1989의 그림을 재구성)<span class="credit">Riikka L. Puurunen, J. Ruud van Ommen, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Illustration_of_the_ALD_temperature_window.png" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+<h3 id="반쪽-반응과-포화-자기제한은-어떻게-생기나">반쪽 반응과 포화 — 자기제한은 어떻게 생기나</h3>
+<p>대표 공정인 TMA/H₂O → Al₂O₃로 보면 두 반쪽 반응(half-reaction)은 표면 작용기를 맞바꾸는 리간드 교환이다.</p>
+<ul>
+<li><strong>A 반쪽 (TMA 노출)</strong> — 표면 –OH와 TMA가 반응해 –O–Al(CH₃)₂를 만들고 CH₄가 빠진다. 표면 –OH가 다 소모되면 더 이상 반응할 자리가 없어 성장이 멈춘다.</li>
+<li><strong>B 반쪽 (H₂O 노출)</strong> — 남은 메틸 리간드가 물과 반응해 다시 –OH로 덮인 표면이 되고, 그 위에 Al–O 네트워크 한 층이 남는다.</li>
+</ul>
+<p>포화 확인이 공정 개발의 출발점이다. 전구체 노출량을 늘려 가며 GPC를 그리면 비례하다가 꺾여 평탄해지는 <strong>포화 곡선</strong>이 나와야 한다. 평탄해지지 않으면 응축·분해 같은 비자기제한 성분이 섞인 것이고, B 반쪽도 마찬가지다. 퍼지가 짧으면 남은 A와 B가 기상에서 만나 CVD 성분이 생기므로 퍼지 시간도 포화 조건의 일부다.</p>
+<h3 id="전구체가-갖춰야-할-조건">전구체가 갖춰야 할 조건</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>조건</th>
+<th>왜 필요한가</th>
+<th>깨지면 생기는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>충분한 증기압 (대략 0.1 Torr 이상이 전형적)</td>
+<td>짧은 펄스로 표면을 포화시킬 만큼 운반 가능해야 함</td>
+<td>펄스가 길어지고 처리량·균일도 저하</td>
+</tr>
+<tr>
+<td>열안정성 (증착 온도에서 기상·표면 분해 없음)</td>
+<td>자기제한의 전제</td>
+<td>분해 온도 이상에서 CVD 성장, GPC 급증</td>
+</tr>
+<tr>
+<td>표면 작용기와 빠르고 완전한 반응</td>
+<td>한 펄스 안에 포화 도달</td>
+<td>불완전 반응, 탄소·염소 등 리간드 잔류 오염</td>
+</tr>
+<tr>
+<td>부산물의 휘발성</td>
+<td>퍼지로 깨끗이 빠져나가야 함</td>
+<td>막 내 불순물, 다음 반쪽 반응 방해</td>
+</tr>
+<tr>
+<td>기판·성장막 비식각, 비확산</td>
+<td>이미 쌓은 막과 소자를 건드리지 않아야 함</td>
+<td>계면 열화, 조성 편차</td>
+</tr>
+</tbody></table></div>
+<p>염화물(HfCl₄ 등)은 싸고 안정적이지만 HCl 부산물과 Cl 잔류가 문제될 수 있고, 금속유기 전구체(TEMAHf 등)는 저온 반응성이 좋은 대신 탄소 오염과 가격이 변수다.</p>
+<h3 id="GPC와-핵생성-지연">GPC와 핵생성 지연</h3>
+<p>GPC(growth per cycle)는 보통 0.3<del>1.5 Å/cycle 범위다(교재 전형값). Al₂O₃(TMA/H₂O)는 약 1 Å/cycle, HfO₂는 대략 0.8</del>1.2 Å/cycle 수준으로 거론된다. 1 Å는 원자 한 층보다 얇다 — 리간드가 크고 입체 장애가 있어 한 사이클에 덮이는 금속 원자 수가 단층에 못 미치기 때문이다. 그래서 &quot;원자층&quot;은 층 단위 제어를 뜻하는 이름이지, 사이클마다 완전한 원자층이 쌓인다는 뜻이 아니다.</p>
+<p>성장 초기에는 **핵생성 지연(nucleation delay)**이 있다. 반응 자리가 적은 표면(H-terminated Si, 그래핀, 고분자 등)에서는 처음 수~수십 사이클 동안 섬 형태로만 자라 GPC가 낮게 나오고, 섬이 합쳐진 뒤에야 선형 성장이 된다. 이 초기 거동 차이가 영역 선택 증착의 바탕이 된다.</p>
+<h3 id="ALD-온도-창-다시-보기">ALD 온도 창 다시 보기</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>영역</th>
+<th>거동</th>
+<th>원인</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>저온 L1</td>
+<td>GPC 증가, 막질 저하</td>
+<td>전구체 응축·다층 물리흡착</td>
+</tr>
+<tr>
+<td>저온 L2</td>
+<td>GPC 감소·불순물 증가</td>
+<td>반응 에너지 부족으로 리간드 제거 불완전</td>
+</tr>
+<tr>
+<td><strong>ALD 창</strong></td>
+<td><strong>GPC 거의 일정, 자기제한 성립</strong></td>
+<td>두 반쪽 반응 모두 포화</td>
+</tr>
+<tr>
+<td>고온 H1</td>
+<td>GPC 급증</td>
+<td>전구체 열분해 → CVD 성분</td>
+</tr>
+<tr>
+<td>고온 H2</td>
+<td>GPC 감소</td>
+<td>흡착종의 탈착, 표면 작용기(–OH) 감소(dehydroxylation)</td>
+</tr>
+</tbody></table></div>
+<p>창의 폭과 위치는 전구체 쌍마다 다르다. TMA/H₂O는 넓은 창(대략 150~300 °C, 교재 전형값)으로 유명해 표준 공정으로 쓰이고, 창이 좁은 전구체는 온도 균일도가 곧 두께 균일도가 된다.</p>
+<h3 id="열-ALD-vs-PEALD">열 ALD vs PEALD</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>열 ALD</th>
+<th>PEALD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>반응 구동</td>
+<td>열에너지 + 반응물(H₂O, O₃, NH₃)</td>
+<td>플라즈마 라디칼(O·N·H 라디칼)</td>
+</tr>
+<tr>
+<td>온도</td>
+<td>전형적으로 150~350 °C</td>
+<td>100 °C 이하~250 °C도 가능</td>
+</tr>
+<tr>
+<td>막질</td>
+<td>화학양론에 가깝고 안정적, 수소 잔류 가능</td>
+<td>저온에서도 치밀, 불순물 적음. 이온 손상·전하 손상 가능</td>
+</tr>
+<tr>
+<td>컨포멀성</td>
+<td>표면 반응만으로 결정, 매우 우수</td>
+<td>라디칼이 벽에서 재결합해 깊은 구조 바닥까지 덜 도달 → 종횡비가 크면 하부 GPC 저하</td>
+</tr>
+<tr>
+<td>대표 용도</td>
+<td>게이트 유전체, 커패시터 유전체</td>
+<td>저온 스페이서, 금속·질화막, 열 예산이 tight한 BEOL·3D 구조</td>
+</tr>
+</tbody></table></div>
+<h3 id="컨포멀성의-물리적-근거">컨포멀성의 물리적 근거</h3>
+<p>ALD가 깊은 구멍 안쪽까지 같은 두께로 쌓이는 이유는 성장이 기상 농도가 아니라 <strong>표면 포화</strong>로 결정되기 때문이다. 노출 시간을 늘리면 분자가 확산으로 바닥까지 도달해 결국 모든 표면이 포화에 이른다. 대가는 시간이다 — 필요한 노출량은 종횡비의 제곱에 비례해 커지는 것으로 모델링된다(Cremers 등 2019). 종횡비 50:1 구조는 평면 대비 수천 배의 노출량이 필요할 수 있어, 처리량과 컨포멀성이 정면으로 맞바꾼다.</p>
+<h3 id="영역-선택-증착-ASD-의-선택비를-만드는-법">영역 선택 증착(ASD)의 선택비를 만드는 법</h3>
+<ul>
+<li><strong>표면 억제</strong> — 자라지 않아야 할 표면에 SAM(자기조립 단분자막)이나 고분자 억제층을 입혀 핵생성을 수십 사이클 늦춘다. 자랄 표면과 안 자랄 표면의 핵생성 지연 차이만큼이 선택 증착 두께 예산이다.</li>
+<li><strong>본래 선택성(inherent selectivity)</strong> — 전구체가 특정 표면에만 반응하는 화학 자체를 고른다. 공정이 단순하지만 선택 창이 좁다.</li>
+<li><strong>결함 모드</strong> — 억제층 핀홀에서 생긴 핵이 그대로 자라고, 사이클이 쌓이면 억제 표면에도 핵생성이 시작돼 선택비가 무너진다. 억제층 재생이나 선택 식각(<a class="wiki" href="ale.html">ALE (원자층 식각)</a>)을 끼우는 supercycle 설계가 그래서 연구된다.</li>
+</ul>
+<h3 id="근거">근거</h3>
+<ul>
+<li>온도 창·포화·표면화학의 틀과 컨포멀성 모델: George, Chem. Rev. 110, 111 (2010); Puurunen, J. Appl. Phys. 97, 121301 (2005); Cremers et al., Appl. Phys. Rev. 6, 021302 (2019) — 모두 보유 논문으로 확인한 리뷰다.</li>
+<li>GPC 범위, 전구체 증기압, TMA/H₂O 온도 창 등 수치는 위 리뷰들에 공통으로 실리는 <strong>교과서 전형값</strong>이며 특정 논문의 단일 실측값이 아니다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="ale.html">ALE (원자층 식각)</a> — 쌓기의 반대편</li>
 <li><a class="wiki" href="deposition.html">증착</a> — ALD가 속한 방법 비교</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="multipatterning.html">멀티패터닝</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="multipatterning.html">멀티패터닝</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

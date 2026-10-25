@@ -138,6 +138,40 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <li><strong>공정 내성</strong> — 공동을 만든 뒤의 식각·세정 화학이 공동 안으로 침투하지 않아야 한다.</li>
 </ul>
 <p>그래서 전면 적용 대신 partial scheme이 제안됐고, 이 &quot;이득은 크지만 구조가 못 버틴다&quot;는 구도는 <a class="wiki" href="spacer-materials.html">스페이서 소재 비교</a>에서 <a class="wiki" href="inner-spacer.html">내부 스페이서</a>의 low-k가 탈락하는 이유와 정확히 평행하다 — 자리만 다를 뿐, 장벽은 k가 아니라 구조·내성이다.</p>
+<h2 id="원리-왜-부분만-비워도-효과가-큰가">원리 — 왜 부분만 비워도 효과가 큰가</h2>
+<p>게이트와 S/D 사이의 용량은 스페이서를 높이 방향으로 나눈 여러 경로의 합으로 볼 수 있다. 전계가 강하게 몰리는 상부 경로가 전체 오버랩 용량의 큰 몫을 차지하므로, 그 부분만 k = 1인 공기로 바꿔도 유효 유전율이 크게 떨어진다. 반대로 하부를 전부 비우면 이득은 포화하는데 기계적 리스크만 커진다 — Cheng 2016의 &quot;25% 교체에서 이득의 약 절반, 이후 포화&quot;라는 결과가 partial scheme을 정당화하는 이유다. 즉 에어 스페이서의 설계 변수는 &quot;비우느냐 마느냐&quot;가 아니라 <strong>어느 높이까지, 어느 비율로 비우느냐</strong>다.</p>
+<h2 id="핵심-조건-설계-변수">핵심 조건·설계 변수</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>변수</th>
+<th>영향</th>
+<th>설계상 취급</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>공기 비율(높이 방향)</td>
+<td>높일수록 Cov는 줄지만 포화, 강도는 단조 감소</td>
+<td>상부 중심 partial이 기본</td>
+</tr>
+<tr>
+<td>캡 막 두께·재료</td>
+<td>밀봉성과 강도를 정함, 두꺼우면 용량 이득을 일부 되돌림</td>
+<td>이득과 밀봉의 절충으로 최소화</td>
+</tr>
+<tr>
+<td>희생층 제거 선택비</td>
+<td>게이트·스페이서 잔막 손상 없이 공동만 비우는 조건</td>
+<td>선택 식각이 공정 성립의 전제</td>
+</tr>
+<tr>
+<td>공동 형성 시점</td>
+<td>이후 열·화학 이력이 적을수록 유리</td>
+<td>후단에 배치할수록 내성 요구 완화</td>
+</tr>
+</tbody></table></div>
+<h2 id="한계-이슈">한계·이슈</h2>
+<p>위 리스크에 더해, 공동은 <strong>검사·계측이 어렵다</strong>는 문제가 있다. 단면을 자르지 않으면 비움 비율과 밀봉 상태를 웨이퍼 단위로 확인하기 어렵고, 불량이 소자 완성 뒤 신뢰성 시험에서야 드러나는 경우가 많다. 또 컨택 식각이 공동 벽을 건드리면 컨택 금속이 공동으로 새는 경로가 생길 수 있어, <a class="wiki" href="sac.html">SAC (자기정렬 컨택)</a> 식각 마진과 함께 설계해야 한다. 이 계측·집적 난도가 양산 확대를 늦추는 실질적 이유다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="outer-spacer.html">외부 스페이서</a> — 에어 스페이서가 변형하는 본체</li>
@@ -148,9 +182,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>Cheng et al. 2016, IEDM — IBM 10 nm FinFET 에어 스페이서 실증, Cov −15<del>25%·Ceff −10</del>15%·partial −12% (보유 논문 원문 확인).</li>
+<li>공기 비율과 이득 포화에 대한 서술은 위 실증의 해석이며, k = 1은 공기의 정의값이다. 설계 변수 표는 교재 수준의 일반 정리이다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 재료 &gt; 절연막</span></li><li><a href="parasitic-capacitance.html">기생 커패시턴스</a> <span style="color:var(--sub)">— 현상·원리 &gt; 표면·계면 반응</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="outer-spacer.html">외부 스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li><li><a href="spacer.html">스페이서</a> <span style="color:var(--sub)">— 소자·구조 &gt; 구성 요소</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

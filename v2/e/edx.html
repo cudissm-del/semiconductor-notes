@@ -103,6 +103,9 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>전자빔이 내층 전자를 튕겨내면 외층 전자가 내려오며 원소 고유의 에너지를 가진 특성 X선을 낸다. 스펙트럼의 피크 위치가 원소, 높이가 대략의 양을 알려주므로 형태 관찰과 동시에 조성을 볼 수 있다.</p>
 <p>다만 X선이 발생하는 영역이 넓어 <a class="wiki" href="sem.html">SEM</a>에서는 정보 깊이·공간 분해능이 ~µm 수준이고, 경원소와 미량 원소에는 약하다. 박막·미세 구조에서는 <a class="wiki" href="tem.html">TEM (투과전자현미경)</a>과 결합한 EDX가 공간 분해능 면에서 유리하다.</p>
+<h2 id="원리-특성-X선과-상호작용-부피">원리 — 특성 X선과 상호작용 부피</h2>
+<p>내각에 빈자리가 생기면 외각 전자가 내려오며 준위 차이만큼의 에너지를 특성 X선으로 낸다(Kα, Lα 등). 경쟁 과정인 오제 방출은 가벼운 원소에서 우세하므로, 경원소일수록 X선 발생 효율(형광 수율) 자체가 낮다.</p>
+<p>한계는 발생 부피에서 온다. 벌크 시료 안에서는 전자가 산란하며 퍼져, X선은 지름·깊이가 ~µm인 상호작용 부피 전체에서 나온다. 빔을 아무리 좁혀도 조성 정보는 이 부피만큼 번진다. 가속전압을 낮추면 부피는 줄지만, 여기할 흡수단보다 충분히 높은 전압(과전압)이 필요해 쓸 수 있는 피크가 제한되는 상충이 있다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -131,7 +134,27 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>용도</td>
 <td>결함·입자 조성, 막·구조물의 조성 확인</td>
 </tr>
+<tr>
+<td>검출기 분해능</td>
+<td>SDD 기준 약 130 eV (Mn Kα에서)</td>
+</tr>
+<tr>
+<td>검출 한계</td>
+<td>전형적으로 ~0.1 wt% (벌크 SEM 기준)</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법">읽는 법</h2>
+<ul>
+<li><strong>정성</strong> — 연속 X선(제동복사) 바탕 위에 선 피크의 에너지 위치로 원소를 동정한다. 인접 원소의 K선·L선이 겹치면 피크 피팅으로 나눠야 한다.</li>
+<li><strong>정량</strong> — 피크 강도에 ZAF 보정(원자번호·흡수·형광 효과)을 적용해 조성을 구한다. 표준 시료 없는 정량은 반정량으로 취급한다.</li>
+<li><strong>검출 한계의 해석</strong> — 벌크 SEM-EDX에서 피크가 없다는 것은 원소가 없는 것이 아니라 전형적 한계인 0.1 wt% 안팎보다 적다는 뜻으로 읽어야 한다.</li>
+</ul>
+<h2 id="한계-주의점">한계·주의점</h2>
+<ul>
+<li><strong>경원소</strong> — B·C·N·O 등은 형광 수율이 낮고, 발생한 X선도 시료 내부와 검출기 창에 흡수돼 정량 신뢰도가 떨어진다.</li>
+<li><strong>표면 분석이 아니다</strong> — 정보 깊이가 µm급이라 수 nm 표면층의 조성은 <a class="wiki" href="aes.html">AES</a>·<a class="wiki" href="xps.html">XPS</a>의 영역이다.</li>
+<li><strong>빔 영향</strong> — 장시간 맵핑에서는 조사부 가열과 탄소 오염 침적이 스펙트럼을 오염시킨다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="sem.html">SEM</a> — 가장 흔히 결합되는 관찰 장비</li>
@@ -141,9 +164,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>특성 X선 발생 원리와 검출 한계는 전자현미경 표준 교재 서술에 근거한다: Goldstein et al., <em>Scanning Electron Microscopy and X-ray Microanalysis</em> (Springer).</li>
+<li>본문에 더한 수치(검출기 분해능 약 130 eV, 검출 한계 ~0.1 wt%)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

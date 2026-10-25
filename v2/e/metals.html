@@ -179,13 +179,85 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 </tr>
 </tbody></table></div>
 <p><strong>배리어 딜레마.</strong> 선폭이 20nm 아래로 가면 배리어/라이너가 단면적의 큰 비중을 차지해, 금속 자체가 아니라 배리어 때문에 저항이 오른다. Ru·Mo 같은 &quot;배리어리스&quot; 금속이 주목받는 이유다.</p>
+<h3 id="핵심-수치-벌크-비저항과-평균자유행로">핵심 수치 — 벌크 비저항과 평균자유행로</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>금속</th>
+<th>벌크 비저항 (µΩ·cm, 교재 전형값)</th>
+<th>전자 평균자유행로 (대략)</th>
+<th>미세 선폭에서의 함의</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cu</td>
+<td>≈ 1.7</td>
+<td>≈ 39 nm</td>
+<td>벌크는 최저 수준이나, 선폭이 평균자유행로 아래로 가면 표면·결정립 산란으로 급상승 + 배리어 면적 손실</td>
+</tr>
+<tr>
+<td>Al</td>
+<td>≈ 2.7</td>
+<td>≈ 15 nm</td>
+<td>벌크는 Cu에 지지만 공정·본딩이 단순</td>
+</tr>
+<tr>
+<td>Co</td>
+<td>≈ 6</td>
+<td>≈ 10 nm 안팎</td>
+<td>벌크는 불리, 얇은 라이너·짧은 산란 길이로 미세 구간에서 역전 구간 존재</td>
+</tr>
+<tr>
+<td>W</td>
+<td>≈ 5.6</td>
+<td>짧음</td>
+<td>매립성은 최고, 좁아질수록 저항 부담</td>
+</tr>
+<tr>
+<td>Ru</td>
+<td>≈ 7</td>
+<td>≈ 6~7 nm</td>
+<td>벌크는 높지만 미세 선폭에서 상승이 완만, 배리어리스 가능</td>
+</tr>
+<tr>
+<td>Mo</td>
+<td>≈ 5.3</td>
+<td>≈ 10 nm 안팎</td>
+<td>Ru와 같은 논리 — 직접 식각·배리어리스 후보</td>
+</tr>
+</tbody></table></div>
+<p>미세 배선 저항은 벌크 비저항 순서대로 정해지지 않는다. 선폭이 평균자유행로와 비슷해지면 표면 산란과 결정립 경계 산란이 지배하고, 배리어가 먹는 단면적까지 합쳐 <strong>실효 저항</strong>으로 비교해야 한다. 차세대 금속 논의가 &quot;벌크가 낮은 금속&quot;에서 &quot;얇아도 덜 오르는 금속&quot;으로 옮겨간 이유다.</p>
+<h3 id="형성법">형성법</h3>
+<ul>
+<li><strong>PVD (스퍼터)</strong> — 배리어·시드·Al 배선의 기본. 단순하지만 고종횡비 갭 바닥 커버리지가 약하다.</li>
+<li><strong>CVD</strong> — W 플러그와 게이트 충진의 주력. 반응가스 화학으로 좁은 홀을 안에서부터 채운다. TiN 배리어가 필요한 이유 중 하나가 W CVD의 F 공격 차단이다.</li>
+<li><strong>전기도금 (ECD)</strong> — Cu 듀얼 다마신의 표준. PVD 시드 위에 보이드 없이 채우는 슈퍼필이 핵심이며, 첨가제(가속제·억제제·평탄제) 조합이 노하우다.</li>
+<li><strong>ALD</strong> — 수 nm 배리어·라이너와 일함수 금속처럼 두께 자체가 스펙인 층.</li>
+<li><strong>리플로우·어닐</strong> — Co·Cu에서 결정립을 키워 산란을 줄이는 후처리. 열 예산과 이웃 막 내성 안에서만 가능하다.</li>
+</ul>
+<h3 id="식각-패터닝에서-갈리는-점">식각·패터닝에서 갈리는 점</h3>
+<p>Cu는 휘발성 식각 생성물을 만들기 어려워 건식 식각이 곤란하다 — 그래서 먼저 절연막에 트렌치를 파고 금속을 채운 뒤 <a class="wiki" href="cmp.html">CMP</a>로 걷어내는 다마신 방식이 표준이 됐다. 반대로 Ru·Mo는 식각 가능한 화학이 있어 &quot;채우고 깎는&quot; 대신 &quot;깎아서 만드는&quot; 직접 식각(서브트랙티브) 배선이 다시 논의된다. 금속 선택이 패터닝 아키텍처까지 바꾸는 대목이다 (<a class="wiki" href="beol.html">BEOL</a>).</p>
+<h3 id="한계-이슈">한계·이슈</h3>
+<ul>
+<li><strong>전자이동 (EM)</strong> — 전류 밀도가 높으면 금속 원자가 전자 흐름에 밀려 보이드·힐록이 생긴다. Cu가 Al보다 강한 것이 Cu 채택의 이유 중 하나였고, 미세 구간에서는 라이너·캡이 EM 수명을 좌우한다.</li>
+<li><strong>응력 이동·확산</strong> — Cu는 Si와 절연막으로 확산하면 소자를 오염시키므로 배리어가 필수이고, 배리어 신뢰성(핀홀·계면 접착)이 곧 배선 신뢰성이다.</li>
+<li><strong>접촉 저항</strong> — 선폭보다 컨택 면적이 먼저 작아지는 구간에서는 금속 벌크 저항보다 실리사이드/컨택 계면 저항이 지배한다. 물질 교체 효과가 계면에서 상쇄될 수 있다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="beol.html">BEOL</a> — 금속이 쌓이는 흐름</li>
 <li><a class="wiki" href="deposition.html">증착</a> — 금속막을 올리는 법</li>
+<li><a class="wiki" href="cmp.html">CMP</a> — 다마신에서 금속을 걷어내 평탄화하는 법</li>
+<li><a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> — 일함수 금속의 대표 사용처</li>
+<li><a class="wiki" href="mol.html">MOL</a> — 컨택 금속이 놓이는 구간</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>비저항은 교재 전형값이다 (Cu ≈ 1.7 µΩ·cm는 기존 본문 값과 동일). 평균자유행로는 문헌에서 통용되는 대략값으로, 온도·순도에 따라 달라지는 비교용 수치다.</li>
+<li>실효 저항·배리어 딜레마 서술은 기존 본문의 논지를 확장한 것이며, 특정 논문의 실측 배선 저항은 인용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; CMP·평탄화</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 증착·성막</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 트랜지스터</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

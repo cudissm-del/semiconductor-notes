@@ -103,6 +103,9 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>스퍼터를 계속하면 깊이를 파고들면서 측정하므로, 이온주입·확산 뒤 도펀트 깊이 프로파일의 표준 수단이다. 감도가 ppb~ppm 수준으로 높아 미량 불순물 검출에도 쓰인다. 계속 파고드는 동적(dynamic) SIMS가 깊이 프로파일용이고, 표면 한 층만 보는 것이 정적(static) SIMS다.</p>
 <p>단, 2차 이온화 확률이 주변 원소(매트릭스)에 크게 좌우되는 매트릭스 효과 때문에, 정량에는 같은 매트릭스의 표준 시료가 필요하다.</p>
+<h2 id="원리-스퍼터와-2차-이온화">원리 — 스퍼터와 2차 이온화</h2>
+<p>수 keV로 가속한 1차 이온이 표면에 충돌하면 충돌 연쇄로 표면 원자가 튀어나오고(스퍼터링), 그중 일부가 이온화된 것이 2차 이온이다. 이를 질량대 전하비로 분리해 세면 질량 스펙트럼이 되고, 스퍼터를 이어가면 스펙트럼의 시간축이 곧 깊이축이 된다.</p>
+<p>이온화 확률은 원소와 매트릭스에 따라 수 자리까지 달라진다. 음이온으로 잘 나오는 원소는 Cs⁺ 조사가, 양이온으로 잘 나오는 원소는 산소 조사가 수율을 높이는 식으로, 1차 이온 종류 자체가 감도를 정한다. 정적 SIMS는 1차 이온 도즈를 표면 원자의 극히 일부로 억제해 표면 한 층의 분자 정보를 상하지 않게 보는 방식이다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -135,7 +138,27 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>용도</td>
 <td><a class="wiki" href="ion-implantation.html">이온주입</a>·확산 프로파일, 오염·불순물 분석</td>
 </tr>
+<tr>
+<td>1차 이온</td>
+<td>Cs⁺, O₂⁺ 등, 수 keV</td>
+</tr>
+<tr>
+<td>정적 SIMS 도즈</td>
+<td>약 10¹³ ions/cm² 이하</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법">읽는 법</h2>
+<ul>
+<li><strong>깊이 축 환산</strong> — 측정 뒤 크레이터 깊이를 재어 스퍼터 속도로 시간축을 깊이로 바꾼다. 표면 천이 구간과 크레이터 가장자리에서 섞여 들어온 신호는 해석에서 제외한다.</li>
+<li><strong>농도 환산</strong> — 이온주입한 표준 시료로 구한 상대감도인자(RSF)를 적용해 이온 강도를 농도(cm⁻³)로 바꾸며, 프로파일 면적을 적분하면 총 도즈가 된다.</li>
+<li><strong>계면의 넓어짐</strong> — 1차 이온의 녹온(knock-on) 혼합과 스퍼터에 따른 거칠어짐 때문에 깊어질수록 계면이 넓게 퍼져 보인다. 읽히는 계면 폭이 곧 그 조건의 깊이 분해능 한계다.</li>
+</ul>
+<h2 id="한계-주의점">한계·주의점</h2>
+<ul>
+<li><strong>매트릭스 효과</strong> — 층이 바뀌는 계면 부근에서는 이온 수율이 함께 바뀌어, 농도가 실제로 튀지 않아도 피크처럼 보일 수 있다.</li>
+<li><strong>질량 간섭</strong> — 하이드라이드·산화물 같은 분자 이온이 목적 원소와 같은 질량에 겹칠 수 있어, 고질량분해능 측정이나 동위원소 비율 비교로 걸러낸다.</li>
+<li><strong>파괴와 시간</strong> — 시료를 소모하는 분석이며, 깊이 파고들수록 측정 시간이 길어진다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="ion-implantation.html">이온주입</a> — 도펀트 프로파일을 SIMS로 확인하는 대표 공정</li>
@@ -145,9 +168,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>동적/정적 구분, 매트릭스 효과와 감도는 표면분석 표준 교재의 일반 서술에 근거한다: Vickerman &amp; Gilmore, <em>Surface Analysis — The Principal Techniques</em> (Wiley).</li>
+<li>본문에 더한 수치(1차 이온 에너지, 정적 SIMS 도즈 한계)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 이온주입</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

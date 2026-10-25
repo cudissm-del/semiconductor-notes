@@ -116,13 +116,58 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chip_bond_wire.jpg?width=1400" alt="와이어 본딩된 CMOS 칩" loading="lazy" decoding="async"><figcaption>그림 2. 와이어 본딩된 CMOS 칩<span class="credit">Weirdmeister, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Chip_bond_wire.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
 <p><strong>누가 하나.</strong> 삼성전자·SK하이닉스 같은 IDM은 자체 후공정 라인을 갖고, 많은 팹리스·파운드리 칩은 ASE, Amkor, JCET 같은 <strong>OSAT</strong>(외주 패키징·테스트 업체)가 맡는다.</p>
 <p><strong>중간 공정(Mid-end)의 등장.</strong> 범핑, RDL(재배선층), TSV처럼 팹 장비(노광·식각·도금·CMP)를 쓰는 패키징 공정이 늘면서, 전공정과 후공정 사이의 경계가 점점 흐려지고 있다.</p>
+<h2 id="원리-패키지가-해야-하는-네-가지-일">원리 — 패키지가 해야 하는 네 가지 일</h2>
+<p>패키지는 보호만이 아니다. ① <strong>전기 연결</strong> — 수 µm<del>수십 µm 피치의 칩 패드를 mm 피치의 PCB 랜드까지 단계적으로 넓히는 fan-out 역할, ② <strong>전원·신호 무결성</strong> — 기판 배선과 범프의 저항·인덕턴스가 칩의 전압 강하와 노이즈를 정한다, ③ <strong>열 방출</strong> — 다이에서 생긴 열을 기판·히트스프레더·공기로 빼는 경로 제공, ④ <strong>기계적 보호와 신뢰성</strong> — 습기·충격·열팽창 차이로부터 칩과 접합부를 지킨다. 칩 성능이 올라갈수록 ①</del>③이 소자 성능 자체를 제한하게 된 것이 <a class="wiki" href="advanced-packaging.html">첨단 패키징</a>이 등장한 배경이다.</p>
+<h2 id="핵심-수치-조건-교재-전형값">핵심 수치·조건 (교재 전형값)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값·조건</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>300mm 웨이퍼 두께</td>
+<td>약 775µm</td>
+<td>백그라인딩 전 기준 두께</td>
+</tr>
+<tr>
+<td>와이어 본딩 와이어</td>
+<td>Au·Cu, 지름 수십 µm급</td>
+<td>가장 오래되고 저렴한 연결, 긴 와이어의 인덕턴스가 고속 신호에 불리</td>
+</tr>
+<tr>
+<td>플립칩 범프 피치</td>
+<td>약 100µm 이상 (C4 기준)</td>
+<td>와이어 대비 짧고 촘촘한 연결</td>
+</tr>
+<tr>
+<td>번인</td>
+<td>정격보다 높은 온도와 전압으로 일정 시간 가동</td>
+<td>초기 불량(유아 사망)을 출하 전에 걸러내는 가속 스트레스</td>
+</tr>
+</tbody></table></div>
+<h2 id="테스트가-두-번인-이유">테스트가 두 번인 이유</h2>
+<p>EDS(웨이퍼 테스트)와 최종 테스트는 역할이 다르다. EDS는 패키징 비용을 들이기 전에 불량 다이를 버리고 메모리 리페어를 결정하는 경제성 검사이고, 최종 테스트는 패키징 과정에서 생긴 손상까지 포함해 출하 등급(속도·전력 bin)을 매기는 검사다. 고가 패키지일수록 중간 단계(적층 후, 몰딩 후) 테스트를 추가해 불량을 일찍 잡는 것이 전체 원가를 낮춘다.</p>
+<h2 id="트레이드오프-한계">트레이드오프·한계</h2>
+<ul>
+<li><strong>두께 vs 강도</strong> — 모바일용으로 얇게 갈수록 휨과 크랙 위험이 커진다.</li>
+<li><strong>몰딩 vs 방열</strong> — EMC는 보호에는 좋지만 열전도가 낮아, 고발열 칩은 노출 다이·히트스프레더 구조를 쓴다.</li>
+<li><strong>테스트 시간 vs 출하 품질</strong> — 테스트를 늘리면 원가와 리드타임이 늘고, 줄이면 초기 불량이 고객에게 넘어간다. 번인 조건 설정이 이 절충의 대표 변수다.</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>공정 흐름은 본문 기존 서술 기준이며, 웨이퍼 두께·범프 피치 등은 교재 전형값으로 표기했다. 제품별 실제 조건은 패키지 종류에 따라 달라진다.</li>
+</ul>
+<p>요약하면 후공정은 칩을 싸는 단계가 아니라, 전기·열·기계 세 경로를 칩 바깥 세상과 맞추는 변환 단계이며, 그 변환 품질이 최종 제품의 성능 등급과 신뢰성을 함께 정한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="advanced-packaging.html">첨단 패키징</a> — 패키징이 성능을 정하는 시대</li>
 <li><a class="wiki" href="process-flow.html">반도체 제조 전체 흐름</a> — 패키징의 위치</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="advanced-packaging.html">첨단 패키징</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li><li><a href="packaging-materials.html">패키징 소재</a> <span style="color:var(--sub)">— 소자·구조 &gt; 패키징·연결</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

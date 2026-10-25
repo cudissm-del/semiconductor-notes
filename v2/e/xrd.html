@@ -103,6 +103,9 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>결정면을 간격 d인 격자로 보면, Bragg 법칙 nλ = 2d sinθ를 만족하는 각도에서만 회절이 강해진다. 피크 위치에서 격자상수와 상을, 피크 폭에서 결정성과 결함 수준을 추정한다.</p>
 <p>고분해능 측정에서는 에피택시층의 두께를 간섭 프린지 간격으로 구하거나, 조성에 따른 격자상수 변화와 잔류 응력을 평가한다. 비정질막이나 아주 얇은 막에서는 신호가 약하다.</p>
+<h2 id="원리-회절-조건과-피크가-담는-정보">원리 — 회절 조건과 피크가 담는 정보</h2>
+<p>X선(표준은 Cu Kα, λ = 1.5406 Å)이 결정에 들어오면 각 결정면에서 반사된 파가 경로차 2d sinθ만큼 어긋나고, 이 값이 파장의 정수배일 때만 보강 간섭이 일어난다. 2θ를 훑는 스캔에서는 결정면 집합 하나하나가 피크 하나로 대응한다.</p>
+<p>피크는 위치 외에도 폭과 강도에 정보를 담는다. 폭은 결정자 크기와 미세 변형에 따라 넓어지며, 결정자 크기는 Scherrer 식 D = Kλ/(β cosθ)로 어림한다(β는 피크 반치폭). 강도 분포는 상의 존재비와 우선 배향(텍스처)을 반영하고, 면 간격이 바뀌면 피크 위치가 이동하므로 표준 위치와의 어긋남이 격자 변형과 응력의 신호가 된다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -131,7 +134,28 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>용도</td>
 <td>에피·결정막 평가, 상 동정, 응력 측정</td>
 </tr>
+<tr>
+<td>X선원</td>
+<td>Cu Kα (λ = 1.5406 Å)가 전형적</td>
+</tr>
+<tr>
+<td>결정자 크기</td>
+<td>Scherrer 식으로 피크 폭에서 추정</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법">읽는 법</h2>
+<ul>
+<li><strong>상 동정</strong> — 측정 패턴의 피크 위치와 강도비를 표준 회절 데이터베이스와 대조해 상을 정한다.</li>
+<li><strong>에피택시 평가</strong> — 기판 피크와 에피층 피크의 간격에서 격자상수 차이(조성)를, ω 스캔(로킹 커브)의 반치폭에서 결정성을, 간섭 프린지 간격에서 에피층 두께를 읽는다.</li>
+<li><strong>응력</strong> — 피크 이동을 면 간격 변화로 바꾸고, 시료를 기울이며 이동을 모으는 sin²ψ법으로 잔류 응력을 환산한다.</li>
+<li><strong>두께·조성의 동시 확인</strong> — 에피층 측정에서는 피크 위치(조성)와 프린지 간격(두께)이 한 번의 스캔에서 함께 나오므로, 성장 공정의 반복성을 감시하는 지표로 쓰기 좋다.</li>
+</ul>
+<h2 id="한계-주의점">한계·주의점</h2>
+<ul>
+<li><strong>비정질·초박막</strong> — 규칙적인 결정면이 없거나 회절 부피가 작으면 날카로운 피크가 서지 않는다. 박막에는 입사각을 표면에 눕힌 그레이징 입사(GIXRD)로 표면 감도를 높여 대응한다.</li>
+<li><strong>평균 정보다</strong> — 빔이 닿는 mm급 영역의 평균이므로 국소 결함과 미세한 상 분포는 <a class="wiki" href="tem.html">TEM (투과전자현미경)</a> 같은 국소 기법이 맡는다.</li>
+<li><strong>텍스처 왜곡</strong> — 배향이 강하면 표준 패턴과 강도비가 어긋나 상 비율 정량이 틀어질 수 있다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="xrr.html">XRR</a> — 같은 X선 계열로 두께·밀도·거칠기를 재는 기법</li>
@@ -141,9 +165,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>Bragg 법칙과 회절 분석은 X선 회절 표준 교재 서술에 근거한다: Klug &amp; Alexander, <em>X-ray Diffraction Procedures</em> (Wiley).</li>
+<li>본문에 더한 수치(Cu Kα 파장)와 Scherrer 식, sin²ψ법은 교재의 표준 서술이며, 보유 논문의 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·표면</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

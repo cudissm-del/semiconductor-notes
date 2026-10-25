@@ -103,6 +103,8 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="개요">개요</h2>
 <p>패턴이 주기적으로 배열돼 있으면 빛은 격자처럼 회절하고, 그 스펙트럼은 패턴의 3차원 형상을 인코딩한다. 미리 형상 파라미터를 바꿔가며 계산해 둔 스펙트럼 라이브러리(또는 회귀 모델)와 측정 스펙트럼을 매칭하면, 선폭만이 아니라 막 높이와 측벽 각도까지 동시에 산출된다. 스캐터로메트리(scatterometry)라고도 부른다.</p>
 <p><a class="wiki" href="cd-sem.html">CD-SEM</a>이 상면에서 선폭만 재는 데 비해, OCD는 단면 형상을 비파괴로 추정할 수 있고 측정이 고속이라 인라인 감시에 강하다. 대가는 모델 의존성이다 — 라이브러리에 없는 형상은 못 재고, 파라미터 간 상관이 크면 해가 흔들린다.</p>
+<h2 id="원리">원리</h2>
+<p>주기 패턴은 회절 격자로 동작한다. 파장이 피치보다 길어 고차 회절광이 전파되지 않는 조건에서도, 0차 반사광의 파장·편광별 스펙트럼은 패턴 내부의 다중 반사를 거쳐 형상 정보를 담는다. 형상 파라미터(CD·높이·측벽각 등)를 바꿔가며 전자기 해석(엄밀 결합파 해석, RCWA 등)으로 스펙트럼을 계산해 라이브러리를 만들고, 측정 스펙트럼과 가장 잘 맞는 항목을 고르면 그 파라미터 조합이 측정값이 된다. 즉 분해능은 빛의 파장이 아니라 모델의 충실도, 신호 대 잡음, 파라미터 간 상관이 정한다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -135,7 +137,23 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>한계</td>
 <td>모델 의존, 파라미터 상관 시 해의 유일성 문제</td>
 </tr>
+<tr>
+<td>측정 스폿</td>
+<td>수십 µm급 — 주기 패턴이 스폿을 채워야 함</td>
+</tr>
+<tr>
+<td>광원</td>
+<td>자외선~근적외선 분광이 전형 — 층 투과와 감도를 함께 확보</td>
+</tr>
+<tr>
+<td>산출 방식</td>
+<td>라이브러리 탐색 또는 회귀 모델 — 구축에 사전 계산 비용이 듦</td>
+</tr>
 </tbody></table></div>
+<h2 id="읽는-법-해석">읽는 법·해석</h2>
+<p>CD·높이·측벽각 값과 함께 적합도 지표를 반드시 같이 본다. 적합도가 나쁘면 라이브러리가 가정하지 않은 형상(예: 비대칭 측벽, 잔막)이 실제로 존재한다는 뜻이다. 파라미터 상관이 큰 조합에서는 한 값이 흔들리면 다른 값도 따라 흔들리므로, 상관 큰 파라미터 하나를 <a class="wiki" href="cd-sem.html">CD-SEM</a>이나 단면 값으로 고정해 두고 나머지의 변화를 읽는 운용이 안정적이다.</p>
+<h2 id="한계-주의점">한계·주의점</h2>
+<p>측정 위치는 실제 소자 패턴이 아니라 전용 계측 타깃인 경우가 많아, 타깃과 실제 패턴의 형상 차이는 별도로 관리해야 한다. 비주기·무작위 패턴에는 원리상 적용할 수 없고, 하부막의 광학 상수가 틀리면 그 오차가 그대로 형상 오차로 전파된다. 라이브러리에 없는 공정 조건이 바뀌면 모델부터 다시 만들어야 한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="cd-sem.html">CD-SEM</a> — 상면 선폭의 기준 계측, OCD와 상호 교정</li>
@@ -145,9 +163,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <h2 id="근거">근거</h2>
 <ul>
 <li>회절 스펙트럼의 라이브러리 매칭에 의한 형상 산출은 산란계측의 표준 교재 서술에 근거한다: <em>Handbook of Silicon Semiconductor Metrology</em> (Marcel Dekker) 등 계측 일반 서술.</li>
+<li>추가한 원리·전형값의 출처 구분: RCWA 기반 라이브러리 매칭은 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 리소그래피</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 두께·형상</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>

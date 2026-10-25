@@ -202,6 +202,18 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <ul>
 <li><a href="https://www.youtube.com/watch?v=3qK3Cvu6qbI" target="_blank" rel="noopener">HBM Packaging Explained — AMS Tech</a> — HBM이 인터포저와 마이크로범프를 거쳐 GPU와 연결되는 구조 해설 (영어)</li>
 </ul>
+<h2 id="대역폭이-나오는-계산">대역폭이 나오는 계산</h2>
+<p>스택당 대역폭은 인터페이스 폭 × 핀당 속도로 정해진다. 본문 표의 전형값으로 계산하면 HBM3E는 1,024bit × 약 9.8Gbps ≈ 1.25TB/s급, HBM4는 폭이 두 배(2,048bit)가 돼 같은 속도에서도 약 2배가 된다. HBM4의 핵심 변화가 속도보다 <strong>폭의 배가와 채널 수 증가(16→32)</strong> 인 이유다 — 핀 속도를 올리는 것은 신호 무결성·전력 부담이 급격히 커지지만, 폭을 넓히는 것은 적층·인터포저 기술로 풀 수 있기 때문이다. 대신 인터포저 배선과 베이스 다이 설계, 패키지 핀·전원 공급이 그만큼 무거워진다.</p>
+<h2 id="트레이드오프-한계">트레이드오프·한계</h2>
+<ul>
+<li><strong>높이 규격이 적층을 정한다</strong> — 단수를 늘리는 경쟁은 칩 성능이 아니라 패키지 높이(예: HBM4 775µm) 안에서 다이 박막화와 본딩 두께를 깎는 경쟁이다.</li>
+<li><strong>열</strong> — 쌓인 다이 중간의 열은 밖으로 나가기 어려워, 안쪽 다이부터 온도가 오르고 동작 속도와 신뢰성을 제한한다.</li>
+<li><strong>수율의 곱셈</strong> — 12~16개 다이를 쌓으면 전체 수율은 각 다이·본딩 수율의 곱에 가까워져, known-good-die 선별과 중간 테스트가 원가를 좌우한다.</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>세대별 폭·속도·높이는 본문 표(JEDEC 규격과 업체 발표의 대략값) 기준이며, 대역폭 수치는 그 값들의 산출값이다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="dram.html">DRAM</a> — HBM의 재료</li>

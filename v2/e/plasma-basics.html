@@ -101,6 +101,9 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <p>기체에 에너지를 가해 이온·전자·라디칼·중성종이 공존하게 된 상태 — 플라즈마의 구성원과 기본 성질.</p>
 </blockquote>
 <p>플라즈마 식각은 라디칼의 화학 반응과 이온의 방향성 에너지를 결합해, 원하는 막만 수직으로 깎는 기술이다. 둘을 따로 쓰면 각각 느리거나 선택비가 없지만, 함께 쓰면 식각 속도가 합보다 훨씬 커지는 <strong>이온–라디칼 시너지</strong>가 핵심이다.</p>
+<h2 id="개요-약하게-이온화된-평형이-아닌-기체">개요 — 약하게 이온화된, 평형이 아닌 기체</h2>
+<p>공정 플라즈마는 기체에 RF·마이크로파 전력을 가해 만든 <strong>저온·약전리 플라즈마</strong>다. 중성 기체가 대부분을 차지하고, 이온화된 비율은 대략 10⁻⁴~10⁻² 수준에 불과하다. 그런데도 전기적 거동은 하전 입자가 지배한다 — 전자가 가볍고 빠르기 때문이다.</p>
+<p>가장 중요한 특징은 <strong>비열평형</strong>이다. 전자온도 Tₑ는 1<del>10 eV(온도로 환산하면 약 1만</del>10만 K)이지만, 이온과 중성 기체의 온도는 상온 부근(수백 K, 0.03<del>0.1 eV 수준)에 머문다. RF 전기장은 가벼운 전자만 따라 흔들며 에너지를 주고, 무거운 이온·중성은 충돌로도 그 에너지를 거의 나눠 받지 못한다. 덕분에 웨이퍼와 챔버를 녹이지 않으면서도, 전자만큼은 수 eV</del>수십 eV의 화학 반응(해리·이온화)을 일으킬 에너지를 갖는다. 플라즈마 공정이 &quot;차가운데 반응성이 높은&quot; 이유가 여기에 있다.</p>
 <h3 id="플라즈마-안에-있는-것">플라즈마 안에 있는 것</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -130,14 +133,180 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 <td>결합 절단, 손상 유발</td>
 <td>없음</td>
 </tr>
+<tr>
+<td>중성 기체 분자 (CF₄, Cl₂, O₂ 등)</td>
+<td>전체 입자의 대부분. 전자와 충돌해 이온·라디칼의 재료가 됨</td>
+<td>없음 (등방)</td>
+</tr>
+<tr>
+<td>들뜬 종·준안정종</td>
+<td>충돌로 에너지를 품은 중성종. 다른 분자와 부딪혀 이온화·해리를 돕고, 바닥으로 떨어지며 빛을 냄 (<a class="wiki" href="oes.html">OES</a>가 읽는 신호)</td>
+<td>없음</td>
+</tr>
+<tr>
+<td>음이온 (F⁻, Cl⁻ 등)</td>
+<td>전기음성도가 큰 가스에서 생기는 음전하 종. 벌크에 갇혀 있다가 펄스 오프 구간 등에 표면에 닿아 거동을 바꿈</td>
+<td>약함 (벌크에 구속)</td>
+</tr>
 </tbody></table></div>
+<p>밀도 감각도 잡아 두자. 수<del>수십 mTorr 공정 압력에서 중성 기체 밀도는 10¹⁴</del>10¹⁵ cm⁻³ 수준이고, 전자밀도 nₑ는 10⁹<del>10¹² cm⁻³이다. 즉 전자는 중성 10만</del>100만 개당 하나꼴이지만, 그 하나가 나머지 전체의 반응을 연쇄로 일으킨다.</p>
+<h2 id="원리-1-준중성과-디바이-길이">원리 1 — 준중성과 디바이 길이</h2>
+<p>벌크 플라즈마는 양전하와 음전하가 거의 같은 <strong>준중성(quasi-neutrality)</strong> 상태다: nᵢ ≈ nₑ (+ 음이온이 많으면 nᵢ ≈ nₑ + n₋). 어느 한쪽 전하가 국소적으로 쏠리면 강한 전기장이 즉시 생겨 쏠림을 되돌리기 때문이다.</p>
+<p>이 차폐가 미치는 거리가 <strong>디바이 길이(Debye length)</strong> 다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>λ</mi><mi>D</mi></msub><mo>=</mo><msqrt><mfrac><mrow><msub><mi>ε</mi><mn>0</mn></msub><mi>k</mi><msub><mi>T</mi><mi>e</mi></msub></mrow><mrow><msub><mi>n</mi><mi>e</mi></msub><msup><mi>e</mi><mn>2</mn></msup></mrow></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\lambda_D = \sqrt{\frac{\varepsilon_0 k T_e}{n_e e^2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.44em;vertical-align:-0.8384em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6016em;"><span class="svg-align" style="top:-4.4em;"><span class="pstrut" style="height:4.4em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">ε</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.5616em;"><span class="pstrut" style="height:4.4em;"></span><span class="hide-tail" style="min-width:1.02em;height:2.48em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8384em;"><span></span></span></span></span></span></span></span></span></span></div>
+<p>전형 조건(Tₑ ≈ 3 eV, nₑ ≈ 10¹¹ cm⁻³)에서는 λ_D가 수십 µm 수준이다. 계의 크기가 λ_D보다 훨씬 클 때만 준중성이 성립하고 &quot;플라즈마&quot;라고 부를 수 있다. 반대로 벽 근처 λ_D 수 배 두께의 얇은 층에서는 준중성이 깨지는데, 그 층이 바로 아래에서 다룰 <strong>쉬스(sheath)</strong> 다. λ_D가 작을수록 플라즈마는 벌크가 넓고 쉬스가 얇아진다 — 밀도를 올리면 쉬스가 얇아지는 이유다. λ_D의 실측 맥락은 <a class="wiki" href="langmuir.html">랭뮤어 프로브</a> 항목을 참고하라.</p>
+<h2 id="원리-2-쉬스-왜-생기고-이온을-어떻게-가속하나">원리 2 — 쉬스: 왜 생기고, 이온을 어떻게 가속하나</h2>
+<p>플라즈마가 벽·웨이퍼·전극에 닿으면 표면에 양전하 층인 쉬스가 선다. 형성 이유는 <strong>이동도 차이</strong>다. 질량이 이온의 수만 분의 일인 전자는 열속도가 훨씬 빠르므로, 처음에는 전자가 벽에 훨씬 많이 쏟아진다. 벽(또는 부유한 웨이퍼 표면)은 음으로 대전되고, 그 전위가 전자를 밀어내 이온 흐름과 전자 흐름이 같아지는 지점에서 균형이 잡힌다. 결과적으로 <strong>플라즈마 벌크는 항상 벽보다 양(+)의 전위</strong>에 있고, 그 전위차의 대부분이 쉬스 안에 집중된다.</p>
+<ul>
+<li><strong>전위 강하 크기</strong> — 외부에서 전압을 걸지 않은 부유 표면 기준으로, 쉬스 전압은 대략 전자온도의 수 배 수준이다. Ar 플라즈마에서는 플라즈마 전위와 부유 전위의 차가 대략 5 × Tₑ(eV) 수준의 전압(V)으로 주어진다는 것이 교과서 전형 관계다(<a class="wiki" href="langmuir.html">랭뮤어 프로브</a>의 전위 관계와 같은 식이다). 바이어스 전력을 걸면 이 강하에 바이어스분이 더해져 수십~수백 V까지 커진다.</li>
+<li><strong>이온 가속</strong> — 이온은 쉬스를 가로지르며 전위 강하에 해당하는 에너지(e × 쉬스 전압)를 얻어 표면에 거의 수직으로 충돌한다. 쉬스 안에서는 중성과의 충돌이 적을수록(저압일수록) 방향성과 에너지가 잘 유지된다. 그래서 이온 에너지의 조절 손잡이는 바이어스 전력이, 이온 양(플럭스)의 손잡이는 플라즈마 밀도(소스 전력)가 맡는 분업이 성립한다 — 장비별 구현은 <a class="wiki" href="etch-equipment.html">식각 장비</a> 참고.</li>
+<li><strong>전자 차단</strong> — 쉬스 전위 장벽보다 에너지가 낮은 전자는 표면에 닿지 못한다. 표면 화학을 전자가 아니라 이온과 라디칼이 주도하게 되는 구조적 이유다.</li>
+</ul>
+<p>쉬스는 탐침·벽·웨이퍼를 가리지 않고 모든 경계에 서며, 두께는 λ_D의 수 배에서, 고전압 바이어스 조건에서는 Child–Langmuir 법칙을 따라 전압^(3/4)에 비례해 두꺼워진다.</p>
+<h2 id="원리-3-보옴-기준-Bohm-criterion">원리 3 — 보옴 기준 (Bohm criterion)</h2>
+<p>쉬스가 안정적으로 서려면 이온이 쉬스 경계에 <strong>이미 일정 속도 이상으로 들어와야</strong> 한다. 이온이 너무 느리면 쉬스 입구에 양전하가 쌓여 전위 구조가 무너지기 때문이다. 이 하한이 <strong>보옴 속도(Bohm velocity)</strong> 다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>u</mi><mi>B</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mi>k</mi><msub><mi>T</mi><mi>e</mi></msub></mrow><msub><mi>m</mi><mi>i</mi></msub></mfrac></msqrt></mrow><annotation encoding="application/x-tex">u_B = \sqrt{\frac{k T_e}{m_i}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0502em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.44em;vertical-align:-0.8384em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6016em;"><span class="svg-align" style="top:-4.4em;"><span class="pstrut" style="height:4.4em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.5616em;"><span class="pstrut" style="height:4.4em;"></span><span class="hide-tail" style="min-width:1.02em;height:2.48em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8384em;"><span></span></span></span></span></span></span></span></span></span></div>
+<p>이온온도가 전자온도보다 훨씬 낮은(Tᵢ ≪ Tₑ) 단일 이온종 기준의 식이다. 예로 Ar⁺(mᵢ ≈ 40 amu), Tₑ = 3 eV이면 u_B ≈ 2.7 km/s다. 벌크에서는 느리게 떠다니던 이온이 쉬스 앞의 완만한 전위 강하 영역(프리쉬스, presheath)에서 대략 kTₑ/2만큼의 에너지를 얻어 이 속도에 도달한 뒤 쉬스로 들어간다.</p>
+<p>보옴 기준은 진단과도 직결된다. 쉬스에 들어가는 이온 플럭스가 nₑ × u_B로 정해지므로, 이온 포화전류로부터 밀도를 역산하는 <a class="wiki" href="langmuir.html">랭뮤어 프로브</a> 해석의 뼈대가 이 식이다. 반대로 말하면, 웨이퍼에 닿는 이온 플럭스는 바이어스를 세게 건다고 늘지 않는다 — 플럭스는 밀도와 Tₑ가 정하고, 바이어스는 에너지(속도의 쉬스 내 증가분)를 정한다.</p>
+<h2 id="원리-4-충돌-과정-전자가-만드는-화학">원리 4 — 충돌 과정: 전자가 만드는 화학</h2>
+<p>플라즈마의 화학은 사실상 &quot;전자 충돌의 목록&quot;이다. 수 eV 전자가 중성 분자와 부딪혀 일으키는 과정은 다음으로 나뉜다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>충돌 과정</th>
+<th>내용</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>탄성 충돌</td>
+<td>전자가 에너지를 거의 잃지 않고 방향만 바꿈</td>
+<td>전자 에너지 분포의 등방화, 기체 가열은 미미</td>
+</tr>
+<tr>
+<td>여기 (excitation)</td>
+<td>분자·원자를 들뜬 상태로 올림 (문턱 대략 수 eV~)</td>
+<td>들뜬 종이 떨어지며 발광 → <a class="wiki" href="oes.html">OES</a> 신호의 근원</td>
+</tr>
+<tr>
+<td>해리 (dissociation)</td>
+<td>분자 결합을 끊어 라디칼 생성 (예: CF₄ → CF₃ + F)</td>
+<td>식각·증착을 실제로 수행하는 라디칼 공급</td>
+</tr>
+<tr>
+<td>이온화 (ionization)</td>
+<td>전자를 떼어내 이온 + 전자 생성 (문턱 대략 10수 eV, Ar 기준 15.8 eV)</td>
+<td>플라즈마 유지의 핵심 — 손실된 전하를 보충</td>
+</tr>
+<tr>
+<td>해리성 부착</td>
+<td>전자가 분자에 붙으며 갈라져 음이온 생성</td>
+<td>전기음성 가스(FC·Cl 계열)에서 음이온 형성</td>
+</tr>
+<tr>
+<td>재결합·전하교환</td>
+<td>이온이 전자를 얻거나 중성과 전하를 맞바꿈</td>
+<td>하전 입자 소멸, 빠른 중성종 생성</td>
+</tr>
+</tbody></table></div>
+<p>핵심은 <strong>문턱의 순서</strong>다. 평균 전자 에너지(수 eV)는 이온화 문턱(10수 eV)보다 한참 낮다. 그런데도 이온화가 유지되는 것은, 전자 에너지분포의 <strong>고에너지 꼬리</strong>에 든 소수 전자가 문턱을 넘기 때문이다. 그래서 분포의 꼬리 모양이 플라즈마 전체의 이온화율·해리율을 좌우한다.</p>
+<p>충돌 빈도를 가늠하는 양이 <strong>평균자유행로(mean free path)</strong> λ = 1/(n_g σ) (n_g는 중성 밀도, σ는 충돌 단면적)다. 공정 압력 수<del>수십 mTorr에서는 전자의 평균자유행로가 cm</del>수십 cm 수준으로 챔버 크기와 견줄 만하고, 이온도 쉬스 두께와 견줄 만한 수준이다. 이 &quot;충돌이 드문&quot; 조건 덕분에 이온은 쉬스에서 방향을 잃지 않고, 라디칼은 벽에 몇 번 부딪히며 웨이퍼까지 수송된다. 압력을 올리면 충돌이 잦아져 이온 방향성이 무너지고(등방화), 기상 반응·파티클 생성 쪽으로 거동이 기운다 — 압력이 식각 프로파일의 손잡이인 이유다.</p>
+<h2 id="원리-5-전자-에너지분포함수-EEDF">원리 5 — 전자 에너지분포함수 (EEDF)</h2>
+<p>전자 전체가 하나의 온도로 기술되는 경우는 이상에 가깝다. 실제 분포함수 f(E)의 모양은 방전 방식과 압력에 따라 달라진다.</p>
+<ul>
+<li><strong>맥스웰 분포 (Maxwellian)</strong> — 전자–전자 충돌이 잦아 에너지 교환이 충분히 일어나면 성립하는 열평형형 분포. 하나의 Tₑ로 기술된다. 고밀도·비교적 고압 조건에서 가깝다.</li>
+<li><strong>드루베스테인 분포 (Druyvesteyn)</strong> — 탄성 충돌이 지배적이고 전기장으로 얻는 에너지가 충돌마다 조금씩 새는 조건의 분포. 맥스웰형보다 고에너지 꼬리가 가파르게 떨어진다. 저압 방전에서 자주 이쪽에 가깝다.</li>
+<li><strong>이중 맥스웰 (bi-Maxwellian)</strong> — 저압 용량결합 방전 등에서는 차가운 전자군과 뜨거운 전자군이 섞인 두 기울기 분포가 나타나기도 한다.</li>
+</ul>
+<p>실무적 함의는 하나다: 이온화·여기 같은 문턱 반응의 속도계수는 분포 꼬리에 지수적으로 민감하므로, 같은 평균 에너지라도 분포 모양이 다르면 라디칼·이온 조성이 달라진다. 그래서 &quot;전자온도 몇 eV&quot;라는 한 숫자는 개략 지표일 뿐, 정량 해석에서는 분포 자체가 필요하다. 분포를 실험으로 뽑는 법(2차 미분법)은 <a class="wiki" href="langmuir.html">랭뮤어 프로브</a>에서 다룬다.</p>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>전형값 (공정 플라즈마)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>전자온도 Tₑ</td>
+<td>약 1~10 eV (방전 방식 따라 다름)</td>
+</tr>
+<tr>
+<td>전자밀도 nₑ</td>
+<td>약 10⁹~10¹² cm⁻³ (CCP 하단 ~ ICP·ECR 상단)</td>
+</tr>
+<tr>
+<td>이온·기체 온도</td>
+<td>상온 부근 (수백 K, 0.1 eV 이하 수준)</td>
+</tr>
+<tr>
+<td>이온화율</td>
+<td>대략 10⁻⁴~10⁻² (약전리)</td>
+</tr>
+<tr>
+<td>디바이 길이 λ_D</td>
+<td>전형 조건에서 수십 µm 수준</td>
+</tr>
+<tr>
+<td>쉬스 두께</td>
+<td>λ_D의 수 배 (고바이어스에서는 더 두꺼움)</td>
+</tr>
+<tr>
+<td>보옴 속도 (Ar⁺, Tₑ=3 eV)</td>
+<td>약 2.7 km/s</td>
+</tr>
+<tr>
+<td>부유 표면의 쉬스 전압 (Ar)</td>
+<td>대략 5 × Tₑ 수준 (V)</td>
+</tr>
+<tr>
+<td>이온화 문턱 (Ar)</td>
+<td>15.8 eV</td>
+</tr>
+</tbody></table></div>
+<h2 id="트레이드오프와-한계">트레이드오프와 한계</h2>
+<ul>
+<li><strong>밀도 vs 에너지 독립 제어의 한계</strong> — 소스 전력(밀도)과 바이어스 전력(에너지)을 나눈 분업은 유도결합 방식에서 가장 잘 성립하고, 용량결합 방식에서는 두 손잡이가 서로 얽힌다. 자세한 장비별 차이는 <a class="wiki" href="etch-equipment.html">식각 장비</a> 참고.</li>
+<li><strong>균일성</strong> — 벌크 밀도 분포는 챔버 형상·가스 흐름·표면 재결합에 좌우된다. 중심과 가장자리의 밀도 차가 그대로 식각률 불균일로 번진다.</li>
+<li><strong>분포의 비맥스웰성</strong> — 꼬리 하나에 반응 전체가 매달려 있어, 전력·압력을 조금만 바꿔도 조성 변화가 비선형으로 나타난다. 조건 창의 비선형성이 여기서 온다.</li>
+<li><strong>손상의 씨앗</strong> — 쉬스를 건넌 이온 에너지와 UV/VUV 광자는 원하는 식각과 함께 격자 손상·전하 축적(차징)도 만든다. 이 비이상 거동은 <a class="wiki" href="etch-nonidealities.html">식각 비이상 현상</a>에서 이어서 다룬다.</li>
+</ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="dry-etch.html">건식 식각</a> — 플라즈마의 대표 응용</li>
 <li><a class="wiki" href="plasma-map.html">단계별 플라즈마 지도</a> — 공정 단계마다의 플라즈마 역할</li>
+<li><a class="wiki" href="etch-equipment.html">식각 장비</a> — 이 플라즈마를 만드는 하드웨어</li>
+<li><a class="wiki" href="langmuir.html">랭뮤어 프로브</a> — Tₑ·nₑ·전위를 숫자로 재는 법</li>
+<li><a class="wiki" href="oes.html">OES</a> — 들뜬 종의 발광으로 종 조성을 읽는 법</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>준중성·디바이 길이·쉬스·보옴 기준·EEDF와 전형 수치 범위는 플라즈마 공정 표준 교재의 전형값이다: Lieberman &amp; Lichtenberg, <em>Principles of Plasma Discharges and Materials Processing</em> (Wiley, 2nd ed., 2005); Chen, <em>Introduction to Plasma Physics and Controlled Fusion</em> (Springer, 3rd ed., 2016).</li>
+<li>Ar 이온화 문턱 15.8 eV는 원자 물성의 확정값이다. 보옴 속도 2.7 km/s는 위 보옴 식에 Ar 질량과 Tₑ = 3 eV를 넣은 계산값이다.</li>
+<li>부유 전위 관계(약 5 × Tₑ)와 λ_D 수십 µm라는 감각은 <a class="wiki" href="langmuir.html">랭뮤어 프로브</a> 항목의 전형 조건과 맞춘 값으로, 진단 항목과 중복 서술을 피하고 링크로 연결했다.</li>
 </ul>
 </article>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 장비 &gt; 식각 장비</span></li><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="qms.html">QMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 장비 &gt; 식각 장비</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 장비 &gt; 식각 장비</span></li><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="qms.html">QMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 세정</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 분류의 다른 항목</h3><ul><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a> <span style="color:var(--sub)">— 현상·원리 &gt; 플라즈마</span></li></ul></div>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 25일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
