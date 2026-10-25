@@ -41,4 +41,4 @@ tags: 기판, CZ, 단결정
 
 ## 근거
 
-- 본문 수치는 강의노트 2장의 내용을 이관한 것으로, 지멘스 공정·CZ법의 일반 교과서 서술에 근거한다 (교재: Campbell, *Fabrication Engineering at the Micro and Nanoscale*).
+- 본문 수치는 지멘스 공정·CZ법의 일반 교과서 서술에 근거한다 (교재: Campbell, *Fabrication Engineering at the Micro and Nanoscale*).

@@ -38,7 +38,7 @@ RR은 연마 속도, P는 압력, V는 패드와 웨이퍼의 상대 속도, K�
 
 **\[이미지\]** [CMP 패드 컨디셔너 — 연마 중 패드 표면을 긁어 거칠기를 되살린다](https://commons.wikimedia.org/wiki/File:Chemical-mechanical_polishing_%28CMP-108,_conditioner%29.jpg) · cpxmn, CC BY-SA 2.0
 
-**CMP가 쓰이는 곳**: STI, PMD·ILD, W 컨택, Cu 다마신, RMG 게이트, 그리고 하이브리드 본딩(17·18장). 하이브리드 본딩은 Cu 패드가 유전체보다 수 nm 안쪽에 오도록 정밀하게 맞춰야 해서 CMP의 난도가 가장 높다.
+**CMP가 쓰이는 곳**: STI, PMD·ILD, W 컨택, Cu 다마신, RMG 게이트, 그리고 하이브리드 본딩([[첨단 패키징]]). 하이브리드 본딩은 Cu 패드가 유전체보다 수 nm 안쪽에 오도록 정밀하게 맞춰야 해서 CMP의 난도가 가장 높다.
 
 ## 관련 항목
 
