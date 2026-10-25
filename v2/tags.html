@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>태그 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main>
+  <div class="crumb"><a href="index.html">대문</a> › 태그</div>
+  <h1 class="title">태그</h1>
+  <p style="color:var(--sub)">위계를 가로지르는 횡단 묶음은 태그가 맡는다. 전체 179개 태그.</p>
+  <div class="tagrows"><a href="tag/%EA%B4%91%ED%95%99.html">#광학 <span class="count">10</span></a><a href="tag/%EB%B9%84%ED%8C%8C%EA%B4%B4.html">#비파괴 <span class="count">10</span></a><a href="tag/%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%84%9C.html">#스페이서 <span class="count">9</span></a><a href="tag/low-k.html">#low-k <span class="count">9</span></a><a href="tag/%EC%9D%B8%EB%9D%BC%EC%9D%B8.html">#인라인 <span class="count">8</span></a><a href="tag/%EC%A0%84%EC%9E%90%EB%B9%94.html">#전자빔 <span class="count">5</span></a><a href="tag/%ED%94%8C%EB%9D%BC%EC%A6%88%EB%A7%88.html">#플라즈마 <span class="count">5</span></a><a href="tag/X%EC%84%A0.html">#X선 <span class="count">5</span></a><a href="tag/%EB%91%90%EA%BB%98.html">#두께 <span class="count">4</span></a><a href="tag/%ED%83%90%EC%B9%A8.html">#탐침 <span class="count">4</span></a><a href="tag/AFS.html">#AFS <span class="count">4</span></a><a href="tag/SiOCN.html">#SiOCN <span class="count">4</span></a><a href="tag/%EA%B2%B0%ED%95%A8%EA%B2%80%EC%82%AC.html">#결함검사 <span class="count">3</span></a><a href="tag/%EA%B8%B0%EC%83%9D%EC%9A%A9%EB%9F%89.html">#기생용량 <span class="count">3</span></a><a href="tag/%EB%8B%A8%EB%A9%B4.html">#단면 <span class="count">3</span></a><a href="tag/%EB%8F%84%ED%95%91.html">#도핑 <span class="count">3</span></a><a href="tag/%EC%84%A0%ED%83%9D%EB%B9%84.html">#선택비 <span class="count">3</span></a><a href="tag/%EC%8B%A4%EC%8B%9C%EA%B0%84.html">#실시간 <span class="count">3</span></a><a href="tag/%ED%8C%8C%EA%B4%B4.html">#파괴 <span class="count">3</span></a><a href="tag/CD.html">#CD <span class="count">3</span></a><a href="tag/%EA%B1%B0%EC%B9%A0%EA%B8%B0.html">#거칠기 <span class="count">2</span></a><a href="tag/%EA%B8%88%EC%86%8D%EC%98%A4%EC%97%BC.html">#금속오염 <span class="count">2</span></a><a href="tag/%EB%85%B8%EA%B4%91.html">#노광 <span class="count">2</span></a><a href="tag/%EB%9D%BC%EB%94%94%EC%B9%BC.html">#라디칼 <span class="count">2</span></a><a href="tag/%EB%A9%B4%EC%A0%80%ED%95%AD.html">#면저항 <span class="count">2</span></a><a href="tag/%EC%82%B0%ED%99%94%EB%A7%89.html">#산화막 <span class="count">2</span></a><a href="tag/%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8.html">#엔드포인트 <span class="count">2</span></a><a href="tag/%EC%9C%A0%EC%A0%84%EC%B2%B4.html">#유전체 <span class="count">2</span></a><a href="tag/%EC%9D%91%EB%A0%A5.html">#응력 <span class="count">2</span></a><a href="tag/%EC%9E%90%EA%B8%B0%EC%A0%9C%ED%95%9C.html">#자기제한 <span class="count">2</span></a><a href="tag/%EC%A0%81%EC%B8%B5.html">#적층 <span class="count">2</span></a><a href="tag/%EC%A7%80%EB%8F%84.html">#지도 <span class="count">2</span></a><a href="tag/%EC%A7%91%EC%A0%81.html">#집적 <span class="count">2</span></a><a href="tag/%EC%BB%A8%ED%83%9D.html">#컨택 <span class="count">2</span></a><a href="tag/%ED%8A%B8%EB%9E%9C%EC%A7%80%EC%8A%A4%ED%84%B0.html">#트랜지스터 <span class="count">2</span></a><a href="tag/%ED%8C%A8%ED%84%B0%EB%8B%9D.html">#패터닝 <span class="count">2</span></a><a href="tag/%ED%91%9C%EB%A9%B4%EB%B6%84%EC%84%9D.html">#표면분석 <span class="count">2</span></a><a href="tag/ARDE.html">#ARDE <span class="count">2</span></a><a href="tag/GAA.html">#GAA <span class="count">2</span></a><a href="tag/SiGe.html">#SiGe <span class="count">2</span></a><a href="tag/TSV.html">#TSV <span class="count">2</span></a><a href="tag/13.5nm.html">#13.5nm <span class="count">1</span></a><a href="tag/3%EC%B0%A8%EC%9B%90%ED%98%95%EC%83%81.html">#3차원형상 <span class="count">1</span></a><a href="tag/3D%20NAND.html">#3D NAND <span class="count">1</span></a><a href="tag/%EA%B0%80%EC%86%8D.html">#가속 <span class="count">1</span></a><a href="tag/%EA%B0%84%EC%84%AD%EA%B3%84.html">#간섭계 <span class="count">1</span></a><a href="tag/%EA%B0%95%EC%9C%A0%EC%A0%84%EC%B2%B4.html">#강유전체 <span class="count">1</span></a><a href="tag/%EA%B0%9C%EA%B5%AC%EC%88%98.html">#개구수 <span class="count">1</span></a><a href="tag/%EA%B1%B4%EC%8B%9D%20%EC%84%B8%EC%A0%95.html">#건식 세정 <span class="count">1</span></a><a href="tag/%EA%B2%8C%EC%9D%B4%ED%8A%B8%20%EC%A0%88%EC%97%B0%EB%A7%89.html">#게이트 절연막 <span class="count">1</span></a><a href="tag/%EA%B2%B0%EC%A0%95%EA%B5%AC%EC%A1%B0.html">#결정구조 <span class="count">1</span></a><a href="tag/%EA%B2%B0%EC%A0%95%EC%84%B1.html">#결정성 <span class="count">1</span></a><a href="tag/%EA%B2%B0%ED%95%A8%20%EB%B0%80%EB%8F%84.html">#결함 밀도 <span class="count">1</span></a><a href="tag/%EA%B2%B0%ED%95%A9.html">#결합 <span class="count">1</span></a><a href="tag/%EA%B3%84%EB%A9%B4%EC%83%81%ED%83%9C.html">#계면상태 <span class="count">1</span></a><a href="tag/%EA%B3%84%EC%B8%A1.html">#계측 <span class="count">1</span></a><a href="tag/%EA%B3%A0%EC%A2%85%ED%9A%A1%EB%B9%84.html">#고종횡비 <span class="count">1</span></a><a href="tag/%EA%B3%B5%EC%A0%95%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81.html">#공정모니터링 <span class="count">1</span></a><a href="tag/%EA%B3%B5%EC%A0%95%ED%8C%90%EC%A0%95.html">#공정판정 <span class="count">1</span></a><a href="tag/%EA%B4%80%EC%B0%B0.html">#관찰 <span class="count">1</span></a><a href="tag/%EA%B4%91%ED%95%99%EC%83%81%EC%88%98.html">#광학상수 <span class="count">1</span></a><a href="tag/%EA%B7%B9%EB%AF%B8%EB%9F%89%EB%B6%84%EC%84%9D.html">#극미량분석 <span class="count">1</span></a><a href="tag/%EA%B8%88%EC%86%8D%20%EA%B2%8C%EC%9D%B4%ED%8A%B8.html">#금속 게이트 <span class="count">1</span></a><a href="tag/%EA%B8%B0%EC%A4%80%EA%B3%84%EC%B8%A1.html">#기준계측 <span class="count">1</span></a><a href="tag/%EA%B8%B0%ED%8C%90.html">#기판 <span class="count">1</span></a><a href="tag/%EA%B9%8A%EC%9D%B4%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC.html">#깊이프로파일 <span class="count">1</span></a><a href="tag/%EB%82%98%EB%85%B8%EC%8B%9C%ED%8A%B8.html">#나노시트 <span class="count">1</span></a><a href="tag/%EB%82%B4%EB%B6%80%20%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%84%9C.html">#내부 스페이서 <span class="count">1</span></a><a href="tag/%EB%8B%A4%EB%A7%88%EC%8B%A0.html">#다마신 <span class="count">1</span></a><a href="tag/%EB%8B%A8%EA%B2%B0%EC%A0%95.html">#단결정 <span class="count">1</span></a><a href="tag/%EB%8B%A8%EC%B0%A8.html">#단차 <span class="count">1</span></a><a href="tag/%EB%8D%94%EB%AF%B8%20%EA%B2%8C%EC%9D%B4%ED%8A%B8.html">#더미 게이트 <span class="count">1</span></a><a href="tag/%EB%8F%84%EA%B8%88.html">#도금 <span class="count">1</span></a><a href="tag/%EB%8F%84%ED%8E%80%ED%8A%B8.html">#도펀트 <span class="count">1</span></a><a href="tag/%EB%A1%9C%EB%94%A9.html">#로딩 <span class="count">1</span></a><a href="tag/%EB%A6%AC%EC%84%B8%EC%8A%A4.html">#리세스 <span class="count">1</span></a><a href="tag/%EB%A7%B5%ED%95%91.html">#맵핑 <span class="count">1</span></a><a href="tag/%EB%AA%B0%EB%94%A9.html">#몰딩 <span class="count">1</span></a><a href="tag/%EB%AC%BC%EC%A7%88%20%EC%8C%8D.html">#물질 쌍 <span class="count">1</span></a><a href="tag/%EB%AF%B8%EB%9F%89%EB%B6%84%EC%84%9D.html">#미량분석 <span class="count">1</span></a><a href="tag/%EB%B0%80%EB%8F%84.html">#밀도 <span class="count">1</span></a><a href="tag/%EB%B0%B0%EB%A6%AC%EC%96%B4.html">#배리어 <span class="count">1</span></a><a href="tag/%EB%B0%B0%EC%84%A0.html">#배선 <span class="count">1</span></a><a href="tag/%EB%B3%B8%EB%94%A9.html">#본딩 <span class="count">1</span></a><a href="tag/%EB%B6%84%EC%9E%90%EC%A7%84%EB%8F%99.html">#분자진동 <span class="count">1</span></a><a href="tag/%EB%B6%88%EB%9F%89%EB%B6%84%EC%84%9D.html">#불량분석 <span class="count">1</span></a><a href="tag/%EB%B9%84%EC%B9%A8%EC%8A%B5.html">#비침습 <span class="count">1</span></a><a href="tag/%EB%B9%84%ED%8C%8C%EA%B4%B4%EC%84%B1%20%EC%A0%9C%ED%95%9C.html">#비파괴성 제한 <span class="count">1</span></a><a href="tag/%EC%82%AC%EC%9D%B4%ED%81%B4.html">#사이클 <span class="count">1</span></a><a href="tag/%EC%82%B0%EB%9E%80%EA%B3%84%EC%B8%A1.html">#산란계측 <span class="count">1</span></a><a href="tag/%EC%84%A0%ED%8F%AD.html">#선폭 <span class="count">1</span></a><a href="tag/%EC%85%80.html">#셀 <span class="count">1</span></a><a href="tag/%EC%88%98%EC%86%8C.html">#수소 <span class="count">1</span></a><a href="tag/%EC%88%98%EC%9C%A8.html">#수율 <span class="count">1</span></a><a href="tag/%EC%8B%9D%EA%B0%81.html">#식각 <span class="count">1</span></a><a href="tag/%EC%8B%9D%EA%B0%81%20%EC%A0%95%EC%A7%80%EB%A7%89.html">#식각 정지막 <span class="count">1</span></a><a href="tag/%EC%96%B8%EB%8D%94%ED%95%84.html">#언더필 <span class="count">1</span></a><a href="tag/%EC%97%90%ED%94%BC%ED%83%9D%EC%8B%9C.html">#에피택시 <span class="count">1</span></a><a href="tag/%EC%97%B0%EB%A7%88.html">#연마 <span class="count">1</span></a><a href="tag/%EC%97%B4%EC%B2%98%EB%A6%AC.html">#열처리 <span class="count">1</span></a><a href="tag/%EC%97%BC.html">#염 <span class="count">1</span></a><a href="tag/%EC%9B%90%EC%86%8C%EB%B6%84%EC%84%9D.html">#원소분석 <span class="count">1</span></a><a href="tag/%EC%9B%90%EC%86%8C%EC%A1%B0%EC%84%B1.html">#원소조성 <span class="count">1</span></a><a href="tag/%EC%9B%90%EC%9E%90%EB%B6%84%ED%95%B4%EB%8A%A5.html">#원자분해능 <span class="count">1</span></a><a href="tag/%EC%9B%A8%EC%9D%B4%ED%8D%BC%EB%A7%B5%ED%95%91.html">#웨이퍼맵핑 <span class="count">1</span></a><a href="tag/%EC%9D%B4%EB%8F%99%EB%8F%84.html">#이동도 <span class="count">1</span></a><a href="tag/%EC%9D%B4%EB%B0%A9%EC%84%B1.html">#이방성 <span class="count">1</span></a><a href="tag/%EC%9D%B4%EC%98%A8.html">#이온 <span class="count">1</span></a><a href="tag/%EC%9D%B8%ED%84%B0%ED%8F%AC%EC%A0%80.html">#인터포저 <span class="count">1</span></a><a href="tag/%EC%9E%90%EA%B8%B0%EC%A0%95%EB%A0%AC.html">#자기정렬 <span class="count">1</span></a><a href="tag/%EC%9E%94%EB%A5%98%EA%B0%80%EC%8A%A4.html">#잔류가스 <span class="count">1</span></a><a href="tag/%EC%9E%94%EB%A5%98%EB%AC%BC.html">#잔류물 <span class="count">1</span></a><a href="tag/%EC%A0%84%EA%B5%AC%EC%B2%B4.html">#전구체 <span class="count">1</span></a><a href="tag/%EC%A0%84%EA%B8%B0%EC%B8%A1%EC%A0%95.html">#전기측정 <span class="count">1</span></a><a href="tag/%EC%A0%84%EB%8F%84%ED%98%95.html">#전도형 <span class="count">1</span></a><a href="tag/%EC%A0%84%EB%A0%A5%20%EA%B3%B5%EA%B8%89.html">#전력 공급 <span class="count">1</span></a><a href="tag/%EC%A0%84%EC%95%95%EB%8C%80%EB%B9%84.html">#전압대비 <span class="count">1</span></a><a href="tag/%EC%A0%84%EC%9E%90%EB%B0%80%EB%8F%84.html">#전자밀도 <span class="count">1</span></a><a href="tag/%EC%A0%84%EC%9E%90%EC%98%A8%EB%8F%84.html">#전자온도 <span class="count">1</span></a><a href="tag/%EC%A0%84%ED%95%98%EB%B3%B4%EC%A0%95.html">#전하보정 <span class="count">1</span></a><a href="tag/%EC%A0%91%EC%B4%89%EC%8B%9D.html">#접촉식 <span class="count">1</span></a><a href="tag/%EC%A0%91%EC%B4%89%EC%A0%80%ED%95%AD.html">#접촉저항 <span class="count">1</span></a><a href="tag/%EC%A1%B0%EC%84%B1.html">#조성 <span class="count">1</span></a><a href="tag/%EC%A6%9D%EC%B0%A9%EC%86%8D%EB%8F%84.html">#증착속도 <span class="count">1</span></a><a href="tag/%EC%A7%88%EB%9F%89.html">#질량 <span class="count">1</span></a><a href="tag/%EC%A7%88%ED%99%94%EB%A7%89.html">#질화막 <span class="count">1</span></a><a href="tag/%EC%B1%84%EB%84%90%ED%99%80.html">#채널홀 <span class="count">1</span></a><a href="tag/%EC%B8%B5%EA%B0%84%20%EC%A0%88%EC%97%B0%EB%A7%89.html">#층간 절연막 <span class="count">1</span></a><a href="tag/%EC%B9%A8%EC%8A%B5.html">#침습 <span class="count">1</span></a><a href="tag/%EC%BA%90%EB%A6%AC%EC%96%B4%EB%86%8D%EB%8F%84.html">#캐리어농도 <span class="count">1</span></a><a href="tag/%EC%BB%A4%ED%8C%A8%EC%8B%9C%ED%84%B0.html">#커패시터 <span class="count">1</span></a><a href="tag/%ED%83%84%EC%86%8C%20%EC%86%8C%EC%8B%A4.html">#탄소 소실 <span class="count">1</span></a><a href="tag/%ED%85%8C%EC%8A%A4%ED%8A%B8.html">#테스트 <span class="count">1</span></a><a href="tag/%ED%85%8C%EC%8A%A4%ED%8A%B8%EA%B5%AC%EC%A1%B0.html">#테스트구조 <span class="count">1</span></a><a href="tag/%ED%8C%8C%EA%B4%B4%EB%B6%84%EC%84%9D.html">#파괴분석 <span class="count">1</span></a><a href="tag/%ED%8C%8C%ED%8B%B0%ED%81%B4.html">#파티클 <span class="count">1</span></a><a href="tag/%ED%8F%89%ED%83%84%ED%99%94.html">#평탄화 <span class="count">1</span></a><a href="tag/%ED%91%9C%EB%A9%B4.html">#표면 <span class="count">1</span></a><a href="tag/%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC.html">#프로파일 <span class="count">1</span></a><a href="tag/%ED%94%8C%EB%9D%BC%EC%A6%88%EB%A7%88%EC%A7%84%EB%8B%A8.html">#플라즈마진단 <span class="count">1</span></a><a href="tag/%ED%95%98%EB%93%9C%EB%A7%88%EC%8A%A4%ED%81%AC.html">#하드마스크 <span class="count">1</span></a><a href="tag/%ED%95%B4%EC%83%81%EB%8F%84.html">#해상도 <span class="count">1</span></a><a href="tag/%ED%98%95%EC%83%81.html">#형상 <span class="count">1</span></a><a href="tag/%ED%99%94%ED%95%99%EC%83%81%ED%83%9C.html">#화학상태 <span class="count">1</span></a><a href="tag/%ED%99%94%ED%95%A9%EB%AC%BC.html">#화합물 <span class="count">1</span></a><a href="tag/%ED%99%9C%EC%84%B1%ED%99%94.html">#활성화 <span class="count">1</span></a><a href="tag/%ED%9B%84%EA%B3%B5%EC%A0%95.html">#후공정 <span class="count">1</span></a><a href="tag/%ED%9B%84%EB%A9%B4.html">#후면 <span class="count">1</span></a><a href="tag/%ED%9D%90%EB%A6%84.html">#흐름 <span class="count">1</span></a><a href="tag/%ED%9D%A1%EC%88%98%EB%B6%84%EA%B4%91.html">#흡수분광 <span class="count">1</span></a><a href="tag/%ED%9D%AC%EC%83%9D%EC%B8%B5.html">#희생층 <span class="count">1</span></a><a href="tag/BEOL.html">#BEOL <span class="count">1</span></a><a href="tag/CCP.html">#CCP <span class="count">1</span></a><a href="tag/CoWoS.html">#CoWoS <span class="count">1</span></a><a href="tag/Cu.html">#Cu <span class="count">1</span></a><a href="tag/CVD.html">#CVD <span class="count">1</span></a><a href="tag/CZ.html">#CZ <span class="count">1</span></a><a href="tag/ECR.html">#ECR <span class="count">1</span></a><a href="tag/EOT.html">#EOT <span class="count">1</span></a><a href="tag/FEOL.html">#FEOL <span class="count">1</span></a><a href="tag/Gate-last.html">#Gate-last <span class="count">1</span></a><a href="tag/high-k.html">#high-k <span class="count">1</span></a><a href="tag/High-k.html">#High-k <span class="count">1</span></a><a href="tag/ICP.html">#ICP <span class="count">1</span></a><a href="tag/LELE.html">#LELE <span class="count">1</span></a><a href="tag/Miller.html">#Miller <span class="count">1</span></a><a href="tag/MOS.html">#MOS <span class="count">1</span></a><a href="tag/NH4F.html">#NH4F <span class="count">1</span></a><a href="tag/PCM.html">#PCM <span class="count">1</span></a><a href="tag/Poisson.html">#Poisson <span class="count">1</span></a><a href="tag/PR.html">#PR <span class="count">1</span></a><a href="tag/PVD.html">#PVD <span class="count">1</span></a><a href="tag/RC%20%EC%A7%80%EC%97%B0.html">#RC 지연 <span class="count">1</span></a><a href="tag/RCA.html">#RCA <span class="count">1</span></a><a href="tag/RGA.html">#RGA <span class="count">1</span></a><a href="tag/SADP.html">#SADP <span class="count">1</span></a><a href="tag/SEM.html">#SEM <span class="count">1</span></a><a href="tag/SiBCN.html">#SiBCN <span class="count">1</span></a><a href="tag/TEM.html">#TEM <span class="count">1</span></a></div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드</footer>
+</body></html>
