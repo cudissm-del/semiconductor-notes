@@ -3,7 +3,7 @@ title: RMG (Gate-last)
 en: Replacement Metal Gate
 domain: process
 topic: flow
-order: 4
+order: 5
 tags: Gate-last, 더미 게이트
 ---
 

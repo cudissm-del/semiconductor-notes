@@ -3,7 +3,7 @@ title: BSPDN (후면 전력 공급)
 en: Backside Power Delivery
 domain: structure-materials
 topic: packaging
-order: 2
+order: 3
 tags: 전력 공급, 후면
 ---
 

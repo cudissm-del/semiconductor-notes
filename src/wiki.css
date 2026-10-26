@@ -90,3 +90,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 /* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
 table { overflow-wrap: normal; word-break: keep-all; }
 @media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }

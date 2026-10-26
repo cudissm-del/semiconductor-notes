@@ -3,7 +3,7 @@ title: 패키징 소재
 en: Packaging Materials
 domain: structure-materials
 topic: packaging
-order: 3
+order: 4
 tags: 몰딩, 언더필
 ---
 
