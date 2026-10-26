@@ -157,6 +157,19 @@ function renderEntry(e) {
 }
 
 const css = fs.readFileSync(r('src/wiki.css'), 'utf8');
+// KaTeX 공식 CSS (v2/assets/katex/katex.min.css) — 수식 구조(분수·첨자 배치, MathML 숨김)에 필수라
+// 수식이 있는 페이지 head에서만 링크한다. 폰트 파일은 바이너리라 스냅샷 push가 안 되므로,
+// @font-face는 woff2만 data URI로 내장해 파일 없이 자기완결로 동작하게 한다.
+{
+  const katexDir = path.join(OUT, 'assets', 'katex');
+  fs.mkdirSync(katexDir, { recursive: true });
+  const katexCss = fs.readFileSync(r('node_modules/katex/dist/katex.min.css'), 'utf8')
+    .replace(/src:url\(fonts\/(.+?)\.woff2\) format\("woff2"\),url\(fonts\/.+?\.woff\) format\("woff"\),url\(fonts\/.+?\.ttf\) format\("truetype"\)/g,
+      (_, name) => `src:url(data:font/woff2;base64,${fs.readFileSync(r(`node_modules/katex/dist/fonts/${name}.woff2`)).toString('base64')}) format("woff2")`);
+  if (katexCss.includes('url(fonts/')) console.warn('⚠ KaTeX CSS 폰트 내장 실패: url(fonts/) 잔존');
+  fs.writeFileSync(path.join(katexDir, 'katex.min.css'), katexCss);
+}
+const hasMath = html => (html || '').includes('class="katex');
 // 구조 재편 페이지 (영역·주제·태그·사이드 트리·이전/다음) 전용 보충 스타일
 const extraCss = `
 main.wide { max-width: 1180px; }
@@ -171,7 +184,7 @@ main.wide { max-width: 1180px; }
 .side li { margin: 3px 0; }
 .side li a { color: var(--sub); }
 .side li.cur a { color: var(--accent); font-weight: 700; }
-@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
 .prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
 .prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
 .badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
@@ -206,9 +219,9 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 `;
 const updated = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());
 const plain = s => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
-const head = (title, prefix) => `<!DOCTYPE html>
+const head = (title, prefix, math = false) => `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${title}</title><style>${css}${extraCss}</style></head>
+<title>${title}</title>${math ? `<link rel="stylesheet" href="${prefix}assets/katex/katex.min.css">` : ''}<style>${css}${extraCss}</style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="${prefix}index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>`;
 const foot = `<footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
@@ -274,7 +287,7 @@ for (const e of entries) {
   const crumb = e.domainHub
     ? `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › ${e.title}`
     : `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › <a href="../${topicPage(e.domain, e.topic)}">${topicName(e)}</a> › ${e.title}`;
-  const page = `${head(`${e.title} — 반도체 백과`, '../')}
+  const page = `${head(`${e.title} — 반도체 백과`, '../', hasMath(bodies.get(e.slug)))}
 <main class="wide">
  <div class="layout">
   <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body">${treeHtml(e)}</div></aside>
@@ -324,7 +337,7 @@ for (const d of DOMAINS) {
     const hub = items.find(x => x.hub);
     return `<a class="card" href="../${topicPage(d.id, t.id)}"><div class="t">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></div><div class="e">${items.length}개 항목${hub ? ` · 허브: ${hub.title}` : ''}</div><div class="d">${items.map(x => x.title).join(' · ')}</div></a>`;
   }).join('');
-  const page = `${head(`${d.name} — 반도체 백과`, '../')}
+  const page = `${head(`${d.name} — 반도체 백과`, '../', dHub ? hasMath(bodies.get(dHub.slug)) : false)}
 <main>
   <div class="crumb"><a href="../index.html">대문</a> › ${d.name}</div>
   <h1 class="title">${d.name}</h1>
@@ -346,7 +359,7 @@ for (const d of DOMAINS) for (const t of d.topics) {
   const overview = hub
     ? `<article>${rebaseBody(overviewOf(bodies.get(hub.slug), hub.slug))}</article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/${hub.slug}.html">${hub.title}</a>의 정의와 개요까지만 실었다. <a href="../e/${hub.slug}.html">전문 읽기 →</a></p>`
     : `<p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>`;
-  const page = `${head(`${t.name} — ${d.name} · 반도체 백과`, '../')}
+  const page = `${head(`${t.name} — ${d.name} · 반도체 백과`, '../', hasMath(overview))}
 <main>
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/${d.id}.html">${d.name}</a> › ${t.name}</div>
   <h1 class="title">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></h1>
