@@ -93,6 +93,13 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 table { overflow-wrap: normal; word-break: keep-all; }
 @media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
 
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -143,12 +150,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <main>
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/process.html">공정</a> › 막 형성·평탄화</div>
   <h1 class="title">막 형성·평탄화 <span class="badge">허브형</span></h1>
-  <p style="color:var(--sub)">공정 영역의 주제 · 전체 3개 항목을 읽는 순서대로.</p>
+  <p style="color:var(--sub)">공정 영역의 주제 · 전체 4개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>기판 위에 막을 올리는 방법들의 비교 — CVD·PVD·전해도금·열산화를 단차 피복, 막질, 온도로 가른다.</p>
 </blockquote><p>증착 방식은 &quot;얼마나 고르게 덮는가(컨포멀성)&quot;, &quot;몇 도에서 하는가(열 예산)&quot;, &quot;막질이 어떤가&quot;의 세 축으로 고른다. 같은 SiO₂라도 STI 갭필, 스페이서, BEOL 층간막은 각각 다른 방식으로 올린다.</p></article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/deposition.html">증착</a>의 정의와 개요까지만 실었다. <a href="../e/deposition.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/ald.html"><span class="t">ALD (원자층 증착)</span></a><div class="e">Atomic Layer Deposition</div><div class="d">전구체와 반응 가스를 번갈아 넣어 표면 반응의 자기제한성으로 한 층씩 쌓는 증착.</div></li><li><a href="../e/cmp.html"><span class="t">CMP</span></a><div class="e">Chemical Mechanical Polishing</div><div class="d">화학 반응과 기계적 연마를 함께 써 표면을 평탄하게 깎는 공정. 다마신과 웨이퍼 연마의 기반이다.</div></li></ol>
+  <ol class="tlist"><li><a href="../e/ald.html"><span class="t">ALD (원자층 증착)</span></a><div class="e">Atomic Layer Deposition</div><div class="d">전구체와 반응 가스를 번갈아 넣어 표면 반응의 자기제한성으로 한 층씩 쌓는 증착.</div></li><li><a href="../e/cmp.html"><span class="t">CMP</span></a><div class="e">Chemical Mechanical Polishing</div><div class="d">화학 반응과 기계적 연마를 함께 써 표면을 평탄하게 깎는 공정. 다마신과 웨이퍼 연마의 기반이다.</div></li><li><a href="../e/epitaxy.html"><span class="t">에피택시</span></a><div class="e">Epitaxy</div><div class="d">에피택시는 단결정 기판 위에 그 결정 배열을 그대로 이어받는 단결정 막을 키우는 공정이다. 웨이퍼, 소스/드레인, GAA 초격자처럼 &quot;결정이어야 하는 막&quot;은 모두 이 공정으로 만든다.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

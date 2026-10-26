@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공정 제어 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+</style></head>
+<body>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div><div class="tn-t"><a href="../t/principles-ops--plasma.html">플라즈마</a></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t open"><a href="../t/principles-ops--yield-quality.html">수율·품질</a><ul><li><a href="yield-model.html">수율 모델</a></li><li class="cur"><a href="process-control.html">공정 제어</a></li><li><a href="defect-control.html">결함·오염 관리</a></li></ul></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--yield-quality.html">수율·품질</a> › 공정 제어</div>
+  <h1 class="title">공정 제어</h1>
+  <div class="en">Process Control (SPC · APC · FDC · R2R · VM)</div>
+  <div class="meta"><span class="chip cat">원리·운영 &gt; 수율·품질</span><span class="chip">#SPC</span><span class="chip">#APC</span><span class="chip">#런투런</span><span class="chip">#FDC</span><span class="chip">#가상 계측</span><a class="chip" href="../tag/%EC%88%98%EC%9C%A8.html">#수율</a></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <article><blockquote>
+<p>공정 제어는 공정 결과가 목표에서 벗어나지 않도록 감시하고 바로잡는 체계다. 결과를 통계로 감시하는 SPC와, 장비 데이터와 계측값으로 다음 런을 보정하는 APC가 두 축이다.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>같은 레시피로 돌려도 결과는 조금씩 흔들린다. 챔버 벽에 쌓이는 막, 소모 부품의 마모, 들어오는 웨이퍼의 두께 차이가 원인이다. 공정이 수백 단계로 이어지는 반도체에서는 한 단계의 작은 치우침이 뒤 단계로 전파된다. 결국 <a class="wiki" href="yield-model.html">수율 모델</a>에서 말하는 결함과 산포가 된다. 공정 제어는 두 가지를 한다.</p>
+<ul>
+<li><strong>감시</strong>: 지금 공정이 평소와 같은 상태인지 판단한다(SPC, FDC).</li>
+<li><strong>보정</strong>: 흔들림을 알고 있다면 다음 런의 레시피를 미리 조정한다(R2R, 피드포워드).</li>
+</ul>
+<h2 id="구성-요소">구성 요소</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>도구</th>
+<th>무엇을 보나</th>
+<th>무엇을 하나</th>
+<th>시간 척도</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SPC (통계적 공정 관리)</td>
+<td>계측 결과(두께, CD, 오버레이 등)</td>
+<td>관리도로 이상 추세를 잡아 공정을 멈추거나 조사한다</td>
+<td>로트·웨이퍼 단위</td>
+</tr>
+<tr>
+<td>FDC (이상 감지·분류)</td>
+<td>장비 센서 신호(압력, RF 전력, 온도, 유량, OES 등)</td>
+<td>신호 패턴이 평소와 다르면 경보를 내고, 원인을 분류한다</td>
+<td>런 중 실시간</td>
+</tr>
+<tr>
+<td>R2R (런투런 제어)</td>
+<td>직전 런의 계측 결과</td>
+<td>다음 런의 레시피 변수(시간, 도즈 등)를 보정한다</td>
+<td>런 단위</td>
+</tr>
+<tr>
+<td>피드포워드</td>
+<td>앞 공정의 계측값</td>
+<td>들어오는 웨이퍼 상태에 맞춰 이번 공정을 조정한다</td>
+<td>웨이퍼 단위</td>
+</tr>
+<tr>
+<td>VM (가상 계측)</td>
+<td>장비 센서 데이터</td>
+<td>계측하지 않은 웨이퍼의 결과를 모델로 추정한다</td>
+<td>웨이퍼 단위</td>
+</tr>
+</tbody></table></div>
+<p>넓은 의미의 APC(advanced process control)는 FDC·R2R·피드포워드·VM을 묶어 부르는 말이다. 장비 안에서 압력을 잡는 &quot;자동 압력 제어(APC)&quot; 밸브와는 다른 뜻이니 구분한다(<a class="wiki" href="etch-equipment.html">식각 장비</a>).</p>
+<h2 id="원리">원리</h2>
+<ul>
+<li><strong>관리도와 관리 한계</strong>: SPC는 공정이 안정되어 있을 때의 평균과 표준편차로 관리 한계(보통 평균 ± 3σ)를 정한다. 점 하나가 한계를 넘거나, 한계 안이라도 연속으로 한쪽에 몰리는 패턴이 나오면 &quot;특별 원인&quot;이 생겼다고 본다. 규격(스펙)은 제품이 요구하는 범위이고, 관리 한계는 공정이 실제로 보이는 범위다. 둘은 다른 개념이다.</li>
+<li><strong>공정 능력 지수</strong>: 규격 폭을 공정 산포와 비교한 값이다. Cp는 산포만 보고, Cpk는 평균이 규격 중심에서 얼마나 치우쳤는지도 반영한다(USL·LSL은 규격 상한·하한, μ는 평균). 몇 이상이면 충분하다고 보는지는 업체·공정마다 다르다 [근거 대기 — 기준값과 출처].</li>
+</ul>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mi>p</mi></msub><mo>=</mo><mfrac><mrow><mi>U</mi><mi>S</mi><mi>L</mi><mo>−</mo><mi>L</mi><mi>S</mi><mi>L</mi></mrow><mrow><mn>6</mn><mi>σ</mi></mrow></mfrac><mo separator="true">,</mo><mspace width="2em"/><msub><mi>C</mi><mrow><mi>p</mi><mi>k</mi></mrow></msub><mo>=</mo><mi>min</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mfrac><mrow><mi>U</mi><mi>S</mi><mi>L</mi><mo>−</mo><mi>μ</mi></mrow><mrow><mn>3</mn><mi>σ</mi></mrow></mfrac><mo separator="true">,</mo><mtext> </mtext><mfrac><mrow><mi>μ</mi><mo>−</mo><mi>L</mi><mi>S</mi><mi>L</mi></mrow><mrow><mn>3</mn><mi>σ</mi></mrow></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">C_p = \frac{USL - LSL}{6\sigma}, \qquad C_{pk} = \min\left(\frac{USL - \mu}{3\sigma},\ \frac{\mu - LSL}{3\sigma}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">6</span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight" style="margin-right:0.0315em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mop">min</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">μ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></div>
+<ul>
+<li><strong>R2R의 기본형 — EWMA</strong>: 직전 런들의 오차를 지수 가중 이동평균으로 걸러 공정의 &quot;현재 치우침&quot;을 추정한다. 그 치우침을 상쇄하도록 다음 런의 입력을 바꾼다. 가중치가 크면 빨리 따라가지만 계측 잡음에도 흔들리고, 작으면 안정적이지만 느리다.</li>
+<li><strong>대표 적용 예</strong><ul>
+<li><a class="wiki" href="etch-equipment.html">식각 장비</a>: 종말점 시간의 드리프트를 다음 런의 과식각 시간에 되먹인다(<a class="wiki" href="oes.html">OES</a>).</li>
+<li><a class="wiki" href="lithography.html">리소그래피</a>: 오버레이·CD 계측값으로 다음 로트의 정렬 보정과 도즈를 조정한다.</li>
+<li><a class="wiki" href="cmp.html">CMP</a>: 들어오는 막 두께(피드포워드)와 직전 연마 결과(피드백)로 연마 시간을 정한다.</li>
+</ul>
+</li>
+<li><strong>FDC와 VM은 데이터 문제다</strong>: 센서 신호 수백 개의 시계열에서 &quot;평소와 다름&quot;을 찾는다. 다변량 통계(PCA 등)나 기계학습 모델을 쓴다. 모델은 챔버 정비(PM) 뒤나 레시피 변경 뒤에 다시 맞춰야 한다.</li>
+</ul>
+<h2 id="핵심-수치">핵심 수치</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>지표</th>
+<th>무엇을 정하나</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>관리 한계 폭</td>
+<td>경보 민감도</td>
+<td>평균 ± 3σ가 관례 [근거 대기 — SPC 교재]</td>
+</tr>
+<tr>
+<td>Cpk 기준</td>
+<td>공정이 규격을 안정적으로 만족하는지</td>
+<td>[근거 대기]</td>
+</tr>
+<tr>
+<td>계측 샘플링 비율</td>
+<td>계측 비용과 감시 범위</td>
+<td>[근거 대기 — 공정·업체별]</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p>근거 없는 수치는 넣지 않는다. 업체별 운용값은 공개된 출처가 있는 것만 시점과 함께 적는다.</p>
+</blockquote>
+<h2 id="한계">한계</h2>
+<ul>
+<li><strong>계측 지연과 샘플링</strong>: 계측은 비싸고 느려서 일부 웨이퍼만 잔다. 보정은 늘 한 박자 늦고, 재지 않은 웨이퍼의 상태는 추정에 의존한다. VM이 이 공백을 메우려는 시도다.</li>
+<li><strong>과보정</strong>: 계측 잡음까지 따라 보정하면 오히려 산포가 커진다. R2R 가중치와 보정 상한을 정하는 이유다.</li>
+<li><strong>모델 노후화</strong>: 챔버 정비, 부품 교체, 제품 혼류(여러 제품이 한 장비를 공유)로 공정 상태가 바뀌면 FDC·VM 모델의 기준이 어긋난다.</li>
+<li><strong>원인과 증상의 분리</strong>: 경보는 &quot;다르다&quot;만 알려 준다. 원인 진단에는 여전히 계측과 엔지니어의 분석이 필요하다(<a class="wiki" href="defect-control.html">결함·오염 관리</a>).</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="yield-model.html">수율 모델</a> — 결함·산포가 수율로 바뀌는 계산</li>
+<li><a class="wiki" href="defect-control.html">결함·오염 관리</a> — 검사·분류·원인 분석</li>
+<li><a class="wiki" href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> — 제어의 입력이 되는 계측</li>
+<li><a class="wiki" href="etch-equipment.html">식각 장비</a> — 장비 센서(VI 프로브, OES)와 런투런 보정</li>
+<li><a class="wiki" href="oes.html">OES</a> — 종말점과 챔버 상태 신호</li>
+<li><a class="wiki" href="lithography.html">리소그래피</a> — 오버레이·도즈 보정</li>
+<li><a class="wiki" href="cmp.html">CMP</a> — 연마 시간의 피드포워드·피드백</li>
+<li><a class="wiki" href="wat.html">WAT</a> — 공정 후 전기 특성 감시</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>[근거 대기] SPC 교재: Montgomery, <em>Introduction to Statistical Quality Control</em> (Wiley) — 판과 장 번호를 확인한 뒤 기입</li>
+<li>[근거 대기] 반도체 R2R·APC 리뷰 1편 — DOI는 Crossref로 대조한 뒤 기입</li>
+<li>[근거 대기] 가상 계측(VM) 대표 논문 1편</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="yield-model.html">← 이전 · 수율 모델</a><a href="defect-control.html">다음 · 결함·오염 관리 →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var slug = "process-control", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body></html>

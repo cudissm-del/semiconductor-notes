@@ -93,6 +93,13 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 table { overflow-wrap: normal; word-break: keep-all; }
 @media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
 
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -143,10 +150,10 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <main>
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › 트랜지스터</div>
   <h1 class="title">트랜지스터 <span class="badge list">목록형</span></h1>
-  <p style="color:var(--sub)">구조·재료 영역의 주제 · 전체 3개 항목을 읽는 순서대로.</p>
+  <p style="color:var(--sub)">구조·재료 영역의 주제 · 전체 4개 항목을 읽는 순서대로.</p>
   <p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/gaa.html"><span class="t">GAA 나노시트</span></a><div class="e">Gate-All-Around Nanosheet</div><div class="d">채널을 게이트가 사방으로 감싸는 나노시트 트랜지스터의 구조와 제조 흐름, 그리고 다음 단계.</div></li><li><a href="../e/gate-stack.html"><span class="t">게이트 스택 (HKMG)</span></a><div class="e">Gate Stack (HKMG)</div><div class="d">High-k 절연막과 금속 게이트로 이뤄진 게이트 구조. EOT, 일함수, 문턱전압 조정의 원리.</div></li><li><a href="../e/sac.html"><span class="t">SAC (자기정렬 컨택)</span></a><div class="e">Self-Aligned Contact</div><div class="d">게이트 위 절연 캡 덕분에 정렬 오차를 스스로 흡수하며 게이트 옆에 붙는 컨택 구조.</div></li></ol>
+  <ol class="tlist"><li><a href="../e/finfet.html"><span class="t">FinFET</span></a><div class="e">Fin Field-Effect Transistor</div><div class="d">FinFET은 실리콘 채널을 얇은 지느러미(핀)처럼 세우고 게이트가 그 세 면을 감싸게 만든 트랜지스터다. 평면 트랜지스터에서 GAA 나노시트로 넘어가는 사이의 세대를 맡았다.</div></li><li><a href="../e/gaa.html"><span class="t">GAA 나노시트</span></a><div class="e">Gate-All-Around Nanosheet</div><div class="d">채널을 게이트가 사방으로 감싸는 나노시트 트랜지스터의 구조와 제조 흐름, 그리고 다음 단계.</div></li><li><a href="../e/gate-stack.html"><span class="t">게이트 스택 (HKMG)</span></a><div class="e">Gate Stack (HKMG)</div><div class="d">High-k 절연막과 금속 게이트로 이뤄진 게이트 구조. EOT, 일함수, 문턱전압 조정의 원리.</div></li><li><a href="../e/sac.html"><span class="t">SAC (자기정렬 컨택)</span></a><div class="e">Self-Aligned Contact</div><div class="d">게이트 위 절연 캡 덕분에 정렬 오차를 스스로 흡수하며 게이트 옆에 붙는 컨택 구조.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>

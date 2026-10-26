@@ -93,6 +93,13 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 table { overflow-wrap: normal; word-break: keep-all; }
 @media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
 
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -142,7 +149,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">22</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t open"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t"><a href="../t/metrology--shape-dimension.html">형상·치수</a></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">7</span></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t open"><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t"><a href="../t/metrology--shape-dimension.html">형상·치수</a></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/metrology.html">계측·분석</a> › 계측 개요 — 무엇을 무엇으로 재나</div>
   <h1 class="title">계측 개요 — 무엇을 무엇으로 재나</h1>
@@ -258,7 +265,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 </article>
   
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="process-control.html">공정 제어</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
   </div>
  </div>
 </main>

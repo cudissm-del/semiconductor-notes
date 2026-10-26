@@ -93,6 +93,13 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 table { overflow-wrap: normal; word-break: keep-all; }
 @media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
 
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -143,12 +150,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <main>
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › 패키징</div>
   <h1 class="title">패키징 <span class="badge">허브형</span></h1>
-  <p style="color:var(--sub)">구조·재료 영역의 주제 · 전체 4개 항목을 읽는 순서대로.</p>
+  <p style="color:var(--sub)">구조·재료 영역의 주제 · 전체 5개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>완성된 웨이퍼를 검사하고, 자르고, 연결하고, 보호해 칩으로 만드는 후공정.</p>
 </blockquote><p>후공정은 완성된 웨이퍼를 검사하고 개별 칩으로 잘라, 외부와 전기적으로 연결되고 물리적으로 보호되는 패키지로 만드는 단계다. 칩을 보호하고, 신호·전원을 기판(PCB)과 이어주고, 열을 빼내는 세 가지 역할을 한다.</p></article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/packaging.html">패키징과 테스트</a>의 정의와 개요까지만 실었다. <a href="../e/packaging.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/advanced-packaging.html"><span class="t">첨단 패키징</span></a><div class="e">Advanced Packaging</div><div class="d">인터포저와 적층으로 여러 칩을 하나의 시스템으로 묶는 패키징 기술 (CoWoS 계열 등).</div></li><li><a href="../e/bspdn.html"><span class="t">BSPDN (후면 전력 공급)</span></a><div class="e">Backside Power Delivery</div><div class="d">전력 배선을 웨이퍼 뒷면으로 돌려 앞면 신호 배선의 혼잡을 푸는 구조 (Backside Power Delivery Network).</div></li><li><a href="../e/packaging-materials.html"><span class="t">패키징 소재</span></a><div class="e">Packaging Materials</div><div class="d">칩을 보호하고 외부와 잇는 패키징 소재들 — 몰딩 컴파운드, 언더필, 기판 재료 등.</div></li></ol>
+  <ol class="tlist"><li><a href="../e/advanced-packaging.html"><span class="t">첨단 패키징</span></a><div class="e">Advanced Packaging</div><div class="d">인터포저와 적층으로 여러 칩을 하나의 시스템으로 묶는 패키징 기술 (CoWoS 계열 등).</div></li><li><a href="../e/tsv.html"><span class="t">TSV</span></a><div class="e">Through-Silicon Via</div><div class="d">TSV(실리콘 관통 전극)는 실리콘 기판을 위아래로 뚫고 Cu로 채운 수직 전극이다. 다이를 쌓아 칩끼리 짧은 경로로 연결하는 3D 적층의 기본 부품이다.</div></li><li><a href="../e/bspdn.html"><span class="t">BSPDN (후면 전력 공급)</span></a><div class="e">Backside Power Delivery</div><div class="d">전력 배선을 웨이퍼 뒷면으로 돌려 앞면 신호 배선의 혼잡을 푸는 구조 (Backside Power Delivery Network).</div></li><li><a href="../e/packaging-materials.html"><span class="t">패키징 소재</span></a><div class="e">Packaging Materials</div><div class="d">칩을 보호하고 외부와 잇는 패키징 소재들 — 몰딩 컴파운드, 언더필, 기판 재료 등.</div></li></ol>
 </main>
 <footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>
