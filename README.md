@@ -4,6 +4,17 @@
 
 **사이트:** https://cudissm-del.github.io/semiconductor-notes/
 
+## 반도체 백과 (v2)
+
+위 강의노트를 항목 단위 위키로 재편한 지식창고입니다.
+
+**백과 주소:** https://cudissm-del.github.io/semiconductor-notes/v2/
+
+- 영역 4개(공정 · 구조·재료 · 계측·분석 · 원리·운영) > 주제 20개 > 항목 95개, 3단 구조
+- 항목 사이 위키 링크 544개, 역링크와 이전/다음 항목 이동
+- 영역·주제를 가로지르는 태그 묶음, 항목 검색, 즐겨찾기(브라우저에 저장)
+- 빌드: `content/entries/`의 항목 마크다운을 `build2.mjs`가 `v2/`로 변환 (`node build2.mjs`), 설계 문서는 `DESIGN.md`
+
 ## 기능
 
 - 파트별 목차와 현재 위치 표시, 모바일 메뉴
@@ -23,6 +34,10 @@
 | `src/template.html`, `src/site.css`, `src/site.js` | 페이지 틀, 스타일, 동작 |
 | `build.mjs` | 빌드 스크립트 → `index.html` |
 | `index.html`, `search-index.json`, `assets/` | GitHub Pages가 그대로 서비스하는 결과물 |
+| `content/entries/` | 백과 항목 원본 (영역/주제/항목 마크다운) |
+| `DESIGN.md` | 백과 설계 (분류 체계·등급·빌드 규칙) |
+| `build2.mjs`, `src/wiki.css` | 백과 빌드 스크립트와 스타일 → `v2/` |
+| `v2/` | 백과 결과물 (GitHub Pages가 `/v2/`로 서비스) |
 
 ## 업데이트 방법
 
