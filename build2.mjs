@@ -255,24 +255,41 @@ const overviewOf = (html, slug) => {
 // (로컬 이미지 ../assets/ 경로는 모든 페이지가 v2 바로 아래 한 단계라 그대로 맞는다)
 const rebaseBody = html => html.replace(/<a class="wiki" href="/g, '<a class="wiki" href="../e/');
 
-// ── 왼쪽 트리 (항목 페이지용 — 현재 영역·주제만 펼침) ────────────
-function treeHtml(cur) {
+// ── 왼쪽 트리 (전 페이지 공통 — 현재 영역·주제만 펼침) ────────────
+// P: 페이지 위치별 링크 빌더 { d: 영역, t: 주제, e: 항목 }
+const P_E = { d: id => `../d/${id}.html`, t: (x, y) => `../${topicPage(x, y)}`, e: s => `${s}.html` };
+const P_SUB = { d: id => `../d/${id}.html`, t: (x, y) => `../${topicPage(x, y)}`, e: s => `../e/${s}.html` };
+const P_ROOT = { d: id => `d/${id}.html`, t: (x, y) => topicPage(x, y), e: s => `e/${s}.html` };
+function treeHtml(cur, P) {
+  cur = cur || {};
   return DOMAINS.map(d => {
     const list = entries.filter(e => e.domain === d.id);
-    const head = `<div class="tn-d"><a href="../d/${d.id}.html">${d.name}</a> <span class="count">${list.length}</span></div>`;
+    const head = `<div class="tn-d"><a href="${P.d(d.id)}">${d.name}</a> <span class="count">${list.length}</span></div>`;
     if (d.id !== cur.domain) return `<div class="tn">${head}</div>`;
     const dHub = list.find(e => e.domainHub);
-    const hubLine = dHub ? `<div class="tn-t${cur.domainHub ? ' open' : ''}"><a href="${dHub.slug}.html">${dHub.title}</a></div>` : '';
+    const hubLine = dHub ? `<div class="tn-t${cur.domainHub ? ' open' : ''}"><a href="${P.e(dHub.slug)}">${dHub.title}</a></div>` : '';
     const topics = d.topics.map(t => {
       const items = topicEntries(d.id, t.id);
       if (t.id === cur.topic && !cur.domainHub) {
-        return `<div class="tn-t open"><a href="../${topicPage(d.id, t.id)}">${t.name}</a><ul>${items.map(x => `<li${x.slug === cur.slug ? ' class="cur"' : ''}><a href="${x.slug}.html">${x.title}</a></li>`).join('')}</ul></div>`;
+        return `<div class="tn-t open"><a href="${P.t(d.id, t.id)}">${t.name}</a><ul>${items.map(x => `<li${x.slug === cur.slug ? ' class="cur"' : ''}><a href="${P.e(x.slug)}">${x.title}</a></li>`).join('')}</ul></div>`;
       }
-      return `<div class="tn-t"><a href="../${topicPage(d.id, t.id)}">${t.name}</a></div>`;
+      return `<div class="tn-t"><a href="${P.t(d.id, t.id)}">${t.name}</a></div>`;
     }).join('');
     return `<div class="tn">${head}${hubLine}${topics}</div>`;
   }).join('');
 }
+const sideHtml = (cur, P) => `<aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body">${treeHtml(cur, P)}</div></aside>`;
+const sideScript = `<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+})();
+</script>
+</body></html>`;
 
 // ── 항목 페이지 ──────────────────────────────────────────────────
 for (const e of entries) {
@@ -290,7 +307,7 @@ for (const e of entries) {
   const page = `${head(`${e.title} — 반도체 백과`, '../', hasMath(bodies.get(e.slug)))}
 <main class="wide">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body">${treeHtml(e)}</div></aside>
+  ${sideHtml(e, P_E)}
   <div class="content">
   <div class="crumb">${crumb}</div>
   <h1 class="title">${e.title}</h1>
@@ -338,14 +355,20 @@ for (const d of DOMAINS) {
     return `<a class="card" href="../${topicPage(d.id, t.id)}"><div class="t">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></div><div class="e">${items.length}개 항목${hub ? ` · 허브: ${hub.title}` : ''}</div><div class="d">${items.map(x => x.title).join(' · ')}</div></a>`;
   }).join('');
   const page = `${head(`${d.name} — 반도체 백과`, '../', dHub ? hasMath(bodies.get(dHub.slug)) : false)}
-<main>
+<main class="wide">
+ <div class="layout">
+  ${sideHtml({ domain: d.id, topic: null, slug: null, domainHub: false }, P_SUB)}
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › ${d.name}</div>
   <h1 class="title">${d.name}</h1>
   <p style="color:var(--sub)">${d.desc} 전체 ${list.length}개 항목 · 주제 ${d.topics.length}개.</p>
   ${dHub ? `<article>${rebaseBody(bodies.get(dHub.slug))}</article><p class="count">영역 허브 항목 <a href="../e/${dHub.slug}.html">${dHub.title}</a>의 본문입니다. 항목 페이지에서도 볼 수 있습니다.</p>` : ''}
   <section class="cat-sec"><h2>주제</h2><div class="cards">${topicCards}</div></section>
+  </div>
+ </div>
 </main>
-${foot}`;
+${footOpen}
+${sideScript}`;
   fs.writeFileSync(path.join(OUT, 'd', `${d.id}.html`), page);
 }
 
@@ -360,15 +383,21 @@ for (const d of DOMAINS) for (const t of d.topics) {
     ? `<article>${rebaseBody(overviewOf(bodies.get(hub.slug), hub.slug))}</article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/${hub.slug}.html">${hub.title}</a>의 정의와 개요까지만 실었다. <a href="../e/${hub.slug}.html">전문 읽기 →</a></p>`
     : `<p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>`;
   const page = `${head(`${t.name} — ${d.name} · 반도체 백과`, '../', hasMath(overview))}
-<main>
+<main class="wide">
+ <div class="layout">
+  ${sideHtml({ domain: d.id, topic: t.id, slug: null, domainHub: false }, P_SUB)}
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/${d.id}.html">${d.name}</a> › ${t.name}</div>
   <h1 class="title">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></h1>
   <p style="color:var(--sub)">${d.name} 영역의 주제 · 전체 ${items.length}개 항목을 읽는 순서대로.</p>
   ${overview}
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
   ${listHtml}
+  </div>
+ </div>
 </main>
-${foot}`;
+${footOpen}
+${sideScript}`;
   fs.writeFileSync(path.join(OUT, 't', `${d.id}--${t.id}.html`), page);
 }
 
@@ -379,14 +408,19 @@ const tagList = [...tagMap.entries()].sort((a, b) => b[1].length - a[1].length |
 // 노출 규칙: 2개 이상 항목에 쓰인 태그만 목록·페이지를 만든다. 1회용 태그는 항목 페이지의 링크 없는 칩으로만 남는다.
 const exposedTags = tagList.filter(([, list]) => list.length >= 2);
 const tagsPage = `${head('태그 — 반도체 백과', '')}
-<main>
+<main class="wide">
+ <div class="layout">
+  ${sideHtml(null, P_ROOT)}
+  <div class="content">
   <div class="crumb"><a href="index.html">대문</a> › 태그</div>
   <h1 class="title">태그</h1>
   <p style="color:var(--sub)">위계를 가로지르는 횡단 묶음은 태그가 맡는다. 전체 ${tagList.length}개 태그 중 2개 이상 항목에 쓰인 ${exposedTags.length}개만 모았다 (1개 항목에만 쓰인 태그는 항목 페이지에 텍스트 칩으로만 표시).</p>
   <div class="tagrows">${exposedTags.map(([t, list]) => `<a href="tag/${encodeURIComponent(t)}.html">#${t} <span class="count">${list.length}</span></a>`).join('')}</div>
+  </div>
+ </div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
-</body></html>`;
+${sideScript}`;
 fs.writeFileSync(path.join(OUT, 'tags.html'), tagsPage);
 for (const [t, list] of exposedTags) {
   const sections = DOMAINS.map(d => {
@@ -395,13 +429,19 @@ for (const [t, list] of exposedTags) {
     return `<div class="sub-name">${d.name}</div><div class="cards">${items.map(x => `<a class="card" href="../e/${x.slug}.html"><div class="t">${x.title}</div><div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></a>`).join('')}</div>`;
   }).join('');
   const page = `${head(`#${t} — 반도체 백과`, '../')}
-<main>
+<main class="wide">
+ <div class="layout">
+  ${sideHtml(null, P_SUB)}
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #${t}</div>
   <h1 class="title">#${t}</h1>
   <p style="color:var(--sub)">${list.length}개 항목에 붙은 태그.</p>
   ${sections}
+  </div>
+ </div>
 </main>
-${foot}`;
+${footOpen}
+${sideScript}`;
   fs.writeFileSync(path.join(OUT, 'tag', `${t}.html`), page);
 }
 
@@ -437,7 +477,10 @@ const indexPage = `<!DOCTYPE html>
 <title>반도체 백과</title><style>${css}${extraCss}</style></head>
 <body>
 <header class="top"><div class="in"><span class="brand">반도체 백과</span><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
+<main class="wide">
+ <div class="layout">
+  ${sideHtml(null, P_ROOT)}
+  <div class="content">
   <div class="hero"><h1>반도체 백과</h1><p>반도체 공정의 모든 것을 항목 단위로 쌓는 지식창고. 전체 ${entries.length}개 항목 (재편 진행 중 — 기존 강의노트는 <a href="../index.html">여기</a>). 위계를 가로지르는 묶음은 <a href="tags.html">태그</a>에서.</p></div>
   <div class="dtiles">${tiles}</div>
   ${pathLine}
@@ -445,6 +488,8 @@ const indexPage = `<!DOCTYPE html>
   <div class="tabs"><button class="tab on" id="tabAll" type="button">전체 분류</button><button class="tab" id="tabFav" type="button">★ 즐겨찾기</button></div>
   <div id="allWrap"><details class="allfold"><summary>전체 분류 — 영역·주제별 전체 ${entries.length}개 항목 펼치기</summary>${domainSections}</details></div>
   <div id="favWrap" hidden><div class="cards" id="favCards"></div><p id="favEmpty" class="count" hidden>아직 즐겨찾기한 항목이 없습니다. 항목 페이지에서 ☆ 즐겨찾기 버튼을 눌러 추가하세요.</p></div>
+  </div>
+ </div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
 <script>
@@ -481,7 +526,7 @@ q.addEventListener('input', () => {
   box.innerHTML = hits.map(x => '<a class="hit" href="e/' + x.slug + '.html"><span class="t">' + x.t + '</span> <span class="m">' + x.cat + ' &gt; ' + x.sub + '</span><div class="x">' + x.x.slice(0, 140) + '…</div></a>').join('') || '<p style="color:var(--sub)">결과 없음</p>';
 });
 </script>
-</body></html>`;
+${sideScript}`;
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage);
 
 // ── 검색 색인 ────────────────────────────────────────────────────
