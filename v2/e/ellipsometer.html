@@ -89,6 +89,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 .fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
 #favWrap { margin-top: 18px; }
 
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -228,7 +232,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h2 id="근거">근거</h2>
 <ul>
 <li>원리와 Ψ·Δ 정의, 분산 모델은 분광 엘립소메트리의 표준 교재 서술에 근거한다: Fujiwara, <em>Spectroscopic Ellipsometry: Principles and Applications</em> (Wiley, 2007).</li>
-<li>ALE 두께 추적 사례는 보유 논문에 근거한다: DuMont et al., <em>ACS Appl. Mater. Interfaces</em> 9 (2017) — SiO₂ 열 ALE에서 엘립소메트리·XRR·FTIR 병용; Abdulagatov et al., <em>J. Vac. Sci. Technol. A</em> 38 (2020) — Si₃N₄ 열 ALE의 in situ 엘립소메트리 추적.</li>
+<li>ALE 두께 추적 사례: DuMont et al., <em>ACS Appl. Mater. Interfaces</em> 9 (2017). DOI: <a href="https://doi.org/10.1021/acsami.7b01259" target="_blank" rel="noopener">10.1021/acsami.7b01259</a> — SiO₂ 열 ALE에서 엘립소메트리·XRR·FTIR 병용; Abdulagatov et al., <em>J. Vac. Sci. Technol. A</em> 38 (2020). DOI: <a href="https://doi.org/10.1116/1.5140481" target="_blank" rel="noopener">10.1116/1.5140481</a> — Si₃N₄ 열 ALE의 in situ 엘립소메트리 추적.</li>
 </ul>
 </article>
   <nav class="prevnext"><span></span><a href="reflectometer.html">다음 · 반사계 →</a></nav>

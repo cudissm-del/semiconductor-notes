@@ -89,6 +89,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 .fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
 #favWrap { margin-top: 18px; }
 
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -239,7 +243,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
-<li>보유 논문 정리 문서 (2026-10-21) 및 원문: Ko 2008 (VLSI), Gu 2020 (EDL), Cheng 2016 (IEDM), Li 2020 (Nanomaterials), Barraud 2016 (IEDM), Loubet 2019 (IEDM), Rawat 2021 (ESSDERC), Lee &amp; Park 2021 (Electronics), Lee 2023 (TED), Mertens 2023 (VLSI), Possémé 2018 (JVST B), Pranda 2023, Goya 2026.</li>
+<li>정리 문서 (2026-10-21) 및 원문: Ko 2008 (VLSI). DOI: <a href="https://doi.org/10.1109/VLSIT.2008.4588581" target="_blank" rel="noopener">10.1109/VLSIT.2008.4588581</a>; Gu 2020 (Electronics Letters). DOI: <a href="https://doi.org/10.1049/el.2019.3954" target="_blank" rel="noopener">10.1049/el.2019.3954</a>; Cheng 2016 (IEDM). DOI: <a href="https://doi.org/10.1109/IEDM.2016.7838436" target="_blank" rel="noopener">10.1109/IEDM.2016.7838436</a>; Li 2020 (Nanomaterials). DOI: <a href="https://doi.org/10.3390/nano10040793" target="_blank" rel="noopener">10.3390/nano10040793</a>; Barraud 2016 (IEDM). DOI: <a href="https://doi.org/10.1109/IEDM.2016.7838441" target="_blank" rel="noopener">10.1109/IEDM.2016.7838441</a>; Loubet 2019 (IEDM). DOI: <a href="https://doi.org/10.1109/IEDM19573.2019.8993615" target="_blank" rel="noopener">10.1109/IEDM19573.2019.8993615</a>; Rawat 2021 (ESSDERC). DOI: <a href="https://doi.org/10.1109/ESSDERC53440.2021.9631815" target="_blank" rel="noopener">10.1109/ESSDERC53440.2021.9631815</a>; Lee &amp; Park 2021 (Electronics). DOI: <a href="https://doi.org/10.3390/electronics10121395" target="_blank" rel="noopener">10.3390/electronics10121395</a>; Lee 2023 (TED). DOI: <a href="https://doi.org/10.1109/TED.2023.3326789" target="_blank" rel="noopener">10.1109/TED.2023.3326789</a>; Mertens 2023 (VLSI). DOI: <a href="https://doi.org/10.23919/VLSITechnologyAndCir57934.2023.10185218" target="_blank" rel="noopener">10.23919/VLSITechnologyAndCir57934.2023.10185218</a>; Possémé 2018 (JVST B). DOI: <a href="https://doi.org/10.1116/1.5038617" target="_blank" rel="noopener">10.1116/1.5038617</a>; Pranda 2023. DOI: <a href="https://doi.org/10.1116/6.0003014" target="_blank" rel="noopener">10.1116/6.0003014</a>; Goya 2026. DOI: <a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">10.1116/6.0005595</a>.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="air-spacer.html">← 이전 · 에어 스페이서</a><a href="parasitic-capacitance.html">다음 · 기생 커패시턴스 →</a></nav>

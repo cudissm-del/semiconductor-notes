@@ -89,6 +89,10 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 .fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
 #favWrap { margin-top: 18px; }
 
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -227,9 +231,9 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
-<li>Cheng et al. 2016, IEDM — 에어 스페이서 Cov −15~25%·Ceff −10~15% 실측 (보유 논문 원문 확인).</li>
-<li>Gu et al. 2020, Electron Device Letters — SiOCN 스페이서 COV·CEFF 개선 (보유 논문 원문 확인).</li>
-<li>Ko et al. 2008, Symp. VLSI Technology — SiBCN 스페이서 링 속도 +20% (보유 논문 원문 확인).</li>
+<li>Cheng et al. 2016, IEDM. DOI: <a href="https://doi.org/10.1109/IEDM.2016.7838436" target="_blank" rel="noopener">10.1109/IEDM.2016.7838436</a> — 에어 스페이서 Cov −15~25%·Ceff −10~15% 실측 (원문 확인).</li>
+<li>Gu et al. 2020, Electronics Letters. DOI: <a href="https://doi.org/10.1049/el.2019.3954" target="_blank" rel="noopener">10.1049/el.2019.3954</a> — SiOCN 스페이서 COV·CEFF 개선 (원문 확인).</li>
+<li>Ko et al. 2008, Symp. VLSI Technology. DOI: <a href="https://doi.org/10.1109/VLSIT.2008.4588581" target="_blank" rel="noopener">10.1109/VLSIT.2008.4588581</a> — SiBCN 스페이서 링 속도 +20% (원문 확인).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="spacer-materials.html">← 이전 · 스페이서 소재 비교</a><span></span></nav>
