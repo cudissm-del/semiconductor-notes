@@ -66,5 +66,5 @@ tags: 스페이서, low-k, 기생용량
 
 ## 근거
 
-- Cheng et al. 2016, IEDM — IBM 10 nm FinFET 에어 스페이서 실증, Cov −15~25%·Ceff −10~15%·partial −12% (보유 논문 원문 확인).
+- Cheng et al. 2016, IEDM. DOI: [10.1109/IEDM.2016.7838436](https://doi.org/10.1109/IEDM.2016.7838436) — IBM 10 nm FinFET 에어 스페이서 실증, Cov −15~25%·Ceff −10~15%·partial −12% (원문 확인).
 - 공기 비율과 이득 포화에 대한 서술은 위 실증의 해석이며, k = 1은 공기의 정의값이다. 설계 변수 표는 교재 수준의 일반 정리이다.

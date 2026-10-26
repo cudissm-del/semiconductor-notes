@@ -83,4 +83,4 @@ FTIR의 "FT"는 측정 방식이다. 분광기를 거치지 않고, Michelson �
 ## 근거
 
 - 간섭계 원리와 대표 결합 피크 위치는 적외 분광 표준 교재 서술에 근거한다: Griffiths & de Haseth, *Fourier Transform Infrared Spectrometry* (Wiley, 2nd ed., 2007). Si-H 피크에 의한 수소 정량은 질화막·저유전율막 평가의 확립된 관행이다.
-- ALE·AFS 진단 사례는 보유 논문에 근거한다: Possémé et al., *J. Vac. Sci. Technol. A* 34, 061301 (2016) — XPS·IR 병용 분석; DuMont et al., *ACS Appl. Mater. Interfaces* 9 (2017) — SiO₂ 열 ALE의 in situ FTIR 추적.
+- ALE·AFS 진단 사례: Possémé et al., *J. Vac. Sci. Technol. A* 34, 061301 (2016). DOI: [10.1116/1.4963072](https://doi.org/10.1116/1.4963072) — XPS·IR 병용 분석; DuMont et al., *ACS Appl. Mater. Interfaces* 9 (2017). DOI: [10.1021/acsami.7b01259](https://doi.org/10.1021/acsami.7b01259) — SiO₂ 열 ALE의 in situ FTIR 추적.

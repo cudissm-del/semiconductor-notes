@@ -57,6 +57,6 @@ tags: 스페이서, low-k, SiBCN, SiOCN
 
 ## 근거
 
-- Ko et al. 2008, Symp. VLSI Technology — SiBCN 스페이서의 소자·회로 이득 (보유 논문 원문 확인).
-- Gu et al. 2020, Electron Device Letters — GF 7 nm FinFET hybrid low-k 스페이서 (보유 논문 원문 확인).
-- Possémé et al. 2018, JVST B — SiCO 스페이서의 H 주입 개질 + HF cyclic 트림 (보유 논문 원문 확인).
+- Ko et al. 2008, Symp. VLSI Technology. DOI: [10.1109/VLSIT.2008.4588581](https://doi.org/10.1109/VLSIT.2008.4588581) — SiBCN 스페이서의 소자·회로 이득 (원문 확인).
+- Gu et al. 2020, Electronics Letters 56, 514. DOI: [10.1049/el.2019.3954](https://doi.org/10.1049/el.2019.3954) — GF 7 nm FinFET hybrid low-k 스페이서 (원문 확인).
+- Possémé et al. 2018, JVST B. DOI: [10.1116/1.5038617](https://doi.org/10.1116/1.5038617) — SiCO 스페이서의 H 주입 개질 + HF cyclic 트림 (원문 확인).

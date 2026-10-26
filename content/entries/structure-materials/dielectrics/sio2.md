@@ -58,9 +58,9 @@ Si와 O가 만든 비정질 네트워크다. Si 표면을 산화하면 계면 �
 ## 근거
 
 - 물성 수치는 반도체 공정 표준 교재의 전형값.
-- Miyoshi et al. 2022 — HF/NH₃ 열 ALE의 자기제한 EPC (보유 논문 원문 확인).
-- Gil et al. 2023, Sci. Rep. — NF₃/H₂ + 메탄올 ALE, DOI 10.1038/s41598-023-38359-4.
-- Gill et al. 2021, Plasma Process. Polym. 18, 2100063 — 3단계 ALE 사이클, DOI 10.1002/ppap.202100063.
-- Junige et al. 2024, Chem. Mater. — TMA/HF 열 ALE와 선택비 역전 (보유 논문 원문 확인).
-- Hsiao et al. 2026, Small Methods — 극저온 HF/에탄올 ALE (보유 논문 원문 확인).
-- Hattori et al. 2023, Jpn. J. Appl. Phys. 62, SI1001 — HF/메탄올 극저온 기상 식각의 SiO₂/SiN 선택비, DOI 10.35848/1347-4065/acb953 (보유 논문 원문 확인).
+- Miyoshi et al. 2022. DOI: [10.1116/6.0001517](https://doi.org/10.1116/6.0001517) — HF/NH₃ 열 ALE의 자기제한 EPC (원문 확인).
+- Gil et al. 2023, Sci. Rep. — NF₃/H₂ + 메탄올 ALE. DOI: [10.1038/s41598-023-38359-4](https://doi.org/10.1038/s41598-023-38359-4).
+- Gill et al. 2021, Plasma Process. Polym. 18, 2100063 — 3단계 ALE 사이클. DOI: [10.1002/ppap.202100063](https://doi.org/10.1002/ppap.202100063).
+- Junige et al. 2024, Chem. Mater. DOI: [10.1021/acs.chemmater.4c01040](https://doi.org/10.1021/acs.chemmater.4c01040) — TMA/HF 열 ALE와 선택비 역전 (원문 확인).
+- Hsiao et al. 2026, Small Methods. DOI: [10.1002/smtd.202501744](https://doi.org/10.1002/smtd.202501744) — 극저온 HF/에탄올 ALE (원문 확인).
+- Hattori et al. 2023, Jpn. J. Appl. Phys. 62, SI1001 — HF/메탄올 극저온 기상 식각의 SiO₂/SiN 선택비. DOI: [10.35848/1347-4065/acb953](https://doi.org/10.35848/1347-4065/acb953) (원문 확인).

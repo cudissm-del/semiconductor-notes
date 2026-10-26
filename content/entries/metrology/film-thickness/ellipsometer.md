@@ -80,4 +80,4 @@ tags: 두께, 광학상수, 비파괴, 인라인, 광학
 ## 근거
 
 - 원리와 Ψ·Δ 정의, 분산 모델은 분광 엘립소메트리의 표준 교재 서술에 근거한다: Fujiwara, *Spectroscopic Ellipsometry: Principles and Applications* (Wiley, 2007).
-- ALE 두께 추적 사례는 보유 논문에 근거한다: DuMont et al., *ACS Appl. Mater. Interfaces* 9 (2017) — SiO₂ 열 ALE에서 엘립소메트리·XRR·FTIR 병용; Abdulagatov et al., *J. Vac. Sci. Technol. A* 38 (2020) — Si₃N₄ 열 ALE의 in situ 엘립소메트리 추적.
+- ALE 두께 추적 사례: DuMont et al., *ACS Appl. Mater. Interfaces* 9 (2017). DOI: [10.1021/acsami.7b01259](https://doi.org/10.1021/acsami.7b01259) — SiO₂ 열 ALE에서 엘립소메트리·XRR·FTIR 병용; Abdulagatov et al., *J. Vac. Sci. Technol. A* 38 (2020). DOI: [10.1116/1.5140481](https://doi.org/10.1116/1.5140481) — Si₃N₄ 열 ALE의 in situ 엘립소메트리 추적.

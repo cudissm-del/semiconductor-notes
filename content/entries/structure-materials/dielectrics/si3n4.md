@@ -75,6 +75,6 @@ Si–N 결합의 촘촘한 네트워크로, 산화와 확산에 대한 배리어
 ## 근거
 
 - 물성 수치는 반도체 공정 표준 교재의 전형값.
-- Shinoda et al. 2016; Volynets et al. 2020 — [[AFS 선택 식각]] 항목의 참고 논문과 동일 원전 (보유 논문 원문 확인).
-- Abdulagatov et al. 2020 — Si₃N₄ 열 ALE (O₂–HF–TMA), 보유 논문 원문 확인.
-- Bang et al. 2026, JVST A 44, 033209 — 극저온에서 AFS의 패시베이션 전환, DOI 10.1116/6.0005206.
+- Shinoda et al. 2016. DOI: [10.7567/APEX.9.106201](https://doi.org/10.7567/APEX.9.106201); Volynets et al. 2020. DOI: [10.1116/1.5125568](https://doi.org/10.1116/1.5125568) — [[AFS 선택 식각]] 항목의 참고 논문과 동일 원전 (원문 확인).
+- Abdulagatov et al. 2020. DOI: [10.1116/1.5140481](https://doi.org/10.1116/1.5140481) — Si₃N₄ 열 ALE (O₂–HF–TMA), 원문 확인.
+- Bang et al. 2026, JVST A 44, 033209 — 극저온에서 AFS의 패시베이션 전환. DOI: [10.1116/6.0005206](https://doi.org/10.1116/6.0005206).

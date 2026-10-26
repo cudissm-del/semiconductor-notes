@@ -68,10 +68,10 @@ Kwon과 Park(2022)은 HF VPD(기상 식각)를 거친 Si₃N₄ 웨이퍼의 (NH
 
 ## 근거
 
-- TDS 탈착 구간·활성화 에너지·IR 어닐 — 보유 논문 실측: Miyoshi (2017). 진공 중 승화 — Song (2018).
-- 완전 제거 조건·분말 밀도 317→2101개/mm² — 보유 논문 실측: Kwon & Park (2022), J. Korean Phys. Soc. 81, 903, doi:10.1007/s40042-022-00625-5 (원문 대조 확인).
-- ammonium silicate 잔류물 특성화 — 보유 논문 실측: Kim (2017), ECS Trans. 80(2), 211, doi:10.1149/08002.0211ecst.
-- 결합 에너지 저하 0.47 → 0.35 eV — DFT 계산값(실측 아님): Lill (2024).
+- TDS 탈착 구간·활성화 에너지·IR 어닐 — 실측: Miyoshi et al. (2017). DOI: [10.7567/JJAP.56.06HB01](https://doi.org/10.7567/JJAP.56.06HB01). 진공 중 승화 — Song et al., *Jpn. J. Appl. Phys.* 57, 106505 (2018). DOI: [10.7567/JJAP.57.106505](https://doi.org/10.7567/JJAP.57.106505).
+- 완전 제거 조건·분말 밀도 317→2101개/mm² — 실측: Kwon & Park (2022), J. Korean Phys. Soc. 81, 903. DOI: [10.1007/s40042-022-00625-5](https://doi.org/10.1007/s40042-022-00625-5) (원문 대조 확인).
+- ammonium silicate 잔류물 특성화 — 실측: Kim (2017), ECS Trans. 80(2), 211. DOI: [10.1149/08002.0211ecst](https://doi.org/10.1149/08002.0211ecst).
+- 결합 에너지 저하 0.47 → 0.35 eV — DFT 계산값(실측 아님): Lill et al. (2024). DOI: [10.1116/6.0004019](https://doi.org/10.1116/6.0004019).
 
 ## 관련 항목
 

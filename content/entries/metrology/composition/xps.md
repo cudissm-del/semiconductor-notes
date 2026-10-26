@@ -89,4 +89,4 @@ tags: 조성, 화학상태, 표면, 전하보정, X선
 ## 근거
 
 - 광전효과 식과 화학 이동, 정량·정보 깊이의 서술은 표면 분석 표준 교재에 근거한다: Briggs & Grant (eds.), *Surface Analysis by Auger and X-ray Photoelectron Spectroscopy* (IM Publications, 2003); 전하 보정 C 1s 284.8 eV는 표면 분석 관행값이다. 화학 상태별 BE 전형값은 표준 핸드북·NIST XPS 데이터베이스의 수록 범위에 근거한다.
-- AFS 진단 사례는 보유 논문에 근거한다: Possémé et al., *J. Vac. Sci. Technol. A* 34, 061301 (2016) — NH₃/NF₃ SiN 박층 제거의 XPS·IR 분석; Cho et al., *J. Vac. Sci. Technol. A* 38, 022604 (2020) — CF₄/NH₃에서 AFS 화학양론(F/Si = 6, N/Si = 2) 확인; Goya et al., *J. Vac. Sci. Technol. A* 44, 053213 (2026) — H₂ 첨가 SiOCN 식각의 표면 화학 상태 추적.
+- AFS 진단 사례: Possémé et al., *J. Vac. Sci. Technol. A* 34, 061301 (2016). DOI: [10.1116/1.4963072](https://doi.org/10.1116/1.4963072) — NH₃/NF₃ SiN 박층 제거의 XPS·IR 분석; Cho et al., *J. Vac. Sci. Technol. A* 38, 022604 (2020). DOI: [10.1116/1.5132986](https://doi.org/10.1116/1.5132986) — CF₄/NH₃에서 AFS 화학양론(F/Si = 6, N/Si = 2) 확인; Goya et al., *J. Vac. Sci. Technol. A* 44, 053213 (2026). DOI: [10.1116/6.0005595](https://doi.org/10.1116/6.0005595) — H₂ 첨가 SiOCN 식각의 표면 화학 상태 추적.

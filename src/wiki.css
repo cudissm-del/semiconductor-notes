@@ -86,3 +86,7 @@ code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size:
 .fav-btn:hover { border-color: var(--star); }
 .fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
 #favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }

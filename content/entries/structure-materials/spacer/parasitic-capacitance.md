@@ -64,6 +64,6 @@ Cov와 Ceff는 직접 재는 값이 아니라 추출하는 값이다. Cov는 소
 
 ## 근거
 
-- Cheng et al. 2016, IEDM — 에어 스페이서 Cov −15~25%·Ceff −10~15% 실측 (보유 논문 원문 확인).
-- Gu et al. 2020, Electron Device Letters — SiOCN 스페이서 COV·CEFF 개선 (보유 논문 원문 확인).
-- Ko et al. 2008, Symp. VLSI Technology — SiBCN 스페이서 링 속도 +20% (보유 논문 원문 확인).
+- Cheng et al. 2016, IEDM. DOI: [10.1109/IEDM.2016.7838436](https://doi.org/10.1109/IEDM.2016.7838436) — 에어 스페이서 Cov −15~25%·Ceff −10~15% 실측 (원문 확인).
+- Gu et al. 2020, Electronics Letters. DOI: [10.1049/el.2019.3954](https://doi.org/10.1049/el.2019.3954) — SiOCN 스페이서 COV·CEFF 개선 (원문 확인).
+- Ko et al. 2008, Symp. VLSI Technology. DOI: [10.1109/VLSIT.2008.4588581](https://doi.org/10.1109/VLSIT.2008.4588581) — SiBCN 스페이서 링 속도 +20% (원문 확인).

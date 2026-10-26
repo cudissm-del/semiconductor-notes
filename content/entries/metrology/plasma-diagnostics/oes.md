@@ -75,4 +75,4 @@ tags: 플라즈마, 엔드포인트, 비침습, 실시간, 광학
 ## 근거
 
 - 발광 원리와 액티노메트리, 종말점 검출은 플라즈마 공정 진단의 표준 교재 서술에 근거한다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley, 2nd ed., 2005). 발광선 파장은 원자 발광 스펙트럼의 대표값이다.
-- 리모트 플라즈마 종 검출 사례는 보유 논문에 근거한다: Soriano et al., *J. Vac. Sci. Technol. A* 38, 043002 (2020) — 다운스트림 연성 식각 반응기에서 VUV 흡수와 발광을 병용한 종 검출.
+- 리모트 플라즈마 종 검출 사례: Soriano et al., *J. Vac. Sci. Technol. A* 38, 043002 (2020). DOI: [10.1116/6.0000134](https://doi.org/10.1116/6.0000134) — 다운스트림 연성 식각 반응기에서 VUV 흡수와 발광을 병용한 종 검출.

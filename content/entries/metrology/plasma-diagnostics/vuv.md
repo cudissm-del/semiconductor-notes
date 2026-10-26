@@ -56,4 +56,4 @@ tags: 라디칼, 흡수분광, 플라즈마진단, 광학
 
 ## 근거
 
-- VUV 흡수 분광의 원리와 창 재료 제약은 플라즈마 진단의 표준 서술에 근거한다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley)의 진단 관련 서술 및 Soriano 2020의 VUV 흡수 적용.
+- VUV 흡수 분광의 원리와 창 재료 제약은 플라즈마 진단의 표준 서술에 근거한다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley)의 진단 관련 서술 및 Soriano et al., *J. Vac. Sci. Technol. A* 38, 043002 (2020). DOI: [10.1116/6.0000134](https://doi.org/10.1116/6.0000134) — VUV 흡수 적용.
