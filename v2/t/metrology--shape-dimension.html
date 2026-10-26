@@ -147,13 +147,28 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
+<main class="wide">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div><div class="tn-t"><a href="../e/metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></div><div class="tn-t open"><a href="../t/metrology--shape-dimension.html">형상·치수</a><ul><li><a href="../e/optical-microscope.html">광학 현미경</a></li><li><a href="../e/sem.html">SEM</a></li><li><a href="../e/cd-sem.html">CD-SEM</a></li><li><a href="../e/fib-sem.html">FIB-SEM</a></li><li><a href="../e/tem.html">TEM (투과전자현미경)</a></li><li><a href="../e/afm.html">AFM</a></li><li><a href="../e/profilometer.html">단차계</a></li></ul></div><div class="tn-t"><a href="../t/metrology--film-thickness.html">박막 두께</a></div><div class="tn-t"><a href="../t/metrology--composition.html">조성·화학</a></div><div class="tn-t"><a href="../t/metrology--defect-contamination.html">결함·오염</a></div><div class="tn-t"><a href="../t/metrology--electrical.html">전기 측정</a></div><div class="tn-t"><a href="../t/metrology--plasma-diagnostics.html">플라즈마 진단</a></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/metrology.html">계측·분석</a> › 형상·치수</div>
   <h1 class="title">형상·치수 <span class="badge list">목록형</span></h1>
   <p style="color:var(--sub)">계측·분석 영역의 주제 · 전체 7개 항목을 읽는 순서대로.</p>
   <p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
   <ol class="tlist"><li><a href="../e/optical-microscope.html"><span class="t">광학 현미경</span></a><div class="e">Optical Microscopy</div><div class="d">가시광의 반사·투과로 표면을 확대해 보는 가장 기본적인 관찰 도구로, 패턴 결함과 잔사를 확인하는 1차 검사 수단.</div></li><li><a href="../e/sem.html"><span class="t">SEM</span></a><div class="e">Scanning Electron Microscopy</div><div class="d">전자빔을 표면에 주사하고 튀어나오는 신호를 모아, 실제 형상을 나노미터 단위로 직접 눈으로 확인하는 계측기.</div></li><li><a href="../e/cd-sem.html"><span class="t">CD-SEM</span></a><div class="e">Critical Dimension SEM</div><div class="d">실제 소자 패턴의 선폭(CD)을 재도록 특화된 인라인 전용 SEM으로, 팹 양산 계측의 표준 도구.</div></li><li><a href="../e/fib-sem.html"><span class="t">FIB-SEM</span></a><div class="e">Focused Ion Beam–SEM</div><div class="d">Ga⁺ 이온빔으로 원하는 지점을 국소 절삭하고 그 단면을 SEM으로 바로 관찰하는 복합 장비로, 불량 분석의 수술칼.</div></li><li><a href="../e/tem.html"><span class="t">TEM (투과전자현미경)</span></a><div class="e">Transmission Electron Microscopy</div><div class="d">전자가 투과할 만큼 얇게 만든 시편에 전자빔을 통과시켜, 원자 배열까지 확대해 보는 단면 분석의 절대 기준.</div></li><li><a href="../e/afm.html"><span class="t">AFM</span></a><div class="e">Atomic Force Microscopy</div><div class="d">날카로운 탐침이 달린 캔틸레버로 표면을 훑으며 원자간력과 진동 변화를 읽어, 표면의 3차원 형상을 그려내는 현미경.</div></li><li><a href="../e/profilometer.html"><span class="t">단차계</span></a><div class="e">Stylus Profilometry</div><div class="d">다이아몬드 스타일러스 탐침을 표면에 접촉시켜 스캔하고, 탐침의 상하 움직임으로 단차와 막 두께를 직접 재는 계측기.</div></li></ol>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+})();
+</script>
 </body></html>

@@ -147,11 +147,26 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
+<main class="wide">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #X선</div>
   <h1 class="title">#X선</h1>
   <p style="color:var(--sub)">5개 항목에 붙은 태그.</p>
   <div class="sub-name">계측·분석</div><div class="cards"><a class="card" href="../e/xps.html"><div class="t">XPS</div><div class="e">X-ray Photoelectron Spectroscopy</div><div class="d">X선을 쏘아 튀어나온 광전자의 운동에너지를 재고, 거꾸로 결합에너지를 읽어 표면 수 nm의 원소 조성과 결합 상태를 정량하는 분석법.</div></a><a class="card" href="../e/txrf.html"><div class="t">TXRF</div><div class="e">Total Reflection X-ray Fluorescence</div><div class="d">X선을 전반사 조건으로 얕게 입사시켜 웨이퍼 표면의 금속 오염을 비파괴로 정량하는 기법.</div></a><a class="card" href="../e/xrr.html"><div class="t">XRR</div><div class="e">X-ray Reflectivity</div><div class="d">X선을 얕은 각도로 쏘고 전반사 영역의 반사율 곡선에서 두께·밀도·표면/계면 거칠기를 동시에 읽는 비파괴 계측.</div></a><a class="card" href="../e/edx.html"><div class="t">EDX</div><div class="e">Energy-Dispersive X-ray Spectroscopy</div><div class="d">SEM · TEM (투과전자현미경) 에 붙여 전자빔이 만든 특성 X선의 에너지로 원소를 분석하는 검출기 기반 기법.</div></a><a class="card" href="../e/xrd.html"><div class="t">XRD</div><div class="e">X-ray Diffraction</div><div class="d">X선 회절 패턴으로 결정 구조·상(phase)·결정성·응력을 읽는 비파괴 분석 기법.</div></a></div>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+})();
+</script>
 </body></html>

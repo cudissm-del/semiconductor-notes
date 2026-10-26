@@ -147,11 +147,26 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
+<main class="wide">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #SiGe</div>
   <h1 class="title">#SiGe</h1>
   <p style="color:var(--sub)">3개 항목에 붙은 태그.</p>
   <div class="sub-name">공정</div><div class="cards"><a class="card" href="../e/epitaxy.html"><div class="t">에피택시</div><div class="e">Epitaxy</div><div class="d">에피택시는 단결정 기판 위에 그 결정 배열을 그대로 이어받는 단결정 막을 키우는 공정이다. 웨이퍼, 소스/드레인, GAA 초격자처럼 &quot;결정이어야 하는 막&quot;은 모두 이 공정으로 만든다.</div></a><a class="card" href="../e/recess.html"><div class="t">리세스와 채널 릴리스</div><div class="e">Recess & Channel Release</div><div class="d">SiGe를 옆으로 파내는 리세스와, 채널을 띄우는 릴리스 — GAA 제조의 핵심 등방 식각들.</div></a></div><div class="sub-name">구조·재료</div><div class="cards"><a class="card" href="../e/channel-materials.html"><div class="t">반도체·채널 물질</div><div class="e">Semiconductor & Channel Materials</div><div class="d">기판과 채널에 쓰이는 반도체 물질들 — Si를 중심으로 SiGe와 화합물 반도체까지.</div></a></div>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+})();
+</script>
 </body></html>

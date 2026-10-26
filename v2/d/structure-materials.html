@@ -147,12 +147,27 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
+<main class="wide">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t"><a href="../t/structure-materials--packaging.html">패키징</a></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › 구조·재료</div>
   <h1 class="title">구조·재료</h1>
   <p style="color:var(--sub)">무엇을 만드나 — 소자의 구조와, 그 구조를 이루는 물질 그 자체. 전체 28개 항목 · 주제 6개.</p>
   
   <section class="cat-sec"><h2>주제</h2><div class="cards"><a class="card" href="../t/structure-materials--transistor.html"><div class="t">트랜지스터 <span class="badge list">목록형</span></div><div class="e">4개 항목</div><div class="d">FinFET · GAA 나노시트 · 게이트 스택 (HKMG) · SAC (자기정렬 컨택)</div></a><a class="card" href="../t/structure-materials--spacer.html"><div class="t">스페이서 <span class="badge">허브형</span></div><div class="e">6개 항목 · 허브: 스페이서</div><div class="d">스페이서 · 외부 스페이서 · 내부 스페이서 · 에어 스페이서 · 스페이서 소재 비교 · 기생 커패시턴스</div></a><a class="card" href="../t/structure-materials--memory.html"><div class="t">메모리 <span class="badge list">목록형</span></div><div class="e">3개 항목</div><div class="d">DRAM · 3D NAND · HBM</div></a><a class="card" href="../t/structure-materials--packaging.html"><div class="t">패키징 <span class="badge">허브형</span></div><div class="e">5개 항목 · 허브: 패키징과 테스트</div><div class="d">패키징과 테스트 · 첨단 패키징 · TSV · BSPDN (후면 전력 공급) · 패키징 소재</div></a><a class="card" href="../t/structure-materials--dielectrics.html"><div class="t">절연막 <span class="badge">허브형</span></div><div class="e">5개 항목 · 허브: 절연막</div><div class="d">절연막 · SiO₂ · Si₃N₄ · SiOC · SiOCN</div></a><a class="card" href="../t/structure-materials--substrate-semiconductor-metal.html"><div class="t">기판·반도체·금속 <span class="badge list">목록형</span></div><div class="e">5개 항목</div><div class="d">실리콘 웨이퍼 · 반도체·채널 물질 · 도펀트와 메모리 물질 · 금속·도체 · 공정 보조·희생 물질</div></a></div></section>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+})();
+</script>
 </body></html>

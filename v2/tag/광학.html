@@ -147,11 +147,26 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </style></head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main>
+<main class="wide">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #광학</div>
   <h1 class="title">#광학</h1>
   <p style="color:var(--sub)">10개 항목에 붙은 태그.</p>
   <div class="sub-name">계측·분석</div><div class="cards"><a class="card" href="../e/optical-inspection.html"><div class="t">광학 웨이퍼 검사</div><div class="e">Optical Wafer Inspection</div><div class="d">레이저 산란(암시야)과 명시야 이미징으로 웨이퍼 전면을 빠르게 훑어 결함을 전수 검사하는 인라인 장비.</div></a><a class="card" href="../e/ellipsometer.html"><div class="t">엘립소미터</div><div class="e">Spectroscopic Ellipsometry</div><div class="d">편광된 빛을 쏘고 반사광의 편광 상태 변화를 읽어, 박막의 두께와 굴절률(n·k)을 역산하는 비파괴 광학 계측기.</div></a><a class="card" href="../e/oes.html"><div class="t">OES</div><div class="e">Optical Emission Spectroscopy</div><div class="d">플라즈마가 스스로 내는 빛을 분광해, 안에 어떤 반응종이 있는지와 식각이 끝났는지를 실시간으로 읽는 비침습 진단법.</div></a><a class="card" href="../e/optical-microscope.html"><div class="t">광학 현미경</div><div class="e">Optical Microscopy</div><div class="d">가시광의 반사·투과로 표면을 확대해 보는 가장 기본적인 관찰 도구로, 패턴 결함과 잔사를 확인하는 1차 검사 수단.</div></a><a class="card" href="../e/reflectometer.html"><div class="t">반사계</div><div class="e">Reflectometry</div><div class="d">박막에 백색광을 수직으로 쏘고 반사 스펙트럼의 간섭 진동을 세어 두께를 역산하는 비파괴 광학 계측기.</div></a><a class="card" href="../e/ocd.html"><div class="t">OCD</div><div class="e">Optical Critical Dimension (Scatterometry)</div><div class="d">주기 패턴에 빛을 쏘아 얻은 회절·편광 스펙트럼을 모델 라이브러리와 맞대어, CD·높이·측벽각을 한 번에 뽑는 광학 계측.</div></a><a class="card" href="../e/vuv.html"><div class="t">VUV 분광</div><div class="e">Vacuum Ultraviolet Spectroscopy</div><div class="d">진공자외(VUV) 영역의 흡수·발광으로 플라즈마 속 라디칼과 원자종의 밀도를 정량하는 분광 진단.</div></a><a class="card" href="../e/ftir.html"><div class="t">FTIR</div><div class="e">Fourier Transform Infrared Spectroscopy</div><div class="d">적외선을 쏘아 분자 결합이 특정 파수에서 빛을 흡수하는 패턴을 읽고, 막 안에 어떤 결합이 얼마나 있는지를 재는 분광법.</div></a><a class="card" href="../e/raman.html"><div class="t">라만 분광</div><div class="e">Raman Spectroscopy</div><div class="d">단색광의 비탄성 산란(라만 산란)으로 분자 진동·결정성·응력을 재는 비파괴 광학 분광법.</div></a><a class="card" href="../e/interferometric-endpoint.html"><div class="t">간섭 엔드포인트</div><div class="e">Interferometric Endpoint</div><div class="d">식각·연마가 진행되는 동안 레이저 반사 간섭 신호의 진동을 세어 제거 깊이를 실시간으로 추적하고 종말점을 검출하는 기법.</div></a></div>
+  </div>
+ </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 26일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+})();
+</script>
 </body></html>
