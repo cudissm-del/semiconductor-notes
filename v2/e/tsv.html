@@ -100,6 +100,23 @@ table { overflow-wrap: normal; word-break: keep-all; }
 /* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
 a { overflow-wrap: anywhere; }
 
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -141,21 +158,25 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   .side .side-body { display: none; margin-top: 10px; }
   .side.open .side-body { display: block; }
 }
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t open"><a href="../t/structure-materials--packaging.html">패키징</a><ul><li><a href="packaging.html">패키징과 테스트</a></li><li><a href="advanced-packaging.html">첨단 패키징</a></li><li class="cur"><a href="tsv.html">TSV</a></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a></li><li><a href="packaging-materials.html">패키징 소재</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t open"><a href="../t/structure-materials--packaging.html">패키징</a><ul><li><a href="packaging.html">패키징과 테스트</a></li><li><a href="advanced-packaging.html">첨단 패키징</a></li><li class="cur"><a href="tsv.html">TSV</a></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a></li><li><a href="packaging-materials.html">패키징 소재</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">10</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › <a href="../t/structure-materials--packaging.html">패키징</a> › TSV</div>
   <h1 class="title">TSV</h1>
   <div class="en">Through-Silicon Via</div>
   <div class="meta"><span class="chip cat">구조·재료 &gt; 패키징</span><span class="chip">#3D 적층</span><a class="chip" href="../tag/%EA%B3%A0%EC%A2%85%ED%9A%A1%EB%B9%84.html">#고종횡비</a><span class="chip">#Cu 도금</span><span class="chip">#패키징</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  
   <article><blockquote>
 <p>TSV(실리콘 관통 전극)는 실리콘 기판을 위아래로 뚫고 Cu로 채운 수직 전극이다. 다이를 쌓아 칩끼리 짧은 경로로 연결하는 3D 적층의 기본 부품이다.</p>
 </blockquote>
@@ -205,7 +226,8 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li><strong>종횡비와 충전</strong>: TSV의 종횡비는 3D NAND 채널홀보다 낮지만, 절대 깊이가 커서 식각 속도와 충전 시간이 생산성을 좌우한다. 종횡비가 높을수록 라이너·장벽·씨앗층을 바닥까지 잇기 어렵고 도금 보이드가 늘어난다.</li>
 <li><strong>열기계 응력</strong>: Cu와 Si는 열팽창계수가 다르다. 공정 온도를 오르내릴 때 TSV 주변 Si에 응력이 생기고, 이 응력이 근처 트랜지스터의 이동도를 바꾼다. 그래서 TSV 둘레에 트랜지스터를 두지 않는 KOZ(keep-out zone)를 설계 규칙으로 둔다.</li>
-<li><strong>Cu 돌출(pumping)</strong>: 어닐 중 Cu가 부피 팽창하며 TSV 위로 솟아올라, 위쪽 배선층을 밀어 올리거나 깨뜨릴 수 있다. CMP 전에 미리 어닐해 돌출을 먼저 일으키고 걷어 내는 방식으로 줄인다.</li>
+<li><strong>KOZ는 고정 거리가 아니다</strong>: 원통형 개재물(TSV)이 만드는 응력장은 가장자리에서 최대이고 멀어질수록 대략 (반경/거리)²로 급감한다(탄성 교재의 전형 해). 따라서 KOZ 경계는 &quot;이동도 변화가 허용치를 넘는 응력이 닿는 범위&quot;로 정해지며, TSV 지름·어닐 이력·허용 이동도 변화(설계 마진)에 따라 달라진다. Ryu 등(2012)은 이 열응력–이동도–KOZ 관계를 실측과 모델로 정량한 대표 연구다.</li>
+<li><strong>Cu 돌출(pumping)</strong>: 어닐 중 Cu가 부피 팽창하며 TSV 위로 솟아올라, 위쪽 배선층을 밀어 올리거나 깨뜨릴 수 있다. 메커니즘은 래칫이다 — 가열 시 갇힌 Cu가 소성 압축되고, 냉각 때는 탄성 회복분만 되돌아와 소성 변형이 사이클마다 표면 돌출로 누적된다. 그래서 돌출량은 어닐 온도·승온 속도와 Cu 결정립 구조에 좌우되고(Microelectron. Reliab. 2016의 돌출 실측), CMP 전에 미리 어닐해 돌출을 먼저 일으키고 걷어 내는 방식으로 줄인다.</li>
 <li><strong>전기적 기생 성분</strong>: Cu 전극, 라이너, Si 기판이 MOS 커패시터처럼 동작해 기생 용량이 생긴다. 라이너를 두껍게 하거나 유전율을 낮추면 줄어든다(<a class="wiki" href="parasitic-capacitance.html">기생 커패시턴스</a>).</li>
 </ul>
 <h2 id="핵심-수치">핵심 수치</h2>
@@ -256,9 +278,10 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
-<li>[근거 대기] 교재 또는 리뷰: 3D 적층 TSV 공정 전반을 다룬 리뷰 1편 (DOI는 Crossref로 대조한 뒤 기입)</li>
-<li>[근거 대기] Bosch 공정 원전: Laermer &amp; Schilp, Robert Bosch GmbH 특허 (1996). 특허 번호는 대조한 뒤 기입</li>
-<li>[근거 대기] TSV 응력·KOZ, Cu 돌출에 대한 대표 논문 1편</li>
+<li>TSV 기술 전반의 리뷰 — Motoyoshi, <em>Proc. IEEE</em> 97, 43–48 (2009). DOI: <a href="https://doi.org/10.1109/JPROC.2008.2007462" target="_blank" rel="noopener">10.1109/JPROC.2008.2007462</a> (Crossref 대조 확인).</li>
+<li>Bosch 공정 원전 — Laermer &amp; Schilp, Robert Bosch GmbH, US Patent 5,501,893 (1996). 식각/증착 반복으로 이방성 식각을 만드는 방법 특허 (Google Patents 대조 확인).</li>
+<li>열응력–이동도–KOZ 정량 — Ryu et al., <em>IEEE Trans. Device Mater. Reliab.</em> 12, 255–262 (2012). DOI: <a href="https://doi.org/10.1109/TDMR.2012.2194784" target="_blank" rel="noopener">10.1109/TDMR.2012.2194784</a> (Crossref 대조 확인).</li>
+<li>어닐 중 Cu 돌출 실측 — <em>Microelectron. Reliab.</em> 63, 183–193 (2016). DOI: <a href="https://doi.org/10.1016/j.microrel.2016.04.005" target="_blank" rel="noopener">10.1016/j.microrel.2016.04.005</a> (Crossref 대조 확인).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="advanced-packaging.html">← 이전 · 첨단 패키징</a><a href="bspdn.html">다음 · BSPDN (후면 전력 공급) →</a></nav>

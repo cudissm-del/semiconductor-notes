@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 660" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <title>프로파일 결함 단면 세트</title>
+  <desc>정상 프로파일과 7가지 프로파일 결함(보잉·노칭·마이크로트렌칭·네킹·트위스팅·테이퍼·미식각)의 단면 모식도와 원인 한 줄 캡션.</desc>
+
+  <text x="580" y="34" text-anchor="middle" font-size="21" font-weight="bold" fill="#222">프로파일 결함 단면 세트</text>
+  <text x="580" y="58" text-anchor="middle" font-size="13" fill="#666">짙은 회색 = 마스크 · 연한 회색 = 깎이는 막 · 점선 = 목표 깊이</text>
+
+  <!-- 공통 정의 -->
+  <defs>
+    <g id="base">
+      <rect x="30" y="46" width="220" height="150" fill="#d9dde4"/>
+      <rect x="30" y="46" width="78" height="18" fill="#59616e"/>
+      <rect x="172" y="46" width="78" height="18" fill="#59616e"/>
+      <line x1="30" y1="182" x2="250" y2="182" stroke="#8a93a1" stroke-width="1.5" stroke-dasharray="5 4"/>
+    </g>
+  </defs>
+
+  <!-- ===== 1행 ===== -->
+  <!-- 정상 -->
+  <g transform="translate(10,80)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">정상</text>
+    <use href="#base"/>
+    <path d="M108,64 L108,182 L172,182 L172,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">이온 직진성과 측벽 패시베이션</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">균형이 맞는 기준 프로파일</text>
+  </g>
+
+  <!-- 보잉 -->
+  <g transform="translate(295,80)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">보잉 (bowing)</text>
+    <use href="#base"/>
+    <path d="M108,64 C108,100 84,112 84,132 C84,156 108,164 108,182 L172,182 C172,164 196,156 196,132 C196,112 172,100 172,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">측벽 반사 이온 + 깊이 방향</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">패시베이션 불균형이 중간을 판다</text>
+  </g>
+
+  <!-- 노칭 -->
+  <g transform="translate(580,80)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">노칭 (notching)</text>
+    <rect x="30" y="46" width="220" height="118" fill="#d9dde4"/>
+    <rect x="30" y="164" width="220" height="32" fill="#b9c6d8"/>
+    <rect x="30" y="46" width="78" height="18" fill="#59616e"/>
+    <rect x="172" y="46" width="78" height="18" fill="#59616e"/>
+    <path d="M108,64 L108,158 Q92,164 108,170 L172,170 Q188,164 172,158 L172,64 Z" fill="#ffffff"/>
+    <text x="140" y="180" text-anchor="middle" font-size="11" fill="#3c5a80">절연막</text>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">바닥 절연막에 쌓인 전하가 이온을</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">꺾어 계면 높이를 옆으로 판다</text>
+  </g>
+
+  <!-- 마이크로트렌칭 -->
+  <g transform="translate(865,80)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">마이크로트렌칭</text>
+    <use href="#base"/>
+    <path d="M108,64 L112,168 L122,188 L132,172 L148,172 L158,188 L168,168 L172,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">기울어진 측벽에서 반사된 이온이</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">바닥 모서리에 집중돼 도랑을 판다</text>
+  </g>
+
+  <!-- ===== 2행 ===== -->
+  <!-- 네킹 -->
+  <g transform="translate(10,370)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">네킹 (necking)</text>
+    <use href="#base"/>
+    <path d="M108,64 C120,84 126,92 126,106 L126,182 L154,182 L154,106 C154,92 160,84 172,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">입구 아래 측벽 침착·패시베이션이</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">과해 통로가 잘록하게 좁아진다</text>
+  </g>
+
+  <!-- 트위스팅 -->
+  <g transform="translate(295,370)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">트위스팅 (twisting)</text>
+    <use href="#base"/>
+    <path d="M108,64 C100,100 128,120 120,150 C114,168 122,176 124,186 L184,186 C180,160 160,140 168,110 C172,92 172,78 172,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">비대칭 전하 분포가 이온 궤적을</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">한쪽으로 쏠리게 해 홀 축이 휜다</text>
+  </g>
+
+  <!-- 테이퍼 -->
+  <g transform="translate(580,370)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">테이퍼 (taper)</text>
+    <use href="#base"/>
+    <path d="M104,64 L124,182 L156,182 L176,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">이온 각도 분포와 측벽 패시베이션</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">때문에 아래로 갈수록 좁아진다</text>
+  </g>
+
+  <!-- 미식각 -->
+  <g transform="translate(865,370)">
+    <text x="140" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">미식각 (식각 정지)</text>
+    <use href="#base"/>
+    <path d="M108,64 L108,128 L172,128 L172,64 Z" fill="#ffffff"/>
+    <text x="140" y="228" text-anchor="middle" font-size="12.5" fill="#444">수송 제한(ARDE)으로 반응종이 바닥에</text>
+    <text x="140" y="247" text-anchor="middle" font-size="12.5" fill="#444">닿지 못해 목표 깊이에 못 미친다</text>
+  </g>
+</svg>

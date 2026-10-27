@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 470" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <title>AFS 선택 식각 공정 창 3패널 정성 그래프</title>
+  <desc>Pranda 2023(막 N 함량과 식각률), Volynets 2020(H₂ 유량과 Si₃N₄/SiO₂ 선택비), Goya 2026(H₂ 유량과 SiOCN 식각률)의 정성 경향을 원문 그림에서 재구성한 3패널 그래프.</desc>
+
+  <text x="590" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">AFS 선택 식각의 공정 창 — 문헌별 정성 경향</text>
+  <text x="590" y="55" text-anchor="middle" font-size="13" fill="#666">수치는 정성 스케일 (원문 그림의 경향만 재구성)</text>
+
+  <!-- ===== 패널 (a) Pranda ===== -->
+  <g transform="translate(30,80)">
+    <text x="170" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">(a) 막 N 함량 → 식각률</text>
+    <!-- 축 -->
+    <line x1="55" y1="20" x2="55" y2="240" stroke="#444" stroke-width="1.5"/>
+    <line x1="55" y1="240" x2="330" y2="240" stroke="#444" stroke-width="1.5"/>
+    <text x="18" y="130" font-size="13" fill="#333" transform="rotate(-90 18 130)" text-anchor="middle">식각률 (정성)</text>
+    <text x="330" y="262" text-anchor="end" font-size="13" fill="#333">막 내재 N 농도 →</text>
+    <!-- 곡선: NF3 가파름, CF4 완만 -->
+    <line x1="62" y1="228" x2="318" y2="52" stroke="#2f6fb2" stroke-width="2.5"/>
+    <line x1="62" y1="228" x2="318" y2="128" stroke="#9aa3ad" stroke-width="2.5"/>
+    <text x="322" y="48" font-size="13" fill="#2f6fb2" font-weight="bold">NF₃계</text>
+    <text x="322" y="126" font-size="13" fill="#7c8590" font-weight="bold">CF₄계</text>
+    <text x="70" y="42" font-size="12.5" fill="#444">N 함량이 늘수록 식각률 증가,</text>
+    <text x="70" y="60" font-size="12.5" fill="#444">NF₃계에서 기울기가 더 크다</text>
+    <text x="55" y="292" font-size="11.5" fill="#555">재구성: Pranda et al., JVST A 41, 063009 (2023),</text>
+    <text x="55" y="309" font-size="11.5" fill="#555">Fig. 7(b)·(d) · doi:10.1116/6.0003014</text>
+  </g>
+
+  <!-- ===== 패널 (b) Volynets ===== -->
+  <g transform="translate(425,80)">
+    <text x="170" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">(b) H₂ 유량 → 선택비</text>
+    <line x1="55" y1="20" x2="55" y2="240" stroke="#444" stroke-width="1.5"/>
+    <line x1="55" y1="240" x2="330" y2="240" stroke="#444" stroke-width="1.5"/>
+    <text x="18" y="130" font-size="13" fill="#333" transform="rotate(-90 18 130)" text-anchor="middle">Si₃N₄/SiO₂ 선택비 (정성)</text>
+    <text x="330" y="262" text-anchor="end" font-size="13" fill="#333">H₂ 유량 →</text>
+    <!-- 날카로운 피크 -->
+    <path d="M62,232 C130,230 165,228 186,224 C196,222 202,120 210,44 C218,120 224,220 234,224 C255,228 290,230 318,232" fill="none" stroke="#2f6fb2" stroke-width="2.5"/>
+    <text x="210" y="30" text-anchor="middle" font-size="13.5" fill="#2f6fb2" font-weight="bold">최대 ≈ 380</text>
+    <text x="70" y="42" font-size="12.5" fill="#444">폭이 매우 좁은 피크 —</text>
+    <text x="70" y="60" font-size="12.5" fill="#444">유량이 1 sccm만 어긋나도 ~3배 하락</text>
+    <text x="55" y="292" font-size="11.5" fill="#555">재구성: Volynets et al., JVST A 38, 023007 (2020),</text>
+    <text x="55" y="309" font-size="11.5" fill="#555">Fig. 3(b) · doi:10.1116/1.5125568</text>
+  </g>
+
+  <!-- ===== 패널 (c) Goya ===== -->
+  <g transform="translate(820,80)">
+    <text x="170" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">(c) H₂ 유량 → SiOCN 식각률</text>
+    <!-- 구간 음영 -->
+    <rect x="55" y="20" width="132" height="220" fill="#eef3f8"/>
+    <rect x="253" y="20" width="77" height="220" fill="#f7f1e8"/>
+    <line x1="55" y1="20" x2="55" y2="240" stroke="#444" stroke-width="1.5"/>
+    <line x1="55" y1="240" x2="330" y2="240" stroke="#444" stroke-width="1.5"/>
+    <text x="18" y="130" font-size="13" fill="#333" transform="rotate(-90 18 130)" text-anchor="middle">SiOCN 식각률 (정성)</text>
+    <text x="330" y="262" text-anchor="end" font-size="13" fill="#333">H₂ 유량 (sccm) →</text>
+    <!-- 눈금 -->
+    <text x="55" y="256" font-size="11" fill="#666">0</text>
+    <text x="121" y="256" font-size="11" fill="#666">20</text>
+    <text x="187" y="256" font-size="11" fill="#666" font-weight="bold">40</text>
+    <text x="253" y="256" font-size="11" fill="#666">60</text>
+    <!-- SiOCN 곡선: 40에서 피크 후 감속 -->
+    <path d="M62,224 C110,190 150,120 187,58 C215,96 260,140 318,168" fill="none" stroke="#2f6fb2" stroke-width="2.5"/>
+    <!-- 참고선: SiN·poly-Si 20 sccm 피크 (원문 Fig. 3) -->
+    <path d="M62,232 C95,205 108,168 121,150 C140,178 175,205 318,214" fill="none" stroke="#b6bec7" stroke-width="1.8" stroke-dasharray="5 4"/>
+    <text x="126" y="140" font-size="11.5" fill="#8a939d">SiN·poly-Si는 20 sccm 피크</text>
+    <line x1="187" y1="20" x2="187" y2="240" stroke="#d97b29" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <text x="192" y="42" font-size="12.5" fill="#b35f14" font-weight="bold">40 sccm 피크</text>
+    <text x="70" y="42" font-size="12.5" fill="#444">Ⅰ 상승</text>
+    <text x="258" y="42" font-size="12.5" fill="#444">Ⅲ 감속 (≥40 sccm)</text>
+    <text x="55" y="292" font-size="11.5" fill="#555">재구성: Goya et al., JVST A 44, 053213 (2026),</text>
+    <text x="55" y="309" font-size="11.5" fill="#555">Fig. 3 · doi:10.1116/6.0005595</text>
+  </g>
+</svg>
