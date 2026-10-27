@@ -46,7 +46,7 @@ function Xps() {
       <text x="400" y="34" textAnchor="middle" fontSize="16.5" fontWeight="700" fill={ink}>XPS N 1s — 402 eV 피크가 염이 생겼다는 증거</text>
       {Panel({ px0: 30, title: '노출 후 — 염 형성', peaks: [{ c: 397, a: 46 }, { c: 402.2, a: 92 }], after: false })}
       {Panel({ px0: 420, title: '어닐 후 (≥160°C) — 염 분해', peaks: [{ c: 397, a: 52 }], after: true })}
-      <text x="400" y="392" textAnchor="middle" fontSize="12" fill={quiet}>개념 재구성 — Shinoda et al. (2016), Cho et al. (2020)의 보고값 기준</text>
+      <text x="400" y="392" textAnchor="middle" fontSize="12" fill={quiet}>개념 재구성 — Shinoda et al. (2016) Fig. 2, Cho et al. (2020)의 보고값 기준</text>
     </svg>
   );
 }
