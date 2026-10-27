@@ -163,13 +163,21 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
 </style></head>
 <body>
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">29</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">11</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li><a href="plasma-basics.html">플라즈마 기초</a></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a></li><li class="cur"><a href="etch-nonidealities.html">식각 비이상 현상</a></li><li><a href="etch-troubleshooting.html">식각 문제 해결표</a></li><li><a href="etch-gas-chemistry.html">식각 가스 화학</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">29</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">11</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li><a href="plasma-basics.html">플라즈마 기초</a></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a></li><li class="cur"><a href="etch-nonidealities.html">식각 비이상 현상</a></li><li><a href="etch-troubleshooting.html">식각 문제 해결표</a></li><li><a href="etch-gas-chemistry.html">식각 가스 화학</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--plasma.html">플라즈마</a> › 식각 비이상 현상</div>
   <h1 class="title">식각 비이상 현상</h1>
@@ -221,12 +229,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <td>게이트 산화막 차징, UV에 의한 결합 절단, 이온에 의한 격자 손상</td>
 </tr>
 </tbody></table></div>
-<figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Etch_depth.jpg?width=1400" alt="폭이 다른 Si 미세 채널을 같은 조건으로 ICP-DRIE한 단면 — 좁은 채널일수록 얕게 깎인 ARDE" loading="lazy" decoding="async"><figcaption>그림 2. 폭이 다른 Si 미세 채널을 같은 조건으로 ICP-DRIE한 단면 — 좁은 채널일수록 얕게 깎인 ARDE<span class="credit">Mgerlt, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Etch_depth.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
-<figure class="fig"><svg viewBox="0 0 760 332" role="img" aria-label="종횡비가 커질수록 식각이 느려지고 극저온 식각은 그 감소폭을 줄인다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">종횡비가 커질수록 식각이 느려진다 — 극저온 식각은 그 감소폭을 줄인다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">Oehrlein et al. (2024) Fig. 3의 경향을 단순화한 개념도 — 수치는 원문 참고</text><g><line x1="140" y1="262" x2="600" y2="262" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><line x1="140" y1="76" x2="140" y2="262" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line></g><text x="128" y="86" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">식각 속도</text><text x="128" y="102" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">(정규화)</text><text x="600" y="284" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">종횡비 (깊이 ÷ 폭) →</text><path d="M150 92L160 100L170 107.5L180 114.6L190 121.4L200 127.7L210 133.6L220 139.3L230 144.6L240 149.5L250 154.3L260 158.7L270 162.9L280 166.8L290 170.6L300 174.1L310 177.4L320 180.5L330 183.4L340 186.2L350 188.8L360 191.3L370 193.6L380 195.8L390 197.9L400 199.8L410 201.7L420 203.4L430 205L440 206.6L450 208L460 209.4L470 210.7L480 211.9L490 213.1L500 214.1L510 215.2L520 216.1L530 217L540 217.9L550 218.7L560 219.4L570 220.2L580 220.8L590 221.5L600 222.1" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></path><path d="M150 92L160 94.6L170 97L180 99.3L190 101.5L200 103.6L210 105.5L220 107.4L230 109.2L240 110.9L250 112.5L260 114L270 115.4L280 116.8L290 118.1L300 119.3L310 120.5L320 121.6L330 122.6L340 123.6L350 124.5L360 125.4L370 126.3L380 127.1L390 127.9L400 128.6L410 129.3L420 129.9L430 130.5L440 131.1L450 131.7L460 132.2L470 132.7L480 133.2L490 133.6L500 134.1L510 134.5L520 134.9L530 135.2L540 135.6L550 135.9L560 136.2L570 136.5L580 136.8L590 137.1L600 137.3" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></path><text x="612" y="226" font-weight="600" fill="var(--cds-text-primary)">일반 식각</text><text x="612" y="141" font-weight="600" fill="var(--cds-text-primary)">극저온 식각</text><g><path d="M560 140V214" fill="none" stroke="var(--cds-text-secondary)" stroke-width="1" stroke-dasharray="3 3"></path><text x="552" y="182" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">깊어질수록 벌어지는 차이</text></g><text x="158" y="84" font-size="11.5" fill="var(--cds-text-secondary)">얕은 패턴에서는 비슷</text><text x="24" y="318" font-size="11.5" fill="var(--cds-text-secondary)">재구성: G. S. Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024), doi:10.1116/6.0003579 (CC BY 4.0)</text></svg><figcaption>그림 3. ARDE: 일반 식각과 극저온 식각 · Oehrlein et al. (2024) 재구성</figcaption></figure>
+<figure class="fig photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Etch_depth.jpg?width=1400" alt="폭이 다른 Si 미세 채널을 같은 조건으로 ICP-DRIE한 단면 — 좁은 채널일수록 얕게 깎인 ARDE" loading="lazy" decoding="async"><figcaption>그림 1. 폭이 다른 Si 미세 채널을 같은 조건으로 ICP-DRIE한 단면 — 좁은 채널일수록 얕게 깎인 ARDE<span class="credit">Mgerlt, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Etch_depth.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+<figure class="fig"><svg viewBox="0 0 760 332" role="img" aria-label="종횡비가 커질수록 식각이 느려지고 극저온 식각은 그 감소폭을 줄인다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">종횡비가 커질수록 식각이 느려진다 — 극저온 식각은 그 감소폭을 줄인다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">Oehrlein et al. (2024) Fig. 3의 경향을 단순화한 개념도 — 수치는 원문 참고</text><g><line x1="140" y1="262" x2="600" y2="262" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><line x1="140" y1="76" x2="140" y2="262" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line></g><text x="128" y="86" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">식각 속도</text><text x="128" y="102" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">(정규화)</text><text x="600" y="284" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">종횡비 (깊이 ÷ 폭) →</text><path d="M150 92L160 100L170 107.5L180 114.6L190 121.4L200 127.7L210 133.6L220 139.3L230 144.6L240 149.5L250 154.3L260 158.7L270 162.9L280 166.8L290 170.6L300 174.1L310 177.4L320 180.5L330 183.4L340 186.2L350 188.8L360 191.3L370 193.6L380 195.8L390 197.9L400 199.8L410 201.7L420 203.4L430 205L440 206.6L450 208L460 209.4L470 210.7L480 211.9L490 213.1L500 214.1L510 215.2L520 216.1L530 217L540 217.9L550 218.7L560 219.4L570 220.2L580 220.8L590 221.5L600 222.1" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></path><path d="M150 92L160 94.6L170 97L180 99.3L190 101.5L200 103.6L210 105.5L220 107.4L230 109.2L240 110.9L250 112.5L260 114L270 115.4L280 116.8L290 118.1L300 119.3L310 120.5L320 121.6L330 122.6L340 123.6L350 124.5L360 125.4L370 126.3L380 127.1L390 127.9L400 128.6L410 129.3L420 129.9L430 130.5L440 131.1L450 131.7L460 132.2L470 132.7L480 133.2L490 133.6L500 134.1L510 134.5L520 134.9L530 135.2L540 135.6L550 135.9L560 136.2L570 136.5L580 136.8L590 137.1L600 137.3" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></path><text x="612" y="226" font-weight="600" fill="var(--cds-text-primary)">일반 식각</text><text x="612" y="141" font-weight="600" fill="var(--cds-text-primary)">극저온 식각</text><g><path d="M560 140V214" fill="none" stroke="var(--cds-text-secondary)" stroke-width="1" stroke-dasharray="3 3"></path><text x="552" y="182" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">깊어질수록 벌어지는 차이</text></g><text x="158" y="84" font-size="11.5" fill="var(--cds-text-secondary)">얕은 패턴에서는 비슷</text><text x="24" y="318" font-size="11.5" fill="var(--cds-text-secondary)">재구성: G. S. Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024), doi:10.1116/6.0003579 (CC BY 4.0)</text></svg><figcaption>그림 2. ARDE: 일반 식각과 극저온 식각 · Oehrlein et al. (2024) 재구성</figcaption></figure>
 <p>ARDE는 좁고 깊은 구조에서 라디칼과 이온이 바닥까지 덜 도달하고, 반응 생성물이 덜 빠져나오기 때문에 생긴다. 3D NAND 채널홀처럼 종횡비가 수십 : 1에 이르는 식각에서는 이 감소가 생산성을 좌우한다. Oehrlein 등(2024)의 식각 로드맵 논문은 일반 식각과 극저온 식각의 종횡비 의존성을 비교하며, 극저온 식각을 고종횡비 식각의 유력한 방향으로 다룬다.</p>
 <h3 id="현상별-메커니즘-왜-생기는가">현상별 메커니즘 — 왜 생기는가</h3>
 <p>위 표의 현상들은 원인이 셋으로 갈린다. <strong>전하</strong>가 만드는 것(노칭·트위스팅), <strong>이온의 반사와 패시베이션 분포</strong>가 만드는 것(보우잉·마이크로트렌칭), <strong>수송</strong>이 만드는 것(ARDE·로딩)이다. 갈래를 알면 대응이 왜 그 모양인지가 읽힌다.</p>
-<figure class="fig photo"><img src="../assets/etch-nonidealities/profile-defects.svg" alt="프로파일 결함 단면 모식도 — 정상 프로파일과 보잉·노칭·마이크로트렌칭·네킹·트위스팅·테이퍼·미식각의 단면 모양과 칸마다의 원인 한 줄. 본문 메커니즘 서술을 바탕으로 한 자체 제작 모식도" loading="lazy" decoding="async"><figcaption>그림 1. 프로파일 결함 단면 모식도 — 정상 프로파일과 보잉·노칭·마이크로트렌칭·네킹·트위스팅·테이퍼·미식각의 단면 모양과 칸마다의 원인 한 줄. 본문 메커니즘 서술을 바탕으로 한 자체 제작 모식도</figcaption></figure>
+<figure class="fig photo"><img src="../assets/etch-nonidealities/profile-defects.svg" alt="프로파일 결함 단면 모식도 — 정상 프로파일과 보잉·노칭·마이크로트렌칭·네킹·트위스팅·테이퍼·미식각의 단면 모양과 칸마다의 원인 한 줄. 본문 메커니즘 서술을 바탕으로 한 자체 제작 모식도" loading="lazy" decoding="async"><figcaption>그림 3. 프로파일 결함 단면 모식도 — 정상 프로파일과 보잉·노칭·마이크로트렌칭·네킹·트위스팅·테이퍼·미식각의 단면 모양과 칸마다의 원인 한 줄. 본문 메커니즘 서술을 바탕으로 한 자체 제작 모식도</figcaption></figure>
 <p><strong>노칭 — 절연막 위의 전하가 이온을 꺾는다.</strong> 식각이 바닥의 절연막(STI 산화막, BOX 등)에 닿으면, 그 지점부터 전하의 출구가 막힌다. 이온은 방향성이라 바닥까지 그대로 들어와 양전하를 쌓고, 전자는 등방적으로 움직여 구조의 윗부분과 측벽 상부에 음전하를 쌓는다(전자 음영, electron shading). 절연막 표면의 양전하는 뒤이어 들어오는 이온을 옆으로 밀어내고, 궤적이 휘어 측벽 하단 — 정확히 절연막과의 계면 높이 — 을 옆으로 파낸 것이 노칭이다. 그래서 노칭은 식각 말미, 하부 절연막이 드러난 뒤의 과식각 구간에서 자라며, 깊이가 아니라 <strong>절연막이 노출된 시간</strong>에 비례한다. 펄스 바이어스나 저주파 바이어스가 약이 되는 이유도 여기 있다 — 꺼진 구간에 전자와 이온이 번갈아 닿아 쌓인 전하를 중화할 시간을 주기 때문이다.</p>
 <p><strong>보우잉 — 측벽이 받는 이온과 잃는 패시베이션의 불균형.</strong> 측벽 중간이 부풀어 파이는 데는 두 경로가 겹친다. 첫째, 입구나 마스크의 패싯(facet)에 맞고 반사·산란된 이온이 측벽 중간을 때린다. 둘째, 깊이 방향의 패시베이션 분포 자체가 균일하지 않다 — 패시베이션 종도 라디칼이라 깊을수록 굶는데(Knudsen 수송), 입구 근처는 이온이 폴리머를 계속 걷어내 상대적으로 얇다. 두 효과가 겹쳐 &quot;가장 보호가 약한 높이&quot;가 측벽 중간 어딘가에 생기고, 그곳부터 옆으로 파인다. 보우잉이 특정 깊이에서 최대가 되는 단면 모양은 이 경쟁의 지문이다.</p>
 <p><strong>트위스팅 — 깊은 홀에서의 비대칭 전하.</strong> 종횡비가 커지면 홀 바닥과 측벽의 전하 분포가 조금만 비대칭해져도 이온 궤적이 한쪽으로 쏠린다. 비대칭의 씨앗은 입구 형상·플라즈마 불균일·앞선 식각의 미세한 기울기 같은 초기 편차인데, 깊어질수록 편차가 증폭되어 홀 축 자체가 휘거나 비틀린다. 대칭을 깨는 원인이 무작위여서 웨이퍼 안에서 방향이 제각각인 것이 특징이며, 그래서 트위스팅은 평균 프로파일이 아니라 <strong>편차(분포)</strong> 로 나타난다. 노칭과 같은 전하 문제이지만, 노칭이 &quot;계면 높이&quot;라는 정해진 자리에서 생기는 것과 달리 트위스팅은 대칭성 그 자체가 무너지는 현상이다.</p>
@@ -322,15 +330,14 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
-  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
-  if (st && sn) st.addEventListener('click', function () {
-    var open = sn.classList.toggle('open');
-    st.setAttribute('aria-expanded', String(open));
-    st.textContent = open ? '목차 ▴' : '목차 ▾';
-  });
   var slug = "etch-nonidealities", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
-  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
   btn.addEventListener('click', function () {
     var f = load();
     f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
@@ -338,6 +345,34 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
     paint();
   });
   paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
 })();
 </script>
 </body></html>
