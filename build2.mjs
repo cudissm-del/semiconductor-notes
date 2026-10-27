@@ -116,27 +116,24 @@ function renderEntry(e) {
   let md = e.body.replace(/^!\[([^\]]*)\]\((img\/[^)\s]+)\)[ \t]*$/gm, (_, cap, rel) => {
     const srcF = path.join(e.dir, rel);
     if (!fs.existsSync(srcF)) { console.warn(`⚠ [${e.slug}] 로컬 이미지 없음:`, rel); return ''; }
-    figNo += 1;
     const outDir = path.join(OUT, 'assets', e.slug);
     fs.mkdirSync(outDir, { recursive: true });
     const base = path.basename(rel);
     fs.copyFileSync(srcF, path.join(outDir, base));
-    return '\n' + slot(`<figure class="fig photo"><img src="../assets/${e.slug}/${base}" alt="${escA(cap)}" loading="lazy" decoding="async"><figcaption>그림 ${figNo}. ${cap}</figcaption></figure>`) + '\n';
+    return '\n' + slot(`<figure class="fig photo"><img src="../assets/${e.slug}/${base}" alt="${escA(cap)}" loading="lazy" decoding="async"><figcaption>그림 @@FIGN@@. ${cap}</figcaption></figure>`) + '\n';
   });
   md = md.replace(FIG_RE, (_, caption, imgCap, fileUrl, credit) => {
     if (caption) {
       const key = Object.keys(byCaption).find(k => caption.startsWith(k));
       if (!key) { console.warn(`⚠ [${e.slug}] 그림을 찾지 못함:`, caption); return ''; }
-      figNo += 1;
-      const svg = slimSvg(byCaption[key]().__html);
-      return '\n' + slot(`<figure class="fig">${svg}<figcaption>그림 ${figNo}. ${caption}</figcaption></figure>`) + '\n';
+        const svg = slimSvg(byCaption[key]().__html);
+      return '\n' + slot(`<figure class="fig">${svg}<figcaption>그림 @@FIGN@@. ${caption}</figcaption></figure>`) + '\n';
     }
-    figNo += 1;
     const file = fileUrl.split('/wiki/File:')[1];
     const src = `https://commons.wikimedia.org/wiki/Special:FilePath/${file}?width=1400`;
     const lic = Object.keys(LICENSES).sort((a, b) => b.length - a.length).find(l => credit.includes(l));
     const creditHtml = lic ? credit.trim().replace(lic, `<a href="${LICENSES[lic]}" target="_blank" rel="noopener">${lic}</a>`) : credit.trim();
-    return '\n' + slot(`<figure class="fig photo"><img src="${src}" alt="${escA(imgCap)}" loading="lazy" decoding="async"><figcaption>그림 ${figNo}. ${imgCap}<span class="credit">${creditHtml} · <a href="${fileUrl}" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>`) + '\n';
+    return '\n' + slot(`<figure class="fig photo"><img src="${src}" alt="${escA(imgCap)}" loading="lazy" decoding="async"><figcaption>그림 @@FIGN@@. ${imgCap}<span class="credit">${creditHtml} · <a href="${fileUrl}" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>`) + '\n';
   });
   md = md.replace(/```latex\n([\s\S]*?)```/g, (_, tex) => '\n' + slot(`<div class="math">${katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false })}</div>`) + '\n');
   // 위키 링크는 마크다운 처리 전에 슬롯으로 치환한다 — 뒤에 괄호가 붙은 [[CMP]](평탄화)를 marked가 일반 링크로
@@ -155,6 +152,9 @@ function renderEntry(e) {
   outLinks.set(e.slug, linked);
   if (missing.length) missLinks.set(e.slug, missing);
   html = html.replace(/@@SLOT(\d+)@@/g, (_, i) => slots[+i]);
+  // 그림 번호는 패스 순서가 아니라 최종 본문 등장 순서로 매긴다 (2026-10-27 정식 결정 — 로컬 이미지가 1번을 가져가던 문제)
+  let figSeq = 0;
+  html = html.replace(/@@FIGN@@/g, () => String(++figSeq));
   return html;
 }
 
@@ -220,6 +220,14 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
 `;
 const updated = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', year: 'numeric', month: 'long', day: 'numeric' }).format(new Date());
 const plain = s => s.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
@@ -283,8 +291,12 @@ function treeHtml(cur, P) {
     return `<div class="tn">${head}${hubLine}${topics}</div>`;
   }).join('');
 }
-const sideHtml = (cur, P) => `<aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body">${treeHtml(cur, P)}</div></aside>`;
-const sideScript = `<script>
+// 사이드바 즐겨찾기 — 항목 페이지 ☆ 버튼·대문 탭과 같은 localStorage 'wiki-favs'(슬러그 배열)를 공유한다.
+// 제목은 빌드 시점에 슬러그→제목 맵으로 박아 넣는다 (파일 깊이마다 다른 search-index 경로 fetch를 피하려고).
+const favTitlesJson = JSON.stringify(Object.fromEntries(entries.map(e => [e.slug, e.title]))).replace(/</g, '\\u003c');
+const favSideHtml = P => `<div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="${P.e('__SLUG__')}" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div>`;
+const sideHtml = (cur, P) => `<aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body">${favSideHtml(P)}${treeHtml(cur, P)}</div></aside>`;
+const sideScriptFor = P => `<script>
 (function () {
   var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
   if (st && sn) st.addEventListener('click', function () {
@@ -292,6 +304,24 @@ const sideScript = `<script>
     st.setAttribute('aria-expanded', String(open));
     st.textContent = open ? '목차 ▴' : '목차 ▾';
   });
+  var FAV_TITLES = ${favTitlesJson};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
 })();
 </script>
 </body></html>`;
@@ -331,15 +361,14 @@ for (const e of entries) {
 ${footOpen}
 <script>
 (function () {
-  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
-  if (st && sn) st.addEventListener('click', function () {
-    var open = sn.classList.toggle('open');
-    st.setAttribute('aria-expanded', String(open));
-    st.textContent = open ? '목차 ▴' : '목차 ▾';
-  });
   var slug = "${e.slug}", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
   function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
-  function paint() { var on = load().indexOf(slug) >= 0; btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기'; btn.classList.toggle('on', on); }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
   btn.addEventListener('click', function () {
     var f = load();
     f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
@@ -349,7 +378,7 @@ ${footOpen}
   paint();
 })();
 </script>
-</body></html>`;
+${sideScriptFor(P_E)}`;
   fs.writeFileSync(path.join(OUT, 'e', `${e.slug}.html`), page);
 }
 
@@ -376,7 +405,7 @@ for (const d of DOMAINS) {
  </div>
 </main>
 ${footOpen}
-${sideScript}`;
+${sideScriptFor(P_SUB)}`;
   fs.writeFileSync(path.join(OUT, 'd', `${d.id}.html`), page);
 }
 
@@ -405,7 +434,7 @@ for (const d of DOMAINS) for (const t of d.topics) {
  </div>
 </main>
 ${footOpen}
-${sideScript}`;
+${sideScriptFor(P_SUB)}`;
   fs.writeFileSync(path.join(OUT, 't', `${d.id}--${t.id}.html`), page);
 }
 
@@ -428,7 +457,7 @@ const tagsPage = `${head('태그 — 반도체 백과', '')}
  </div>
 </main>
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
-${sideScript}`;
+${sideScriptFor(P_ROOT)}`;
 fs.writeFileSync(path.join(OUT, 'tags.html'), tagsPage);
 // 고아 태그 정리: 이전 빌드·구조 재편 때 남은 옛 태그 페이지를 비우고 재생성한다.
 // (git 추적 파일의 삭제 반영은 배포 단계 소관 — 여기서는 산출물 폴더만 맞춘다)
@@ -459,7 +488,7 @@ for (const [t, list] of exposedTags) {
  </div>
 </main>
 ${footOpen}
-${sideScript}`;
+${sideScriptFor(P_SUB)}`;
   fs.writeFileSync(path.join(OUT, 'tag', `${t}.html`), page);
 }
 
@@ -550,7 +579,7 @@ q.addEventListener('input', () => {
   box.innerHTML = hits.map(x => '<a class="hit" href="e/' + x.slug + '.html"><span class="t">' + x.t + '</span> <span class="m">' + x.cat + ' &gt; ' + x.sub + '</span><div class="x">' + x.x.slice(0, 140) + '…</div></a>').join('') || '<p style="color:var(--sub)">결과 없음</p>';
 });
 </script>
-${sideScript}`;
+${sideScriptFor(P_ROOT)}`;
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage);
 
 // ── 검색 색인 ────────────────────────────────────────────────────
