@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 724" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+<title>방전 방식별 압력–전자밀도 지도</title>
+<desc>압력(가로, 로그)과 전자밀도(세로, 로그) 평면에서 CCP·ICP·ECR/헬리콘·원격·대기압 방전의 교재 전형 대역을 표시한 정성 지도.</desc>
+<text x="580" y="36" text-anchor="middle" font-size="21" font-weight="bold" fill="#222">방전 방식별 압력–전자밀도 지도</text>
+<text x="580" y="60" text-anchor="middle" font-size="13" fill="#666">양축 로그 · 띠는 교재 전형 대역(정성 지도) — 특정 장비의 실측값이 아니다</text>
+<line x1="175.0" y1="95" x2="175.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="305.0" y1="95" x2="305.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="435.0" y1="95" x2="435.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="565.0" y1="95" x2="565.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="695.0" y1="95" x2="695.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="825.0" y1="95" x2="825.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="955.0" y1="95" x2="955.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="1085.0" y1="95" x2="1085.0" y2="565" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="565.0" x2="1085" y2="565.0" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="497.9" x2="1085" y2="497.9" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="430.7" x2="1085" y2="430.7" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="363.6" x2="1085" y2="363.6" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="296.4" x2="1085" y2="296.4" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="229.3" x2="1085" y2="229.3" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="162.1" x2="1085" y2="162.1" stroke="#e3e6eb" stroke-width="1"/>
+<line x1="175" y1="95.0" x2="1085" y2="95.0" stroke="#e3e6eb" stroke-width="1"/>
+<rect x="175" y="95" width="910" height="470" fill="none" stroke="#59616e" stroke-width="1.5"/>
+<rect x="367.0" y="296.4" width="260.0" height="201.4" fill="none" fill-opacity="0" stroke="#59616e" stroke-width="1.5" rx="6" stroke-dasharray="7 5"/>
+<rect x="214.1" y="229.3" width="260.0" height="134.3" fill="#cdbce8" fill-opacity="0.78" stroke="#6d4fa1" stroke-width="1.5" rx="6" />
+<rect x="265.9" y="296.4" width="260.0" height="134.3" fill="#a8c3e0" fill-opacity="0.78" stroke="#3c5a80" stroke-width="1.5" rx="6" />
+<rect x="435.0" y="363.6" width="130.0" height="134.3" fill="#f2cf9a" fill-opacity="0.78" stroke="#b97e2c" stroke-width="1.5" rx="6" />
+<rect x="565.0" y="296.4" width="192.0" height="134.3" fill="#d9dde4" fill-opacity="0.9" stroke="#59616e" stroke-width="1.5" rx="6" stroke-dasharray="6 4"/>
+<rect x="1056.5" y="95.0" width="26" height="335.7" fill="#e8a0a0" fill-opacity="0.85" stroke="#a34a4a" stroke-width="1.5" rx="5"/>
+<line x1="1069.5" y1="95" x2="1069.5" y2="565" stroke="#a34a4a" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="344.0" y="266.2" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">ECR · 헬리콘</text>
+<text x="344.0" y="285.2" text-anchor="middle" font-size="11.5" fill="#444">저압에서 고밀도 · 이온 에너지 낮음</text>
+<text x="324.5" y="389.1" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">ICP</text>
+<text x="324.5" y="407.1" text-anchor="middle" font-size="11.5" fill="#33475e">소스·바이어스 독립 제어</text>
+<text x="500.0" y="405.2" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">CCP</text>
+<text x="500.0" y="423.2" text-anchor="middle" font-size="11.5" fill="#5e4310">이온 에너지 큼 · 밀도 중간</text>
+<text x="661.2" y="340.1" text-anchor="middle" font-size="15" font-weight="bold" fill="#222">원격 (다운스트림) — 생성부</text>
+<text x="661.2" y="378.1" text-anchor="middle" font-size="11.5" fill="#444">웨이퍼 위치에서는 이온이 걸러져 라디칼만 도달</text>
+<line x1="1055.5" y1="142.0" x2="870.5" y2="142.0" stroke="#a34a4a" stroke-width="1.2"/>
+<text x="864.0" y="133.9" text-anchor="end" font-size="15" font-weight="bold" fill="#7e2f2f">대기압 (DBD · 플라즈마 제트) — 760 Torr</text>
+<text x="864.0" y="151.9" text-anchor="end" font-size="11.5" fill="#444">미소방전 집합 · 밀도 편차 큼</text>
+<text x="375.0" y="471.9" font-size="12" font-weight="bold" fill="#3c4450">반도체 식각 주력 창</text>
+<text x="375.0" y="489.9" font-size="11.5" fill="#3c4450">수~수백 mTorr · 10⁹–10¹² cm⁻³</text>
+<line x1="175.0" y1="565" x2="175.0" y2="571" stroke="#59616e"/>
+<text x="175.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">0.1</text>
+<line x1="305.0" y1="565" x2="305.0" y2="571" stroke="#59616e"/>
+<text x="305.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">1</text>
+<line x1="435.0" y1="565" x2="435.0" y2="571" stroke="#59616e"/>
+<text x="435.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">10</text>
+<line x1="565.0" y1="565" x2="565.0" y2="571" stroke="#59616e"/>
+<text x="565.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">100</text>
+<line x1="695.0" y1="565" x2="695.0" y2="571" stroke="#59616e"/>
+<text x="695.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">10³</text>
+<line x1="825.0" y1="565" x2="825.0" y2="571" stroke="#59616e"/>
+<text x="825.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">10⁴</text>
+<line x1="955.0" y1="565" x2="955.0" y2="571" stroke="#59616e"/>
+<text x="955.0" y="589" text-anchor="middle" font-size="12.5" fill="#444">10⁵</text>
+<line x1="1085.0" y1="565" x2="1085.0" y2="571" stroke="#59616e"/>
+<text x="1085.0" y="589" text-anchor="end" font-size="12.5" fill="#444">10⁶</text>
+<text x="1069.5" y="607" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#7e2f2f">▲ 760 Torr</text>
+<text x="580" y="631" text-anchor="middle" font-size="13.5" fill="#222">압력 (mTorr, 로그)</text>
+<text x="165" y="569.0" text-anchor="end" font-size="12.5" fill="#444">10⁸</text>
+<text x="165" y="501.9" text-anchor="end" font-size="12.5" fill="#444">10⁹</text>
+<text x="165" y="434.7" text-anchor="end" font-size="12.5" fill="#444">10¹⁰</text>
+<text x="165" y="367.6" text-anchor="end" font-size="12.5" fill="#444">10¹¹</text>
+<text x="165" y="300.4" text-anchor="end" font-size="12.5" fill="#444">10¹²</text>
+<text x="165" y="233.3" text-anchor="end" font-size="12.5" fill="#444">10¹³</text>
+<text x="165" y="166.1" text-anchor="end" font-size="12.5" fill="#444">10¹⁴</text>
+<text x="165" y="99.0" text-anchor="end" font-size="12.5" fill="#444">10¹⁵</text>
+<text transform="rotate(-90)" x="-330" y="34" text-anchor="middle" font-size="13.5" fill="#222">전자밀도 nₑ (cm⁻³, 로그)</text>
+<text x="175" y="670" font-size="11.5" fill="#666">대역 근거: CCP 10–100 mTorr · 10⁹–10¹¹ cm⁻³, ICP 0.5–50 mTorr · 10¹⁰–10¹² cm⁻³ — Lieberman &amp; Lichtenberg 계열 교재의 소스 파라미터 표 전형 범위.</text>
+<text x="175" y="690" font-size="11.5" fill="#666">ECR·헬리콘·원격·대기압은 전형 대역으로 자체 정리했고, 식각 주력 창은 「플라즈마 기초」·「식각 장비」 항목의 전형 범위와 맞췄다.</text>
+<text x="175" y="710" font-size="11.5" fill="#666">읽는 법: 압력이 오르면 충돌이 늘어 이온 방향성이 무너지고, 밀도가 오르면 이온 플럭스(Bohm 플럭스 nₑ·u_B)가 커진다.</text>
+</svg>
