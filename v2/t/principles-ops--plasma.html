@@ -100,6 +100,23 @@ table { overflow-wrap: normal; word-break: keep-all; }
 /* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
 a { overflow-wrap: anywhere; }
 
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -141,19 +158,22 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   .side .side-body { display: none; margin-top: 10px; }
   .side.open .side-body { display: block; }
 }
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li><a href="../e/plasma-basics.html">플라즈마 기초</a></li><li><a href="../e/plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="../e/etch-nonidealities.html">식각 비이상 현상</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">10</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li><a href="../e/plasma-basics.html">플라즈마 기초</a></li><li><a href="../e/plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="../e/etch-nonidealities.html">식각 비이상 현상</a></li><li><a href="../e/etch-troubleshooting.html">식각 문제 해결표</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › 플라즈마</div>
   <h1 class="title">플라즈마 <span class="badge">허브형</span></h1>
-  <p style="color:var(--sub)">원리·운영 영역의 주제 · 전체 3개 항목을 읽는 순서대로.</p>
+  <p style="color:var(--sub)">원리·운영 영역의 주제 · 전체 4개 항목을 읽는 순서대로.</p>
   <article><blockquote>
 <p>기체에 에너지를 가해 이온·전자·라디칼·중성종이 공존하게 된 상태 — 플라즈마의 구성원과 기본 성질.</p>
 </blockquote><h2 id="개요-약하게-이온화된-평형이-아닌-기체">개요 — 약하게 이온화된, 평형이 아닌 기체</h2>
@@ -207,7 +227,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <p>밀도 감각도 잡아 두자. 수~수십 mTorr 공정 압력에서 중성 기체 밀도는 10¹⁴~10¹⁵ cm⁻³ 수준이고, 전자밀도 nₑ는 10⁹~10¹² cm⁻³이다. 즉 전자는 중성 10만~100만 개당 하나꼴이지만, 그 하나가 나머지 전체의 반응을 연쇄로 일으킨다.</p>
 </article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/plasma-basics.html">플라즈마 기초</a>의 정의와 개요까지만 실었다. <a href="../e/plasma-basics.html">전문 읽기 →</a></p>
   <h2 style="font-size:20px;margin-top:26px">읽는 순서</h2>
-  <ol class="tlist"><li><a href="../e/plasma-map.html"><span class="t">단계별 플라즈마 지도</span></a><div class="e">Plasma Process Map</div><div class="d">FEOL부터 패키징까지, 제조 단계마다 플라즈마 공정이 맡는 일과 핵심 이슈를 모은 지도.</div></li><li><a href="../e/etch-nonidealities.html"><span class="t">식각 비이상 현상</span></a><div class="e">Etch Non-idealities</div><div class="d">로딩 효과·ARDE·프로파일 이상처럼 실제 식각이 이상에서 벗어나는 현상들과, 공정을 평가하는 지표들.</div></li></ol>
+  <ol class="tlist"><li><a href="../e/plasma-map.html"><span class="t">단계별 플라즈마 지도</span></a><div class="e">Plasma Process Map</div><div class="d">FEOL부터 패키징까지, 제조 단계마다 플라즈마 공정이 맡는 일과 핵심 이슈를 모은 지도.</div></li><li><a href="../e/etch-nonidealities.html"><span class="t">식각 비이상 현상</span></a><div class="e">Etch Non-idealities</div><div class="d">로딩 효과·ARDE·프로파일 이상처럼 실제 식각이 이상에서 벗어나는 현상들과, 공정을 평가하는 지표들.</div></li><li><a href="../e/etch-troubleshooting.html"><span class="t">식각 문제 해결표</span></a><div class="e">Etch Troubleshooting Table</div><div class="d">식각에서 마주치는 증상을 원인 → 조정 노브 → 대가로 바로 잇는 현장용 역방향 색인.</div></li></ol>
   </div>
  </div>
 </main>

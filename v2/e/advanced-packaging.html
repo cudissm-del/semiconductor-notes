@@ -100,6 +100,23 @@ table { overflow-wrap: normal; word-break: keep-all; }
 /* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
 a { overflow-wrap: anywhere; }
 
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -141,21 +158,25 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   .side .side-body { display: none; margin-top: 10px; }
   .side.open .side-body { display: block; }
 }
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t open"><a href="../t/structure-materials--packaging.html">패키징</a><ul><li><a href="packaging.html">패키징과 테스트</a></li><li class="cur"><a href="advanced-packaging.html">첨단 패키징</a></li><li><a href="tsv.html">TSV</a></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a></li><li><a href="packaging-materials.html">패키징 소재</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t open"><a href="../t/structure-materials--packaging.html">패키징</a><ul><li><a href="packaging.html">패키징과 테스트</a></li><li class="cur"><a href="advanced-packaging.html">첨단 패키징</a></li><li><a href="tsv.html">TSV</a></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a></li><li><a href="packaging-materials.html">패키징 소재</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">10</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › <a href="../t/structure-materials--packaging.html">패키징</a> › 첨단 패키징</div>
   <h1 class="title">첨단 패키징</h1>
   <div class="en">Advanced Packaging</div>
   <div class="meta"><span class="chip cat">구조·재료 &gt; 패키징</span><span class="chip">#CoWoS</span><span class="chip">#인터포저</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  
   <article><blockquote>
 <p>인터포저와 적층으로 여러 칩을 하나의 시스템으로 묶는 패키징 기술 (CoWoS 계열 등).</p>
 </blockquote>
@@ -213,6 +234,10 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>마이크로범프 / 하이브리드 본딩</strong> — 범프 피치가 줄수록 단위 면적당 I/O가 제곱으로 늘어난다. 하이브리드 본딩은 표면 평탄도(CMP)와 플라즈마 표면 활성화가 접합 품질을 좌우한다.</li>
 <li><strong>인터포저 / RDL</strong> — 칩 사이를 잇는 미세 배선층. 사실상 &quot;패키지 안의 BEOL&quot;이다.</li>
 </ul>
+<h3 id="하이브리드-본딩의-메커니즘-범프-없는-접합이-성립하는-조건">하이브리드 본딩의 메커니즘 — 범프 없는 접합이 성립하는 조건</h3>
+<p>하이브리드 본딩은 순서가 핵심이다. <strong>유전체가 먼저 닿고, Cu는 나중에 만난다.</strong> 표면 활성화(플라즈마·습식 처리)로 SiO₂·SiCN 표면에 –OH를 세우면, 상온에서 맞붙이는 것만으로 수소결합에 의한 예비 접합이 생긴다. 어닐에서는 탈수 축합으로 Si–O–Si 공유결합이 형성돼 유전체 접합이 강해지고, 그 사이 Cu는 유전체보다 훨씬 큰 열팽창(Cu 약 17 ppm/K, 교재 전형값) 때문에 위로 부풀어 상대 Cu와 닿는다. 닿은 뒤에는 상호 확산과 재결정으로 Cu–Cu 계면 자체가 사라진다.</p>
+<p>그래서 CMP 직후 Cu의 높이(디싱·리세스)가 접합 창의 핵심 변수다. Cu가 유전체 표면보다 수 nm 낮게 파여 있어야 어닐 팽창으로 정확히 메워진다. 너무 깊으면 팽창으로도 닿지 않아 개방(open)이 되고, 처음부터 튀어나와 있으면 유전체끼리 닿지 못해 접합 자체가 안 된다. 미세 피치일수록 이 높이 예산이 조여지는 것이, 피치 축소의 실제 병목이 리소그래피가 아니라 표면 형상 제어인 이유다.</p>
+<p>밀도 이득은 피치의 제곱이다. 마이크로범프 40 µm 피치에서 하이브리드 본딩 10 µm 피치로 가면 면적당 I/O는 (40/10)² = <strong>16배</strong>가 된다(산술). 실패 모드도 피치가 줄수록 성격이 바뀐다. 범프 시대의 불량이 솔더 브리지·미접합이었다면, 하이브리드 본딩에서는 접합면의 µm급 입자 하나가 그 높이의 수십 배 지름에 이르는 보이드(미접합 영역)를 만드는 입자 민감도, Cu 표면 산화와 거칠기, 그리고 피치의 일부로 축소되는 정렬(오버레이) 예산이 지배한다 [근거 대기 — 입자-보이드 크기 배율의 대표 실측].</p>
 <p><strong>칩렛(Chiplet).</strong> 하나의 큰 칩 대신 기능별 작은 다이를 각각 최적 공정으로 만들고 패키지에서 합친다. 큰 다이 하나보다 수율이 높고, 공정 노드를 섞을 수 있다. 다이 간 연결 표준으로 UCIe가 있다.</p>
 <h3 id="CoWoS-계열과-인터포저-상세">CoWoS 계열과 인터포저 상세</h3>
 <p>CoWoS(Chip-on-Wafer-on-Substrate)는 GPU 같은 로직 다이와 HBM을 인터포저 위에 나란히 올린 뒤 패키지 기판에 붙이는 TSMC의 2.5D 패키징이다. 세 변형은 <strong>인터포저를 무엇으로 만드느냐</strong>가 다르다.</p>
@@ -280,6 +305,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>연결 피치·CoWoS 변형·용량 비중은 본문 표와 현황 절에 인용한 업계 집계·보도 기준이다.</li>
 <li>CTE 등 재료 상수는 교재 전형값이며, 특정 제품의 실측값이 아니다.</li>
+<li>하이브리드 본딩의 미세 피치 웨이퍼 접합 — <a href="https://doi.org/10.1109/ICEPT59018.2023.10492042" target="_blank" rel="noopener">Fine Pitch Wafer-to-Wafer Hybrid Bonding for Three-Dimensional Integration</a>, ICEPT (2023). 접합 메커니즘(표면 활성화 → 예비 접합 → 어닐 중 Cu 팽창 접촉) 자체는 웨이퍼 본딩 교재의 표준 서술을 따랐다.</li>
 </ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>

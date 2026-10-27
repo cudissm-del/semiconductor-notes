@@ -100,6 +100,23 @@ table { overflow-wrap: normal; word-break: keep-all; }
 /* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
 a { overflow-wrap: anywhere; }
 
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -141,21 +158,25 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   .side .side-body { display: none; margin-top: 10px; }
   .side.open .side-body { display: block; }
 }
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t"><a href="../t/structure-materials--packaging.html">패키징</a></div><div class="tn-t open"><a href="../t/structure-materials--dielectrics.html">절연막</a><ul><li class="cur"><a href="dielectrics.html">절연막</a></li><li><a href="sio2.html">SiO₂</a></li><li><a href="si3n4.html">Si₃N₄</a></li><li><a href="sioc.html">SiOC</a></li><li><a href="siocn.html">SiOCN</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div><div class="tn-t"><a href="../t/structure-materials--transistor.html">트랜지스터</a></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t"><a href="../t/structure-materials--packaging.html">패키징</a></div><div class="tn-t open"><a href="../t/structure-materials--dielectrics.html">절연막</a><ul><li class="cur"><a href="dielectrics.html">절연막</a></li><li><a href="sio2.html">SiO₂</a></li><li><a href="si3n4.html">Si₃N₄</a></li><li><a href="sioc.html">SiOC</a></li><li><a href="siocn.html">SiOCN</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">10</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › <a href="../t/structure-materials--dielectrics.html">절연막</a> › 절연막</div>
   <h1 class="title">절연막</h1>
   <div class="en">Dielectrics</div>
   <div class="meta"><span class="chip cat">구조·재료 &gt; 절연막</span><span class="badge">주제 허브</span><a class="chip" href="../tag/%EC%9C%A0%EC%A0%84%EC%B2%B4.html">#유전체</a><a class="chip" href="../tag/low-k.html">#low-k</a><span class="chip">#high-k</span></div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  
   <article><blockquote>
 <p>게이트 절연막부터 층간 절연막까지 — 유전율(k)을 낮추거나 높이는 경쟁 속의 절연 재료들.</p>
 </blockquote>
@@ -299,6 +320,10 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tr>
 </tbody></table></div>
 <p>즉 게이트에서는 &quot;같은 두께에서 용량을 키우는&quot; high-k가, 배선 사이에서는 &quot;같은 간격에서 용량을 줄이는&quot; low-k가 필요하고, 스페이서·정지막에서는 k와 내성을 함께 본다. 같은 SiOC라도 BEOL에서는 기공을 넣어 k를 내리고, 스페이서에서는 기공 없이 치밀하게 만드는 이유가 여기에 있다 (<a class="wiki" href="sioc.html">SiOC</a>).</p>
+<h3 id="k-밴드갭-파괴전계는-한-세트다">k·밴드갭·파괴전계는 한 세트다</h3>
+<p>위 표의 k 값만 보면 &quot;낮추거나 높이면 된다&quot;로 읽히지만, 실제로는 세 물성이 묶여 움직인다. <strong>k가 큰 물질일수록 밴드갭이 작은 경향</strong>이 있다 — 분극을 만드는 전자가 약하게 묶여 있을수록 유전 응답은 크고, 전자를 여기시키는 데 필요한 에너지는 작아지기 때문이다. SiO₂는 k 3.9에 밴드갭 약 9 eV, 파괴전계 약 10 MV/cm급(모두 교재 전형값)인 데 비해, HfO₂는 k가 20~25로 크지만 밴드갭은 5.5~6 eV 수준으로 낮다. high-k의 이득이 EOT 기준으로 할인되는 것은 이 때문이다 — 물리 두께를 벌어도 장벽 높이와 파괴 여유는 SiO₂만큼 벌어지지 않는다.</p>
+<p>누설 메커니즘도 물질마다 다르다. SiO₂의 전형 경로는 높은 전계에서의 Fowler–Nordheim 터널링이지만, Si₃N₄의 누설은 트랩을 매개로 한 Poole–Frenkel 전도가 지배적이라 온도 의존성이 크고 전계 의존성도 다르다. 같은 &quot;누설 스펙&quot;이라도 실패 온도와 가속 모델이 다르므로, k와 두께만으로 절연 신뢰성을 비교할 수 없다.</p>
+<p>low-k 쪽의 딜레마도 같은 구조다. 기공을 넣어 유효 k를 낮추면(혼합칙으로 대략 따라간다) 파괴전계·영률·배리어성이 함께 떨어진다 — 이득과 손실이 서로 다른 원인이 아니라 같은 기공에서 나온다. Maex 등(2003)의 리뷰가 정리한 이 통합 트레이드오프가, ULK가 배선 하부층부터 조심스럽게 들어간 이유다.</p>
 <h3 id="형성법의-지도">형성법의 지도</h3>
 <ul>
 <li><strong>열산화</strong> — Si를 직접 산화하는 유일한 경로로, 계면 품질이 필요한 자리에만 쓴다. 증착막과 달리 아래 Si를 소모하며 자란다.</li>
@@ -326,6 +351,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>위 표의 k 값은 공정 교재와 각 물질 항목(<a class="wiki" href="sio2.html">SiO₂</a>·<a class="wiki" href="si3n4.html">Si₃N₄</a>·<a class="wiki" href="sioc.html">SiOC</a>·<a class="wiki" href="siocn.html">SiOCN</a>)에서 검증된 전형 범위를 모은 것이다. 조성·기공률·측정 주파수에 따라 달라지므로 설계값이 아니라 비교용 지도로 읽어야 한다.</li>
 <li>형성법·트레이드오프 서술은 표준 CMOS 공정 교재의 일반론이며, 특정 논문 실측을 새로 인용한 부분은 없다.</li>
+<li>low-k 재료의 통합 트레이드오프(기공–k–강도·파괴) — Maex et al., <em>J. Appl. Phys.</em> 93, 8793–8841 (2003). DOI: <a href="https://doi.org/10.1063/1.1567460" target="_blank" rel="noopener">10.1063/1.1567460</a>. 밴드갭·파괴전계 수치는 교재 전형값이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><span></span><a href="sio2.html">다음 · SiO₂ →</a></nav>
