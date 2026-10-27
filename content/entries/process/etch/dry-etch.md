@@ -5,6 +5,8 @@ domain: process
 topic: etch
 order: 0
 hub: true
+prereq: 플라즈마 기초
+aliases: 플라즈마 식각
 tags: 플라즈마, 이방성, 선택비
 ---
 

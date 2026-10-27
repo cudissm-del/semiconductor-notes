@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 560" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <title>선택비 쌍 × 방법 지도 (1단계)</title>
+  <desc>「깎을 막 : 남길 막」 7쌍과 5가지 방법 계열(FC·할로겐·라디칼/등방성·습식·CMP)의 정성 히트맵. 채워진 칸의 라벨은 그 쌍이 쓰이는 위치(어디서)이며, 선택비 수치는 넣지 않은 1단계 지도다.</desc>
+
+  <text x="590" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">선택비 쌍 × 방법 지도 (1단계)</text>
+  <text x="590" y="55" text-anchor="middle" font-size="13" fill="#666">채워진 칸 = 그 쌍의 주된 방법 · 칸 라벨 = 쓰이는 곳(「어디서」) · 선택비 수치는 넣지 않음 (수치·DOI는 2단계)</text>
+
+  <!-- 열 머리 -->
+  <g font-size="15" font-weight="bold" fill="#222" text-anchor="middle">
+    <text x="130" y="102">깎을 막 : 남길 막</text>
+    <text x="352" y="102">FC</text>
+    <text x="520" y="102">할로겐</text>
+    <text x="688" y="102">라디칼·등방성</text>
+    <text x="856" y="102">습식</text>
+    <text x="1024" y="102">CMP</text>
+  </g>
+  <line x1="30" y1="112" x2="1150" y2="112" stroke="#444" stroke-width="1.5"/>
+
+  <!-- 셀: 빈 칸 #f2f3f5 / 채운 칸 #bcd3ea -->
+  <!-- 행 1 -->
+  <g font-size="13.5">
+    <text x="40" y="148" font-weight="bold" fill="#222">SiO₂ : Si₃N₄</text>
+    <rect x="268" y="120" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="436" y="120" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="604" y="120" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="772" y="120" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="940" y="120" width="168" height="52" fill="#bcd3ea"/>
+    <text x="352" y="151" text-anchor="middle" fill="#1d3f5f">SAC 컨택</text>
+    <text x="1024" y="151" text-anchor="middle" fill="#1d3f5f">STI CMP</text>
+  </g>
+  <!-- 행 2 -->
+  <g font-size="13.5">
+    <text x="40" y="204" font-weight="bold" fill="#222">Si₃N₄ : SiO₂</text>
+    <rect x="268" y="176" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="436" y="176" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="604" y="176" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="772" y="176" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="940" y="176" width="168" height="52" fill="#f2f3f5"/>
+    <text x="352" y="207" text-anchor="middle" fill="#1d3f5f">스페이서</text>
+    <text x="856" y="207" text-anchor="middle" fill="#1d3f5f">NAND 워드라인 치환</text>
+  </g>
+  <!-- 행 3 -->
+  <g font-size="13.5">
+    <text x="40" y="260" font-weight="bold" fill="#222">SiGe : Si</text>
+    <rect x="268" y="232" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="436" y="232" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="604" y="232" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="772" y="232" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="940" y="232" width="168" height="52" fill="#f2f3f5"/>
+    <text x="688" y="263" text-anchor="middle" fill="#1d3f5f">GAA 채널 릴리스</text>
+    <text x="856" y="263" text-anchor="middle" fill="#1d3f5f">내부 스페이서 리세스</text>
+  </g>
+  <!-- 행 4 -->
+  <g font-size="13.5">
+    <text x="40" y="316" font-weight="bold" fill="#222">poly-Si : SiO₂</text>
+    <rect x="268" y="288" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="436" y="288" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="604" y="288" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="772" y="288" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="940" y="288" width="168" height="52" fill="#f2f3f5"/>
+    <text x="520" y="319" text-anchor="middle" fill="#1d3f5f">게이트 식각</text>
+    <text x="856" y="319" text-anchor="middle" fill="#1d3f5f">더미 게이트 제거</text>
+  </g>
+  <!-- 행 5 -->
+  <g font-size="13.5">
+    <text x="40" y="372" font-weight="bold" fill="#222">Si : SiO₂</text>
+    <rect x="268" y="344" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="436" y="344" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="604" y="344" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="772" y="344" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="940" y="344" width="168" height="52" fill="#f2f3f5"/>
+    <text x="520" y="375" text-anchor="middle" fill="#1d3f5f">STI·Fin 식각</text>
+  </g>
+  <!-- 행 6 -->
+  <g font-size="13.5">
+    <text x="40" y="428" font-weight="bold" fill="#222">low-k : TiN 하드마스크</text>
+    <rect x="268" y="400" width="168" height="52" fill="#bcd3ea"/>
+    <rect x="436" y="400" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="604" y="400" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="772" y="400" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="940" y="400" width="168" height="52" fill="#f2f3f5"/>
+    <text x="352" y="431" text-anchor="middle" fill="#1d3f5f">BEOL 트렌치·비아</text>
+  </g>
+  <!-- 행 7 -->
+  <g font-size="13.5">
+    <text x="40" y="484" font-weight="bold" fill="#222">Cu : 배리어 : 유전체</text>
+    <rect x="268" y="456" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="436" y="456" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="604" y="456" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="772" y="456" width="168" height="52" fill="#f2f3f5"/>
+    <rect x="940" y="456" width="168" height="52" fill="#bcd3ea"/>
+    <text x="1024" y="487" text-anchor="middle" fill="#1d3f5f">다마신 CMP</text>
+  </g>
+
+  <line x1="30" y1="516" x2="1150" y2="516" stroke="#ccc" stroke-width="1"/>
+  <text x="30" y="540" font-size="12.5" fill="#666">원천: 「한 물질, 여러 역할 — 선택비 쌍」 항목의 「식각·CMP에서 짝지어 다루는 물질 쌍」 표 (어디서·주된 방법 열).</text>
+</svg>

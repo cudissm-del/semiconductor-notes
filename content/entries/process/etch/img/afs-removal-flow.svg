@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 430" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <title>AFS 염 형성·승화 흐름도</title>
+  <desc>NH₃+NF₃ 원격 플라즈마에서 NH₄F·HF가 만들어지고 Si 표면에서 (NH₄)₂SiF₆ 염이 형성된 뒤, 가열로 분해·승화되는 흐름과 온도 띠.</desc>
+
+  <text x="590" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">AFS 염의 형성 → 승화 제거 흐름</text>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#59616e"/>
+    </marker>
+  </defs>
+
+  <!-- 단계 1 -->
+  <g>
+    <rect x="30" y="90" width="245" height="130" rx="10" fill="#eef3f8" stroke="#2f6fb2" stroke-width="1.5"/>
+    <text x="152" y="118" text-anchor="middle" font-size="14" fill="#2f6fb2" font-weight="bold">① 원격 플라즈마</text>
+    <text x="152" y="152" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">NH₃ + NF₃</text>
+    <text x="152" y="180" text-anchor="middle" font-size="12.5" fill="#444">원격 플라즈마에서 해리 —</text>
+    <text x="152" y="199" text-anchor="middle" font-size="12.5" fill="#444">이온은 걸러지고 라디칼만 도달</text>
+  </g>
+  <line x1="278" y1="155" x2="308" y2="155" stroke="#59616e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 단계 2 -->
+  <g>
+    <rect x="315" y="90" width="245" height="130" rx="10" fill="#eef3f8" stroke="#2f6fb2" stroke-width="1.5"/>
+    <text x="437" y="118" text-anchor="middle" font-size="14" fill="#2f6fb2" font-weight="bold">② 반응종 생성</text>
+    <text x="437" y="152" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">NH₄F · HF</text>
+    <text x="437" y="180" text-anchor="middle" font-size="12.5" fill="#444">F · H 종의 기상 반응으로</text>
+    <text x="437" y="199" text-anchor="middle" font-size="12.5" fill="#444">NH₄F와 HF가 형성된다</text>
+  </g>
+  <line x1="563" y1="155" x2="593" y2="155" stroke="#59616e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 단계 3 -->
+  <g>
+    <rect x="600" y="90" width="245" height="130" rx="10" fill="#fdf3e7" stroke="#d97b29" stroke-width="1.5"/>
+    <text x="722" y="118" text-anchor="middle" font-size="14" fill="#b35f14" font-weight="bold">③ 표면 반응 — 염 형성</text>
+    <text x="722" y="152" text-anchor="middle" font-size="17" font-weight="bold" fill="#222">(NH₄)₂SiF₆ 생성</text>
+    <text x="722" y="180" text-anchor="middle" font-size="12.5" fill="#444">NH₄F·HF가 Si 함유 막과 반응해</text>
+    <text x="722" y="199" text-anchor="middle" font-size="12.5" fill="#444">표면이 고체 염으로 바뀐다</text>
+  </g>
+  <line x1="848" y1="155" x2="878" y2="155" stroke="#59616e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 단계 4 -->
+  <g>
+    <rect x="885" y="90" width="265" height="130" rx="10" fill="#eef7ee" stroke="#4a8f4a" stroke-width="1.5"/>
+    <text x="1017" y="118" text-anchor="middle" font-size="14" fill="#3c7a3c" font-weight="bold">④ 가열 — 분해·승화</text>
+    <text x="1017" y="150" text-anchor="middle" font-size="15.5" font-weight="bold" fill="#222">(NH₄)₂SiF₆ → 2NH₃ + 2HF + SiF₄↑</text>
+    <text x="1017" y="180" text-anchor="middle" font-size="12.5" fill="#444">생성물이 전부 기체라</text>
+    <text x="1017" y="199" text-anchor="middle" font-size="12.5" fill="#444">잔류 없이 표면을 떠난다</text>
+  </g>
+
+  <!-- 온도 띠 -->
+  <g>
+    <rect x="600" y="258" width="550" height="86" rx="8" fill="#f7f7f5" stroke="#c9c4b8" stroke-width="1.2"/>
+    <text x="622" y="284" font-size="13.5" font-weight="bold" fill="#333">제거 단계의 온도 띠 (④)</text>
+    <text x="622" y="308" font-size="12.5" fill="#444">분해 시작 ~100 °C 안팎 · TDS 탈착 구간 130~230 °C (Miyoshi 2017)</text>
+    <text x="622" y="329" font-size="12.5" fill="#444">진공에서는 같은 온도에서도 제거가 유리하다 (Song 2018)</text>
+  </g>
+  <line x1="1017" y1="222" x2="1017" y2="254" stroke="#c9c4b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- 참조 표기 -->
+  <text x="30" y="300" font-size="12.5" fill="#666">온도 구간 표기는 「AFS 화학」 항목의 AFS 온도 지도와 정합시킨 값이며,</text>
+  <text x="30" y="321" font-size="12.5" fill="#666">온도 지도 자체는 그 항목을 참조한다 (중복 재작도하지 않음).</text>
+  <text x="30" y="352" font-size="12.5" fill="#666">다 지워지지 않은 염은 분말 파티클·잔류물이 되며, 검증은 XPS N 1s (~402 eV) 소멸로 한다.</text>
+</svg>

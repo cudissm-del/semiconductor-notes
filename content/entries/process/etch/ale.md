@@ -4,6 +4,8 @@ en: Atomic Layer Etching
 domain: process
 topic: etch
 order: 1
+prereq: 건식 식각
+aliases: 원자층 에칭
 tags: 자기제한, 사이클
 ---
 
@@ -118,7 +120,7 @@ ALE는 10nm급 로직 양산부터 도입되었다. GAA의 리세스, 게이트 
 - 열 ALE(불화 + 리간드 교환)의 반응 개념 — George & Lee (2016), [doi:10.1021/acsnano.6b02991](https://doi.org/10.1021/acsnano.6b02991)
 - 고종횡비 구조 속 ALD 컨포멀성 분석 — Cremers et al. (2019, 오픈액세스), [doi:10.1063/1.5060967](https://doi.org/10.1063/1.5060967)
 
-**참고 논문**
+## 근거
 
 - [Mechanisms of Thermal Atomic Layer Etching](https://doi.org/10.1021/acs.accounts.0c00084) — George, Acc. Chem. Res. 53 (2020). 열 ALE 메커니즘 분류 (불화+리간드 교환, 전환, 산화, 자기제한 리간드, 온도 변조)
 - [Thermal Atomic Layer Etching of Silicon Dioxide Using Sequential, Self-Limiting Reactions](https://doi.org/10.1021/acsami.7b01259) — DuMont et al., ACS Appl. Mater. Interfaces 9 (2017). SiO₂ 전환 식각, EPC 압력 의존 0.027~0.31 Å/cycle
@@ -128,19 +130,38 @@ ALE는 10nm급 로직 양산부터 도입되었다. GAA의 리세스, 게이트 
 - [Atomic layer etching of SiO₂ with self-limiting behavior on the surface modification step using sequential exposure of HF and NH₃](https://doi.org/10.1116/6.0001517) — Miyoshi et al., J. Vac. Sci. Technol. A 40 (2022). 개질 단계 자기제한과 Langmuir 흡착 모델, EPC 0.9 nm/cycle
 - [In Situ Monitoring Surface Reactions in Cryogenic ALE of Silicon Nitride by Alternating HF Dose and Ar Plasmas](https://doi.org/10.1021/acs.chemmater.4c01835) — Hsiao et al., Chem. Mater. 36 (2024). 극저온 개질층의 이중 구조와 온도 역전 거동
 - [Cryogenic-Assisted HF Surface Reactions Enabling Reversibly Ultra-High Selectivity of ALE Between SiO₂ and SiN](https://doi.org/10.1002/smtd.202501744) — Hsiao et al., Small Methods (2026). 에탄올 공동 흡착으로 선택비를 무한대까지 역전
-- Thermal Atomic Layer Etching of Silicon Using an Oxidation, Fluorination, and Ligand-Exchange Mechanism — Abdulagatov et al. (2018). Si 열 ALE 0.4 Å/cycle, 거칠기 2.0 Å 유지
+- Thermal Atomic Layer Etching of Silicon Using an Oxidation, Fluorination, and Ligand-Exchange Mechanism — Abdulagatov et al. (2018). Si 열 ALE 0.4 Å/cycle, 거칠기 2.0 Å 유지. DOI: [10.1021/acs.chemmater.8b02745](https://doi.org/10.1021/acs.chemmater.8b02745)
 - [Thermal atomic layer etching of silicon nitride using an oxidation and 'conversion etch' mechanism](https://doi.org/10.1116/1.5140481) — Abdulagatov & George, J. Vac. Sci. Technol. A 38 (2020). Si₃N₄ 열 ALE (산화+전환)
-- Fluorocarbon Assisted Atomic Layer Etching of SiO₂ and Si Using Cyclic Ar/C₄F₈ and Ar/CHF₃ Plasma — Metzler et al., J. Vac. Sci. Technol. A 34 (2016). 플럭스 제어형 사이클릭 ALE
+- Fluorocarbon Assisted Atomic Layer Etching of SiO₂ and Si Using Cyclic Ar/C₄F₈ and Ar/CHF₃ Plasma — Metzler et al., J. Vac. Sci. Technol. A 34 (2016). 플럭스 제어형 사이클릭 ALE. DOI: [10.1116/1.4935462](https://doi.org/10.1116/1.4935462)
 - [Quasiatomic layer etching of silicon oxide selective to silicon nitride in topographic structures using fluorocarbon plasmas](https://doi.org/10.1116/1.4978224) — Wang et al., J. Vac. Sci. Technol. A 35 (2017). S-곡선으로 선택비 최적화, 클로깅
 - [Topographically-selective atomic layer etching of SiO₂ using radical fluorination of the surface followed by Ar ion bombardment](https://doi.org/10.35848/1347-4065/ad0c46) — Osonio et al., Jpn. J. Appl. Phys. 62, 121001 (2023)
 - [Atomic-layer precision etching of SiO₂ using sequential molecular adsorption and plasma activation](https://doi.org/10.1039/D5TC03428K) — Venugopal et al., J. Mater. Chem. C 14, 1009 (2026). SF₆ 흡착 + Ar 플라즈마, 시너지 100%, CC BY 4.0
-- Plasma Atomic Layer Etching of Ruthenium by Oxygen Adsorption-Removal Cyclic Process — Kim et al., Appl. Surf. Sci. (2024). 금속 ALE의 산화+제거형
-- Atomic Layer Etching for Low-k Fine Patterning: Industrial Perspective — Lee et al., J. Vac. Sci. Technol. A 44, 058501 (2026). 퍼지·처리량 한계와 산업 적용의 논리
+- Plasma Atomic Layer Etching of Ruthenium by Oxygen Adsorption-Removal Cyclic Process — Kim et al., Appl. Surf. Sci. (2024). 금속 ALE의 산화+제거형. DOI: [10.1016/j.apsusc.2024.160570](https://doi.org/10.1016/j.apsusc.2024.160570)
+- Atomic Layer Etching for Low-k Fine Patterning: Industrial Perspective — Lee et al., J. Vac. Sci. Technol. A 44, 058501 (2026). 퍼지·처리량 한계와 산업 적용의 논리. DOI: [10.1116/6.0005592](https://doi.org/10.1116/6.0005592)
 - [Atomic Layer Deposition: An Overview](https://doi.org/10.1021/cr900056b) — George, Chem. Rev. 110, 111 (2010). ALD 표면화학의 표준 리뷰
 - [Surface chemistry of atomic layer deposition: A case study for the trimethylaluminum/water process](https://doi.org/10.1063/1.1940727) — Puurunen, J. Appl. Phys. 97, 121301 (2005). TMA/H₂O 공정으로 본 ALD 표면화학
 - [Conformality in atomic layer deposition: Current status overview of analysis and modelling](https://doi.org/10.1063/1.5060967) — Cremers, Puurunen & Dendooven, Appl. Phys. Rev. 6, 021302 (2019). 컨포멀성 리뷰, CC BY 4.0 오픈액세스
 - [Prospects for Thermal Atomic Layer Etching Using Sequential, Self-Limiting Fluorination and Ligand-Exchange Reactions](https://doi.org/10.1021/acsnano.6b02991) — George & Lee, ACS Nano 10, 4889 (2016). 열 ALE의 개념
 - [Future of plasma etching for microelectronics](https://doi.org/10.1116/6.0003579) — Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024). ALE 절(II L) 참고
+- [Thermal atomic layer etching: A review](https://doi.org/10.1116/6.0000894) — Fischer, Routzahn & George, J. Vac. Sci. Technol. A (2021). 열 ALE 전반의 리뷰 — 재료별 화학·EPC 정리
+- [Thermal atomic layer etching: Mechanism, materials and prospects](https://doi.org/10.1016/j.pnsc.2018.11.003) — Fang, Cao & Wu, Prog. Nat. Sci.: Mater. Int. (2018). 열 ALE 메커니즘 분류 리뷰
+- [Plasma application in atomic layer etching](https://doi.org/10.1063/5.0158785) — Fischer & Lill, Phys. Plasmas 30, 080601 (2023). 플라즈마 ALE의 위치와 처리량 관점
+- [Silicon atomic layer etching by two-step plasma process consisting of oxidation and modification to form (NH₄)₂SiF₆, and its sublimation](https://doi.org/10.7567/JJAP.57.106505) — Song et al., Jpn. J. Appl. Phys. 57, 106505 (2018). 산화+염 형성으로 Si까지 확장한 ALE
+- [Atomic Layer Etching: Rethinking the Art of Etch](https://doi.org/10.1021/acs.jpclett.8b00997) — Kanarik, Tan & Gottscho, J. Phys. Chem. Lett. 9, 4814–4821 (2018). ALE의 틀(시너지·스무딩·선택비) 재정리
+- [Atomic Layer Etching at the Tipping Point: An Overview](https://doi.org/10.1149/2.0061506jss) — Oehrlein, Metzler & Li, ECS J. Solid State Sci. Technol. (2015). ALE 창과 임계 에너지 관점의 개관
+- [Atomic Layer Etching: What Can We Learn from Atomic Layer Deposition?](https://doi.org/10.1149/2.0051506jss) — Faraz et al., ECS J. Solid State Sci. Technol. (2015). ALD와의 대비로 본 ALE의 정의
+- [Quasi atomic layer etching of SiO₂ using plasma fluorination for surface cleaning](https://doi.org/10.1116/1.5003417) — Koh et al., J. Vac. Sci. Technol. A (2018). 플라즈마 불화 기반 quasi-ALE
+- [Surface phenomena during plasma-assisted atomic layer etching of SiO₂](https://doi.org/10.1021/acsami.7b08234) — Gasvoda et al., ACS Appl. Mater. Interfaces (2017). FC-ALE의 혼합층·벽 효과 등 표면 현상
+- [Atomic layer etching of silicon dioxide using alternating C₄F₈ and energetic Ar⁺ plasma beams](https://doi.org/10.1088/1361-6463/aa6f40) — Kaler et al., J. Phys. D: Appl. Phys. (2017). 이온빔 분리형 FC-ALE의 EPC 거동
+- [Atomic layer etching of SiO₂ using sequential exposures of Al(CH₃)₃ and H₂/SF₆ plasma](https://doi.org/10.1116/6.0003793) — Catherall et al., J. Vac. Sci. Technol. A (2024). TMA 개질 + 플라즈마 제거의 등방성 ALE와 시너지
+- [Effect of the chamber wall on fluorocarbon-assisted atomic layer etching of SiO₂ using cyclic Ar/C₄F₈ plasma](https://doi.org/10.1116/1.4949260) — Kawakami et al., J. Vac. Sci. Technol. A (2016). 챔버 벽 상태가 재현성을 좌우하는 문제
+- [Fluorocarbon based atomic layer etching of Si₃N₄ and etching selectivity of SiO₂ over Si₃N₄](https://doi.org/10.1116/1.4954961) — Li et al., J. Vac. Sci. Technol. A (2016). FC-ALE의 SiO₂/Si₃N₄ 선택비
+- [Characterizing fluorocarbon assisted atomic layer etching of Si using cyclic Ar/C₄F₈ and Ar/CHF₃ plasma](https://doi.org/10.1063/1.4961458) — Metzler et al., J. Appl. Phys. (2016). 위 JVST A 논문의 Si 쪽 짝논문 — 이온 에너지와 표면 화학
+- [Physical and chemical effects in directional atomic layer etching](https://doi.org/10.1088/1361-6463/ab6d94) — Sang & Chang, J. Phys. D: Appl. Phys. (2020). 방향성 ALE에서 물리·화학 효과의 분리
+- [Etch selectivity during plasma-assisted etching of SiO₂ and SiNₓ: Transitioning from RIE to ALE](https://doi.org/10.1116/6.0000395) — Gasvoda et al., J. Vac. Sci. Technol. A (2020). RIE→ALE 전이 구간의 선택비를 가르는 노브들
+- [Highly selective isotropic gas-phase etching of SiO₂ using HF and methanol at temperatures −30 °C and lower](https://doi.org/10.35848/1347-4065/acb953) — Hattori et al., Jpn. J. Appl. Phys. (2023). 극저온 HF/메탄올 등방 식각 — 극저온 변형의 인접 사례
+- [Novel Atomic Layer Processes for Semiconductor Manufacturing: Area Selective Deposition, Atomic Layer Annealing, and Atomic Layer Etching](https://doi.org/10.1007/s12541-025-01337-z) — Lee, Lee & Oh, Int. J. Precis. Eng. Manuf. (2025). 원자층 공정군 전체의 리뷰, 극저온 ALE 포함
+- [Plasma etching: Yesterday, today, and tomorrow](https://doi.org/10.1116/1.4819316) — Donnelly & Kornblit, J. Vac. Sci. Technol. A (2013). 플라즈마 식각 전반의 고전 리뷰 — ALE가 놓인 배경
 
 **연구 연결 — 암모늄염 ALE.** 이 장의 ALE 사이클(개질 → 제거)을 염 화학으로 구현한 대표 사례가 암모늄염 thermal-cyclic ALE다. 표면을 (NH₄)₂SiF₆ 염으로 바꾸는 단계가 자기제한적이고, 가열로 염을 분해하는 단계가 제거에 해당한다. Shinoda 등(2019)은 이 방식으로 Si₃N₄를 사이클 단위로 깎았고, 자세한 화학·선택비·진단은 [[AFS 선택 식각]]에 따로 모았다.
 

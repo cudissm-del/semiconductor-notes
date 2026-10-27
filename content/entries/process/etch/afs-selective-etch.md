@@ -4,6 +4,7 @@ en: AFS Selective Etching
 domain: process
 topic: etch
 order: 3
+prereq: ALE (원자층 식각)
 tags: AFS, 선택비, SiOCN
 ---
 
@@ -26,6 +27,8 @@ GAA 나노시트에서 내부 스페이서는 게이트와 S/D 에피 사이에 
 **초고선택의 설계.** Volynets 등(2020)은 NF₃/N₂/O₂/H₂ 리모트 플라즈마에서 Si₃N₄/SiO₂ 선택비 약 380을 보고했고, 선택비는 H₂ 유량에 대해 뾰족한 최대값을 가졌다. Barsukov 등(2017)은 NF₃/O₂ 계에서 자연히 생기는 NO가 F의 표면 이동을 도와 SiN 식각을 가속한다는 메커니즘을 제시했다.
 
 **SiCN·SiOCN의 경우.** Matsui 등(2021)은 NF₃/Ar 플라즈마에서 SiCN이 비교 물질들보다 빠르게 깎이며, 선택비는 깎지 않을 쪽에 보호층을 입히는 설계(산화층, Si 증착층, TiNₓFᵧ + ammonium fluoride층)로 만든다는 것을 보였다. Pranda 등(2023)은 SiCN·SiOCN·SiBCN의 식각률이 물질 자체의 질소 함량에 비례함을 보였고, Goya 등(2026)은 NF₃ 플라즈마에 H₂를 넣으면 적을 때는 F 증가와 산소 결핍층으로 SiOCN 식각이 빨라지다가, 많아지면(≥40 sccm) NHx 보호층이 생겨 느려지는 세 구간을 XPS로 구분했다.
+
+![AFS 선택 식각의 공정 창 — 막 질소 함량과 식각률(Pranda 2023, Fig. 7 재구성), H₂ 유량에 대한 Si₃N₄/SiO₂ 선택비의 뾰족한 피크(Volynets 2020, Fig. 3 재구성), H₂ 유량에 대한 SiOCN 식각 거동(Goya 2026, Fig. 3 재구성). 세 패널 모두 정성 경향의 재구성](img/afs-process-window.svg)
 
 | 화학계 | 주로 깎이는 쪽 | 선택 거동 (보고값) | 출처 |
 | --- | --- | --- | --- |
@@ -108,7 +111,7 @@ GAA 나노시트에서 내부 스페이서는 게이트와 S/D 에피 사이에 
 - SiN thermal-cyclic ALE의 자기제한 곡선 — Shinoda et al. (2019), [doi:10.1116/1.5111663](https://doi.org/10.1116/1.5111663)
 - H₂ 첨가에 따른 SiOCN 식각 3구간과 XPS — Goya et al. (2026), [doi:10.1116/6.0005595](https://doi.org/10.1116/6.0005595)
 
-**참고 논문**
+## 근거
 
 - [Thin layer etching of silicon nitride: A comprehensive study of selective removal using NH₃/NF₃ remote plasma](https://doi.org/10.1116/1.4963072) — Possémé et al., J. Vac. Sci. Technol. A 34, 061301 (2016)
 - [Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate](https://doi.org/10.7567/APEX.9.106201) — Shinoda et al., Appl. Phys. Express 9, 106201 (2016)
@@ -127,6 +130,13 @@ GAA 나노시트에서 내부 스페이서는 게이트와 S/D 에피 사이에 
 - Gil et al., Sci. Rep. (2023), doi:10.1038/s41598-023-38359-4 — NF₃/H₂ 리모트 + 메탄올 가열 사이클, SiO₂ EPC ≈13 nm/cycle, Si₃N₄ 대비 선택비 >50 (원문 대조 확인)
 - Gill et al., Plasma Process. Polym. 18, 2100063 (2021), doi:10.1002/ppap.202100063 — NF₃/H₂ 사이클릭, SiO₂ EPC ≈7.5 nm/cycle, Si₃N₄ 대비 선택비 >40 (원문 대조 확인)
 - Bang et al., J. Vac. Sci. Technol. A 44, 033209 (2026), doi:10.1116/6.0005206 — 극저온 NF₃/NH₃에서 AFS가 SiN 패시베이션으로 전환 (원문 대조 확인)
+- Gu et al., Electronics Letters 56(10), 514–516 (2020). DOI: [10.1049/el.2019.3954](https://doi.org/10.1049/el.2019.3954) — SiOCN(k = 4.5) 하이브리드 스페이서를 FinFET에 통합해 겹침 용량을 줄인 실증 (본문 첫 절의 인용)
+- [Highly selective Si₃N₄/SiO₂ etching using an NF₃/N₂/O₂/H₂ remote plasma. II. Surface reaction mechanism](https://doi.org/10.1116/1.5125569) — Volynets et al., J. Vac. Sci. Technol. A 38, 023008 (2020). 위 I편의 표면 반응 메커니즘 편
+- [Ammonium Hexafluorosilicate Formation during Plasma Etching of Silicon Nitride](https://doi.org/10.1149/1.2095383) — Knolle & Huttemann, J. Electrochem. Soc. 135, 2574 (1988). 플라즈마 식각 중 AFS 형성을 보인 최초 보고
+- [Gas-phase etching mechanism of silicon oxide by a mixture of hydrogen fluoride and ammonium fluoride: A DFT study](https://doi.org/10.1116/6.0002433) — Hidayat & Lee, J. Vac. Sci. Technol. A 41, 032604 (2023). HF/NH₄F 기상 식각(염 형성 경로)의 DFT 메커니즘
+- [Investigation of oxide layer removal mechanism using reactive gases](https://doi.org/10.1016/j.mee.2015.02.025) — Kim et al., Microelectron. Eng. 135, 17–22 (2015). NH₃/NF₃ 계열의 산화막 제거(선택 세정) 메커니즘
+- [In situ dry cleaning of Si wafer using OF₂/NH₃ remote plasma with low global warming potential](https://doi.org/10.1088/1361-6463/aae182) — Park et al., J. Phys. D: Appl. Phys. 51, 445201 (2018). 같은 질소 공급 화학의 선택 세정 응용
+- [Characterization of Ammonium Silicate Residue during Polysilazane (PSZ) Dry Etching in NF₃/H₂O Gas Chemistry](https://doi.org/10.1149/08002.0211ecst) — Kim, ECS Trans. 80, 211 (2017). 암모늄염 계열 잔류물의 특성화 (잔류 염 절의 배경)
 
 ## 관련 항목
 

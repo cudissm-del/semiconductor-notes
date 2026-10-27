@@ -97,3 +97,20 @@ table { overflow-wrap: normal; word-break: keep-all; }
 
 /* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
 a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}

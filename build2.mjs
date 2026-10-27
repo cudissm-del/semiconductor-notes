@@ -76,6 +76,8 @@ function parseEntry(file) {
     order: Number.isFinite(parseInt(fm.order, 10)) ? parseInt(fm.order, 10) : 99,
     hub: fm.hub === 'true', domainHub: fm.domain_hub === 'true',
     tags: (fm.tags || '').split(',').map(s => s.trim()).filter(Boolean),
+    aliases: (fm.aliases || '').split(',').map(s => s.trim()).filter(Boolean),
+    prereq: (fm.prereq || '').split(',').map(s => s.trim()).filter(Boolean),
     body: raw.slice(m[0].length),
     dir: path.dirname(file),
   };
@@ -213,6 +215,8 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   .side .side-body { display: none; margin-top: 10px; }
   .side.open .side-body { display: block; }
 }
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
@@ -223,6 +227,7 @@ const head = (title, prefix, math = false) => `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>${math ? `<link rel="stylesheet" href="${prefix}assets/katex/katex.min.css">` : ''}<style>${css}${extraCss}</style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="${prefix}index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>`;
 const foot = `<footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 </body></html>`;
@@ -301,11 +306,13 @@ for (const e of entries) {
   const idx = sibs.findIndex(x => x.slug === e.slug);
   const prev = idx > 0 ? sibs[idx - 1] : null, next = idx >= 0 && idx < sibs.length - 1 ? sibs[idx + 1] : null;
   const prevNext = (prev || next) ? `<nav class="prevnext">${prev ? `<a href="${prev.slug}.html">← 이전 · ${prev.title}</a>` : '<span></span>'}${next ? `<a href="${next.slug}.html">다음 · ${next.title} →</a>` : '<span></span>'}</nav>` : '';
+  const prereqResolved = (e.prereq || []).map(n => { const t = resolveWiki(n); if (!t) console.warn(`⚠ [${e.slug}] prereq를 찾지 못함:`, n); return t; }).filter(Boolean);
+  const prereqBox = prereqResolved.length ? `<div class="prereq"><span class="pl-t">먼저 읽을 항목</span>${prereqResolved.map(x => `<a href="${x.slug}.html">${x.title}</a>`).join(' · ')}</div>` : '';
   const crumb = e.domainHub
     ? `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › ${e.title}`
     : `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › <a href="../${topicPage(e.domain, e.topic)}">${topicName(e)}</a> › ${e.title}`;
   const page = `${head(`${e.title} — 반도체 백과`, '../', hasMath(bodies.get(e.slug)))}
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
   ${sideHtml(e, P_E)}
   <div class="content">
@@ -314,6 +321,7 @@ for (const e of entries) {
   ${e.en ? `<div class="en">${e.en}</div>` : ''}
   <div class="meta"><span class="chip cat">${domainName(e.domain)} &gt; ${topicName(e)}</span>${e.hub ? '<span class="badge">주제 허브</span>' : ''}${e.domainHub ? '<span class="badge">영역 허브</span>' : ''}${e.tags.map(tagChip).join('')}</div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  ${prereqBox}
   <article>${bodies.get(e.slug)}</article>
   ${prevNext}
   <div class="links-box"><h3>이 항목에서 링크한 항목</h3>${linkList(outs)}<h3>이 항목을 링크한 항목</h3>${linkList(backs)}${siblings.length ? `<h3>같은 주제의 다른 항목</h3>${linkList(siblings)}` : ''}</div>
@@ -355,7 +363,7 @@ for (const d of DOMAINS) {
     return `<a class="card" href="../${topicPage(d.id, t.id)}"><div class="t">${t.name} <span class="badge${hub ? '' : ' list'}">${hub ? '허브형' : '목록형'}</span></div><div class="e">${items.length}개 항목${hub ? ` · 허브: ${hub.title}` : ''}</div><div class="d">${items.map(x => x.title).join(' · ')}</div></a>`;
   }).join('');
   const page = `${head(`${d.name} — 반도체 백과`, '../', dHub ? hasMath(bodies.get(dHub.slug)) : false)}
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
   ${sideHtml({ domain: d.id, topic: null, slug: null, domainHub: false }, P_SUB)}
   <div class="content">
@@ -383,7 +391,7 @@ for (const d of DOMAINS) for (const t of d.topics) {
     ? `<article>${rebaseBody(overviewOf(bodies.get(hub.slug), hub.slug))}</article><p class="count">위 내용은 이 주제의 허브 항목 <a href="../e/${hub.slug}.html">${hub.title}</a>의 정의와 개요까지만 실었다. <a href="../e/${hub.slug}.html">전문 읽기 →</a></p>`
     : `<p class="count">목록형 주제 — 총론(허브) 항목 없이, 아래 항목 목록이 곧 주제 페이지입니다.</p>`;
   const page = `${head(`${t.name} — ${d.name} · 반도체 백과`, '../', hasMath(overview))}
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
   ${sideHtml({ domain: d.id, topic: t.id, slug: null, domainHub: false }, P_SUB)}
   <div class="content">
@@ -408,7 +416,7 @@ const tagList = [...tagMap.entries()].sort((a, b) => b[1].length - a[1].length |
 // 노출 규칙: 2개 이상 항목에 쓰인 태그만 목록·페이지를 만든다. 1회용 태그는 항목 페이지의 링크 없는 칩으로만 남는다.
 const exposedTags = tagList.filter(([, list]) => list.length >= 2);
 const tagsPage = `${head('태그 — 반도체 백과', '')}
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
   ${sideHtml(null, P_ROOT)}
   <div class="content">
@@ -422,6 +430,16 @@ const tagsPage = `${head('태그 — 반도체 백과', '')}
 <footer class="bot">반도체 백과 · ${updated} 기준 · 프리뷰 빌드</footer>
 ${sideScript}`;
 fs.writeFileSync(path.join(OUT, 'tags.html'), tagsPage);
+// 고아 태그 정리: 이전 빌드·구조 재편 때 남은 옛 태그 페이지를 비우고 재생성한다.
+// (git 추적 파일의 삭제 반영은 배포 단계 소관 — 여기서는 산출물 폴더만 맞춘다)
+{
+  const tagDir = path.join(OUT, 'tag');
+  const keep = new Set(exposedTags.map(([t]) => `${t}.html`));
+  const stale = fs.existsSync(tagDir) ? fs.readdirSync(tagDir).filter(f => f.endsWith('.html') && !keep.has(f)) : [];
+  if (stale.length) console.log(`  · 고아 태그 페이지 ${stale.length}개 정리: ${stale.join(', ')}`);
+  fs.rmSync(tagDir, { recursive: true, force: true });
+  fs.mkdirSync(tagDir, { recursive: true });
+}
 for (const [t, list] of exposedTags) {
   const sections = DOMAINS.map(d => {
     const items = list.filter(e => e.domain === d.id).sort((a, b) => a.order - b.order);
@@ -429,7 +447,7 @@ for (const [t, list] of exposedTags) {
     return `<div class="sub-name">${d.name}</div><div class="cards">${items.map(x => `<a class="card" href="../e/${x.slug}.html"><div class="t">${x.title}</div><div class="e">${x.en}</div><div class="d">${escA(defOf(x))}</div></a>`).join('')}</div>`;
   }).join('');
   const page = `${head(`#${t} — 반도체 백과`, '../')}
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
   ${sideHtml(null, P_SUB)}
   <div class="content">
@@ -476,8 +494,9 @@ const indexPage = `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>반도체 백과</title><style>${css}${extraCss}</style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><span class="brand">반도체 백과</span><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
   ${sideHtml(null, P_ROOT)}
   <div class="content">
@@ -522,7 +541,12 @@ tabFav.addEventListener('click', () => showFav(true));
 q.addEventListener('input', () => {
   const v = q.value.trim().toLowerCase();
   if (!v || !idx) { box.innerHTML = ''; return; }
-  const hits = idx.filter(x => (x.t + ' ' + x.en + ' ' + x.tags.join(' ') + ' ' + x.x).toLowerCase().includes(v)).slice(0, 12);
+  // 순위 가중: 제목·영문명·alias(3) > 태그(2) > 본문(1). 같은 등급 안에서는 색인 순서를 유지한다.
+  const hits = idx.map(x => {
+    const head = (x.t + ' ' + x.en + ' ' + (x.a || []).join(' ')).toLowerCase();
+    const s = head.includes(v) ? 3 : x.tags.join(' ').toLowerCase().includes(v) ? 2 : x.x.toLowerCase().includes(v) ? 1 : 0;
+    return { x, s };
+  }).filter(r => r.s > 0).sort((a, b) => b.s - a.s).slice(0, 12).map(r => r.x);
   box.innerHTML = hits.map(x => '<a class="hit" href="e/' + x.slug + '.html"><span class="t">' + x.t + '</span> <span class="m">' + x.cat + ' &gt; ' + x.sub + '</span><div class="x">' + x.x.slice(0, 140) + '…</div></a>').join('') || '<p style="color:var(--sub)">결과 없음</p>';
 });
 </script>
@@ -530,7 +554,7 @@ ${sideScript}`;
 fs.writeFileSync(path.join(OUT, 'index.html'), indexPage);
 
 // ── 검색 색인 ────────────────────────────────────────────────────
-const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, cat: domainName(e.domain), sub: topicName(e), tags: e.tags, d: defOf(e), x: plain(bodies.get(e.slug)).slice(0, 4000) }));
+const index = entries.map(e => ({ slug: e.slug, t: e.title, en: e.en, a: e.aliases, cat: domainName(e.domain), sub: topicName(e), tags: e.tags, d: defOf(e), x: plain(bodies.get(e.slug)) }));
 fs.writeFileSync(path.join(OUT, 'search-index.json'), JSON.stringify(index));
 
 const topicCount = DOMAINS.reduce((a, d) => a + d.topics.length, 0);
