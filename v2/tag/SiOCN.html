@@ -100,6 +100,23 @@ table { overflow-wrap: normal; word-break: keep-all; }
 /* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
 a { overflow-wrap: anywhere; }
 
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
 main.wide { max-width: 1180px; }
 .layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
 .side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
@@ -141,15 +158,18 @@ ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
   .side .side-body { display: none; margin-top: 10px; }
   .side.open .side-body { display: block; }
 }
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
 .pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
 .pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
 details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
 </style></head>
 <body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
-<main class="wide">
+<main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">9</span></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">24</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">28</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">10</span></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../tags.html">태그</a> › #SiOCN</div>
   <h1 class="title">#SiOCN</h1>
