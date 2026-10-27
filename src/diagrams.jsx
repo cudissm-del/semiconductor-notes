@@ -21,6 +21,7 @@ import yieldCurve from './figs/yield.jsx';
 import afsCycle from './figs/afscycle.jsx';
 import afsTemp from './figs/afstemp.jsx';
 import xpsFig from './figs/xps.jsx';
+import irAnneal from './figs/iranneal.jsx';
 import ellipsometry from './figs/ellipsometry.jsx';
 import semVolume from './figs/semvolume.jsx';
 import xpsEnergy from './figs/xpsenergy.jsx';
@@ -349,6 +350,7 @@ export const byCaption = {
   'AFS 형성·제거 사이클': afsCycle,
   'AFS 온도 지도': afsTemp,
   'AFS의 XPS 지문': xpsFig,
+  'IR 어닐과 염의 소멸': irAnneal,
   '엘립소미터 원리': ellipsometry,
   'SEM 상호작용 부피': semVolume,
   'XPS 광전자 방출': xpsEnergy,
