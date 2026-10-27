@@ -21,7 +21,7 @@ GAA(Gate-All-Around)는 게이트가 채널을 4면 모두 감싸는 트랜지�
 
 회사별 이름은 다르다 — 삼성 MBCFET(3nm급 최초 양산), TSMC N2 나노시트, Intel RibbonFET(20A/18A).
 
-&#91;embedded content: Planar · FinFET · GAA 단면 비교\]
+![트랜지스터 세대 비교 — Planar·FinFET·GAA 나노시트·CFET를 게이트가 채널을 감싸는 면의 수(1면·3면·4면, CFET은 4면 상하 적층)로 비교한 개념도. 게이트는 반투명으로 그려 채널이 비치게 했다. 자체 제작](img/transistor-generations.svg)
 
 ### GAA 공정 흐름
 
