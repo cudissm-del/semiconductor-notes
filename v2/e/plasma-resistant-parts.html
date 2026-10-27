@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내플라즈마 부품 소재 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">25</span></div><div class="tn-t"><a href="../t/process--flow.html">집적 흐름</a></div><div class="tn-t"><a href="../t/process--patterning.html">패터닝</a></div><div class="tn-t open"><a href="../t/process--etch.html">식각</a><ul><li><a href="dry-etch.html">건식 식각</a></li><li><a href="ale.html">ALE (원자층 식각)</a></li><li><a href="har-etch.html">고종횡비 식각</a></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a></li><li><a href="recess.html">리세스와 채널 릴리스</a></li><li><a href="etch-equipment.html">식각 장비</a></li><li class="cur"><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a></li></ul></div><div class="tn-t"><a href="../t/process--film-planarization.html">막 형성·평탄화</a></div><div class="tn-t"><a href="../t/process--doping-thermal-cleaning.html">도핑·열처리·세정</a></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">11</span></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/process.html">공정</a> › <a href="../t/process--etch.html">식각</a> › 내플라즈마 부품 소재</div>
+  <h1 class="title">내플라즈마 부품 소재</h1>
+  <div class="en">Plasma-Resistant Chamber Materials</div>
+  <div class="meta"><span class="chip cat">공정 &gt; 식각</span><a class="chip" href="../tag/%ED%94%8C%EB%9D%BC%EC%A6%88%EB%A7%88.html">#플라즈마</a><a class="chip" href="../tag/%ED%8C%8C%ED%8B%B0%ED%81%B4.html">#파티클</a><span class="chip">#식각 장비</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <div class="prereq"><span class="pl-t">먼저 읽을 항목</span><a href="etch-equipment.html">식각 장비</a></div>
+  <article><blockquote>
+<p>웨이퍼를 깎는 플라즈마는 챔버도 깎는다 — 부품이 어떻게 깎이고, 깎인 것이 파티클·오염·벽 상태로 공정에 어떻게 돌아오는가.</p>
+</blockquote>
+<h3 id="개요-부품도-깎인다">개요 — 부품도 깎인다</h3>
+<p>식각 챔버 안에서 플라즈마에 닿는 것은 웨이퍼만이 아니다. 챔버 벽과 라이너, 가스를 뿌리는 샤워헤드, 웨이퍼 가장자리를 두르는 엣지(포커스) 링, 웨이퍼를 붙잡는 정전척(ESC) 표면이 모두 같은 이온과 라디칼을 맞는다. 부품은 웨이퍼보다 훨씬 오래 플라즈마에 노출되므로, 아주 느린 침식도 수천 장의 웨이퍼를 거치면 눈에 띄는 변화가 된다. 그리고 부품에서 떨어져 나온 것은 사라지지 않고 공정으로 돌아온다 — 웨이퍼 위에 떨어지면 <strong>파티클</strong>, 웨이퍼에 섞이면 <strong>금속 오염</strong>, 벽 표면의 화학이 바뀌면 <strong>벽 상태 변화와 드리프트</strong>가 된다. 이 항목은 「어떤 소재가 왜 덜 깎이는가」와 「깎인 것이 무엇으로 돌아오는가」를 다룬다. 시즌닝·세정 주기 같은 장비 운영은 <a class="wiki" href="etch-equipment.html">식각 장비</a>가, 파티클의 수율 영향은 <a class="wiki" href="defect-control.html">결함·오염 관리</a>가 맡는다.</p>
+<h3 id="침식의-두-경로-화학과-스퍼터">침식의 두 경로 — 화학과 스퍼터</h3>
+<p>부품 표면이 깎이는 길은 웨이퍼와 같다(<a class="wiki" href="dry-etch.html">건식 식각</a>).</p>
+<ul>
+<li><strong>화학적 침식</strong> — 불소·염소 라디칼이 표면을 할로겐화물로 바꾼다. 생성물이 휘발성이면 표면이 계속 깎이고, 비휘발성이면 표면에 할로겐화물 층이 남는다. 남은 층은 한편으로 아래를 지키는 보호막이 되지만, 다른 한편으로 부피 변화와 응력 때문에 금이 가고 떨어져 파티클이 된다.</li>
+<li><strong>물리적 침식(스퍼터)</strong> — 시스 전압으로 가속된 이온이 원자를 튕겨낸다. 웨이퍼 쪽 전극 근처나 엣지 링처럼 시스 전압이 큰 자리에서 중요해진다. 스퍼터는 소재를 가리지 않으므로, 화학적으로 강한 소재도 이온 에너지가 높은 자리에서는 닳는다.</li>
+</ul>
+<p>어느 경로가 지배하는가는 <strong>부품의 위치</strong>가 정한다. 시스 전압이 작은 벽·라이너는 주로 라디칼의 화학적 공격을, 바이어스가 걸리는 전극 주변과 엣지 링은 이온 충격을 함께 받는다. 그래서 같은 챔버 안에서도 부품마다 맞는 소재가 다르다.</p>
+<h3 id="소재별-비교-무엇이-남는가">소재별 비교 — 무엇이 남는가</h3>
+<p>소재를 고르는 첫 질문은 「불소 플라즈마에서 이 소재의 불화물이 휘발하는가」다. 불화물이 휘발하지 않는 산화물은 표면에 불화층을 만들고 버티며, 휘발하는 소재(Si 계열)는 깎여 나가는 소모품으로 쓴다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>소재</th>
+<th>불소계 내성</th>
+<th>파티클 경향</th>
+<th>금속 오염 위험</th>
+<th>주로 쓰는 자리</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>양극산화 Al</td>
+<td>낮음</td>
+<td>높음 (다공성 산화층 균열·박리)</td>
+<td>Al</td>
+<td>구세대 벽·부품, 저출력 자리</td>
+</tr>
+<tr>
+<td>Al₂O₃ 세라믹</td>
+<td>중간</td>
+<td>중간 (AlF₃ 층 박리)</td>
+<td>Al</td>
+<td>창·라이너·절연 부품</td>
+</tr>
+<tr>
+<td>Y₂O₃ (용사 코팅·벌크)</td>
+<td>높음</td>
+<td>코팅 방식에 따라 다름</td>
+<td>Y</td>
+<td>벽·라이너·샤워헤드 등 고밀도 플라즈마 노출부</td>
+</tr>
+<tr>
+<td>YOF·YF₃ 계열</td>
+<td>높음</td>
+<td>낮은 쪽으로 설계됨</td>
+<td>Y</td>
+<td>불화 초기 변화를 줄이려는 자리</td>
+</tr>
+</tbody></table></div>
+<p><em>칸은 정성 등급이다. 같은 조건의 비교 한 예: ICP CHF₃/Ar 플라즈마에서 Al₂O₃ 벌크, Y₂O₃ 코팅, YOF 코팅(SPS)을 함께 노출했을 때 식각 깊이는 YOF를 1로 놓으면 Y₂O₃가 약 2배, Al₂O₃가 약 3.5배였다(Lee 등, 2020). Y₂O₃와 Al₂O₃의 같은 조건 비교는 Cao 등(2016)도 보고했다. 수치는 그 연구의 조건에서만 성립하는 비율이다.</em></p>
+<p>용어를 하나 정해 둔다. <strong>YF₃</strong>는 이트륨이 불소와만 결합한 완전한 불화물이고, <strong>YOF</strong>(이트륨 옥시플루오라이드)는 산소와 불소가 함께 결합한 중간 조성이다. Y₂O₃가 불소 플라즈마에 노출되면 표면이 Y₂O₃ → YOF → YF₃ 쪽으로 바뀌어 간다. 「YOF 코팅」은 이 중간 조성을 처음부터 코팅 재료로 쓴 것이다.</p>
+<p>석영(SiO₂)·Si·SiC는 이 표와 같은 축에 올리지 않는다. 이 소재들은 불화물(SiF₄)이 휘발해 처음부터 깎이는 것이 전제인 소모품이라, 비교의 기준이 「얼마나 버티나」가 아니라 「어디에 무엇을 위해 두나」다. 엣지 링을 Si나 SiC로 만드는 것은 덜 깎이게 하려는 것이 아니라, <strong>깎여도 웨이퍼와 같은 원소라 오염이 되지 않게</strong> 하려는 것이다. 생성물(SiF₄)이 휘발해 파티클도 남지 않는다. 대신 닳은 만큼 웨이퍼 가장자리의 시스 모양이 바뀌므로, 엣지 링은 정해진 수명마다 교체하는 소모품이다(<a class="wiki" href="etch-nonidealities.html">식각 비이상 현상</a>의 웨이퍼 내 불균일).</p>
+<h3 id="Y₂O₃가-표준이-된-이유와-한계">Y₂O₃가 표준이 된 이유와 한계</h3>
+<p>Y₂O₃가 고밀도 불소계 플라즈마에 노출되는 부품의 표준 코팅이 된 이유는 <a class="wiki" href="al2o3.html">Al₂O₃</a>와 같은 논리의 강화판이다. 이트륨 불화물은 알루미늄 불화물보다도 안정하고 휘발하지 않아서, 표면이 불화되어도 그 층이 아래를 지키며 깎이는 속도가 느리다. 같은 플라즈마에서 Y₂O₃ 코팅이 Al₂O₃ 벌크보다 덜 깎이고, YOF 코팅은 그보다 더 덜 깎인다는 것이 위 표 주의 비교다(Lee 등, 2020).</p>
+<p>한계는 세 가지다.</p>
+<ul>
+<li><strong>불화층의 변화</strong> — 표면이 Y₂O₃에서 YOF·YF₃ 쪽으로 바뀌는 동안 벽이 라디칼을 붙잡는 정도도 바뀐다. 새 부품이나 세정 직후의 부품이 안정되기까지 공정이 흔들리는 이유 중 하나다. 실제로 CF₄/O₂ 플라즈마에 노출한 Y₂O₃·YF₃ 코팅 표면에는 수 nm(5~7 nm 수준) 두께의 YOF층이 생긴다(Lin 등, 2017). NF₃/He 플라즈마에서도 YOF 코팅 표면에 불화층이 형성된다(Tang 등, 2024). 처음부터 YOF로 만든 코팅이 제안된 것은 이 변화를 줄이기 위해서다(Shiba 등, 2017).</li>
+<li><strong>코팅 방식</strong> — 같은 Y₂O₃라도 막이 얼마나 치밀한가에 따라 성능이 갈린다. 기공과 입자 경계가 많은 막은 그 자리부터 공격받고 떨어져 파티클이 된다. 같은 Y₂O₃를 에어로졸 증착(AD)·대기 플라즈마 용사(APS)·이온 플레이팅으로 만들어 내플라즈마성을 비교한 연구가 있다(Ashizawa &amp; Yoshida, 2021). 다만 파티클 수를 직접 센 비교는 아니므로, 코팅 방식과 파티클의 관계는 정성 서술로 둔다.</li>
+<li><strong>Y 오염</strong> — 떨어진 Y는 웨이퍼 위의 금속 오염이 된다. 표면 금속 오염은 <a class="wiki" href="txrf.html">TXRF</a>·<a class="wiki" href="vpd-icp-ms.html">VPD-ICP-MS</a>로 잡는다.</li>
+</ul>
+<h3 id="공정으로-돌아오는-것">공정으로 돌아오는 것</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>돌아오는 것</th>
+<th>경로</th>
+<th>이어지는 항목</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>파티클</td>
+<td>불화층·코팅의 균열·박리, 벽 폴리머의 박리</td>
+<td><a class="wiki" href="defect-control.html">결함·오염 관리</a>, <a class="wiki" href="etch-equipment.html">식각 장비</a></td>
+</tr>
+<tr>
+<td>벽 상태 변화</td>
+<td>벽 표면의 화학이 바뀌어 라디칼이 벽에서 재결합·흡착되는 정도가 달라짐 → 같은 레시피에서 식각률·선택비가 미끄러짐</td>
+<td><a class="wiki" href="etch-troubleshooting.html">식각 문제 해결표</a>의 드리프트·첫 웨이퍼 효과, <a class="wiki" href="etch-equipment.html">식각 장비</a>의 시즌닝</td>
+</tr>
+<tr>
+<td>금속 오염</td>
+<td>Al·Y 등 부품 원소가 웨이퍼로 이동</td>
+<td><a class="wiki" href="txrf.html">TXRF</a>, <a class="wiki" href="vpd-icp-ms.html">VPD-ICP-MS</a></td>
+</tr>
+<tr>
+<td>엣지 불균일</td>
+<td>엣지 링 마모로 가장자리 시스 모양 변화</td>
+<td><a class="wiki" href="etch-nonidealities.html">식각 비이상 현상</a></td>
+</tr>
+</tbody></table></div>
+<p><em>라디칼이 벽에서 재결합하는 확률(재결합 계수)이 벽 재질마다 다르다는 것은 오래전부터 측정돼 왔다(Nordine &amp; LeGrange, 1976). 다만 이는 초기 측정이라 오늘날 식각 챔버의 코팅 표면에 그대로 옮길 수 있는 값은 아니며, 여기서는 「재질이 바뀌면 벽 손실이 바뀐다」는 방향의 근거로만 쓴다.</em></p>
+<h3 id="관리">관리</h3>
+<ul>
+<li><strong>시즌닝과 세정 주기</strong> — 벽 상태를 길들이고 되돌리는 운영은 <a class="wiki" href="etch-equipment.html">식각 장비</a>가 다룬다. 이 항목의 관점에서 보면 이는 「부품 표면의 화학을 일정하게 유지하는 일」이다.</li>
+<li><strong>부품 교체 주기</strong> — 엣지 링 같은 소모품은 마모량으로, 코팅 부품은 파티클 추세와 표면 상태로 교체 시점을 정한다.</li>
+<li><strong>벽 상태 읽기</strong> — <a class="wiki" href="oes.html">OES</a>의 라디칼 발광 추세와 종말점 시간의 변화가 벽 상태의 간접 신호가 된다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="etch-equipment.html">식각 장비</a> — 부품 구성, 시즌닝·파티클·매칭 드리프트</li>
+<li><a class="wiki" href="al2o3.html">Al₂O₃</a> — 불화물 비휘발성이라는 같은 논리</li>
+<li><a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a> — 부품을 공격하는 종이 어떤 가스에서 나오나</li>
+<li><a class="wiki" href="defect-control.html">결함·오염 관리</a> — 파티클과 금속 오염이 수율에 미치는 영향</li>
+<li><a class="wiki" href="etch-troubleshooting.html">식각 문제 해결표</a> — 드리프트·첫 웨이퍼 효과 행</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li><strong>교과서 전형값</strong> — 침식의 두 경로, 할로겐화물의 휘발성에 따른 소재 구분, Si 계열 엣지 링의 소모품 전략은 플라즈마 식각·장비 교재의 일반 서술을 따랐다. 특정 장비의 실측이 아니다.</li>
+<li><strong>문헌 (본문 인용)</strong> — Joy가 Crossref·출판사 페이지로 대조했다(2026-10-27). 수치는 같은 연구 안의 같은 조건 비율만 쓰고 조건을 함께 적었다.<ul>
+<li>Lee et al., Coatings 10, 1023 (2020), <a href="https://doi.org/10.3390/coatings10111023" target="_blank" rel="noopener">doi:10.3390/coatings10111023</a> — ICP CHF₃/Ar에서 SPS YOF, Al₂O₃ 벌크, Y₂O₃ 코팅의 같은 조건 비교와 XPS 깊이 분석.</li>
+<li>Cao et al., Appl. Surf. Sci. 366, 304–309 (2016), <a href="https://doi.org/10.1016/j.apsusc.2016.01.092" target="_blank" rel="noopener">doi:10.1016/j.apsusc.2016.01.092</a> — Y₂O₃와 Al₂O₃의 같은 조건 비교.</li>
+<li>Lin et al., Nanomaterials 7, 183 (2017), <a href="https://doi.org/10.3390/nano7070183" target="_blank" rel="noopener">doi:10.3390/nano7070183</a> — CF₄/O₂ 플라즈마 노출 후 APS Y₂O₃·YF₃ 코팅 표면의 YOF층.</li>
+<li>Tang et al., Coatings 14, 1091 (2024), <a href="https://doi.org/10.3390/coatings14091091" target="_blank" rel="noopener">doi:10.3390/coatings14091091</a> — NF₃/He 플라즈마에서 APS YOF 코팅의 불화층.</li>
+<li>Shiba et al., J. Vac. Sci. Technol. A (2017), <a href="https://doi.org/10.1116/1.4975143" target="_blank" rel="noopener">doi:10.1116/1.4975143</a> — YOF 코팅의 도입.</li>
+<li>Ashizawa &amp; Yoshida, J. Ceram. Soc. Jpn. (2021), <a href="https://doi.org/10.2109/jcersj2.20174" target="_blank" rel="noopener">doi:10.2109/jcersj2.20174</a> — AD·APS·이온 플레이팅 Y₂O₃ 코팅의 내플라즈마성 비교.</li>
+<li>Nordine &amp; LeGrange, AIAA J. (1976), <a href="https://doi.org/10.2514/3.7132" target="_blank" rel="noopener">doi:10.2514/3.7132</a> — 표면 재질별 원자 재결합 계수의 초기 측정.</li>
+</ul>
+</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="etch-equipment.html">← 이전 · 식각 장비</a><span></span></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li><li><a href="al2o3.html">Al₂O₃</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="etch-troubleshooting.html">식각 문제 해결표</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="etch-gas-chemistry.html">식각 가스 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><p style="color:var(--sub)">없음</p><h3>같은 주제의 다른 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="har-etch.html">고종횡비 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "plasma-resistant-parts", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>
