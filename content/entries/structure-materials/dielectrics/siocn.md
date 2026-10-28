@@ -77,5 +77,5 @@ SiOCN 선택 식각이 "조건 민감"이라는 말의 실체는 Goya 등(2026)�
 - Pranda et al., J. Vac. Sci. Technol. A 41, 063009 (2023), [doi:10.1116/6.0003014](https://doi.org/10.1116/6.0003014) — 질소 함량과 식각률의 비례 관계.
 - Matsui et al., J. Vac. Sci. Technol. A 39, 043008 (2021), [doi:10.1116/6.0000711](https://doi.org/10.1116/6.0000711) — SiCN 선택 식각과 보호층 설계 (보유 논문 원문 확인).
 - Gu et al., Electronics Letters 56(10), 514–516 (2020), [doi:10.1049/el.2019.3954](https://doi.org/10.1049/el.2019.3954) — SiOCN(k ≈ 4.5) 하이브리드 스페이서의 7 nm급 FinFET 통합.
-- Szymanowski et al. 2020, Coatings — RF PECVD 조성–굴절률 제어 (보유 논문 원문 확인, DOI는 대조 대기).
-- 위 DOI 4건은 저장소의 [[AFS 선택 식각]]·[[스페이서 소재 비교]] 근거 절에 이미 실린 것과 같다. k 범위 등 물성은 스페이서 문헌 보고값의 범위이며 조성에 따라 달라진다.
+- Szymanowski et al., Coatings 10(8), 794 (2020), [doi:10.3390/coatings10080794](https://doi.org/10.3390/coatings10080794) — RF PECVD(TMDSN·HMDSN)에서 N₂/O₂ 비로 굴절률 1.65~2.22 연속 제어 (보유 논문 원문, Joy 대조 10/27).
+- Szymanowski를 뺀 DOI 4건은 저장소의 [[AFS 선택 식각]]·[[스페이서 소재 비교]] 근거 절에 이미 실린 것과 같다. k 범위 등 물성은 스페이서 문헌 보고값의 범위이며 조성에 따라 달라진다.
