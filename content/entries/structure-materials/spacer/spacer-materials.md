@@ -25,6 +25,10 @@ tags: 스페이서, low-k, SiOCN, GAA
 
 공통 구도: [[기생 커패시턴스]] (COV·CEFF)가 곧 성능 지표라 k를 낮추는 경쟁이 치열하고, 진짜 장벽은 k값이 아니라 **후공정(식각·세정·열) 데미지 내성**이다.
 
+### 데미지 내성은 식각 쪽에서 보면 선택비 문제다
+
+"후공정 내성"을 식각 공정의 언어로 바꾸면 **옆 막과의 선택비**다. 스페이서를 깎을 때는 SiO₂·SiN·poly-Si를 남겨야 하고, 반대로 다른 막을 깎을 때는 스페이서가 남아야 한다. SiOCN의 경우 NF₃ 계열 플라즈마에 H₂를 더한 조건(40 sccm)에서 SiOCN 선택비가 SiO₂ 대비 14.0, SiN 대비 2.8, poly-Si 대비 1.5로 보고됐다(Goya 2026). SiO₂ 대비로는 넉넉하지만 SiN·poly-Si 대비로는 좁다. 또 low-k 계열은 막 자체의 질소 함량이 높을수록 잘 깎인다(Pranda 2023). 그래서 같은 이름의 SiOCN이라도 조성 레시피가 바뀌면 스페이서가 견디는 공정 목록도 바뀐다. k를 낮추려고 탄소·산소를 늘리면 내성 지도도 함께 움직인다는 점이, 외부 스페이서 교체가 "소재 하나 바꾸기"로 끝나지 않는 이유다. 조건별 선택비 표와 공정 창은 [[AFS 선택 식각]]에 있다.
+
 ## 내부 스페이서 — 아직 SiN 독주
 
 | 소재 | 상태 | 근거 |
@@ -60,4 +64,7 @@ tags: 스페이서, low-k, SiOCN, GAA
 
 ## 근거
 
-- 정리 문서 (2026-10-21) 및 원문: Ko 2008 (VLSI). DOI: [10.1109/VLSIT.2008.4588581](https://doi.org/10.1109/VLSIT.2008.4588581); Gu 2020 (Electronics Letters). DOI: [10.1049/el.2019.3954](https://doi.org/10.1049/el.2019.3954); Cheng 2016 (IEDM). DOI: [10.1109/IEDM.2016.7838436](https://doi.org/10.1109/IEDM.2016.7838436); Li 2020 (Nanomaterials). DOI: [10.3390/nano10040793](https://doi.org/10.3390/nano10040793); Barraud 2016 (IEDM). DOI: [10.1109/IEDM.2016.7838441](https://doi.org/10.1109/IEDM.2016.7838441); Loubet 2019 (IEDM). DOI: [10.1109/IEDM19573.2019.8993615](https://doi.org/10.1109/IEDM19573.2019.8993615); Rawat 2021 (ESSDERC). DOI: [10.1109/ESSDERC53440.2021.9631815](https://doi.org/10.1109/ESSDERC53440.2021.9631815); Lee & Park 2021 (Electronics). DOI: [10.3390/electronics10121395](https://doi.org/10.3390/electronics10121395); Lee 2023 (TED). DOI: [10.1109/TED.2023.3326789](https://doi.org/10.1109/TED.2023.3326789); Mertens 2023 (VLSI). DOI: [10.23919/VLSITechnologyAndCir57934.2023.10185218](https://doi.org/10.23919/VLSITechnologyAndCir57934.2023.10185218); Possémé 2018 (JVST B). DOI: [10.1116/1.5038617](https://doi.org/10.1116/1.5038617); Pranda 2023. DOI: [10.1116/6.0003014](https://doi.org/10.1116/6.0003014); Goya 2026. DOI: [10.1116/6.0005595](https://doi.org/10.1116/6.0005595).
+- 정리 문서 (2026-10-21) 및 원문. 아래 DOI는 근거 1차분(10/26)에서 병기·대조됐다.
+  - 외부 스페이서: Ko 2008 (VLSI), [doi:10.1109/VLSIT.2008.4588581](https://doi.org/10.1109/VLSIT.2008.4588581) · Gu 2020 (Electronics Letters), [doi:10.1049/el.2019.3954](https://doi.org/10.1049/el.2019.3954) · Cheng 2016 (IEDM), [doi:10.1109/IEDM.2016.7838436](https://doi.org/10.1109/IEDM.2016.7838436) · Possémé 2018 (JVST B), [doi:10.1116/1.5038617](https://doi.org/10.1116/1.5038617)
+  - 내부 스페이서: Li 2020 (Nanomaterials), [doi:10.3390/nano10040793](https://doi.org/10.3390/nano10040793) · Barraud 2016 (IEDM), [doi:10.1109/IEDM.2016.7838441](https://doi.org/10.1109/IEDM.2016.7838441) · Loubet 2019 (IEDM), [doi:10.1109/IEDM19573.2019.8993615](https://doi.org/10.1109/IEDM19573.2019.8993615) · Rawat 2021 (ESSDERC), [doi:10.1109/ESSDERC53440.2021.9631815](https://doi.org/10.1109/ESSDERC53440.2021.9631815) · Lee & Park 2021 (Electronics), [doi:10.3390/electronics10121395](https://doi.org/10.3390/electronics10121395) · Lee 2023 (TED), [doi:10.1109/TED.2023.3326789](https://doi.org/10.1109/TED.2023.3326789) · Mertens 2023 (VLSI), [doi:10.23919/VLSITechnologyAndCir57934.2023.10185218](https://doi.org/10.23919/VLSITechnologyAndCir57934.2023.10185218)
+  - 선택 식각: Pranda 2023, [doi:10.1116/6.0003014](https://doi.org/10.1116/6.0003014) · Goya 2026, [doi:10.1116/6.0005595](https://doi.org/10.1116/6.0005595) — 본문 「데미지 내성」 절의 선택비·질소 함량 경향
