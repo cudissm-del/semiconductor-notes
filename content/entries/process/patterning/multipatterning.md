@@ -95,3 +95,4 @@ SADP의 간격은 두 종류가 번갈아 나타난다. 맨드릴 선폭 W, 스�
 
 - LELE·SADP·SAQP의 원리와 pitch walking 관계(W와 P − W − 2t)는 패터닝 교재의 전형 서술에 근거한다: Mack, *Fundamental Principles of Optical Lithography* 등.
 - 보유 논문의 스페이서 소재 문헌은 소자용 스페이서([[스페이서]]·[[스페이서 소재 비교]])의 근거로, 원리가 같다는 연결에만 참고했다.
+- 193 nm 액침 + 다중 패터닝 공정 확장: Owa, Wakamoto & Murayama, "Immersion lithography extension to sub-10nm nodes with multiple patterning", Proc. SPIE 9052, 90520O (2014), [doi:10.1117/12.2046604](https://doi.org/10.1117/12.2046604) (선정·대조: Joy). LELE·SADP의 원리와 pitch walking 산술은 교재 서술을 따른다.

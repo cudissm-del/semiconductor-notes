@@ -134,5 +134,5 @@ Schaepkens 등(1999)은 FC 플라즈마로 SiO₂, Si₃N₄, Si를 식각하면
 
 - **교과서 전형값** — 이온 에너지와 스퍼터 문턱의 범위, 휘발성 생성물과 가스 계열의 대응, 압력·바이어스에 따른 거동은 플라즈마 식각 교과서의 일반 서술을 따랐다. 특정 장비의 조건값이 아니다.
 - **문헌 실측** — 이온-라디칼 시너지는 Coburn & Winters (1979)의 빔 실험, FC 막 두께와 식각 속도의 반비례는 Schaepkens et al. (1999)의 측정으로, 본문에 출처를 붙여 구분했다. 두 논문의 서지 정보는 [[식각 비이상 현상]]의 참고 논문에 있다.
-- **문헌 (IED 조정)** — 이온 에너지 분포의 형성과 동기 바이어스에 의한 단일에너지화, 문턱 사이 창의 폭(약 10 eV)은 Economou (2013), "Tailored ion energy distributions and their use in plasma etching" (보유 논문)의 서술을 따랐다.
-- 위 두 문헌의 DOI: Coburn & Winters, J. Appl. Phys. 50, 3189 (1979), [doi:10.1063/1.326355](https://doi.org/10.1063/1.326355); Schaepkens et al., J. Vac. Sci. Technol. A 17, 26 (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108). 둘 다 저장소에서 이미 대조된 인용이다. Economou (2013)의 DOI는 대조 대기다.
+- **문헌 (IED 조정)** — 이온 에너지 분포의 형성과 동기 바이어스에 의한 단일에너지화, 문턱 사이 창의 폭(약 10 eV)은 Economou, "Tailored ion energy distributions on plasma electrodes", J. Vac. Sci. Technol. A 31 (2013), [doi:10.1116/1.4819315](https://doi.org/10.1116/1.4819315) (보유 논문, DOI·제목 대조: Joy)의 서술을 따랐다.
+- 위 두 문헌의 DOI: Coburn & Winters, J. Appl. Phys. 50, 3189 (1979), [doi:10.1063/1.326355](https://doi.org/10.1063/1.326355); Schaepkens et al., J. Vac. Sci. Technol. A 17, 26 (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108). 둘 다 저장소에서 이미 대조된 인용이다.

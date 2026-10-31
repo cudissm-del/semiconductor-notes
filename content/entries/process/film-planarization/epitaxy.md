@@ -85,3 +85,5 @@ SiGe의 격자상수는 Si(0.5431 nm)와 Ge(0.5658 nm) 사이를 Ge 비율 x에 
 - [근거 대기] 임계 두께: Matthews & Blakeslee (1974), *J. Cryst. Growth* — DOI는 Crossref로 대조한 뒤 기입
 - [근거 대기] 선택 SiGe 소스/드레인 응력 공학 대표 논문 1편
 - 격자 불일치 표는 Si·Ge 격자상수와 Vegard 근사에 따른 산술이다.
+- 임계 두께(misfit 전위): Matthews & Blakeslee, "Defects in epitaxial multilayers I. Misfit dislocations", J. Cryst. Growth 27, 118–125 (1974), [doi:10.1016/0022-0248(74)90424-2](https://doi.org/10.1016/0022-0248(74)90424-2) (선정·대조: Joy).
+- SiGe 소스/드레인 응력 공학: Thompson, Armstrong, Auth et al., "A 90-nm logic technology featuring strained-silicon", IEEE Trans. Electron Devices 51, 1790–1797 (2004), [doi:10.1109/TED.2004.836648](https://doi.org/10.1109/TED.2004.836648) (선정·대조: Joy).

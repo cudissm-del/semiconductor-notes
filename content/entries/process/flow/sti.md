@@ -75,3 +75,4 @@ tags: 소자 분리, 갭필, CMP, FEOL
 - [근거 대기 — Joy 매핑] 교재: Plummer, Deal & Griffin, *Silicon VLSI Technology* (Prentice Hall, 2000) 현대 CMOS 공정 흐름 장 · Campbell, *Fabrication Engineering at the Micro- and Nanoscale* 4th ed. (2013)
 - [근거 대기] STI 갭필·응력·험프에 대한 대표 논문 1편 이상 (DOI Crossref 대조 후 기입)
 - 갭필 종횡비 표의 트렌치 깊이 250 nm는 설명용 가정값이며, 채움 방식 구분은 공정의 정성 정리다.
+- HDP-CVD 갭필의 실증: Lee, Son, Lee et al., "Shallow Trench Isolation Characteristics with High-Density-Plasma CVD Gap-Fill", Jpn. J. Appl. Phys. 37, 1222 (1998), [doi:10.1143/JJAP.37.1222](https://doi.org/10.1143/JJAP.37.1222) (선정·대조: Joy). 응력·험프까지 넓게 받치는 총론으로 Chang, "Shallow Trench Isolation", Encyclopedia of Materials (2001), [doi:10.1016/B0-08-043152-6/01508-4](https://doi.org/10.1016/B0-08-043152-6/01508-4)를 보조로 단다.
