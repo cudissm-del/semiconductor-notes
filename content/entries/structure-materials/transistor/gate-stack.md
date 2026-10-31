@@ -106,6 +106,9 @@ HKMG 설계는 결국 "EOT를 줄이되 Dit·트랩·TDDB 마진을 얼마까지
 ### 근거
 
 - EOT 정의, 일함수 목표, 다이폴 방향, BTI·TDDB 메커니즘은 반도체 소자·공정 교재의 표준 설명이다.
+- HKMG 양산 도입: Mistry et al., "A 45nm Logic Technology with High-k+Metal Gate Transistors, Strained Silicon, 9 Cu Interconnect Layers, 193nm Dry Patterning, and 100%-Pb-free Packaging", IEDM (2007), [doi:10.1109/IEDM.2007.4418914](https://doi.org/10.1109/IEDM.2007.4418914). 45nm 세대 HKMG 도입의 근거다.
+- 계면 다이폴의 기원: Kita & Toriumi, "Origin of electric dipoles formed at high-k/SiO₂ interface", Appl. Phys. Lett. 94, 132902 (2009), [doi:10.1063/1.3110968](https://doi.org/10.1063/1.3110968). 다이폴 절의 「계면 산소 이동으로 설명」 부분의 원전이다.
+- High-k·금속 게이트 전반: Robertson & Wallace, Mater. Sci. Eng. R 88, 1–41 (2015), [doi:10.1016/j.mser.2014.11.001](https://doi.org/10.1016/j.mser.2014.11.001). [[High-k 산화물 (HfO₂·ZrO₂)|High-k 산화물]]·[[RMG (Gate-last)|RMG]]와 공유하는 리뷰 인용이다.
 - 본문의 수치는 모두 **교과서 전형값**이며, 특정 업체 노드의 실측 스택 두께·조성은 비공개 영역이라 싣지 않았다.
 
 ## 관련 항목
