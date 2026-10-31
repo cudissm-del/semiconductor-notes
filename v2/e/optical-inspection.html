@@ -233,6 +233,42 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>추이 관리</strong> — 절대 개수보다 공정·챔버·시간별 추이와 새로운 결함 종류의 출현이 이상 신호다.</li>
 <li><strong>분류 연결</strong> — 검출 좌표는 리뷰 <a class="wiki" href="sem.html">SEM</a>과 자동 결함 분류(ADC)로 넘겨 종류별 분포를 만들고, 그 결함 밀도가 <a class="wiki" href="yield-model.html">수율 모델</a>의 입력이 된다.</li>
 </ul>
+<h2 id="산술로-보는-감도-입자-지름의-6제곱">산술로 보는 감도 — 입자 지름의 6제곱</h2>
+<p>빛 파장보다 훨씬 작은 입자의 산란 강도는 지름의 6제곱에 비례한다(Rayleigh 영역). 지름 100 nm 입자의 신호를 1로 놓은 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>입자 지름</th>
+<th>상대 산란 강도</th>
+<th>100 nm 대비</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100 nm</td>
+<td>1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>50 nm</td>
+<td>1/64</td>
+<td>약 1.6%</td>
+</tr>
+<tr>
+<td>30 nm</td>
+<td>약 1/1,370</td>
+<td>약 0.07%</td>
+</tr>
+<tr>
+<td>20 nm</td>
+<td>1/15,625</td>
+<td>약 0.006%</td>
+</tr>
+</tbody></table></div>
+<p>입자가 절반이 되면 신호는 64분의 1로 줄어, 검출 한계를 조금 낮추는 데도 광원 세기나 검출 효율을 몇 배씩 올려야 한다. 같은 이유로 표면이 거칠거나 막 아래 결정립이 크면 바탕 산란(헤이즈)이 작은 입자 신호를 덮는다. 검출 한계는 장비 성능만이 아니라 그 웨이퍼 표면의 헤이즈로도 정해지므로, 같은 장비라도 막 종류마다 다른 검출 한계를 갖는다. 짧은 파장을 쓰면 같은 입자에서 산란이 커지므로, 검사 장비는 자외선 쪽으로 광원을 옮겨 왔다.</p>
+<h2 id="검출에서-원인까지-리뷰와-분류">검출에서 원인까지 — 리뷰와 분류</h2>
+<p>광학 검사는 「어디에 무엇인가 있다」까지만 알려 준다. 찾은 좌표 중 일부를 리뷰 SEM으로 다시 보고 입자·스크래치·패턴 결함·잔사로 분류한 뒤, 필요하면 <a class="wiki" href="edx.html">EDX</a>나 <a class="wiki" href="aes.html">AES</a>로 조성을 본다. 분류된 결함 수를 공정 단계별로 쌓으면 어느 단계에서 결함이 늘었는지가 보인다.</p>
+<p>플라즈마 식각 뒤 결함이 늘었다면 결함 지도의 모양부터 본다. 가장자리에 몰린 입자는 챔버 벽이나 링 부품에서 떨어진 것일 가능성이 크고, 웨이퍼 전면에 고르게 퍼진 미세 입자는 공정 중 기상에서 생긴 입자나 배기 역류를 의심한다. 특정 패턴 위치에서만 반복되면 식각 자체의 패턴 결함이다.</p>
+<p>패턴 웨이퍼에서는 산란만으로 결함을 찾기 어렵다. 패턴 자체가 빛을 강하게 산란하기 때문이다. 그래서 명시야 검사는 인접한 같은 다이의 영상을 서로 빼서 차이가 나는 곳만 결함 후보로 잡는다(다이 대 다이 비교). 이 방식은 모든 다이에 공통으로 생긴 결함은 못 잡으므로, 마스크 결함처럼 반복되는 결함은 설계 데이터와 비교하는 방식으로 따로 찾는다. 검사 감도를 너무 높이면 공정 산포에서 오는 작은 차이까지 결함으로 잡혀 「가짜 결함」이 쏟아지므로, 감도와 가짜 결함 비율 사이의 균형을 레시피마다 맞춘다. 같은 웨이퍼를 같은 레시피로 두 번 검사해 결함 위치가 얼마나 겹치는지(재현성)를 보는 것이 레시피 검증의 기본이다. 겹치지 않는 결함이 많으면 잡음을 결함으로 세고 있다는 뜻이므로, 감도를 낮추거나 픽셀 크기를 조정한다. 검증한 레시피는 막 종류가 바뀔 때마다 다시 맞춘다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>표면만 본다</strong> — 막 아래 묻힌 결함이나, 패턴은 정상인데 전기적으로 죽은 결함은 원리적으로 잡지 못한다.</li>
@@ -249,10 +285,11 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>암시야 산란·명시야 비교 검사의 원리는 반도체 결함 검사 표준 서술에 근거한다: Runyan &amp; Shaffner, <em>Semiconductor Measurements and Instrumentation</em> (McGraw-Hill) 계열 일반 서술.</li>
 <li>본문에 더한 산란 강도의 지름 6제곱 의존성은 교재의 Rayleigh 산란 서술이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>결함 검사·계측 전략 개관: Orji et al., &quot;Metrology for the next generation of semiconductor devices&quot;, <em>Nature Electronics</em> 1(10), 532–547 (2018), <a href="https://doi.org/10.1038/s41928-018-0150-9" target="_blank" rel="noopener">doi:10.1038/s41928-018-0150-9</a>. <a class="wiki" href="defect-control.html">결함·오염 관리</a>에서 이미 대조된 인용이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><span></span><a href="ebeam-inspection.html">다음 · e-beam 검사 →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul></div>
   </div>
  </div>
 </main>

@@ -238,6 +238,34 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>응력</strong> — 피크 이동을 면 간격 변화로 바꾸고, 시료를 기울이며 이동을 모으는 sin²ψ법으로 잔류 응력을 환산한다.</li>
 <li><strong>두께·조성의 동시 확인</strong> — 에피층 측정에서는 피크 위치(조성)와 프린지 간격(두께)이 한 번의 스캔에서 함께 나오므로, 성장 공정의 반복성을 감시하는 지표로 쓰기 좋다.</li>
 </ul>
+<h2 id="산술로-보는-결정자-크기-Scherrer-식">산술로 보는 결정자 크기 — Scherrer 식</h2>
+<p>피크 폭에서 결정자 크기를 어림하는 Scherrer 식은 τ = K·λ / (β·cosθ)이다(K ≈ 0.9, λ는 X선 파장, β는 장비 폭을 뺀 피크 반치폭(라디안), θ는 브래그 각). Cu Kα(λ = 0.15406 nm)와 2θ = 30°를 <strong>가정값</strong>으로 한 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>피크 반치폭 β (2θ 기준)</th>
+<th>결정자 크기 τ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.2°</td>
+<td>약 41 nm</td>
+</tr>
+<tr>
+<td>0.5°</td>
+<td>약 16 nm</td>
+</tr>
+<tr>
+<td>1.0°</td>
+<td>약 8 nm</td>
+</tr>
+</tbody></table></div>
+<p>수 nm~수십 nm 막의 결정자는 피크가 1° 안팎으로 넓어지는 영역이라 폭 자체는 잘 보인다. 다만 Scherrer 값은 미세 변형에 의한 폭 증가를 크기로 잘못 셈하는 하한 추정이고, 장비 고유 폭을 표준 시료로 빼지 않으면 크기가 작게 나온다.</p>
+<h2 id="박막-상-동정-HfO₂의-예">박막 상 동정 — HfO₂의 예</h2>
+<p>얇은 막은 기판 Si의 강한 회절 피크에 묻히기 쉬워, 입사각을 1° 안팎으로 눕힌 저각 입사 XRD(GIXRD)로 X선이 막 안에서만 길게 지나가게 한다. <a class="wiki" href="high-k-oxides.html">HfO₂</a> 박막에서는 이 방식으로 단사정상과 정방정·사방정상을 가른다. 2θ 약 28°와 32° 부근의 쌍은 단사정상, 그 사이 약 30° 부근의 피크는 정방정 또는 사방정상의 몫이다. 강유전성 HfO₂를 처음 보고한 Böscke 2011도 GIXRD로 상을 확인했다.</p>
+<p>정방정상과 사방정상은 30° 부근에서 피크가 거의 겹쳐 XRD만으로 구분하기 어렵다. 그래서 상 판정은 전기적 특성(분극–전계 이력)이나 전자 회절과 함께 내린다. 막이 수 nm로 얇아지면 피크가 넓고 약해져 상 비율 정량은 더 어려워진다.</p>
+<h2 id="에피층-읽기-로킹-커브와-두께-진동">에피층 읽기 — 로킹 커브와 두께 진동</h2>
+<p>에피층은 기판과 격자상수가 조금 달라 기판 피크 옆에 층 피크가 따로 선다. 두 피크의 간격이 조성(예: SiGe의 Ge 비율)과 변형 상태를 알려 주고, 층 피크 양옆의 잔물결(두께 진동) 간격이 층 두께를 알려 준다. 진동이 또렷할수록 계면이 평탄하다는 뜻이다. 결정 품질은 각도를 흔들며 잰 로킹 커브의 폭으로 비교한다. 폭이 넓어지면 전위나 모자이크 구조가 늘었다는 신호이며, 이완이 시작된 두꺼운 층에서 흔히 보인다. 변형과 이완을 함께 가르려면 대칭·비대칭 반사를 같이 재는 역격자 지도를 쓴다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>비정질·초박막</strong> — 규칙적인 결정면이 없거나 회절 부피가 작으면 날카로운 피크가 서지 않는다. 박막에는 입사각을 표면에 눕힌 그레이징 입사(GIXRD)로 표면 감도를 높여 대응한다.</li>
@@ -254,10 +282,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>Bragg 법칙과 회절 분석은 X선 회절 표준 교재 서술에 근거한다: Klug &amp; Alexander, <em>X-ray Diffraction Procedures</em> (Wiley).</li>
 <li>본문에 더한 수치(Cu Kα 파장)와 Scherrer 식, sin²ψ법은 교재의 표준 서술이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>강유전성 HfO₂ 박막의 GIXRD 상 확인: Böscke et al., &quot;Ferroelectricity in hafnium oxide thin films&quot;, Appl. Phys. Lett. 99, 102903 (2011), <a href="https://doi.org/10.1063/1.3634052" target="_blank" rel="noopener">doi:10.1063/1.3634052</a>. <a class="wiki" href="high-k-oxides.html">High-k 산화물</a>에서 이미 대조된 인용이다. HfO₂ 상별 피크 위치는 대략값이다.</li>
+<li>Scherrer 식의 K·λ·2θ는 설명용 가정값이며, 표의 결정자 크기는 그에 따른 산술이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="raman.html">← 이전 · 라만 분광</a><span></span></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
   </div>
  </div>
 </main>

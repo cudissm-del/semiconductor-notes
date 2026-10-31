@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>실리콘 웨이퍼 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+<title>실리콘 웨이퍼 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
 :root {
   --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
   --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
@@ -194,6 +194,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <p>규석(모래)을 전기로에서 탄소로 환원하면 98% 순도의 야금급 실리콘이 되고, 이를 염화시켜 증류하는 지멘스(Siemens) 공정으로 99.9999999%(9N) 이상의 전자급 다결정 실리콘까지 정제한다.</p>
 <p>이 다결정을 단결정으로 길러내는 대표 방식이 CZ(초크랄스키)법이다. 석영 도가니에서 1414°C로 녹인 실리콘에 종자 결정을 담갔다가 회전시키며 천천히 끌어올리면, 용융액이 종자의 결정 방향을 따라 그대로 굳어 단결정 잉곳이 된다. 도펀트를 용융액에 넣어 웨이퍼의 저항률을 맞추고, 도가니의 석영에서 녹아든 산소가 결정에 조금 들어간다 — 이 산소는 오히려 웨이퍼 강도와 게터링에 도움이 되기도 한다.</p>
 <p>도가니 없이 전자기력으로 용융 구간을 떠받쳐 길러내는 FZ(부유대역)법은 더 순수하고 저항이 높아 전력 소자에 주로 쓴다.</p>
+<p>결정이 굳을 때 어떤 점결함(원자 빈자리 또는 격자 사이 원자)이 남는지는 인상 속도 v와 성장 계면의 온도 기울기 G의 비로 갈린다는 설명이 Voronkov 이론이다. v/G가 임계값보다 크면 빈자리가, 작으면 격자 사이 원자가 우세해진다. 원전(Voronkov 1982)은 FZ 실리콘의 소용돌이(swirl) 결함 관찰을 설명한 것이고, 이후 같은 틀이 CZ 결정의 COP·전위 루프 같은 결함 분포 설명으로 확장되어 쓰인다.</p>
 <figure class="fig"><svg viewBox="0 0 760 340" role="img" aria-label="CZ법은 종자 결정을 용융 실리콘에서 회전하며 끌어올려 단결정 잉곳을 만든다" font-size="13"><defs><marker id="wafer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker></defs><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">웨이퍼는 단결정 잉곳을 길러 얇게 썬 것이다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">CZ 인상법 — 종자 결정의 방향을 따라 용융 실리콘이 그대로 굳는다</text><rect x="334" y="58" width="12" height="52" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="330" y="110" width="20" height="16" fill="var(--cds-chart-categorical-3)" fill-opacity="0.55" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><path d="M322 126H358L382 154H298Z" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></path><rect x="298" y="154" width="84" height="62" fill="var(--cds-chart-categorical-3)" fill-opacity="0.3" stroke="var(--cds-chart-categorical-3)" stroke-width="1"></rect><path d="M256 216H424L404 284H276Z" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></path><path d="M264 216H416L402 264H278Z" fill="var(--cds-chart-categorical-1)" fill-opacity="0.18" stroke="none"></path><path d="M436 168V112" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25" marker-end="url(#wafer-arrow)"></path><text x="436" y="96" text-anchor="middle" fill="var(--cds-text-primary)">회전하며 천천히 인상</text><path d="M240 118H326" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="232" y="122" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">종자 결정</text><path d="M240 182H294" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="232" y="186" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">단결정 잉곳</text><path d="M240 240H272" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="232" y="244" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">Si 용융액 (1414°C)</text><path d="M240 278H270" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="232" y="282" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">석영 도가니</text><circle cx="592" cy="168" r="64" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1.25"></circle><circle cx="592" cy="168" r="3" fill="var(--cds-chart-axis)"></circle><text x="592" y="262" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">300mm 웨이퍼</text><text x="592" y="280" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">잉곳을 775µm로 썰어 연마한 것</text><text x="380" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">잉곳 → 슬라이싱 (와이어소) → 래핑·에칭 → 연마 (CMP) → 세정·검사</text></svg><figcaption>그림 1. CZ 단결정 성장과 웨이퍼 · 잉곳 인상 개념도</figcaption></figure>
 <p>잉곳은 외형을 다듬은 뒤 다이아몬드 와이어소로 얇게 썰고, 모서리를 둥글리고 래핑·화학 에칭으로 가공 손상을 걷어낸 뒤 CMP로 거울처럼 연마해 웨이퍼가 된다.</p>
 <h2 id="핵심-수치">핵심 수치</h2>
@@ -250,6 +251,49 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <p>어느 기판이든 공통 스펙은 평탄도(나노미터급), 결정 결함(전위·COP), 금속 오염, 산소 농도다. 특히 CZ 웨이퍼의 산소는 석출물 형태로 내부 게터링(오염을 소자 영역에서 먼 곳에 가두는 효과)을 제공하지만, 과하면 휨과 결함의 원인이 돼 농도 창을 관리한다.</p>
 <h2 id="웨이퍼-표기와-방향">웨이퍼 표기와 방향</h2>
 <p>웨이퍼에는 결정 방향을 알리는 플랫(flat) 또는 노치(notch)가 있다. 300mm는 노치가 표준이며, 노광 정렬과 결정면 식각(이방성 습식 식각 등)에서 기준이 된다. (100) 면이 표준인 이유는 산화막 계면의 결함 밀도가 가장 낮고 이동도가 확보되기 때문이며, 결정면이 다르면 같은 공정에서도 식각률과 계면 특성이 달라진다.</p>
+<h2 id="산술로-보는-지름의-효과-장당-다이-수">산술로 보는 지름의 효과 — 장당 다이 수</h2>
+<p>웨이퍼 지름을 키우는 이득은 면적이 지름의 제곱으로 늘어나는 데서 온다. 둥근 웨이퍼에 사각 다이를 깔면 가장자리에서 잘리는 손실이 생기므로, 장당 다이 수는 흔히 다음 근사식으로 어림한다(d: 지름, S: 다이 면적).</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>N</mi><mo>≈</mo><mfrac><mrow><mi>π</mi><mo stretchy="false">(</mo><mi>d</mi><mi mathvariant="normal">/</mi><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mi>S</mi></mfrac><mo>−</mo><mfrac><mrow><mi>π</mi><mi>d</mi></mrow><msqrt><mrow><mn>2</mn><mi>S</mi></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">N \approx \frac{\pi (d/2)^2}{S} - \frac{\pi d}{\sqrt{2S}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">S</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord">/2</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.3014em;vertical-align:-0.93em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.1833em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>지름</th>
+<th>웨이퍼 면적</th>
+<th>다이 100 mm²일 때 장당 다이 수 (근사)</th>
+<th>200 mm 대비</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200 mm</td>
+<td>약 31,400 mm²</td>
+<td>약 270</td>
+<td>1</td>
+</tr>
+<tr>
+<td>300 mm</td>
+<td>약 70,700 mm²</td>
+<td>약 640</td>
+<td>약 2.4배</td>
+</tr>
+<tr>
+<td>450 mm</td>
+<td>약 159,000 mm²</td>
+<td>약 1,490</td>
+<td>약 5.5배</td>
+</tr>
+</tbody></table></div>
+<p>면적은 200 → 300 mm에서 2.25배인데 다이 수는 약 2.4배로 더 크게 는다. 가장자리 손실(두 번째 항)이 지름에 비례해 늘 뿐이라, 웨이퍼가 클수록 손실 비율이 작아지기 때문이다. 450 mm는 300 mm 대비 다이 수가 2.3배 남짓이지만, 노광기·식각기·이송 장비를 전부 새로 만들어야 하는 비용이 이 이득을 넘지 못해 도입되지 않았다. 다이가 커질수록(S↑) 가장자리 손실 항의 비중이 커져 대형 칩일수록 지름 이득이 더 크다는 점도 같은 식에서 읽힌다. 식은 결함과 엣지 제외 영역을 뺀 순수 기하 근사다.</p>
 <h2 id="한계-이슈">한계·이슈</h2>
 <ul>
 <li><strong>450mm 전환 무산</strong> — 지름을 키우면 장당 칩 수는 늘지만 장비 전체를 교체해야 해, 업계는 300mm에 머물렀다. 대구경화 대신 웨이퍼 재사용·박형화·패키징 쪽으로 효율을 찾는 흐름이다.</li>
@@ -267,6 +311,8 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>본문 수치는 지멘스 공정·CZ법의 일반 교과서 서술에 근거한다 (교재: Campbell, <em>Fabrication Engineering at the Micro and Nanoscale</em>).</li>
 <li>밴드갭·격자상수·밀도·비저항 범위는 반도체 물성 교재의 전형값이며, 비저항은 도핑 농도로 설계되는 범위 값이다.</li>
+<li>장당 다이 수 근사식은 반도체 제조 원가 계산에서 통용되는 기하 근사이며, 표의 값은 다이 100 mm²를 가정한 산술이다(결함·엣지 제외 미반영).</li>
+<li>점결함 종류와 v/G의 관계: V. V. Voronkov, &quot;The mechanism of swirl defects formation in silicon&quot;, J. Cryst. Growth 59, 625–643 (1982), doi:10.1016/0022-0248(82)90386-4. 원전은 FZ 실리콘 대상이며, CZ로의 확장은 이후 문헌의 적용이다(본문에서도 범위를 구분해 적었다).</li>
 </ul>
 </article>
   <nav class="prevnext"><span></span><a href="channel-materials.html">다음 · 반도체·채널 물질 →</a></nav>

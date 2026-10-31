@@ -249,6 +249,43 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h2 id="읽는-법-해석">읽는 법·해석</h2>
 <p>곡선의 옆 이동은 전하를, 곡선의 늘어짐(stretch-out)은 계면 트랩을 말한다. 전압을 오가는 방향에 따라 생기는 히스테리시스는 움직이는 이온 전하나 전하 포획을 시사한다. 도핑 추출은 공핍 영역 기울기를 쓰므로, 깊이에 따라 도핑이 달라지면 1/C² 곡선이 휘어 각 전압 위치의 기울기가 그 깊이의 도핑을 준다. Dit는 단일 숫자가 아니라 밴드갭 안의 에너지 분포로 보고하는 것이 원칙이며, 추출법마다 값이 다를 수 있어 방법과 주파수를 함께 적는다.</p>
+<h2 id="산술로-보는-축적-용량과-EOT">산술로 보는 축적 용량과 EOT</h2>
+<p>축적 영역의 단위 면적 용량 Cox/A에서 등가 산화막 두께는 EOT = 3.9·ε₀ / (Cox/A)이다(ε₀ = 8.854×10⁻¹⁴ F/cm). 거꾸로 EOT별로 기대되는 용량을 <strong>산술</strong>하면 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>EOT</th>
+<th>Cox/A</th>
+<th>고정전하 10¹¹ q/cm²일 때 ΔVfb</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10 nm</td>
+<td>약 0.35 µF/cm²</td>
+<td>약 −46 mV</td>
+</tr>
+<tr>
+<td>5 nm</td>
+<td>약 0.69 µF/cm²</td>
+<td>약 −23 mV</td>
+</tr>
+<tr>
+<td>2 nm</td>
+<td>약 1.7 µF/cm²</td>
+<td>약 −9 mV</td>
+</tr>
+<tr>
+<td>1 nm</td>
+<td>약 3.5 µF/cm²</td>
+<td>약 −4.6 mV</td>
+</tr>
+</tbody></table></div>
+<p>두 가지가 읽힌다. 첫째, 막이 얇아질수록 같은 고정전하가 만드는 플랫밴드 이동이 작아져, 1 nm급 EOT에서는 전하 10¹¹ cm⁻² 수준의 차이가 수 mV로 묻힌다. 얇은 High-k 스택의 전하 평가가 까다로운 이유다. 둘째, 단위 면적 용량이 커지면 같은 크기의 커패시터에서 측정 용량도 커져, 직렬 저항이 곡선 모양을 비트는 효과가 커진다.</p>
+<h2 id="얇은-막에서-C-V가-어긋나는-이유">얇은 막에서 C-V가 어긋나는 이유</h2>
+<p>축적 용량에서 바로 구한 두께는 EOT가 아니라 용량 등가 두께(CET)이다. 실리콘 쪽 반전층·축적층의 전하가 계면에서 조금 떨어져 분포하고(양자 효과), 폴리 게이트라면 게이트 쪽 공핍까지 더해져, CET는 EOT보다 수 Å 두껍게 나온다. 그래서 EOT를 보고할 때는 이 차이를 보정하는 모델을 쓰고, 모델 이름을 함께 적는다.</p>
+<p>막이 2 nm 아래로 얇아지면 터널링 누설 전류가 커져 측정 용량이 실제보다 작게, 심하면 축적 영역에서 꺾여 내려가게 보인다. 이때는 측정 주파수를 바꿔 가며 곡선이 겹치는지 보고, 직렬 저항과 누설을 넣은 등가 회로로 보정한다. 보정 없이 읽은 Cox는 EOT를 실제보다 두껍게 만든다.</p>
+<p>공정 평가에서는 같은 웨이퍼의 여러 크기 커패시터를 재서 면적에 비례하는지를 먼저 본다. 면적에 비례하지 않는 부분은 가장자리 누설이나 기생 용량이므로, 그 성분을 빼고 단위 면적 값을 구한다.</p>
+<p>계면 트랩 Dit는 곡선이 이상 곡선보다 완만하게 늘어지는 정도로 읽는다. 트랩이 전압 변화를 따라 전하를 주고받으면 같은 표면 전위를 만들려고 게이트 전압을 더 걸어야 하기 때문이다. 플라즈마 식각이나 애싱 뒤에 이 늘어짐이 커졌다면 이온·자외선 손상으로 계면 결합이 끊긴 것을 의심하고, 수소 어닐(포밍 가스) 뒤 회복되는지로 손상의 성격을 가른다. 주파수를 바꿔 가며 잰 곡선이 서로 벌어지는 정도도 트랩이 응답하는 속도를 알려 준다. 전압을 앞뒤로 쓸었을 때 곡선이 겹치지 않고 벌어지는 이력은 막 안의 느린 트랩이나 이동 이온을 뜻하므로, 이력 폭도 함께 보고한다. 측정 주파수·쓸기 속도·면적도 결과와 함께 남긴다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>얇은 산화막·high-k에서는 게이트 누설이 용량 신호를 오염시키고 직렬저항이 고주파 곡선을 눌러, 보정 없이 읽으면 두께와 Dit를 모두 틀린다. 양자역학적 전하 중심 이동 때문에 축적 용량에서 구한 전기적 두께는 물리적 두께보다 두껍게 나온다. 반전 응답은 소수 캐리어 생성 속도와 온도에 좌우되어 조명·온도 조건이 결과를 바꾸고, 전극 면적 오차는 모든 추출량에 그대로 비례해 들어간다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -260,10 +297,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h2 id="근거">근거</h2>
 <ul>
 <li>MOS C-V 곡선 해석과 Dit 추출은 반도체 소자 계측 표준 교재 서술에 근거한다: Schroder, <em>Semiconductor Material and Device Characterization</em> (Wiley); Nicollian &amp; Brews, <em>MOS Physics and Technology</em> (Wiley).</li>
+<li>EOT·ΔVfb 표는 SiO₂ 비유전율 3.9와 ΔVfb = −Qox/Cox에 따른 산술이며, 고정전하 10¹¹ q/cm²는 가정값이다.</li>
+<li>계면 트랩 추출(컨덕턴스법): Nicollian &amp; Goetzberger, Bell Syst. Tech. J. 46, 1055–1133 (1967), <a href="https://doi.org/10.1002/j.1538-7305.1967.tb01727.x" target="_blank" rel="noopener">doi:10.1002/j.1538-7305.1967.tb01727.x</a> (Crossref 대조: Joy).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="four-point-probe.html">← 이전 · 4점 탐침</a><a href="hall.html">다음 · 홀 측정 →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="hall.html">홀 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="hall.html">홀 측정</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="wat.html">WAT</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li></ul></div>
   </div>
  </div>
 </main>

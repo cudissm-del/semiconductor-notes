@@ -292,6 +292,33 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>확산</strong> — 주입 뒤 어닐에서 도펀트가 움직이면 설계한 접합이 번진다. C 공동 주입으로 B 확산을 억제하는 식의 &quot;도펀트끼리의 간섭&quot;도 설계 변수다 (<a class="wiki" href="annealing.html">어닐과 확산</a>).</li>
 </ul>
 <p>활성화 어닐은 손상 회복·활성화와 확산 억제 사이의 줄다리기다. 온도를 올리면 활성화는 좋아지지만 프로파일이 번지므로, 최신 노드는 짧고 뜨거운 스파이크·레이저 어닐로 시간을 줄이는 방향으로 갔다.</p>
+<h3 id="산술로-보는-랜덤-도펀트-변동">산술로 보는 랜덤 도펀트 변동</h3>
+<p>미세 채널에서 도펀트가 「몇 개」인지 세어 보면, 농도라는 말이 왜 무너지는지 보인다. 채널을 10 nm × 10 nm × 5 nm 상자로 잡으면 부피는 500 nm³ = 5 × 10⁻¹⁹ cm³이다(크기는 설명을 위한 가정값).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>채널 도핑 농도</th>
+<th>상자 안 평균 도펀트 수</th>
+<th>개수의 상대 흔들림 (√N / N)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10¹⁸ cm⁻³</td>
+<td>0.5개</td>
+<td>평균 1개 미만 — 「있다/없다」의 문제</td>
+</tr>
+<tr>
+<td>10¹⁹ cm⁻³</td>
+<td>5개</td>
+<td>약 45%</td>
+</tr>
+<tr>
+<td>10²⁰ cm⁻³</td>
+<td>50개</td>
+<td>약 14%</td>
+</tr>
+</tbody></table></div>
+<p>개수가 푸아송 분포를 따른다고 보면 흔들림은 √N에 비례한다. 채널 도핑 수준(10¹⁶~10¹⁸ cm⁻³)에서는 상자 하나에 도펀트가 한 개도 없을 수 있어, 트랜지스터마다 Vt가 제각각이 된다. FinFET·GAA가 채널을 일부러 거의 도핑하지 않고, Vt를 게이트 금속의 일함수로 맞추는 이유가 이 산술이다(<a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a>).</p>
 <h3 id="메모리-물질-저장-원리가-곧-재료-조건">메모리 물질 — 저장 원리가 곧 재료 조건</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -328,6 +355,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tr>
 </tbody></table></div>
 <p>공통점은 셀이 작아질수록 <strong>부피가 아니라 계면과 상(phase)이 성능을 정한다</strong>는 것이다. HZO는 조성(Hf:Zr ≈ 1:1)뿐 아니라 두께·전극 응력·어닐로 강유전 상을 잡아야 하고, DRAM 유전체는 ZrO₂/Al₂O₃ 적층처럼 &quot;k가 큰 층&quot;과 &quot;누설을 막는 층&quot;을 나눠 쌓는 식으로 절충한다.</p>
+<p>메모리 물질 중 세 가지는 구조나 물성이 처음 보고된 원전이 분명하다. HfO₂ 박막의 강유전성은 Si를 도핑한 막에서 처음 보고됐고(Böscke 2011), 이것이 CMOS 호환 강유전 메모리(HZO)의 출발점이 됐다. DRAM 커패시터에서 ZrO₂가 정방정으로 높은 k를 내는 MIM 구조는 Wu 2011이 보였다. 산화막/질화막 교대 적층에 구멍을 뚫어 셀을 수직으로 세우는 3D NAND의 골격은 BiCS(Tanaka 2007)에서 시작됐다. 상(phase)과 조성이 성능을 정한다는 위 서술의 구체적 근거가 이 원전들이다.</p>
 <h3 id="한계-이슈">한계·이슈</h3>
 <ul>
 <li><strong>랜덤 도펀트 변동 (RDF)</strong> — 채널 부피가 작아지면 도펀트 원자 수 자체가 수십~수백 개 수준이 돼, 개수와 위치의 통계적 흔들림이 Vt 산포가 된다. 미세 소자에서 채널 무도핑 설계가 선호되는 배경이다.</li>
@@ -344,11 +372,17 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h2 id="근거">근거</h2>
 <ul>
 <li>도펀트 농도 범위는 공정 교재의 전형 구간이며, 소자·노드별 설계값이 아니다.</li>
-<li>메모리 물질의 역할 구분은 기존 표의 소자 대응을 기준으로 정리했고, 특정 논문의 실측 수치는 새로 넣지 않았다.</li>
+<li>메모리 물질의 역할 구분은 기존 표의 소자 대응을 기준으로 정리했다. 랜덤 도펀트 변동 표는 채널 크기를 가정한 산술 예시다.</li>
+<li>원전 (DOI는 High-k 산화물·3D NAND 항목에서 대조된 것과 같다)<ul>
+<li>Böscke et al., Appl. Phys. Lett. 99 (2011), <a href="https://doi.org/10.1063/1.3634052" target="_blank" rel="noopener">doi:10.1063/1.3634052</a> — Si 도핑 HfO₂ 박막 강유전성 첫 보고.</li>
+<li>Wu et al., Appl. Phys. Lett. 98 (2011), <a href="https://doi.org/10.1063/1.3535605" target="_blank" rel="noopener">doi:10.1063/1.3535605</a> — 정방정 ZrO₂ MIM 커패시터.</li>
+<li>Tanaka et al., Symp. VLSI Technol. (2007), <a href="https://doi.org/10.1109/VLSIT.2007.4339708" target="_blank" rel="noopener">doi:10.1109/VLSIT.2007.4339708</a> — BiCS, 3D NAND 적층 구조의 원전.</li>
+</ul>
+</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="channel-materials.html">← 이전 · 반도체·채널 물질</a><a href="metals.html">다음 · 금속·도체 →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 구조·재료 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 구조·재료 &gt; 메모리</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="annealing.html">어닐과 확산</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="dram.html">DRAM</a> <span style="color:var(--sub)">— 구조·재료 &gt; 메모리</span></li><li><a href="nand-3d.html">3D NAND</a> <span style="color:var(--sub)">— 구조·재료 &gt; 메모리</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="metals.html">금속·도체</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul></div>
   </div>
  </div>
 </main>

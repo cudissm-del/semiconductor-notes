@@ -249,6 +249,44 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h2 id="읽는-법-해석">읽는 법·해석</h2>
 <p>스펙트럼의 각 피크는 분자 이온만이 아니라 이온화 과정에서 깨진 조각(분해 패턴)까지 포함하므로, 피크 높이 하나가 곧 그 종의 양은 아니다. 표준 가스로 구한 감도 계수와 분해 패턴을 행렬로 풀어 종별 분압으로 환산해야 조성비가 된다. 플라즈마 진단에서는 이 조성이 해리도와 연결된다 — 원료 가스 피크의 감소와 생성물 피크의 증가를 함께 보면 반응 진행을 읽을 수 있고, 식각 중에는 SiF₄ 같은 식각 생성물 신호의 상승·하강이 종말점 보조 지표가 된다. 라디칼은 샘플링 경로 벽에서 재결합해 잃기 쉬워, 검출 신호는 챔버 안 밀도의 하한에 가깝게 해석한다.</p>
+<h2 id="산술로-보는-샘플링-압력을-몇-자리-낮춰야-하나">산술로 보는 샘플링 — 압력을 몇 자리 낮춰야 하나</h2>
+<p>QMS는 이온이 다른 분자와 부딪히지 않고 필터를 지나야 하므로 대략 10⁻⁵ Torr 이하에서 동작한다. 공정 챔버가 1 Torr라면 압력을 다섯 자리 낮춰야 하고, 수 mTorr 식각 챔버라도 두세 자리는 낮춰야 한다. 그래서 작은 구멍(오리피스)으로 기체를 조금만 빼내고 별도 펌프로 분석실을 비우는 차등 배기를 쓴다. 이 과정에서 기체는 구멍과 관을 지나며 벽과 부딪히므로, 반응성이 큰 라디칼은 도중에 사라지고 안정한 분자만 주로 도착한다.</p>
+<h2 id="질량이-겹치는-이온들">질량이 겹치는 이온들</h2>
+<p>1 amu 분해능의 QMS는 질량이 같은 이온을 가르지 못한다. 플라즈마 식각에서 자주 만나는 예는 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>질량(m/z)</th>
+<th>겹치는 후보</th>
+<th>가르는 방법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>17</td>
+<td>NH₃⁺, OH⁺(물 조각)</td>
+<td>NH₃ 유무에 따른 변화, 18(H₂O⁺)과의 비</td>
+</tr>
+<tr>
+<td>20</td>
+<td>HF⁺, Ar²⁺</td>
+<td>Ar 유량을 바꿔 40(Ar⁺)과 함께 움직이는지</td>
+</tr>
+<tr>
+<td>28</td>
+<td>N₂⁺, CO⁺, Si⁺</td>
+<td>14(N⁺)·12(C⁺) 조각 피크 비</td>
+</tr>
+<tr>
+<td>85</td>
+<td>SiF₃⁺(SiF₄의 주 조각)</td>
+<td>SiF₄는 모이온(104)이 약해 85로 추적</td>
+</tr>
+</tbody></table></div>
+<p>모분자 이온보다 조각 이온이 더 크게 나오는 분자가 많다는 점도 중요하다. SiF₄는 대부분 SiF₃⁺로 깨져 나오므로, Si 식각 생성물은 m/z 85로 본다. NF₃도 NF₂⁺(52)가 주 신호다. 종별 조각 비율(분해 패턴)은 표준 기체로 미리 재 두고, 그 비율로 겹친 신호를 나눈다.</p>
+<h2 id="식각-공정-감시에서-쓰는-법">식각 공정 감시에서 쓰는 법</h2>
+<p>Si 식각에서 m/z 85(SiF₃⁺)가 떨어지는 시점은 Si가 다 깎였다는 종말점 신호가 되고, 챔버를 열고 닫은 뒤의 18(H₂O⁺)·28·32(O₂⁺) 잔류가스 수준은 챔버가 공정 투입 가능한 상태인지 판단하는 기준이 된다. 라디칼 자체를 보려면 전자 에너지를 모분자가 깨지는 에너지보다 낮게 맞춰 라디칼만 이온화하는 문턱 이온화법을 쓴다.</p>
+<p>감도 계수는 기체마다, 그리고 같은 장비에서도 시간에 따라 바뀐다. 이온원 필라멘트가 소모되거나 검출기 이득이 떨어지면 같은 분압에서도 신호가 줄므로, 정량하려면 알려진 분압의 표준 기체로 주기적으로 교정한다. 공정 기체가 이온원이나 질량 필터에 막을 쌓으면 감도가 빠르게 변하므로, 부식성 기체 공정에서는 측정하지 않을 때 밸브를 닫아 분석실을 보호한다. 신호의 절대값보다 공정 조건에 따른 상대 변화를 볼 때 QMS가 가장 믿을 만하다.</p>
+<p>그래서 QMS 결과는 <a class="wiki" href="oes.html">OES</a>·<a class="wiki" href="vuv.html">VUV 분광</a>과 짝지어 읽는다. 발광이나 흡수로 본 라디칼 변화와 QMS로 본 안정 생성물 변화가 같은 방향이면 해석에 자신이 붙고, 엇갈리면 샘플링 경로에서 반응이 일어났는지부터 의심한다. 측정 기록에는 오리피스 위치, 이온화 전자 에너지, 교정 날짜를 함께 남겨 둔다. 분석실 바탕 스펙트럼(공정 기체를 넣기 전)도 매번 저장해 두면, 나중에 신호가 오염인지 공정 변화인지를 가를 기준이 된다. 이 바탕을 뺀 차이 스펙트럼이 공정의 몫이다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>m/z가 겹치는 종(예: 28의 N₂와 CO)은 분해 패턴 없이는 분리할 수 없고, 배경 수분·대기 누설 피크가 미량 종을 가린다. 샘플링 오리피스와 이온원까지의 거리가 종마다 다른 손실과 시간 지연을 만들어 실시간 추적에 한계가 있으며, 검출기 이득은 시간에 따라 표류해 주기적 교정이 필요하다. 압력이 높은 공정은 차등 배기로 감압해 들이므로, 측정 조성은 그 변환을 거친 값임을 감안한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -260,10 +298,11 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h2 id="근거">근거</h2>
 <ul>
 <li>사중극자 질량 필터 원리와 RGA 용도는 진공·질량분석 표준 교재의 일반 서술에 근거한다: O&#39;Hanlon, <em>A User&#39;s Guide to Vacuum Technology</em> (Wiley).</li>
+<li>문턱 이온화로 라디칼과 해리 이온화 생성물을 가르는 원전: Singh, Coburn &amp; Graves, J. Vac. Sci. Technol. A 18, 299–305 (2000), <a href="https://doi.org/10.1116/1.582183" target="_blank" rel="noopener">doi:10.1116/1.582183</a> (Crossref 대조: Joy).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="langmuir.html">← 이전 · 랭뮤어 프로브</a><a href="vuv.html">다음 · VUV 분광 →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="vuv.html">VUV 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul></div>
   </div>
  </div>
 </main>

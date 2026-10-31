@@ -240,6 +240,36 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h2 id="읽는-법-해석">읽는 법·해석</h2>
 <p>주파수-시간 곡선의 기울기가 그 순간의 증착·식각 속도이고, 누적 변화량이 총 질량이다. 셔터를 열기 전후의 기울기 차이로 따면 온도 드리프트 같은 배경 변화를 상쇄할 수 있다. 곡선이 직선에서 벗어나기 시작하면 센서 표면의 누적막이 두꺼워져 감도가 떨어지고 있다는 신호로 읽고, 웨이퍼에서 잰 실제 두께와 주기적으로 대조해 tooling factor를 갱신한다.</p>
+<h2 id="산술로-보는-감도-ALD-한-사이클은-몇-Hz인가">산술로 보는 감도 — ALD 한 사이클은 몇 Hz인가</h2>
+<p>Sauerbrey 관계는 Δf = −C_f·Δm으로 쓸 수 있다(Δm은 단위 면적당 질량). 이 관계는 쌓인 막이 단단하고 균일해 결정과 함께 진동한다는 전제에서만 성립한다. AT-cut 수정에서 감도 계수 C_f는 기본 주파수의 제곱에 비례해, 6 MHz 결정에서 약 81 Hz·cm²/µg이다. 이 값과 <strong>가정값</strong>(Al₂O₃ 막 밀도 3.0 g/cm³)으로 한 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>쌓인 두께</th>
+<th>단위 면적당 질량</th>
+<th>주파수 변화 (6 MHz)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.1 nm (ALD 한 사이클 수준)</td>
+<td>0.03 µg/cm²</td>
+<td>약 −2.4 Hz</td>
+</tr>
+<tr>
+<td>1 nm</td>
+<td>0.3 µg/cm²</td>
+<td>약 −24 Hz</td>
+</tr>
+<tr>
+<td>100 nm</td>
+<td>30 µg/cm²</td>
+<td>약 −2.4 kHz</td>
+</tr>
+</tbody></table></div>
+<p>ALD 한 사이클이 수 Hz의 변화라서, QCM은 사이클 안에서 전구체가 붙고(질량 증가) 리간드가 떨어지는(질량 감소) 과정까지 단계별로 볼 수 있다. 그래서 ALD·ALE 연구에서 반응이 자기제한적으로 포화하는지 확인하는 표준 도구다. 같은 표를 거꾸로 읽으면, 막 밀도를 10% 잘못 넣으면 두께도 10% 어긋난다. 막이 얇을수록 밀도가 벌크와 달라지기 쉬우므로, 두께 환산값은 <a class="wiki" href="xrr.html">XRR</a>이나 <a class="wiki" href="ellipsometer.html">엘립소미터</a>로 한 번 교정해 둔다.</p>
+<h2 id="웨이퍼-값으로-옮기기-tooling-factor와-드리프트">웨이퍼 값으로 옮기기 — tooling factor와 드리프트</h2>
+<p>QCM 센서는 웨이퍼 옆에 있으므로 센서에 쌓이는 양과 웨이퍼에 쌓이는 양이 다르다. 그 비를 tooling factor라 하고, 시험 증착 뒤 웨이퍼 두께를 <a class="wiki" href="ellipsometer.html">엘립소미터</a>나 <a class="wiki" href="xrr.html">XRR</a>로 재서 정한다. 예컨대 센서 환산값이 50 nm인데 웨이퍼 실측이 45 nm라면 tooling factor는 0.9이고, 이후 공정은 센서값에 0.9를 곱해 읽는다. 챔버 형상이나 센서 위치를 바꾸면 이 값을 다시 정한다.</p>
+<p>주파수는 질량만이 아니라 온도에도 반응한다. 공정 중 플라즈마나 히터로 센서 온도가 수 °C만 변해도 수 Hz가 움직일 수 있어, 앞 표의 ALD 한 사이클 신호와 비슷한 크기가 된다. 그래서 정밀 측정에서는 센서 온도를 제어하고, 공정 전후의 기준선을 따로 재서 뺀다. 막이 계속 쌓이면 결정의 진동이 약해져 측정이 불안정해지므로, 누적 두께가 커지면 결정을 갈아 끼운다. 막이 결정 위에서 응력을 받아 휘거나, 쌓인 막이 단단하지 않고 점탄성을 띠면 Sauerbrey 관계 자체가 맞지 않으므로, 그런 막에서는 주파수와 함께 감쇠(공진 폭)를 같이 기록해 이상 여부를 판단한다. 식각에서도 원리는 같아, 주파수가 오르는 속도로 깎이는 질량을 읽는다. 다만 식각 생성물이 다시 붙으면 질량 손실이 작게 보이므로, 같은 조건의 웨이퍼 식각량과 맞춰 두어야 한다. 결국 QCM은 절대값보다 공정 안의 변화를 빠르게 보는 도구로 쓰는 것이 안전하다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>Sauerbrey 관계는 막이 얇고 단단해 수정과 함께 진동할 때만 성립한다. 두껍거나 무른 막에서는 비례 관계가 깨진다. 센서가 보는 플럭스와 웨이퍼가 받는 플럭스는 위치·각도가 달라 항상 비례 상수 보정이 필요하고, 플라즈마 환경에서는 대전·열 유입이 추가 드리프트 원인이 된다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -252,10 +282,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>Sauerbrey 관계에 의한 질량-주파수 환산은 QCM의 표준 교재 서술에 근거한다: Sauerbrey (1959) 및 진공 증착 계측 일반 서술.</li>
 <li>추가한 원리·전형값의 출처 구분: Sauerbrey 관계와 AT-cut 전형값은 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
+<li>감도 계수(6 MHz AT-cut 약 81 Hz·cm²/µg)는 Sauerbrey 관계에 수정의 물성을 넣은 표준값이며, 표는 가정 밀도(Al₂O₃ 3.0 g/cm³)로 한 산술이다.</li>
+<li>질량–주파수 관계의 원전: Sauerbrey, Z. Phys. 155, 206–222 (1959), <a href="https://doi.org/10.1007/BF01337937" target="_blank" rel="noopener">doi:10.1007/BF01337937</a> (Crossref 대조: Joy). 이 관계는 결정 위의 막이 단단하고 균일하다는 전제에서 성립한다. 감도 계수 약 81 Hz·cm²/µg(6 MHz)는 5 MHz 값 56.6에 주파수 제곱 비례를 적용한 값과 맞는다(Joy 검산).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="ocd.html">← 이전 · OCD</a><a href="interferometric-endpoint.html">다음 · 간섭 엔드포인트 →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>이 항목을 링크한 항목</h3><p style="color:var(--sub)">없음</p><h3>같은 주제의 다른 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul></div>
   </div>
  </div>
 </main>

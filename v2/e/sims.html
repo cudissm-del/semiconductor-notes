@@ -241,6 +241,39 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>농도 환산</strong> — 이온주입한 표준 시료로 구한 상대감도인자(RSF)를 적용해 이온 강도를 농도(cm⁻³)로 바꾸며, 프로파일 면적을 적분하면 총 도즈가 된다.</li>
 <li><strong>계면의 넓어짐</strong> — 1차 이온의 녹온(knock-on) 혼합과 스퍼터에 따른 거칠어짐 때문에 깊어질수록 계면이 넓게 퍼져 보인다. 읽히는 계면 폭이 곧 그 조건의 깊이 분해능 한계다.</li>
 </ul>
+<h2 id="산술로-보는-농도-단위">산술로 보는 농도 단위</h2>
+<p>SIMS 결과는 at/cm³로 나오지만, 사양서는 ppm·ppb로 쓰는 경우가 많다. Si의 원자 밀도 약 5×10²² cm⁻³를 기준으로 한 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>표기</th>
+<th>at/cm³ (Si 기준)</th>
+<th>반도체에서의 예</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1%</td>
+<td>5×10²⁰</td>
+<td>고농도 S/D 도핑 수준</td>
+</tr>
+<tr>
+<td>1 ppm</td>
+<td>5×10¹⁶</td>
+<td>채널·웰 도핑 범위</td>
+</tr>
+<tr>
+<td>1 ppb</td>
+<td>5×10¹³</td>
+<td>금속 오염 관리 범위</td>
+</tr>
+</tbody></table></div>
+<p>동적 SIMS의 검출 한계가 원소와 조건에 따라 대략 10¹⁴~10¹⁶ cm⁻³라는 말은, 위 표로 보면 수 ppb~수백 ppb다. 도펀트 프로파일은 이 범위에 넉넉히 들어오지만, 계면 금속 오염처럼 ppb 이하를 다룰 때는 <a class="wiki" href="txrf.html">TXRF</a>·<a class="wiki" href="vpd-icp-ms.html">VPD-ICP-MS</a> 같은 표면 오염 전용 기법이 감도에서 앞선다.</p>
+<h2 id="1차-이온-선택-무엇을-잘-보이게-할-것인가">1차 이온 선택 — 무엇을 잘 보이게 할 것인가</h2>
+<p>2차 이온 수율은 원소마다 수 자릿수 차이가 나고 1차 이온 종류에 크게 좌우된다. 산소 1차 이온(O₂⁺)은 양이온 수율을 키워 B·Al·금속을 잘 보이게 하고, 세슘 1차 이온(Cs⁺)은 음이온 수율을 키워 As·P·O·C·F를 잘 보이게 한다. 그래서 같은 웨이퍼라도 보려는 원소에 따라 측정을 나눈다.</p>
+<p>얕은 접합에서는 깊이 분해능이 관건이다. 1차 이온이 원자를 안쪽으로 밀어 넣는 혼합 효과 때문에 프로파일의 꼬리가 실제보다 길게 나오고, 이 효과는 1차 이온 에너지가 높을수록 커진다. 그래서 수 nm 접합은 1 keV 이하의 저에너지 빔과 비스듬한 입사로 재며, 측정된 꼬리 기울기(nm/decade)가 장비의 한계인지 실제 확산인지를 먼저 가린다. 깊이 축도 스퍼터 속도가 층마다 달라 바뀌므로, 다층 시료는 크레이터 깊이를 단차계로 재서 보정한다.</p>
+<h2 id="프로파일에서-숫자를-뽑는-순서">프로파일에서 숫자를 뽑는 순서</h2>
+<p>이온주입 시료라면 먼저 프로파일을 깊이로 적분한 값이 주입 도즈와 맞는지 본다. 농도(at/cm³)를 깊이(cm)로 적분하면 단위가 at/cm²가 되어 도즈와 직접 비교되고, 두 값이 크게 다르면 감도 계수나 깊이 축 보정부터 의심한다. 그다음 피크 농도와 피크 깊이를 읽어 주입 에너지와 맞는지 확인한다.</p>
+<p>접합 깊이는 도펀트 농도가 반대형 바탕 농도와 같아지는 깊이로 읽는다. 바탕 농도가 10¹⁷ cm⁻³인지 10¹⁸ cm⁻³인지에 따라 같은 프로파일에서도 접합 깊이가 수 nm 달라지므로, 접합 깊이를 보고할 때는 기준 농도를 함께 적는다. 표면 첫 수 nm는 스퍼터가 정상상태에 이르기 전이라 수율이 흔들려 농도가 부풀거나 꺼져 보이므로, 이 구간의 값은 따로 표시하고 해석에서 뺀다. 자연 산화막이나 표면 흡착 오염도 같은 구간에 겹치므로, 표면 농도가 필요하면 다른 기법으로 따로 확인한다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>매트릭스 효과</strong> — 층이 바뀌는 계면 부근에서는 이온 수율이 함께 바뀌어, 농도가 실제로 튀지 않아도 피크처럼 보일 수 있다.</li>
@@ -257,10 +290,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>동적/정적 구분, 매트릭스 효과와 감도는 표면분석 표준 교재의 일반 서술에 근거한다: Vickerman &amp; Gilmore, <em>Surface Analysis — The Principal Techniques</em> (Wiley).</li>
 <li>본문에 더한 수치(1차 이온 에너지, 정적 SIMS 도즈 한계)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>농도 환산은 Si 원자 밀도 약 5×10²² cm⁻³에 따른 산술이다. 1차 이온별 수율 경향과 혼합 효과는 SIMS 교재의 표준 서술이다.</li>
+<li>얕은 접합의 SIMS 프로파일과 혼합 효과: Zalm, Rep. Prog. Phys. 58, 1321–1374 (1995), <a href="https://doi.org/10.1088/0034-4885/58/10/004" target="_blank" rel="noopener">doi:10.1088/0034-4885/58/10/004</a> (Crossref 대조: Joy).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="aes.html">← 이전 · AES</a><a href="edx.html">다음 · EDX →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="ion-implantation.html">이온주입</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
   </div>
  </div>
 </main>

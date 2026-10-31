@@ -293,6 +293,43 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tr>
 </tbody></table></div>
 <p>수치만 보면 Si는 이동도에서 진다. 그럼에도 표준인 이유는 이동도가 아니라 <strong>계면</strong>이다 — 열산화만으로 결함이 적은 Si/SiO₂ 계면을 얻을 수 있고, 대구경 단결정을 싸게 기를 수 있으며, n·p 도핑 모두 안정적이기 때문이다. 대체 채널은 이 세 가지를 동시에 넘지 못해, 전면 교체가 아니라 SiGe 응력·에피처럼 Si 위에 얹는 형태로 먼저 들어왔다.</p>
+<h3 id="소자-구조가-바뀌면-채널의-조건도-바뀐다">소자 구조가 바뀌면 채널의 조건도 바뀐다</h3>
+<p>채널 물질은 거의 Si에 머물렀지만, 소자 구조가 바뀔 때마다 Si에 요구되는 것이 달라졌다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구조</th>
+<th>채널의 모양</th>
+<th>채널에 새로 붙은 조건</th>
+<th>관련 문헌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>평면 벌크</td>
+<td>기판 표면의 얇은 반전층</td>
+<td>계면 품질, 도핑 균일도</td>
+<td>교재 일반</td>
+</tr>
+<tr>
+<td>응력 Si (평면 후기)</td>
+<td>표면 + S/D 스트레서</td>
+<td>SiGe·Si:C 에피로 응력을 걸어 이동도를 올림</td>
+<td>교재 일반</td>
+</tr>
+<tr>
+<td>FinFET</td>
+<td>세운 Si 핀</td>
+<td>핀 폭이 수 nm대 — 측벽 거칠기·결정면이 이동도에 개입</td>
+<td>Hisamoto 2000</td>
+</tr>
+<tr>
+<td>GAA 나노시트</td>
+<td>Si/SiGe 초격자에서 띄운 Si 시트</td>
+<td>SiGe 희생층과 짝을 이룬 에피 적층, 시트 두께 균일도</td>
+<td>Loubet 2017</td>
+</tr>
+</tbody></table></div>
+<p>GAA에서는 채널 물질 선택이 <strong>식각 선택비 문제</strong>와 붙어 버린다. Si 시트를 남기고 SiGe만 걷어내야 하므로(선택비 150:1 공정 보고, Loubet 2019), Ge 조성은 이동도나 응력만이 아니라 릴리스 식각의 여유로도 정해진다. 채널 물질 교체 연구(Ge·SiGe 채널)가 양산으로 넘어오기 어려운 이유도 여기서 겹친다 — 채널을 바꾸면 희생층과 식각 화학까지 같이 바꿔야 한다.</p>
 <h3 id="형성법">형성법</h3>
 <ul>
 <li><strong>벌크 기판</strong> — CZ법으로 기른 단결정 웨이퍼가 기본이다 (<a class="wiki" href="silicon-wafer.html">실리콘 웨이퍼</a>). 채널 자체는 기판 표면이거나 그 위에 기른 에피층이다.</li>
@@ -320,6 +357,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>이동도·밴드갭·격자상수·유전율은 반도체 물성 교재의 상온 전형값이다 (저도핑 벌크 기준; 실제 값은 도핑·온도·응력에 따라 달라진다).</li>
 <li>SiGe 격자 부정합 약 4%와 선택 식각 역할은 기존 본문 및 <a class="wiki" href="recess.html">리세스와 채널 릴리스</a> 항목의 서술과 정합하게 정리했다.</li>
+<li>구조 세대 표의 「교재 일반」 행은 공정 교재의 일반 서술이다. 문헌 행은 아래 원전을 따른다(DOI는 FinFET·GAA·리세스 항목에서 대조된 것과 같다).<ul>
+<li>Hisamoto et al., IEEE Trans. Electron Devices 47(12), 2320–2325 (2000), <a href="https://doi.org/10.1109/16.887014" target="_blank" rel="noopener">doi:10.1109/16.887014</a> — FinFET 원전.</li>
+<li>Loubet et al., Symp. VLSI Technol. (2017), <a href="https://doi.org/10.23919/VLSIT.2017.7998183" target="_blank" rel="noopener">doi:10.23919/VLSIT.2017.7998183</a> — 적층 나노시트 GAA 첫 실증.</li>
+<li>Loubet et al., IEDM (2019), <a href="https://doi.org/10.1109/IEDM19573.2019.8993615" target="_blank" rel="noopener">doi:10.1109/IEDM19573.2019.8993615</a> — 채널 릴리스 SiGe 선택 식각 150:1.</li>
+</ul>
+</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="silicon-wafer.html">← 이전 · 실리콘 웨이퍼</a><a href="dopants-memory-materials.html">다음 · 도펀트와 메모리 물질 →</a></nav>

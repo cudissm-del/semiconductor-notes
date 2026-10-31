@@ -240,6 +240,37 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h2 id="읽는-법-해석">읽는 법·해석</h2>
 <p>단면 상의 명암은 구조 차이만이 아니라 원자번호와 결정 방위에 따른 이차전자 방출 차이(채널링 대비)도 포함하므로, 밝고 어두운 것을 곧바로 다른 물질로 단정하지 않는다. 밀도가 다른 층이 섞인 단면에서는 층마다 깎이는 속도가 달라 세로 줄무늬(커튼 현상)가 생기는데, 이는 가공 아티팩트이지 실제 구조가 아니다. 깎인 물질이 주변에 다시 쌓이는 재증착도 단면 가장자리 해석에서 구분해야 한다.</p>
+<h2 id="산술로-보는-절삭-시간">산술로 보는 절삭 시간</h2>
+<p>FIB 절삭 속도는 이온 전하당 깎이는 부피로 쓴다. Ga⁺ 30 kV로 Si를 깎을 때 표준 조건의 전형값은 약 0.27 µm³/nC이다(스캔 방식·재증착에 따라 실제 값은 달라진다). 이 값과 <strong>가정</strong> 절삭 부피(10 × 5 × 5 µm = 250 µm³의 단면용 홈)로 한 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>빔 전류</th>
+<th>초당 전하</th>
+<th>절삭 시간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100 pA</td>
+<td>0.1 nC/s</td>
+<td>약 2.6시간</td>
+</tr>
+<tr>
+<td>1 nA</td>
+<td>1 nC/s</td>
+<td>약 15분</td>
+</tr>
+<tr>
+<td>10 nA</td>
+<td>10 nC/s</td>
+<td>약 1.5분</td>
+</tr>
+</tbody></table></div>
+<p>전류를 열 배 올리면 시간은 열 배 줄지만, 빔이 굵어져 단면이 거칠고 손상층도 두꺼워진다. 그래서 실제 절차는 큰 전류로 홈을 빠르게 파고, 관찰할 단면 가까이에서 전류를 단계적으로 낮춰 마무리한다. 같은 이유로 관찰면은 늘 마지막에 가장 작은 전류로 다듬는다.</p>
+<h2 id="TEM-박편을-만드는-순서">TEM 박편을 만드는 순서</h2>
+<p><a class="wiki" href="tem.html">TEM</a> 시편은 대개 FIB로 만든다. 관심 위치에 보호막(Pt·C)을 올리고, 양쪽을 큰 전류로 파 내려가 얇은 판을 남긴 뒤, 판의 바닥과 옆을 끊어 미세 탐침으로 들어 올려 그리드에 붙인다. 그다음 판을 양쪽에서 번갈아 깎아 수십 nm까지 얇게 만들고, 마지막에 낮은 가속 전압(수 kV)으로 표면의 비정질 손상층을 걷어낸다. 30 kV 가공은 Si 표면에 수십 nm급의 손상층을 남길 수 있어, 이 마무리를 생략하면 얇은 계면층이 손상층에 묻힌다. 박편 하나에 숙련자도 수 시간이 걸리는 것이 TEM 분석의 처리량을 묶는 가장 큰 이유다.</p>
+<p>Ga 이온은 깎는 동시에 시료에 박힌다. 단면 근처에 Ga가 수 %까지 들어가면 <a class="wiki" href="edx.html">EDX</a> 조성 분석에 Ga 피크가 끼고, 금속 배선이나 III-V 화합물은 Ga와 반응해 모양이 바뀌기도 한다. 그래서 오염에 민감한 분석에는 Xe 플라즈마 FIB처럼 다른 이온원을 쓰거나, 마무리를 저에너지로 충분히 해 박힌 층을 걷어낸다. 대전도 문제다. 절연막이 많은 시료는 이온과 전자가 쌓여 영상이 흐르므로, 전도성 코팅을 하거나 전하 중화를 함께 쓴다.</p>
+<p>불량 분석에서는 위치를 찾는 일이 절삭보다 어렵다. 전기 측정이나 <a class="wiki" href="optical-inspection.html">광학 웨이퍼 검사</a>로 얻은 좌표를 FIB 장비 좌표로 옮기고, 그 근처를 조금씩 깎아 들어가며 단면을 연속으로 찍어 결함이 나타나는 면을 찾는다. 이렇게 얻은 연속 단면을 쌓으면 결함 주변의 3차원 구조도 다시 만들 수 있다. 다만 한 번 깎은 자리는 되돌릴 수 없으므로, 절삭 전에 위에서 본 영상과 좌표를 충분히 남겨 두고, 너무 깊이 지나치지 않도록 얇게 나눠 깎으며 매 단면을 확인한다. 회로 수정에 쓸 때는 같은 장비로 배선을 끊거나 금속을 증착해 잇는데, 이 경우도 Ga 손상이 주변 소자 특성을 바꾸지 않는지 전기적으로 다시 확인한다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>이온이 닿은 표면층에는 Ga 주입과 비정질화 손상층이 남으므로, 그 깊이 안의 미세 구조는 원래 구조로 볼 수 없다. 절삭·관찰이 지점마다 수동이라 처리량이 낮고, 한 단면이 칩 전체를 대표한다는 보장도 없다. 절연 시편에서는 대전으로 빔이 휘어 가공 위치가 틀어질 수 있어 전하 대책이 필요하다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -252,10 +283,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>Ga⁺ 집속 이온빔 절삭과 SEM 결합 관찰은 불량 분석의 표준 교재 서술에 근거한다: <em>Microelectronics Failure Analysis: Desk Reference</em> (ASM International) 등 일반 서술.</li>
 <li>추가한 원리·전형값의 출처 구분: 이온원·스퍼터 절삭 절차는 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
+<li>절삭 시간 표는 Ga⁺ 30 kV·Si의 전형 절삭률(약 0.27 µm³/nC)과 가정 부피로 한 산술이다.</li>
+<li>TEM 시편 제작용 FIB 기법: Giannuzzi &amp; Stevie, &quot;A review of focused ion beam milling techniques for TEM specimen preparation&quot;, Micron 30, 197–204 (1999), <a href="https://doi.org/10.1016/S0968-4328(99)00005-0" target="_blank" rel="noopener">doi:10.1016/S0968-4328(99)00005-0</a> (Crossref 대조: Joy). 절삭률 약 0.27 µm³/nC는 30 keV Ga⁺로 Si를 깎는 표준 조건의 값이며(수율 약 2 atoms/ion에서 약 0.25 µm³/nC, Joy 검산), 실제 유효 절삭률은 스캔 방식과 재증착에 따라 달라진다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="cd-sem.html">← 이전 · CD-SEM</a><a href="tem.html">다음 · TEM (투과전자현미경) →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="yield-model.html">수율 모델</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul></div>
   </div>
  </div>
 </main>

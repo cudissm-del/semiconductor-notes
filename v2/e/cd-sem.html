@@ -240,6 +240,36 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h2 id="읽는-법-해석">읽는 법·해석</h2>
 <p>CD 값은 절대값 하나로 읽지 않고, 같은 레시피로 잰 기준 패턴과의 차이와 웨이퍼 내 산포로 읽는다. 화상의 명암은 높낮이가 아니라 이차전자 방출량과 대전 상태의 차이이므로, 밝게 보인다고 높다고 단정하지 않는다. 에지 거칠기는 한 번의 선폭값이 아니라 여러 지점 측정값의 통계로 평가하며, 측정 전하가 쌓이면 상이 흐르거나 배율이 틀어지는 드리프트가 값에 섞인다.</p>
+<h2 id="산술로-보는-측정-반복과-손상">산술로 보는 측정 반복과 손상</h2>
+<p>레지스트 패턴은 전자빔을 맞을 때마다 조금씩 줄어든다(수축). 측정을 여러 번 해서 평균을 내면 우연 오차는 줄지만, 수축은 매번 쌓인다. <strong>가정값</strong>(한 번 측정의 반복 오차 1σ = 0.3 nm, 한 번 측정당 수축 0.2 nm)으로 한 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>같은 자리 측정 횟수 N</th>
+<th>평균의 우연 오차 (0.3/√N)</th>
+<th>누적 수축 (0.2×N)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0.30 nm</td>
+<td>0.2 nm</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.15 nm</td>
+<td>0.8 nm</td>
+</tr>
+<tr>
+<td>9</td>
+<td>0.10 nm</td>
+<td>1.8 nm</td>
+</tr>
+</tbody></table></div>
+<p>반복을 늘리면 우연 오차는 √N로 천천히 줄지만 수축은 N에 비례해 늘어, 금방 수축이 더 큰 오차가 된다. 그래서 레지스트 측정은 같은 자리를 여러 번 재는 대신, 이웃한 여러 선을 한 번씩 재서 평균을 낸다. 수축량 자체는 같은 자리를 여러 번 재며 줄어드는 곡선을 그려 첫 측정 전 값으로 거꾸로 이어 붙여(외삽) 추정한다.</p>
+<h2 id="선-가장자리-거칠기-LER-LWR">선 가장자리 거칠기(LER·LWR)</h2>
+<p>선폭은 한 숫자가 아니라 선을 따라 출렁이는 값이다. 선 가장자리의 출렁임을 LER, 선폭의 출렁임을 LWR이라 하며 보통 3σ로 보고한다. 선폭이 20 nm대로 줄면 LWR 2 nm만 되어도 선폭의 10%에 이르러, 트랜지스터마다 전류가 달라지는 직접 원인이 된다. LWR을 정확히 재려면 선을 충분히 길게(수백 nm~µm) 여러 지점에서 잘라 재야 하고, 영상의 잡음도 거칠기로 보이므로 잡음 성분을 빼는 보정을 한다.</p>
+<p>식각 공정에서 CD-SEM은 식각 전(레지스트) CD와 식각 후 CD를 같은 자리에서 재서 그 차이(CD 바이어스)를 관리하는 데 쓰인다. 바이어스가 커지거나 웨이퍼 안에서 고르지 않으면 식각 조건이나 마스크 측벽 각도부터 의심한다. CD-SEM은 위에서 본 영상이라 측벽이 기울었는지, 바닥에 꼬리(푸팅)가 남았는지는 직접 보이지 않는다. 이런 3차원 정보가 필요하면 <a class="wiki" href="ocd.html">OCD</a>나 단면 <a class="wiki" href="sem.html">SEM</a>과 짝을 짓는다. 또 장비마다 에지를 정하는 알고리즘이 달라 같은 패턴도 장비 간 수 Å~nm 차이가 나므로, 여러 대를 쓰는 팹은 기준 웨이퍼로 장비 간 차이를 주기적으로 맞춘다. 이 맞춤이 어긋나면 공정이 변한 것처럼 보이는 가짜 추세가 생기므로, 추세가 갑자기 꺾이면 장비 교체 기록부터 확인한다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>상면 투영상이라 측벽이 기울어진 패턴에서는 어느 높이의 선폭을 잰 것인지가 모호하다. 절연막·레지스트에서는 대전으로 화상이 흔들리고, 빔 조사 자체가 레지스트를 수축시켜 재측정할수록 값이 달라질 수 있다. 진공 챔버에 넣고 빼는 시간과 지점별 자동 측정 시간이 처리량을 정하므로, 전수 검사가 아닌 샘플링 감시가 전제다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -252,10 +282,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>저전압 운용과 에지 검출에 의한 CD 산출은 반도체 계측의 표준 교재 서술에 근거한다: <em>Handbook of Silicon Semiconductor Metrology</em> (Marcel Dekker) 등 계측 일반 서술.</li>
 <li>추가한 원리·전형값의 출처 구분: 저전압 운용과 에지 검출 절차는 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
+<li>측정 반복 표의 반복 오차·수축량은 설명용 가정값이며, 표의 값은 그에 따른 산술이다.</li>
+<li>반도체 계측에서 이 기법의 자리(참조 계측과 인라인 계측의 분담): Orji et al., &quot;Metrology for the next generation of semiconductor devices&quot;, <em>Nature Electronics</em> 1(10), 532–547 (2018), <a href="https://doi.org/10.1038/s41928-018-0150-9" target="_blank" rel="noopener">doi:10.1038/s41928-018-0150-9</a>. <a class="wiki" href="defect-control.html">결함·오염 관리</a>에서 이미 대조된 인용이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="sem.html">← 이전 · SEM</a><a href="fib-sem.html">다음 · FIB-SEM →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="multipatterning.html">멀티패터닝</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="kelvin-tlm.html">Kelvin·TLM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="ocd.html">OCD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="multipatterning.html">멀티패터닝</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="optical-microscope.html">광학 현미경</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="profilometer.html">단차계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul></div>
   </div>
  </div>
 </main>

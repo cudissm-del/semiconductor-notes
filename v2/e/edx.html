@@ -237,6 +237,63 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>정량</strong> — 피크 강도에 ZAF 보정(원자번호·흡수·형광 효과)을 적용해 조성을 구한다. 표준 시료 없는 정량은 반정량으로 취급한다.</li>
 <li><strong>검출 한계의 해석</strong> — 벌크 SEM-EDX에서 피크가 없다는 것은 원소가 없는 것이 아니라 전형적 한계인 0.1 wt% 안팎보다 적다는 뜻으로 읽어야 한다.</li>
 </ul>
+<h2 id="산술로-보는-상호작용-부피-박막-위의-EDX">산술로 보는 상호작용 부피 — 박막 위의 EDX</h2>
+<p>전자가 시료 안으로 파고드는 깊이는 Kanaya–Okayama 식 R(µm) = 0.0276·A·E^1.67 / (Z^0.889·ρ)로 어림한다(A는 원자량 g/mol, E는 빔 에너지 keV, Z는 원자번호, ρ는 밀도 g/cm³). Si(A = 28.09, Z = 14, ρ = 2.33)에 넣은 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>빔 에너지</th>
+<th>전자 도달 깊이 R (Si)</th>
+<th>50 nm 막 대비</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5 keV</td>
+<td>약 0.47 µm</td>
+<td>약 9배</td>
+</tr>
+<tr>
+<td>10 keV</td>
+<td>약 1.5 µm</td>
+<td>약 30배</td>
+</tr>
+<tr>
+<td>20 keV</td>
+<td>약 4.7 µm</td>
+<td>약 95배</td>
+</tr>
+</tbody></table></div>
+<p>특성 X선은 이 부피 전체에서 나오므로, Si 위 50 nm 막을 10 keV로 재면 신호 대부분이 기판에서 온다. 그래서 얇은 막의 조성은 빔 에너지를 낮추거나(단, 무거운 원소의 K선을 여기할 만큼은 높아야 한다), <a class="wiki" href="tem.html">TEM</a> 박편 위에서 EDX를 해서 부피를 박편 두께로 잘라 준다.</p>
+<h2 id="반도체에서-자주-부딪히는-피크-겹침">반도체에서 자주 부딪히는 피크 겹침</h2>
+<p>SDD 분해능이 약 130 eV라서, 에너지 차가 이보다 작은 피크는 한 봉우리로 겹친다. 반도체 막에서 흔한 예는 다음과 같다(특성 X선 에너지는 표준 표 값).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>겹치는 쌍</th>
+<th>에너지</th>
+<th>생기는 문제</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si Kα / W Mα</td>
+<td>1.74 / 1.77 keV</td>
+<td>WSi·W 플러그에서 Si와 W 구분 곤란</td>
+</tr>
+<tr>
+<td>Si Kα / Ta Mα</td>
+<td>1.74 / 1.71 keV</td>
+<td>Ta 배리어 아래 Si 판별 곤란</td>
+</tr>
+<tr>
+<td>Si Kα / Hf Mα</td>
+<td>1.74 / 1.64 keV</td>
+<td>HfO₂/Si 계면에서 부분 겹침</td>
+</tr>
+</tbody></table></div>
+<p>이런 쌍은 고에너지 쪽 선(W Lα, Ta Lα, Hf Lα)으로 바꿔 보거나 피크 분리 피팅을 하고, 그래도 애매하면 파장분산형(WDS)이나 <a class="wiki" href="xps.html">XPS</a>로 넘긴다.</p>
+<h2 id="정량을-읽는-법-표준-시료와-ZAF-보정">정량을 읽는 법 — 표준 시료와 ZAF 보정</h2>
+<p>EDX의 원소 농도는 피크 면적을 그대로 비율로 바꾼 값이 아니다. 같은 농도라도 원자번호가 달라 전자가 들어가고 튕겨 나오는 정도가 다르고(Z), 시료 안에서 X선이 흡수되는 정도가 다르며(A), 다른 원소의 X선이 2차로 형광을 일으키기도 한다(F). 소프트웨어가 이 세 가지를 보정해 wt%를 내는 것이 ZAF 보정이다.</p>
+<p>표준 시료 없이 계산만으로 낸 「표준 없는 정량」은 평탄하고 균일한 벌크 시료에서도 수 % 이상 어긋날 수 있다. 시료가 기울었거나 거칠거나, 앞의 산술처럼 상호작용 부피가 막과 기판에 걸쳐 있으면 보정 전제가 깨져 오차가 더 커진다. 그래서 박막·패턴 시료의 EDX 숫자는 조성비의 경향을 보는 반정량으로 읽고, 정밀한 조성은 <a class="wiki" href="xps.html">XPS</a>나 <a class="wiki" href="sims.html">SIMS</a>로 따로 확인한다. 같은 조건에서 잰 두 시료의 상대 비교는 계통 오차가 상쇄되어 절대값보다 믿을 만하다. 그래서 공정 조건별 변화를 볼 때는 빔 에너지·작동 거리·측정 시간을 고정해 두고 같은 날 연달아 잰다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>경원소</strong> — B·C·N·O 등은 형광 수율이 낮고, 발생한 X선도 시료 내부와 검출기 창에 흡수돼 정량 신뢰도가 떨어진다.</li>
@@ -253,10 +310,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>특성 X선 발생 원리와 검출 한계는 전자현미경 표준 교재 서술에 근거한다: Goldstein et al., <em>Scanning Electron Microscopy and X-ray Microanalysis</em> (Springer).</li>
 <li>본문에 더한 수치(검출기 분해능 약 130 eV, 검출 한계 ~0.1 wt%)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>Kanaya–Okayama 도달 깊이 식은 전자현미경 교재의 표준 어림식이며, 표의 값은 Si 물성으로 한 산술이다. 특성 X선 에너지는 표준 X선 에너지 표의 값이다.</li>
+<li>전자 도달 깊이식의 원전: Kanaya &amp; Okayama, J. Phys. D 5, 43–58 (1972), <a href="https://doi.org/10.1088/0022-3727/5/1/308" target="_blank" rel="noopener">doi:10.1088/0022-3727/5/1/308</a> (Crossref 대조: Joy).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="sims.html">← 이전 · SIMS</a><a href="ftir.html">다음 · FTIR →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="fib-sem.html">FIB-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
   </div>
  </div>
 </main>

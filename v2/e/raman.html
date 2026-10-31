@@ -234,6 +234,38 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>응력</strong> — 무응력 기준 위치와의 이동량으로 평가한다. 다만 응력 환산 계수는 결정 방향과 응력 형태에 따라 달라, 교정된 조건에서만 정량값으로 쓴다.</li>
 <li><strong>공간 정보</strong> — 공초점 현미경 구성에서는 초점 부피(약 µm급)에서만 신호를 모아 맵핑이 된다.</li>
 </ul>
+<h2 id="산술로-보는-응력-읽기">산술로 보는 응력 읽기</h2>
+<p>Si 피크 위치의 이동 Δω(측정 피크 위치에서 무응력 기준 피크 위치를 뺀 값)는 막·구조물이 Si에 거는 응력을 비춘다. 마이크로 라만 응력 측정에서 널리 쓰는 근사는 단축 응력에서 σ(MPa) ≈ −500·Δω(cm⁻¹), 등방 2축 응력에서 σ(MPa) ≈ −250·Δω(cm⁻¹)이다(압축이면 피크가 높은 파수로, 인장이면 낮은 파수로 간다). 이 계수로 한 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>피크 이동 Δω</th>
+<th>단축 응력</th>
+<th>2축 응력</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+0.2 cm⁻¹</td>
+<td>약 −100 MPa (압축)</td>
+<td>약 −50 MPa</td>
+</tr>
+<tr>
+<td>+1.0 cm⁻¹</td>
+<td>약 −500 MPa (압축)</td>
+<td>약 −250 MPa</td>
+</tr>
+<tr>
+<td>−1.0 cm⁻¹</td>
+<td>약 +500 MPa (인장)</td>
+<td>약 +250 MPa</td>
+</tr>
+</tbody></table></div>
+<p>수백 MPa의 응력이 1 cm⁻¹ 안팎의 이동이라서, 분광기의 픽셀 간격보다 작은 변화를 피크 피팅으로 읽어야 한다. 실험실 온도 변화나 레이저 가열도 피크를 옮기므로, 같은 측정 안에 무응력 기준 Si(웨이퍼 뒷면이나 패턴 없는 영역)를 함께 재서 차이만 본다. 응력 상태가 단축인지 2축인지 모르면 계수가 두 배 달라지므로, 구조(좁은 선이면 단축에 가깝고, 넓은 막 아래면 2축에 가깝다)를 먼저 정한다.</p>
+<h2 id="레이저-파장과-보는-깊이">레이저 파장과 보는 깊이</h2>
+<p>Si는 단파장 빛을 강하게 흡수하므로 레이저 파장이 곧 측정 깊이다. 가시광(예: 514 nm)은 수백 nm까지 들어가 그 깊이의 평균 응력을 주고, 자외선(예: 325~364 nm)은 수~수십 nm만 보아 표면 바로 아래의 응력을 준다. 스페이서나 STI 가장자리처럼 응력이 표면 근처에 몰린 구조는 자외선 라만이 맞고, 깊은 웰 영역이나 TSV 주변처럼 넓게 퍼진 응력은 가시광이 맞다.</p>
+<h2 id="결정성을-읽는-법-비정질과-결정의-비율">결정성을 읽는 법 — 비정질과 결정의 비율</h2>
+<p>이온주입으로 손상된 Si나 저온에서 증착한 Si 막은 결정 피크(약 520 cm⁻¹)와 비정질 밴드(약 480 cm⁻¹)가 함께 나온다. 두 성분을 피팅으로 나눈 뒤 결정 분율을 Xc = Ic / (Ic + y·Ia)로 어림한다(Ic·Ia는 각 성분의 적분 강도, y는 두 상의 산란 효율 비로 보통 1 안팎을 쓴다). 어닐 온도를 올리며 Xc가 오르는 것을 보면 재결정 정도를 공정 조건별로 비교할 수 있다.</p>
+<p>다결정 막에서는 결정립이 작을수록 520 cm⁻¹ 피크가 낮은 파수로 조금 밀리고 폭이 넓어진다. 이 이동이 응력 때문인지 결정립 크기 때문인지는 피크 위치만으로 가를 수 없으므로, 폭을 함께 보고 <a class="wiki" href="xrd.html">XRD</a> 결과와 맞춰 본다. 레이저 출력이 높으면 국소 가열로도 피크가 밀리므로, 출력을 바꿔 가며 위치가 변하지 않는 조건을 먼저 찾는다. 이 조건과 레이저 파장·대물렌즈를 결과와 함께 기록해 두어야 다른 날 측정과 비교할 수 있다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>약한 신호</strong> — 비탄성 산란 확률 자체가 작아 측정 시간이 길어지고, 시료 형광이 강하면 피크가 형광 바탕에 묻힌다. 여기 파장을 바꿔 피하는 것이 표준 대응이다.</li>
@@ -250,10 +282,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>라만 이동과 Si 520 cm⁻¹ 피크는 라만 분광 표준 교재의 일반 서술에 근거한다: Smith &amp; Dent, <em>Modern Raman Spectroscopy</em> (Wiley).</li>
 <li>본문에 더한 수치(Si 피크 약 520 cm⁻¹, 비정질 밴드 약 480 cm⁻¹)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>응력 환산 계수(단축 −500, 2축 −250 MPa/cm⁻¹)는 마이크로 라만 응력 측정의 표준 근사이며, 표의 값은 그 계수로 한 산술이다. 파장별 침투 깊이는 Si 흡수 계수에 따른 정성적 비교다.</li>
+<li>Si 응력과 라만 이동의 관계: De Wolf, Semicond. Sci. Technol. 11, 139–154 (1996), <a href="https://doi.org/10.1088/0268-1242/11/2/001" target="_blank" rel="noopener">doi:10.1088/0268-1242/11/2/001</a> (Crossref 대조: Joy). 단축 −500 계수는 이 문헌 계열의 값이고, 2축 −250도 같은 계열의 근사다. 본문의 Δω는 「측정 피크 위치 − 무응력 기준 피크 위치」로 정의하며, 압축이면 양(+)이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="ftir.html">← 이전 · FTIR</a><a href="xrd.html">다음 · XRD →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
   </div>
  </div>
 </main>

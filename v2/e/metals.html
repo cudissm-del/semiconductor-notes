@@ -273,7 +273,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <tr>
 <th>금속</th>
 <th>벌크 비저항 (µΩ·cm, 교재 전형값)</th>
-<th>전자 평균자유행로 (대략)</th>
+<th>전자 평균자유행로 (대략, Cu는 Gall 2016 계산값)</th>
 <th>미세 선폭에서의 함의</th>
 </tr>
 </thead>
@@ -315,6 +315,41 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tr>
 </tbody></table></div>
 <p>미세 배선 저항은 벌크 비저항 순서대로 정해지지 않는다. 선폭이 평균자유행로와 비슷해지면 표면 산란과 결정립 경계 산란이 지배하고, 배리어가 먹는 단면적까지 합쳐 <strong>실효 저항</strong>으로 비교해야 한다. 차세대 금속 논의가 &quot;벌크가 낮은 금속&quot;에서 &quot;얇아도 덜 오르는 금속&quot;으로 옮겨간 이유다.</p>
+<h3 id="산술로-보는-배리어-딜레마">산술로 보는 배리어 딜레마</h3>
+<p>배리어가 단면을 얼마나 먹는지는 직사각형 넓이로 바로 계산된다. 선폭 w, 높이 2w(종횡비 2)인 다마신 배선에서 배리어·라이너를 양 측벽과 바닥에 두께 2 nm로 깔았다고 하자(치수는 설명용 가정값). 배리어 자체는 전류를 거의 나르지 않는다고 보면, 같은 Cu 비저항에서 배선 저항은 「Cu가 차지한 단면 비율」의 역수만큼 오른다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>선폭 w</th>
+<th>배선 단면 (w × 2w)</th>
+<th>Cu 단면 ((w − 4) × (2w − 2))</th>
+<th>Cu 비율</th>
+<th>배리어만으로 늘어난 저항</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>40 nm</td>
+<td>3,200 nm²</td>
+<td>36 × 78 = 2,808 nm²</td>
+<td>88%</td>
+<td>약 1.14배</td>
+</tr>
+<tr>
+<td>20 nm</td>
+<td>800 nm²</td>
+<td>16 × 38 = 608 nm²</td>
+<td>76%</td>
+<td>약 1.32배</td>
+</tr>
+<tr>
+<td>10 nm</td>
+<td>200 nm²</td>
+<td>6 × 18 = 108 nm²</td>
+<td>54%</td>
+<td>약 1.85배</td>
+</tr>
+</tbody></table></div>
+<p>선폭이 줄어도 배리어 두께는 원자층 몇 개 아래로 줄이기 어려워, 같은 2 nm가 점점 큰 비율을 먹는다. 여기에 위 표의 산란 효과(선폭이 Cu의 평균자유행로보다 작아질 때 비저항 자체가 오르는 것)가 곱해진다. 두 효과가 겹치는 10 nm대에서는 벌크 비저항이 Cu보다 높아도 배리어가 거의 필요 없는 Ru·Mo가 실효 저항에서 앞설 수 있다. 「배리어리스」가 차세대 금속의 핵심 단어인 이유가 이 표다.</p>
 <h3 id="형성법">형성법</h3>
 <ul>
 <li><strong>PVD (스퍼터)</strong> — 배리어·시드·Al 배선의 기본. 단순하지만 고종횡비 갭 바닥 커버리지가 약하다.</li>
@@ -341,12 +376,13 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
-<li>비저항은 교재 전형값이다 (Cu ≈ 1.7 µΩ·cm는 기존 본문 값과 동일). 평균자유행로는 문헌에서 통용되는 대략값으로, 온도·순도에 따라 달라지는 비교용 수치다.</li>
-<li>실효 저항·배리어 딜레마 서술은 기존 본문의 논지를 확장한 것이며, 특정 논문의 실측 배선 저항은 인용하지 않았다.</li>
+<li>비저항은 교재 전형값이다 (Cu ≈ 1.7 µΩ·cm는 기존 본문 값과 동일). 평균자유행로는 Gall(2016)의 상온 계산값을 기준으로 한 대략값으로, 온도·순도에 따라 달라지는 비교용 수치다.</li>
+<li>실효 저항·배리어 딜레마 서술은 기존 본문의 논지를 확장한 것이며, 특정 논문의 실측 배선 저항은 인용하지 않았다. 배리어 산술 표의 치수(종횡비 2, 배리어 2 nm)는 설명용 가정값이고, 배리어의 전도 기여와 산란 효과를 뺀 단면 비율만의 계산이다.</li>
+<li>Gall, J. Appl. Phys. 119, 085101 (2016), <a href="https://doi.org/10.1063/1.4942216" target="_blank" rel="noopener">doi:10.1063/1.4942216</a> — 원소 금속의 전자 평균자유행로(제1원리 계산). Cu ≈ 39 nm는 이 논문의 상온 계산값이다 (Joy 대조, 10/31).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="dopants-memory-materials.html">← 이전 · 도펀트와 메모리 물질</a><a href="sacrificial-materials.html">다음 · 공정 보조·희생 물질 →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="four-point-probe.html">4점 탐침</a> <span style="color:var(--sub)">— 계측·분석 &gt; 전기 측정</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="silicon-wafer.html">실리콘 웨이퍼</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="channel-materials.html">반도체·채널 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="dopants-memory-materials.html">도펀트와 메모리 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul></div>
   </div>
  </div>
 </main>

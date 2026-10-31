@@ -240,6 +240,36 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h2 id="읽는-법-해석">읽는 법·해석</h2>
 <p>CD·높이·측벽각 값과 함께 적합도 지표를 반드시 같이 본다. 적합도가 나쁘면 라이브러리가 가정하지 않은 형상(예: 비대칭 측벽, 잔막)이 실제로 존재한다는 뜻이다. 파라미터 상관이 큰 조합에서는 한 값이 흔들리면 다른 값도 따라 흔들리므로, 상관 큰 파라미터 하나를 <a class="wiki" href="cd-sem.html">CD-SEM</a>이나 단면 값으로 고정해 두고 나머지의 변화를 읽는 운용이 안정적이다.</p>
+<h2 id="모델-피팅이-흔들리는-이유-파라미터-상관">모델 피팅이 흔들리는 이유 — 파라미터 상관</h2>
+<p>OCD는 측정 스펙트럼과 모델 스펙트럼의 차이가 가장 작아지는 형상을 찾는다. 문제는 서로 다른 형상 변화가 거의 같은 스펙트럼 변화를 만들 때다. 예컨대 선폭이 1 nm 넓어지는 것과 측벽각이 조금 눕는 것은 패턴 아래쪽 폭을 비슷하게 바꿔, 두 변화가 스펙트럼에서 구분되지 않는다. 이렇게 상관이 큰 파라미터는 하나를 고정하지 않으면 해가 하나로 정해지지 않고, 측정마다 둘이 서로 값을 주고받으며 흔들린다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>증상</th>
+<th>의심할 것</th>
+<th>대응</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CD와 측벽각이 반대 방향으로 함께 움직임</td>
+<td>두 파라미터 상관</td>
+<td>변동이 적은 쪽을 고정하거나 다른 각도·편광 스펙트럼 추가</td>
+</tr>
+<tr>
+<td>피팅 오차는 작은데 단면과 어긋남</td>
+<td>모델 구조 자체가 실제와 다름(라운딩·푸팅 누락)</td>
+<td>단면 <a class="wiki" href="tem.html">TEM</a>·<a class="wiki" href="sem.html">SEM</a>으로 모델 형상 보정</td>
+</tr>
+<tr>
+<td>하부 막 두께 변화에 CD가 끌려감</td>
+<td>하부층 두께를 고정값으로 둠</td>
+<td>하부층을 자유 파라미터로 열거나 블랭킷 두께 측정값 입력</td>
+</tr>
+</tbody></table></div>
+<p>그래서 OCD 레시피는 처음 만들 때 단면 사진과 <a class="wiki" href="cd-sem.html">CD-SEM</a> 값으로 「정답」을 맞춰 두고, 이후 인라인에서는 그 기준 대비 변화만 빠르게 본다. 식각 공정에서는 이 변화량을 다음 로트의 식각 시간·조건 보정에 되먹이는 방식으로 쓰인다.</p>
+<h2 id="계측-타깃과-적용-범위">계측 타깃과 적용 범위</h2>
+<p>OCD는 수십 µm 스폿을 같은 모양의 주기 패턴이 꽉 채워야 하므로, 실제 회로가 아니라 스크라이브 라인에 둔 전용 타깃을 잰다. 타깃은 회로와 같은 피치·같은 공정으로 만들지만, 주변 패턴 밀도가 달라 식각 부하 효과가 다르게 걸릴 수 있다. 그래서 타깃 값과 회로 안 값의 차이(오프셋)를 개발 단계에서 <a class="wiki" href="cd-sem.html">CD-SEM</a>으로 한 번 확인해 두고 그 차이가 공정 조건에 따라 변하지 않는지도 본다.</p>
+<p>FinFET·GAA처럼 3차원 구조가 겹겹이 쌓이면 자유 파라미터가 수십 개로 늘어난다. 이때는 모든 파라미터를 한 번에 풀기보다, 앞 공정 단계에서 잰 값을 다음 단계 모델에 고정값으로 넘기는 방식(피드포워드)으로 상관을 줄인다. 최근에는 라이브러리 대신 기계학습 회귀로 스펙트럼에서 바로 값을 뽑기도 하지만, 학습에 쓴 참조 계측의 정확도를 넘을 수 없다는 한계는 같다. 결국 OCD의 정확도는 참조로 쓴 단면 계측이 정하고, OCD가 더하는 것은 속도와 반복성이다. 그래서 참조 계측을 바꾸거나 공정 구조가 바뀌면 레시피를 다시 맞추는 절차를 처음부터 계획에 넣어 둔다. 이 재보정 비용이 OCD 도입의 숨은 비용이다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>측정 위치는 실제 소자 패턴이 아니라 전용 계측 타깃인 경우가 많아, 타깃과 실제 패턴의 형상 차이는 별도로 관리해야 한다. 비주기·무작위 패턴에는 원리상 적용할 수 없고, 하부막의 광학 상수가 틀리면 그 오차가 그대로 형상 오차로 전파된다. 라이브러리에 없는 공정 조건이 바뀌면 모델부터 다시 만들어야 한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -252,10 +282,11 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>회절 스펙트럼의 라이브러리 매칭에 의한 형상 산출은 산란계측의 표준 교재 서술에 근거한다: <em>Handbook of Silicon Semiconductor Metrology</em> (Marcel Dekker) 등 계측 일반 서술.</li>
 <li>추가한 원리·전형값의 출처 구분: RCWA 기반 라이브러리 매칭은 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.</li>
+<li>OCD를 포함한 차세대 소자 계측의 자리와 한계(모델 의존성, 참조 계측과의 결합): Orji et al., &quot;Metrology for the next generation of semiconductor devices&quot;, <em>Nature Electronics</em> 1(10), 532–547 (2018), <a href="https://doi.org/10.1038/s41928-018-0150-9" target="_blank" rel="noopener">doi:10.1038/s41928-018-0150-9</a>. <a class="wiki" href="defect-control.html">결함·오염 관리</a>에서 이미 대조된 인용이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="xrr.html">← 이전 · XRR</a><a href="qcm.html">다음 · QCM →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="cd-sem.html">CD-SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="tem.html">TEM (투과전자현미경)</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li><li><a href="euv.html">EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="high-na-euv.html">High-NA EUV</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li><li><a href="lithography.html">리소그래피</a> <span style="color:var(--sub)">— 공정 &gt; 패터닝</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="reflectometer.html">반사계</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="xrr.html">XRR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="qcm.html">QCM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="interferometric-endpoint.html">간섭 엔드포인트</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul></div>
   </div>
  </div>
 </main>

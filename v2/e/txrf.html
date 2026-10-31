@@ -238,6 +238,38 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>각도 스캔</strong> — 임계각 아래에서만 강하면 표면 흡착형, 각도를 키워도 신호가 남으면 막 안이나 기판 쪽 오염으로 해석한다.</li>
 <li><strong>원소 선택성</strong> — 한 번의 측정으로 여러 금속 원소가 동시에 나오므로, 어떤 공정 화학물질에서 온 오염인지 원소 조합으로 출처를 좁히는 데도 쓴다.</li>
 </ul>
+<h2 id="산술로-보는-검출-한계의-크기">산술로 보는 검출 한계의 크기</h2>
+<p>atoms/cm²라는 단위는 실감이 잘 나지 않는다. Si(100) 표면의 원자 밀도 약 6.8×10¹⁴ atoms/cm²를 한 원자층으로 놓은 <strong>산술</strong>은 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>표면 금속 농도</th>
+<th>한 원자층 대비</th>
+<th>1 µm × 1 µm 안의 원자 수</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10¹² atoms/cm²</td>
+<td>약 0.15%</td>
+<td>약 10,000개</td>
+</tr>
+<tr>
+<td>10¹⁰ atoms/cm²</td>
+<td>약 0.0015%</td>
+<td>약 100개</td>
+</tr>
+<tr>
+<td>10⁹ atoms/cm²</td>
+<td>약 0.00015%</td>
+<td>약 10개</td>
+</tr>
+</tbody></table></div>
+<p>TXRF의 검출 한계 10⁹~10¹⁰ atoms/cm²는 표면 원자 10만~100만 개 중 하나에 해당하는 금속을 잡는다는 뜻이다. 게이트 산화막이나 계면에 Fe·Cu가 이 수준으로 남아도 누설 전류와 수명에 영향을 줄 수 있어, 세정 공정의 관리 기준이 이 범위에 걸린다.</p>
+<h2 id="감도를-더-끌어올리는-방법-VPD와-결합">감도를 더 끌어올리는 방법 — VPD와 결합</h2>
+<p>웨이퍼 한 점만 재는 일반 TXRF보다 낮은 농도를 보려면, 웨이퍼 전면의 오염을 한 점에 모은다. HF 증기로 표면 산화막을 녹이고 액적으로 웨이퍼를 훑어 오염을 모은 뒤 말려서 그 점을 TXRF로 재는 것이 VPD-TXRF다. 전면 약 707 cm²의 오염을 수 mm 크기의 점에 모으므로 신호가 수백 배 이상 커진다. 대신 웨이퍼 안 어디에 오염이 있었는지 위치 정보는 사라지고, 전면 평균값만 남는다.</p>
+<p>플라즈마 공정과의 연결도 있다. 챔버 부품(이트리아 코팅·석영·알루미나)이 식각되며 나온 금속이 웨이퍼에 떨어지면 Y·Al 같은 원소가 표면에 남는다. 부품 교체나 세정 뒤 첫 웨이퍼들을 TXRF로 재서 금속 수준이 기준 아래로 내려왔는지를 확인하고 나서 제품 웨이퍼를 투입한다.</p>
+<p>정량은 원소마다 다르게 믿어야 한다. X선 관의 에너지로 잘 여기되는 Fe·Ni·Cu·Zn 같은 전이금속은 검출 한계가 낮지만, Na·Al·Mg 같은 가벼운 원소는 형광 에너지가 낮아 대기와 검출기 창에 흡수되어 감도가 떨어진다. 그래서 가벼운 원소 오염은 <a class="wiki" href="vpd-icp-ms.html">VPD-ICP-MS</a>로 따로 본다. 측정 각도도 결과를 바꾼다. 입사각이 임계각에 가까울수록 표면 민감도가 커지지만, 웨이퍼가 조금만 휘어도 각도가 바뀌어 신호가 흔들리므로, 측정 지점마다 각도를 다시 맞춘다. 입자처럼 표면 위에 덩어리로 붙은 오염과 얇게 퍼진 오염은 각도에 따른 신호 변화가 달라, 각도를 바꿔 재면 둘을 구분할 수 있다.</p>
+<p>보고할 때는 원소별 농도와 함께 검출 한계를 같이 적는다. 「검출되지 않음」이라는 결과는 0이 아니라 검출 한계보다 낮다는 뜻이므로, 한계가 얼마였는지를 모르면 다른 장비·다른 날 결과와 비교할 수 없다. 웨이퍼 한 장에서 여러 지점을 재 평균과 최댓값을 함께 보면, 고르게 퍼진 오염인지 국소 오염인지도 구분된다. 국소 오염이 의심되면 같은 자리 주변을 촘촘히 맵핑해 오염의 크기와 모양을 확인하고, 그 모양에서 오염원을 추적한다. 반달 모양이면 웨이퍼를 잡는 부품 자국을 의심한다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>경원소 약점</strong> — Na·Mg·Al 같은 가벼운 원소는 형광 수율과 검출 효율이 낮아 감도가 크게 떨어지고, 그보다 가벼운 원소는 사실상 보지 못한다.</li>
@@ -254,10 +286,11 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>전반사 조건과 검출 한계 전형값은 TXRF 표준 교재 서술에 근거한다: Klockenkämper, <em>Total-Reflection X-Ray Fluorescence Analysis</em> (Wiley).</li>
 <li>본문에 더한 수치(임계각 약 0.1°)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>반도체 금속 오염 관리에서의 TXRF: Hellin, De Gendt &amp; Valckx, Spectrochim. Acta B 61, 496–514 (2006), <a href="https://doi.org/10.1016/j.sab.2006.03.008" target="_blank" rel="noopener">doi:10.1016/j.sab.2006.03.008</a> (선정·대조: Joy).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="ebeam-inspection.html">← 이전 · e-beam 검사</a><a href="vpd-icp-ms.html">다음 · VPD-ICP-MS →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="defect-control.html">결함·오염 관리</a> <span style="color:var(--sub)">— 원리·운영 &gt; 수율·품질</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="ebeam-inspection.html">e-beam 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="vpd-icp-ms.html">VPD-ICP-MS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li></ul></div>
   </div>
  </div>
 </main>

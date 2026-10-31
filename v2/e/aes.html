@@ -193,7 +193,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <p>반면 절연체는 빔 조사로 대전(차징)이 생겨 피크가 흔들리고, 정량은 표준 시료 없이는 대략적인 수준에 머문다.</p>
 <h2 id="원리-오제-천이와-탈출-깊이">원리 — 오제 천이와 탈출 깊이</h2>
 <p>1차 전자빔이 내각 전자를 튕겨내면 외각 전자가 그 빈자리를 채우고, 남은 에너지는 X선으로 나가거나 다른 외각 전자를 방출하는 데 쓰인다. 후자가 오제 전자로, 가벼운 원소일수록 이 경로가 우세하다. 천이에 관여한 세 준위로 이름을 붙이며(예: KLL), 방출 전자의 운동에너지는 빔 에너지와 무관하게 준위들로만 정해지므로 원소의 지문이 된다.</p>
-<p>오제 전자의 에너지는 대략 20~2,000 eV에 분포하는데, 이 구간은 전자의 비탄성 평균자유행로가 수 Å~수 nm로 가장 짧은 구간과 겹친다. 깊은 곳에서 생긴 오제 전자는 산란으로 에너지를 잃어 바탕신호에 묻히고, 온전한 피크는 최표면 수 nm에서 나온 것만으로 이뤄진다. 정보 깊이가 얕은 이유다.</p>
+<p>오제 전자의 에너지는 대략 20~2,000 eV에 분포하는데, 이 구간은 전자의 비탄성 평균자유행로가 수 Å~수 nm로 가장 짧은 구간과 겹친다(값은 전자 에너지와 물질에 따라 달라진다). 깊은 곳에서 생긴 오제 전자는 산란으로 에너지를 잃어 바탕신호에 묻히고, 온전한 피크는 최표면 수 nm에서 나온 것만으로 이뤄진다. 정보 깊이가 얕은 이유다.</p>
 <h2 id="특징">특징</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -241,6 +241,70 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>정량</strong> — 피크 간 높이(peak-to-peak)에 원소별 상대감도인자를 적용해 원자 농도로 환산한다. 감도인자가 매트릭스에 따라 달라 표준 시료 없는 정량은 반정량 수준에 머문다.</li>
 <li><strong>깊이 방향</strong> — Ar⁺ 스퍼터와 번갈아 측정하면 깊이 프로파일을 얻지만, 스퍼터 손상과 선택 스퍼터링이 조성을 왜곡할 수 있음을 전제하고 읽는다.</li>
 </ul>
+<h2 id="산술로-보는-정보-깊이">산술로 보는 정보 깊이</h2>
+<p>오제 전자가 깊이 d에서 나와 표면까지 에너지를 잃지 않고 빠져나올 확률은 대략 exp(−d / (λ·cosθ))로 줄어든다. λ는 비탄성 평균자유행로, θ는 표면 법선에서 잰 검출 각도다. 아래 표는 <strong>가정값</strong> λ = 1 nm(수백 eV 오제 전자의 전형적 크기)로 한 <strong>산술</strong>이다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>검출 각도 θ</th>
+<th>신호의 63%가 나오는 깊이</th>
+<th>95%가 나오는 깊이</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0° (수직)</td>
+<td>1.0 nm</td>
+<td>3.0 nm</td>
+</tr>
+<tr>
+<td>60°</td>
+<td>0.5 nm</td>
+<td>1.5 nm</td>
+</tr>
+<tr>
+<td>75°</td>
+<td>0.26 nm</td>
+<td>0.78 nm</td>
+</tr>
+</tbody></table></div>
+<p>「정보 깊이 약 3λ」라는 관행은 신호의 95%가 이 깊이 안에서 나온다는 뜻이다. 검출 각도를 눕히면 같은 λ에서도 정보 깊이가 cosθ배로 줄어, 표면 오염층이나 자연 산화막을 하부 막과 구분하는 데 쓴다. 반대로 말하면 막 두께가 3λ보다 얇으면 하부 신호가 함께 섞이므로, 수 nm 막의 조성을 AES 한 번으로 단정하지 않는다.</p>
+<h2 id="이웃-기법과의-분담">이웃 기법과의 분담</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>기법</th>
+<th>정보 깊이</th>
+<th>공간 분해능</th>
+<th>화학 결합 정보</th>
+<th>강점</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AES</td>
+<td>수 nm</td>
+<td>수십 nm~</td>
+<td>제한적</td>
+<td>작은 입자·결함의 표면 조성</td>
+</tr>
+<tr>
+<td><a class="wiki" href="xps.html">XPS</a></td>
+<td>수 nm</td>
+<td>수~수십 µm</td>
+<td>있음</td>
+<td>결합 상태·정량</td>
+</tr>
+<tr>
+<td><a class="wiki" href="edx.html">EDX</a></td>
+<td>~µm (SEM)</td>
+<td>~µm (SEM)</td>
+<td>없음</td>
+<td>빠른 벌크 원소 확인</td>
+</tr>
+</tbody></table></div>
+<p>같은 「원소 분석」이라도 AES는 작고 얕은 곳, XPS는 넓고 얕은 곳의 화학, EDX는 깊은 곳을 본다. 식각 뒤 측벽 잔류물처럼 작고 얇은 대상은 AES가 맞고, 같은 잔류물의 결합 상태(F가 C에 붙었는지 금속에 붙었는지)는 XPS로 넘긴다.</p>
+<h2 id="공정-현장에서-AES를-부르는-장면">공정 현장에서 AES를 부르는 장면</h2>
+<p>식각이나 세정 뒤 웨이퍼 검사에서 결함이 잡히면, 먼저 <a class="wiki" href="sem.html">SEM</a>으로 형태를 보고 그 자리에 빔을 세워 AES 점 분석을 한다. 이때 확인하려는 질문은 대개 「무엇이 남았나」 하나다. 식각 측벽에 남은 폴리머라면 C와 F가, 챔버 부품에서 떨어진 입자라면 Al·Y·O가, 세정 뒤 금속 잔류라면 Fe·Cr·Ni가 나온다. 점 분석으로 원소가 잡히면 같은 영역을 맵핑해 결함과 원소 분포가 겹치는지 본다.</p>
+<p>깊이 프로파일을 읽을 때는 계면의 폭을 그대로 믿지 않는다. 스퍼터가 원자를 섞고 표면을 거칠게 만들어, 날카로운 계면도 수 nm 폭으로 번져 보인다. 그래서 막 두께는 두 원소 신호가 각각 절반이 되는 지점 사이로 읽고, 계면 폭은 장비·조건의 깊이 분해능과 비교해서만 해석한다. 스퍼터 이온 에너지를 낮추고 시료를 회전시키면 번짐이 줄지만 측정 시간은 그만큼 늘어나므로, 계면 하나를 정밀하게 볼지 여러 층을 빠르게 훑을지를 먼저 정하고 조건을 고른다. 절연막이 섞인 다층 시료에서는 깊이에 따라 대전 정도가 바뀌어 피크가 흔들리므로, 중화 조건을 고정한 채 비교한다. 결과 보고에는 빔 에너지·스퍼터 이온·속도 보정 기준을 함께 적어 다른 날 측정과 견줄 수 있게 한다.</p>
 <h2 id="한계-주의점">한계·주의점</h2>
 <ul>
 <li><strong>수소·헬륨 불가</strong> — 오제 천이에는 전자가 최소 3개 필요해 H와 He는 원리적으로 검출되지 않는다.</li>
@@ -257,10 +321,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>원리와 정보 깊이, 대전 문제는 표면 분석의 표준 교재 서술에 근거한다: Briggs &amp; Seah, <em>Practical Surface Analysis</em> (Wiley).</li>
 <li>본문에 더한 수치(빔 에너지, 오제 전자 에너지 범위, 검출 한계)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.</li>
+<li>「산술로 보는 정보 깊이」의 λ = 1 nm는 설명용 가정값이며, 표의 깊이는 지수 감쇠식에 따른 산술이다.</li>
+<li>비탄성 평균자유행로: Seah &amp; Dench, Surf. Interface Anal. 1, 2–11 (1979), <a href="https://doi.org/10.1002/sia.740010103" target="_blank" rel="noopener">doi:10.1002/sia.740010103</a> (Crossref 대조: Joy). 평균자유행로는 전자 에너지와 물질에 따라 달라지며, 본문의 「수 Å~수 nm」는 오제 전자 에너지 약 20~2,000 eV 구간의 값이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="xps.html">← 이전 · XPS</a><a href="sims.html">다음 · SIMS →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sem.html">SEM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="optical-inspection.html">광학 웨이퍼 검사</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="xps.html">XPS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
   </div>
  </div>
 </main>
