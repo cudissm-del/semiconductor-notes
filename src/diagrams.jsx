@@ -30,6 +30,7 @@ import oesSpec from './figs/oesspec.jsx';
 import langmuirIV from './figs/langmuiriv.jsx';
 import spacerSection from './figs/spacer.jsx';
 import plasmaSources from './figs/sources.jsx';
+import dumontEpc from './figs/dumontepc.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -360,4 +361,5 @@ export const byCaption = {
   '랭뮤어 프로브 I-V 곡선': langmuirIV,
   '스페이서 단면': spacerSection,
   '플라즈마 소스 세 가지 단면': plasmaSources,
+  'SiO₂ 열 ALE의 압력–EPC': dumontEpc,
 };
