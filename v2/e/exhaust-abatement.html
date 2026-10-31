@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>배기·저감 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">25</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">21</span></div><div class="tn-t"><a href="../t/principles-ops--plasma.html">플라즈마</a></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div><div class="tn-t open"><a href="../t/principles-ops--chemeng.html">화학공학 기초</a><ul><li><a href="chemeng-basics.html">화학공학 기초</a></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a></li><li><a href="nucleation-growth.html">핵생성·성장</a></li><li><a href="precursor-chemistry.html">전구체 화학</a></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a></li><li class="cur"><a href="exhaust-abatement.html">배기·저감</a></li><li><a href="ultra-high-purity.html">초고순도</a></li></ul></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--chemeng.html">화학공학 기초</a> › 배기·저감</div>
+  <h1 class="title">배기·저감</h1>
+  <div class="en">Exhaust Treatment and Abatement</div>
+  <div class="meta"><span class="chip cat">원리·운영 &gt; 화학공학 기초</span><a class="chip" href="../tag/%ED%99%94%ED%95%99%EA%B3%B5%ED%95%99.html">#화학공학</a><span class="chip">#배기</span><span class="chip">#저감</span><span class="chip">#온실가스</span><span class="chip">#PFC</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <div class="prereq"><span class="pl-t">먼저 읽을 항목</span><a href="thermo-volatility.html">화학 열역학·휘발성</a></div>
+  <article><blockquote>
+<p>공정에서 다 쓰이지 않은 가스와 부산물을 배기 쪽에서 분해·포집해, 독성·부식성 물질과 온실가스가 대기로 나가지 않게 하는 일. 공정 가스 선택과 저감 장치 효율이 함께 배출량을 정한다.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>식각·증착 챔버로 들어간 가스는 일부만 반응에 쓰이고 나머지는 그대로, 또는 쪼개진 조각으로 배기된다. 여기에는 세 종류의 문제가 섞여 있다. HF·Cl₂·HBr 같은 부식성·독성 기체, SiH₄처럼 공기와 만나면 불이 붙는 자연발화성 기체, 그리고 CF₄·C₂F₆·NF₃·SF₆처럼 그 자체는 비교적 안정하지만 대기 수명이 길고 온난화 효과가 큰 PFC 계열이다. 저감 장치는 이 셋을 각각 다른 방법으로 처리한다.</p>
+<h2 id="배출량을-정하는-식">배출량을 정하는 식</h2>
+<p>공정에서 대기로 나가는 양은 투입량에 두 단계의 「남는 비율」을 곱한 값이다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mo>=</mo><mi>F</mi><mo>×</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>η</mi><mrow><mi>u</mi><mi>s</mi><mi>e</mi></mrow></msub><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>η</mi><mrow><mi>D</mi><mi>R</mi><mi>E</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E = F \times (1-\eta_{use}) \times (1-\eta_{DRE})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">se</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span><span class="mord mathnormal mtight" style="margin-right:0.0576em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div>
+<p>F는 투입량, η_use는 공정 안에서 분해·소모되는 비율(가스 이용률), η_DRE는 저감 장치의 분해 제거 효율이다. 온실가스 영향은 배출량에 GWP를 곱해 CO₂ 환산량으로 비교한다.</p>
+<h2 id="산술로-보는-저감-효율의-무게">산술로 보는 저감 효율의 무게</h2>
+<p><strong>가정값</strong>(CF₄ 투입 100 g, 가스 이용률 30%)으로 저감 효율에 따른 배출량과 CO₂ 환산량을 <strong>산술</strong>한다. CF₄의 GWP-100은 7,380이다(<a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a>의 IPCC AR6 표).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>저감 효율 η_DRE</th>
+<th>대기 배출 CF₄</th>
+<th>CO₂ 환산</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0% (저감 없음)</td>
+<td>70 g</td>
+<td>약 517 kg</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>7 g</td>
+<td>약 52 kg</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>3.5 g</td>
+<td>약 26 kg</td>
+</tr>
+<tr>
+<td>99%</td>
+<td>0.7 g</td>
+<td>약 5.2 kg</td>
+</tr>
+</tbody></table></div>
+<p>CF₄ 100 g은 작은 양 같지만, 저감 없이 내보내면 CO₂ 0.5톤에 해당한다. 그리고 효율 90%와 99%의 차이는 배출량으로는 10배다. CF₄는 C–F 결합이 매우 강해 분해가 가장 어려운 축에 들어, 저감 장치 성능을 비교할 때 기준 가스로 쓰인다.</p>
+<h2 id="저감-방식">저감 방식</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>방식</th>
+<th>원리</th>
+<th>잘 처리하는 것</th>
+<th>주의할 점</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>연소식(번 + 습식)</td>
+<td>연료 화염으로 고온 분해한 뒤 물로 산성 기체를 씻음</td>
+<td>PFC 전반, 자연발화성 기체</td>
+<td>연료 소비, NOₓ 생성</td>
+</tr>
+<tr>
+<td>플라즈마식</td>
+<td>배기관의 플라즈마로 분해</td>
+<td>PFC, 장비별 설치에 유리</td>
+<td>전력 소비, 부산물 관리</td>
+</tr>
+<tr>
+<td>열·촉매식</td>
+<td>가열·촉매 표면에서 분해</td>
+<td>특정 가스에 고효율</td>
+<td>촉매 피독(입자·Si 화합물)</td>
+</tr>
+<tr>
+<td>습식 스크러버</td>
+<td>물·약액에 녹여 포집</td>
+<td>HF·HCl·NH₃ 같은 수용성 기체</td>
+<td>PFC는 녹지 않아 처리 불가</td>
+</tr>
+<tr>
+<td>흡착식(건식)</td>
+<td>흡착제에 붙잡음</td>
+<td>소량의 독성 기체</td>
+<td>흡착제 교체 주기</td>
+</tr>
+</tbody></table></div>
+<p>PFC를 분해하면 F가 HF로 바뀌므로, 분해식 장치 뒤에는 거의 항상 습식 단계를 붙인다. <a class="wiki" href="thermo-volatility.html">화학 열역학·휘발성</a>으로 보면 PFC 분해는 강한 C–F·S–F·N–F 결합을 끊는 일이라 높은 온도나 플라즈마의 에너지가 필요하고, 분해 생성물(HF·SiF₄)은 물에 잘 녹거나 반응해 씻겨 나간다.</p>
+<h2 id="공정-쪽에서-줄이는-방법">공정 쪽에서 줄이는 방법</h2>
+<p>저감 장치만으로는 한계가 있어, 배출을 처음부터 줄이는 공정 선택이 함께 간다.</p>
+<ul>
+<li><strong>이용률이 높은 가스로 바꾸기</strong> — 챔버 세정을 C₂F₆ 같은 PFC를 챔버 안에서 쓰는 방식에서, NF₃를 원격 플라즈마로 거의 다 분해해 F 라디칼만 보내는 방식으로 바꾸면 미분해 배출이 크게 준다.</li>
+<li><strong>GWP가 낮은 대체 가스</strong> — 식각에서 분해가 잘 되거나 대기 수명이 짧은 가스로 바꾸는 연구가 이어진다(예: <a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a>의 저GWP 가스).</li>
+<li><strong>필요한 만큼만 흘리기</strong> — 공정 대기 중 가스를 끄고, 세정 종말점을 감지해 과세정을 줄인다.</li>
+</ul>
+<h2 id="산술로-보는-챔버-세정-가스-교체">산술로 보는 챔버 세정 가스 교체</h2>
+<p>챔버 벽 세정을 C₂F₆를 챔버 안 플라즈마로 쓰는 방식에서 NF₃를 원격 플라즈마로 거의 다 분해해 쓰는 방식으로 바꿀 때의 차이를 <strong>가정값</strong>으로 <strong>산술</strong>한다. 두 경우 모두 투입 100 g, 저감 효율 90%로 두고, 이용률만 C₂F₆ 30%, 원격 NF₃ 95%로 다르게 <strong>가정</strong>한다. GWP-100은 C₂F₆ 12,400, NF₃ 17,400이다(<a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a>).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>세정 방식</th>
+<th>대기 배출</th>
+<th>CO₂ 환산</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C₂F₆ 챔버 내 플라즈마</td>
+<td>100 × 0.7 × 0.1 = 7 g</td>
+<td>약 87 kg</td>
+</tr>
+<tr>
+<td>NF₃ 원격 플라즈마</td>
+<td>100 × 0.05 × 0.1 = 0.5 g</td>
+<td>약 8.7 kg</td>
+</tr>
+</tbody></table></div>
+<p>NF₃는 GWP가 C₂F₆보다 크지만, 원격 플라즈마에서 거의 다 분해되므로 배출되는 양 자체가 열 배 넘게 적어 결과적으로 CO₂ 환산 배출이 크게 준다. 반대로 원격 플라즈마가 꺼지거나 점화가 불안정한 상태로 NF₃를 흘리면, GWP가 큰 가스를 그대로 내보내게 된다. 그래서 세정 레시피에는 플라즈마 점화 확인과 미분해 감지가 함께 들어간다. 이 산술은 투입 질량을 같게 둔 비교라, 실제 비교는 같은 세정 효과(벽에서 걷어 내는 막의 양)를 내는 데 필요한 투입량으로 다시 맞춰야 한다. 그래도 이용률이 배출을 좌우한다는 결론은 바뀌지 않는다. 가스 교체를 검토할 때는 GWP만이 아니라 이용률과 저감 효율을 함께 넣어 CO₂ 환산 배출을 비교해야 하고, 대체 가스가 분해되며 새로 만드는 부산물(CF₄ 등)도 같은 계산에 포함한다.</p>
+<h2 id="한계">한계</h2>
+<p>이용률과 저감 효율은 장비·레시피·유량에 따라 크게 달라, 표의 값은 비교용 가정이다. 실제 배출량 보고는 측정(FTIR·QMS로 배기 조성 분석) 또는 공인된 산정 방법으로 한다. 또 분해 과정에서 원래 가스가 아닌 CF₄ 같은 부산물이 새로 생길 수 있어, 투입 가스만이 아니라 배기 전체 조성을 봐야 한다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="chemeng-basics.html">화학공학 기초</a> — 주제 허브</li>
+<li><a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a> — 가스별 GWP와 대체 가스</li>
+<li><a class="wiki" href="thermo-volatility.html">화학 열역학·휘발성</a> — 결합 세기와 분해 조건</li>
+<li><a class="wiki" href="ultra-high-purity.html">초고순도</a> — 반대편 끝, 들어가는 가스의 관리</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>원격 NF₃ 플라즈마 챔버 세정을 PFC 배출 저감 대안으로 쓴 사례: Reichardt et al., Microelectron. Eng. (2001), <a href="https://doi.org/10.1016/S0167-9317(00)00505-0" target="_blank" rel="noopener">doi:10.1016/S0167-9317(00)00505-0</a>. <a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a>에서 이미 대조된 인용이다.</li>
+<li>CF₄ GWP-100 7,380은 <a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a>에 정리된 IPCC AR6 WGI 7장 보충자료 Table 7.SM.7 값(Joy 원표 대조)을 따른다.</li>
+<li>배출량 식은 투입·이용률·저감 효율의 곱으로 쓰는 일반적인 산정 구조이며, 표의 투입량·이용률·저감 효율은 설명용 가정값이다. 저감 방식 표는 정성 정리다.</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="cu-electroplating.html">← 이전 · Cu 전기도금·세정</a><a href="ultra-high-purity.html">다음 · 초고순도 →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="etch-gas-chemistry.html">식각 가스 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ultra-high-purity.html">초고순도</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="nucleation-growth.html">핵생성·성장</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ultra-high-purity.html">초고순도</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "exhaust-abatement", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>

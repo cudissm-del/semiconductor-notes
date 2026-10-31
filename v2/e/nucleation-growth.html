@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>핵생성·성장 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">25</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">21</span></div><div class="tn-t"><a href="../t/principles-ops--plasma.html">플라즈마</a></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div><div class="tn-t open"><a href="../t/principles-ops--chemeng.html">화학공학 기초</a><ul><li><a href="chemeng-basics.html">화학공학 기초</a></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a></li><li class="cur"><a href="nucleation-growth.html">핵생성·성장</a></li><li><a href="precursor-chemistry.html">전구체 화학</a></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a></li><li><a href="exhaust-abatement.html">배기·저감</a></li><li><a href="ultra-high-purity.html">초고순도</a></li></ul></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--chemeng.html">화학공학 기초</a> › 핵생성·성장</div>
+  <h1 class="title">핵생성·성장</h1>
+  <div class="en">Nucleation and Thin-Film Growth</div>
+  <div class="meta"><span class="chip cat">원리·운영 &gt; 화학공학 기초</span><a class="chip" href="../tag/%ED%99%94%ED%95%99%EA%B3%B5%ED%95%99.html">#화학공학</a><span class="chip">#핵생성</span><span class="chip">#박막 성장</span><span class="chip">#영역 선택 증착</span><a class="chip" href="../tag/ALD.html">#ALD</a></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <div class="prereq"><span class="pl-t">먼저 읽을 항목</span><a href="chemeng-basics.html">화학공학 기초</a></div>
+  <article><blockquote>
+<p>막이 처음 어떻게 생기는지(핵생성)와 그 뒤 어떤 모양으로 자라는지(성장 모드)를 정리하는 법. 얇은 막의 연속성, ALD 성장 지연, 영역 선택 증착이 모두 이 단계에서 정해진다.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>막은 처음부터 고르게 덮이며 자라지 않는다. 표면에 원자·분자가 모여 작은 덩어리(핵)를 만들고, 핵이 커지며 이웃과 이어져야 비로소 연속막이 된다. 핵이 얼마나 쉽게 생기는지는 덩어리가 커질 때 얻는 에너지와 새로 생기는 표면이 치르는 에너지의 경쟁으로 정해지고, 막이 층으로 자랄지 섬으로 자랄지는 막·기판·계면의 표면 에너지 관계가 정한다. 수 nm 막을 다루는 지금은 이 「처음 수 nm」가 막 전체의 성질을 좌우한다.</p>
+<h2 id="핵심-식">핵심 식</h2>
+<p><strong>고전 핵생성 이론</strong> — 반지름 r인 구형 핵의 생성 에너지. Δg_v는 단위 부피당 상변화로 얻는 에너지(과포화가 클수록 크다), γ는 핵 표면 에너지.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>G</mi><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup><mi mathvariant="normal">Δ</mi><msub><mi>g</mi><mi>v</mi></msub><mo>+</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>γ</mi></mrow><annotation encoding="application/x-tex">\Delta G(r) = -\frac{4}{3}\pi r^3 \Delta g_v + 4\pi r^2 \gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Δ</span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0585em;vertical-align:-0.1944em;"></span><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span></span></span></span></span></div>
+<p>이 곡선의 꼭대기가 임계 핵이다. 이보다 작은 핵은 다시 흩어지고, 큰 핵은 계속 자란다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>r</mi><mo>∗</mo></msup><mo>=</mo><mfrac><mrow><mn>2</mn><mi>γ</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><msub><mi>g</mi><mi>v</mi></msub></mrow></mfrac><mo separator="true">,</mo><mspace width="2em"/><mi mathvariant="normal">Δ</mi><msup><mi>G</mi><mo>∗</mo></msup><mo>=</mo><mfrac><mrow><mn>16</mn><mi>π</mi><msup><mi>γ</mi><mn>3</mn></msup></mrow><mrow><mn>3</mn><mtext> </mtext><mi mathvariant="normal">Δ</mi><msubsup><mi>g</mi><mi>v</mi><mrow><mtext> </mtext><mn>2</mn></mrow></msubsup></mrow></mfrac></mrow><annotation encoding="application/x-tex">r^* = \frac{2\gamma}{\Delta g_v}, \qquad \Delta G^* = \frac{16\pi\gamma^3}{3\,\Delta g_v^{\,2}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7387em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7387em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2019em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7387em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.4241em;vertical-align:-0.933em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">v</span></span></span><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">16</span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.933em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>핵생성 속도는 exp(−ΔG*/k_BT)에 비례한다.</p>
+<p><strong>성장 모드(Young 관계)</strong> — 기판 표면 에너지 γ_s, 막 표면 에너지 γ_f, 계면 에너지 γ_i.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>γ</mi><mi>s</mi></msub><mo>≥</mo><msub><mi>γ</mi><mi>f</mi></msub><mo>+</mo><msub><mi>γ</mi><mi>i</mi></msub><mtext>  </mtext><mo>⇒</mo><mtext>  </mtext><mtext>층 성장</mtext><mo separator="true">,</mo><mspace width="2em"/><msub><mi>γ</mi><mi>s</mi></msub><mo>&lt;</mo><msub><mi>γ</mi><mi>f</mi></msub><mo>+</mo><msub><mi>γ</mi><mi>i</mi></msub><mtext>  </mtext><mo>⇒</mo><mtext>  </mtext><mtext>섬 성장</mtext></mrow><annotation encoding="application/x-tex">\gamma_s \ge \gamma_f + \gamma_i \;\Rightarrow\; \text{층 성장}, \qquad \gamma_s &lt; \gamma_f + \gamma_i \;\Rightarrow\; \text{섬 성장}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord hangul_fallback">층</span><span class="mord"> </span><span class="mord hangul_fallback">성장</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord hangul_fallback">섬</span><span class="mord"> </span><span class="mord hangul_fallback">성장</span></span></span></span></span></span></div>
+<h2 id="성장-모드-세-가지">성장 모드 세 가지</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>모드</th>
+<th>모양</th>
+<th>조건·예</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Frank–van der Merwe</td>
+<td>한 층씩 덮으며 자람</td>
+<td>막이 기판을 잘 적심, 격자 정합 에피택시</td>
+</tr>
+<tr>
+<td>Volmer–Weber</td>
+<td>섬으로 자라다 합쳐짐</td>
+<td>막이 기판을 적시지 않음, 유전막 위 금속(Cu 등)</td>
+</tr>
+<tr>
+<td>Stranski–Krastanov</td>
+<td>몇 층 덮은 뒤 섬으로 바뀜</td>
+<td>격자 불일치 변형이 쌓임, SiGe·양자점</td>
+</tr>
+</tbody></table></div>
+<p>유전막 위 금속은 대개 섬으로 자라므로, 막이 이어지기까지 일정 두께가 필요하다. 배선 금속이 수 nm 이하로 얇아질 때 라이너나 접착층을 먼저 까는 이유가 이것이다.</p>
+<h2 id="산술로-보는-과포화의-효과">산술로 보는 과포화의 효과</h2>
+<p>과포화를 키워 Δg_v를 배로 바꿀 때 임계 핵과 장벽이 어떻게 변하는지를 위 식의 비례 관계로 <strong>산술</strong>한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Δg_v (상대값)</th>
+<th>임계 반지름 r*</th>
+<th>장벽 ΔG*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.5</td>
+<td>2배</td>
+<td>4배</td>
+</tr>
+<tr>
+<td>1 (기준)</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1/2</td>
+<td>1/4</td>
+</tr>
+</tbody></table></div>
+<p>장벽이 지수 안에 들어가므로, 과포화를 조금만 바꿔도 핵생성 속도는 몇 자릿수씩 변한다. 증착 초기에 전구체 노출을 세게 하면 핵이 촘촘히 생겨 섬이 작고 빨리 합쳐지고, 약하게 하면 소수의 큰 섬이 생겨 막이 늦게 이어진다.</p>
+<h2 id="산술로-보는-ALD-성장-지연과-선택성-창">산술로 보는 ALD 성장 지연과 선택성 창</h2>
+<p>ALD도 표면에 반응 자리가 없으면 처음 몇 사이클 동안 거의 자라지 않는다(성장 지연). 성장면에서는 바로 자라고 비성장면에서는 지연되는 차이를 이용하는 것이 영역 선택 증착이다. <strong>가정값</strong>(사이클당 성장 0.1 nm)으로 <strong>산술</strong>한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>비성장면의 지연</th>
+<th>지연 동안 성장면에 쌓이는 두께</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10 사이클</td>
+<td>약 1 nm</td>
+</tr>
+<tr>
+<td>30 사이클</td>
+<td>약 3 nm</td>
+</tr>
+<tr>
+<td>100 사이클</td>
+<td>약 10 nm</td>
+</tr>
+</tbody></table></div>
+<p>지연이 끝나면 비성장면에도 핵이 생기기 시작하므로, 선택적으로 쌓을 수 있는 두께는 이 표의 값에서 멈춘다. 그래서 영역 선택 증착은 억제제를 다시 입히거나, 비성장면에 생긴 작은 핵을 짧은 식각으로 걷어 내는 단계를 사이에 끼워 창을 넓힌다.</p>
+<h2 id="쓰임-정리">쓰임 정리</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>장면</th>
+<th>이 항목이 답하는 질문</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a class="wiki" href="ald.html">ALD (원자층 증착)</a> 초기</td>
+<td>처음 몇 사이클이 덜 자라는 이유, 표면 전처리의 효과</td>
+</tr>
+<tr>
+<td>영역 선택 증착</td>
+<td>성장면·비성장면의 지연 차이와 선택성 창</td>
+</tr>
+<tr>
+<td>배선 금속</td>
+<td>얇은 금속이 끊기는 두께, 라이너의 역할</td>
+</tr>
+<tr>
+<td><a class="wiki" href="epitaxy.html">에피택시</a></td>
+<td>층 성장과 섬 성장을 가르는 변형 조건</td>
+</tr>
+</tbody></table></div>
+<h2 id="공정-사례로-읽기-식각-뒤-표면이-다음-증착을-바꾼다">공정 사례로 읽기 — 식각 뒤 표면이 다음 증착을 바꾼다</h2>
+<p>식각이나 세정 뒤의 표면 상태는 다음 막의 핵생성을 그대로 바꾼다. 플라즈마에 노출된 표면에 남은 F·C 잔류물은 ALD 전구체가 붙을 자리를 가려 성장 지연을 늘리고, 막이 고르게 이어지지 않게 만든다. 반대로 표면을 OH로 덮는 처리(산소 플라즈마·습식 처리)는 반응 자리를 늘려 지연을 줄인다. 그래서 같은 ALD 레시피가 앞 공정에 따라 두께가 몇 사이클 분량씩 다르게 나오고, 수 nm 막에서는 이 차이가 두께 산포의 큰 몫이 된다.</p>
+<p>이 관계를 거꾸로 이용하면 영역 선택 증착이 된다. 막이 붙지 말아야 할 면에만 억제 분자를 붙여 반응 자리를 일부러 없애고, 붙어야 할 면은 그대로 두는 것이다. 결국 핵생성을 다루는 일은 표면 반응 자리를 세고, 늘리고, 줄이는 일이다. 그래서 막 두께가 레시피대로 나오지 않을 때는 증착 장비보다 앞 공정의 표면 처리 기록부터 확인하는 것이 순서다. 증착 전 대기 시간도 변수다. 세정 뒤 웨이퍼가 공기에 오래 놓이면 표면에 수분과 탄화수소가 붙어 반응 자리가 바뀌므로, 세정과 증착 사이의 대기 시간을 관리 항목으로 둔다.</p>
+<h2 id="한계">한계</h2>
+<p>고전 핵생성 이론은 핵을 연속체 구로 보지만, 실제 임계 핵은 원자 몇 개 수준이라 γ 같은 거시 물성이 그대로 맞지 않는다. 그래서 이 식은 경향(과포화·표면 에너지가 어느 방향으로 작용하나)을 읽는 데 쓰고, 정량값은 실험과 원자 수준 계산으로 정한다. ALD 성장 지연도 표면 자리 밀도와 전처리에 크게 좌우되어 같은 화학이라도 장비마다 다르다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="chemeng-basics.html">화학공학 기초</a> — 주제 허브</li>
+<li><a class="wiki" href="adsorption-kinetics.html">흡착·반응 속도론</a> — 처음 붙는 단계의 속도</li>
+<li><a class="wiki" href="precursor-chemistry.html">전구체 화학</a> — 표면과 반응하는 쪽의 설계</li>
+<li><a class="wiki" href="ald.html">ALD (원자층 증착)</a> — 성장 지연이 드러나는 대표 공정</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>핵생성·성장의 이론(과포화, 임계 핵, 성장 모드): Venables, Spiller &amp; Hanbücken, &quot;Nucleation and growth of thin films&quot;, Rep. Prog. Phys. 47, 399–459 (1984), <a href="https://doi.org/10.1088/0034-4885/47/4/002" target="_blank" rel="noopener">doi:10.1088/0034-4885/47/4/002</a> (선정·대조: Joy).</li>
+<li>영역 선택 증착과 성장 지연의 공정 개관(응용 보조): Lee, Lee &amp; Oh, &quot;Novel Atomic Layer Processes for Semiconductor Manufacturing: Area Selective Deposition, Atomic Layer Annealing, and Atomic Layer Etching&quot;, Int. J. Precis. Eng. Manuf. (2025), <a href="https://doi.org/10.1007/s12541-025-01337-z" target="_blank" rel="noopener">doi:10.1007/s12541-025-01337-z</a>. 저장소에서 이미 대조된 인용이다. 이 리뷰는 성장 지연·선택성 창 같은 응용 맥락의 근거이고, 이론 축은 위 Venables 1984가 받친다.</li>
+<li>ALD 표면 반응 자리와 초기 성장: Puurunen, J. Appl. Phys. 97, 121301 (2005), <a href="https://doi.org/10.1063/1.1940727" target="_blank" rel="noopener">doi:10.1063/1.1940727</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>고전 핵생성 이론과 세 성장 모드는 박막 성장 교재의 표준 서술이다. 과포화 표는 비례 관계의 산술이고, 성장 지연 표의 사이클당 성장 0.1 nm는 설명용 가정값이다.</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="thermo-volatility.html">← 이전 · 화학 열역학·휘발성</a><a href="precursor-chemistry.html">다음 · 전구체 화학 →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="epitaxy.html">에피택시</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="exhaust-abatement.html">배기·저감</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ultra-high-purity.html">초고순도</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "nucleation-growth", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>

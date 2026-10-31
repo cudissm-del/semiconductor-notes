@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>반응 제한과 전달 제한 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">25</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">21</span></div><div class="tn-t"><a href="../t/principles-ops--plasma.html">플라즈마</a></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div><div class="tn-t open"><a href="../t/principles-ops--chemeng.html">화학공학 기초</a><ul><li><a href="chemeng-basics.html">화학공학 기초</a></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a></li><li class="cur"><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a></li><li><a href="nucleation-growth.html">핵생성·성장</a></li><li><a href="precursor-chemistry.html">전구체 화학</a></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a></li><li><a href="exhaust-abatement.html">배기·저감</a></li><li><a href="ultra-high-purity.html">초고순도</a></li></ul></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--chemeng.html">화학공학 기초</a> › 반응 제한과 전달 제한</div>
+  <h1 class="title">반응 제한과 전달 제한</h1>
+  <div class="en">Reaction-Limited vs Transport-Limited Regimes (Damköhler Number)</div>
+  <div class="meta"><span class="chip cat">원리·운영 &gt; 화학공학 기초</span><a class="chip" href="../tag/%ED%99%94%ED%95%99%EA%B3%B5%ED%95%99.html">#화학공학</a><span class="chip">#Damköhler</span><span class="chip">#균일도</span><span class="chip">#컨포멀성</span><a class="chip" href="../tag/%ED%99%95%EC%82%B0.html">#확산</a></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <div class="prereq"><span class="pl-t">먼저 읽을 항목</span><a href="adsorption-kinetics.html">흡착·반응 속도론</a> · <a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a></div>
+  <article><blockquote>
+<p>공정 속도를 표면 반응이 쥐고 있는지, 반응물의 전달이 쥐고 있는지를 무차원수 하나로 가르는 법. 균일도·온도 민감도·종횡비 의존이 어느 쪽인지에 따라 정반대로 움직인다.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>표면에서 무엇이 쌓이거나 깎이려면 반응물이 먼저 도착하고(전달), 도착한 것이 반응해야 한다(반응). 두 단계가 이어져 있으면 느린 쪽이 전체 속도를 정한다. 반응이 느리면 반응물은 남아돌아 어디에나 고르게 퍼져 있고, 속도는 온도에 민감하다(반응 제한). 전달이 느리면 반응물은 도착하자마자 소모되어 가까운 곳부터 먼저 반응하고, 속도는 온도보다 흐름·형상에 민감하다(전달 제한). 둘의 비가 Damköhler 수이고, 좁은 구조 안의 같은 비를 흔히 Thiele 수로 부른다.</p>
+<h2 id="핵심-식">핵심 식</h2>
+<p><strong>Damköhler 수</strong> — 표면 반응 속도 상수 k_s(속도 단위), 전달 거리 L, 확산 계수 D일 때.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">a</mi></mrow><mo>=</mo><mfrac><mrow><msub><mi>k</mi><mi>s</mi></msub><mi>L</mi></mrow><mi>D</mi></mfrac></mrow><annotation encoding="application/x-tex">\mathrm{Da} = \frac{k_s L}{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord"><span class="mord mathrm">Da</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p>Da ≪ 1이면 반응 제한, Da ≫ 1이면 전달 제한이다.</p>
+<p><strong>열산화의 고전 사례(Deal–Grove)</strong> — 산화막 두께 x, 시간 t에서 선형 상수 B/A와 포물선 상수 B로 쓴다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>A</mi><mi>x</mi><mo>=</mo><mi>B</mi><mtext> </mtext><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^2 + A x = B\,(t + \tau)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span></span></span></span></span></div>
+<p>막이 얇을 때(x ≪ A) 성장은 x ≈ (B/A)·t로 계면 반응이 쥐고, 두꺼울 때(x ≫ A) x² ≈ B·t로 산화막을 통과하는 산화제 확산이 쥔다. 한 공정 안에서 반응 제한에서 전달 제한으로 넘어가는 모습을 가장 깨끗하게 보여 주는 식이다.</p>
+<p><strong>좁은 구조 안의 Thiele 수</strong> — 지름 d, 깊이 L인 원통 구멍 벽에서 반응 확률 s로 소모되는 기체가 Knudsen 확산으로 들어간다고 <strong>가정</strong>하면, 표면 반응 속도 k_s ≈ s·v̄/4와 <a class="wiki" href="vacuum-gas-transport.html">진공 흐름·기체 수송</a>의 D_K = d·v̄/3을 넣어 다음 관계가 나온다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>ϕ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><msub><mi>k</mi><mi>s</mi></msub><mo stretchy="false">(</mo><mn>4</mn><mi mathvariant="normal">/</mi><mi>d</mi><mo stretchy="false">)</mo><msup><mi>L</mi><mn>2</mn></msup></mrow><msub><mi>D</mi><mi>K</mi></msub></mfrac><mo>=</mo><mn>3</mn><mtext> </mtext><mi>s</mi><msup><mrow><mo fence="true">(</mo><mfrac><mi>L</mi><mi>d</mi></mfrac><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\phi^2 = \frac{k_s (4/d) L^2}{D_K} = 3\,s\left(\frac{L}{d}\right)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.0585em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.3271em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">4/</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.604em;vertical-align:-0.95em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.654em;"><span style="top:-3.9029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></div>
+<p>v̄가 약분되어, 결과는 반응 확률과 종횡비만으로 정해진다.</p>
+<h2 id="산술로-보는-종횡비와-반응-확률">산술로 보는 종횡비와 반응 확률</h2>
+<p>위 식으로 φ²를 <strong>산술</strong>한다. φ² ≪ 1이면 바닥까지 고르게, φ² ≫ 1이면 입구 쪽이 먼저 소모된다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>반응 확률 s</th>
+<th>종횡비 10</th>
+<th>종횡비 50</th>
+<th>종횡비 100</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10⁻⁴</td>
+<td>0.03</td>
+<td>0.75</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10⁻³</td>
+<td>0.3</td>
+<td>7.5</td>
+<td>30</td>
+</tr>
+<tr>
+<td>10⁻²</td>
+<td>3</td>
+<td>75</td>
+<td>300</td>
+</tr>
+</tbody></table></div>
+<p>같은 화학이라도 종횡비가 10배가 되면 φ²는 100배가 된다. 반응 확률이 작은 화학을 고르면 깊은 구조에서도 반응 제한에 머물 수 있다. 그래서 고종횡비 ALD는 반응 확률이 작은 대신 노출을 오래 주고, 고종횡비 식각은 바닥에서 반응물이 모자라는 전달 제한(종횡비 의존 식각, ARDE)과 싸운다.</p>
+<h2 id="판별-어느-쪽인지-실험으로-가르기">판별 — 어느 쪽인지 실험으로 가르기</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>바꿔 보는 것</th>
+<th>반응 제한이면</th>
+<th>전달 제한이면</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>온도</td>
+<td>속도가 크게 변함 (Arrhenius)</td>
+<td>거의 변하지 않음</td>
+</tr>
+<tr>
+<td>유량·압력·회전</td>
+<td>거의 변하지 않음</td>
+<td>속도가 따라 변함</td>
+</tr>
+<tr>
+<td>웨이퍼 안 위치</td>
+<td>고름</td>
+<td>입구·가장자리가 빠름</td>
+</tr>
+<tr>
+<td>패턴 종횡비</td>
+<td>거의 무관</td>
+<td>깊을수록 느림</td>
+</tr>
+</tbody></table></div>
+<p><a class="wiki" href="adsorption-kinetics.html">흡착·반응 속도론</a>의 Arrhenius 그림에서 높은 온도 쪽 기울기가 갑자기 눕는 지점이 있으면, 그 위에서는 전달이 속도를 쥐기 시작했다는 뜻이다. CVD가 낮은 온도에서 반응 제한(웨이퍼 간 균일도가 좋지만 온도 관리가 까다롭다), 높은 온도에서 전달 제한(온도에 덜 민감하지만 흐름 설계가 중요하다)으로 나뉘는 것이 같은 원리다.</p>
+<h2 id="쓰임-정리">쓰임 정리</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>공정</th>
+<th>어느 구간이 바람직한가</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a class="wiki" href="ald.html">ALD (원자층 증착)</a></td>
+<td>각 반쪽 반응이 포화할 때까지 노출</td>
+<td>자기 제한으로 전달 차이를 지움</td>
+</tr>
+<tr>
+<td>저압 CVD 배치로</td>
+<td>반응 제한</td>
+<td>웨이퍼 수십 장을 촘촘히 세워도 고르게</td>
+</tr>
+<tr>
+<td><a class="wiki" href="har-etch.html">고종횡비 식각</a></td>
+<td>바닥 반응물 공급을 늘리는 쪽</td>
+<td>전달 제한이 ARDE의 원인</td>
+</tr>
+<tr>
+<td>열산화</td>
+<td>두께에 따라 자연히 넘어감</td>
+<td>Deal–Grove 선형 → 포물선</td>
+</tr>
+<tr>
+<td><a class="wiki" href="cu-electroplating.html">Cu 전기도금·세정</a></td>
+<td>바닥 쪽을 빠르게(첨가제로 제어)</td>
+<td>입구가 먼저 막히는 전달 제한을 피함</td>
+</tr>
+</tbody></table></div>
+<h2 id="공정-사례로-읽기-같은-레시피가-패턴에-따라-다르게-나올-때">공정 사례로 읽기 — 같은 레시피가 패턴에 따라 다르게 나올 때</h2>
+<p>넓게 열린 시험 패턴에서 맞춘 식각 레시피가 실제 회로의 좁은 구멍에서 덜 깎이면, 먼저 이 판별표를 떠올린다. 넓은 패턴은 Da가 작아 반응 제한이었는데, 좁고 깊은 패턴에서는 φ²가 커져 전달 제한으로 넘어간 것이다. 이때 온도를 올려 반응을 빠르게 하면 오히려 입구에서 더 많이 소모되어 바닥은 더 굶는다. 해법은 반대 방향이다. 반응 확률을 낮추는 화학(덜 공격적인 라디칼)을 쓰고 대신 시간을 늘리거나, 압력과 펄스로 바닥까지 공급을 늘리는 것이다.</p>
+<p>웨이퍼 단위에서도 같은 판단이 통한다. 웨이퍼 가장자리가 중앙보다 빨리 깎이고 그 차이가 유량을 바꾸면 따라 변한다면 가스 공급 쪽 전달 제한이고, 온도 분포를 바꾸면 따라 변한다면 반응 제한이다. 어느 쪽이냐에 따라 손볼 하드웨어(가스 분사 구조인지, 정전척 온도 영역인지)가 달라진다. 판별 없이 둘을 한꺼번에 바꾸면 효과가 상쇄되어 원인을 놓치기 쉽다. 한 번에 하나씩, 온도부터 바꿔 보는 것이 가장 빠른 판별법이다. 온도에 반응하지 않으면 그다음에 유량과 압력을 본다. 마지막으로 패턴 종횡비별 차이를 확인한다.</p>
+<h2 id="한계">한계</h2>
+<p>Da와 φ²는 한 단계 반응·한 종류 반응물·일정한 확산 계수를 가정한 어림이다. 실제 식각은 이온과 라디칼이 다른 수송을 따르고, 생성물이 빠져나오는 수송도 함께 걸린다. 그래도 「어느 쪽이 느린가」를 먼저 정해 두면 실험 변수를 무엇부터 바꿀지가 분명해진다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="chemeng-basics.html">화학공학 기초</a> — 주제 허브</li>
+<li><a class="wiki" href="adsorption-kinetics.html">흡착·반응 속도론</a> — 반응 쪽 속도</li>
+<li><a class="wiki" href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> — 전달 쪽 속도</li>
+<li><a class="wiki" href="har-etch.html">고종횡비 식각</a> — 전달 제한이 결과를 정하는 대표 공정</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>반응 제한(선형)에서 확산 제한(포물선)으로 넘어가는 열산화 모델: Deal &amp; Grove, &quot;General Relationship for the Thermal Oxidation of Silicon&quot;, J. Appl. Phys. 36, 3770–3778 (1965), <a href="https://doi.org/10.1063/1.1713945" target="_blank" rel="noopener">doi:10.1063/1.1713945</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>고종횡비 구조의 반응–확산 경쟁과 컨포멀성 모델: Cremers, Puurunen &amp; Dendooven, Appl. Phys. Rev. 6, 021302 (2019), <a href="https://doi.org/10.1063/1.5060967" target="_blank" rel="noopener">doi:10.1063/1.5060967</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>φ² = 3s(L/d)²는 원통 구멍·Knudsen 확산·1차 표면 반응을 가정해 이 항목에서 정리한 어림식이며, 표의 값은 그에 따른 산술이다.</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="vacuum-gas-transport.html">← 이전 · 진공 흐름·기체 수송</a><a href="thermo-volatility.html">다음 · 화학 열역학·휘발성 →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ald.html">ALD (원자층 증착)</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="har-etch.html">고종횡비 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="nucleation-growth.html">핵생성·성장</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="exhaust-abatement.html">배기·저감</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ultra-high-purity.html">초고순도</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "reaction-transport-limit", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>
