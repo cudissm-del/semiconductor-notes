@@ -12,7 +12,7 @@
 | 공정 (process) | 만드는 방법 | 집적 흐름(flow) · 패터닝(patterning) · 식각(etch) · 막 형성·평탄화(film-planarization) · 도핑·열처리·세정(doping-thermal-cleaning) |
 | 구조·재료 (structure-materials) | 무엇을 만드나 — 구조와 물질 그 자체 | 트랜지스터(transistor) · 스페이서(spacer) · 메모리(memory) · 패키징(packaging) · 절연막(dielectrics) · 기판·반도체·금속(substrate-semiconductor-metal) |
 | 계측·분석 (metrology) | 재는 방법 | 형상·치수(shape-dimension) · 박막 두께(film-thickness) · 조성·화학(composition) · 결함·오염(defect-contamination) · 전기 측정(electrical) · 플라즈마 진단(plasma-diagnostics) |
-| 원리·운영 (principles-ops) | 왜 일어나는가(원리)와 어떻게 굴리는가(운영) | 플라즈마(plasma) · 표면 반응·선택비(surface-selectivity) · 수율·품질(yield-quality) |
+| 원리·운영 (principles-ops) | 왜 일어나는가(원리)와 어떻게 굴리는가(운영) | 플라즈마(plasma) · 표면 반응·선택비(surface-selectivity) · 수율·품질(yield-quality) · 화학공학 기초(chemeng) |
 
 ### 주제 — 허브형과 목록형
 
