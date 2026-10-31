@@ -99,6 +99,7 @@ ALD도 표면에 반응 자리가 없으면 처음 몇 사이클 동안 거의 �
 
 ## 근거
 
-- 영역 선택 증착과 성장 지연의 공정 개관: Lee, Lee & Oh, "Novel Atomic Layer Processes for Semiconductor Manufacturing: Area Selective Deposition, Atomic Layer Annealing, and Atomic Layer Etching", Int. J. Precis. Eng. Manuf. (2025), [doi:10.1007/s12541-025-01337-z](https://doi.org/10.1007/s12541-025-01337-z). 저장소에서 이미 대조된 인용이며, 핵생성 표준 문헌은 Joy 선정 후 보강한다.
+- 핵생성·성장의 이론(과포화, 임계 핵, 성장 모드): Venables, Spiller & Hanbücken, "Nucleation and growth of thin films", Rep. Prog. Phys. 47, 399–459 (1984), [doi:10.1088/0034-4885/47/4/002](https://doi.org/10.1088/0034-4885/47/4/002) (선정·대조: Joy).
+- 영역 선택 증착과 성장 지연의 공정 개관(응용 보조): Lee, Lee & Oh, "Novel Atomic Layer Processes for Semiconductor Manufacturing: Area Selective Deposition, Atomic Layer Annealing, and Atomic Layer Etching", Int. J. Precis. Eng. Manuf. (2025), [doi:10.1007/s12541-025-01337-z](https://doi.org/10.1007/s12541-025-01337-z). 저장소에서 이미 대조된 인용이다. 이 리뷰는 성장 지연·선택성 창 같은 응용 맥락의 근거이고, 이론 축은 위 Venables 1984가 받친다.
 - ALD 표면 반응 자리와 초기 성장: Puurunen, J. Appl. Phys. 97, 121301 (2005), [doi:10.1063/1.1940727](https://doi.org/10.1063/1.1940727). 저장소에서 이미 대조된 인용이다.
 - 고전 핵생성 이론과 세 성장 모드는 박막 성장 교재의 표준 서술이다. 과포화 표는 비례 관계의 산술이고, 성장 지연 표의 사이클당 성장 0.1 nm는 설명용 가정값이다.

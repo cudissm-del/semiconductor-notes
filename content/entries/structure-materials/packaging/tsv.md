@@ -75,4 +75,4 @@ TSV는 패키징 부품이지만 노광·식각·증착·도금·CMP 같은 팹 
 - TSV 기술 전반의 리뷰 — Motoyoshi, *Proc. IEEE* 97, 43–48 (2009). DOI: [10.1109/JPROC.2008.2007462](https://doi.org/10.1109/JPROC.2008.2007462) (Crossref 대조 확인).
 - Bosch 공정 원전 — Laermer & Schilp, Robert Bosch GmbH, US Patent 5,501,893 (1996). 식각/증착 반복으로 이방성 식각을 만드는 방법 특허 (Google Patents 대조 확인).
 - 열응력–이동도–KOZ 정량 — Ryu et al., *IEEE Trans. Device Mater. Reliab.* 12, 255–262 (2012). DOI: [10.1109/TDMR.2012.2194784](https://doi.org/10.1109/TDMR.2012.2194784) (Crossref 대조 확인).
-- 어닐 중 Cu 돌출 실측 — *Microelectron. Reliab.* 63, 183–193 (2016). DOI: [10.1016/j.microrel.2016.04.005](https://doi.org/10.1016/j.microrel.2016.04.005) (Crossref 대조 확인).
+- 어닐 중 Cu 돌출 실측 — Chen et al., *Microelectron. Reliab.* 63, 183–193 (2016). DOI: [10.1016/j.microrel.2016.04.005](https://doi.org/10.1016/j.microrel.2016.04.005) (Crossref 대조 확인).

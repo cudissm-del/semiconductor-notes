@@ -80,7 +80,7 @@ tags: 몰딩, 언더필
 - CTE 산술 절의 Δα·ΔT·L·h는 설명을 위해 가정한 값이고, 계산은 1차 근사다(실제 응력은 언더필·기판 강성과 범프 형상에 따라 달라진다).
 - 문헌 (DOI는 TSV 항목에서 대조된 것과 같다)
   - Ryu et al., IEEE Trans. Device Mater. Reliab. 12, 255–262 (2012), [doi:10.1109/TDMR.2012.2194784](https://doi.org/10.1109/TDMR.2012.2194784) — TSV 열응력과 이동도·KOZ.
-  - Microelectron. Reliab. 63, 183–193 (2016), [doi:10.1016/j.microrel.2016.04.005](https://doi.org/10.1016/j.microrel.2016.04.005) — 어닐 중 TSV Cu 돌출 실측.
+  - Chen et al., Microelectron. Reliab. 63, 183–193 (2016), [doi:10.1016/j.microrel.2016.04.005](https://doi.org/10.1016/j.microrel.2016.04.005) — 어닐 중 TSV Cu 돌출 실측.
 - CTE·솔더 융점 등은 교재 전형값이며 제품별 조성에 따라 달라진다. 역할·실패 모드는 패키징 공정 교재의 일반 정리이다.
 
 ## 사용처로 읽는 법
