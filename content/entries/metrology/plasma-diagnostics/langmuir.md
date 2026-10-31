@@ -81,3 +81,4 @@ tags: 플라즈마, 전자온도, 전자밀도, 침습, 탐침
 ## 근거
 
 - I-V 곡선의 세 영역 해석과 전자온도·밀도 추출은 플라즈마 진단의 표준 교재 서술에 근거한다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley, 2nd ed., 2005); Chen, *Introduction to Plasma Physics and Controlled Fusion* (Springer, 3rd ed., 2016)의 프로브 이론.
+- RF 방전에서 프로브로 전자 에너지 분포를 재는 표준 문헌: Godyak, Piejak & Alexandrovich, Plasma Sources Sci. Technol. 1, 36 (1992), [doi:10.1088/0963-0252/1/1/006](https://doi.org/10.1088/0963-0252/1/1/006) (Crossref 대조: Joy). I-V 해석 절의 근거다.

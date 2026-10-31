@@ -81,3 +81,4 @@ tags: 형상, 단면, CD, 비파괴성 제한, 전자빔
 ## 근거
 
 - 상호작용 부피와 신호별 발생 깊이, 가속전압·원자번호 의존성은 전자현미경 표준 교재 서술에 근거한다: Goldstein et al., *Scanning Electron Microscopy and X-ray Microanalysis* (Springer, 4th ed., 2018).
+- 반도체 계측 안에서 SEM(CD-SEM·단면 SEM)의 자리와 한계: Orji et al., "Metrology for the next generation of semiconductor devices", *Nature Electronics* 1(10), 532–547 (2018), [doi:10.1038/s41928-018-0150-9](https://doi.org/10.1038/s41928-018-0150-9). [[결함·오염 관리]]에서 이미 대조된 인용이다.
