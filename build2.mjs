@@ -24,7 +24,7 @@ export const DOMAINS = [
     { id: 'shape-dimension', name: '형상·치수' }, { id: 'film-thickness', name: '박막 두께' }, { id: 'composition', name: '조성·화학' },
     { id: 'defect-contamination', name: '결함·오염' }, { id: 'electrical', name: '전기 측정' }, { id: 'plasma-diagnostics', name: '플라즈마 진단' } ] },
   { id: 'principles-ops', name: '원리·운영', desc: '왜 일어나는가(원리)와 어떻게 굴리는가(운영).', topics: [
-    { id: 'plasma', name: '플라즈마' }, { id: 'surface-selectivity', name: '표면 반응·선택비' }, { id: 'yield-quality', name: '수율·품질' } ] },
+    { id: 'plasma', name: '플라즈마' }, { id: 'surface-selectivity', name: '표면 반응·선택비' }, { id: 'yield-quality', name: '수율·품질' }, { id: 'chemeng', name: '화학공학 기초' } ] },
 ];
 const domainOf = id => DOMAINS.find(d => d.id === id);
 const domainName = id => (domainOf(id) || {}).name || id;
