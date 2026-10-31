@@ -81,3 +81,4 @@ m/z가 겹치는 종(예: 28의 N₂와 CO)은 분해 패턴 없이는 분리할
 ## 근거
 
 - 사중극자 질량 필터 원리와 RGA 용도는 진공·질량분석 표준 교재의 일반 서술에 근거한다: O'Hanlon, *A User's Guide to Vacuum Technology* (Wiley).
+- 문턱 이온화로 라디칼과 해리 이온화 생성물을 가르는 원전: Singh, Coburn & Graves, J. Vac. Sci. Technol. A 18, 299–305 (2000), [doi:10.1116/1.582183](https://doi.org/10.1116/1.582183) (Crossref 대조: Joy).

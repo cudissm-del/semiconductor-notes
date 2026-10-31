@@ -75,3 +75,4 @@ High-k/계면층/Si처럼 층이 여럿이면 프린지가 층마다 겹쳐 맥�
 - 임계각·Kiessig 프린지 해석은 X선 반사율법의 표준 교재 서술에 근거한다: Birkholz, *Thin Film Analysis by X-Ray Scattering* (Wiley-VCH, 2006).
 - 추가한 원리·전형값의 출처 구분: 임계각·프린지 관계는 교재 전형 서술이며, 보유 논문의 특정 시료 실측값은 사용하지 않았다.
 - 프린지 간격 표는 Δθ ≈ λ/(2d) 근사와 Cu Kα 파장에 따른 산술이며, Si 임계각은 대략값이다.
+- 다층막 반사율 계산의 원전: Parratt, Phys. Rev. 95, 359–369 (1954), [doi:10.1103/PhysRev.95.359](https://doi.org/10.1103/PhysRev.95.359) (Crossref 대조: Joy).

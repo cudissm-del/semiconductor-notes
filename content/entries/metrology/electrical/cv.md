@@ -80,3 +80,4 @@ MOS 커패시터는 산화막 커패시턴스 Cox와 반도체 표면 커패시�
 
 - MOS C-V 곡선 해석과 Dit 추출은 반도체 소자 계측 표준 교재 서술에 근거한다: Schroder, *Semiconductor Material and Device Characterization* (Wiley); Nicollian & Brews, *MOS Physics and Technology* (Wiley).
 - EOT·ΔVfb 표는 SiO₂ 비유전율 3.9와 ΔVfb = −Qox/Cox에 따른 산술이며, 고정전하 10¹¹ q/cm²는 가정값이다.
+- 계면 트랩 추출(컨덕턴스법): Nicollian & Goetzberger, Bell Syst. Tech. J. 46, 1055–1133 (1967), [doi:10.1002/j.1538-7305.1967.tb01727.x](https://doi.org/10.1002/j.1538-7305.1967.tb01727.x) (Crossref 대조: Joy).

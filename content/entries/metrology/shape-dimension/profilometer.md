@@ -74,3 +74,4 @@ tags: 단차, 두께, 접촉식, 파괴, 탐침
 - 스타일러스 프로파일 측정의 원리와 단차 전제는 반도체 계측의 표준 교재 서술에 근거한다: Schroder, *Semiconductor Material and Device Characterization* (Wiley).
 - 추가한 원리·전형값의 출처 구분: 탐침 반경·접촉력은 교재·장비 일반 서술의 전형 범위이며, 보유 논문의 특정 실측값은 사용하지 않았다.
 - 기울기 오차 표는 L·θ 관계와 가정 기울기에 따른 산술이다.
+- 스타일러스를 포함한 표면 형상 계측 전반: Whitehouse, "Surface metrology", Meas. Sci. Technol. 8, 955–972 (1997), [doi:10.1088/0957-0233/8/9/002](https://doi.org/10.1088/0957-0233/8/9/002) (선정·대조: Joy).

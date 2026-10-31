@@ -78,3 +78,4 @@ TXRF의 검출 한계 10⁹~10¹⁰ atoms/cm²는 표면 원자 10만~100만 개
 
 - 전반사 조건과 검출 한계 전형값은 TXRF 표준 교재 서술에 근거한다: Klockenkämper, *Total-Reflection X-Ray Fluorescence Analysis* (Wiley).
 - 본문에 더한 수치(임계각 약 0.1°)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.
+- 반도체 금속 오염 관리에서의 TXRF: Hellin, De Gendt & Valckx, Spectrochim. Acta B 61, 496–514 (2006), [doi:10.1016/j.sab.2006.03.008](https://doi.org/10.1016/j.sab.2006.03.008) (선정·대조: Joy).

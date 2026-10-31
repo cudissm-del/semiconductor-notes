@@ -81,3 +81,4 @@ SIMS 결과는 at/cm³로 나오지만, 사양서는 ppm·ppb로 쓰는 경우�
 - 동적/정적 구분, 매트릭스 효과와 감도는 표면분석 표준 교재의 일반 서술에 근거한다: Vickerman & Gilmore, *Surface Analysis — The Principal Techniques* (Wiley).
 - 본문에 더한 수치(1차 이온 에너지, 정적 SIMS 도즈 한계)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.
 - 농도 환산은 Si 원자 밀도 약 5×10²² cm⁻³에 따른 산술이다. 1차 이온별 수율 경향과 혼합 효과는 SIMS 교재의 표준 서술이다.
+- 얕은 접합의 SIMS 프로파일과 혼합 효과: Zalm, Rep. Prog. Phys. 58, 1321–1374 (1995), [doi:10.1088/0034-4885/58/10/004](https://doi.org/10.1088/0034-4885/58/10/004) (Crossref 대조: Joy).

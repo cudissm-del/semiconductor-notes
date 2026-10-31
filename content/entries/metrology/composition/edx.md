@@ -86,3 +86,4 @@ EDX의 원소 농도는 피크 면적을 그대로 비율로 바꾼 값이 아�
 - 특성 X선 발생 원리와 검출 한계는 전자현미경 표준 교재 서술에 근거한다: Goldstein et al., *Scanning Electron Microscopy and X-ray Microanalysis* (Springer).
 - 본문에 더한 수치(검출기 분해능 약 130 eV, 검출 한계 ~0.1 wt%)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.
 - Kanaya–Okayama 도달 깊이 식은 전자현미경 교재의 표준 어림식이며, 표의 값은 Si 물성으로 한 산술이다. 특성 X선 에너지는 표준 X선 에너지 표의 값이다.
+- 전자 도달 깊이식의 원전: Kanaya & Okayama, J. Phys. D 5, 43–58 (1972), [doi:10.1088/0022-3727/5/1/308](https://doi.org/10.1088/0022-3727/5/1/308) (Crossref 대조: Joy).

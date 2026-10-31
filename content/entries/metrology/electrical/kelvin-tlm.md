@@ -81,3 +81,4 @@ TLM 직선은 패턴 간격의 실제 값으로 그려야 한다. 노광·식각
 
 - TLM 추출식과 Kelvin 구조는 반도체 전기 계측 표준 교재 서술에 근거한다: Schroder, *Semiconductor Material and Device Characterization* (Wiley).
 - 전달 길이·접촉저항 표는 TLM 관계식과 가정값(Rs = 10 Ω/sq, W = 1 µm)에 따른 산술이다.
+- TLM과 전달 길이 모델의 원전: Berger, "Models for contacts to planar devices", Solid-State Electron. 15, 145–158 (1972), [doi:10.1016/0038-1101(72)90048-2](https://doi.org/10.1016/0038-1101(72)90048-2) (Crossref 대조: Joy).

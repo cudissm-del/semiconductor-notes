@@ -83,3 +83,4 @@ Rs 자체는 두께를 포함하지 않은 값이므로, 같은 막이라도 얇
 
 - 4점 탐침 식과 보정 계수는 반도체 전기 계측 표준 교재 서술에 근거한다: Schroder, *Semiconductor Material and Device Characterization* (Wiley).
 - 면저항 표는 벌크 비저항을 가정한 산술이며, 실제 박막 비저항은 크기 효과로 이보다 크다.
+- 4.532 계수와 시료 크기·위치 보정 계수의 원전: Smits, Bell Syst. Tech. J. 37, 711–718 (1958), [doi:10.1002/j.1538-7305.1958.tb03883.x](https://doi.org/10.1002/j.1538-7305.1958.tb03883.x) (Crossref 대조: Joy).

@@ -75,3 +75,4 @@ VPD-ICP-MS의 감도는 용액 검출 한계와 회수 부피, 웨이퍼 면적�
 - VPD 전처리와 ICP-MS 정량의 절차는 반도체 웨이퍼 오염 분석의 표준 서술에 근거한다: Kern (ed.), *Handbook of Semiconductor Wafer Cleaning Technology* (Noyes) 계열 일반 서술.
 - 본문에 더한 수치(플라즈마 온도, ppt급 용액 검출 한계, TXRF 대비 자리수)는 교재 전형값이며, 보유 논문의 실측값은 사용하지 않았다.
 - 검출 한계 표는 가정값(용액 검출 한계 1 ng/L, 회수 부피 200 µL, 300 mm 웨이퍼)에 따른 산술이다.
+- 웨이퍼 표면 VPD-ICP-MS 분석: Krushevska, Tan & Passer, J. Anal. At. Spectrom. 15, 1211–1216 (2000), [doi:10.1039/B001578O](https://doi.org/10.1039/B001578O) (선정·대조: Joy).

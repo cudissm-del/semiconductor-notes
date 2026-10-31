@@ -81,3 +81,4 @@ van der Pauw 측정에서는 네 접촉을 시료 가장자리에 작게 두어�
 
 - 홀 효과와 van der Pauw법은 반도체 전기 계측 표준 교재 서술에 근거한다: Schroder, *Semiconductor Material and Device Characterization* (Wiley).
 - 홀 전압 표는 VH = I·B/(q·ns)와 가정값(I = 1 mA, B = 0.5 T)에 따른 산술이다.
+- van der Pauw 측정에서 접촉 크기의 영향: Chwang, Smith & Crowell, Solid-State Electron. 17, 1217–1227 (1974), [doi:10.1016/0038-1101(74)90001-X](https://doi.org/10.1016/0038-1101(74)90001-X) (선정·대조: Joy). 방법의 원전은 van der Pauw, Philips Res. Rep. 13, 1–9 (1958)이며 DOI가 없다.

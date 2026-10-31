@@ -80,3 +80,4 @@ tags: 엔드포인트, 식각, 인라인, 실시간, 광학
 - 레이저 간섭 신호에 의한 식각 깊이 추적과 종말점 검출은 플라즈마 공정 계측의 표준 교재 서술에 근거한다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley).
 - 추가한 원리·전형값의 출처 구분: 주기당 깊이 관계는 교재 전형 서술이며, 보유 논문의 특정 장비 실측값은 사용하지 않았다.
 - 주기당 깊이 표의 굴절률은 633 nm 부근 전형값이며, 깊이와 주기는 λ/(2n)과 가정 식각 속도(300 nm/min)에 따른 산술이다.
+- 게이트 식각에서 간섭계로 종말점을 예측한 생산 적용 사례: Layadi, Lill & Trevor, "Interferometry for endpoint prediction in gate etching", ASMC 1999, 227–232, [doi:10.1109/ASMC.1999.798230](https://doi.org/10.1109/ASMC.1999.798230) (선정·대조: Joy).

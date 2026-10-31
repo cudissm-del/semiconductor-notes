@@ -80,3 +80,4 @@ WAT 항목은 서로 묶어 읽는다. 문턱전압과 포화전류가 같이 �
 
 - WAT/PCM의 역할과 측정 항목은 반도체 제조 표준 서술에 근거한다: May & Spanos, *Fundamentals of Semiconductor Manufacturing and Process Control* (Wiley).
 - Cpk 표는 정의식과 가정 규격(0.40 ± 0.05 V)에 따른 산술이다.
+- 반도체 공정의 통계적 공정 관리(SPC) 총론: Spanos, "Statistical process control in semiconductor manufacturing", Proc. IEEE 80, 819–830 (1992), [doi:10.1109/5.149445](https://doi.org/10.1109/5.149445) (선정·대조: Joy). WAT 자체의 리뷰가 아니라, 본문의 Cpk·웨이퍼 지도·항목 묶어 읽기가 기대는 SPC 틀의 근거다.
