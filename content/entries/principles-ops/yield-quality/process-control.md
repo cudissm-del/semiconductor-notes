@@ -53,6 +53,18 @@ C_p = \frac{USL - LSL}{6\sigma}, \qquad C_{pk} = \min\left(\frac{USL - \mu}{3\si
 
 > 근거 없는 수치는 넣지 않는다. 업체별 운용값은 공개된 출처가 있는 것만 시점과 함께 적는다.
 
+## 산술로 보는 EWMA 가중치 λ의 맞바꿈
+
+EWMA R2R 제어에서 공정이 갑자기 일정량 치우쳤을 때(계단 변화), n번째 런까지 보정된 비율은 1 − (1 − λ)ⁿ이다. 가중치 λ별로 **산술**하면 다음과 같다.
+
+| λ | 1런 뒤 | 3런 뒤 | 5런 뒤 |
+| --- | --- | --- | --- |
+| 0.2 | 20% | 약 49% | 약 67% |
+| 0.4 | 40% | 약 78% | 약 92% |
+| 0.6 | 60% | 약 94% | 약 99% |
+
+λ를 크게 하면 치우침을 빨리 잡지만, 측정 잡음도 그만큼 다음 런 입력에 실려 공정을 흔든다. λ를 작게 하면 잡음은 걸러지지만 실제 변화에 늦게 반응한다. 그래서 λ는 공정의 잡음 크기와 드리프트 속도를 보고 정하고, 정비 직후처럼 치우침이 크게 바뀌는 때에는 일시적으로 λ를 올리거나 초기값을 다시 잡는다.
+
 ## 한계
 
 - **계측 지연과 샘플링**: 계측은 비싸고 느려서 일부 웨이퍼만 잔다. 보정은 늘 한 박자 늦고, 재지 않은 웨이퍼의 상태는 추정에 의존한다. VM이 이 공백을 메우려는 시도다.
@@ -73,6 +85,7 @@ C_p = \frac{USL - LSL}{6\sigma}, \qquad C_{pk} = \min\left(\frac{USL - \mu}{3\si
 
 ## 근거
 
-- [근거 대기] SPC 교재: Montgomery, *Introduction to Statistical Quality Control* (Wiley) — 판과 장 번호를 확인한 뒤 기입
+- 반도체 공정의 SPC 총론: Spanos, "Statistical process control in semiconductor manufacturing", Proc. IEEE 80, 819–830 (1992), [doi:10.1109/5.149445](https://doi.org/10.1109/5.149445). [[WAT]]에서 대조된 인용이다. SPC 교재(Montgomery, *Introduction to Statistical Quality Control*)는 서지로 병기한다.
 - [근거 대기] 반도체 R2R·APC 리뷰 1편 — DOI는 Crossref로 대조한 뒤 기입
 - [근거 대기] 가상 계측(VM) 대표 논문 1편
+- EWMA 보정 비율 표는 1 − (1 − λ)ⁿ에 따른 산술이다.

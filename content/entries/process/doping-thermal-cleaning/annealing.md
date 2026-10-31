@@ -101,3 +101,4 @@ J = -D \frac{\partial C}{\partial x}, \qquad D = D_0 \exp\left(-\frac{E_a}{kT}\r
 - 확산(Fick 법칙, 아레니우스형 D, Eₐ 3~4 eV 수준), √(Dt) 척도, 방식별 시간 규모: 반도체 공정 교과서의 전형 정리. 특정 장비의 스펙 수치는 쓰지 않았다.
 - TED, SPE 재결정화, EOR 결함, 고용 한도에 의한 활성화 상한: 이온 주입·어닐 교과서의 표준 서술.
 - 결함 회복의 순서(프렌켈 쌍 재결합 → {311} 숙성·용해 → EOR 루프 잔류)와 {311} 용해가 TED 지속 시간을 정한다는 그림은 주입 손상 어닐링의 교과서 정리다. Dt 등가 예시(1000°C·10초 ≈ 900°C·약 150초, E_a ≈ 3.5 eV 가정)와 1300°C·1ms의 확산 거리(nm 이하)는 아레니우스 식에 가정한 값을 넣은 계산값이며, 열확산 거리 √(αt)의 스케일 서술은 전형값 범위의 정성 정리다.
+- 확산·점결함·TED의 표준 총론: Fahey, Griffin & Plummer, "Point defects and dopant diffusion in silicon", Rev. Mod. Phys. 61, 289–384 (1989), [doi:10.1103/RevModPhys.61.289](https://doi.org/10.1103/RevModPhys.61.289) (선정·대조: Joy). SPE 재결정화는 이 총론의 범위가 얕아, 그 부분은 위 교과서 서술을 따른다.

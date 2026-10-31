@@ -129,3 +129,4 @@ u_B = \sqrt{\frac{k T_e}{m_i}}
 - 준중성·디바이 길이·쉬스·보옴 기준·EEDF와 전형 수치 범위는 플라즈마 공정 표준 교재의 전형값이다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley, 2nd ed., 2005); Chen, *Introduction to Plasma Physics and Controlled Fusion* (Springer, 3rd ed., 2016).
 - Ar 이온화 문턱 15.8 eV는 원자 물성의 확정값이다. 보옴 속도 2.7 km/s는 위 보옴 식에 Ar 질량과 Tₑ = 3 eV를 넣은 계산값이다.
 - 부유 전위 관계(약 5 × Tₑ)와 λ_D 수십 µm라는 감각은 [[랭뮤어 프로브]] 항목의 전형 조건과 맞춘 값으로, 진단 항목과 중복 서술을 피하고 링크로 연결했다.
+- RF 방전의 전자 에너지 분포(EEDF) 측정: Godyak, Piejak & Alexandrovich, Plasma Sources Sci. Technol. 1, 36 (1992), [doi:10.1088/0963-0252/1/1/006](https://doi.org/10.1088/0963-0252/1/1/006). [[랭뮤어 프로브]]에서 대조된 인용이며, EEDF 절의 근거다. 디바이 길이·쉬스·보옴 기준은 위 교재 서술을 따른다.

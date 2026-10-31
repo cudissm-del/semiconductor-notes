@@ -95,6 +95,7 @@ ER은 식각률, A는 깎을 막, B는 남길 막이다. S = 10이면 A가 10 nm
 - 활성종 교체에 의한 선택 역전 — Junige & George (2024), 극저온 선택 역전 — Hsiao et al. (2026), 둘 다 [[ALE (원자층 식각)]]의 참고 논문과 동일 출처.
 - Si₃N₄ 2.6 nm/cycle 대 SiO₂ 검출한계 아래 — 보유 논문 실측: Shinoda et al. (2016).
 - FC 막 두께와 선택비의 관계 — Schaepkens et al. (1999), [[식각 비이상 현상]]의 참고 논문과 동일 출처.
+- 위 문헌들의 DOI: Junige & George, Chem. Mater. 36 (2024), [doi:10.1021/acs.chemmater.4c01040](https://doi.org/10.1021/acs.chemmater.4c01040); Hsiao et al., Small Methods (2026), [doi:10.1002/smtd.202501744](https://doi.org/10.1002/smtd.202501744); Shinoda et al., Appl. Phys. Express 9, 106201 (2016), [doi:10.7567/APEX.9.106201](https://doi.org/10.7567/APEX.9.106201); Schaepkens et al., J. Vac. Sci. Technol. A 17, 26 (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108). 모두 저장소에서 이미 대조된 인용이다.
 
 ## 관련 항목
 

@@ -84,3 +84,4 @@ FEOL의 순서는 관습이 아니라 물리 제약의 결과다.
 
 - 공정 순서·구조 진화 시기와 HKMG 도입 세대는 반도체 공정 표준 교재와 업계 공개 로드맵의 전형 서술에 근거한다: Wolf & Tauber, *Silicon Processing for the VLSI Era* 계열 교재 및 ITRS/IRDS 로드맵의 세대 구분.
 - 고온 어닐(1000°C 전후 허용)과 BEOL 온도 상한(약 400°C)의 대비는 본 항목군([[BEOL]]·[[어닐과 확산]])과 맞춘 전형값이다. 특정 파운드리의 세부 레시피 수치는 공개 대상이 아니므로 싣지 않았다.
+- HKMG 양산 도입 세대(45nm): Mistry et al., IEDM (2007), [doi:10.1109/IEDM.2007.4418914](https://doi.org/10.1109/IEDM.2007.4418914). FinFET 구조의 원전: Hisamoto et al., "FinFET — a self-aligned double-gate MOSFET scalable to 20 nm", IEEE Trans. Electron Devices (2000), [doi:10.1109/16.887014](https://doi.org/10.1109/16.887014). 둘 다 저장소에서 이미 대조된 인용이다.

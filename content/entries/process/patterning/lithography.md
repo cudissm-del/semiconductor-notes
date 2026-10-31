@@ -147,3 +147,4 @@ RET의 공통 대가는 마스크 복잡도와 제작·검사 비용, 그리고 
 
 - 해상도·DOF 식, NA·k₁의 범위, CAR의 산 촉매 메커니즘, RET(OPC·PSM·OAI)의 원리는 리소그래피 교재의 전형 서술에 근거한다: *Fundamentals of Microelectronics / Microlithography* 계열 교재와 Mack, *Fundamental Principles of Optical Lithography* 등 일반 서술.
 - 세대별 파장·NA·해상도 표의 값은 기존 본문의 표를 보존한 것이며 교재 전형값 범위와 일치한다. 보유 논문(ALE·AFS 계열)의 실측값은 이 항목에 사용하지 않았다.
+- 화학 증폭 레지스트(CAR)의 표준 총론: Ito, "Chemical amplification resists for microlithography", Adv. Polym. Sci. 172, 37–245 (2005), [doi:10.1007/b97574](https://doi.org/10.1007/b97574) (선정·대조: Joy). 해상도·DOF 식과 RET는 위 Mack 교재가 근거이고, 이 총론은 CAR 절의 근거다.

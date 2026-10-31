@@ -69,3 +69,4 @@ AR 천장은 장비 세팅이 아니라 수송 물리가 정한다. 이온 각�
 
 - **교재 전형·규모감** — 종횡비의 규모, Knudsen 전도도와 Clausing 인자, 각도 분포에 의한 도달 깊이 한계는 플라즈마 식각 교재의 표준 서술과 산업 일반의 규모감을 따랐으며, 특정 노드의 양산 조건값이 아니다.
 - **문헌** — 극저온 식각의 ARDE 완화와 고종횡비 식각의 방향은 Oehrlein et al. (2024) "Future of plasma etching for microelectronics" (오픈액세스)의 로드맵 논의를 따랐다. 서지 정보는 [[식각 비이상 현상]]의 참고 논문에 있다.
+- Oehrlein et al., "Future of plasma etching for microelectronics", J. Vac. Sci. Technol. B 42, 041501 (2024), [doi:10.1116/6.0003579](https://doi.org/10.1116/6.0003579). 저장소에서 이미 대조된 인용이다.
