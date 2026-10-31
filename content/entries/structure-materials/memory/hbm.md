@@ -93,7 +93,7 @@ HBM은 DRAM 다이 여러 장을 [[TSV]]로 수직으로 쌓고, 맨 아래 베�
 - TSV 기반 적층의 기술 배경 (DOI는 TSV 항목에서 대조된 것과 같다)
   - Motoyoshi, Proc. IEEE 97, 43–48 (2009), [doi:10.1109/JPROC.2008.2007462](https://doi.org/10.1109/JPROC.2008.2007462) — TSV 기술 전반 리뷰.
   - Ryu et al., IEEE Trans. Device Mater. Reliab. 12, 255–262 (2012), [doi:10.1109/TDMR.2012.2194784](https://doi.org/10.1109/TDMR.2012.2194784) — TSV 열응력과 이동도·KOZ.
-- HBM 1세대 원전(ISSCC 2014 HBM DRAM 발표)의 DOI는 Joy 대조 대기다.
+- HBM 1세대 원전: Lee et al., IEEE ISSCC 2014의 HBM 적층 DRAM 발표, [doi:10.1109/ISSCC.2014.6757501](https://doi.org/10.1109/ISSCC.2014.6757501) (Crossref 대조: Joy).
 
 ## 관련 항목
 
