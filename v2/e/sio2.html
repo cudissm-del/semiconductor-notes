@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SiO₂ — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+<title>SiO₂ — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
 :root {
   --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
   --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
@@ -231,10 +231,36 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tbody></table></div>
 <h3 id="형성법">형성법</h3>
 <ul>
-<li><strong>열산화</strong> — Si 자체를 900~1200°C에서 O₂(건식) 또는 수증기(습식)로 산화. 계면 품질이 최고라 게이트 계면층·패드 산화막의 표준. 성장은 Deal–Grove 모델(선형–포물선)을 따른다.</li>
+<li><strong>열산화</strong> — Si 자체를 900~1200°C에서 O₂(건식) 또는 수증기(습식)로 산화. 계면 품질이 최고라 게이트 계면층·패드 산화막의 표준. 성장은 Deal–Grove 모델(선형–포물선)을 따른다(아래 절).</li>
 <li><strong>CVD</strong> — TEOS + O₃ (SACVD), SiH₄/TEOS PECVD 등으로 증착. STI 갭필은 HDP-CVD·FCVD가 맡고, 층간막·PMD에 널리 쓴다.</li>
 <li><strong>ALD</strong> — 아미노실란계 전구체 + O₃/산소 플라즈마. 나노미터 정밀도와 컨포멀리티가 필요할 때.</li>
 </ul>
+<h3 id="열산화-성장-Deal-Grove-모델">열산화 성장 — Deal–Grove 모델</h3>
+<p>열산화막의 두께 x와 시간 t의 관계는 산화제가 기체 → 산화막 표면 → 막 속 확산 → Si 계면 반응의 세 단계를 직렬로 거친다는 가정에서 나온다(Deal &amp; Grove, 1965).</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>A</mi><mi>x</mi><mo>=</mo><mi>B</mi><mtext> </mtext><mo stretchy="false">(</mo><mi>t</mi><mo>+</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^2 + A x = B\,(t + \tau)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span></span></span></span></span></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구간</th>
+<th>근사</th>
+<th>지배 단계</th>
+<th>읽는 법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>얇은 막 (x ≪ A/2)</td>
+<td>x ≈ (B/A)(t + τ)</td>
+<td>계면 반응</td>
+<td>선형 속도 상수 B/A — 결정면(⟨111⟩ &gt; ⟨100⟩)과 도핑에 민감</td>
+</tr>
+<tr>
+<td>두꺼운 막 (x ≫ A/2)</td>
+<td>x² ≈ B·t</td>
+<td>막 속 확산</td>
+<td>포물선 속도 상수 B — 산화제 확산도와 분압에 비례</td>
+</tr>
+</tbody></table></div>
+<p>τ는 처음부터 있던 산화막을 시간으로 환산한 보정항이다. 습식 산화가 건식보다 몇 배 빠른 것은 H₂O의 막 속 용해도가 O₂보다 커서 B가 크기 때문이다. 다만 이 모델은 수십 nm 이하 건식 산화의 초기 급성장을 설명하지 못한다. 게이트 계면층처럼 1 nm 안팎을 다루는 영역은 모델 바깥이라, 실제 공정은 실측 보정 곡선으로 두께를 맞춘다.</p>
 <h3 id="응용">응용</h3>
 <ul>
 <li>게이트 절연막 계면층(IL) — <a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a>에서 high-k 아래 1 nm 안팎</li>
@@ -248,8 +274,53 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li><strong>습식</strong> — HF 계열(DHF·BHF)이 정석. <a class="wiki" href="si3n4.html">Si₃N₄</a>는 거의 안 깎여 선택비가 크고, 열산화막과 증착막 사이에도 밀도 차이만큼 식각률이 갈린다. <a class="wiki" href="cleaning.html">세정</a>의 마지막 단계(자연산화막 제거)도 이 반응이다.</li>
 <li><strong>건식</strong> — CF₄·CHF₃·C₄F₈ 등 불화탄소 플라즈마. 표면에 쌓이는 FC 폴리머가 Si 대비 선택비를 만든다 (<a class="wiki" href="dry-etch.html">건식 식각</a>).</li>
-<li><strong>ALE</strong> — HF/NH₃ 조합은 표면에 <a class="wiki" href="afs-chemistry.html">AFS 염</a>을 만들었다가 가열로 날리는 자기제한 사이클로 동작한다. HF/NH₃ 열 ALE에서 사이클당 식각량(EPC)이 ≈ 0.9 nm/cycle에서 포화하는 자기제한 거동이 확인됐다 (Miyoshi 2022). NF₃/H₂ 리모트 플라즈마 + 메탄올 조합은 EPC ≈ 13 nm/cycle에 Si₃N₄ 대비 선택비 &gt; 50을 (Gil 2023), HF 흡착–NH₃ 반응–열 탈착 3단계 사이클은 ≈ 7.5 nm/cycle에 SiN 대비 &gt; 40을 보고했다 (Gill 2021). TMA/HF 열 ALE는 275°C에서 0.20 Å/cycle 수준의 미세 식각이 가능하고, HF + NH₃ 동시 주입 조건에서는 SiO₂ 자발 식각 27.50 Å/min 대 SiNₓ 0.02 Å/min으로 선택비가 1000:1을 넘는다 (Junige 2024). 극저온 HF/에탄올 ALE에서는 온도에 따라 SiO₂/SiN 선택비의 방향 자체가 뒤집히며 사실상 무한대 선택비가 보고됐다 (Hsiao 2026). 플라즈마 없이 HF + 메탄올 증기만으로도 −30 °C 이하에서는 등방 기상 식각이 일어나고, −40 °C에서 Si₃N₄ 대비 선택비가 20을 넘었다 (Hattori 2023).</li>
+<li><strong>ALE·기상 선택 식각</strong> — HF/NH₃ 조합은 표면에 <a class="wiki" href="afs-chemistry.html">AFS 염</a>을 만들었다가 가열로 날리는 자기제한 사이클로 동작한다. 같은 &quot;SiO₂를 남기지 않고 SiN은 남기는&quot; 목표를 화학·온도를 바꿔 푼 보고들을 모으면 아래와 같다. 비율은 각 연구 안의 같은 조건 비교이고, 연구 사이의 수치를 맞대어 순위를 매길 수는 없다.</li>
 </ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>방식</th>
+<th>보고값 (해당 연구 조건)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HF/NH₃ 열 ALE</td>
+<td>EPC ≈ 0.9 nm/cycle에서 포화 — 자기제한 거동</td>
+<td>Miyoshi 2022</td>
+</tr>
+<tr>
+<td>NF₃/H₂ 리모트 플라즈마 + 메탄올</td>
+<td>EPC ≈ 13 nm/cycle, Si₃N₄ 대비 선택비 &gt; 50</td>
+<td>Gil 2023</td>
+</tr>
+<tr>
+<td>HF 흡착 → NH₃ 반응 → 열 탈착 3단계</td>
+<td>≈ 7.5 nm/cycle, SiN 대비 &gt; 40</td>
+<td>Gill 2021</td>
+</tr>
+<tr>
+<td>TMA/HF 열 ALE (275 °C)</td>
+<td>0.20 Å/cycle 수준의 미세 식각</td>
+<td>Junige 2024</td>
+</tr>
+<tr>
+<td>HF + NH₃ 동시 주입 (자발 식각)</td>
+<td>SiO₂ 27.50 Å/min 대 SiNₓ 0.02 Å/min — 선택비 1000:1 초과</td>
+<td>Junige 2024</td>
+</tr>
+<tr>
+<td>극저온 HF/에탄올 ALE</td>
+<td>온도에 따라 SiO₂/SiN 선택비의 방향이 뒤집힘, 사실상 무한대 선택비</td>
+<td>Hsiao 2026</td>
+</tr>
+<tr>
+<td>HF + 메탄올 증기 (플라즈마 없음)</td>
+<td>−30 °C 이하에서 등방 기상 식각, −40 °C에서 Si₃N₄ 대비 &gt; 20</td>
+<td>Hattori 2023</td>
+</tr>
+</tbody></table></div>
+<p>표를 함께 읽으면 공통점이 보인다. 어느 방식이든 HF를 SiO₂ 표면에 붙잡아 둘 짝(NH₃·알코올)이나 조건(저온)을 마련하고, 그 짝과 온도가 SiN 대비 선택비를 좌우한다. 식각 속도와 선택비를 정하는 변수가 플라즈마 출력보다 <strong>표면 흡착 조건</strong> 쪽에 있다는 점이 불화탄소 건식 식각과 다르다 — 이것은 위 보고들을 겹쳐 본 해석이며, 각 연구는 자기 화학계 안의 거동만 보고했다. 이 원리를 공정으로 옮긴 것이 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>이다.</p>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>
 <li><a class="wiki" href="dielectrics.html">절연막</a> — 절연 재료 전체 지도</li>
@@ -263,6 +334,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h2 id="근거">근거</h2>
 <ul>
 <li>물성 수치는 반도체 공정 표준 교재의 전형값.</li>
+<li>Deal &amp; Grove, J. Appl. Phys. 36, 3770–3778 (1965), <a href="https://doi.org/10.1063/1.1713945" target="_blank" rel="noopener">doi:10.1063/1.1713945</a> — 열산화 선형–포물선 모델의 원전.</li>
 <li>Miyoshi et al. 2022. DOI: <a href="https://doi.org/10.1116/6.0001517" target="_blank" rel="noopener">10.1116/6.0001517</a> — HF/NH₃ 열 ALE의 자기제한 EPC (원문 확인).</li>
 <li>Gil et al. 2023, Sci. Rep. — NF₃/H₂ + 메탄올 ALE. DOI: <a href="https://doi.org/10.1038/s41598-023-38359-4" target="_blank" rel="noopener">10.1038/s41598-023-38359-4</a>.</li>
 <li>Gill et al. 2021, Plasma Process. Polym. 18, 2100063 — 3단계 ALE 사이클. DOI: <a href="https://doi.org/10.1002/ppap.202100063" target="_blank" rel="noopener">10.1002/ppap.202100063</a>.</li>
@@ -272,11 +344,11 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 </article>
   <nav class="prevnext"><a href="dielectrics.html">← 이전 · 절연막</a><a href="si3n4.html">다음 · Si₃N₄ →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="sti.html">STI</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="al2o3.html">Al₂O₃</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="al2o3.html">Al₂O₃</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="cleaning.html">세정</a> <span style="color:var(--sub)">— 공정 &gt; 도핑·열처리·세정</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="sti.html">STI</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="al2o3.html">Al₂O₃</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="spacer-materials.html">스페이서 소재 비교</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="sacrificial-materials.html">공정 보조·희생 물질</a> <span style="color:var(--sub)">— 구조·재료 &gt; 기판·반도체·금속</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="dielectrics.html">절연막</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="sioc.html">SiOC</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="siocn.html">SiOCN</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="al2o3.html">Al₂O₃</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li></ul></div>
   </div>
  </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
   var slug = "sio2", KEY = 'wiki-favs', btn = document.getElementById('favBtn');

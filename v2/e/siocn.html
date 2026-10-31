@@ -240,10 +240,37 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h3 id="식각법">식각법</h3>
 <p>이 막의 존재 이유는 식각에서 완성된다. 옆의 <a class="wiki" href="sio2.html">SiO₂</a>·<a class="wiki" href="si3n4.html">Si₃N₄</a>·poly-Si를 남기고 SiOCN만 골라 깎아야 스페이서 리세스가 되기 때문이다.</p>
 <ul>
-<li><strong>AFS 선택 식각</strong> — NF₃/NH₃ 계열 플라즈마가 만드는 <a class="wiki" href="afs-chemistry.html">AFS 염</a> 경로가 본진이다. NF₃/H₂/NH₃ 원격 플라즈마에서 H₂ 40 sccm 조건의 선택비는 SiO₂ 대비 14.0, SiN 대비 2.8, poly-Si 대비 1.5로 보고됐다 (Goya 2026). 막의 고유 질소 함량이 높을수록 식각률이 오르는데, Si–N 결합이 식각에 약한 고리이기 때문으로 해석된다 (Pranda 2023). 인접 조성인 SiCN에서는 베이스 선택비(Al₂O₃ 대비 &gt; 45)와 첨가 가스 보호층 전략이 정리돼 있다 (Matsui 2021).</li>
+<li><strong>AFS 선택 식각</strong> — NF₃/NH₃ 계열 플라즈마가 만드는 <a class="wiki" href="afs-chemistry.html">AFS 염</a> 경로가 본진이다. NF₃ 계열 플라즈마에 H₂를 더한 조건에서, H₂ 40 sccm일 때 선택비는 SiO₂ 대비 14.0, SiN 대비 2.8, poly-Si 대비 1.5로 보고됐다 (Goya 2026). 막의 고유 질소 함량이 높을수록 식각률이 오르는데, Si–N 결합이 식각에 약한 고리이기 때문으로 해석된다 (Pranda 2023). 인접 조성인 SiCN에서는 베이스 선택비(Al₂O₃ 대비 &gt; 45)와 첨가 가스 보호층 전략이 정리돼 있다 (Matsui 2021).</li>
 <li><strong>건식</strong> — 불화탄소 플라즈마 식각도 가능하지만 선택비와 손상에서 AFS 경로가 앞선다.</li>
 <li>자세한 메커니즘과 조건표는 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>·<a class="wiki" href="afs-chemistry.html">AFS 화학</a> 항목에 있다.</li>
 </ul>
+<h3 id="H₂-한-가지로-갈리는-세-구간">H₂ 한 가지로 갈리는 세 구간</h3>
+<p>SiOCN 선택 식각이 &quot;조건 민감&quot;이라는 말의 실체는 Goya 등(2026)의 H₂ 유량 실험에서 잘 보인다. NF₃ 플라즈마에 H₂를 조금씩 늘리면 식각 거동이 세 구간으로 갈리고, XPS로 각 구간의 표면 상태가 구분됐다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>H₂ 첨가</th>
+<th>SiOCN 식각</th>
+<th>표면에서 일어나는 일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>없음</td>
+<td>기준</td>
+<td>(비교 기준 조건)</td>
+</tr>
+<tr>
+<td>적음</td>
+<td>빨라짐</td>
+<td>F 공급 증가와 산소 결핍층 형성이 식각을 돕는다</td>
+</tr>
+<tr>
+<td>많음 (≥ 40 sccm)</td>
+<td>느려짐</td>
+<td>표면에 NHₓ 보호층이 생겨 식각을 막는다</td>
+</tr>
+</tbody></table></div>
+<p>세 번째 구간이 흥미롭다. 보통 보호층은 깎지 않을 상대 막에 입히는 설계 수단인데(Matsui 2021의 SiCN 사례), 여기서는 깎아야 할 SiOCN 자신에게 생긴다. 즉 선택비를 키우려고 H₂를 늘리면 어느 순간 타깃 식각률이 꺾인다. 막 쪽에서는 질소 함량이 높을수록 잘 깎이고(Pranda 2023), 공정 쪽에서는 질소를 품은 NHₓ가 표면을 막는다. 염 형성과 보호층 형성이 같은 질소를 두고 경쟁하는 그림이며, 공정 창의 폭은 이 경쟁의 균형점이 정한다. 세 연구의 비교와 공정 창 그림은 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>에 있다.</p>
 <h3 id="한계-이슈">한계·이슈</h3>
 <ul>
 <li><strong>조성이 곧 편차 요인</strong> — O·C·N 세 원소의 비가 k, 응력, 식각률을 동시에 움직이므로, 웨이퍼 안·배치 간 조성 균일도가 곧 스페이서 형상 산포가 된다. 단일 원소막보다 공정 창이 좁다.</li>
@@ -263,11 +290,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
-<li>Goya et al. 2026, JVST A 44, 053213 — H₂ 유량별 선택비 실측 (보유 논문 원문 확인).</li>
-<li>Pranda et al. 2023 — 질소 함량과 식각률의 관계, <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a> 항목 원전.</li>
-<li>Matsui et al. 2021, JVST A 39, 043008 — SiCN 선택 식각 (보유 논문 원문 확인).</li>
-<li>Szymanowski et al. 2020, Coatings — RF PECVD 조성–굴절률 제어 (보유 논문 원문 확인).</li>
-<li>k 범위 등 물성은 스페이서 문헌 보고값의 범위이며 조성에 따라 달라진다.</li>
+<li>Goya et al., J. Vac. Sci. Technol. A 44, 053213 (2026), <a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">doi:10.1116/6.0005595</a> — H₂ 유량별 선택비 실측과 세 구간의 XPS 구분 (보유 논문 원문 확인).</li>
+<li>Pranda et al., J. Vac. Sci. Technol. A 41, 063009 (2023), <a href="https://doi.org/10.1116/6.0003014" target="_blank" rel="noopener">doi:10.1116/6.0003014</a> — 질소 함량과 식각률의 비례 관계.</li>
+<li>Matsui et al., J. Vac. Sci. Technol. A 39, 043008 (2021), <a href="https://doi.org/10.1116/6.0000711" target="_blank" rel="noopener">doi:10.1116/6.0000711</a> — SiCN 선택 식각과 보호층 설계 (보유 논문 원문 확인).</li>
+<li>Gu et al., Electronics Letters 56(10), 514–516 (2020), <a href="https://doi.org/10.1049/el.2019.3954" target="_blank" rel="noopener">doi:10.1049/el.2019.3954</a> — SiOCN(k ≈ 4.5) 하이브리드 스페이서의 7 nm급 FinFET 통합.</li>
+<li>Szymanowski et al., Coatings 10(8), 794 (2020), <a href="https://doi.org/10.3390/coatings10080794" target="_blank" rel="noopener">doi:10.3390/coatings10080794</a> — RF PECVD(TMDSN·HMDSN)에서 N₂/O₂ 비로 굴절률 1.65~2.22 연속 제어 (보유 논문 원문, Joy 대조 10/27).</li>
+<li>Szymanowski를 뺀 DOI 4건은 저장소의 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>·<a class="wiki" href="spacer-materials.html">스페이서 소재 비교</a> 근거 절에 이미 실린 것과 같다. k 범위 등 물성은 스페이서 문헌 보고값의 범위이며 조성에 따라 달라진다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="sioc.html">← 이전 · SiOC</a><a href="al2o3.html">다음 · Al₂O₃ →</a></nav>
@@ -275,7 +303,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
   </div>
  </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
   var slug = "siocn", KEY = 'wiki-favs', btn = document.getElementById('favBtn');

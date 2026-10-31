@@ -245,10 +245,42 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h3 id="식각법">식각법</h3>
 <ul>
-<li><strong>건식</strong> — 불화탄소 플라즈마로 깎지만, 다공성막은 식각 자체보다 부작용이 문제다. 플라즈마가 메틸기를 떼어내 탄소 고갈층을 만들고 k가 오르며 친수화된다 (<a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>). CF₄/Ar 계열에서 이온 에너지와 라디칼 플럭스가 식각률·표면 화학을 어떻게 바꾸는지가 연구돼 있다 (Oh 2022).</li>
+<li><strong>건식</strong> — 불화탄소 플라즈마로 깎지만, 다공성막은 식각 자체보다 부작용이 문제다. 플라즈마가 메틸기를 떼어내 탄소 고갈층을 만들고 k가 오르며 친수화된다 (<a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>). CF₄/Ar 계열에서 이온 에너지와 라디칼 플럭스가 식각률·표면 화학을 어떻게 바꾸는지가 연구돼 있다 (Oh 2022, 아래 절).</li>
 <li><strong>박층 식각</strong> — 스페이서용 치밀 SiCO는 수소 이온 주입으로 표면층만 개질한 뒤 묽은 HF로 개질층만 걷어내는 방식이 보고됐다 (Possémé 2018) — 깎는 양을 이온 주입 깊이로 정하는, ALE와 닿은 발상이다.</li>
 <li><strong>선택 식각과의 관계</strong> — 탄소가 든 이 막을 <a class="wiki" href="sio2.html">SiO₂</a>·<a class="wiki" href="si3n4.html">Si₃N₄</a> 옆에서 선택적으로 깎는 문제가 첨단 노드의 핵심 과제이며, 질소를 더한 <a class="wiki" href="siocn.html">SiOCN</a>에서 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>으로 본격화된다.</li>
 </ul>
+<h3 id="식각과-손상은-한-공정의-두-얼굴-Ar과-CF₄의-비교">식각과 손상은 한 공정의 두 얼굴 — Ar과 CF₄의 비교</h3>
+<p>Oh 등(2022)은 같은 장비에서 SiOC 박막을 Ar 플라즈마와 CF₄ 플라즈마에 노출해 식각과 손상을 나란히 봤다. 결론은 네 줄로 정리된다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>관찰</th>
+<th>내용</th>
+<th>공정에 주는 뜻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>식각 속도</td>
+<td>CF₄가 Ar보다 항상 빠르다 — 화학 식각이 지배</td>
+<td>SiOC는 물리 스퍼터보다 불소 라디칼로 깎인다</td>
+</tr>
+<tr>
+<td>반응 확률</td>
+<td>입력 전력을 올리면 F 원자의 실효 반응 확률이 떨어진다</td>
+<td>흡착 자리가 부족해지거나 부착 계수가 낮아지는 포화 거동</td>
+</tr>
+<tr>
+<td>유전율</td>
+<td>어떤 식각이든 k가 오르고, Ar 쪽이 더 크게 오른다</td>
+<td>깎는 양이 적어도 손상은 남는다</td>
+</tr>
+<tr>
+<td>손상 경로</td>
+<td>주 손상은 Si–C 결합 절단, 원인은 이온 충돌과 UV</td>
+<td>표면이 불화되면 이온 손상의 문턱 에너지가 낮아져 충돌의 파괴력이 커진다</td>
+</tr>
+</tbody></table></div>
+<p>마지막 줄이 실무에서 중요하다. &quot;불소 화학으로 빠르게 깎으면 이온 손상이 줄겠지&quot;라는 기대와 달리, 불화된 표면은 오히려 이온에 더 쉽게 깨진다. 그래서 low-k 식각 레시피는 식각 속도를 올리는 손잡이(라디칼)와 손상을 줄이는 손잡이(이온 에너지·UV 노출)를 따로 다뤄야 한다. 손상층의 측정과 회복 공정은 <a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>에서 다룬다.</p>
 <h3 id="치밀형과-다공성을-가르는-수치-감각">치밀형과 다공성을 가르는 수치 감각</h3>
 <p>두 막을 구분하는 가장 빠른 지표는 굴절률과 밀도 방향이다. 기공이 늘수록 굴절률과 영률이 함께 떨어지고, 플라즈마 노출 후에는 탄소 고갈로 표면만 굴절률이 오르는 &quot;손상층&quot;이 생긴다. 그래서 다공성막의 k는 증착 직후 값이 아니라 <strong>패터닝·메탈 채움까지 끝낸 뒤의 실효 k (k-effective)</strong> 로 평가해야 한다 — 손상층과 흡습이 설계값을 갉아먹기 때문이다. 반대로 치밀형 스페이서막은 기공이 없어 손상층 문제보다 &quot;옆 막과의 선택비&quot;가 평가 축이 되며, 같은 SiOC라는 이름으로 두 막의 식각 데이터를 섞어 읽으면 안 된다.</p>
 <h3 id="한계-이슈">한계·이슈</h3>
@@ -270,7 +302,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h2 id="근거">근거</h2>
 <ul>
 <li>물성 범위는 <a class="wiki" href="dielectrics.html">절연막</a> 항목의 소재 표와 스페이서 문헌의 전형값. 치밀형 k ≈ 4~4.5와 다공성 k 2.2~3.0의 구분, 치밀형의 k 바닥권 서술은 이 범위 안에서 정리한 것이다.</li>
-<li>Oh et al. 2022, Thin Solid Films 749, 139185 — SiOC의 CF₄/Ar 식각 거동. DOI: <a href="https://doi.org/10.1016/j.tsf.2022.139185" target="_blank" rel="noopener">10.1016/j.tsf.2022.139185</a>.</li>
+<li>Oh et al. 2022, Thin Solid Films 749, 139185 — SiOC의 Ar·CF₄ 플라즈마 식각과 손상(Si–C 절단, 불화에 의한 손상 문턱 저하). 본문 표는 초록의 정성 결론만 옮겼다. DOI: <a href="https://doi.org/10.1016/j.tsf.2022.139185" target="_blank" rel="noopener">10.1016/j.tsf.2022.139185</a>.</li>
 <li>Possémé et al. 2018, JVST B 36, 052201 — H 주입 + HF 박층 식각. DOI: <a href="https://doi.org/10.1116/1.5038617" target="_blank" rel="noopener">10.1116/1.5038617</a>.</li>
 </ul>
 </article>
@@ -279,7 +311,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
   </div>
  </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
   var slug = "sioc", KEY = 'wiki-favs', btn = document.getElementById('favBtn');

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>에어 스페이서 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+<title>에어 스페이서 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
 :root {
   --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
   --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
@@ -195,23 +195,32 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <thead>
 <tr>
 <th>지표</th>
-<th>결과</th>
+<th>값</th>
+<th>성격</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>오버랩 용량 Cov</td>
-<td><strong>−15~25%</strong> (트랜지스터 레벨 실측)</td>
+<td>오버랩 용량 Cov (Cgs)</td>
+<td><strong>−15~25%</strong></td>
+<td>부분 에어 스페이서(핀 상부만) 소자 실측</td>
 </tr>
 <tr>
 <td>유효 용량 Ceff</td>
-<td><strong>−10~15%</strong> (링 오실레이터 레벨), partial 구조에서 −12%</td>
+<td><strong>−10~15%</strong> (예: −12%)</td>
+<td>링 오실레이터 실측</td>
 </tr>
 <tr>
-<td>공기 비율 효과</td>
-<td>스페이서의 25%만 공기로 바꿔도 용량 감소 ≈ 50% 수준까지 도달 (이후 포화)</td>
+<td>부분형 TCAD</td>
+<td>Cov 약 −21%, 등가 k 5 → 3.2</td>
+<td>시뮬레이션</td>
+</tr>
+<tr>
+<td>공기 비율 25%</td>
+<td>정규화 용량 약 50% 감소, 이후 증가분 둔화</td>
+<td>직렬 커패시터 모델 (아래 「원리」)</td>
 </tr>
 </tbody></table></div>
-<p>마지막 줄이 설계상 중요하다. 전부 비우지 않아도 이득의 상당 부분을 얻을 수 있어서, 리스크를 줄인 <strong>partial scheme</strong> — 핀 상부처럼 용량 기여가 큰 부분만 비우고 하부는 고체로 남기는 방식 — 이 실증의 핵심 제안이다.</p>
+<p>실측과 모델을 구분해 읽어야 한다. 위 두 줄이 소자에서 잰 이득이고, 마지막 줄은 공기층 두께 비율에 따른 경향을 보인 모델 값이다. 모델이 말하는 것은 &quot;얇은 공기층만으로도 이득의 큰 몫을 얻는다&quot;는 점이고, 이것이 리스크를 줄인 <strong>partial scheme</strong>(핀 상부만 비우고 하부는 고체로 남기는 방식)을 정당화한다.</p>
 <h2 id="형성법">형성법</h2>
 <p>골격은 &quot;희생 재료를 넣었다가 골라 빼는&quot; 방식이다.</p>
 <ol>
@@ -226,8 +235,35 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>공정 내성</strong> — 공동을 만든 뒤의 식각·세정 화학이 공동 안으로 침투하지 않아야 한다.</li>
 </ul>
 <p>그래서 전면 적용 대신 partial scheme이 제안됐고, 이 &quot;이득은 크지만 구조가 못 버틴다&quot;는 구도는 <a class="wiki" href="spacer-materials.html">스페이서 소재 비교</a>에서 <a class="wiki" href="inner-spacer.html">내부 스페이서</a>의 low-k가 탈락하는 이유와 정확히 평행하다 — 자리만 다를 뿐, 장벽은 k가 아니라 구조·내성이다.</p>
-<h2 id="원리-왜-부분만-비워도-효과가-큰가">원리 — 왜 부분만 비워도 효과가 큰가</h2>
-<p>게이트와 S/D 사이의 용량은 스페이서를 높이 방향으로 나눈 여러 경로의 합으로 볼 수 있다. 전계가 강하게 몰리는 상부 경로가 전체 오버랩 용량의 큰 몫을 차지하므로, 그 부분만 k = 1인 공기로 바꿔도 유효 유전율이 크게 떨어진다. 반대로 하부를 전부 비우면 이득은 포화하는데 기계적 리스크만 커진다 — Cheng 2016의 &quot;25% 교체에서 이득의 약 절반, 이후 포화&quot;라는 결과가 partial scheme을 정당화하는 이유다. 즉 에어 스페이서의 설계 변수는 &quot;비우느냐 마느냐&quot;가 아니라 <strong>어느 높이까지, 어느 비율로 비우느냐</strong>다.</p>
+<h2 id="원리-왜-얇은-공기층으로도-효과가-큰가">원리 — 왜 얇은 공기층으로도 효과가 큰가</h2>
+<p>Cheng 2016의 공기 비율은 <strong>스페이서 두께 방향</strong>의 비율(공기 두께 / 전체 스페이서 두께)이다. 게이트에서 S/D로 가는 전계가 공기층과 고체층을 차례로 지나므로, 두 층은 직렬 커패시터가 된다. 직렬에서는 작은 쪽 커패시터가 전체를 지배한다 — 유전율이 가장 낮은 공기층이 얇게만 들어가도 전체 용량이 크게 떨어지는 이유다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mn>1</mn><msub><mi>k</mi><mtext>eff</mtext></msub></mfrac><mo>=</mo><mfrac><mi>f</mi><mn>1</mn></mfrac><mo>+</mo><mfrac><mrow><mn>1</mn><mo>−</mo><mi>f</mi></mrow><msub><mi>k</mi><mtext>solid</mtext></msub></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{k_{\text{eff}}} = \frac{f}{1} + \frac{1 - f}{k_{\text{solid}}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.1574em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">eff</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2074em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">solid</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>공기 두께 비율 f (k_solid = 5)</th>
+<th>등가 k</th>
+<th>정규화 용량 감소</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.25</td>
+<td>1 / (0.25 + 0.15) = 2.5</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>1 / (0.5 + 0.1) ≈ 1.67</td>
+<td>약 67%</td>
+</tr>
+<tr>
+<td>1 (전부 공기)</td>
+<td>1</td>
+<td>80%</td>
+</tr>
+</tbody></table></div>
+<p>f = 0.25에서 이미 최대 이득(80%)의 대부분인 50%를 얻고, 그 뒤로는 공기를 늘려도 증가분이 둔화한다. 원문의 &quot;25%에서 약 50% 감소&quot;가 이 산술과 맞는다. k_solid = 5는 원문 TCAD의 등가 k 출발값을 따른 예시이며, 표의 계산은 이 관계를 확인하기 위한 산술이다.</p>
+<p>같은 공기량을 병렬로 넣으면(스페이서 높이의 25%를 공기로) 등가 k는 0.25 × 1 + 0.75 × 5 = 4로 20% 감소에 그친다. 공기를 <strong>전계 경로를 가로지르는 층</strong>으로 넣는 것이 높이 방향 일부를 통째로 비우는 것보다 효율적이라는 뜻이다. 다만 실제 소자의 partial scheme은 높이 방향으로도 핀 상부에 공동을 한정한다 — 이것은 효율보다 붕괴·밀봉 리스크를 줄이기 위한 선택이고, 그 대가가 실측 이득(Cov −15~25%)이 모델 값(50%)보다 작은 한 이유로 읽힌다(해석).</p>
 <h2 id="핵심-조건-설계-변수">핵심 조건·설계 변수</h2>
 <div class="table-wrap"><table>
 <thead>
@@ -269,8 +305,8 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
-<li>Cheng et al. 2016, IEDM. DOI: <a href="https://doi.org/10.1109/IEDM.2016.7838436" target="_blank" rel="noopener">10.1109/IEDM.2016.7838436</a> — IBM 10 nm FinFET 에어 스페이서 실증, Cov −15~25%·Ceff −10~15%·partial −12% (원문 확인).</li>
-<li>공기 비율과 이득 포화에 대한 서술은 위 실증의 해석이며, k = 1은 공기의 정의값이다. 설계 변수 표는 교재 수준의 일반 정리이다.</li>
+<li>Cheng et al. 2016, IEDM. DOI: <a href="https://doi.org/10.1109/IEDM.2016.7838436" target="_blank" rel="noopener">10.1109/IEDM.2016.7838436</a> — IBM 10 nm FinFET 에어 스페이서 실증, Cov −15~25%·Ceff −10~15%(예 −12%) 실측 (원문 확인).</li>
+<li>공기 비율 25%·정규화 용량 50% 감소는 원문 Fig. 15와 본문의 직렬 커패시터 모델, 부분형 TCAD(Cov 약 −21%, 등가 k 5 → 3.2)도 원문 값이다(Joy 원문 대조, 10/31). 원리 절의 f = 0.5·1 행과 병렬 비교는 같은 식으로 한 산술이며, 실측과 모델의 차이에 대한 마지막 문장은 해석이다. k = 1은 공기의 정의값이다. 설계 변수 표는 교재 수준의 일반 정리이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="inner-spacer.html">← 이전 · 내부 스페이서</a><a href="spacer-materials.html">다음 · 스페이서 소재 비교 →</a></nav>
@@ -278,7 +314,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
   </div>
  </div>
 </main>
-<footer class="bot">반도체 백과 · 2026년 10월 27일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
 <script>
 (function () {
   var slug = "air-spacer", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
