@@ -97,6 +97,8 @@ DRAM은 트랜지스터 1개와 커패시터 1개(1T1C)로 1비트를 저장하�
 ### 근거
 
 - 셀 구조·BCAT·ZAZ 커패시터·6F²→4F² 흐름은 DRAM 교재와 업체 기술 발표에서 공통으로 확인되는 구조 설명이다.
+- ZAZ 적층 커패시터: Wu et al., "High density metal-insulator-metal capacitor based on ZrO₂/Al₂O₃/ZrO₂ laminate dielectric", Appl. Phys. Lett. (2008), [doi:10.1063/1.2958238](https://doi.org/10.1063/1.2958238). ZrO₂ 사이에 Al₂O₃를 끼워 누설을 막는 적층 구조의 근거다. 표의 k 범위(ZrO₂ 기준 30~40)는 교재 전형값이다.
+- BCAT 구조·누설: Lee et al., "Partial Isolation Type Buried Channel Array Transistor (Pi-BCAT) for a Sub-20 nm DRAM", Electronics 9, 1908 (2020), [doi:10.3390/electronics9111908](https://doi.org/10.3390/electronics9111908). 매립 채널 셀 트랜지스터와 그 누설 문제를 다룬 논문으로, 본문의 BCAT 구조·누설 서술의 근거로 단다(논문 자체는 BCAT의 변형 구조 제안이다).
 - 리프레시 주기 64 ms, Cs·감지 전압 등 수치는 **교과서·규격 전형값**이며 특정 제품의 실측값이 아니다. 업체별 양산 계획 표는 기존 본문의 보도 기반 정리(2026년 10월 기준)를 그대로 따른다.
 
 ## 관련 항목

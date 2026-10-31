@@ -61,6 +61,8 @@ tags: 컨택, 자기정렬
 ## 근거
 
 - 공정 순서와 선택비 원리는 본문 및 [[건식 식각]]의 FC 폴리머 메커니즘 기준이다.
+- SiO₂/Si₃N₄ 선택비와 FC 막: Schaepkens et al., "Study of the SiO₂-to-Si₃N₄ etch selectivity mechanism in inductively coupled fluorocarbon plasmas and a comparison with the SiO₂-to-Si mechanism", J. Vac. Sci. Technol. A 17, 26 (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108). 숄더 손실 절이 가리키는 「Schaepkens 그림」의 원전이며, [[식각 비이상 현상]]에 등록된 것과 같은 출처다.
+- COAG 도입: Auth et al., "A 10nm high performance and low-power CMOS technology featuring 3rd generation FinFET transistors, Self-Aligned Quad Patterning, contact over active gate and cobalt local interconnects", IEDM (2017), [doi:10.1109/IEDM.2017.8268472](https://doi.org/10.1109/IEDM.2017.8268472). Intel 10nm 공정에서 COAG를 발표한 논문이다.
 - 선택비 10:1 이상은 SAC 설계에서 요구되는 교재 전형 수준으로 표기했고, 특정 양산 레시피의 실측값이 아니다.
 - 숄더 손실 절의 수치(산화막 100 nm·과식각 30%·선택비 15:1 → 평면 손실 약 8.7 nm)는 예산 구조를 보이기 위한 산술 예시이며 실측이 아니다. 폴리머 두께의 위치 의존은 FC 정상상태 막 두께 모델의 정성적 적용이다.
 
