@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>low-k 플라즈마 손상 — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+<title>low-k 플라즈마 손상 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
 :root {
   --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
   --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
@@ -268,6 +268,40 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <h3 id="k가-오르는-경로와-회복의-화학">k가 오르는 경로와 회복의 화학</h3>
 <p>손상의 종착지는 탄소 고갈층이다. 메틸기가 빠진 자리는 Si–OH로 채워지고, 이 친수성 층이 공정 후 대기에서 수분을 빨아들인다. 물의 k가 약 80(교재 전형값)으로 막 자체(k≈2.5~3.0 안팎이 전형적인 low-k 목표, 교재 전형값)보다 압도적으로 크므로, 소량의 수분 흡착만으로도 실효 k가 눈에 띄게 오른다. 즉 손상은 &quot;막이 깎였다&quot;가 아니라 &quot;막의 조성이 다른 재료로 바뀌었다&quot;는 문제다.</p>
 <p><strong>실릴화 복구</strong>는 이 경로를 거꾸로 밟는다. 실릴화제는 Si–OH의 H를 –Si(CH₃)₃ 같은 메틸 함유기로 치환해 표면을 다시 소수성으로 돌리고 흡착수 자리를 없앤다. 다만 이미 빠져나간 막 내부 탄소와 무너진 기공 구조까지는 되돌리지 못하므로, 복구는 부분적이다 — 그래서 복구보다 예방(환원성 애싱, 하드마스크, 포어 실링)이 먼저다.</p>
+<h3 id="산술로-보는-측벽-손상층의-무게">산술로 보는 측벽 손상층의 무게</h3>
+<p>배선 사이 절연막은 양쪽 측벽에서 손상을 받는다. 손상층(유전율 k_d, 두께 d)과 손상되지 않은 몸체(유전율 k_b)가 배선 사이에 직렬로 놓인다고 보면, 배선 간격 L에서의 실효 유전율은 다음과 같다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>k</mi><mrow><mi>e</mi><mi>f</mi><mi>f</mi></mrow></msub><mo>=</mo><mfrac><mi>L</mi><mrow><mstyle scriptlevel="0" displaystyle="true"><mfrac><mrow><mn>2</mn><mi>d</mi></mrow><msub><mi>k</mi><mi>d</mi></msub></mfrac></mstyle><mo>+</mo><mstyle scriptlevel="0" displaystyle="true"><mfrac><mrow><mi>L</mi><mo>−</mo><mn>2</mn><mi>d</mi></mrow><msub><mi>k</mi><mi>b</mi></msub></mfrac></mstyle></mrow></mfrac></mrow><annotation encoding="application/x-tex">k_{eff} = \frac{L}{\dfrac{2d}{k_d} + \dfrac{L-2d}{k_b}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:3.4578em;vertical-align:-2.0974em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.6014em;"><span class="pstrut" style="height:3.3714em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.0484em;"><span class="pstrut" style="height:3.3714em;"></span><span class="mord"><span class="mord mathnormal">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.0974em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<p><strong>가정값</strong>(배선 간격 20 nm, 몸체 k_b = 2.5, 손상층 k_d = 4.0)으로 <strong>산술</strong>하면 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>측벽 손상층 두께 d</th>
+<th>실효 k</th>
+<th>몸체 대비 증가</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 nm</td>
+<td>2.50</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1 nm</td>
+<td>약 2.59</td>
+<td>약 4%</td>
+</tr>
+<tr>
+<td>2 nm</td>
+<td>약 2.70</td>
+<td>약 8%</td>
+</tr>
+<tr>
+<td>5 nm</td>
+<td>약 3.08</td>
+<td>약 23%</td>
+</tr>
+</tbody></table></div>
+<p>손상층이 양쪽 합쳐 간격의 절반(5 nm씩)에 이르면, 공들여 낮춘 k가 손상되지 않은 SiO₂ 쪽으로 크게 되돌아간다. 같은 손상 두께라도 배선 간격이 좁을수록 비중이 커지므로, 미세화가 진행될수록 손상 깊이 1 nm의 값이 커진다. 손상 깊이를 줄이는 공정 선택(저에너지 이온, 산소 대신 수소·질소 계열 애싱, 기공 막음)이 중요한 이유가 이 산술에 있다. 손상층 두께는 단면 분석이나 HF 침지 뒤 측벽 후퇴량으로 어림하고, 공정 조건별로 비교한다.</p>
 <h3 id="트레이드오프와-한계">트레이드오프와 한계</h3>
 <ul>
 <li>손상을 줄이는 저에너지·저라디칼 조건은 대개 식각률과 PR 제거 속도를 함께 낮춘다. 애싱에서는 &quot;깨끗이 벗기기&quot;와 &quot;막을 안 상하게 하기&quot;가 정면으로 충돌한다.</li>
@@ -278,6 +312,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>결합 에너지·물의 k·low-k 목표 k 범위 — 교재 전형값으로, 특정 논문의 실측이 아니다.</li>
 <li>low-k 식각률과 질소 함량의 비례 관계 — 실측: Pranda et al. (2023). DOI: <a href="https://doi.org/10.1116/6.0003014" target="_blank" rel="noopener">10.1116/6.0003014</a>.</li>
+<li>측벽 손상층 산술은 직렬 커패시터 근사이며, 배선 간격·k_b·k_d는 설명용 가정값이다.</li>
 </ul>
 <h2 id="관련-항목">관련 항목</h2>
 <ul>

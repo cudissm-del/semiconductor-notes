@@ -273,6 +273,37 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <blockquote>
 <p>근거 없는 수치는 넣지 않는다. 오염 관리 수준은 로드맵 판마다 다르므로 출처와 시점을 같이 적는다.</p>
 </blockquote>
+<h2 id="산술로-보는-결함-수와-수율">산술로 보는 결함 수와 수율</h2>
+<p>검사에서 잡힌 결함이 모두 다이를 죽이지는 않는다. 그중 실제로 불량을 만드는 비율을 킬 비율(kill ratio)이라 하면, 수율 모델에 들어가는 실효 결함 밀도는 「검출 결함 밀도 × 킬 비율」이다. <strong>가정값</strong>(다이 면적 1 cm², <a class="wiki" href="yield-model.html">수율 모델</a>의 Poisson 식 Y = exp(−A·D))으로 <strong>산술</strong>한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>검출 결함 밀도</th>
+<th>킬 비율</th>
+<th>실효 D</th>
+<th>예상 수율</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.1 /cm²</td>
+<td>30%</td>
+<td>0.03 /cm²</td>
+<td>약 97%</td>
+</tr>
+<tr>
+<td>0.5 /cm²</td>
+<td>30%</td>
+<td>0.15 /cm²</td>
+<td>약 86%</td>
+</tr>
+<tr>
+<td>0.5 /cm²</td>
+<td>60%</td>
+<td>0.30 /cm²</td>
+<td>약 74%</td>
+</tr>
+</tbody></table></div>
+<p>같은 결함 수라도 킬 비율이 두 배면 수율 손실이 두 배 가까이 된다. 그래서 결함 관리는 결함 수를 줄이는 일과, 어떤 결함이 킬러인지를 분류해 그것부터 줄이는 일로 나뉜다. 킬 비율은 결함 종류·크기·떨어진 층에 따라 다르므로, 결함 분류(리뷰 SEM)와 전기 검사 결과를 겹쳐 결함 종류별로 추정한다.</p>
 <h2 id="한계">한계</h2>
 <ul>
 <li><strong>보이지 않는 결함</strong>: 검사 장비가 잡지 못하는 크기·위치의 결함은 전기 테스트에서야 드러난다. 그때는 원인 공정까지 거슬러 올라가는 데 시간이 걸린다.</li>
@@ -296,6 +327,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li>[근거 대기] 교재: Schroder 3판 5장 Defects (장 단위로 표기, 합의 규칙)</li>
 <li>[근거 대기] 금속 오염과 소자 특성에 대한 리뷰 1편 — DOI는 Crossref로 대조한 뒤 기입</li>
 <li>Orji et al. (2018), <em>Nature Electronics</em> 1(10), 532–547 — <a href="https://doi.org/10.1038/s41928-018-0150-9" target="_blank" rel="noopener">Metrology for the next generation of semiconductor devices</a> · 결함 검사·계측 전략 개관 (DOI 확인: Joy)</li>
+<li>결함–수율 표는 Poisson 수율식과 가정값(다이 면적·결함 밀도·킬 비율)에 따른 산술이다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="process-control.html">← 이전 · 공정 제어</a><span></span></nav>

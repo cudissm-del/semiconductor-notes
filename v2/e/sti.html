@@ -237,6 +237,39 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <blockquote>
 <p>수치는 Joy가 DOI·교재 매핑 때 함께 채운다. 근거 없는 수치는 넣지 않는다.</p>
 </blockquote>
+<h2 id="산술로-보는-갭필-종횡비">산술로 보는 갭필 종횡비</h2>
+<p>트렌치 깊이를 <strong>가정값</strong> 250 nm로 두고 폭에 따른 종횡비를 <strong>산술</strong>하면 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>트렌치 폭</th>
+<th>종횡비</th>
+<th>채우는 쪽의 사정</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>250 nm</td>
+<td>1</td>
+<td>일반 CVD로도 무난</td>
+</tr>
+<tr>
+<td>100 nm</td>
+<td>2.5</td>
+<td>증착·스퍼터를 번갈아 하는 HDP-CVD 영역</td>
+</tr>
+<tr>
+<td>50 nm</td>
+<td>5</td>
+<td>입구가 먼저 막히기 쉬워 보이드 위험</td>
+</tr>
+<tr>
+<td>25 nm</td>
+<td>10</td>
+<td>흐르는 막(유동성 CVD·스핀온)으로 채운 뒤 열처리로 굳힘</td>
+</tr>
+</tbody></table></div>
+<p>폭이 절반이 되면 종횡비는 두 배가 되고, 입구가 먼저 닫히는 문제는 <a class="wiki" href="reaction-transport-limit.html">반응 제한과 전달 제한</a>의 종횡비 의존과 같은 구조라 빠르게 나빠진다. 흐르는 막은 바닥부터 차오르니 보이드에는 강하지만, 굳히는 열처리에서 부피가 줄며 응력과 막질 차이를 남긴다. 그래서 미세 STI는 채움 방식, 경화 조건, 그 뒤 CMP·습식 세정에서의 식각 속도까지 함께 맞춘다.</p>
+<p>채운 막의 질이 위아래로 다르면 문제가 뒤에서 드러난다. 경화가 덜 된 아랫부분은 나중 습식 세정에서 빨리 녹아 트렌치 안에 빈 공간을 다시 만들고, 윗부분이 모서리에서 먼저 패이면 디봇이 깊어진다. 그래서 갭필 평가는 채운 직후의 단면만이 아니라, 이후 세정을 모두 거친 뒤의 단면으로 한다. FinFET·GAA처럼 STI 산화막을 리세스해 핀을 드러내는 구조에서는 이 막질 차이가 곧 리세스 깊이 편차가 되고, 핀 높이 산포로 이어지며, 이는 트랜지스터 전류 산포의 한 원인이다.</p>
 <h2 id="한계-결함-모드">한계·결함 모드</h2>
 <ul>
 <li><strong>갭필 보이드·심</strong> — 종횡비가 클수록 생긴다. 이후 습식 세정에서 보이드가 열리면 게이트 물질이 들어가 단락이 된다.</li>
@@ -258,10 +291,12 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>[근거 대기 — Joy 매핑] 교재: Plummer, Deal &amp; Griffin, <em>Silicon VLSI Technology</em> (Prentice Hall, 2000) 현대 CMOS 공정 흐름 장 · Campbell, <em>Fabrication Engineering at the Micro- and Nanoscale</em> 4th ed. (2013)</li>
 <li>[근거 대기] STI 갭필·응력·험프에 대한 대표 논문 1편 이상 (DOI Crossref 대조 후 기입)</li>
+<li>갭필 종횡비 표의 트렌치 깊이 250 nm는 설명용 가정값이며, 채움 방식 구분은 공정의 정성 정리다.</li>
+<li>HDP-CVD 갭필의 실증: Lee, Son, Lee et al., &quot;Shallow Trench Isolation Characteristics with High-Density-Plasma CVD Gap-Fill&quot;, Jpn. J. Appl. Phys. 37, 1222 (1998), <a href="https://doi.org/10.1143/JJAP.37.1222" target="_blank" rel="noopener">doi:10.1143/JJAP.37.1222</a> (선정·대조: Joy). 응력·험프까지 넓게 받치는 총론으로 Chang, &quot;Shallow Trench Isolation&quot;, Encyclopedia of Materials (2001), <a href="https://doi.org/10.1016/B0-08-043152-6/01508-4" target="_blank" rel="noopener">doi:10.1016/B0-08-043152-6/01508-4</a>를 보조로 단다.</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="feol.html">← 이전 · FEOL</a><a href="mol.html">다음 · MOL →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="finfet.html">FinFET</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="si3n4.html">Si₃N₄</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="deposition.html">증착</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="cmp.html">CMP</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="sio2.html">SiO₂</a> <span style="color:var(--sub)">— 구조·재료 &gt; 절연막</span></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="finfet.html">FinFET</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="process-flow.html">반도체 제조 전체 흐름</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="feol.html">FEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="mol.html">MOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="beol.html">BEOL</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li><li><a href="rmg.html">RMG (Gate-last)</a> <span style="color:var(--sub)">— 공정 &gt; 집적 흐름</span></li></ul></div>
   </div>
  </div>
 </main>
