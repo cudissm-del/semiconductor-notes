@@ -73,6 +73,6 @@ C_p = \frac{USL - LSL}{6\sigma}, \qquad C_{pk} = \min\left(\frac{USL - \mu}{3\si
 
 ## 근거
 
-- [근거 대기] SPC 교재: Montgomery, *Introduction to Statistical Quality Control* (Wiley) — 판과 장 번호를 확인한 뒤 기입
+- 반도체 공정의 SPC 총론: Spanos, "Statistical process control in semiconductor manufacturing", Proc. IEEE 80, 819–830 (1992), [doi:10.1109/5.149445](https://doi.org/10.1109/5.149445). [[WAT]]에서 대조된 인용이다. SPC 교재(Montgomery, *Introduction to Statistical Quality Control*)는 서지로 병기한다.
 - [근거 대기] 반도체 R2R·APC 리뷰 1편 — DOI는 Crossref로 대조한 뒤 기입
 - [근거 대기] 가상 계측(VM) 대표 논문 1편

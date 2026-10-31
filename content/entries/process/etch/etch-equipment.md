@@ -119,3 +119,4 @@ tags: CCP, ICP, ECR
 - RF 주파수(13.56 MHz ISM), ECR 공명 관계(2.45 GHz ↔ 875 G), 펌프 구성과 매칭 네트워크의 역할은 플라즈마 공정 장비의 표준 교재 전형 서술에 근거한다: Lieberman & Lichtenberg, *Principles of Plasma Discharges and Materials Processing* (Wiley, 2nd ed., 2005).
 - 압력·He 압력 같은 운용 수치는 장비 운용의 전형 범위로 적었고, 특정 제조사의 모델별 사양 수치는 싣지 않았다.
 - 공정 연결 절의 펄스 주파수 (수백 Hz~수십 kHz)·듀티 범위는 펄스 플라즈마 문헌의 전형 운용 범위이며, 듀얼 존 가스 분배·멀티 존 ESC·포커스 링·VI 프로브·런투런 APC의 역할 서술은 식각 장비 운용의 교재 전형 지식에 근거한다. 이온 에너지 분포 자체의 물리는 [[건식 식각]]의 IED 절 (Economou 2013)로 위임했다.
+- 플라즈마 식각 장비와 공정의 발전사 개관: Donnelly & Kornblit, "Plasma etching: Yesterday, today, and tomorrow", J. Vac. Sci. Technol. A (2013), [doi:10.1116/1.4819316](https://doi.org/10.1116/1.4819316). 저장소에서 이미 대조된 인용이다. 장비 구성의 세부 수치 근거가 아니라 반응기 방식(CCP·ICP 등)이 자리 잡은 흐름의 근거다.
