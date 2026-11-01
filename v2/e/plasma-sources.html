@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>플라즈마 소스 (CCP·ICP·원격) — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">26</span></div><div class="tn-t"><a href="../t/process--flow.html">집적 흐름</a></div><div class="tn-t"><a href="../t/process--patterning.html">패터닝</a></div><div class="tn-t open"><a href="../t/process--etch.html">식각</a><ul><li><a href="dry-etch.html">건식 식각</a></li><li><a href="ale.html">ALE (원자층 식각)</a></li><li><a href="har-etch.html">고종횡비 식각</a></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a></li><li><a href="recess.html">리세스와 채널 릴리스</a></li><li><a href="etch-equipment.html">식각 장비</a></li><li><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a></li><li class="cur"><a href="plasma-sources.html">플라즈마 소스 (CCP·ICP·원격)</a></li></ul></div><div class="tn-t"><a href="../t/process--film-planarization.html">막 형성·평탄화</a></div><div class="tn-t"><a href="../t/process--doping-thermal-cleaning.html">도핑·열처리·세정</a></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">21</span></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/process.html">공정</a> › <a href="../t/process--etch.html">식각</a> › 플라즈마 소스 (CCP·ICP·원격)</div>
+  <h1 class="title">플라즈마 소스 (CCP·ICP·원격)</h1>
+  <div class="en">Plasma Sources (CCP, ICP, Remote)</div>
+  <div class="meta"><span class="chip cat">공정 &gt; 식각</span><a class="chip" href="../tag/%ED%94%8C%EB%9D%BC%EC%A6%88%EB%A7%88.html">#플라즈마</a><a class="chip" href="../tag/%EC%8B%9D%EA%B0%81%20%EC%9E%A5%EB%B9%84.html">#식각 장비</a><a class="chip" href="../tag/CCP.html">#CCP</a><a class="chip" href="../tag/ICP.html">#ICP</a><span class="chip">#원격 플라즈마</span></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <div class="prereq"><span class="pl-t">먼저 읽을 항목</span><a href="plasma-basics.html">플라즈마 기초</a> · <a href="etch-equipment.html">식각 장비</a></div>
+  <article><blockquote>
+<p>RF 전력을 어떤 방식으로 전자에 넘기느냐에 따라 나뉘는 플라즈마 발생 방식. 용량결합(CCP)은 한 전극이 밀도와 이온 에너지를 함께 정하고, 유도결합(ICP)은 코일과 바이어스가 둘을 나눠 맡는다. 원격 플라즈마는 이온을 버리고 라디칼만 웨이퍼로 보낸다.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>공정 플라즈마는 전기장이 가벼운 전자를 흔들어 에너지를 주고, 그 전자가 기체를 때려 이온과 라디칼을 만드는 구조다(<a class="wiki" href="plasma-basics.html">플라즈마 기초</a>). 소스의 차이는 이 전기장을 어디에 어떻게 만드느냐에 있다. 두 평판 전극 사이에 RF 전압을 걸면 용량결합(CCP), 유전체 창 밖의 코일에 RF 전류를 흘려 챔버 안에 유도 전기장을 만들면 유도결합(ICP, 평면 코일은 TCP라고도 부른다), 웨이퍼와 떨어진 별도의 방전부에서 플라즈마를 만든 뒤 중성 라디칼만 흘려 보내면 원격(다운스트림) 플라즈마다.</p>
+<p>이 항목은 세 방식이 웨이퍼에 도착하는 이온 플럭스·이온 에너지·라디칼을 어떻게 다르게 만드는지를 다룬다. 장비 부품 전체(정전척·매칭·진공계·유지 보수)는 <a class="wiki" href="etch-equipment.html">식각 장비</a>, 시스와 이온 가속의 물리는 <a class="wiki" href="plasma-basics.html">플라즈마 기초</a>, 이온 에너지 분포를 공정에 쓰는 법은 <a class="wiki" href="dry-etch.html">건식 식각</a>이 맡는다.</p>
+<figure class="fig"><svg viewBox="0 0 760 360" role="img" aria-label="플라즈마 소스 세 가지 단면 — CCP, ICP, 원격 플라즈마" font-size="12"><defs><marker id="srcArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-categorical-3)"></path></marker></defs><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">플라즈마 소스 세 가지 단면</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">전력이 전자에 닿는 자리와, 웨이퍼에 무엇이 도착하는지가 갈린다</text><g><text x="24" y="84" font-size="13.5" font-weight="600" fill="var(--cds-text-primary)">CCP — 용량결합</text><rect x="24" y="102" width="224" height="170" rx="6" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.5"></rect><rect x="54" y="122" width="164" height="10" fill="var(--cds-chart-axis)" opacity="0.6"></rect><text x="136" y="118" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">상부 전극(샤워헤드)</text><rect x="58" y="138" width="156" height="74" fill="var(--cds-chart-categorical-1)" opacity="0.28"></rect><rect x="58" y="132" width="156" height="6" fill="var(--cds-chart-reference-tint)"></rect><rect x="58" y="212" width="156" height="10" fill="var(--cds-chart-reference-tint)"></rect><text x="136" y="179" text-anchor="middle" font-size="12" fill="var(--cds-text-primary)">벌크 플라즈마</text><text x="136" y="195" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">두 평판 사이 전체</text><g><rect x="64" y="227" width="144" height="12" rx="2" fill="var(--cds-chart-axis)" opacity="0.35"></rect><rect x="80" y="222" width="112" height="5" fill="var(--cds-chart-categorical-3)"></rect></g><text x="136" y="259" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">하부 전극 + 웨이퍼</text><g><circle cx="44" cy="300" r="10" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></circle><path d="M38 300q3 -6 6 0t6 0" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></path><text x="59" y="299" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">RF 한 계통(또는 HF+LF)</text><text x="59" y="313" font-size="11" fill="var(--cds-text-secondary)">밀도와 이온 에너지가 얽힘</text></g></g><g><text x="268" y="84" font-size="13.5" font-weight="600" fill="var(--cds-text-primary)">ICP — 유도결합</text><rect x="268" y="122" width="224" height="150" rx="6" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.5"></rect><g><circle cx="320" cy="112" r="5" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.6"></circle></g><g><circle cx="350" cy="112" r="5" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.6"></circle></g><g><circle cx="380" cy="112" r="5" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.6"></circle></g><g><circle cx="410" cy="112" r="5" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.6"></circle></g><g><circle cx="440" cy="112" r="5" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.6"></circle></g><text x="492" y="98" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">평면 코일 · 유전체 창</text><rect x="268" y="122" width="224" height="10" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="278" y="132" width="204" height="22" fill="var(--cds-chart-categorical-1)" opacity="0.55"></rect><rect x="278" y="154" width="204" height="58" fill="var(--cds-chart-categorical-1)" opacity="0.25"></rect><text x="286" y="168" font-size="11" fill="var(--cds-text-primary)">창 아래 표피 깊이에서 전력 흡수</text><text x="286" y="184" font-size="11" fill="var(--cds-text-secondary)">→ 확산으로 웨이퍼까지</text><g><rect x="308" y="227" width="144" height="12" rx="2" fill="var(--cds-chart-axis)" opacity="0.35"></rect><rect x="324" y="222" width="112" height="5" fill="var(--cds-chart-categorical-3)"></rect></g><text x="380" y="259" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">정전척 + 웨이퍼</text><g><circle cx="288" cy="300" r="10" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></circle><path d="M282 300q3 -6 6 0t6 0" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></path><text x="303" y="299" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">코일 RF + 바이어스 RF</text><text x="303" y="313" font-size="11" fill="var(--cds-text-secondary)">밀도와 에너지를 따로</text></g></g><g><text x="512" y="84" font-size="13.5" font-weight="600" fill="var(--cds-text-primary)">원격 — 다운스트림</text><rect x="594" y="92" width="60" height="34" rx="6" fill="var(--cds-chart-categorical-1)" opacity="0.55" stroke="var(--cds-chart-axis)"></rect><text x="662" y="106" font-size="11" fill="var(--cds-text-primary)">상류 방전부</text><text x="662" y="120" font-size="11" fill="var(--cds-text-secondary)">(RPS)</text><rect x="616" y="126" width="16" height="48" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)"></rect><text x="608" y="144" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">수송관: 이온·전자</text><text x="608" y="158" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">재결합으로 소멸</text><rect x="512" y="174" width="224" height="98" rx="6" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.5"></rect><line x1="532" y1="192" x2="716" y2="192" stroke="var(--cds-chart-axis)" stroke-width="2" stroke-dasharray="6 5"></line><text x="714" y="187" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">분배판·격자</text><path d="M578 198v16" stroke="var(--cds-chart-categorical-3)" stroke-width="1.6" marker-end="url(#srcArrow)"></path><path d="M608 198v16" stroke="var(--cds-chart-categorical-3)" stroke-width="1.6" marker-end="url(#srcArrow)"></path><path d="M638 198v16" stroke="var(--cds-chart-categorical-3)" stroke-width="1.6" marker-end="url(#srcArrow)"></path><path d="M668 198v16" stroke="var(--cds-chart-categorical-3)" stroke-width="1.6" marker-end="url(#srcArrow)"></path><g><rect x="552" y="227" width="144" height="12" rx="2" fill="var(--cds-chart-axis)" opacity="0.35"></rect><rect x="568" y="222" width="112" height="5" fill="var(--cds-chart-categorical-3)"></rect></g><text x="624" y="259" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">웨이퍼: 라디칼만 도달</text><g><circle cx="532" cy="300" r="10" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></circle><path d="M526 300q3 -6 6 0t6 0" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></path><text x="547" y="299" font-size="11.5" font-weight="600" fill="var(--cds-text-primary)">방전부 전력만</text><text x="547" y="313" font-size="11" fill="var(--cds-text-secondary)">이온 에너지 없음(등방)</text></g></g><g><rect x="24" y="326" width="14" height="10" fill="var(--cds-chart-categorical-1)" opacity="0.45"></rect><text x="44" y="335" font-size="11.5" fill="var(--cds-text-secondary)">플라즈마(진할수록 전력 흡수가 큼)</text><rect x="250" y="326" width="14" height="10" fill="var(--cds-chart-reference-tint)"></rect><text x="270" y="335" font-size="11.5" fill="var(--cds-text-secondary)">쉬스·창·수송관</text><rect x="380" y="326" width="14" height="6" fill="var(--cds-chart-categorical-3)"></rect><text x="400" y="335" font-size="11.5" fill="var(--cds-text-secondary)">웨이퍼·라디칼</text><circle cx="503" cy="331" r="6" fill="none" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></circle><text x="516" y="335" font-size="11.5" fill="var(--cds-text-secondary)">RF 전원·코일</text></g><text x="24" y="354" font-size="11" fill="var(--cds-text-secondary)">자체 제작 개념도 — 교재 전형 구성(Lieberman &amp; Lichtenberg, 2005). 크기·간격은 비례가 아니다.</text></svg><figcaption>그림 1. 플라즈마 소스 세 가지 단면 · CCP, ICP, 원격 플라즈마의 전력 결합과 웨이퍼 도달 입자</figcaption></figure>
+<h2 id="세-방식-한눈에">세 방식 한눈에</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>항목</th>
+<th>CCP (용량결합)</th>
+<th>ICP (유도결합)</th>
+<th>원격 (다운스트림)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>전력이 전자에 닿는 자리</td>
+<td>전극 앞 시스의 진동</td>
+<td>유전체 창 아래 얇은 층(표피 깊이)</td>
+<td>웨이퍼와 떨어진 상류 방전부</td>
+</tr>
+<tr>
+<td>전형 압력</td>
+<td>수십~수백 mTorr</td>
+<td>수~수십 mTorr</td>
+<td>수백 mTorr~수 Torr</td>
+</tr>
+<tr>
+<td>전형 전자밀도</td>
+<td>10⁹~10¹¹ cm⁻³</td>
+<td>10¹⁰~10¹² cm⁻³</td>
+<td>웨이퍼 위에서는 이온이 거의 없음</td>
+</tr>
+<tr>
+<td>이온 에너지</td>
+<td>수백 V급 시스 전압, 전력과 얽힘</td>
+<td>바이어스로 수십~수백 eV를 따로 설정</td>
+<td>거의 없음(등방 식각)</td>
+</tr>
+<tr>
+<td>강점</td>
+<td>넓은 면적에 고른 플라즈마, 높은 이온 에너지</td>
+<td>고밀도·저압, 플럭스와 에너지의 분리</td>
+<td>이온 손상 없는 고선택 화학</td>
+</tr>
+<tr>
+<td>대표 용도</td>
+<td>산화막·low-k·고종횡비 유전체 식각</td>
+<td>Si·폴리·금속·게이트·핀 식각</td>
+<td>선택 식각, 애싱, 프리클린, 챔버 세정</td>
+</tr>
+</tbody></table></div>
+<p>압력·밀도·에너지 범위는 교재의 방전 방식별 전형 범위이고(<a class="wiki" href="plasma-basics.html">플라즈마 기초</a>의 압력–전자밀도 지도와 같은 대역), 특정 장비의 사양이 아니다. 원격 플라즈마의 압력은 아래 「논문 속 운용 조건」 표의 사례 범위다.</p>
+<h2 id="CCP-한-전극이-밀도와-에너지를-함께-쥔다">CCP — 한 전극이 밀도와 에너지를 함께 쥔다</h2>
+<p>평행 평판의 한쪽에 RF를 걸면 두 전극 앞에 시스가 서고, 시스 경계가 RF 주기마다 앞뒤로 진동하며 전자를 데운다. 전력을 올리면 밀도가 오르지만 같은 전극의 시스 전압도 함께 커지므로, 이온 플럭스와 이온 에너지를 따로 잡을 수 없다. 이것이 CCP의 근본적인 얽힘이다.</p>
+<p><strong>자기 바이어스와 면적 비</strong> — 전극에 직렬 커패시터를 두면 전극에 직류 성분이 생긴다(자기 바이어스). 작은 전극 쪽 시스 전압 V_a와 큰 전극(접지된 벽 포함) 쪽 V_b의 비는, 충돌이 없는 이상화 모델에서 면적 비의 4제곱을 따른다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><msub><mi>V</mi><mi>a</mi></msub><msub><mi>V</mi><mi>b</mi></msub></mfrac><mo>=</mo><msup><mrow><mo fence="true">(</mo><mfrac><msub><mi>A</mi><mi>b</mi></msub><msub><mi>A</mi><mi>a</mi></msub></mfrac><mo fence="true">)</mo></mrow><mi>q</mi></msup><mo separator="true">,</mo><mspace width="2em"/><mi>q</mi><mo>=</mo><mn>4</mn><mtext> </mtext><mo stretchy="false">(</mo><mtext>이상화 모델</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{V_a}{V_b} = \left(\frac{A_b}{A_a}\right)^{q}, \qquad q = 4\ (\text{이상화 모델})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.4543em;vertical-align:-0.95em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.5043em;"><span style="top:-3.9029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">q</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mspace"> </span><span class="mopen">(</span><span class="mord text"><span class="mord hangul_fallback">이상화</span><span class="mord"> </span><span class="mord hangul_fallback">모델</span></span><span class="mclose">)</span></span></span></span></span></div>
+<p>웨이퍼를 작은 전극 쪽에 두는 이유가 이것이다. 면적 비가 2만 되어도 이상화 모델에서는 웨이퍼 쪽 시스 전압이 16배다. 실제 측정에서는 지수 q가 이보다 작아 대략 1~2.5 사이에 놓인다는 것이 교재의 정리이므로, 4제곱은 경향을 읽는 상한으로 쓴다.</p>
+<p><strong>이중 주파수 CCP</strong> — 얽힘을 푸는 방법은 주파수를 둘로 나누는 것이다. 높은 주파수(27·60 MHz급)는 전자를 효율적으로 데워 밀도를 맡고, 낮은 주파수(2 MHz급 이하)는 이온이 따라 움직일 수 있을 만큼 느려 시스 전압, 곧 이온 에너지를 맡는다. 같은 시스 전압에서 흡수 전력과 밀도가 주파수의 제곱에 비례한다는 이상화 스케일링으로 <strong>산술</strong>하면 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>구동 주파수</th>
+<th>13.56 MHz 대비 밀도(이상화)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>13.56 MHz</td>
+<td>1</td>
+</tr>
+<tr>
+<td>27.12 MHz</td>
+<td>약 4배</td>
+</tr>
+<tr>
+<td>60 MHz</td>
+<td>약 20배</td>
+</tr>
+</tbody></table></div>
+<p>이 스케일링은 이상화된 관계이고, 실제로는 주파수를 올릴수록 전극 위에 정상파가 생겨 중심이 강해지는 비균일이 커진다. 300 mm 전극에서 VHF가 균일도 문제와 함께 다뤄지는 이유다. 저주파 바이어스는 이온이 RF 위상을 따라가므로 이온 에너지 분포가 넓은 쌍봉이 된다. 그 모양을 공정에 쓰는 법은 <a class="wiki" href="dry-etch.html">건식 식각</a>의 IED 절에 있다.</p>
+<h2 id="ICP-코일과-바이어스의-분업">ICP — 코일과 바이어스의 분업</h2>
+<p>ICP에서는 유전체 창 밖 코일의 RF 전류가 챔버 안에 원형 유도 전기장을 만들고, 이 전기장이 창 바로 아래의 얇은 층에서 전자를 데운다. 웨이퍼 쪽 정전척에는 별도의 바이어스 RF를 건다. 코일 전력이 밀도(이온 플럭스)를, 바이어스 전력이 시스 전압(이온 에너지)을 맡으니, 두 손잡이가 대체로 독립이다. 저압에서도 고밀도를 낼 수 있어 이온의 충돌이 적고 방향성이 좋다.</p>
+<p><strong>표피 깊이로 보는 전력 흡수 자리</strong> — 유도 전기장은 플라즈마 안으로 들어가며 감쇠하고, 충돌이 적은 조건에서 그 깊이는 전자 플라즈마 주파수 ω_pe로 정해진다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>δ</mi><mo>≈</mo><mfrac><mi>c</mi><msub><mi>ω</mi><mrow><mi>p</mi><mi>e</mi></mrow></msub></mfrac><mo separator="true">,</mo><mspace width="2em"/><msub><mi>ω</mi><mrow><mi>p</mi><mi>e</mi></mrow></msub><mo>≈</mo><mn>5.64</mn><mo>×</mo><msup><mn>10</mn><mn>4</mn></msup><msqrt><mrow><msub><mi>n</mi><mi>e</mi></msub><mtext> </mtext><mo stretchy="false">[</mo><mrow><mi mathvariant="normal">c</mi><msup><mi mathvariant="normal">m</mi><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow><mo stretchy="false">]</mo></mrow></msqrt><mtext> </mtext><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">s</mi></mrow></mrow><annotation encoding="application/x-tex">\delta \approx \frac{c}{\omega_{pe}}, \qquad \omega_{pe} \approx 5.64\times10^{4}\sqrt{n_e\,[\mathrm{cm^{-3}}]}\ \mathrm{rad/s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.0797em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5.64</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.24em;vertical-align:-0.2561em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9839em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathrm">c</span><span class="mord"><span class="mord mathrm">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">3</span></span></span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span><span style="top:-2.9439em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2561em;"><span></span></span></span></span></span><span class="mspace"> </span><span class="mord"><span class="mord mathrm">rad/s</span></span></span></span></span></span></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>전자밀도 nₑ</th>
+<th>ω_pe</th>
+<th>표피 깊이 δ (산술)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10¹⁰ cm⁻³</td>
+<td>약 5.6×10⁹ rad/s</td>
+<td>약 5.3 cm</td>
+</tr>
+<tr>
+<td>10¹¹ cm⁻³</td>
+<td>약 1.8×10¹⁰ rad/s</td>
+<td>약 1.7 cm</td>
+</tr>
+<tr>
+<td>10¹² cm⁻³</td>
+<td>약 5.6×10¹⁰ rad/s</td>
+<td>약 0.5 cm</td>
+</tr>
+</tbody></table></div>
+<p>밀도가 높을수록 전력은 창 아래 1 cm 안팎에서 흡수되고, 웨이퍼까지는 확산으로 퍼진다. 그래서 ICP의 균일도는 코일 모양과 창–웨이퍼 간격, 그리고 확산 길이가 함께 정한다. 중심과 가장자리를 따로 데우는 다중 코일, 간격 조절이 균일도 손잡이가 되는 이유다.</p>
+<p><strong>E 모드와 H 모드</strong> — 코일 전력이 낮을 때 ICP는 코일과 플라즈마 사이의 정전 결합으로 약하게 켜진다(E 모드). 전력을 올리면 어느 순간 유도 결합이 이겨 밀도가 한 자릿수 가까이 뛰어오른다(H 모드). 올릴 때와 내릴 때 전환 전력이 다른 이력이 있어, 펄스 플라즈마나 낮은 전력 레시피에서는 점화가 어느 모드로 되는지가 재현성 문제가 된다.</p>
+<h2 id="원격-플라즈마-이온을-버리고-라디칼만">원격 플라즈마 — 이온을 버리고 라디칼만</h2>
+<p>원격 플라즈마는 웨이퍼와 떨어진 방전부(RPS)에서 기체를 해리하고, 수송관과 분배판을 지나는 동안 이온과 전자가 벽에서 재결합해 사라지게 한다. 웨이퍼에는 F·H·N·O 같은 라디칼과 그 반응 생성물만 도착하므로 이온 충격이 없고, 식각은 등방이며 화학 선택비만으로 결과가 정해진다. <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>처럼 막 사이 선택비가 수백까지 필요한 공정, 손상을 피해야 하는 프리클린, 그리고 챔버 세정에 쓰인다.</p>
+<p><strong>라디칼도 벽에서 잃는다</strong> — 이온만 사라지는 것이 아니다. 라디칼도 벽에 부딪힐 때마다 재결합 확률 γ로 원자 상태를 잃는다. 수송 중 벽 충돌 횟수 N을 <strong>가정값</strong>으로 두고 살아남는 비율 (1−γ)^N을 <strong>산술</strong>한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>벽 재결합 확률 γ</th>
+<th>N = 100</th>
+<th>N = 1,000</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.001</td>
+<td>약 0.90</td>
+<td>약 0.37</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>약 0.37</td>
+<td>약 4×10⁻⁵</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>약 3×10⁻⁵</td>
+<td>사실상 0</td>
+</tr>
+</tbody></table></div>
+<p>γ는 벽 재질과 표면 상태에 따라 자릿수가 달라진다. 수송관을 재결합이 적은 재질로 만들거나 짧게 두는 것, 그리고 벽 상태가 바뀌면 같은 RPS 전력에서도 웨이퍼에 닿는 라디칼 조성이 달라지는 것이 모두 이 표의 결과다.</p>
+<h2 id="논문-속-운용-조건">논문 속 운용 조건</h2>
+<p>연구 축 항목에 나오는 문헌의 소스와 운용 조건을 모았다. 각 행은 그 연구 하나의 조건이며, 화학과 대상 막이 달라 행끼리 수치를 비교하는 표가 아니다. 소스 방식에 따라 압력과 전력이 어느 대역에 놓이는지를 보는 용도다. 원문 수치와 그림 번호는 원문 추출(Joy)을 따른다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>문헌</th>
+<th>소스</th>
+<th>화학</th>
+<th>압력·전력·온도</th>
+<th>결과</th>
+<th>원문 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Possémé 2016</td>
+<td>원격</td>
+<td>H₂ 개질 뒤 NH₃/NF₃ (He 300 sccm)</td>
+<td>2 Torr, 30 W, 35 °C</td>
+<td>개질 SiN/미개질 SiN 선택비 최적 약 6</td>
+<td>Fig. 7·8</td>
+</tr>
+<tr>
+<td>Volynets 2020 I</td>
+<td>원격(RPS)</td>
+<td>NF₃/N₂/O₂/H₂</td>
+<td>챔버 350 mTorr, RPS 1000 W</td>
+<td>Si₃N₄/SiO₂ 선택비 최대 약 380 (H₂ 유량에서 뾰족한 피크)</td>
+<td>Fig. 3</td>
+</tr>
+<tr>
+<td>Goya 2026</td>
+<td>ICP</td>
+<td>NF₃ (H₂ 첨가)</td>
+<td>20 mTorr, 바이어스 100 W, 20 °C</td>
+<td>SiOCN 식각률이 H₂ 유량에서 피크</td>
+<td>Fig. 3·5</td>
+</tr>
+</tbody></table></div>
+<p>원격 두 사례는 수백 mTorr~수 Torr에서 이온 없이 화학 선택비를 얻고, ICP 사례는 수십 mTorr와 바이어스로 이온 도움을 더한다. 같은 「H₂ 유량 피크」라도 원격에서는 라디칼 조성의 문제이고 ICP에서는 이온 충격과 표면 반응의 결합이라, 피크의 원인 해석이 다르다.</p>
+<h2 id="고르는-기준">고르는 기준</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>원하는 것</th>
+<th>먼저 고려할 소스</th>
+<th>이유</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>수직 프로파일 + 높은 이온 에너지</td>
+<td>CCP(이중 주파수)</td>
+<td>저주파 바이어스로 큰 시스 전압</td>
+</tr>
+<tr>
+<td>고밀도 + 이온 에너지 따로 조절</td>
+<td>ICP</td>
+<td>코일·바이어스 분업</td>
+</tr>
+<tr>
+<td>이온 손상 없는 고선택 제거</td>
+<td>원격</td>
+<td>라디칼만 도달</td>
+</tr>
+<tr>
+<td>원자층 단위 제어</td>
+<td>ICP 또는 CCP의 펄스 운전</td>
+<td>개질·제거 단계를 이온 에너지로 나눔(<a class="wiki" href="ale.html">ALE (원자층 식각)</a>)</td>
+</tr>
+</tbody></table></div>
+<h2 id="실패-모드">실패 모드</h2>
+<ul>
+<li><strong>CCP 정상파 비균일</strong> — VHF로 밀도를 올리면 전극 중심이 강해지는 반경 분포가 생긴다. 전극 형상·주파수 선택이 대응책이다.</li>
+<li><strong>ICP 모드 점프</strong> — 낮은 전력이나 펄스 켜짐 순간에 E 모드에 머물면 밀도가 예상보다 크게 낮다. 점화 조건과 매칭 프리셋을 함께 관리한다.</li>
+<li><strong>ICP 창 스퍼터링</strong> — 코일과 플라즈마의 정전 결합이 창을 때려 창 재료가 파티클·오염원이 된다. 정전 차폐(패러데이 실드)와 창 재질이 대응책이다(<a class="wiki" href="plasma-resistant-parts.html">내플라즈마 부품 소재</a>).</li>
+<li><strong>원격 라디칼 손실의 드리프트</strong> — 수송관·분배판 벽 상태가 바뀌면 같은 전력에서도 웨이퍼 도달 라디칼이 줄어 식각률이 미끄러진다.</li>
+<li><strong>원격 NF₃ 미분해</strong> — 점화가 불안정한 채로 NF₃를 흘리면 GWP가 큰 가스가 그대로 배기된다(<a class="wiki" href="exhaust-abatement.html">배기·저감</a>).</li>
+</ul>
+<h2 id="한계">한계</h2>
+<p>세 방식의 전형 범위는 교재의 대역이며, 실제 장비는 주파수·코일·전극 구성의 변형이 많아 경계가 겹친다(ICP에 CCP 성분이 섞이고, CCP에 자기장을 더하기도 한다). 면적 비 4제곱, 밀도의 주파수 제곱 비례, 표피 깊이는 모두 이상화된 관계이므로 경향을 읽는 데 쓰고, 정량은 측정(<a class="wiki" href="langmuir.html">랭뮤어 프로브</a>·<a class="wiki" href="oes.html">OES</a>)으로 확인한다. 이 항목의 산술 표는 그 경향을 숫자로 보이기 위한 것이다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="etch-equipment.html">식각 장비</a> — 소스를 포함한 장비 전체 구성</li>
+<li><a class="wiki" href="plasma-basics.html">플라즈마 기초</a> — 시스·이온 가속·밀도 대역</li>
+<li><a class="wiki" href="dry-etch.html">건식 식각</a> — 이온 에너지 분포를 공정에 쓰는 법</li>
+<li><a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a> — 원격 플라즈마의 대표 응용</li>
+<li><a class="wiki" href="ale.html">ALE (원자층 식각)</a> — 펄스·단계 운전을 극단으로 쓰는 공정</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>방식별 전형 압력·전자밀도·이온 에너지, 자기 바이어스의 면적 비 관계와 실측 지수, 이중 주파수 CCP의 밀도–주파수 스케일링, ICP 표피 깊이와 E–H 모드 전환은 플라즈마 방전 교재의 표준 서술에 근거한다: Lieberman &amp; Lichtenberg, <em>Principles of Plasma Discharges and Materials Processing</em> (Wiley, 2nd ed., 2005). <a class="wiki" href="etch-equipment.html">식각 장비</a>에서 같은 교재를 근거로 쓴다.</li>
+<li>반응기 방식(CCP·ICP 등)이 식각에 자리 잡은 흐름: Donnelly &amp; Kornblit, &quot;Plasma etching: Yesterday, today, and tomorrow&quot;, J. Vac. Sci. Technol. A (2013), <a href="https://doi.org/10.1116/1.4819316" target="_blank" rel="noopener">doi:10.1116/1.4819316</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>RF 방전의 전자 에너지 분포 측정: Godyak, Piejak &amp; Alexandrovich, Plasma Sources Sci. Technol. 1, 36 (1992), <a href="https://doi.org/10.1088/0963-0252/1/1/006" target="_blank" rel="noopener">doi:10.1088/0963-0252/1/1/006</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>바이어스 파형과 이온 에너지 분포: Economou, &quot;Tailored ion energy distributions on plasma electrodes&quot;, J. Vac. Sci. Technol. A 31 (2013), <a href="https://doi.org/10.1116/1.4819315" target="_blank" rel="noopener">doi:10.1116/1.4819315</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>논문 속 운용 조건 표: Possémé et al., J. Vac. Sci. Technol. A 34, 061301 (2016), <a href="https://doi.org/10.1116/1.4963072" target="_blank" rel="noopener">doi:10.1116/1.4963072</a>; Volynets et al., J. Vac. Sci. Technol. A 38, 023007 (2020), <a href="https://doi.org/10.1116/1.5125568" target="_blank" rel="noopener">doi:10.1116/1.5125568</a>; Goya et al., J. Vac. Sci. Technol. A 44, 053213 (2026), <a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">doi:10.1116/6.0005595</a>. 모두 <a class="wiki" href="afs-selective-etch.html">AFS 선택 식각</a>에서 이미 대조된 인용이며, 조건·수치·그림 번호는 Joy의 원문 추출(11/01)을 따른다.</li>
+<li>원격 NF₃ 플라즈마의 챔버 세정 적용: Reichardt et al., Microelectron. Eng. (2001), <a href="https://doi.org/10.1016/S0167-9317(00)00505-0" target="_blank" rel="noopener">doi:10.1016/S0167-9317(00)00505-0</a>. 저장소에서 이미 대조된 인용이다.</li>
+<li>표면 재질별 원자 재결합 계수: Nordine &amp; LeGrange, AIAA J. (1976), <a href="https://doi.org/10.2514/3.7132" target="_blank" rel="noopener">doi:10.2514/3.7132</a>. 저장소에서 이미 대조된 인용이다. 라디칼 생존 표의 γ·N은 설명용 가정값이고, 밀도 스케일링·표피 깊이 표는 위 관계식의 산술이다.</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="plasma-resistant-parts.html">← 이전 · 내플라즈마 부품 소재</a><span></span></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="exhaust-abatement.html">배기·저감</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="langmuir.html">랭뮤어 프로브</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li><li><a href="oes.html">OES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 플라즈마 진단</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="plasma-basics.html">플라즈마 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="har-etch.html">고종횡비 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-selective-etch.html">AFS 선택 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="etch-equipment.html">식각 장비</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 11월 1일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "plasma-sources", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","plasma-sources":"플라즈마 소스 (CCP·ICP·원격)","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>
