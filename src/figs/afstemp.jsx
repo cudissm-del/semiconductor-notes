@@ -10,7 +10,7 @@ const MARKS = [
 
 function AfsTemp() {
   return (
-    <svg viewBox="0 0 800 348" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AFS 온도 지도">
+    <svg viewBox="0 0 800 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AFS 온도 지도">
       <text x="400" y="34" textAnchor="middle" fontSize="16.5" fontWeight="700" fill={ink}>AFS는 차가울 때 생기고, 뜨거울 때 사라진다</text>
 
       {/* 형성 구간 */}
@@ -42,7 +42,7 @@ function AfsTemp() {
         </g>
       ))}
 
-      <text x="400" y="330" textAnchor="middle" fontSize="12" fill={quiet}>구간과 값은 각 논문의 보고 조건을 모은 개념 정리 — 공정마다 달라질 수 있다</text>
+      <text x="400" y="330" textAnchor="middle" fontSize="12" fill={quiet}>구간과 값은 각 논문의 보고 조건을 모은 개념 정리 — 공정마다 달라질 수 있다</text><text x="400" y="352" textAnchor="middle" fontSize="11" fill={quiet}>재구성: Miyoshi, Jpn. J. Appl. Phys. 56, 06HB01 (2017), doi:10.7567/JJAP.56.06HB01 (TDS Fig. 7); Shinoda et al., Appl. Phys. Express 9, 106201 (2016)</text>
     </svg>
   );
 }
