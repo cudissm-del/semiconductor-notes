@@ -38,5 +38,5 @@ export default () => <svg viewBox='0 0 760 416' role='img' aria-label='보고된
     {Mark(r, r.a, c1, r.la, i, r.gt, r.below, r.end)}
     {r.b ? Mark(r, r.b, c3, r.lb, i, false, false, r.endb) : null}
   </g>)}
-  <text x='24' y='388' fontSize='11' fill={quiet}>재구성: 각 논문의 보고값 — Kim et al. (2020) Fig. 3; Junige &amp; George (2024) Fig. 8·11·12; Hsiao et al. (2026) Fig. 7(b);</text><text x='24' y='404' fontSize='11' fill={quiet}>Raballand et al. (2007) Fig. 5·6; Volynets et al. (2020) I편 Fig. 3; Shinoda et al. (2016) Fig. 5. 통합 표와 같은 값이다.</text>
+  <text x='24' y='388' fontSize='11' fill={quiet}>재구성: 각 논문의 보고값 — Kim et al. (2020) 본문; Junige &amp; George (2024) Fig. 8·11·12; Hsiao et al. (2026) Fig. 7(b);</text><text x='24' y='404' fontSize='11' fill={quiet}>Raballand et al. (2007) Fig. 5·6; Volynets et al. (2020) I편 Fig. 3; Shinoda et al. (2016) Fig. 5. 통합 표와 같은 값이다.</text>
 </svg>;
