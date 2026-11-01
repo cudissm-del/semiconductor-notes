@@ -77,13 +77,13 @@ ER은 식각률, A는 깎을 막, B는 남길 막이다. S = 10이면 A가 10 nm
 
 | 논문 | 깎을 막 : 남길 막 | 방법·조건 | 보고 값 | 주된 기원 축 | 원문 위치 |
 | --- | --- | --- | --- | --- | --- |
-| Shinoda 2016 | Si₃N₄ : SiO₂ | HFC 라디칼 노출 + 100~120 °C 어닐 사이클 | Si₃N₄ 2.6 nm/cycle, SiO₂는 검출한계 아래 (무한, 하한값) | 화학 — 남길 막에서 경로 부재 | 본문 · Fig. 3 |
-| Volynets 2020 | Si₃N₄ : SiO₂ | NF₃/N₂/O₂/H₂ 리모트 플라즈마 | 약 380, H₂ 21 sccm에서 뾰족한 최대 | 화학 — H₂가 자유 F를 묶음 | Fig. 3 |
-| Junige 2024 | SiNₓ : SiO₂ → SiO₂ : SiNₓ | TMA/HF 열 ALE 275 °C, 이어서 HF + NH₃ 공동 주입 | 무첨가 SiNₓ 1.06 · SiO₂ 0.20 Å/cycle (약 5 : 1) → 공동 주입 SiO₂ 8.83 Å/cycle · SiNₓ 약 0 (1000 : 1 초과, 방향 역전) | 활성종 교체 (F⁻ → HF₂⁻) | Fig. 8 · Fig. 12 |
-| Hsiao 2026 | SiO₂ : SiN | HF + 에탄올 5 % 극저온 ALE, 20 → −60 °C | 선택비 0.87 (20 °C) → 무한 (−40 °C 이하) | 온도 — 응축·흡착 평형 | Table 1 |
+| Shinoda 2016 | Si₃N₄ : SiO₂ | HFC 라디칼 노출 + 100~120 °C 어닐 사이클 | Si₃N₄ 2.6 nm/cycle, SiO₂는 검출한계 아래 (무한, 하한값) | 화학 — 남길 막에서 경로 부재 | 본문 · Fig. 5 |
+| Volynets 2020 | Si₃N₄ : SiO₂ | NF₃/N₂/O₂/H₂ 리모트 플라즈마 | 약 380, H₂ 21 sccm에서 뾰족한 최대 | 화학 — H₂가 자유 F를 묶음 | I편 Fig. 3 (실험) · II편 Fig. 3 (모델) |
+| Junige 2024 | SiNₓ : SiO₂ → SiO₂ : SiNₓ | TMA/HF 열 ALE 275 °C, 이어서 HF + NH₃ 공동 주입 | 무첨가 SiNₓ 1.06 · SiO₂ 0.20 Å/cycle (약 5 : 1) → 공동 주입 SiO₂ 8.83 Å/cycle · SiNₓ 약 0 (1000 : 1 초과, 방향 역전) | 활성종 교체 (F⁻ → HF₂⁻) | Fig. 8 · Fig. 11 · Fig. 12 |
+| Hsiao 2026 | SiO₂ : SiN | HF + 에탄올 5 % 극저온 ALE, 20 → −60 °C | 선택비 0.87 (20 °C) → 무한 (−40 °C 이하) | 온도 — 응축·흡착 평형 | 본문 · Fig. 7(b) |
 | Schaepkens 1999 | SiO₂ : Si₃N₄ · Si | ICP FC 플라즈마 1400 W, 6·20 mTorr | 정상상태 FC 막 SiO₂ 약 1.5 nm 이하 · Si₃N₄ 1~4 nm · Si 2~7 nm, 막 두께와 식각률이 반비례 | 물리 — 패시베이션 두께 차이 | 초록 · Fig. 6 |
 | Li 2016 | SiO₂ : Si₃N₄ | FC 기반 ALE (FC 증착 + Ar⁺ 제거 사이클) | 선택비가 사이클마다 쌓이는 FC 막 두께의 함수 (절대값은 그림에만 있어 여기서 단정하지 않음) | 물리 — FC 두께 | Fig. 4(b) · Fig. 7 · Fig. 10 |
-| Raballand 2007 | 대상 쌍: 원문 Table 1 (확인 대기) | 연속 방전 vs 펄스 방전 (듀티 0.25) | 연속 6 및 2~3 → 펄스에서 두 막의 식각 임계가 갈라져 무한 창, S = 23 | 이온 에너지 — 임계 분리 | Fig. 5 · Fig. 6 · Table 1 |
+| Raballand 2007 | 다공성 SiOCH : SiCH · SiO₂ | FC 플라즈마, 연속 바이어스 vs 펄스 바이어스 (듀티 0.25) | 연속: 식각 임계 −45 V 공통, SiOCH/SiCH 6 · SiOCH/SiO₂ 약 2~3 → 펄스: 임계가 물질별로 갈라져(−45 → −125 V) 무한 선택비 창, S = 23 (vs SiCH) · 20 (vs SiO₂), CHF₃/Ar에서 30 초과 | 이온 에너지 — 임계 분리 | Fig. 5 · Fig. 6 · Table 1 |
 | Kim 2020 | Si : 마스크 | 펄스 바이어스 ICP 1 kHz · 50 % vs CW | 선택비는 펄스로 대체로 개선되지 않음 — 전자빔 레지스트 마스크 쌍만 1.1~1.3 → 1.8~1.9 | 이온 에너지 — 평균 에너지만 바뀜 | Fig. 3 |
 | Pranda 2023 | SiCN · SiOCN · SiBCN : 기준 막 | NF₃ 계열 플라즈마 | 식각량이 막의 N 함량에 비례 | 화학 — 조성 | Fig. 1 · Fig. 7 |
 
@@ -91,7 +91,7 @@ ER은 식각률, A는 깎을 막, B는 남길 막이다. S = 10이면 A가 10 nm
 
 ### 논문 사이의 긴장
 
-- **펄스는 선택비를 바꾸는가.** Raballand(2007)는 펄스 방전에서 선택비를 무한 창까지 열었고, Kim(2020)은 펄스 바이어스로 ARDE는 줄였지만 선택비는 거의 그대로였다. 갈림의 조건은 이온 에너지가 두 막의 식각 임계 사이로 들어갔는가다. 펄스가 평균 에너지만 낮추면 두 막이 함께 느려지고, 에너지 분포를 두 임계 사이로 옮기면 한쪽만 멈춘다. 펄스라는 수단보다 임계 분리라는 결과가 선택비를 정한다.
+- **펄스는 선택비를 바꾸는가.** Raballand(2007)는 다공성 SiOCH의 펄스 바이어스 식각에서 연속 조건의 선택비 6(vs SiCH)을 23으로 올리고 두 막의 식각 임계를 −45 V에서 갈라 무한 선택비 창을 열었고, Kim(2020)은 펄스 바이어스로 ARDE는 줄였지만 선택비는 거의 그대로였다. 갈림의 조건은 이온 에너지가 두 막의 식각 임계 사이로 들어갔는가다. 펄스가 평균 에너지만 낮추면 두 막이 함께 느려지고, 에너지 분포를 두 임계 사이로 옮기면 한쪽만 멈춘다. 펄스라는 수단보다 임계 분리라는 결과가 선택비를 정한다.
 - **같은 쌍, 정반대 방향.** Shinoda(2016)와 Volynets(2020)는 Si₃N₄를 SiO₂보다 빨리 깎았고, Junige(2024)는 같은 열 ALE 장비에서 NH₃ 하나를 더해 SiO₂를 SiNₓ보다 1000배 넘게 빨리 깎았다. 선택의 방향은 물질 쌍이 정하지 않고, 표면에서 일하는 종이 정한다.
 - **화학적 선택비는 크고 좁다.** 화학적 기원(Volynets 약 380, Shinoda 무한)은 물리적 기원(Schaepkens의 막 두께 차이, Kim의 1~2 수준)보다 큰 숫자를 내지만, Volynets의 H₂ 최대처럼 조건 창이 뾰족하다. 큰 선택비와 넓은 공정 창은 따로 확인해야 한다.
 
@@ -126,7 +126,7 @@ ER은 식각률, A는 깎을 막, B는 남길 막이다. S = 10이면 A가 10 nm
 - 활성종 교체에 의한 선택 역전 — Junige & George (2024), 극저온 선택 역전 — Hsiao et al. (2026), 둘 다 [[ALE (원자층 식각)]]의 참고 논문과 동일 출처.
 - Si₃N₄ 2.6 nm/cycle 대 SiO₂ 검출한계 아래 — 보유 논문 실측: Shinoda et al. (2016).
 - FC 막 두께와 선택비의 관계 — Schaepkens et al. (1999), [[식각 비이상 현상]]의 참고 논문과 동일 출처.
-- 통합 표 추가 문헌: Volynets et al., J. Vac. Sci. Technol. A 38, 023007 (2020) (I편), [doi:10.1116/1.5125568](https://doi.org/10.1116/1.5125568), 023008 (II편), [doi:10.1116/1.5125569](https://doi.org/10.1116/1.5125569); Li et al., J. Vac. Sci. Technol. A (2016), [doi:10.1116/1.4954961](https://doi.org/10.1116/1.4954961); Kim et al., Nanotechnology 31, 265302 (2020), [doi:10.1088/1361-6528/ab7c75](https://doi.org/10.1088/1361-6528/ab7c75); Pranda et al. (2023), [doi:10.1116/6.0003014](https://doi.org/10.1116/6.0003014). 모두 저장소 다른 항목에서 이미 대조된 인용이다. Raballand et al. (2007)은 DOI 대조 대기(Joy). 조건·수치·그림 번호는 Joy의 원문 대조(자료 패키지 2차-2, 2026-11-01).
+- 통합 표 추가 문헌: Volynets et al., J. Vac. Sci. Technol. A 38, 023007 (2020) (I편), [doi:10.1116/1.5125568](https://doi.org/10.1116/1.5125568), 023008 (II편), [doi:10.1116/1.5125569](https://doi.org/10.1116/1.5125569); Li et al., J. Vac. Sci. Technol. A (2016), [doi:10.1116/1.4954961](https://doi.org/10.1116/1.4954961); Kim et al., Nanotechnology 31, 265302 (2020), [doi:10.1088/1361-6528/ab7c75](https://doi.org/10.1088/1361-6528/ab7c75); Pranda et al. (2023), [doi:10.1116/6.0003014](https://doi.org/10.1116/6.0003014). 모두 저장소 다른 항목에서 이미 대조된 인용이다. Raballand et al., "Pulsed bias plasma etching of porous SiOCH", Plasma Process. Polym. 4, 563–573 (2007), [doi:10.1002/ppap.200600218](https://doi.org/10.1002/ppap.200600218) (선정·대조: Joy). Volynets I편은 실험 원본(Fig. 3), II편은 메커니즘·모델(Fig. 3 · Table I · Fig. 4)이다. 조건·수치·그림 번호는 Joy의 원문 대조(자료 패키지 2차-2, 2026-11-01).
 - 위 문헌들의 DOI: Junige & George, Chem. Mater. 36 (2024), [doi:10.1021/acs.chemmater.4c01040](https://doi.org/10.1021/acs.chemmater.4c01040); Hsiao et al., Small Methods (2026), [doi:10.1002/smtd.202501744](https://doi.org/10.1002/smtd.202501744); Shinoda et al., Appl. Phys. Express 9, 106201 (2016), [doi:10.7567/APEX.9.106201](https://doi.org/10.7567/APEX.9.106201); Schaepkens et al., J. Vac. Sci. Technol. A 17, 26 (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108). 모두 저장소에서 이미 대조된 인용이다.
 
 ## 관련 항목

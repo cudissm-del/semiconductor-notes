@@ -81,14 +81,14 @@ k_{eff} = \frac{L}{\dfrac{2d}{k_d} + \dfrac{L-2d}{k_b}}
 
 ### 논문을 한 표에 모으면
 
-손상을 손상원·층 구조·두께로 정량한 문헌을 모았다. 재료(SiOC·SiCO·다공성 SiOCH·SiCN 계열)와 플라즈마가 행마다 달라 행끼리 수치를 비교하는 표가 아니다. 조건·수치·그림 번호는 Joy의 원문 대조(자료 패키지 2차-3, 2026-11-01)를 따른다.
+손상을 손상원·층 구조·두께로 정량한 문헌을 모았다. 재료(SiOC·SiCO·메틸실세스퀴옥산 SiOC(H)·다공성 SiOCH·SiCN 계열)와 플라즈마가 행마다 달라 행끼리 수치를 비교하는 표가 아니다. 조건·수치·그림 번호는 Joy의 원문 대조(자료 패키지 2차-3, 2026-11-01)를 따른다.
 
 | 논문 | 대상 막 | 플라즈마·조건 | 무엇을 분리·측정했나 | 정량 | 원문 위치 |
 | --- | --- | --- | --- | --- | --- |
 | Oh 2022 | SiOC | Ar · CF₄ 플라즈마, MgF₂ 창 마스크로 이온·UV·라디칼 분리 | 손상원별 식각률과 Δk 기여 | 식각률 Ar 28.4 vs CF₄ 48.0~144.2 nm/min, 라디칼 기여 10 % 이하 | Fig. 4 · Fig. 6 |
 | Possémé 2018 | SiCO | H₂ 플라즈마 개질 + HF 제거 (바이어스 250 · 400 V) | 손상(개질)층 두께와 HF 소모량, 조성 전환 | 손상층 약 6 nm, HF 소모 10 nm (250 V) · 16 nm (400 V), SiOₓHᵧ로 전환 | Fig. 4 · Fig. 5 · Fig. 7 |
-| Eon 2007 | low-k (막 종류 원문 확인 대기) | FC 플라즈마 식각 | 표면 FC층과 그 아래 개질층의 XPS 정량, 층 모델 | 개질층과 FC층을 나눠 정량 (손상층과 같은 개념이 아님) | Fig. 5 (층 모델) · Fig. 6 · Fig. 7 |
-| Raballand 2007 | 원문 Table 1 (확인 대기) | FC 플라즈마, 연속·펄스 | 표면 FC층 두께 | FC층 약 1 nm로 조건에 걸쳐 거의 일정 | 원문 대조 대기 |
+| Eon 2007 | 메틸실세스퀴옥산 SiOC(H) low-k와 SiC(H) 식각 정지층 | 고밀도 FC 플라즈마 식각 | 표면 FC층과 그 아래 개질층의 XPS 정량, 층 모델 | 개질층과 FC층을 나눠 정량 (손상층과 같은 개념이 아님) | Fig. 5 (층 모델) · Fig. 6 · Fig. 7 |
+| Raballand 2007 | 다공성 SiOCH | FC 플라즈마, 연속·펄스 바이어스 | 표면 FC층 두께 | FC층 약 1 nm로 조건에 걸쳐 거의 일정 | — |
 | Pranda 2023 | SiCN · SiOCN · SiBCN | NF₃ 계열 플라즈마 | 식각 뒤 표면 조성 변화와 N 함량 의존 | 식각량 ∝ 막의 N 함량, 조성 변화 | Fig. 3 · Fig. 6 |
 
 ### 메커니즘 — 손상층은 세 겹으로 읽는다
@@ -120,8 +120,8 @@ k 산술에서 쓰는 d는 3번 층의 두께다. 1·2번을 합쳐 「손상층
 - 측벽 손상층 산술은 직렬 커패시터 근사이며, 배선 간격·k_b·k_d는 설명용 가정값이다. 6 nm 대입 산술과 그림의 띠만 아래 Possémé (2018)의 보고값이다.
 - 손상원 분리: Oh et al., Thin Solid Films 749, 139185 (2022), [doi:10.1016/j.tsf.2022.139185](https://doi.org/10.1016/j.tsf.2022.139185). [[SiOC]]에서 이미 대조된 인용이다.
 - H₂ 플라즈마 개질층과 HF 소모: Possémé et al., J. Vac. Sci. Technol. B 36, 052201 (2018), [doi:10.1116/1.5038617](https://doi.org/10.1116/1.5038617). [[SiOC]]·외부 스페이서 항목에서 이미 대조된 인용이다.
-- 개질층·FC층 XPS 정량: Eon et al., J. Phys. D: Appl. Phys. 40 (2007), [doi:10.1088/0022-3727/40/13/007](https://doi.org/10.1088/0022-3727/40/13/007) (Crossref 대조: Joy).
-- FC층 두께: Raballand et al. (2007) — DOI 대조 대기(Joy).
+- 개질층·FC층 XPS 정량: Eon et al., "High density fluorocarbon plasma etching of methylsilsesquioxane SiOC(H) low-k material and SiC(H) etch stop layer: surface analyses and investigation of etch mechanisms", J. Phys. D: Appl. Phys. 40, 3951–3959 (2007), [doi:10.1088/0022-3727/40/13/007](https://doi.org/10.1088/0022-3727/40/13/007) (Crossref 대조: Joy). 대상은 다공성이 아닌 메틸실세스퀴옥산 SiOC(H)다.
+- FC층 두께: Raballand et al., "Pulsed bias plasma etching of porous SiOCH", Plasma Process. Polym. 4, 563–573 (2007), [doi:10.1002/ppap.200600218](https://doi.org/10.1002/ppap.200600218) (선정·대조: Joy).
 - 통합 표의 조건·수치·그림 번호는 Joy의 원문 대조(자료 패키지 2차-3, 2026-11-01)를 따른다.
 
 ## 관련 항목
