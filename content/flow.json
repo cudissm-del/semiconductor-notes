@@ -4,7 +4,7 @@
   "max_per_entry": 2,
   "exceptions": {},
   "chapters": {
-    "ch-1": { "entries": ["process-flow", "packaging"], "note": "입구: 전공정·후공정 두 축" },
+    "ch-1": { "entries": ["process-flow", "packaging", "chemeng-basics"], "note": "입구: 전공정·후공정 두 축 + 기초 원리(화학공학) 입구" },
     "ch-2": { "entries": ["process-flow", "feol", "mol", "beol"], "note": "입구: 전체 흐름과 칩 단면" },
     "ch-3": { "entries": ["lithography", "multipatterning", "euv", "high-na-euv"] },
     "ch-4": { "entries": ["dry-etch", "plasma-basics", "etch-gas-chemistry", "thermo-volatility", "plasma-sources", "etch-equipment", "etch-nonidealities", "etch-troubleshooting", "har-etch"] },
