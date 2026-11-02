@@ -31,8 +31,8 @@
       "items": [
         {
           "name": "GAA 나노시트 공정 조사",
-          "url": "",
-          "desc": "Claude·Joy 조사 통합본 (AG-21)"
+          "url": "../gaa/",
+          "desc": "문헌 지도 — 모듈별 59건, 원문·DOI·백과 반영 표시"
         },
         {
           "name": "논문 DB",
