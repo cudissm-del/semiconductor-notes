@@ -4,15 +4,25 @@
 
 **사이트:** https://cudissm-del.github.io/semiconductor-notes/
 
+## 홈 대시보드
+
+작업실 현황과 주요 링크를 모은 허브 페이지입니다.
+
+**대시보드 주소:** https://cudissm-del.github.io/semiconductor-notes/home/
+
+- 현황 자동 표시 — 항목 수, 기본형·심화형 수, 영역별 분포, 최근 갱신 항목, 빌드 기준 커밋 (`tools/build_home.mjs`가 빌드 때마다 `tools/audit.py`와 git log로 다시 셉니다)
+- 링크 타일 — 백과, 강의노트, 논문 DB, 안건 보드 등 (`home/links.json`에서 관리)
+
 ## 반도체 백과 (v2)
 
 위 강의노트를 항목 단위 위키로 재편한 지식창고입니다.
 
 **백과 주소:** https://cudissm-del.github.io/semiconductor-notes/v2/
 
-- 영역 4개(공정 · 구조·재료 · 계측·분석 · 원리·운영) > 주제 20개 > 항목 95개, 3단 구조
-- 항목 사이 위키 링크 544개, 역링크와 이전/다음 항목 이동
-- 영역·주제를 가로지르는 태그 묶음, 항목 검색, 즐겨찾기(브라우저에 저장)
+- 영역 4개(공정 · 구조·재료 · 계측·분석 · 원리·운영) > 주제 21개 > 항목 112개, 3단 구조 (2026-11-02 기준)
+- 등급 2단 — 기본형 112/112 · 심화형 16/112. 심화형은 통합 표, 재구성 그림, 원문 수치 위치를 갖춘 항목입니다
+- 항목 사이 위키 링크 1,368개, 역링크와 이전/다음 항목 이동
+- 영역·주제를 가로지르는 태그 59개, 항목 검색, 즐겨찾기(브라우저에 저장)
 - 빌드: `content/entries/`의 항목 마크다운을 `build2.mjs`가 `v2/`로 변환 (`node build2.mjs`), 설계 문서는 `DESIGN.md`
 
 ## 기능
@@ -32,12 +42,14 @@
 | `src/diagrams.jsx`, `src/figs/` | 그림 25개 (빌드 시 정적 SVG로 변환). 이 밖에 Wikimedia Commons 자유 라이선스 이미지 16개를 본문에서 불러옴 |
 | `src/glossary.js` | 용어 사전 |
 | `src/template.html`, `src/site.css`, `src/site.js` | 페이지 틀, 스타일, 동작 |
-| `build.mjs` | 빌드 스크립트 → `index.html` |
+| `build.mjs` | 강의노트 빌드 스크립트 → `index.html` |
 | `index.html`, `search-index.json`, `assets/` | GitHub Pages가 그대로 서비스하는 결과물 |
 | `content/entries/` | 백과 항목 원본 (영역/주제/항목 마크다운) |
 | `DESIGN.md` | 백과 설계 (분류 체계·등급·빌드 규칙) |
 | `build2.mjs`, `src/wiki.css` | 백과 빌드 스크립트와 스타일 → `v2/` |
 | `v2/` | 백과 결과물 (GitHub Pages가 `/v2/`로 서비스) |
+| `home/links.json`, `tools/build_home.mjs` | 홈 대시보드 링크 목록과 빌더 → `home/index.html` |
+| `tools/audit.py` | 항목 등급 감사 (기본형·심화형 형식 요건 점검) |
 
 ## 업데이트 방법
 
@@ -48,7 +60,8 @@
 ```bash
 # content/notes.md 를 새로 내보낸 마크다운으로 교체한 뒤
 npm install
-npm run build
+npm run build        # 강의노트 + 홈 대시보드
+node build2.mjs      # 백과 (v2)
 git add -A && git commit -m "노트 업데이트" && git push
 ```
 
