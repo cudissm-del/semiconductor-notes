@@ -48,6 +48,8 @@ const [hash, when, subj] = sh('git log -1 --format=%h%x09%cI%x09%s').trim().spli
 
 // 5) 링크
 const links = JSON.parse(fs.readFileSync(r('home/links.json'), 'utf8'));
+// 최근 확보 논문 — home/recent-papers.json (수동). 없으면 절을 생략한다
+const papers = fs.existsSync(r('home/recent-papers.json')) ? JSON.parse(fs.readFileSync(r('home/recent-papers.json'), 'utf8')).papers || [] : [];
 const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
 const built = (() => { const k = new Date(Date.now() + 9 * 3600e3).toISOString(); return `${k.slice(0, 10)} ${k.slice(11, 16)} KST`; })();
 
@@ -103,6 +105,10 @@ a.tile:hover { border-color: var(--accent); text-decoration: none; }
   <div class="stat"><div class="k">빌드 기준 커밋</div><div class="v" style="font-size:20px"><a href="https://github.com/cudissm-del/semiconductor-notes/commit/${esc(hash)}" target="_blank" rel="noopener">${esc(hash || '—')}</a></div><div class="s" title="${esc(subj)}">${esc((when || '').slice(0, 10))} · ${esc(subj)}</div></div>
 </div>
 ${links.groups.map(g => `<h2 class="sec">${esc(g.name)}</h2>\n<div class="grid">${g.items.map(tile).join('')}</div>`).join('\n')}
+${papers.length ? `<h2 class="sec">최근 확보 논문</h2>
+<div class="panel"><ul class="recent">
+  ${papers.slice(0, 12).map(p => `<li><span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.cite)}</a>` : esc(p.cite)}<span class="dm">${esc(p.note)}</span></span><span class="d">${esc(p.date)}</span></li>`).join('\n  ')}
+  </ul><div class="note">Zotero 등록 때 home/recent-papers.json에 한 줄씩 보탠다. 링크는 대조된 DOI·arXiv만 단다.</div></div>` : ''}
 <div class="two" style="margin-top:26px">
   <section><h2 class="sec" style="margin-top:0">영역별 심화 진행</h2><div class="panel">
   ${byDomain.map(d => `<div class="dom"><span>${esc(d.name)}</span><div class="bar" title="심화형 ${d.deep}/${d.n}"><i style="width:${pct(d.deep, d.n)}%"></i></div><span class="num">${d.deep} / ${d.n}</span></div>`).join('\n  ')}
@@ -114,4 +120,4 @@ ${links.groups.map(g => `<h2 class="sec">${esc(g.name)}</h2>\n<div class="grid">
 </main></body></html>
 `;
 fs.writeFileSync(r('home/index.html'), html);
-console.log(`✓ home — 항목 ${total}, 기본형 ${nBasic}, 심화형 형식 ${nDeep}, 최근 ${recent.length}, 링크 ${links.groups.reduce((a, g) => a + g.items.length, 0)}개 (대기 ${links.groups.reduce((a, g) => a + g.items.filter(i => !i.url).length, 0)})`);
+console.log(`✓ home — 항목 ${total}, 기본형 ${nBasic}, 심화형 형식 ${nDeep}, 최근 ${recent.length}, 논문 ${papers.length}, 링크 ${links.groups.reduce((a, g) => a + g.items.length, 0)}개 (대기 ${links.groups.reduce((a, g) => a + g.items.filter(i => !i.url).length, 0)})`);
