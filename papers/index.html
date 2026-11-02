@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8">
+<html lang="ko">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>원문 보유 목록 — 2026-11-02</title>
+<meta name="robots" content="noindex">
+<title>논문 보유 목록 — 반도체 노트</title>
 <style>
 :root{--bg:#f7f7f5;--card:#fff;--ink:#1c1e21;--sub:#6b7078;--line:#e3e4e1;--acc:#0b6bcb}
 @media (prefers-color-scheme: dark){:root{--bg:#16181d;--card:#1f2229;--ink:#eceef1;--sub:#9aa0aa;--line:#33373f;--acc:#5ea9ef}}
@@ -31,22 +34,23 @@ td.file{min-width:170px;max-width:240px} .fname{font-family:ui-monospace,monospa
 tr.stub{background:rgba(192,57,43,.07)}
 .note{font-size:12.5px;color:var(--sub);margin-top:6px}
 @media (max-width:760px){ td.auth,td.venue{display:none} th:nth-child(3),th:nth-child(5){display:none} td.title{min-width:0} td.file{min-width:120px} }
-</style></head><body><div class="wrap">
-<p style="margin:0 0 6px"><a href="../home/" style="color:var(--acc);text-decoration:none;font-size:13.5px">← 대시보드로</a></p>
+</style>
+</head>
+<body><div class="wrap">
 <h1>원문(PDF 전문) 보유 목록</h1>
-<div class="lead">2026-11-02 기준 · <code>로컬 보관본 전수 탐색 · 제목/DOI는 PDF 본문에서 추출해 파일명과 대조</div>
+<div class="lead">2026-11-02 기준 · <code>~/workspace/papers/</code> 전수 탐색 · 제목/DOI는 PDF 본문에서 추출해 파일명과 대조</div>
 <div class="stats">
-<div class="stat"><b>134편</b>파일 총계</div>
-<div class="stat"><b>132편</b>실제 전문</div>
+<div class="stat"><b>135편</b>파일 총계</div>
+<div class="stat"><b>133편</b>실제 전문</div>
 <div class="stat"><b>2편</b>HTML 스텁 (전문 아님)</div>
-<div class="stat"><b>126건</b>DOI 확인</div>
-<div class="stat"><b>114건</b>Zotero 등록 대조</div>
+<div class="stat"><b>127건</b>DOI 확인</div>
+<div class="stat"><b>115건</b>Zotero 등록 대조</div>
 <div class="stat"><b>9종</b>중복 보유 (2부씩)</div>
 </div>
-<div class="chips"><a class="chip" href="#gaa-nanosheet">gaa-nanosheet · 25</a><a class="chip" href="#library">library · 80</a><a class="chip" href="#oa">oa · 7</a><a class="chip" href="#sioc-ale">sioc-ale · 5</a><a class="chip" href="#sioc-spacer">sioc-spacer · 10</a><a class="chip" href="#siocn-deposition">siocn-deposition · 1</a><a class="chip" href="#staging/batch21">staging/batch21 · 4</a><a class="chip" href="#staging">staging · 2</a></div>
+<div class="chips"><a class="chip" href="#gaa-nanosheet">gaa-nanosheet · 26</a><a class="chip" href="#library">library · 80</a><a class="chip" href="#oa">oa · 7</a><a class="chip" href="#sioc-ale">sioc-ale · 5</a><a class="chip" href="#sioc-spacer">sioc-spacer · 10</a><a class="chip" href="#siocn-deposition">siocn-deposition · 1</a><a class="chip" href="#staging/batch21">staging/batch21 · 4</a><a class="chip" href="#staging">staging · 2</a></div>
 <div class="searchbar"><input id="q" type="search" placeholder="제목 · 저자 · DOI · 파일명으로 검색"></div>
 <section id="gaa-nanosheet">
-<h2>gaa-nanosheet <span class="cnt">25편</span></h2>
+<h2>gaa-nanosheet <span class="cnt">26편</span></h2>
 <table><thead><tr><th class="num">#</th><th>제목 · DOI</th><th>저자</th><th>연도</th><th>저널/학회</th><th>파일 · Zotero</th></tr></thead>
 <tbody><tr class="">
 <td class="num">1</td>
@@ -223,6 +227,13 @@ tr.stub{background:rgba(192,57,43,.07)}
 <td class="year">2024</td>
 <td class="venue">IEDM</td>
 <td class="file"><div class="fname">Yeap_2024_IEDM_2nm-nanosheet-platform.pdf</div><div class="meta">Zotero <span class="zk">BMFR7RXC</span></div></td>
+</tr><tr class="">
+<td class="num">26</td>
+<td class="title"><div class="t">Stacked Nanosheet Gate-All-Around Transistor to Enable Scaling Beyond FinFET</div><div class="meta"><a class="doi" href="https://doi.org/10.23919/VLSIT.2017.7998183" target="_blank" rel="noopener">10.23919/VLSIT.2017.7998183</a></div></td>
+<td class="auth">N. Loubet, T. Hook, P. Montanini</td>
+<td class="year">2017</td>
+<td class="venue">VLSI Technology Symp.</td>
+<td class="file"><div class="fname">Loubet_2017_VLSI_stacked-nanosheet-gaa.pdf</div><div class="meta">Zotero <span class="zk">JVNBA3PM</span></div></td>
 </tr></tbody></table></section><section id="library">
 <h2>library <span class="cnt">80편</span></h2>
 <table><thead><tr><th class="num">#</th><th>제목 · DOI</th><th>저자</th><th>연도</th><th>저널/학회</th><th>파일 · Zotero</th></tr></thead>
@@ -1016,4 +1027,6 @@ q.addEventListener('input',()=>{const v=q.value.trim().toLowerCase();
 document.querySelectorAll('tbody tr').forEach(tr=>{tr.style.display=tr.textContent.toLowerCase().includes(v)?'':'none'});
 document.querySelectorAll('section').forEach(sec=>{const any=[...sec.querySelectorAll('tbody tr')].some(tr=>tr.style.display!=='none');sec.style.display=any?'':'none'});
 });
-</script></body></html>
+</script>
+</body>
+</html>
