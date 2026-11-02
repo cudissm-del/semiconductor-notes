@@ -1,16 +1,71 @@
 {
   "_설명": "최근 확보 논문 수동 목록 (최신이 위). Zotero 등록 때 한 줄씩 위에 보탠다. url은 대조된 DOI·arXiv만 넣고, 없으면 비운다. 고친 뒤 npm run build.",
   "papers": [
-    { "date": "2026-11-02", "cite": "Godyak & Piejak, Plasma Sources Sci. Technol. 1, 36 (1992)", "note": "랭뮤어 프로브 EEDF — 원문 대기 해소", "url": "https://doi.org/10.1088/0963-0252/1/1/006" },
-    { "date": "2026-11-02", "cite": "Sun et al., Nanomaterials 14, 928 (2024)", "note": "GAA NF₃ 선택 식각 (캐비티·릴리스)", "url": "https://doi.org/10.3390/nano14110928" },
-    { "date": "2026-11-02", "cite": "Sun et al., Nanomaterials 13, 504 (2023)", "note": "GAA 채널 릴리스", "url": "https://doi.org/10.3390/nano13030504" },
-    { "date": "2026-11-02", "cite": "Li et al., Nanomaterials 16, 13 (2026)", "note": "GAA 서브핀 — 역방향 Si 선택 식각", "url": "" },
-    { "date": "2026-11-02", "cite": "Lee et al., Nanomaterials 12, 3349 (2022)", "note": "GAA 내부 스페이서 두께 변동 (TCAD)", "url": "" },
-    { "date": "2026-11-02", "cite": "Mukesh & Zhang, Electronics 11, 3589 (2022)", "note": "GAA 공정 리뷰", "url": "" },
-    { "date": "2026-11-02", "cite": "Schmidt et al., arXiv:2201.04725 (2022)", "note": "GAA 인덴트 계측", "url": "https://arxiv.org/abs/2201.04725" },
-    { "date": "2026-11-02", "cite": "Yao et al., arXiv:2605.05667 (2026)", "note": "GAA 초격자 에피 분할 온도", "url": "https://arxiv.org/abs/2605.05667" },
-    { "date": "2026-11-02", "cite": "Loo et al. (2024)", "note": "GAA 다중 조성 SiGe 스택 — 기탁본", "url": "" },
-    { "date": "2026-11-02", "cite": "Park et al., IEDM (2023)", "note": "3D 적층 FET — 핸드아웃", "url": "" },
-    { "date": "2026-11-02", "cite": "Horiguchi (2020)", "note": "imec 아키텍처 로드맵 덱", "url": "" }
+    {
+      "date": "2026-11-02",
+      "cite": "Godyak & Piejak, Plasma Sources Sci. Technol. 1, 36 (1992)",
+      "note": "랭뮤어 프로브 EEDF — 원문 대기 해소",
+      "url": "https://doi.org/10.1088/0963-0252/1/1/006"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Sun et al., Nanomaterials 14, 928 (2024)",
+      "note": "GAA NF₃ 선택 식각 (캐비티·릴리스)",
+      "url": "https://doi.org/10.3390/nano14110928"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Sun et al., Nanomaterials 13, 504 (2023)",
+      "note": "GAA 채널 릴리스",
+      "url": "https://doi.org/10.3390/nano13030504"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Li et al., Nanomaterials 16, 13 (2026)",
+      "note": "GAA 서브핀 — 역방향 Si 선택 식각",
+      "url": "https://doi.org/10.3390/nano16010013"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Lee et al., Nanomaterials 12, 3349 (2022)",
+      "note": "GAA 내부 스페이서 두께 변동 (TCAD)",
+      "url": "https://doi.org/10.3390/nano12193349"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Mukesh & Zhang, Electronics 11, 3589 (2022)",
+      "note": "GAA 공정 리뷰",
+      "url": "https://doi.org/10.3390/electronics11213589"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Schmidt et al., arXiv:2201.04725 (2022)",
+      "note": "GAA 인덴트 계측",
+      "url": "https://arxiv.org/abs/2201.04725"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Yao et al., arXiv:2605.05667 (2026)",
+      "note": "GAA 초격자 에피 분할 온도",
+      "url": "https://arxiv.org/abs/2605.05667"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Loo et al. (2024)",
+      "note": "GAA 다중 조성 SiGe 스택 — 기탁본",
+      "url": ""
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Park et al., IEDM (2023)",
+      "note": "3D 적층 FET — 핸드아웃",
+      "url": "https://doi.org/10.1109/IEDM45741.2023.10413694"
+    },
+    {
+      "date": "2026-11-02",
+      "cite": "Horiguchi (2020)",
+      "note": "imec 아키텍처 로드맵 덱",
+      "url": ""
+    }
   ]
 }
