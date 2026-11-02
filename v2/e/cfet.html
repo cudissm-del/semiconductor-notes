@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFET (상보형 FET) — 반도체 백과</title><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">31</span></div><div class="tn-t open"><a href="../t/structure-materials--transistor.html">트랜지스터</a><ul><li><a href="finfet.html">FinFET</a></li><li><a href="gaa.html">GAA 나노시트</a></li><li class="cur"><a href="cfet.html">CFET (상보형 FET)</a></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a></li><li><a href="sac.html">SAC (자기정렬 컨택)</a></li></ul></div><div class="tn-t"><a href="../t/structure-materials--spacer.html">스페이서</a></div><div class="tn-t"><a href="../t/structure-materials--memory.html">메모리</a></div><div class="tn-t"><a href="../t/structure-materials--packaging.html">패키징</a></div><div class="tn-t"><a href="../t/structure-materials--dielectrics.html">절연막</a></div><div class="tn-t"><a href="../t/structure-materials--substrate-semiconductor-metal.html">기판·반도체·금속</a></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">22</span></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/structure-materials.html">구조·재료</a> › <a href="../t/structure-materials--transistor.html">트랜지스터</a> › CFET (상보형 FET)</div>
+  <h1 class="title">CFET (상보형 FET)</h1>
+  <div class="en">Complementary FET</div>
+  <div class="meta"><span class="chip cat">구조·재료 &gt; 트랜지스터</span><a class="chip" href="../tag/%EB%82%98%EB%85%B8%EC%8B%9C%ED%8A%B8.html">#나노시트</a><a class="chip" href="../tag/%ED%8A%B8%EB%9E%9C%EC%A7%80%EC%8A%A4%ED%84%B0.html">#트랜지스터</a><a class="chip" href="../tag/%EC%A0%81%EC%B8%B5.html">#적층</a></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  
+  <article><blockquote>
+<p>nFET과 pFET을 옆이 아니라 위아래로 쌓는 트랜지스터. GAA 나노시트의 다음 단계이자, 식각으로 보면 「중간에서 멈추는 식각」이 수직으로 한 번 더 늘어나는 구조다.</p>
+</blockquote>
+<h3 id="CFET이란">CFET이란</h3>
+<p>CMOS 논리 회로는 nFET과 pFET을 짝으로 쓴다. <a class="wiki" href="finfet.html">FinFET</a>과 <a class="wiki" href="gaa.html">GAA 나노시트</a>까지는 이 둘을 기판 위에 <strong>나란히</strong> 놓았기 때문에, 표준 셀의 높이에는 n 영역, p 영역, 그리고 그 사이 간격이 모두 들어간다. CFET(Complementary FET)은 nFET을 pFET 위에 <strong>수직으로 얹어</strong> n–p 간격을 평면에서 없앤다. 같은 게이트 하나가 위아래 두 소자를 함께 감싸므로 인버터 하나가 한 자리에 선다.</p>
+<p>대가는 공정에 있다. 위아래 소자가 같은 핀 안에 있으니 다음이 모두 수직 방향 공정이 된다.</p>
+<ul>
+<li>위아래 채널 사이를 갈라 놓는 절연(중간 유전체 절연, MDI)</li>
+<li>위아래 S/D 에피를 따로 키우고 서로 닿지 않게 하는 절연</li>
+<li>위아래 게이트의 문턱전압(Vt)을 따로 맞추는 일</li>
+<li>아래 소자에 전기를 대는 길(후면 컨택)</li>
+</ul>
+<p>GAA 나노시트의 초격자·릴리스·<a class="wiki" href="inner-spacer.html">내부 스페이서</a> 기술을 그대로 쓰지만, 그 위에 이 네 모듈이 새로 얹힌다.</p>
+<h3 id="공정-흐름-한-논문이-공개한-전체-순서">공정 흐름 — 한 논문이 공개한 전체 순서</h3>
+<p>TSMC의 모놀리식 CFET 인버터 논문(Liao 2024)은 Fig. 2 캡션에 흐름 전체를 적었다. GAA와 같은 부분은 짧게, CFET에서 새로 생긴 단계는 굵게 표시했다.</p>
+<ol>
+<li>Si/SiGe 초격자 성장 → 나노시트 스택 패터닝 → STI → 게이트 패터닝</li>
+<li>S/D 식각 → <strong>MDI 형성</strong> → 내부 스페이서</li>
+<li><strong>수직 S/D 패터닝</strong> → <strong>하부 pFET S/D 에피</strong> → <strong>S/D 절연 형성</strong> → <strong>상부 nFET S/D 에피</strong></li>
+<li>ILD0 평탄화 → 채널 릴리스 → 계면층·high-k → <strong>수직 다이폴 패터닝</strong> → 일함수 금속·메탈 게이트</li>
+<li>MOL 컨택 → <strong>수직 금속 연결(vMDLI)</strong> → BEOL</li>
+<li><strong>웨이퍼 뒤집기 → 후면 MOL 컨택 → 후면 BEOL</strong></li>
+</ol>
+<p>MDI는 초격자를 쌓을 때 미리 넣어 둔 <strong>Ge 함량이 높은 SiGe 층</strong>을 S/D 식각 뒤 골라 걷어 내고 그 자리를 유전체로 채워 만든다(Liao 2023). SiGe 식각률이 Ge 조성을 따라 오른다는 성질을 그대로 쓴 것이다(<a class="wiki" href="recess.html">리세스와 채널 릴리스</a>).</p>
+<h3 id="문헌-실측-문헌-통합">문헌 실측 — 문헌 통합</h3>
+<p>아래 여섯 편은 Joy가 원문에서 같은 일곱 축(상하 간격, 피치·Lg, MDI 형성 순서, 상하 S/D 에피와 절연, 상하 게이트·Vt 분리, 후면 컨택, 수율·회로)으로 뽑은 값이다. 원문에 없는 축은 비워 두었다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>문헌</th>
+<th>상하 간격</th>
+<th>피치·Lg</th>
+<th>상하 분리 방식</th>
+<th>후면</th>
+<th>결과</th>
+<th>위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Huang et al. (2020) — Intel</td>
+<td>상하 리본 간 50 nm(리본 간 9 nm, MDI 없이 SOI 매몰산화막이 하부 절연)</td>
+<td>피치 수치 없음, 측정 Lg 75 nm</td>
+<td>상부 Si:P 2리본 / 하부 SiGe:B 3리본, 공통 게이트 + 듀얼 메탈 게이트(Vt 조정 상하 각 ~350 mV)</td>
+<td>없음</td>
+<td>인버터 동작</td>
+<td>p. 2 본문, Fig. 4–6</td>
+</tr>
+<tr>
+<td>Liao et al. (2023) — TSMC</td>
+<td>MDI 두께 수치 없음(고 Ge SiGe 자리로 형성)</td>
+<td>게이트 피치 48 nm, Lg 15 nm</td>
+<td>하부 SiGe:B → S/D 절연 → 상부 Si:P, 공통 게이트</td>
+<td>없음</td>
+<td>생존율 n·p 모두 &gt; 90 %, Ion/Ioff 6자리</td>
+<td>p. 1 초록·본문, p. 2 본문(생존율), Fig. 4·8</td>
+</tr>
+<tr>
+<td>Park et al. (2023) — 삼성</td>
+<td>절연 두께–누설 관계 연구(임계값은 그림에만)</td>
+<td>CPP 48·45 nm, Lg 13 nm, 시트 폭 35 nm</td>
+<td>하부 S/D → 절연층 → 상부 S/D, 공통 게이트 + 적층 n/p 일함수 금속</td>
+<td>없음(DBC는 제안만)</td>
+<td>절연층 건식 리세스로 동작 수율 80 %</td>
+<td>p. 1–2 본문, Fig. 13·14</td>
+</tr>
+<tr>
+<td>Radosavljević et al. (2023) — Intel</td>
+<td>수직 분리 30 nm(베이스 에피로 정의)</td>
+<td>CPP 60 nm</td>
+<td>상부 n-Si 3리본 / 하부 p-SiGe 3리본, 공통 게이트 + 수직 Vt 패터닝</td>
+<td>PowerVia + 후면 소자 컨택(BSCON) 실증</td>
+<td>인버터 동작, 후면 측정 SS 63/66 mV/dec</td>
+<td>p. 1–2 본문, Fig. 2·4·15·16</td>
+</tr>
+<tr>
+<td>Liao et al. (2024) — TSMC</td>
+<td>MDI 두께 수치 없음(2023 계승)</td>
+<td>게이트 피치 48 nm, Lg 약 15 nm</td>
+<td>2023 순서 + 공통 드레인 수직 금속 연결, 수직 다이폴로 nFET Vt 약 160 mV 감소</td>
+<td>후면 MOL(BMD·BVD·BVG) 실증</td>
+<td>인버터 VDD 1.2 V까지 균형</td>
+<td>p. 1–3 본문, Fig. 2·5·9</td>
+</tr>
+<tr>
+<td>Liao et al. (2025) — TSMC</td>
+<td>인접 소자 S/D 사이 나노시트 절단 절연(NCI)</td>
+<td>게이트 피치 &lt; 48 nm, Lg &lt; 15 nm</td>
+<td>새 서술 없음</td>
+<td>BMD 노드 측정</td>
+<td>101단 링 오실레이터 0.5–0.95 V, 6T SRAM 셀 면적 기존 나노시트의 70 % 미만</td>
+<td>p. 1–2 초록·본문, Fig. 2·4·10</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 760 440" role="img" aria-label="2020년 Intel 적층 나노리본에서 2025년 TSMC 링 오실레이터·SRAM까지 CFET 실증의 흐름" font-size="12"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">CFET 실증 5년 — 트랜지스터에서 회로로</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">각 칸의 수치는 그 논문 안의 값이다. 간격·수율의 정의가 논문마다 달라 칸끼리 크기를 비교하지 않는다</text><line x1="70" y1="370" x2="720" y2="370" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><g><line x1="70" y1="70" x2="70" y2="370" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="70" y="388" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2020</text></g><g><line x1="186.1" y1="70" x2="186.1" y2="370" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="186.1" y="388" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2021</text></g><g><line x1="302.1" y1="70" x2="302.1" y2="370" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="302.1" y="388" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2022</text></g><g><line x1="418.2" y1="70" x2="418.2" y2="370" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="418.2" y="388" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2023</text></g><g><line x1="534.3" y1="70" x2="534.3" y2="370" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="534.3" y="388" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2024</text></g><g><line x1="650.4" y1="70" x2="650.4" y2="370" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="650.4" y="388" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">2025</text></g><g><line x1="70" y1="166" x2="70" y2="366" stroke="var(--cds-chart-axis)" stroke-width="1.5"></line><circle cx="70" cy="370" r="5" fill="var(--cds-chart-categorical-1)"></circle><rect x="24" y="92" width="200" height="74" rx="6" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-categorical-1)" stroke-width="1.5"></rect><text x="34" y="110" font-size="12" font-weight="600" fill="var(--cds-text-primary)">Huang 2020 · Intel</text><text x="34" y="128" font-size="11" fill="var(--cds-text-primary)">적층 나노리본 NMOS-on-PMOS</text><text x="34" y="143" font-size="11" fill="var(--cds-text-primary)">상하 리본 간 50 nm</text><text x="34" y="158" font-size="11" fill="var(--cds-text-primary)">듀얼 메탈 게이트, Vt 조정 각 ~350 mV</text></g><g><circle cx="406.2" cy="370" r="5" fill="var(--cds-chart-categorical-2)"></circle><rect x="270" y="92" width="200" height="74" rx="6" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></rect><text x="280" y="110" font-size="12" font-weight="600" fill="var(--cds-text-primary)">Liao 2023 · TSMC</text><text x="280" y="128" font-size="11" fill="var(--cds-text-primary)">게이트 피치 48 nm · Lg 15 nm</text><text x="280" y="143" font-size="11" fill="var(--cds-text-primary)">고 Ge SiGe 자리로 MDI</text><text x="280" y="158" font-size="11" fill="var(--cds-text-primary)">생존율 n·p 모두 &gt;90 %</text></g><g><circle cx="418.2" cy="370" r="5" fill="var(--cds-chart-categorical-3)"></circle><rect x="270" y="180" width="200" height="74" rx="6" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-categorical-3)" stroke-width="1.5"></rect><text x="280" y="198" font-size="12" font-weight="600" fill="var(--cds-text-primary)">Park 2023 · 삼성</text><text x="280" y="216" font-size="11" fill="var(--cds-text-primary)">CPP 48·45 nm · Lg 13 nm</text><text x="280" y="231" font-size="11" fill="var(--cds-text-primary)">하부 SD → 절연 → 상부 SD</text><text x="280" y="246" font-size="11" fill="var(--cds-text-primary)">건식 리세스로 동작 수율 80 %</text></g><g><line x1="418.2" y1="342" x2="418.2" y2="366" stroke="var(--cds-chart-axis)" stroke-width="1.5"></line><circle cx="430.2" cy="370" r="5" fill="var(--cds-chart-categorical-1)"></circle><rect x="270" y="268" width="200" height="74" rx="6" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-categorical-1)" stroke-width="1.5"></rect><text x="280" y="286" font-size="12" font-weight="600" fill="var(--cds-text-primary)">Radosavljević 2023 · Intel</text><text x="280" y="304" font-size="11" fill="var(--cds-text-primary)">CPP 60 nm</text><text x="280" y="319" font-size="11" fill="var(--cds-text-primary)">수직 분리 30 nm</text><text x="280" y="334" font-size="11" fill="var(--cds-text-primary)">PowerVia + 후면 컨택(BSCON)</text></g><g><line x1="534.3" y1="166" x2="534.3" y2="366" stroke="var(--cds-chart-axis)" stroke-width="1.5"></line><circle cx="534.3" cy="370" r="5" fill="var(--cds-chart-categorical-2)"></circle><rect x="490" y="92" width="200" height="74" rx="6" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></rect><text x="500" y="110" font-size="12" font-weight="600" fill="var(--cds-text-primary)">Liao 2024 · TSMC</text><text x="500" y="128" font-size="11" fill="var(--cds-text-primary)">인버터 48 nm, VDD ~1.2 V</text><text x="500" y="143" font-size="11" fill="var(--cds-text-primary)">수직 다이폴: nFET Vt ≈ −160 mV</text><text x="500" y="158" font-size="11" fill="var(--cds-text-primary)">후면 MOL(BMD·BVD·BVG)</text></g><g><line x1="650.4" y1="254" x2="650.4" y2="366" stroke="var(--cds-chart-axis)" stroke-width="1.5"></line><circle cx="650.4" cy="370" r="5" fill="var(--cds-chart-categorical-2)"></circle><rect x="546" y="180" width="200" height="74" rx="6" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-categorical-2)" stroke-width="1.5"></rect><text x="556" y="198" font-size="12" font-weight="600" fill="var(--cds-text-primary)">Liao 2025 · TSMC</text><text x="556" y="216" font-size="11" fill="var(--cds-text-primary)">피치 &lt; 48 nm · Lg &lt; 15 nm</text><text x="556" y="231" font-size="11" fill="var(--cds-text-primary)">101단 링 오실레이터</text><text x="556" y="246" font-size="11" fill="var(--cds-text-primary)">6T SRAM, 셀 면적 &lt; 70 %</text></g><text x="24" y="412" font-size="11" fill="var(--cds-text-secondary)">재구성: Huang IEDM 2020; Liao IEDM 2023·2024·2025; Park IEDM 2023; Radosavljević IEDM 2023 — 본문·초록·Fig. 캡션 수치(위치는 항목 통합 표).</text><text x="24" y="428" font-size="11" fill="var(--cds-text-secondary)">테두리 색: <tspan fill="var(--cds-chart-categorical-1)">■</tspan> Intel  <tspan fill="var(--cds-chart-categorical-2)">■</tspan> TSMC  <tspan fill="var(--cds-chart-categorical-3)">■</tspan> 삼성</text></svg><figcaption>그림 1. CFET 실증 연표 · 재구성: Huang 2020, Liao 2023·2024·2025, Park 2023, Radosavljević 2023</figcaption></figure>
+<h3 id="논문-사이의-긴장">논문 사이의 긴장</h3>
+<ul>
+<li><p><strong>MDI 두께는 아무도 숫자로 말하지 않는다.</strong> MDI 형성을 서술한 TSMC 두 편(Liao 2023·2024)도 순서만 적었고 두께는 nm로 적지 않았다. Intel 두 편은 MDI 모듈 없이 상하를 나눈 세대다(Huang 2020은 SOI 매몰산화막, Radosavljević 2023은 베이스 에피). 상하 간격이 숫자로 나온 것은 Intel 두 편뿐인데, 정의가 서로 다르다. Huang 2020의 50 nm는 위아래 리본 묶음 사이의 거리이고, Radosavljević 2023의 30 nm는 베이스 에피가 정한 수직 분리다. 같은 칸에 놓고 「간격이 줄었다」고 읽으려면 정의가 같아야 하는데, 원문만으로는 그 판단을 할 수 없다.</p>
+</li>
+<li><p><strong>두 개의 수율 숫자는 서로 다른 것을 센다.</strong> Liao 2023의 「&gt; 90 %」는 n·p 각각의 소자 생존율이고, Park 2023의 「80 %」는 절연층 리세스를 건식으로 바꿨을 때의 소자 동작 수율이다. 나머지 네 편은 수율 대신 인버터·링 오실레이터·SRAM 같은 회로 동작으로 결과를 보였다. 두 숫자를 나란히 두고 회사 간 우열을 말할 수 없다.</p>
+</li>
+<li><p><strong>「아래는 p, 위는 n」으로 모였다.</strong> 상하 배치가 원문에 명시된 다섯 편(Huang 2020, Liao 2023·2024, Park 2023, Radosavljević 2023)은 pFET을 아래에 둔다. Liao 2025는 배치를 새로 서술하지 않았다. 다섯 편 가운데 Park 2023만 이 배치를 전제가 아니라 결론으로 얻었다. 위아래를 바꾼 두 조합을 모두 만들어 보니, 하부 pFET은 벌크 Si를 씨앗으로 SiGe:B를 키울 수 있어 성장 품질·채널 변형·도핑이 유리했다. 세 회사가 같은 배치에 도달했다는 점이 이 항목에서 가장 단단한 결론이다.</p>
+</li>
+<li><p><strong>위아래 Vt를 가르는 방법은 아직 갈려 있다.</strong> 상하 Vt를 가르는 공정을 서술한 네 편은 방식이 각각 다르다. Liao 2023도 같은 웨이퍼에서 n/p Vt를 패터닝했다고 적었지만(p. 2 본문) 방식을 밝히지 않아 이 분류에 넣지 않았다.</p>
+<ul>
+<li>Huang 2020: 일함수 금속을 덮었다가 상부만 습식으로 벗기는 듀얼 메탈 게이트</li>
+<li>Park 2023: 하부 메탈 게이트를 리세스한 뒤 n/p 일함수 금속을 쌓는 방식</li>
+<li>Liao 2024: high-k 직후 상하에 서로 다른 다이폴을 넣는 수직 다이폴 패터닝</li>
+<li>Radosavljević 2023: 수직 Vt 패터닝(방식 세부는 정량 없음)</li>
+</ul>
+<p>앞의 두 방식은 금속을 정해진 높이까지 깎아 내는 식각에 기대고, 뒤의 둘은 막을 위아래로 다르게 입히는 데 기댄다. 다중 Vt를 몇 개까지 낼 수 있는지는 여섯 편 어디에도 숫자가 없다(Liao 2023은 「개발 중」이라고 적었다).</p>
+</li>
+<li><p><strong>후면은 실증과 제안이 섞여 있다.</strong> 후면 컨택을 실제로 만든 것은 Liao 2024(BMD·BVD·BVG)와 Radosavljević 2023(PowerVia·BSCON) 두 편이다. Park 2023의 DBC는 개념도와 기대효과만 있어 실증으로 세지 않는다. 두 실증 모두 하부 소자의 단자를 웨이퍼 뒷면에서 잡는다. Liao 2024는 <a class="wiki" href="bspdn.html">BSPDN (후면 전력 공급)</a>을 거친 pFET 전원 분배를 설계 방향으로 제시했고, Radosavljević 2023은 후면 전력 비아(PowerVia 계열)를 BSCON과 함께 만들었다.</p>
+</li>
+</ul>
+<h3 id="식각으로-본-CFET-수직으로-늘어난-중간에서-멈추는-식각">식각으로 본 CFET — 수직으로 늘어난 「중간에서 멈추는 식각」</h3>
+<p><a class="wiki" href="recess.html">리세스와 채널 릴리스</a>에서 본 리세스의 어려움은 끝점 신호가 없다는 것이었다. CFET은 이런 식각을 수직 방향으로 여러 개 더 만든다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>모듈</th>
+<th>무엇을 깎나</th>
+<th>무엇이 걸려 있나</th>
+<th>문헌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MDI 형성</td>
+<td>고 Ge SiGe 층만 골라 제거</td>
+<td>Ge 조성 차이로 얻는 선택비</td>
+<td>Liao 2023</td>
+</tr>
+<tr>
+<td>S/D 절연 리세스</td>
+<td>하부 에피 위에 덮은 유전체를 정해진 깊이까지</td>
+<td>상부 n 에피의 품질과 형상</td>
+<td>Liao 2023, Park 2023(건식 80 %)</td>
+</tr>
+<tr>
+<td>게이트 금속 리세스</td>
+<td>상하를 함께 덮은 게이트 금속의 윗부분(Park은 하부 메탈 게이트, Huang은 W)</td>
+<td>상하 일함수 금속의 경계 높이</td>
+<td>Huang 2020, Park 2023</td>
+</tr>
+<tr>
+<td>상부 일함수 금속 제거</td>
+<td>상부 리본 주변의 p 일함수 금속만</td>
+<td>하부 금속을 남기는 선택성</td>
+<td>Huang 2020</td>
+</tr>
+</tbody></table></div>
+<p>이 네 식각은 모두 「위는 깎고 아래는 남긴다」는 구조다. Park 2023이 절연층 리세스를 습식에서 건식으로 바꿔 동작 수율을 80 %로 올렸다고 보고한 것은, CFET에서 이런 수직 리세스 하나가 소자 수율을 좌우한다는 직접 증거다.</p>
+<h3 id="근거">근거</h3>
+<ul>
+<li>여섯 편의 수치와 위치는 Joy의 원문 추출 패키지(2026-11-02, 원문 6편 전문 대조)를 따랐다. 원문에 텍스트·캡션으로 없는 값(그래프 판독값)은 쓰지 않았다.<ul>
+<li>Huang et al., IEDM (2020), <a href="https://doi.org/10.1109/IEDM13553.2020.9372066" target="_blank" rel="noopener">doi:10.1109/IEDM13553.2020.9372066</a></li>
+<li>Liao et al., IEDM (2023), <a href="https://doi.org/10.1109/IEDM45741.2023.10413672" target="_blank" rel="noopener">doi:10.1109/IEDM45741.2023.10413672</a></li>
+<li>Park et al., IEDM (2023), <a href="https://doi.org/10.1109/IEDM45741.2023.10413694" target="_blank" rel="noopener">doi:10.1109/IEDM45741.2023.10413694</a></li>
+<li>Radosavljević et al., IEDM (2023), <a href="https://doi.org/10.1109/IEDM45741.2023.10413678" target="_blank" rel="noopener">doi:10.1109/IEDM45741.2023.10413678</a></li>
+<li>Liao et al., IEDM (2024), <a href="https://doi.org/10.1109/IEDM50854.2024.10873334" target="_blank" rel="noopener">doi:10.1109/IEDM50854.2024.10873334</a></li>
+<li>Liao et al., IEDM (2025), <a href="https://doi.org/10.1109/IEDM50572.2025.11353820" target="_blank" rel="noopener">doi:10.1109/IEDM50572.2025.11353820</a></li>
+</ul>
+</li>
+<li>위 DOI는 모두 Joy가 Crossref로 대조했다(2026-11-02).</li>
+<li>공정 흐름 절의 순서는 Liao 2024 Fig. 2 캡션을, MDI 형성 원리는 Liao 2023 본문을 따랐다. 「식각으로 본 CFET」 표의 분류는 여섯 편의 서술을 식각 모듈로 묶은 정리이며, 모듈 이름은 이 항목에서 붙인 것이다.</li>
+<li>「아래는 p, 위는 n」의 근거는 Park 2023의 양방향 비교(p. 2 본문)다. 다른 다섯 편은 배치만 같을 뿐 이유를 비교하지 않았다.</li>
+</ul>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="gaa.html">GAA 나노시트</a> — CFET이 물려받은 시트 구조와 공정</li>
+<li><a class="wiki" href="inner-spacer.html">내부 스페이서</a> — CFET에서도 그대로 쓰이는 매립 절연막</li>
+<li><a class="wiki" href="recess.html">리세스와 채널 릴리스</a> — MDI·절연 리세스와 같은 계열의 선택 식각</li>
+<li><a class="wiki" href="bspdn.html">BSPDN (후면 전력 공급)</a> — 하부 소자에 전기를 대는 후면 배선</li>
+<li><a class="wiki" href="gate-stack.html">게이트 스택 (HKMG)</a> — 상하 Vt를 가르는 일함수 금속·다이폴</li>
+<li><a class="wiki" href="epitaxy.html">에피택시</a> — 상하 S/D 에피와 초격자</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="gaa.html">← 이전 · GAA 나노시트</a><a href="gate-stack.html">다음 · 게이트 스택 (HKMG) →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="finfet.html">FinFET</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="inner-spacer.html">내부 스페이서</a> <span style="color:var(--sub)">— 구조·재료 &gt; 스페이서</span></li><li><a href="recess.html">리세스와 채널 릴리스</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="bspdn.html">BSPDN (후면 전력 공급)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 패키징</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="epitaxy.html">에피택시</a> <span style="color:var(--sub)">— 공정 &gt; 막 형성·평탄화</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="finfet.html">FinFET</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="gaa.html">GAA 나노시트</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="gate-stack.html">게이트 스택 (HKMG)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li><li><a href="sac.html">SAC (자기정렬 컨택)</a> <span style="color:var(--sub)">— 구조·재료 &gt; 트랜지스터</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 11월 2일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "cfet", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","chemical-bonding":"화학 결합과 결합 에너지","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","plasma-sources":"플라즈마 소스 (CCP·ICP·원격)","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","cfet":"CFET (상보형 FET)","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>
