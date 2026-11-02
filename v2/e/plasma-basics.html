@@ -177,7 +177,7 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
 <main class="wide" id="main">
  <div class="layout">
-  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">21</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li class="cur"><a href="plasma-basics.html">플라즈마 기초</a></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a></li><li><a href="etch-troubleshooting.html">식각 문제 해결표</a></li><li><a href="etch-gas-chemistry.html">식각 가스 화학</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div><div class="tn-t"><a href="../t/principles-ops--chemeng.html">화학공학 기초</a></div></div></div></aside>
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">22</span></div><div class="tn-t open"><a href="../t/principles-ops--plasma.html">플라즈마</a><ul><li class="cur"><a href="plasma-basics.html">플라즈마 기초</a></li><li><a href="plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="etch-nonidealities.html">식각 비이상 현상</a></li><li><a href="etch-troubleshooting.html">식각 문제 해결표</a></li><li><a href="etch-gas-chemistry.html">식각 가스 화학</a></li></ul></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div><div class="tn-t"><a href="../t/principles-ops--chemeng.html">화학공학 기초</a></div></div></div></aside>
   <div class="content">
   <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--plasma.html">플라즈마</a> › 플라즈마 기초</div>
   <h1 class="title">플라즈마 기초</h1>
@@ -373,6 +373,76 @@ h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span
 <td>15.8 eV</td>
 </tr>
 </tbody></table></div>
+<h2 id="논문으로-본-기본량-통합-표">논문으로 본 기본량 — 통합 표</h2>
+<p>위의 「핵심 수치」 표는 교재 전형값이다. 아래 표는 그 기본량이 실측·계산 문헌에서 어떻게 구체화되는지를 모은 것으로, 전형값 표와 섞지 않는다. 연구마다 장치와 목적이 달라 <strong>행끼리 수치를 비교하는 표가 아니다</strong>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>문헌</th>
+<th>기본량·기전</th>
+<th>조건</th>
+<th>보고 값</th>
+<th>원문 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coburn &amp; Winters 1979</td>
+<td>이온–라디칼 시너지</td>
+<td>빔 실험, Ar⁺ 450 eV + 중성 반응종 동시 조사, Si</td>
+<td>XeF₂와 동시 조사 시 식각이 단독 합의 약 8배. Cl₂는 정상상태 약 4배, Cl₂ 단독은 0.1 Å/min 미만</td>
+<td>Fig. 2·3, 본문</td>
+</tr>
+<tr>
+<td>Economou 2013 (Pennebaker 계산 재수록)</td>
+<td>쉬스 두께·평균 이온 충격 에너지의 압력 의존</td>
+<td>dc 쉬스 200 V, 압력 스캔(계산)</td>
+<td>압력이 오르면 쉬스 안 충돌이 잦아지고, 고압 쪽에서 전극에 닿는 평균 이온 충격 에너지가 포화(plateau)한다. 절대값은 그림에만 있다</td>
+<td>Fig. 2</td>
+</tr>
+<tr>
+<td>Economou 2013</td>
+<td>RF 쉬스의 이온 에너지 분포 갈라짐</td>
+<td>이온 쉬스 통과 시간 τᵢ와 RF 주기 τrf의 비</td>
+<td>두 봉우리 간격 ΔE = eVpp·[1 + (2.25 τᵢ/τrf)²]^(−1/2)</td>
+<td>Fig. 4, 식 (7)</td>
+</tr>
+<tr>
+<td>Economou 2013 (Xu et al. 실험 재수록)</td>
+<td>펄스 애프터글로우의 준단일에너지 분포</td>
+<td>펄스 CCP 5 kHz·듀티 50 %, 애프터글로우에 동기 dc 바이어스</td>
+<td>전원이 꺼지면 Tₑ와 플라즈마 전위가 수 µs 안에 1 eV 아래로 떨어지고, 그 구간에 바이어스를 걸면 이온 에너지 분포 반치폭이 약 1 eV까지 좁아진다</td>
+<td>Fig. 11·12, 본문</td>
+</tr>
+<tr>
+<td>Metzler et al. 2016</td>
+<td>물리 스퍼터 문턱 — 이온 에너지 창의 바닥</td>
+<td>FC-ALE 연구의 본문 서술</td>
+<td>물리 스퍼터 문턱이 SiO₂ 약 50 eV, Si 약 20 eV</td>
+<td>본문</td>
+</tr>
+<tr>
+<td>Kaler et al. 2017</td>
+<td>이온 하나가 떼어 내는 양</td>
+<td>c-C₄F₈ 빔 증착과 Ar⁺ 빔 130 eV 제거를 분리한 빔 실험, SiO₂</td>
+<td>SiO₂ 1.9 Å/cycle, 수율 약 1.3 SiO₂ 분자/Ar⁺</td>
+<td>초록·본문</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 760 380" role="img" aria-label="이온이 쉬스를 건너는 시간이 RF 주기보다 짧을수록 이온 에너지 분포가 두 봉우리로 넓게 갈라진다" font-size="12"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">RF 쉬스에서 이온 에너지는 하나가 아니라 두 봉우리 사이에 퍼진다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">봉우리 간격 ΔE를 피크–피크 전압 eVpp로 나눈 값. 이온 통과 시간 τᵢ가 RF 주기 τrf보다 길수록 분포가 좁아진다</text><rect x="90" y="92" width="203.1041725239536" height="198" fill="var(--cds-chart-reference-tint)"></rect><text x="98" y="278" font-size="11" fill="var(--cds-text-secondary)">넓은 이중봉</text><text x="98" y="264" font-size="11" fill="var(--cds-text-secondary)">(저주파 쪽)</text><text x="632" y="110" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">좁은 단일 피크에 가까움 (고주파 쪽)</text><g><line x1="90" y1="290" x2="640" y2="290" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="82" y="294" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">0</text></g><g><line x1="90" y1="240.5" x2="640" y2="240.5" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="82" y="244.5" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">0.25</text></g><g><line x1="90" y1="191" x2="640" y2="191" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="82" y="195" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">0.5</text></g><g><line x1="90" y1="141.5" x2="640" y2="141.5" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="82" y="145.5" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">0.75</text></g><g><line x1="90" y1="92" x2="640" y2="92" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="82" y="96" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">1</text></g><line x1="90" y1="290" x2="640" y2="290" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><line x1="90" y1="92" x2="90" y2="290" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><g><line x1="90" y1="290" x2="90" y2="295" stroke="var(--cds-chart-axis)"></line><text x="90" y="309" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">0.01</text></g><g><line x1="227.5" y1="290" x2="227.5" y2="295" stroke="var(--cds-chart-axis)"></line><text x="227.5" y="309" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">0.1</text></g><g><line x1="365" y1="290" x2="365" y2="295" stroke="var(--cds-chart-axis)"></line><text x="365" y="309" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">1</text></g><g><line x1="502.5" y1="290" x2="502.5" y2="295" stroke="var(--cds-chart-axis)"></line><text x="502.5" y="309" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">10</text></g><g><line x1="640" y1="290" x2="640" y2="295" stroke="var(--cds-chart-axis)"></line><text x="640" y="309" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">100</text></g><path d="M90 92.1L94.6 92.1L99.2 92.1L103.8 92.1L108.3 92.1L112.9 92.1L117.5 92.1L122.1 92.1L126.7 92.2L131.3 92.2L135.8 92.2L140.4 92.3L145 92.3L149.6 92.4L154.2 92.4L158.8 92.5L163.3 92.6L167.9 92.7L172.5 92.8L177.1 92.9L181.7 93.1L186.3 93.2L190.8 93.5L195.4 93.7L200 94L204.6 94.3L209.2 94.7L213.8 95.1L218.3 95.6L222.9 96.2L227.5 96.8L232.1 97.6L236.7 98.5L241.3 99.5L245.8 100.7L250.4 102L255 103.5L259.6 105.2L264.2 107.2L268.8 109.4L273.3 111.8L277.9 114.6L282.5 117.6L287.1 121L291.7 124.7L296.3 128.7L300.8 133L305.4 137.6L310 142.5L314.6 147.7L319.2 153.1L323.8 158.6L328.3 164.3L332.9 170.1L337.5 176L342.1 181.8L346.7 187.6L351.3 193.3L355.8 198.9L360.4 204.3L365 209.6L369.6 214.6L374.2 219.5L378.8 224.1L383.3 228.5L387.9 232.6L392.5 236.5L397.1 240.2L401.7 243.7L406.3 247L410.8 250L415.4 252.8L420 255.5L424.6 258L429.2 260.3L433.8 262.4L438.3 264.4L442.9 266.3L447.5 268L452.1 269.6L456.7 271.1L461.3 272.5L465.8 273.8L470.4 275L475 276.1L479.6 277.1L484.2 278.1L488.8 278.9L493.3 279.8L497.9 280.5L502.5 281.2L507.1 281.9L511.7 282.5L516.3 283L520.8 283.5L525.4 284L530 284.4L534.6 284.9L539.2 285.2L543.8 285.6L548.3 285.9L552.9 286.2L557.5 286.5L562.1 286.8L566.7 287L571.3 287.2L575.8 287.4L580.4 287.6L585 287.8L589.6 288L594.2 288.1L598.8 288.2L603.3 288.4L607.9 288.5L612.5 288.6L617.1 288.7L621.7 288.8L626.3 288.9L630.8 289L635.4 289L640 289.1" fill="none" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></path><g><circle cx="268.9" cy="109.4" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="277.9" y="101.4" font-size="11" fill="var(--cds-text-primary)">2 MHz · 0.91</text></g><g><circle cx="383.2" cy="228.3" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="392.2" y="222.3" font-size="11" fill="var(--cds-text-primary)">13.56 MHz · 0.31</text></g><g><circle cx="424.6" cy="258" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="433.6" y="252" font-size="11" fill="var(--cds-text-primary)">27.12 MHz · 0.16</text></g><g><circle cx="472" cy="275.4" r="5" fill="var(--cds-chart-categorical-2)"></circle><text x="481" y="269.4" font-size="11" fill="var(--cds-text-primary)">60 MHz · 0.07</text></g><text x="365" y="328" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">τᵢ / τrf (로그 축)</text><text x="82" y="80" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">ΔE / eVpp</text><text x="654" y="120" font-size="11" fill="var(--cds-text-secondary)">점: τᵢ = 100 ns</text><text x="654" y="136" font-size="11" fill="var(--cds-text-secondary)">(가정값)일 때</text><text x="654" y="152" font-size="11" fill="var(--cds-text-secondary)">바이어스 주파수별</text><text x="654" y="168" font-size="11" fill="var(--cds-text-secondary)">산술</text><text x="24" y="354" font-size="11" fill="var(--cds-text-secondary)">재구성: Economou, J. Vac. Sci. Technol. A 31, 050823 (2013), doi:10.1116/1.4819315 — Fig. 4의 식 (7) 곡선.</text><text x="24" y="370" font-size="11" fill="var(--cds-text-secondary)">곡선은 식 자체이고, 주파수 점은 τᵢ 가정값에 따른 산술이다(실측 아님)</text></svg><figcaption>그림 2. RF 쉬스의 이온 에너지 갈라짐 · Economou (2013) Fig. 4 식 (7) 재구성</figcaption></figure>
+<p><strong>산술로 읽기.</strong> 식 (7)에 τᵢ = 100 ns를 <strong>가정값</strong>으로 넣으면, 바이어스 주파수 2 · 13.56 · 27.12 · 60 MHz에서 τᵢ/τrf는 0.2 · 1.36 · 2.71 · 6.0이고, ΔE/eVpp는 약 0.91 · 0.31 · 0.16 · 0.07이다(<strong>산술</strong>). 같은 피크–피크 전압이라도 2 MHz에서는 이온 에너지가 거의 0에서 eVpp까지 퍼지고, 60 MHz에서는 평균 근처의 좁은 띠로 모인다. 실제 τᵢ는 이온 질량·쉬스 두께·전압에 따라 달라지므로 숫자보다 방향을 읽는다.</p>
+<h2 id="논문-사이의-긴장">논문 사이의 긴장</h2>
+<ul>
+<li><strong>「이온 에너지 = e × 쉬스 전압」은 분포의 중심일 뿐이다.</strong> 원리 2는 이온이 쉬스 전압만큼의 에너지를 얻는다고 쓰지만, Economou(2013)의 식 (7)은 RF 쉬스에서 그 값이 τᵢ/τrf에 따라 최대 eVpp까지 벌어진 분포의 중심임을 보인다. 바이어스 주파수를 올리면 분포가 좁아지는 이유가 이 식에서 바로 읽힌다. 반대로 저주파 바이어스는 넓은 분포를 감수하고 큰 에너지를 얻는 선택이다.</li>
+<li><strong>시너지는 보편 상수가 아니다.</strong> Coburn과 Winters(1979)의 같은 빔 실험 안에서도 시너지는 XeF₂에서 약 8배, Cl₂에서 약 4배로 갈렸고, Cl₂ 단독은 사실상 무반응이었다. 이온이 표면 반응의 어느 단계를 여는지(자발 반응이 이미 있는 F계에 속도를 더하는지, 막혀 있는 Cl계 반응을 여는지)에 따라 값이 정해진다(해석).</li>
+<li><strong>Tₑ는 고정된 상태량이 아니다.</strong> 원리 5는 분포 모양이 반응을 정한다고 쓰는데, Economou(2013)가 재수록한 애프터글로우 측정에서는 Tₑ가 수 µs 안에 1 eV 아래로 무너진다. 펄스 공정을 정상상태 Tₑ 하나로 기술하면 틀린다.</li>
+<li><strong>이온 에너지 창은 막마다 바닥이 다르다.</strong> Metzler 등(2016)이 적은 물리 스퍼터 문턱은 SiO₂ 약 50 eV, Si 약 20 eV다. 같은 25 eV 이온이라도 SiO₂에는 문턱 아래, Si에는 문턱 근처라서, 저에너지 공정의 자기제한이 Si에서 먼저 약해진다. 이온 에너지 하나로 「손상 없는 창」을 일반화할 수 없는 이유다.</li>
+</ul>
+<h2 id="실패-모드">실패 모드</h2>
+<ul>
+<li><strong>고압에서 방향성이 무너진다.</strong> Economou(2013) Fig. 2에서 고압 쪽 평균 이온 충격 에너지가 포화하는 것처럼, 쉬스 안 충돌이 잦아지면 이온이 쉬스 전압만큼의 에너지를 다 받지 못하고 방향도 흩어진다. 「압력을 올리면 느려진다」가 아니라 「에너지 전달 경로가 충돌로 바뀐다」로 읽어야 대응(압력 하향, 쉬스를 얇게 하는 밀도 상향)이 보인다.</li>
+<li><strong>저주파 바이어스의 고에너지 꼬리.</strong> 넓은 이중봉의 위쪽 봉우리는 평균보다 훨씬 큰 에너지로 들어온다. 평균 에너지로 손상 문턱을 판단하면 꼬리 쪽 이온이 문턱을 넘는 것을 놓친다.</li>
+<li><strong>EEDF 꼬리의 비선형.</strong> 전력·압력을 조금만 바꿔도 분포 꼬리가 움직여 이온화·해리율이 비선형으로 변한다(원리 5). EEDF 실측 행은 Godyak 등(1992) 원문 대조 후 이 표에 더한다.</li>
+</ul>
 <h2 id="트레이드오프와-한계">트레이드오프와 한계</h2>
 <ul>
 <li><strong>밀도 vs 에너지 독립 제어의 한계</strong> — 소스 전력(밀도)과 바이어스 전력(에너지)을 나눈 분업은 유도결합 방식에서 가장 잘 성립하고, 용량결합 방식에서는 두 손잡이가 서로 얽힌다. 자세한 장비별 차이는 <a class="wiki" href="etch-equipment.html">식각 장비</a> 참고.</li>
@@ -393,6 +463,8 @@ h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span
 <li>준중성·디바이 길이·쉬스·보옴 기준·EEDF와 전형 수치 범위는 플라즈마 공정 표준 교재의 전형값이다: Lieberman &amp; Lichtenberg, <em>Principles of Plasma Discharges and Materials Processing</em> (Wiley, 2nd ed., 2005); Chen, <em>Introduction to Plasma Physics and Controlled Fusion</em> (Springer, 3rd ed., 2016).</li>
 <li>Ar 이온화 문턱 15.8 eV는 원자 물성의 확정값이다. 보옴 속도 2.7 km/s는 위 보옴 식에 Ar 질량과 Tₑ = 3 eV를 넣은 계산값이다.</li>
 <li>부유 전위 관계(약 5 × Tₑ)와 λ_D 수십 µm라는 감각은 <a class="wiki" href="langmuir.html">랭뮤어 프로브</a> 항목의 전형 조건과 맞춘 값으로, 진단 항목과 중복 서술을 피하고 링크로 연결했다.</li>
+<li>통합 표의 수치·조건·원문 위치 — Joy의 원문 추출(2026-11-02). Coburn &amp; Winters, J. Appl. Phys. 50, 3189 (1979), <a href="https://doi.org/10.1063/1.326355" target="_blank" rel="noopener">doi:10.1063/1.326355</a>; Economou, J. Vac. Sci. Technol. A 31, 050823 (2013), <a href="https://doi.org/10.1116/1.4819315" target="_blank" rel="noopener">doi:10.1116/1.4819315</a>; Metzler et al., J. Vac. Sci. Technol. A 34 (2016), <a href="https://doi.org/10.1116/1.4935462" target="_blank" rel="noopener">doi:10.1116/1.4935462</a>; Kaler et al., J. Phys. D: Appl. Phys. 50 (2017), <a href="https://doi.org/10.1088/1361-6463/aa6f40" target="_blank" rel="noopener">doi:10.1088/1361-6463/aa6f40</a>. 모두 저장소에서 이미 대조된 인용이다.</li>
+<li>ΔE 식의 주파수별 값은 τᵢ = 100 ns <strong>가정값</strong>에 따른 <strong>산술</strong>이다.</li>
 <li>RF 방전의 전자 에너지 분포(EEDF) 측정: Godyak, Piejak &amp; Alexandrovich, Plasma Sources Sci. Technol. 1, 36 (1992), <a href="https://doi.org/10.1088/0963-0252/1/1/006" target="_blank" rel="noopener">doi:10.1088/0963-0252/1/1/006</a>. <a class="wiki" href="langmuir.html">랭뮤어 프로브</a>에서 대조된 인용이며, EEDF 절의 근거다. 디바이 길이·쉬스·보옴 기준은 위 교재 서술을 따른다.</li>
 </ul>
 </article>
@@ -429,7 +501,7 @@ h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span
     st.setAttribute('aria-expanded', String(open));
     st.textContent = open ? '목차 ▴' : '목차 ▾';
   });
-  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","plasma-sources":"플라즈마 소스 (CCP·ICP·원격)","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","chemical-bonding":"화학 결합과 결합 에너지","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","plasma-sources":"플라즈마 소스 (CCP·ICP·원격)","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
   function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   window.renderSideFavs = function () {
     var listEl = document.querySelector('[data-fav-list]');

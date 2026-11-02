@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>화학 결합과 결합 에너지 — 반도체 백과</title><link rel="stylesheet" href="../assets/katex/katex.min.css"><style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main.wide { max-width: 1180px; }
+.layout { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 28px; align-items: start; }
+.side { position: sticky; top: 64px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 13.5px; max-height: calc(100vh - 84px); overflow-y: auto; }
+.side .tn { margin-bottom: 12px; }
+.side .tn-d a { font-weight: 800; color: var(--ink); font-size: 14.5px; }
+.side .tn-t { margin: 5px 0 0 10px; }
+.side .tn-t > a { color: var(--sub); }
+.side .tn-t.open > a { color: var(--accent); font-weight: 700; }
+.side ul { list-style: none; margin: 4px 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+.side li { margin: 3px 0; }
+.side li a { color: var(--sub); }
+.side li.cur a { color: var(--accent); font-weight: 700; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } .side { position: static; max-height: none; } }
+.prevnext { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.prevnext a { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 14px; }
+.badge { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+.badge.list { background: var(--chip); color: var(--sub); }
+.dtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.dtile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.dtile .t { font-size: 20px; font-weight: 800; }
+.dtile .t a { color: var(--ink); }
+.dtile .c { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.dtile p { color: var(--sub); font-size: 14px; margin: 8px 0 10px; }
+.tchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchips a { background: var(--chip); border-radius: 999px; padding: 2px 11px; font-size: 12.5px; color: var(--sub); }
+.tchips a:hover { background: var(--accent-soft); color: var(--accent); text-decoration: none; }
+ol.tlist { list-style: none; counter-reset: tl; margin: 14px 0; padding: 0; }
+ol.tlist li { counter-increment: tl; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 8px 0; }
+ol.tlist li::before { content: counter(tl); float: left; font-size: 20px; font-weight: 800; color: var(--accent); margin-right: 12px; line-height: 1.3; }
+ol.tlist .t { font-weight: 700; font-size: 16px; }
+ol.tlist .e { color: var(--sub); font-size: 12.5px; }
+ol.tlist .d { color: var(--sub); font-size: 13.5px; margin-top: 4px; }
+.tagrows { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tagrows a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--ink); font-size: 14px; }
+.tagrows a:hover { border-color: var(--accent); text-decoration: none; }
+.side-toggle { display: none; }
+@media (max-width: 900px) {
+  .side-toggle { display: block; width: 100%; background: none; border: 0; font: inherit; font-size: 14.5px; font-weight: 800; text-align: left; padding: 0; cursor: pointer; color: var(--ink); }
+  .side .side-body { display: none; margin-top: 10px; }
+  .side.open .side-body { display: block; }
+}
+.prereq { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; margin-top: 12px; font-size: 14.5px; }
+.prereq .pl-t { font-weight: 800; margin-right: 8px; white-space: nowrap; }
+.pathline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 13px 18px; margin-top: 12px; font-size: 14.5px; line-height: 1.9; }
+.pathline .pl-t { font-weight: 800; margin-right: 6px; white-space: nowrap; }
+details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 12px 2px 4px; }
+.fav-side { margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.fav-side-h { font-weight: 800; font-size: 14.5px; color: var(--ink); }
+.fav-side-list { list-style: none; margin: 6px 0 0; padding: 0; }
+.fav-side-list li { margin: 3px 0; }
+.fav-side-list a { color: var(--sub); }
+.fav-side-list a:hover { color: var(--accent); text-decoration: none; }
+.fav-side-list .fav-star { color: var(--star); }
+.fav-side-empty { color: var(--sub); font-size: 12.5px; margin: 6px 0 0; }
+</style></head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="top"><div class="in"><a class="brand" href="../index.html">반도체 백과</a><span class="tag">지식창고 · 재편 프리뷰</span></div></header>
+<main class="wide" id="main">
+ <div class="layout">
+  <aside class="side" id="sideNav"><button class="side-toggle" id="sideToggle" type="button" aria-expanded="false">목차 ▾</button><div class="side-body"><div class="fav-side"><div class="fav-side-h">★ 즐겨찾기</div><ul class="fav-side-list" data-fav-list data-e-base="__SLUG__.html" hidden></ul><p class="fav-side-empty" data-fav-empty>아직 즐겨찾기한 항목이 없습니다.</p></div><div class="tn"><div class="tn-d"><a href="../d/process.html">공정</a> <span class="count">26</span></div></div><div class="tn"><div class="tn-d"><a href="../d/structure-materials.html">구조·재료</a> <span class="count">30</span></div></div><div class="tn"><div class="tn-d"><a href="../d/metrology.html">계측·분석</a> <span class="count">34</span></div></div><div class="tn"><div class="tn-d"><a href="../d/principles-ops.html">원리·운영</a> <span class="count">22</span></div><div class="tn-t"><a href="../t/principles-ops--plasma.html">플라즈마</a></div><div class="tn-t"><a href="../t/principles-ops--surface-selectivity.html">표면 반응·선택비</a></div><div class="tn-t"><a href="../t/principles-ops--yield-quality.html">수율·품질</a></div><div class="tn-t open"><a href="../t/principles-ops--chemeng.html">화학공학 기초</a><ul><li><a href="chemeng-basics.html">화학공학 기초</a></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a></li><li class="cur"><a href="chemical-bonding.html">화학 결합과 결합 에너지</a></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a></li><li><a href="nucleation-growth.html">핵생성·성장</a></li><li><a href="precursor-chemistry.html">전구체 화학</a></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a></li><li><a href="exhaust-abatement.html">배기·저감</a></li><li><a href="ultra-high-purity.html">초고순도</a></li></ul></div></div></div></aside>
+  <div class="content">
+  <div class="crumb"><a href="../index.html">대문</a> › <a href="../d/principles-ops.html">원리·운영</a> › <a href="../t/principles-ops--chemeng.html">화학공학 기초</a> › 화학 결합과 결합 에너지</div>
+  <h1 class="title">화학 결합과 결합 에너지</h1>
+  <div class="en">Chemical Bonds and Bond Energies</div>
+  <div class="meta"><span class="chip cat">원리·운영 &gt; 화학공학 기초</span><a class="chip" href="../tag/%ED%99%94%ED%95%99%EA%B3%B5%ED%95%99.html">#화학공학</a><span class="chip">#결합 에너지</span><span class="chip">#해리 에너지</span><span class="chip">#식각 화학</span><span class="chip">#흡착</span><a class="chip" href="../tag/%EC%97%B4%EC%97%AD%ED%95%99.html">#열역학</a></div>
+  <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
+  <div class="prereq"><span class="pl-t">먼저 읽을 항목</span><a href="chemeng-basics.html">화학공학 기초</a></div>
+  <article><blockquote>
+<p>무엇이 무엇과 어떤 결합으로 붙어 있고, 그 결합이 얼마나 단단한가. 식각은 결합을 끊고 더 강한 결합을 만드는 일이라, 결합 에너지의 순서만 알아도 어떤 화학이 무엇을 깎는지가 대부분 보인다.</p>
+</blockquote>
+<h2 id="개요">개요</h2>
+<p>식각과 증착에서 일어나는 일은 결국 결합의 교환이다. 표면 원자를 붙잡고 있던 결합을 끊고, 플라즈마가 공급한 원자와 새 결합을 만들어 기체 분자로 떠나보내면 식각이다. 반대로 기체 분자의 결합을 끊고 표면과 새 결합을 만들어 남기면 증착이다. 따라서 공정 화학을 읽는 첫 질문은 둘이다. 끊어야 하는 결합은 얼마나 강한가, 그리고 새로 생기는 결합은 그보다 강한가.</p>
+<p>이 항목은 그 질문에 답하는 데 필요한 것을 모은다. 결합의 종류와 에너지 크기, 단위와 열에너지의 비교, 공정에 자주 나오는 결합의 해리 에너지, 그리고 그 숫자를 읽을 때 빠지기 쉬운 함정이다. 반응이 실제로 일어나는지(자유 에너지와 휘발성)는 <a class="wiki" href="thermo-volatility.html">화학 열역학·휘발성</a>, 얼마나 빨리 일어나는지는 <a class="wiki" href="adsorption-kinetics.html">흡착·반응 속도론</a>의 몫이고, 이 항목은 그 둘의 입력값이 되는 결합 세기를 다룬다.</p>
+<h2 id="결합의-종류와-에너지-크기">결합의 종류와 에너지 크기</h2>
+<p>결합은 전자를 어떻게 나누느냐로 나뉘고, 그에 따라 세기가 자릿수 단위로 달라진다. 아래 범위는 교재 전형값으로, 같은 종류 안에서도 원자 조합에 따라 넓게 흩어진다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>결합</th>
+<th>붙는 방식</th>
+<th>세기 (교재 전형 범위)</th>
+<th>공정에서 만나는 곳</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>공유 결합</td>
+<td>두 원자가 전자쌍을 나눔</td>
+<td>수 eV (대략 2~10 eV)</td>
+<td>Si–Si·Si–O·Si–N 막, C–F 패시베이션, 가스 분자</td>
+</tr>
+<tr>
+<td>이온 결합</td>
+<td>전자를 넘겨주고 정전기로 붙음</td>
+<td>수 eV (격자 전체로는 더 큼)</td>
+<td>금속 불화물·산화물(AlF₃·Y₂O₃ 부품 표면)</td>
+</tr>
+<tr>
+<td>극성 공유 결합</td>
+<td>공유이되 전자가 한쪽으로 치우침</td>
+<td>수 eV</td>
+<td>Si–F·Si–O·H–F — 대부분의 식각 생성물</td>
+</tr>
+<tr>
+<td>금속 결합</td>
+<td>전자가 격자 전체에 퍼짐</td>
+<td>원자당 수 eV(응집 에너지)</td>
+<td>배선 금속, 금속 식각</td>
+</tr>
+<tr>
+<td>수소 결합</td>
+<td>H가 F·O·N 사이에 다리를 놓음</td>
+<td>0.1~0.5 eV 안팎</td>
+<td>암모늄 염(AFS), 표면 흡착수, HF 이량체</td>
+</tr>
+<tr>
+<td>반데르발스</td>
+<td>순간 쌍극자끼리 끌림</td>
+<td>0.1 eV 이하~수십 meV</td>
+<td>물리흡착, 극저온 공정의 응축층</td>
+</tr>
+</tbody></table></div>
+<p>공정 관점에서 이 표는 두 구간으로 읽힌다. 수 eV의 결합(공유·이온·금속)은 열만으로는 끊기지 않고 화학 반응이나 이온·광자의 에너지가 있어야 끊긴다. 0.5 eV 안팎 이하의 결합(수소 결합·반데르발스)은 공정 온도의 열로 끊길 수 있어서, 온도로 붙였다 떼었다 할 수 있는 손잡이가 된다. <a class="wiki" href="afs-chemistry.html">AFS 화학</a>의 염이 상온에서 쌓였다가 가열로 떠나는 것도, 극저온 식각에서 응축층이 온도로 켜지고 꺼지는 것도 이 구간의 일이다.</p>
+<p><strong>물리흡착과 화학흡착.</strong> 표면에 붙는 방식도 같은 축에 놓인다. 물리흡착은 반데르발스 힘으로 붙어 약하고 되돌릴 수 있으며, 화학흡착은 표면 원자와 결합을 만들어 강하다. 식각의 첫 단계인 라디칼 흡착은 보통 화학흡착이고, 극저온 공정이나 ALE의 일부 흡착 단계는 물리흡착이 섞인다. 흡착이 얼마나 오래 머무는지는 아래 산술처럼 결합 세기에 지수적으로 달려 있다.</p>
+<h2 id="단위와-열에너지-산술">단위와 열에너지 — 산술</h2>
+<p>결합 에너지는 분자 하나당 eV로도, 몰당 kJ로도 쓴다. 문헌마다 단위가 달라 환산을 먼저 맞춰야 한다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1</mn><mtext> </mtext><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">V</mi></mrow><mo>=</mo><mn>96.485</mn><mtext> </mtext><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">J</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow><mo>=</mo><mn>23.06</mn><mtext> </mtext><mrow><mi mathvariant="normal">k</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">l</mi></mrow><mo separator="true">,</mo><mspace width="2em"/><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi><mtext> </mtext><mo stretchy="false">[</mo><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">V</mi></mrow><mo stretchy="false">]</mo><mo>=</mo><mn>8.617</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup><mtext> </mtext><mi>T</mi><mtext> </mtext><mo stretchy="false">[</mo><mi mathvariant="normal">K</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">1\ \mathrm{eV} = 96.485\ \mathrm{kJ/mol} = 23.06\ \mathrm{kcal/mol}, \qquad k_B T\,[\mathrm{eV}] = 8.617\times10^{-5}\,T\,[\mathrm{K}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mspace"> </span><span class="mord"><span class="mord mathrm" style="margin-right:0.0139em;">eV</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">96.485</span><span class="mspace"> </span><span class="mord"><span class="mord mathrm">kJ/mol</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">23.06</span><span class="mspace"> </span><span class="mord"><span class="mord mathrm">kcal/mol</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0315em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0502em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathrm" style="margin-right:0.0139em;">eV</span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">8.617</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">[</span><span class="mord mathrm">K</span><span class="mclose">]</span></span></span></span></span></div>
+<p><strong>열에너지의 크기.</strong> 300 K에서 kT는 0.0259 eV, 400 K에서 0.0345 eV, 450 K에서 0.0388 eV, 500 K에서 0.0431 eV다(<strong>산술</strong>). 공유 결합 수 eV는 kT의 100배가 넘으므로 공정 온도의 열로는 사실상 끊기지 않는다. 0.5 eV 이하의 결합은 kT의 수십 배 수준이라, 온도 몇십 도로 끊기는 빈도가 크게 바뀐다.</p>
+<p><strong>결합 세기와 표면 체류 시간.</strong> 표면에 붙은 분자가 머무는 평균 시간은 결합 에너지 E에 대해 τ = τ₀·exp(E/kT)로 어림한다. 진동 주기 τ₀ = 10⁻¹³ s를 <strong>가정값</strong>으로 두고 <strong>산술</strong>하면 다음과 같다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>결합 세기 E</th>
+<th>300 K (상온)</th>
+<th>450 K (약 177 °C)</th>
+<th>읽는 법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.1 eV</td>
+<td>약 5×10⁻¹² s</td>
+<td>약 1×10⁻¹² s</td>
+<td>붙자마자 떠남 — 물리흡착</td>
+</tr>
+<tr>
+<td>0.3 eV</td>
+<td>약 1×10⁻⁸ s</td>
+<td>약 2×10⁻¹⁰ s</td>
+<td>여전히 짧음</td>
+</tr>
+<tr>
+<td>0.5 eV</td>
+<td>약 3×10⁻⁵ s</td>
+<td>약 4×10⁻⁸ s</td>
+<td>상온에서 표면 반응에 참여할 만큼 머묾</td>
+</tr>
+<tr>
+<td>0.75 eV</td>
+<td>약 0.4 s</td>
+<td>약 3×10⁻⁵ s</td>
+<td>상온에서는 쌓이고, 가열하면 떠남</td>
+</tr>
+<tr>
+<td>1.0 eV</td>
+<td>약 6×10³ s</td>
+<td>약 0.02 s</td>
+<td>상온에서는 사실상 영구, 가열로 수십 ms</td>
+</tr>
+</tbody></table></div>
+<p>0.75~1 eV 줄은 상온에서 쌓였다가 150~200 °C 가열로 떠나는 구간이다. <a class="wiki" href="afs-removal.html">AFS 염의 제거와 잔류물</a>에서 Miyoshi 등(2017)이 TDS로 얻은 종별 활성화 에너지(NH₃ 0.96, HF 0.85, SiF₃ 0.71 eV, 0차 탈착 해석)가 정확히 이 구간에 있다. 수소 결합과 이온 결합이 섞인 염이 「온도로 켜고 끄는 층」이 되는 이유가 이 산술에 들어 있다.</p>
+<p><strong>광자 에너지.</strong> 광자 에너지는 E[eV] = 1239.84 / λ[nm]다. 파장 250·200·150·120·100 nm의 광자는 각각 4.96·6.20·8.27·10.3·12.4 eV다(<strong>산술</strong>). 진공 자외선(VUV, 대략 200 nm 이하)은 대부분의 공유 결합보다 큰 에너지를 지니므로, 흡수되면 결합을 직접 끊을 수 있다. <a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a>에서 VUV가 Si–CH₃ 결합을 끊는 경로가 이것이다.</p>
+<h2 id="공정에-자주-나오는-결합의-세기-세-표">공정에 자주 나오는 결합의 세기 — 세 표</h2>
+<p>결합의 「세기」라고 부르는 값은 무엇을 잰 것이냐에 따라 자릿수가 다르다. 그래서 물리량이 다른 값을 한 표에 섞지 않고 셋으로 나눈다. A는 기체 분자 속 결합, B는 표면에 붙은 층과 염, C는 이온이 막을 때려 떼어 내는 문턱이다.</p>
+<figure class="fig"><svg viewBox="0 0 760 400" role="img" aria-label="결합 에너지의 자릿수 — 표면에 붙은 층은 1 eV 아래, 분자 속 결합은 2~6 eV, 이온 문턱은 수십 eV" font-size="12"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">결합의 세기는 세 자릿수 층으로 나뉜다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">왼쪽 0~6 eV: 표면에 붙은 층(B표)과 분자 속 결합(A표). 오른쪽 0~60 eV: 이온이 떼어 내는 문턱(C표)과 VUV 광자</text><g><line x1="110" y1="330" x2="380" y2="330" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="334" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">0</text></g><g><line x1="110" y1="288.3" x2="380" y2="288.3" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="292.3" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">1</text></g><g><line x1="110" y1="246.7" x2="380" y2="246.7" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="250.7" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">2</text></g><g><line x1="110" y1="205" x2="380" y2="205" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="209" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">3</text></g><g><line x1="110" y1="163.3" x2="380" y2="163.3" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="167.3" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">4</text></g><g><line x1="110" y1="121.7" x2="380" y2="121.7" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="125.7" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">5</text></g><g><line x1="110" y1="80" x2="380" y2="80" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="100" y="84" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">6</text></g><line x1="110" y1="80" x2="110" y2="330" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><text x="100" y="66" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">eV</text><rect x="118" y="310.4" width="26" height="7.5" fill="var(--cds-chart-categorical-3)"></rect><rect x="150" y="290" width="26" height="10.416666666666686" fill="var(--cds-chart-categorical-4)"></rect><line x1="118" y1="328.9" x2="240" y2="328.9" stroke="var(--cds-chart-categorical-2)" stroke-width="2"></line><text x="184" y="292" font-size="11" fill="var(--cds-text-primary)">AFS 탈착 Eₐ 0.71~0.96 (실측)</text><text x="184" y="320.4" font-size="11" fill="var(--cds-text-primary)">AFS 결합 0.29~0.47 (계산)</text><text x="246" y="332.9" font-size="11" fill="var(--cds-text-secondary)">kT (300 K) 0.026</text><g><line x1="250" y1="261.3" x2="290" y2="261.3" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="265.3" font-size="11" fill="var(--cds-text-primary)">F–F 1.65</text></g><g><line x1="250" y1="232.5" x2="290" y2="232.5" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="236.5" font-size="11" fill="var(--cds-text-primary)">Si–Si 2.34</text></g><g><line x1="250" y1="212.5" x2="290" y2="212.5" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="216.5" font-size="11" fill="var(--cds-text-primary)">N–F 2.82</text></g><g><line x1="250" y1="196.3" x2="290" y2="196.3" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="202.8" font-size="11" fill="var(--cds-text-primary)">Si–Br 3.21</text></g><g><line x1="250" y1="176.7" x2="290" y2="176.7" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="183.2" font-size="11" fill="var(--cds-text-primary)">Si–N 3.68</text></g><g><line x1="250" y1="165.4" x2="290" y2="165.4" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="166.5" font-size="11" fill="var(--cds-text-primary)">Si–Cl 3.95</text></g><g><line x1="250" y1="135" x2="290" y2="135" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="139" font-size="11" fill="var(--cds-text-primary)">Si–O 4.68</text></g><g><line x1="250" y1="120.4" x2="290" y2="120.4" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="124.4" font-size="11" fill="var(--cds-text-primary)">C–F 5.03</text></g><g><line x1="250" y1="85.8" x2="290" y2="85.8" stroke="var(--cds-chart-categorical-1)" stroke-width="3"></line><text x="296" y="89.8" font-size="11" fill="var(--cds-text-primary)">Si–F · H–F 5.86</text></g><text x="250" y="352" font-size="11" fill="var(--cds-text-secondary)">분자 속 결합 (평균, A표)</text><text x="118" y="352" font-size="11" fill="var(--cds-text-secondary)">표면·염 (B표)</text><line x1="430" y1="60" x2="430" y2="360" stroke="var(--cds-chart-grid)"></line><g><line x1="520" y1="330" x2="740" y2="330" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="334" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">0</text></g><g><line x1="520" y1="288.3" x2="740" y2="288.3" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="292.3" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">10</text></g><g><line x1="520" y1="246.7" x2="740" y2="246.7" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="250.7" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">20</text></g><g><line x1="520" y1="205" x2="740" y2="205" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="209" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">30</text></g><g><line x1="520" y1="163.3" x2="740" y2="163.3" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="167.3" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">40</text></g><g><line x1="520" y1="121.7" x2="740" y2="121.7" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="125.7" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">50</text></g><g><line x1="520" y1="80" x2="740" y2="80" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="510" y="84" text-anchor="end" font-size="11" fill="var(--cds-text-secondary)">60</text></g><line x1="520" y1="80" x2="520" y2="330" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><text x="510" y="66" text-anchor="end" font-size="11.5" fill="var(--cds-text-secondary)">eV</text><rect x="528" y="278.3" width="26" height="25.83333333333337" fill="var(--cds-chart-reference-tint)"></rect><text x="562" y="295.3" font-size="11" fill="var(--cds-text-secondary)">VUV 광자 6~12 eV (200~100 nm)</text><line x1="528" y1="310.4" x2="554" y2="310.4" stroke="var(--cds-chart-categorical-4)" stroke-width="3"></line><text x="562" y="319" font-size="11" fill="var(--cds-text-primary)">Si 표면 결합 E_O 4.7</text><rect x="534" y="234.2" width="14" height="25.00000000000003" fill="var(--cds-chart-categorical-3)"></rect><text x="562" y="269" font-size="11" fill="var(--cds-text-primary)">극저온 ALE 이온 17~23 (막대)</text><line x1="528" y1="246.7" x2="554" y2="246.7" stroke="var(--cds-chart-categorical-2)" stroke-width="2.5"></line><text x="562" y="248.2" font-size="11" fill="var(--cds-text-primary)">Si 스퍼터 문턱 약 20</text><line x1="528" y1="225.8" x2="554" y2="225.8" stroke="var(--cds-chart-categorical-2)" stroke-width="2.5"></line><text x="562" y="225.7" font-size="11" fill="var(--cds-text-primary)">SiN 스퍼터 임계 약 25</text><line x1="528" y1="121.7" x2="554" y2="121.7" stroke="var(--cds-chart-categorical-2)" stroke-width="2.5"></line><text x="562" y="125.7" font-size="11" fill="var(--cds-text-primary)">SiO₂ 스퍼터 문턱 약 50</text><text x="530" y="352" font-size="11" fill="var(--cds-text-secondary)">이온 문턱 (C표)</text><text x="24" y="374" font-size="11" fill="var(--cds-text-secondary)">자체 제작. 값은 본문 A·B·C표와 같다(A: 교재 평균 결합 엔탈피, B: Lill 2024 DFT·Miyoshi 2017 TDS, C: Kanarik 2017·Hsiao 2024·Metzler 2016).</text><text x="24" y="390" font-size="11" fill="var(--cds-text-secondary)">층마다 물리량이 달라, 같은 축 위에 있어도 크기만 비교한다. VUV 범위는 파장 100~200 nm의 산술이다</text></svg><figcaption>그림 1. 결합 세기의 세 층 · 표면·염(B표), 분자 속 결합(A표), 이온 문턱(C표)을 한 눈에</figcaption></figure>
+<h3 id="A-기체-분자-속-결합-평균-결합-엔탈피-298-K">A. 기체 분자 속 결합 — 평균 결합 엔탈피 (298 K)</h3>
+<p>아래 값은 <strong>평균 결합 엔탈피</strong>다. 여러 분자에서 같은 종류 결합의 세기를 평균한 값이라, 특정 분자에서 특정 결합 하나를 끊는 해리 에너지와 같지 않다(아래 함정 절). 출처 약어: L1 = LibreTexts 「Bond Energies」 평균 결합 에너지 표(CRC 계열), L2 = Huheey 무기화학 4판 데이터 표(LibreTexts 수록), A = Atkins 물리화학 평균 결합 엔탈피 표, T = Brown 계열 일반화학 교재 평균 결합 에너지 표. 여러 교재 표를 교차 대조한 값이며, 교재마다 몇 % 차이가 난다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>결합</th>
+<th>kJ/mol</th>
+<th>eV</th>
+<th>출처 (변형값)</th>
+<th>공정에서 읽는 법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si–F</td>
+<td>565</td>
+<td>5.86</td>
+<td>L1·L2·A·T 일치</td>
+<td>만들어지는 쪽. Si가 만드는 결합 중 가장 강한 축 — F계 식각의 구동력</td>
+</tr>
+<tr>
+<td>H–F</td>
+<td>565</td>
+<td>5.86</td>
+<td>전부 일치. 이원자 HF의 값과 같은 급</td>
+<td>H 첨가가 F를 붙잡아 화학을 바꾸는 이유</td>
+</tr>
+<tr>
+<td>C–F</td>
+<td>485</td>
+<td>5.03</td>
+<td>L1·L2 (변형 453)</td>
+<td>FC 패시베이션막의 결합, 강해서 막이 버틴다</td>
+</tr>
+<tr>
+<td>Si–O</td>
+<td>452</td>
+<td>4.68</td>
+<td>L2 (368로 싣는 계열도 있음 — 기준 차이)</td>
+<td>SiO₂를 붙잡는 결합. Si–F와의 차이가 작아 라디칼만으로는 잘 안 끊긴다</td>
+</tr>
+<tr>
+<td>C–H</td>
+<td>413</td>
+<td>4.28</td>
+<td>전부 일치 (L2 411)</td>
+<td>레지스트·유기 마스크</td>
+</tr>
+<tr>
+<td>N–H</td>
+<td>391</td>
+<td>4.05</td>
+<td>T·L1 (L2 386)</td>
+<td>암모늄 염의 양이온 쪽</td>
+</tr>
+<tr>
+<td>Si–Cl</td>
+<td>381</td>
+<td>3.95</td>
+<td>A·T</td>
+<td>Si–F보다 약함 — Cl계 식각이 이온 의존적인 이유</td>
+</tr>
+<tr>
+<td>C–O</td>
+<td>358</td>
+<td>3.71</td>
+<td>전부 일치</td>
+<td>애싱 생성물 쪽</td>
+</tr>
+<tr>
+<td>Si–N</td>
+<td>355</td>
+<td>3.68</td>
+<td>단일 출처 — 출처 확인 필요(각주)</td>
+<td>Si–O보다 약한 편 — 질화막이 산화막보다 쉽게 깎이는 화학의 출발점</td>
+</tr>
+<tr>
+<td>C–C</td>
+<td>347</td>
+<td>3.60</td>
+<td>전부 일치</td>
+<td>유기막 골격</td>
+</tr>
+<tr>
+<td>C–Cl</td>
+<td>339</td>
+<td>3.51</td>
+<td>L1·T (L2 327)</td>
+<td>Cl계 잔류물</td>
+</tr>
+<tr>
+<td>Si–H</td>
+<td>323</td>
+<td>3.35</td>
+<td>T 계열 (Huheey 318, 계열 간 293–323)</td>
+<td>수소 종단 표면, H₂ 처리</td>
+</tr>
+<tr>
+<td>Si–C</td>
+<td>318</td>
+<td>3.30</td>
+<td>A·L2 (360으로 싣는 계열도 있음)</td>
+<td>SiC·SiCOH 골격, low-k의 메틸기 결합</td>
+</tr>
+<tr>
+<td>Si–Br</td>
+<td>310</td>
+<td>3.21</td>
+<td>T 계열</td>
+<td>Si–Cl보다도 약함 — HBr 게이트 식각</td>
+</tr>
+<tr>
+<td>N–F</td>
+<td>272</td>
+<td>2.82</td>
+<td>T·L1 (L2 283)</td>
+<td>NF₃의 결합. 약해서 NF₃가 잘 해리되어 F를 내놓는다</td>
+</tr>
+<tr>
+<td>Cl–Cl</td>
+<td>243</td>
+<td>2.52</td>
+<td>이원자 Cl₂ 값의 반올림</td>
+<td>Cl₂도 쉽게 원자로 갈라진다</td>
+</tr>
+<tr>
+<td>Si–Si</td>
+<td>226</td>
+<td>2.34</td>
+<td>T (L2 222)</td>
+<td>깎이는 쪽. 실리콘의 결합 중 약한 편이라 F 라디칼만으로도 끊긴다</td>
+</tr>
+<tr>
+<td>F–F</td>
+<td>159</td>
+<td>1.65</td>
+<td>T (이원자 154–159 범위)</td>
+<td>매우 약함 — F₂가 쉽게 원자 F로 갈라진다</td>
+</tr>
+<tr>
+<td>N≡N</td>
+<td>945</td>
+<td>9.79</td>
+<td>원자 N의 생성 엔탈피 472.4 kJ/mol × 2 (ATcT)</td>
+<td>매우 강함 — NF₃ 해리 생성물 N₂가 다시 반응하지 않는 이유</td>
+</tr>
+</tbody></table></div>
+<p><em>각주 — Si–N 355는 교재 전재 표 한 곳에서만 확인된 값이라 출처 확인이 남아 있다. 아래 함정 절의 고체 Si₃N₄ 역산값(결합당 약 332~341 kJ/mol)은 다른 물리량(고체 속 결합)이며, 이 행의 출처가 아니다.</em></p>
+<p>Al–F·Y–F 같은 부품 표면 불화물의 결합은 위 표와 기준이 다른 이원자 분자 값만 있어 이 표에 넣지 않았다. 두 결합 모두 Si–F보다 강한 축이라는 것, 그리고 생성물이 휘발하지 않아 보호층이 된다는 것은 <a class="wiki" href="thermo-volatility.html">화학 열역학·휘발성</a>과 <a class="wiki" href="plasma-resistant-parts.html">내플라즈마 부품 소재</a>에서 다룬다.</p>
+<h3 id="B-표면에-붙은-층과-염-0-3-1-eV의-세계">B. 표면에 붙은 층과 염 — 0.3~1 eV의 세계</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>대상</th>
+<th>값</th>
+<th>성격</th>
+<th>원문 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AFS 클러스터 SiF₄ + 2NH₄F의 결합</td>
+<td>0.47 eV</td>
+<td>DFT 계산값 (Lill et al. 2024)</td>
+<td>본문 H₂O 효과 절·Fig. 10</td>
+</tr>
+<tr>
+<td>NH₄⁺ 1개를 H₃O⁺로 치환</td>
+<td>0.41 eV</td>
+<td>같은 계산</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>NH₄⁺ 2개를 H₃O⁺로 치환</td>
+<td>0.35 eV</td>
+<td>같은 계산</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>(H₃O)(H₂O)₂SiF₅</td>
+<td>0.31 eV</td>
+<td>같은 계산</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>(H₂O)₄SiF₄</td>
+<td>0.29 eV</td>
+<td>같은 계산</td>
+<td>같음</td>
+</tr>
+<tr>
+<td>AFS 탈착 활성화 에너지 NH₃ · HF · SiF₃</td>
+<td>0.96 · 0.85 · 0.71 eV</td>
+<td>TDS 실측, 0차 탈착 해석 (Miyoshi et al. 2017)</td>
+<td>Fig. 8</td>
+</tr>
+</tbody></table></div>
+<p>계산값의 앞 세 줄은 양이온을 바꾼 것이고, 뒤 두 줄은 중성 H₂O가 배위한 조성이다. 물이 들어갈수록 붙음이 약해지는 방향이 한 계산 안에서 일관된다. 실측 탈착 활성화 에너지(0.7~1 eV)와 계산 결합 에너지(0.3~0.5 eV)는 물리량이 달라 직접 비교하지 않는다 — 앞의 것은 탈착의 장벽이고 뒤의 것은 클러스터의 결합이다.</p>
+<h3 id="C-이온이-떼어-내는-문턱-수십-eV의-세계">C. 이온이 떼어 내는 문턱 — 수십 eV의 세계</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>대상</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si 벌크 표면 결합 에너지 E_O</td>
+<td>4.7 eV (여섯 재료 범위 약 2~10 eV, 승화열로 추정)</td>
+<td>Kanarik et al. 2017 (<a class="wiki" href="ale.html">ALE (원자층 식각)</a> 경유)</td>
+</tr>
+<tr>
+<td>극저온 ALE의 이온 에너지 피크</td>
+<td>17~23 eV</td>
+<td>Hsiao et al. 2024 (<a class="wiki" href="ale.html">ALE (원자층 식각)</a> 경유)</td>
+</tr>
+<tr>
+<td>SiN 스퍼터 임계</td>
+<td>약 25 eV</td>
+<td>Hsiao et al. 2024 (같음)</td>
+</tr>
+<tr>
+<td>물리 스퍼터 문턱 Si · SiO₂</td>
+<td>약 20 · 약 50 eV</td>
+<td>Metzler et al. 2016 (<a class="wiki" href="ale.html">ALE (원자층 식각)</a>·<a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a> 경유)</td>
+</tr>
+</tbody></table></div>
+<p>C표의 문턱이 A표의 결합 에너지보다 한 자릿수 큰 이유는, 이온 하나가 원자 하나를 떼어 내려면 그 원자를 붙잡은 여러 결합을 한꺼번에 끊어야 하고, 이온 에너지의 상당 부분이 격자 진동과 다른 원자로 흩어지기 때문이다. 같은 Si라도 기체 Si–Si 결합 2.34 eV, 표면 결합 에너지 E_O 4.7 eV, 스퍼터 문턱 약 20 eV는 서로 다른 물리량이다.</p>
+<h2 id="숫자를-읽을-때의-함정-같은-Si-O-가-아니다">숫자를 읽을 때의 함정 — 같은 「Si–O」가 아니다</h2>
+<p>결합 에너지 표의 숫자는 무엇을 잰 값인지에 따라 같은 이름의 결합이라도 몇 배씩 달라진다. 이 차이를 섞으면 선택비 설명이 틀어진다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>이름</th>
+<th>무엇을 잰 값인가</th>
+<th>주의</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>결합 해리 에너지 (이원자)</td>
+<td>기체 상태 이원자 분자 X–Y 하나를 X와 Y로 쪼개는 에너지</td>
+<td>편람(CRC 등)에 가장 흔한 값. SiO 분자의 Si–O는 다중 결합 성격이라 고체 SiO₂ 속 단일 결합보다 훨씬 크다</td>
+</tr>
+<tr>
+<td>결합 해리 에너지 (다원자, 특정 결합)</td>
+<td>특정 분자에서 특정 결합 하나를 끊는 에너지</td>
+<td>같은 결합이라도 분자마다 다르다. 첫 번째와 네 번째 결합을 끊는 에너지가 같지 않다</td>
+</tr>
+<tr>
+<td>평균 결합 엔탈피</td>
+<td>여러 분자에서 같은 종류 결합의 세기를 평균한 값</td>
+<td>위 A표의 값. Hess 법칙 어림에 쓰며, 개별 해리 에너지와 일치하지 않는다. 예: CF₄의 첫 결합 D(CF₃–F)를 C–F 평균 485로 대신하면 안 된다</td>
+</tr>
+<tr>
+<td>고체 속 결합 에너지</td>
+<td>고체의 원자화(응집) 에너지를 원자당 결합 수로 나눈 어림</td>
+<td>막의 결합 세기를 비교할 때 쓰는 값</td>
+</tr>
+<tr>
+<td>표면 결합 에너지</td>
+<td>표면 원자 하나를 떼어 내는 에너지</td>
+<td>승화열로 추정(C표). Si는 4.7 eV로 기체 Si–Si 2.34 eV의 두 배다 — 섞으면 안 된다</td>
+</tr>
+</tbody></table></div>
+<p>고체 속 결합 하나의 세기는 다음처럼 어림한다. 원자화 엔탈피는 고체를 기체 원자로 다 흩어 놓는 데 드는 엔탈피이고, 분모는 그 고체의 화학식 단위 하나가 지닌 결합 수다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>E</mi><mo>ˉ</mo></mover><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mrow></msub><mo>≈</mo><mfrac><mrow><mi mathvariant="normal">Δ</mi><msub><mi>H</mi><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">z</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mrow></msub></mrow><msub><mi>n</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">s</mi></mrow></msub></mfrac><mo separator="true">,</mo><mspace width="2em"/><msub><mi>n</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">s</mi></mrow></msub><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">i</mi></mrow><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo separator="true">,</mo><mtext>  </mtext><msub><mi>n</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">s</mi></mrow></msub><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">S</mi><mi mathvariant="normal">i</mi><msub><mi mathvariant="normal">O</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo separator="true">,</mo><mtext>  </mtext><msub><mi>n</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">s</mi></mrow></msub><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">S</mi><msub><mi mathvariant="normal">i</mi><mn>3</mn></msub><msub><mi mathvariant="normal">N</mi><mn>4</mn></msub></mrow><mo stretchy="false">)</mo><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">\bar{E}_{\mathrm{bond}} \approx \frac{\Delta H_{\mathrm{atomization}}}{n_{\mathrm{bonds}}}, \qquad n_{\mathrm{bonds}}(\mathrm{Si}) = 2,\ \ n_{\mathrm{bonds}}(\mathrm{SiO_2}) = 4,\ \ n_{\mathrm{bonds}}(\mathrm{Si_3N_4}) = 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9701em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord katex-accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bond</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bonds</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0813em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">atomization</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bonds</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathrm">Si</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bonds</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathrm">Si</span><span class="mord"><span class="mord mathrm">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bonds</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathrm">S</span><span class="mord"><span class="mord mathrm">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathrm">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span></span></div>
+<p>결정 Si는 원자마다 네 결합을 이웃과 나눠 가지므로 원자당 두 결합, SiO₂는 Si 하나에 네 Si–O, Si₃N₄는 Si 셋에 열두 Si–N이다. 막끼리 「어느 결합이 더 단단한가」를 비교할 때는 이 고체 속 값으로 비교해야 하고, 이원자 분자 표의 값을 그대로 가져오면 안 된다.</p>
+<p><strong>산술 — 세 막의 고체 속 결합.</strong> 298 K의 표준 생성 엔탈피로 원자화 엔탈피를 만들고 결합 수로 나눈다. 입력값은 원자 Si(g) 450.6, O(g) 249.2, N(g) 472.4 kJ/mol(ATcT), SiO₂(석영) −910.9 kJ/mol, Si₃N₄는 문헌 사이 차이가 커서 −744.8(옛 편람) · −828.9 ± 3.4(O&#39;Hare 1999, F₂ 봄 열량측정) · −852 안팎(Navrotsky 열량측정) 세 값을 함께 쓴다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>고체</th>
+<th>원자화 엔탈피 (kJ/mol)</th>
+<th>결합 수</th>
+<th>결합당 (kJ/mol)</th>
+<th>A표 평균값과 비교</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si (결정)</td>
+<td>450.6</td>
+<td>2</td>
+<td>약 225</td>
+<td>Si–Si 226과 거의 같다</td>
+</tr>
+<tr>
+<td>SiO₂ (석영)</td>
+<td>450.6 + 2×249.2 + 910.9 = 약 1,860</td>
+<td>4</td>
+<td>약 465</td>
+<td>Si–O 452보다 약 3 % 크다</td>
+</tr>
+<tr>
+<td>Si₃N₄</td>
+<td>3×450.6 + 4×472.4 + (744.8~852) = 약 3,986~4,093</td>
+<td>12</td>
+<td>약 332~341</td>
+<td>Si–N 355보다 4~6 % 작다</td>
+</tr>
+</tbody></table></div>
+<p>막 기준으로 보면 결합 하나의 세기는 Si–O &gt; Si–N &gt; Si–Si 순이고, Si–O와 Si–N의 차이는 약 120~130 kJ/mol(약 1.3 eV)이다(<strong>산술</strong>). 질화막이 산화막보다 F계 화학에 먼저 반응하는 선택비의 열역학적 출발점이 이 차이다. 다만 Si₃N₄는 생성 엔탈피의 문헌값 자체가 100 kJ/mol 넘게 흩어져 있어, 결합당 값은 범위로 읽어야 한다.</p>
+<p><strong>표면 결합 에너지.</strong> <a class="wiki" href="ale.html">ALE (원자층 식각)</a>에서 다루는 Kanarik 등(2017)은 Si·Ge·C·W·GaN·SiO₂ 여섯 재료에서 ALE 시너지가 벌크 표면 결합 에너지 E_O와 함께 커짐을 보였고, E_O를 승화열로 추정했다. 막의 「단단함」을 하나의 숫자로 비교하려면 이런 고체 기준 값을 써야 한다는 사례다.</p>
+<h2 id="결합-에너지로-식각을-읽는-법">결합 에너지로 식각을 읽는 법</h2>
+<p><strong>Hess 법칙 어림.</strong> 반응 엔탈피는 끊는 결합과 만드는 결합의 차이로 어림한다.</p>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>H</mi><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">x</mi><mi mathvariant="normal">n</mi></mrow></msub><mo>≈</mo><mo>∑</mo><msub><mi>E</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mrow></msub><mo stretchy="false">(</mo><mtext>끊는 결합</mtext><mo stretchy="false">)</mo><mo>−</mo><mo>∑</mo><msub><mi>E</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mrow></msub><mo stretchy="false">(</mo><mtext>만드는 결합</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Delta H_{\mathrm{rxn}} \approx \sum E_{\mathrm{bond}}(\text{끊는 결합}) - \sum E_{\mathrm{bond}}(\text{만드는 결합})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0813em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">rxn</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bond</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord text"><span class="mord hangul_fallback">끊는</span><span class="mord"> </span><span class="mord hangul_fallback">결합</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">bond</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord text"><span class="mord hangul_fallback">만드는</span><span class="mord"> </span><span class="mord hangul_fallback">결합</span></span><span class="mclose">)</span></span></span></span></span></div>
+<p>만드는 결합이 끊는 결합보다 강하면 반응은 발열이고, 열역학적으로 진행할 수 있다. 이 어림에는 고체 쪽은 고체 속 결합 에너지를, 기체 쪽은 해당 분자의 해리 에너지를 넣어야 한다. 정확한 판단은 표준 생성 엔탈피와 엔트로피로 <a class="wiki" href="thermo-volatility.html">화학 열역학·휘발성</a>에서 한다.</p>
+<p><strong>F가 Si를 자발적으로 깎는 이유.</strong> Si 원자 하나를 SiF₄로 떠나보내려면 원자당 두 개의 Si–Si 결합을 끊고 네 개의 Si–F 결합을 만든다. 위 값으로 어림하면 끊는 쪽 2 × 225 = 450, 만드는 쪽 4 × 565 = 2,260 kJ/mol이라 F 원자 기준 약 −1,810 kJ/mol의 발열이다(<strong>산술</strong>, 평균 결합 엔탈피 어림). F 라디칼만으로도 진행한다. SiF₄의 높은 휘발성까지 겹쳐 이온 없이도 식각이 일어나는데, 이것이 F계 Si 식각이 등방적으로 흐르기 쉬운 이유다.</p>
+<p><strong>SiO₂에는 이온이 필요한 이유.</strong> SiO₂를 SiF₄로 바꾸려면 강한 Si–O를 끊어야 한다. 같은 어림으로 SiO₂ + 4F → SiF₄ + O₂는 끊는 쪽 4 × 465 = 1,860, 만드는 쪽 4 × 565 + 498(O₂, 원자 O 생성 엔탈피의 두 배) = 2,758 kJ/mol로 약 −900 kJ/mol이다(<strong>산술</strong>). 여전히 발열이지만 Si의 절반 수준이고, 결합 하나하나의 차이(Si–F 565 vs Si–O 465)가 작아 반응 장벽을 넘기 어렵다. 그래서 라디칼만으로는 반응이 느리다. Coburn과 Winters(1979)의 빔 실험에서 SiO₂와 Si₃N₄는 XeF₂ 단독으로는 반응하지 않고 전자 조사가 있을 때만 식각됐다(Fig. 5·6). 결합을 끊는 에너지를 외부(이온·전자·광자)에서 줘야 한다는 뜻이다. 산화막 식각이 이온 의존적이고 FC 패시베이션과 이온 에너지로 선택비를 만드는 구조가 여기서 시작한다(<a class="wiki" href="dry-etch.html">건식 식각</a>).</p>
+<p><strong>Cl·Br이 이방성에 유리한 이유.</strong> Si–Cl·Si–Br은 Si–F보다 약하다. 그래서 Cl 원자만으로는 Si 식각이 매우 느리고, 이온이 표면을 두들겨야 식각이 진행한다. Coburn과 Winters(1979)에서 Cl₂ 단독의 Si 식각률은 0.1 Å/min 미만이었고, Ar⁺ 이온을 함께 쏘면 정상상태에서 단독 합의 약 4배가 됐다(Fig. 3). 이온이 오는 곳(바닥)만 깎이고 이온이 오지 않는 곳(측벽)은 남으므로 프로파일이 수직에 가까워진다. 게이트 식각에 Cl₂·HBr이 쓰이는 이유다(<a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a>).</p>
+<p><strong>H 첨가가 화학을 바꾸는 이유.</strong> H–F는 매우 강한 결합이다. FC 플라즈마에 H₂나 CHF₃를 더하면 H가 F를 HF로 붙잡아 기상의 F 원자가 줄고, 표면에는 C가 많은 패시베이션막이 남는다. Si처럼 F에 기대어 깎이는 막은 느려지고, 산소가 C를 떼어 내는 산화막은 상대적으로 덜 느려져 선택비가 생긴다. 결합 에너지의 순서가 기상 조성을 바꾸고, 그 조성이 표면 막을 바꾸는 사슬이다.</p>
+<p><strong>NF₃가 좋은 F 공급원인 이유.</strong> NF₃의 N–F 결합은 약한 편이고, 해리 끝에 생기는 N₂의 N≡N은 매우 강하다. 그래서 NF₃는 플라즈마에서 쉽게 해리되어 F를 내놓고, 남은 N은 N₂로 묶여 다시 반응에 끼어들지 않는다. 원격 플라즈마 세정과 <a class="wiki" href="afs-chemistry.html">AFS 화학</a>의 F 공급원으로 NF₃가 쓰이는 이유다.</p>
+<p><strong>염은 결합이 아니라 「붙음」으로 남는다.</strong> (NH₄)₂SiF₆ 같은 암모늄 염은 SiF₆²⁻ 안의 Si–F 공유 결합은 강하지만, NH₄⁺와 SiF₆²⁻ 사이는 이온 결합과 N–H···F 수소 결합으로 붙어 있다. 염이 떠날 때 끊기는 것은 이 약한 쪽이다. Lill 등(2024)의 DFT 계산은 이 붙음의 세기를 0.47 eV로 얻었고, NH₄⁺를 H₃O⁺로 하나·둘 바꾸면 0.41·0.35 eV, H₂O가 배위한 조성에서는 0.29 eV까지 내려갔다(계산값, B표). 위 체류 시간 산술의 0.5 eV 줄에 해당하므로, 수분이 염의 제거 온도를 낮출 수 있다는 해석과 맞는다.</p>
+<p><strong>광자와 이온은 결합을 직접 끊는다.</strong> 플라즈마의 VUV 광자(약 6~12 eV)와 수십~수백 eV의 이온은 공유 결합 에너지보다 크다. 그래서 열로는 끊기지 않는 결합도 광자 흡수나 이온 충돌로 끊긴다. 식각에서는 이것이 이방성의 원천이고, low-k 막이나 게이트 산화막에서는 손상의 원천이다.</p>
+<h2 id="쓰임-정리">쓰임 정리</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>질문</th>
+<th>볼 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>이 가스로 이 막이 깎일 수 있나</td>
+<td>만드는 결합이 끊는 결합보다 강한가 (Hess 어림 → 열역학)</td>
+</tr>
+<tr>
+<td>라디칼만으로 되나, 이온이 필요하나</td>
+<td>두 결합 세기의 차이가 작을수록 이온·광자 도움이 필요</td>
+</tr>
+<tr>
+<td>두 막 사이 선택비의 화학적 출발점</td>
+<td>고체 속 결합 에너지의 차이 (이원자 표 값이 아님)</td>
+</tr>
+<tr>
+<td>흡착층·염이 몇 도에서 떠나나</td>
+<td>붙음의 세기 E와 τ = τ₀·exp(E/kT)</td>
+</tr>
+<tr>
+<td>플라즈마 광자가 막을 손상시키나</td>
+<td>광자 에너지(1239.84/λ)와 막의 약한 결합 비교</td>
+</tr>
+</tbody></table></div>
+<h2 id="한계">한계</h2>
+<p>결합 에너지는 「일어날 수 있는가」의 출발점일 뿐이다. 실제 반응 속도는 활성화 장벽이 정하고, 그 장벽은 결합 에너지의 차이와 같지 않다. 표면 결합은 이웃 원자, 이미 붙은 F·H·C의 양, 결정면에 따라 달라서, 기체 분자 표의 값을 표면에 그대로 옮기면 어긋난다. 생성물이 떠나지 못하면 결합 교환이 일어나도 식각은 멈추므로 휘발성 판단이 항상 함께 가야 한다. 이 항목의 Hess 어림은 순서와 방향을 보는 도구이고, 공정 조건의 정량 판단은 생성 엔탈피·엔트로피와 속도론으로 해야 한다.</p>
+<h2 id="관련-항목">관련 항목</h2>
+<ul>
+<li><a class="wiki" href="chemeng-basics.html">화학공학 기초</a> — 주제 허브</li>
+<li><a class="wiki" href="thermo-volatility.html">화학 열역학·휘발성</a> — 결합 교환이 실제로 진행하는지와 생성물 휘발성</li>
+<li><a class="wiki" href="adsorption-kinetics.html">흡착·반응 속도론</a> — 흡착 세기와 활성화 에너지</li>
+<li><a class="wiki" href="etch-gas-chemistry.html">식각 가스 화학</a> — 가스별로 만드는 결합과 생성물</li>
+<li><a class="wiki" href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> — 결합 에너지 축의 선택비</li>
+<li><a class="wiki" href="afs-chemistry.html">AFS 화학</a> — 이온·수소 결합으로 붙은 염</li>
+<li><a class="wiki" href="lowk-damage.html">low-k 플라즈마 손상</a> — VUV 광자와 Si–CH₃ 결합</li>
+</ul>
+<h2 id="근거">근거</h2>
+<ul>
+<li>A표 — 기상 평균 결합 엔탈피(298 K). 여러 교재 표의 교차 대조: LibreTexts 「Bond Energies」 표(CRC 계열), Huheey 무기화학 4판 데이터 표, Atkins 물리화학의 평균 결합 엔탈피 표, Brown 계열 일반화학 교재의 평균 결합 에너지 표. 행마다 일치·변형값을 적었다. 대조: Joy(2026-11-02). Si–N 355는 단일 출처라 출처 확인이 남아 있다(고체 역산값과는 별개). 원전 편람인 Luo, <em>Comprehensive Handbook of Chemical Bond Energies</em> (CRC Press, 2007)의 판·쪽 대조는 남아 있다.</li>
+<li>N≡N 945 kJ/mol과 원자 생성 엔탈피 Si(g) 450.6, O(g) 249.2, N(g) 472.4 kJ/mol — Active Thermochemical Tables(ATcT). SiO₂(석영) ΔfH° −910.9 kJ/mol — 표준 열화학 표. Si₃N₄ ΔfH° −744.8(옛 편람) · −828.9 ± 3.4(O&#39;Hare 1999) · 약 −852(Navrotsky 열량측정). 입력값 정리: Joy(2026-11-02). 고체 속 결합 표와 Hess 어림은 이 값으로 낸 <strong>산술</strong>이다.</li>
+<li>결합 종류별 세기 범위(공유·이온 수 eV, 수소 결합 0.1~0.5 eV 안팎, 반데르발스 0.1 eV 이하) — 교재 전형값이다.</li>
+<li>단위 환산·kT·체류 시간·광자 에너지 표 — 물리 상수에 의한 <strong>산술</strong>이고, 체류 시간 표의 τ₀ = 10⁻¹³ s는 <strong>가정값</strong>이다.</li>
+<li>이온 없이 SiO₂·Si₃N₄가 XeF₂에 반응하지 않음(Fig. 5·6), Cl₂ 단독 Si 식각 0.1 Å/min 미만과 이온 동시 조사 약 4배(Fig. 3): Coburn &amp; Winters, J. Appl. Phys. 50, 3189 (1979), <a href="https://doi.org/10.1063/1.326355" target="_blank" rel="noopener">doi:10.1063/1.326355</a>. 저장소에서 이미 대조된 인용이고, 수치·위치는 Joy의 원문 추출(2026-11-01)이다.</li>
+<li>표면 결합 에너지 E_O(Si 4.7 eV, 범위 약 2~10 eV): Kanarik et al., &quot;Predicting synergy in atomic layer etching&quot;, J. Vac. Sci. Technol. A 35, 05C302 (2017), <a href="https://doi.org/10.1116/1.4979019" target="_blank" rel="noopener">doi:10.1116/1.4979019</a>. <a class="wiki" href="ale.html">ALE (원자층 식각)</a> 본문을 경유한 값이고 원문 직접 추출은 남아 있다.</li>
+<li>극저온 ALE 이온 에너지 17~23 eV·SiN 스퍼터 임계 약 25 eV: Hsiao et al. (2024), <a href="https://doi.org/10.1021/acs.chemmater.4c01835" target="_blank" rel="noopener">doi:10.1021/acs.chemmater.4c01835</a>. 스퍼터 문턱 Si 약 20·SiO₂ 약 50 eV: Metzler et al., J. Vac. Sci. Technol. A 34 (2016), <a href="https://doi.org/10.1116/1.4935462" target="_blank" rel="noopener">doi:10.1116/1.4935462</a>. 둘 다 저장소에서 이미 대조된 인용이다.</li>
+<li>AFS 결합 0.47 → 0.41 → 0.35 → 0.31 → 0.29 eV — DFT 계산값(실측 아님, 본문 H₂O 효과 절·Fig. 10): Lill et al. (2024), <a href="https://doi.org/10.1116/6.0004019" target="_blank" rel="noopener">doi:10.1116/6.0004019</a>. 단계별 조성은 Joy의 원문 추출(2026-11-02).</li>
+<li>AFS 탈착 활성화 에너지 NH₃ 0.96, HF 0.85, SiF₃ 0.71 eV(TDS, 0차 탈착 해석, Fig. 8): Miyoshi et al., Jpn. J. Appl. Phys. 56, 06HB01 (2017), <a href="https://doi.org/10.7567/JJAP.56.06HB01" target="_blank" rel="noopener">doi:10.7567/JJAP.56.06HB01</a>. 저장소에서 이미 대조된 인용이다.</li>
+</ul>
+</article>
+  <nav class="prevnext"><a href="reaction-transport-limit.html">← 이전 · 반응 제한과 전달 제한</a><a href="thermo-volatility.html">다음 · 화학 열역학·휘발성 →</a></nav>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="thermo-volatility.html">화학 열역학·휘발성</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li><li><a href="afs-removal.html">AFS 염의 제거와 잔류물</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="lowk-damage.html">low-k 플라즈마 손상</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li><li><a href="plasma-resistant-parts.html">내플라즈마 부품 소재</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="ale.html">ALE (원자층 식각)</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="etch-gas-chemistry.html">식각 가스 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 플라즈마</span></li><li><a href="dry-etch.html">건식 식각</a> <span style="color:var(--sub)">— 공정 &gt; 식각</span></li><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="chemeng-basics.html">화학공학 기초</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="adsorption-kinetics.html">흡착·반응 속도론</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="vacuum-gas-transport.html">진공 흐름·기체 수송</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="reaction-transport-limit.html">반응 제한과 전달 제한</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="thermo-volatility.html">화학 열역학·휘발성</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="nucleation-growth.html">핵생성·성장</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="precursor-chemistry.html">전구체 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="cu-electroplating.html">Cu 전기도금·세정</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="exhaust-abatement.html">배기·저감</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ultra-high-purity.html">초고순도</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li></ul></div>
+  </div>
+ </div>
+</main>
+<footer class="bot">반도체 백과 · 2026년 11월 2일 기준 · 프리뷰 빌드 (기존 강의노트는 <a href="../index.html">루트 페이지</a>)</footer>
+<script>
+(function () {
+  var slug = "chemical-bonding", KEY = 'wiki-favs', btn = document.getElementById('favBtn');
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+  function paint() {
+    var on = load().indexOf(slug) >= 0;
+    btn.textContent = on ? '★ 즐겨찾기' : '☆ 즐겨찾기';
+    btn.classList.toggle('on', on);
+    if (window.renderSideFavs) window.renderSideFavs();
+  }
+  btn.addEventListener('click', function () {
+    var f = load();
+    f = f.indexOf(slug) >= 0 ? f.filter(function (s) { return s !== slug; }) : f.concat(slug);
+    try { localStorage.setItem(KEY, JSON.stringify(f)); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+<script>
+(function () {
+  var st = document.getElementById('sideToggle'), sn = document.getElementById('sideNav');
+  if (st && sn) st.addEventListener('click', function () {
+    var open = sn.classList.toggle('open');
+    st.setAttribute('aria-expanded', String(open));
+    st.textContent = open ? '목차 ▴' : '목차 ▾';
+  });
+  var FAV_TITLES = {"aes":"AES","edx":"EDX","ftir":"FTIR","raman":"라만 분광","sims":"SIMS","xps":"XPS","xrd":"XRD","ebeam-inspection":"e-beam 검사","optical-inspection":"광학 웨이퍼 검사","txrf":"TXRF","vpd-icp-ms":"VPD-ICP-MS","cv":"C-V 측정","four-point-probe":"4점 탐침","hall":"홀 측정","kelvin-tlm":"Kelvin·TLM","wat":"WAT","ellipsometer":"엘립소미터","interferometric-endpoint":"간섭 엔드포인트","ocd":"OCD","qcm":"QCM","reflectometer":"반사계","xrr":"XRR","metrology-overview":"계측 개요 — 무엇을 무엇으로 재나","langmuir":"랭뮤어 프로브","oes":"OES","qms":"QMS","vuv":"VUV 분광","afm":"AFM","cd-sem":"CD-SEM","fib-sem":"FIB-SEM","optical-microscope":"광학 현미경","profilometer":"단차계","sem":"SEM","tem":"TEM (투과전자현미경)","adsorption-kinetics":"흡착·반응 속도론","chemeng-basics":"화학공학 기초","chemical-bonding":"화학 결합과 결합 에너지","cu-electroplating":"Cu 전기도금·세정","exhaust-abatement":"배기·저감","nucleation-growth":"핵생성·성장","precursor-chemistry":"전구체 화학","reaction-transport-limit":"반응 제한과 전달 제한","thermo-volatility":"화학 열역학·휘발성","ultra-high-purity":"초고순도","vacuum-gas-transport":"진공 흐름·기체 수송","etch-gas-chemistry":"식각 가스 화학","etch-nonidealities":"식각 비이상 현상","etch-troubleshooting":"식각 문제 해결표","plasma-basics":"플라즈마 기초","plasma-map":"단계별 플라즈마 지도","afs-chemistry":"AFS 화학","lowk-damage":"low-k 플라즈마 손상","material-selectivity":"한 물질, 여러 역할 — 선택비 쌍","defect-control":"결함·오염 관리","process-control":"공정 제어","yield-model":"수율 모델","annealing":"어닐과 확산","cleaning":"세정","ion-implantation":"이온주입","afs-removal":"AFS 염의 제거와 잔류물","afs-selective-etch":"AFS 선택 식각","ale":"ALE (원자층 식각)","dry-etch":"건식 식각","etch-equipment":"식각 장비","har-etch":"고종횡비 식각","plasma-resistant-parts":"내플라즈마 부품 소재","plasma-sources":"플라즈마 소스 (CCP·ICP·원격)","recess":"리세스와 채널 릴리스","ald":"ALD (원자층 증착)","cmp":"CMP","deposition":"증착","epitaxy":"에피택시","beol":"BEOL","feol":"FEOL","mol":"MOL","process-flow":"반도체 제조 전체 흐름","rmg":"RMG (Gate-last)","sti":"STI","euv":"EUV","high-na-euv":"High-NA EUV","lithography":"리소그래피","multipatterning":"멀티패터닝","al2o3":"Al₂O₃","dielectrics":"절연막","high-k-oxides":"High-k 산화물 (HfO₂·ZrO₂)","si3n4":"Si₃N₄","sio2":"SiO₂","sioc":"SiOC","siocn":"SiOCN","dram":"DRAM","hbm":"HBM","nand-3d":"3D NAND","advanced-packaging":"첨단 패키징","bspdn":"BSPDN (후면 전력 공급)","packaging-materials":"패키징 소재","packaging":"패키징과 테스트","tsv":"TSV","air-spacer":"에어 스페이서","inner-spacer":"내부 스페이서","outer-spacer":"외부 스페이서","parasitic-capacitance":"기생 커패시턴스","spacer-materials":"스페이서 소재 비교","spacer":"스페이서","channel-materials":"반도체·채널 물질","dopants-memory-materials":"도펀트와 메모리 물질","metals":"금속·도체","sacrificial-materials":"공정 보조·희생 물질","silicon-wafer":"실리콘 웨이퍼","finfet":"FinFET","gaa":"GAA 나노시트","gate-stack":"게이트 스택 (HKMG)","sac":"SAC (자기정렬 컨택)"};
+  function escT(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  window.renderSideFavs = function () {
+    var listEl = document.querySelector('[data-fav-list]');
+    if (!listEl) return;
+    var emptyEl = document.querySelector('[data-fav-empty]');
+    var base = listEl.getAttribute('data-e-base') || '';
+    var favs = [];
+    try { favs = JSON.parse(localStorage.getItem('wiki-favs')) || []; } catch (e) {}
+    var items = favs.filter(function (s) { return Object.prototype.hasOwnProperty.call(FAV_TITLES, s); });
+    listEl.innerHTML = items.map(function (s) {
+      return '<li><a href="' + base.replace('__SLUG__', s) + '"><span class="fav-star">★</span> ' + escT(FAV_TITLES[s]) + '</a></li>';
+    }).join('');
+    listEl.hidden = items.length === 0;
+    if (emptyEl) emptyEl.hidden = items.length > 0;
+  };
+  window.renderSideFavs();
+  window.addEventListener('storage', function (ev) { if (ev.key === 'wiki-favs') window.renderSideFavs(); });
+})();
+</script>
+</body></html>
