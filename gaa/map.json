@@ -1,0 +1,683 @@
+{
+ "_설명": "GAA 문헌 지도 원본. doi_state: 대조(Crossref 확인, 링크 표시)·대기(DOI 문자열만)·없음. orig: 원문 보유(Joy 로컬·Zotero). used: 이 문헌을 근거로 쓴 백과 항목 slug. 고친 뒤 npm run build.",
+ "as_of": "2026-11-02",
+ "modules": [
+  {
+   "id": "flow",
+   "name": "전체 흐름·플랫폼"
+  },
+  {
+   "id": "epi",
+   "name": "Si/SiGe 초격자 에피"
+  },
+  {
+   "id": "indent",
+   "name": "측면 리세스·내부 스페이서"
+  },
+  {
+   "id": "release",
+   "name": "채널 릴리스"
+  },
+  {
+   "id": "reverse",
+   "name": "역방향 Si 선택 식각"
+  },
+  {
+   "id": "rmg",
+   "name": "RMG·다중 Vt"
+  },
+  {
+   "id": "sd",
+   "name": "S/D·바닥 절연·BPR"
+  },
+  {
+   "id": "cfet",
+   "name": "포크시트·CFET"
+  },
+  {
+   "id": "review",
+   "name": "계측·리뷰·튜토리얼"
+  }
+ ],
+ "refs": [
+  {
+   "module": "flow",
+   "cite": "Loubet et al., VLSI (2017)",
+   "kind": "학회",
+   "note": "적층 나노시트 첫 실증. 내부 스페이서 5 nm, Lg 12 nm @ CPP 44/48 nm, 기상 HCl 릴리스",
+   "doi": "10.23919/VLSIT.2017.7998183",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "gaa",
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "flow",
+   "cite": "Bae et al., IEDM (2018)",
+   "kind": "학회",
+   "note": "삼성 3 nm MBCFET. SS 65/67 mV/dec, FinFET 대비 Ion +31 %",
+   "doi": "10.1109/IEDM.2018.8614629",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "gaa"
+   ]
+  },
+  {
+   "module": "flow",
+   "cite": "Jeong et al., VLSI (2023)",
+   "kind": "학회",
+   "note": "삼성 SF3. 4 nm FinFET 대비 전력 34 %·로직 면적 0.79배(초록)",
+   "doi": "10.23919/VLSITechnologyandCir57934.2023.10185353",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "flow",
+   "cite": "Yeap et al., IEDM (2024)",
+   "kind": "학회",
+   "note": "TSMC N2. N3 대비 속도 +15 % 또는 전력 −30 %, SRAM 약 38 Mb/mm²",
+   "doi": "10.1109/IEDM50854.2024.10873475",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "gaa"
+   ]
+  },
+  {
+   "module": "flow",
+   "cite": "Fischer et al., VLSI (2025)",
+   "kind": "학회",
+   "note": "Intel 18A — RibbonFET + PowerVia 후면 전력",
+   "doi": "10.23919/VLSITechnologyandCir65189.2025.11075006",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "flow",
+   "cite": "Mukesh & Zhang, Electronics 11, 3589 (2022)",
+   "kind": "리뷰",
+   "note": "IBM 단계별 공정 흐름 리뷰, 바닥 절연(FBDI) 트레이드오프",
+   "doi": "10.3390/electronics11213589",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "epi",
+   "cite": "Loo et al., ECS Trans. (2024)",
+   "kind": "학회",
+   "note": "다중 조성 SiGe 스택 — 나노시트·포크시트·CFET 공용 에피(기탁본)",
+   "doi": "10.1149/11402.0015ecst",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "epi",
+   "cite": "Loo et al., ECS J. Solid State Sci. Technol. 14, 015003 (2025)",
+   "kind": "저널",
+   "note": "위 2024의 저널 전문판",
+   "doi": "10.1149/2162-8777/ada79f",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "epi",
+   "cite": "Yao et al., arXiv:2605.05667 (2026)",
+   "kind": "프리프린트",
+   "note": "650 → 600 °C 분할 성장, 하층 Ge 20 → 약 18.5 % 희석",
+   "doi": "10.48550/arXiv.2605.05667",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "gaa"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Sun et al., Nanomaterials 14, 928 (2024)",
+   "kind": "저널",
+   "note": "원격 NF₃ 사이클 식각 레시피 4종, 캐비티 ≤5 ± 0.3 nm, SiN 에치백 5.4",
+   "doi": "10.3390/nano14110928",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess",
+    "inner-spacer",
+    "gaa"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Durfee et al., ECS Trans. 104(4), 217 (2021)",
+   "kind": "학회",
+   "note": "IBM/TEL — 인덴트와 릴리스를 요구 조건이 다른 두 공정으로 분리(Table 1)",
+   "doi": "10.1149/10404.0217ecst",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess",
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Schmidt et al., IEEE Trans. Semicond. Manuf. (2022)",
+   "kind": "저널",
+   "note": "인덴트 4–10.5 nm 계측: 산란계측 + XRF + 머신러닝",
+   "doi": "10.1109/TSM.2022.3168585",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Lee et al., Nanomaterials 12, 3349 (2022)",
+   "kind": "저널",
+   "note": "TCAD — 하단 내부 스페이서 두께 변동 < 1 nm 요구",
+   "doi": "10.3390/nano12193349",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer",
+    "gaa"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Li et al., Nanomaterials 10, 793 (2020)",
+   "kind": "저널",
+   "note": "LPCVD SiN 내부 스페이서 무보이드 충전 + 에치백, Si 대비 > 100:1",
+   "doi": "10.3390/nano10040793",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer",
+    "gaa"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Barraud et al., IEDM (2016)",
+   "kind": "학회",
+   "note": "RMG 나노와이어 소자의 내부 스페이서 실증",
+   "doi": "10.1109/IEDM.2016.7838441",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Rawat et al., ESSDERC (2021)",
+   "kind": "학회",
+   "note": "TCAD — 내부 스페이서 k와 에피 응력의 성능 기여",
+   "doi": "10.1109/ESSDERC53440.2021.9631815",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Lee & Park, Electronics 10, 1395 (2021)",
+   "kind": "저널",
+   "note": "TCAD — 릴리스 중 나노시트 기계적 안정성",
+   "doi": "10.3390/electronics10121395",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Lee et al., IEEE TED (2023)",
+   "kind": "저널",
+   "note": "TCAD — 내부 스페이서 길이 최적화로 RC 지연 −19.5 %",
+   "doi": "10.1109/TED.2023.3326789",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "inner-spacer",
+    "recess"
+   ]
+  },
+  {
+   "module": "indent",
+   "cite": "Benoit et al., IEDM (2015)",
+   "kind": "학회",
+   "note": "저온(400 °C) SiCO 스페이서 k = 4.5",
+   "doi": "10.1109/IEDM.2015.7409656",
+   "doi_state": "대조",
+   "orig": false,
+   "used": [
+    "gaa"
+   ]
+  },
+  {
+   "module": "release",
+   "cite": "Loubet et al., IEDM (2019)",
+   "kind": "학회",
+   "note": "건식 등방 SiGe 선택 식각 약 150:1, 식각률 ∝ Ge %, 인덴트 균일도",
+   "doi": "10.1109/IEDM19573.2019.8993615",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess",
+    "inner-spacer"
+   ]
+  },
+  {
+   "module": "release",
+   "cite": "Sun et al., Nanomaterials 13, 504 (2023)",
+   "kind": "저널",
+   "note": "다단 릴리스 + 산화 처리, 168:1(터널 깊이 ÷ Si 손실), 시트 응력",
+   "doi": "10.3390/nano13030504",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess",
+    "gaa"
+   ]
+  },
+  {
+   "module": "release",
+   "cite": "Pargon et al., J. Vac. Sci. Technol. A 37, 040601 (2019)",
+   "kind": "저널",
+   "note": "원격 He/O₂ 산화 + NH₃/NF₃/O₂ 디지털 식각 — 사이클 식각의 원형",
+   "doi": "10.1116/1.5100087",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess"
+   ]
+  },
+  {
+   "module": "release",
+   "cite": "Loo et al., ECS Trans. 109(4), 135 (2022)",
+   "kind": "학회",
+   "note": "저온 Br₂ 증기 SiGe 식각 — 용도는 소자 절연",
+   "doi": "10.1149/10904.0135ecst",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "release",
+   "cite": "Lee, Lee & Lim, Solid State Phenom. 346, 40 (2023)",
+   "kind": "저널",
+   "note": "H₂O₂/CH₃COOH/HF 습식, 과아세트산이 속도 결정",
+   "doi": "10.4028/p-Bv9to5",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "release",
+   "cite": "Harada et al., Solid State Phenom. 314, 71 (2021)",
+   "kind": "저널",
+   "note": "SiGe 선택 식각액 3종 비교",
+   "doi": "10.4028/www.scientific.net/SSP.314.71",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "release",
+   "cite": "Kawarazaki et al., Solid State Phenom. 346, 23 (2023)",
+   "kind": "저널",
+   "note": "SiGe30 : SiGe15 = 338 습식 — 바닥·중간 절연용(초록)",
+   "doi": "10.4028/p-MsGv7Q",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "release",
+   "cite": "Kim et al., Solid State Phenom. 346, 34 (2023)",
+   "kind": "저널",
+   "note": "APM + HF/HCl, SiGe 15/25/40 % pH 의존",
+   "doi": "10.4028/p-irgat2",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "reverse",
+   "cite": "Li et al., Nanomaterials 15, 1469 (2025)",
+   "kind": "저널",
+   "note": "CF₄/O₂/N₂로 Si : SiGe 최대 58, Si-tip을 F:O 비로 억제",
+   "doi": "10.3390/nano15191469",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess"
+   ]
+  },
+  {
+   "module": "reverse",
+   "cite": "Li et al., Nanomaterials 16, 13 (2026)",
+   "kind": "저널",
+   "note": "같은 화학으로 서브핀을 화살 → 종 모양으로 조절, Si 4.2 nm/s·약 46",
+   "doi": "10.3390/nano16010013",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "recess"
+   ]
+  },
+  {
+   "module": "rmg",
+   "cite": "Zhang et al., IEDM (2017)",
+   "kind": "학회",
+   "note": "적층 나노시트 HKMG 기초와 다중 Vt 선택지",
+   "doi": "10.1109/iedm.2017.8268438",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "rmg",
+   "cite": "Bao et al., IEDM (2019)",
+   "kind": "학회",
+   "note": "부피 없는(다이폴) 다중 Vt + 금속 다중 Vt 결합",
+   "doi": "10.1109/iedm19573.2019.8993480",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "rmg",
+   "cite": "Yao et al., IEDM (2022)",
+   "kind": "학회",
+   "note": "WFM 없이 La/Al 다이폴만으로 n 7 + p 7 Vt",
+   "doi": "10.1109/iedm45625.2022.10019361",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "rmg",
+   "cite": "Oniki et al., Solid State Phenom. 314, 119 (2021)",
+   "kind": "저널",
+   "note": "imec RMG 패터닝과 다이폴 패터닝",
+   "doi": "10.4028/www.scientific.net/SSP.314.119",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "rmg",
+   "cite": "Oniki et al., Solid State Phenom. 282, 132 (2018)",
+   "kind": "저널",
+   "note": "다결정 TiN의 자기제한 「디지털」 습식 식각",
+   "doi": "10.4028/www.scientific.net/SSP.282.132",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "rmg",
+   "cite": "Iwahata et al., Solid State Phenom. 314, 127 (2021)",
+   "kind": "저널",
+   "note": "열 활성 오존으로 SOC 하드마스크 제거 — TiN 대비 선택",
+   "doi": "10.4028/www.scientific.net/SSP.314.127",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "sd",
+   "cite": "Zhang et al., IEDM (2019)",
+   "kind": "학회",
+   "note": "완전 바닥 절연(FBDI) — 상부 Ge % 저하로 릴리스 선택비 감소",
+   "doi": "10.1109/iedm19573.2019.8993490",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "sd",
+   "cite": "Rosseel et al., ECS Trans. 109(4), 93 (2022)",
+   "kind": "학회",
+   "note": "500 °C 이하 선택 Si:P, 480 °C에서 0.28 mΩ·cm",
+   "doi": "10.1149/10904.0093ecst",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "sd",
+   "cite": "Fan et al., IITC (2020)",
+   "kind": "학회",
+   "note": "적층 나노시트 S/D 기생 저항 감소, 감싸는 컨택(WAC) — 조사 보고서는 Lanzillo로 표기, Crossref 제목 일치 레코드의 저자는 Fan 외(대조 확인 대기)",
+   "doi": "10.1109/iitc47697.2020.9515644",
+   "doi_state": "대기",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "sd",
+   "cite": "Wang et al., IEEE TED 71, 4021 (2024)",
+   "kind": "저널",
+   "note": "S/D 가둠·단일 확산 차단 DTCO",
+   "doi": "10.1109/ted.2024.3403794",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "sd",
+   "cite": "Gupta et al., VLSI (2020)",
+   "kind": "학회",
+   "note": "imec 매립 전원선(BPR) 모듈 — W BPR + Ru 비아",
+   "doi": "10.1109/vlsitechnology18217.2020.9265113",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Weckx et al., IEDM (2019)",
+   "kind": "학회",
+   "note": "포크시트 개념 — n·p 사이 유전체 벽",
+   "doi": "10.1109/iedm19573.2019.8993635",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Mertens et al., VLSI (2021)",
+   "kind": "학회",
+   "note": "포크시트 첫 전기 소자, n–p 간격 17 nm 이중 WFM",
+   "doi": "",
+   "doi_state": "없음",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Subramanian et al., VLSI (2020)",
+   "kind": "학회",
+   "note": "300 mm 첫 모놀리식 CFET",
+   "doi": "10.1109/vlsitechnology18217.2020.9265073",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Huang et al., IEDM (2020)",
+   "kind": "학회",
+   "note": "Intel 자기정렬 NMOS-on-PMOS 적층 나노리본",
+   "doi": "10.1109/IEDM13553.2020.9372066",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Mertens et al., VLSI (2023)",
+   "kind": "학회",
+   "note": "CFET 중간 유전체 절연(MDI)",
+   "doi": "10.23919/vlsitechnologyandcir57934.2023.10185218",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Liao et al., IEDM (2023)",
+   "kind": "학회",
+   "note": "TSMC CFET 게이트 피치 48 nm 실증, 고 Ge 층으로 MDI 조기 형성",
+   "doi": "10.1109/IEDM45741.2023.10413672",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Park et al., IEDM (2023)",
+   "kind": "학회",
+   "note": "삼성 3D 적층 FET — 상하 S/D 절연, 절연층 건식 리세스. CPP 48·Lg 13 nm",
+   "doi": "10.1109/IEDM45741.2023.10413694",
+   "doi_state": "대조",
+   "orig": true,
+   "used": [
+    "gaa"
+   ]
+  },
+  {
+   "module": "cfet",
+   "cite": "Radosavljević et al., IEDM (2023)",
+   "kind": "학회",
+   "note": "Intel 적층 CMOS 인버터 60 nm 피치 + PowerVia·후면 컨택",
+   "doi": "10.1109/IEDM45741.2023.10413678",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Liao et al., IEDM (2024)",
+   "kind": "학회",
+   "note": "모놀리식 CFET 인버터 48 nm 피치, 수직 다이폴 패터닝",
+   "doi": "10.1109/IEDM50854.2024.10873334",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Demuynck et al., VLSI (2024)",
+   "kind": "학회",
+   "note": "imec MDI + 적층 컨택 — 전면 하부 컨택 제거로 생존율 11 → 79 %(초록)",
+   "doi": "10.1109/vlsitechnologyandcir46783.2024.10631349",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Liao et al., IEDM (2025)",
+   "kind": "학회",
+   "note": "CFET 링 오실레이터·SRAM 비트셀, 48 nm 미만 피치",
+   "doi": "10.1109/IEDM50572.2025.11353820",
+   "doi_state": "대조",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "cfet",
+   "cite": "Vandooren et al., IEDM (2025)",
+   "kind": "학회",
+   "note": "층 전사로 넣는 MDI(eMDI) 하이브리드 채널 CFET",
+   "doi": "10.1109/iedm50572.2025.11353866",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Breton et al., J. Micro/Nanopattern. Mater. Metrol. 21, 021206 (2022)",
+   "kind": "리뷰",
+   "note": "나노시트 계측 리뷰 — 원문 미확보(SPIE 구독 없음)",
+   "doi": "10.1117/1.JMM.21.2.021206",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Mertens, Solid State Phenom. 346, 8 (2023)",
+   "kind": "리뷰",
+   "note": "좁은 공간의 습식·기상 식각 난제 — 식각 엔지니어용 개관",
+   "doi": "10.4028/p-TzN0MD",
+   "doi_state": "대조",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Horiguchi (imec), 강연 덱 (2020)",
+   "kind": "업계",
+   "note": "나노시트 → 포크시트 → CFET 흐름과 세정",
+   "doi": "",
+   "doi_state": "없음",
+   "orig": true,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Horiguchi, EE Times (2021)",
+   "kind": "업계",
+   "note": "「나노시트 시대」 튜토리얼 기사",
+   "doi": "",
+   "doi_state": "없음",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Bowonder (Intel), IEDM 튜토리얼 (2024)",
+   "kind": "업계",
+   "note": "RibbonFET → 포크시트 → CFET 셀 높이 축소",
+   "doi": "",
+   "doi_state": "없음",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Chao (Intel), IEDM 단기 강좌 (2024)",
+   "kind": "업계",
+   "note": "RibbonFET 공정 난제 — Ge %·초격자 두께·시트 간격",
+   "doi": "",
+   "doi_state": "없음",
+   "orig": false,
+   "used": []
+  },
+  {
+   "module": "review",
+   "cite": "Cai & Horiguchi, VLSI 단기 강좌 (2021)",
+   "kind": "업계",
+   "note": "2 nm 공정·소자 단기 강좌",
+   "doi": "",
+   "doi_state": "없음",
+   "orig": false,
+   "used": []
+  }
+ ]
+}
