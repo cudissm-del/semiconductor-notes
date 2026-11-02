@@ -158,6 +158,11 @@ strong { font-weight: 700; }
 .read-btn[aria-pressed="true"] .box { background: var(--ok); border-color: var(--ok); }
 .read-btn[aria-pressed="true"] .box::after { content: ""; width: 7px; height: 4px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px); }
 .next { display: inline-block; margin: 26px 0 8px; font-weight: 650; font-size: 15px; }
+.flow-deeper { margin: 28px 0 4px; padding: 12px 16px 10px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
+.flow-deeper .fd-t { font-size: 13px; font-weight: 700; color: var(--ink-2); margin-bottom: 6px; }
+.flow-deeper ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.flow-deeper li a { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); font-size: 13.5px; font-weight: 600; }
+.flow-deeper li a:hover { text-decoration: underline; }
 
 .table-wrap { overflow-x: auto; margin: 6px 0 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.6; }
@@ -222,7 +227,7 @@ dialog#lightbox::backdrop { background: rgb(10 12 16 / .6); }
   th, td { padding: 8px 10px; }
 }
 @media print {
-  .top, .sidebar, .read-btn, .next { display: none !important; }
+  .top, .sidebar, .read-btn, .next, .flow-deeper { display: none !important; }
   .layout { display: block; }
   .chapter { break-inside: auto; }
 }
@@ -339,7 +344,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><strong>횡단 주제</strong> — <a class="xref" href="#ch-19">19장</a> 물질, <a class="xref" href="#ch-20">20장</a> 단계별 플라즈마 공정, <a class="xref" href="#ch-21">21장</a> 계측·분석</li>
 <li><strong>정리</strong> — <a class="xref" href="#ch-22">22장</a> 요약, 출처</li>
 </ol>
-<a class="next" href="#ch-2">다음 장 · 2. 전체 흐름과 칩 단면 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/process-flow.html">반도체 제조 전체 흐름</a></li><li><a href="v2/e/packaging.html">패키징과 테스트</a></li><li><a href="v2/e/chemeng-basics.html">화학공학 기초</a></li></ul></aside><a class="next" href="#ch-2">다음 장 · 2. 전체 흐름과 칩 단면 →</a></section>
 <section class="chapter" id="sec-ch-2" data-ch="ch-2"><div class="ch-head"><h2 id="ch-2">2. 전체 흐름과 칩 단면</h2><button class="read-btn" data-ch="ch-2" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><strong>웨이퍼는 어디서 오나.</strong> 팹의 출발점은 모래(규석)를 정제한 실리콘이다. 규석을 전기로에서 탄소로 환원하면 98% 순도의 야금급 실리콘이 되고, 이를 염화시켜 증류하는 지멘스(Siemens) 공정으로 99.9999999%(9N) 이상의 전자급 다결정 실리콘까지 정제한다.</p>
 <p>이 다결정을 단결정으로 길러내는 대표 방식이 CZ(초크랄스키)법이다. 석영 도가니에서 1414°C로 녹인 실리콘에 종자 결정을 담갔다가 회전시키며 천천히 끌어올리면, 용융액이 종자의 결정 방향을 따라 그대로 굳어 단결정 잉곳이 된다. 도펀트를 용융액에 넣어 웨이퍼의 저항률을 맞추고, 도가니의 석영에서 녹아든 산소가 결정에 조금 들어간다. 도가니 없이 전자기력으로 용융 구간을 떠받쳐 길러내는 FZ(부유대역)법은 더 순수하고 저항이 높아 전력 소자에 주로 쓴다.</p>
@@ -357,7 +362,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><a href="https://www.youtube.com/watch?v=OhoagUtQD3c" target="_blank" rel="noopener">반도체 라인 A to Z — 삼성반도체</a> — 실제 팹 라인과 8대 공정 투어 (한국어)</li>
 <li><a href="https://www.youtube.com/watch?v=IkRXpFIRUl4" target="_blank" rel="noopener">How are microchips made? — TED-Ed</a> — 5분 입문용 개요 (영어)</li>
 </ul>
-<a class="next" href="#ch-3">다음 장 · 3. 패터닝 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/process-flow.html">반도체 제조 전체 흐름</a></li><li><a href="v2/e/feol.html">FEOL</a></li><li><a href="v2/e/mol.html">MOL</a></li><li><a href="v2/e/beol.html">BEOL</a></li></ul></aside><a class="next" href="#ch-3">다음 장 · 3. 패터닝 →</a></section>
 <section class="chapter" id="sec-ch-3" data-ch="ch-3"><div class="ch-head"><h2 id="ch-3">3. 패터닝: 리소그래피와 멀티패터닝</h2><button class="read-btn" data-ch="ch-3" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>패터닝은 회로 모양을 감광막(PR)에 새기고(노광) 식각으로 아래 막에 옮기는 과정이다. 한 번에 찍을 수 있는 최소 선폭(해상도)이 수십 년간 미세화 속도를 정해 왔다.</p>
 <h3 id="s-3-1">3-1. 해상도를 정하는 세 변수</h3>
@@ -476,7 +481,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://doi.org/10.1116/1.2794048" target="_blank" rel="noopener">Extreme ultraviolet lithography: A review</a> — Wu &amp; Kumar, J. Vac. Sci. Technol. B 25, 1743 (2007). EUV 광학·마스크·레지스트를 아우른 고전 리뷰</li>
 </ul>
-<a class="next" href="#ch-4">다음 장 · 4. 플라즈마 식각 기초 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/lithography.html">리소그래피</a></li><li><a href="v2/e/multipatterning.html">멀티패터닝</a></li><li><a href="v2/e/euv.html">EUV</a></li><li><a href="v2/e/high-na-euv.html">High-NA EUV</a></li></ul></aside><a class="next" href="#ch-4">다음 장 · 4. 플라즈마 식각 기초 →</a></section>
 <section class="chapter" id="sec-ch-4" data-ch="ch-4"><div class="ch-head"><h2 id="ch-4">4. 플라즈마 식각 기초</h2><button class="read-btn" data-ch="ch-4" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>플라즈마 식각은 라디칼의 화학 반응과 이온의 방향성 에너지를 결합해, 원하는 막만 수직으로 깎는 기술이다. 둘을 따로 쓰면 각각 느리거나 선택비가 없지만, 함께 쓰면 식각 속도가 합보다 훨씬 커지는 <strong>이온–라디칼 시너지</strong>가 핵심이다.</p>
 <h3 id="s-4-1">4-1. 플라즈마 안에 있는 것</h3>
@@ -633,7 +638,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><a href="https://doi.org/10.1116/6.0003579" target="_blank" rel="noopener">Future of plasma etching for microelectronics: Challenges and opportunities</a> — Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024). 식각 로드맵 리뷰, CC BY 4.0 오픈액세스</li>
 <li><em>Principles of Plasma Discharges and Materials Processing</em> — Lieberman &amp; Lichtenberg, 2nd ed., Wiley (2005). 플라즈마 물리와 식각의 표준 교재</li>
 </ul>
-<a class="next" href="#ch-5">다음 장 · 5. 증착 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/dry-etch.html">건식 식각</a></li><li><a href="v2/e/plasma-basics.html">플라즈마 기초</a></li><li><a href="v2/e/etch-gas-chemistry.html">식각 가스 화학</a></li><li><a href="v2/e/thermo-volatility.html">화학 열역학·휘발성</a></li><li><a href="v2/e/plasma-sources.html">플라즈마 소스 (CCP·ICP·원격)</a></li><li><a href="v2/e/etch-equipment.html">식각 장비</a></li><li><a href="v2/e/etch-nonidealities.html">식각 비이상 현상</a></li><li><a href="v2/e/etch-troubleshooting.html">식각 문제 해결표</a></li><li><a href="v2/e/har-etch.html">고종횡비 식각</a></li></ul></aside><a class="next" href="#ch-5">다음 장 · 5. 증착 →</a></section>
 <section class="chapter" id="sec-ch-5" data-ch="ch-5"><div class="ch-head"><h2 id="ch-5">5. 증착: 막을 올리는 방법들</h2><button class="read-btn" data-ch="ch-5" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>증착 방식은 &quot;얼마나 고르게 덮는가(컨포멀성)&quot;, &quot;몇 도에서 하는가(열 예산)&quot;, &quot;막질이 어떤가&quot;의 세 축으로 고른다. 같은 SiO₂라도 <abbr class="term" tabindex="0" data-def="Shallow Trench Isolation. 얕은 트렌치를 산화막으로 채워 소자를 전기적으로 분리">STI</abbr> 갭필, 스페이서, <abbr class="term" tabindex="0" data-def="Back-End-Of-Line. 트랜지스터 위의 다층 금속 배선 공정">BEOL</abbr> 층간막은 각각 다른 방식으로 올린다.</p>
 <div class="table-wrap"><table>
@@ -726,7 +731,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://doi.org/10.1063/1.1713945" target="_blank" rel="noopener">General Relationship for the Thermal Oxidation of Silicon</a> — Deal &amp; Grove, J. Appl. Phys. 36, 3770 (1965). 열산화 선형-포물선 모델의 원전</li>
 </ul>
-<a class="next" href="#ch-6">다음 장 · 6. 원자층 공정 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/deposition.html">증착</a></li><li><a href="v2/e/epitaxy.html">에피택시</a></li><li><a href="v2/e/precursor-chemistry.html">전구체 화학</a></li><li><a href="v2/e/nucleation-growth.html">핵생성·성장</a></li><li><a href="v2/e/reaction-transport-limit.html">반응 제한과 전달 제한</a></li><li><a href="v2/e/vacuum-gas-transport.html">진공 흐름·기체 수송</a></li></ul></aside><a class="next" href="#ch-6">다음 장 · 6. 원자층 공정 →</a></section>
 <section class="chapter" id="sec-ch-6" data-ch="ch-6"><div class="ch-head"><h2 id="ch-6">6. 원자층 공정: ALD와 ALE</h2><button class="read-btn" data-ch="ch-6" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="Atomic Layer Deposition. 자기제한 반응을 한 층씩 반복하는 증착">ALD</abbr>(원자층 증착)와 <abbr class="term" tabindex="0" data-def="Atomic Layer Etching. 개질과 제거를 자기제한적으로 반복하는 식각">ALE</abbr>(원자층 식각)는 반응을 두 단계로 나누고, 각 단계가 표면에서 저절로 멈추게(자기제한) 만들어 사이클 수로 두께를 제어한다. 핵심은 &quot;한 사이클에 정확히 원자 한 층&quot;이 아니라 <strong>매 사이클이 스스로 멈춘다</strong>는 점이며, 그래서 웨이퍼 전체와 깊은 구조 속에서도 결과가 고르다.</p>
 <h3 id="s-6-1">6-1. ALD — 한 층씩 쌓기</h3>
@@ -838,7 +843,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><a href="https://doi.org/10.1116/6.0003579" target="_blank" rel="noopener">Future of plasma etching for microelectronics</a> — Oehrlein et al., J. Vac. Sci. Technol. B 42, 041501 (2024). ALE 절(II L) 참고</li>
 </ul>
 <p><strong>연구 연결 — 암모늄염 ALE.</strong> 이 장의 ALE 사이클(개질 → 제거)을 염 화학으로 구현한 대표 사례가 암모늄염 thermal-cyclic ALE다. 표면을 (NH₄)₂SiF₆ 염으로 바꾸는 단계가 자기제한적이고, 가열로 염을 분해하는 단계가 제거에 해당한다. Shinoda 등(2019)은 이 방식으로 Si₃N₄를 사이클 단위로 깎았고, 자세한 화학·선택비·진단은 <a href="#deep-afs">심화편</a>에 따로 모았다.</p>
-<a class="next" href="#ch-7">다음 장 · 7. 이온주입과 어닐 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/ald.html">ALD (원자층 증착)</a></li><li><a href="v2/e/ale.html">ALE (원자층 식각)</a></li><li><a href="v2/e/adsorption-kinetics.html">흡착·반응 속도론</a></li></ul></aside><a class="next" href="#ch-7">다음 장 · 7. 이온주입과 어닐 →</a></section>
 <section class="chapter" id="sec-ch-7" data-ch="ch-7"><div class="ch-head"><h2 id="ch-7">7. 이온주입과 어닐</h2><button class="read-btn" data-ch="ch-7" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>이온주입은 도펀트를 원하는 양(도즈)만큼 원하는 깊이(에너지)에 정확히 넣는 공정이고, 어닐은 그로 인한 손상을 복구하고 도펀트를 전기적으로 활성화하는 열처리다. 목표는 하나로 요약된다 — <strong>최대한 활성화하되, 최소한만 확산시킨다.</strong></p>
 <h3 id="s-7-1">7-1. 이온주입의 원리</h3>
@@ -927,7 +932,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><strong><abbr class="term" tabindex="0" data-def="Transient Enhanced Diffusion. 주입 손상 때문에 어닐 초기에 도펀트가 비정상적으로 빨리 확산하는 현상">TED</abbr> (과도 증속 확산)</strong> — 주입 손상이 만든 격자간 원자가 어닐 초기에 도펀트(특히 B)를 비정상적으로 빨리 확산시킨다. 짧고 뜨거운 어닐이 선호되는 이유다.</li>
 <li><strong>열 예산(thermal budget)</strong> — 공정 순서 전체가 고온 → 저온 순으로 짜이는 이유다(<a class="xref" href="#ch-22">22장</a> 요약). <abbr class="term" tabindex="0" data-def="High-k Metal Gate. HfO₂ 같은 고유전율 막 + 금속 전극으로 만든 게이트">HKMG</abbr>(<a class="xref" href="#ch-10">10장</a>), 금속 배선(<a class="xref" href="#ch-13">13장</a>)이 들어간 뒤에는 고온 어닐을 쓸 수 없다.</li>
 </ul>
-<a class="next" href="#ch-8">다음 장 · 8. CMP와 세정 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/ion-implantation.html">이온주입</a></li><li><a href="v2/e/annealing.html">어닐과 확산</a></li></ul></aside><a class="next" href="#ch-8">다음 장 · 8. CMP와 세정 →</a></section>
 <section class="chapter" id="sec-ch-8" data-ch="ch-8"><div class="ch-head"><h2 id="ch-8">8. CMP와 세정</h2><button class="read-btn" data-ch="ch-8" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="Chemical Mechanical Polishing. 슬러리와 패드로 표면을 평탄화하는 연마 공정">CMP</abbr>는 다음 층을 올리기 전에 표면을 평평하게 깎는 공정이고, 세정은 공정 사이사이 입자·유기물·금속 오염과 자연 산화막을 없애는 공정이다. 둘 다 눈에 띄지 않지만 단계 수가 많아 수율에 직접 영향을 준다.</p>
 <h3 id="s-8-1">8-1. CMP — 화학적 기계적 연마</h3>
@@ -1013,7 +1018,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><strong>건식 프리클린</strong>은 원격 플라즈마의 라디칼로 산화막을 염 형태로 바꾼 뒤 가열해 승화시키는 방식이다. <a class="xref" href="#ch-4">4장</a>의 원격 플라즈마, <a class="xref" href="#ch-11">11장</a>의 측면 리세스와 같은 계열의 화학이다.</li>
 <li>그 염의 정체가 바로 AFS((NH₄)₂SiF₆)다. 염이 남으면 입자가 되는데, Kwon과 Park(2022)은 HF 기상 식각 뒤 Si₃N₄ 표면에 생긴 AFS 분말의 완전 분해 조건(진공 오븐 170°C·120초 가열 + DIW 세정)을 제시했다. 이 화학을 선택 식각으로 확장한 이야기는 <a href="#deep-afs">심화편</a>에 모았다.</li>
 </ul>
-<a class="next" href="#ch-9">다음 장 · 9. FEOL (Front-End-Of-Line) →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/cmp.html">CMP</a></li><li><a href="v2/e/cleaning.html">세정</a></li><li><a href="v2/e/ultra-high-purity.html">초고순도</a></li></ul></aside><a class="next" href="#ch-9">다음 장 · 9. FEOL (Front-End-Of-Line) →</a></section>
 <section class="chapter" id="sec-ch-9" data-ch="ch-9"><div class="ch-head"><h2 id="ch-9">9. FEOL (Front-End-Of-Line): 트랜지스터를 만드는 단계</h2><button class="read-btn" data-ch="ch-9" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="Front-End-Of-Line. 실리콘 기판에 트랜지스터를 만드는 공정 단계">FEOL</abbr>은 실리콘 기판 자체에 트랜지스터를 형성하는 단계로, 칩 성능(속도, 누설전류, 문턱전압)의 대부분이 여기서 결정된다. 금속이 들어가기 전 단계라 고온 공정(1000°C 전후 어닐)이 허용된다.</p>
 <p><strong>대표 공정 순서 (로직 CMOS 기준)</strong></p>
@@ -1063,7 +1068,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 </tr>
 </tbody></table></div>
 <p><strong>메모리의 FEOL은 다르다.</strong> DRAM은 매립 게이트 셀 트랜지스터(<abbr class="term" tabindex="0" data-def="Buried Channel Array Transistor. 게이트를 Si 트렌치에 묻은 DRAM 셀 트랜지스터">BCAT</abbr>) 위에 고종횡비 커패시터를 세우고, 3D NAND는 산화막/질화막을 수백 층 쌓은 뒤 채널 홀을 한 번에 뚫는다. 그래서 메모리에서는 &quot;셀 공정 vs 주변회로(peri) 공정&quot; 구분이 더 자주 쓰인다. 자세한 구조와 공정은 <a class="xref" href="#ch-14">14</a>·<a class="xref" href="#ch-15"><a class="xref" href="#ch-15">15장</a></a>에서 다룬다.</p>
-<a class="next" href="#ch-10">다음 장 · 10. HKMG와 RMG →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/feol.html">FEOL</a></li><li><a href="v2/e/sti.html">STI</a></li><li><a href="v2/e/finfet.html">FinFET</a></li><li><a href="v2/e/spacer.html">스페이서</a></li><li><a href="v2/e/outer-spacer.html">외부 스페이서</a></li></ul></aside><a class="next" href="#ch-10">다음 장 · 10. HKMG와 RMG →</a></section>
 <section class="chapter" id="sec-ch-10" data-ch="ch-10"><div class="ch-head"><h2 id="ch-10">10. HKMG와 RMG: 게이트 스택</h2><button class="read-btn" data-ch="ch-10" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="High-k Metal Gate. HfO₂ 같은 고유전율 막 + 금속 전극으로 만든 게이트">HKMG</abbr>(High-k Metal Gate)는 SiO₂ 게이트 절연막을 고유전율 막(HfO₂)으로, poly-Si 전극을 금속으로 바꾼 게이트 구조다. 45nm 세대 이후 거의 모든 고성능 로직이 HKMG를 쓰며, 지금은 더미 게이트를 나중에 교체하는 <abbr class="term" tabindex="0" data-def="Replacement Metal Gate. 더미 게이트로 고온 공정을 끝낸 뒤 금속 게이트로 교체하는 gate-last 방식">RMG</abbr>(gate-last) 방식이 표준이다.</p>
 <h3 id="s-10-1">10-1. 왜 High-k인가 — EOT</h3>
@@ -1156,7 +1161,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://doi.org/10.1016/j.mser.2014.11.001" target="_blank" rel="noopener">High-K materials and metal gates for CMOS applications</a> — Robertson &amp; Wallace, Mater. Sci. Eng. R 88, 1 (2015). High-k 밴드 정렬과 일함수의 표준 리뷰</li>
 </ul>
-<a class="next" href="#ch-11">다음 장 · 11. GAA 심화 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/gate-stack.html">게이트 스택 (HKMG)</a></li><li><a href="v2/e/high-k-oxides.html">High-k 산화물 (HfO₂·ZrO₂)</a></li><li><a href="v2/e/rmg.html">RMG (Gate-last)</a></li></ul></aside><a class="next" href="#ch-11">다음 장 · 11. GAA 심화 →</a></section>
 <section class="chapter" id="sec-ch-11" data-ch="ch-11"><div class="ch-head"><h2 id="ch-11">11. GAA 심화: 구조와 리세스 공정</h2><button class="read-btn" data-ch="ch-11" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="Gate-All-Around. 게이트가 채널을 4면 모두 감싸는 트랜지스터">GAA</abbr>(Gate-All-Around)는 게이트가 채널을 4면 모두 감싸는 트랜지스터로, 3nm·2nm급 최신 로직 공정의 표준 구조다. 이 장은 GAA가 왜 필요한지, 어떻게 만드는지, 그 중 핵심 단계인 리세스 공정을 다룬다.</p>
 <h3 id="s-11-1">11-1. GAA란 무엇이고 왜 필요한가</h3>
@@ -1200,7 +1205,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><strong>방식</strong>: 이온 충격 없는 라디칼 기반 식각(원격 플라즈마의 F 라디칼 등). 채널 릴리스와 같은 화학이지만, 이 단계는 수 nm에서 정확히 멈추는 제어가 관건이다.</li>
 </ul>
 <p><strong>③ 내부 스페이서 증착 + 에치백</strong></p>
-<p>ALD로 절연막(SiN 계열)을 컨포멀하게 덮어 오목부를 채운 뒤, 바깥에 남은 막을 등방성으로 걷어내 오목부 안에만 남긴다. 이 에치백도 넓게 보면 &quot;절연막 리세스&quot;다. Si 시트 옆면이 깨끗이 드러나야 다음 S/D 에피가 잘 자란다.</p>
+<p>절연막(SiN 계열)을 컨포멀하게 증착해 오목부를 채운 뒤(소자 수준 실증은 LPCVD SiN), 바깥에 남은 막을 등방성으로 걷어내 오목부 안에만 남긴다. 이 에치백도 넓게 보면 &quot;절연막 리세스&quot;다. Si 시트 옆면이 깨끗이 드러나야 다음 S/D 에피가 잘 자란다.</p>
 <p><strong>스페이서 물질 — SiN에서 SiOCN · SiCO로</strong></p>
 <p>게이트 바깥 스페이서와 내부 스페이서는 게이트와 S/D·컨택 사이에 끼어 있어, 막의 유전율이 곧 기생 용량이다. 그래서 SiN(k≈7) 대신 O·C를 넣은 저유전 막이 쓰인다. 다만 스페이서는 이후의 더미 게이트 제거, SiGe 채널 릴리스, HF 세정을 모두 견뎌야 하므로, k만 낮아서는 안 되고 식각 내성이 함께 있어야 한다. 실제 양산 노드에서 어느 층에 어떤 막을 쓰는지는 공개되지 않았고, 아래는 특허·학회 논문·장비 업체 자료에 나타난 사용처다(2026년 10월 기준).</p>
 <div class="table-wrap"><table>
@@ -1220,8 +1225,8 @@ table { overflow-wrap: normal; word-break: keep-all; }
 </tr>
 <tr>
 <td>SiOCN</td>
-<td>~4~5</td>
-<td>게이트 바깥 스페이서(SiBCN과 함께 대표 후보, SiN과 다층으로도 씀), 내부 스페이서</td>
+<td>~4~5.2</td>
+<td>게이트 바깥 스페이서(SiBCN과 함께 대표 후보, SiN과 다층으로도 씀), 내부 스페이서(TCAD·특허 단계, 소자 실증 없음)</td>
 <td>N이 식각 내성을, O·C가 낮은 k를 맡는 절충형</td>
 </tr>
 <tr>
@@ -1317,7 +1322,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><a href="https://doi.org/10.3390/nano10040793" target="_blank" rel="noopener">Study of Silicon Nitride Inner Spacer Formation in Process of Gate-all-around Nano-Transistors</a> — Li et al., Nanomaterials 10, 793 (2020). SiN 내부 스페이서의 증착·에치백 공정 실험, 오픈액세스</li>
 <li><a href="https://doi.org/10.1109/IEDM.2015.7409656" target="_blank" rel="noopener">Interest of SiCO low k=4.5 spacer deposited at low temperature (400°C) in the perspective of 3D VLSI integration</a> — Benoit et al., IEDM (2015), 8.6.1. SiN을 대체하는 저온 SiCO 스페이서</li>
 </ul>
-<a class="next" href="#ch-12">다음 장 · 12. MOL (Middle-Of-Line) →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/gaa.html">GAA 나노시트</a></li><li><a href="v2/e/recess.html">리세스와 채널 릴리스</a></li><li><a href="v2/e/inner-spacer.html">내부 스페이서</a></li><li><a href="v2/e/cfet.html">CFET (상보형 FET)</a></li></ul></aside><a class="next" href="#ch-12">다음 장 · 12. MOL (Middle-Of-Line) →</a></section>
 <section class="chapter" id="sec-ch-12" data-ch="ch-12"><div class="ch-head"><h2 id="ch-12">12. MOL (Middle-Of-Line): 트랜지스터와 배선을 잇는 다리</h2><button class="read-btn" data-ch="ch-12" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="Middle-Of-Line. 트랜지스터 단자와 첫 금속 배선을 잇는 컨택 층">MOL</abbr>은 트랜지스터의 세 단자(게이트, 소스, 드레인)를 첫 금속 배선층에 연결하는 국부 컨택 층이다. 과거에는 <abbr class="term" tabindex="0" data-def="Front-End-Of-Line. 실리콘 기판에 트랜지스터를 만드는 공정 단계">FEOL</abbr>/BEOL 두 단계로만 나눴지만, 20nm대 이하에서 컨택 저항과 기생 커패시턴스가 성능을 좌우하면서 별도 단계로 분리됐다.</p>
 <p><strong>구성 요소</strong></p>
@@ -1347,7 +1352,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <figure class="fig" tabindex="0" role="button" aria-label="그림 크게 보기: SAC 자기정렬 컨택 단면 · SiN 캡과 스페이서가 단락을 막는 구조"><svg viewBox="0 0 760 344" role="img" aria-label="컨택이 게이트 쪽으로 겹쳐도 SiN 캡과 스페이서가 단락을 막는다" font-size="13"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">컨택이 옆으로 겹쳐도 SiN 캡이 단락을 막는다 — SAC</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">오정렬을 허용하는 대신 산화막/SiN 선택비로 버티는 구조 (단순화 단면)</text><rect x="90" y="84" width="580" height="178" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="90" y="262" width="580" height="30" fill="var(--cds-chart-reference-tint)" stroke="var(--cds-chart-axis)" stroke-width="1"></rect><rect x="272" y="252" width="216" height="10" fill="var(--cds-chart-categorical-5)" fill-opacity="0.55" stroke="var(--cds-chart-categorical-5)" stroke-width="1"></rect><rect x="262" y="92" width="100" height="160" fill="var(--cds-chart-categorical-4)" fill-opacity="0.5" stroke="var(--cds-chart-categorical-4)" stroke-width="1.25"></rect><g><rect x="176" y="150" width="80" height="102" fill="var(--cds-chart-categorical-1)" fill-opacity="0.25" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="176" y="134" width="80" height="16" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85" stroke="var(--cds-chart-categorical-2)" stroke-width="1"></rect><rect x="160" y="150" width="16" height="112" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85" stroke="var(--cds-chart-categorical-2)" stroke-width="1"></rect><rect x="256" y="150" width="16" height="112" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85" stroke="var(--cds-chart-categorical-2)" stroke-width="1"></rect></g><g><rect x="504" y="150" width="80" height="102" fill="var(--cds-chart-categorical-1)" fill-opacity="0.25" stroke="var(--cds-chart-categorical-1)" stroke-width="1.25"></rect><rect x="504" y="134" width="80" height="16" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85" stroke="var(--cds-chart-categorical-2)" stroke-width="1"></rect><rect x="488" y="150" width="16" height="112" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85" stroke="var(--cds-chart-categorical-2)" stroke-width="1"></rect><rect x="584" y="150" width="16" height="112" fill="var(--cds-chart-categorical-2)" fill-opacity="0.85" stroke="var(--cds-chart-categorical-2)" stroke-width="1"></rect></g><path d="M84 142H170" stroke="var(--cds-chart-axis)" stroke-width="1"></path><path d="M84 202H170" stroke="var(--cds-chart-axis)" stroke-width="1"></path><path d="M606 202H676" stroke="var(--cds-chart-axis)" stroke-width="1"></path><path d="M494 257H676" stroke="var(--cds-chart-axis)" stroke-width="1"></path><text x="312" y="76" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">S/D 컨택 (W)</text><text x="78" y="146" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">SiN 캡</text><text x="78" y="206" text-anchor="end" font-weight="600" fill="var(--cds-text-primary)">게이트</text><text x="682" y="206" font-weight="600" fill="var(--cds-text-primary)">SiN 스페이서</text><text x="682" y="261" font-weight="600" fill="var(--cds-text-primary)">실리사이드</text><text x="380" y="281" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">Si 기판 (아래는 S/D 영역)</text><text x="380" y="322" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">핵심은 선택비 — 산화막은 빠르게, SiN은 거의 깎이지 않게 (4장의 선택비가 여기서 쓰인다)</text></svg><figcaption>그림 29. SAC 자기정렬 컨택 단면 · SiN 캡과 스페이서가 단락을 막는 구조</figcaption></figure>
 <p><strong>선택비의 원리 (<a class="xref" href="#s-4-4">4-4장</a>의 응용).</strong> C₄F₆·C₄F₈은 표면에 CFₓ 폴리머를 쌓는다. 산화막에서는 막의 산소가 폴리머를 태워 식각이 계속되고, SiN 위에서는 폴리머가 쌓여 식각이 멈춘다. 가장 취약한 곳은 캡의 모서리(숄더)다. 이온이 비스듬히 맞아 모서리가 깎이면(faceting) 게이트와 컨택이 단락된다. 그래서 숄더 손실량이 SAC 식각의 핵심 지표다.</p>
 <p><strong>COAG (Contact Over Active Gate).</strong> 게이트 컨택을 소자 바깥이 아니라 활성 영역 바로 위에 두어 셀 높이를 줄이는 기술이다. 이를 위해 게이트 캡과 S/D 컨택 캡을 <strong>서로 다른 물질</strong>로 만든다. 게이트 컨택을 뚫을 때는 S/D 캡이 버티고, S/D 컨택을 뚫을 때는 게이트 캡이 버티는 <strong>이중 선택비</strong> 구조다. Intel이 10nm 세대에서 처음 도입한 것으로 알려져 있다.</p>
-<a class="next" href="#ch-13">다음 장 · 13. BEOL (Back-End-Of-Line) →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/mol.html">MOL</a></li><li><a href="v2/e/sac.html">SAC (자기정렬 컨택)</a></li><li><a href="v2/e/parasitic-capacitance.html">기생 커패시턴스</a></li><li><a href="v2/e/air-spacer.html">에어 스페이서</a></li></ul></aside><a class="next" href="#ch-13">다음 장 · 13. BEOL (Back-End-Of-Line) →</a></section>
 <section class="chapter" id="sec-ch-13" data-ch="ch-13"><div class="ch-head"><h2 id="ch-13">13. BEOL (Back-End-Of-Line): 다층 금속 배선</h2><button class="read-btn" data-ch="ch-13" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="Back-End-Of-Line. 트랜지스터 위의 다층 금속 배선 공정">BEOL</abbr>은 수십억 개 트랜지스터를 회로로 엮는 금속 배선망이며, 최신 로직 칩은 10~15층 이상의 금속층을 쌓는다. 금속이 들어간 뒤라 공정 온도는 약 400°C 이하로 제한된다.</p>
 <p><strong>계층 구조 — 아래는 촘촘하고 위로 갈수록 굵어진다</strong></p>
@@ -1499,7 +1504,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><strong>Intel</strong> — 18A의 PowerVia가 업계 첫 상용 BSPDN이다. 첫 제품 Panther Lake가 2025년 말 양산에 들어갔고, 서버용 Clearwater Forest가 뒤를 잇는다. 14A는 직접 접촉 방식 PowerDirect로 발전시킨다.</li>
 <li><strong>TSMC</strong> — A16에 Super Power Rail을 처음 적용하며, 2026년 하반기 양산을 목표로 한다. 뒷면에서 S/D에 직접 붙는 방식으로 면적 이득이 가장 크지만 구현도 가장 복잡하다. 이후 노드로 확대할 계획이다.</li>
 </ul>
-<a class="next" href="#ch-14">다음 장 · 14. DRAM →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/beol.html">BEOL</a></li><li><a href="v2/e/cu-electroplating.html">Cu 전기도금·세정</a></li><li><a href="v2/e/sioc.html">SiOC</a></li><li><a href="v2/e/lowk-damage.html">low-k 플라즈마 손상</a></li><li><a href="v2/e/bspdn.html">BSPDN (후면 전력 공급)</a></li></ul></aside><a class="next" href="#ch-14">다음 장 · 14. DRAM →</a></section>
 <section class="chapter" id="sec-ch-14" data-ch="ch-14"><div class="ch-head"><h2 id="ch-14">14. DRAM</h2><button class="read-btn" data-ch="ch-14" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>DRAM은 트랜지스터 1개와 커패시터 1개(1T1C)로 1비트를 저장하는 메모리다. 커패시터의 전하가 조금씩 새므로 주기적으로 다시 써 주는 리프레시가 필요하다. 미세화의 병목은 &quot;좁은 면적에서 충분한 전하를 담는 커패시터&quot;와 &quot;누설이 적은 셀 트랜지스터&quot;다.</p>
 <h3 id="s-14-1">14-1. 셀 구조</h3>
@@ -1574,7 +1579,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <td>2026년 말 4F² 기반 서버 DRAM 출시 계획 발표</td>
 </tr>
 </tbody></table></div>
-<a class="next" href="#ch-15">다음 장 · 15. 3D NAND →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/dram.html">DRAM</a></li></ul></aside><a class="next" href="#ch-15">다음 장 · 15. 3D NAND →</a></section>
 <section class="chapter" id="sec-ch-15" data-ch="ch-15"><div class="ch-head"><h2 id="ch-15">15. 3D NAND</h2><button class="read-btn" data-ch="ch-15" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>3D NAND는 워드라인 층을 수백 장 쌓고, 그 더미를 수직으로 관통하는 구멍(채널홀) 하나하나에 셀을 줄줄이 만드는 구조다. 평면 미세화 대신 <strong>층수</strong>로 용량을 늘리므로, 증착·식각의 종횡비 한계가 곧 기술 한계다.</p>
 <h3 id="s-15-1">15-1. 셀 구조</h3>
@@ -1635,7 +1640,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://doi.org/10.1109/VLSIT.2007.4339708" target="_blank" rel="noopener">Bit Cost Scalable Technology with Punch and Plug Process for Ultra High Density Flash Memory</a> — Tanaka et al., Symp. VLSI Technol. (2007). BiCS, 즉 3D NAND 적층 구조의 원전</li>
 </ul>
-<a class="next" href="#ch-16">다음 장 · 16. 후공정 (Back-end) →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/nand-3d.html">3D NAND</a></li></ul></aside><a class="next" href="#ch-16">다음 장 · 16. 후공정 (Back-end) →</a></section>
 <section class="chapter" id="sec-ch-16" data-ch="ch-16"><div class="ch-head"><h2 id="ch-16">16. 후공정 (Back-end): 테스트와 패키징</h2><button class="read-btn" data-ch="ch-16" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>후공정은 완성된 웨이퍼를 검사하고 개별 칩으로 잘라, 외부와 전기적으로 연결되고 물리적으로 보호되는 패키지로 만드는 단계다. 칩을 보호하고, 신호·전원을 기판(PCB)과 이어주고, 열을 빼내는 세 가지 역할을 한다.</p>
 <p><strong>전통적 패키징 흐름 (와이어 본딩 기준)</strong></p>
@@ -1653,7 +1658,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <figure class="fig photo" tabindex="0" role="button" aria-label="그림 크게 보기: 와이어 본딩된 CMOS 칩"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chip_bond_wire.jpg?width=1400" alt="와이어 본딩된 CMOS 칩" loading="lazy" decoding="async"><figcaption>그림 36. 와이어 본딩된 CMOS 칩<span class="credit">Weirdmeister, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Chip_bond_wire.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
 <p><strong>누가 하나.</strong> 삼성전자·SK하이닉스 같은 IDM은 자체 후공정 라인을 갖고, 많은 팹리스·파운드리 칩은 ASE, Amkor, JCET 같은 <strong><abbr class="term" tabindex="0" data-def="Outsourced Semiconductor Assembly and Test. 외주 패키징·테스트 업체">OSAT</abbr></strong>(외주 패키징·테스트 업체)가 맡는다.</p>
 <p><strong>중간 공정(Mid-end)의 등장.</strong> 범핑, <abbr class="term" tabindex="0" data-def="Redistribution Layer. 패키지에서 배선을 다시 펼치는 재배선층">RDL</abbr>(재배선층), <abbr class="term" tabindex="0" data-def="Through-Silicon Via. 실리콘을 수직으로 관통하는 전극">TSV</abbr>처럼 팹 장비(노광·식각·도금·<abbr class="term" tabindex="0" data-def="Chemical Mechanical Polishing. 슬러리와 패드로 표면을 평탄화하는 연마 공정">CMP</abbr>)를 쓰는 패키징 공정이 늘면서, 전공정과 후공정 사이의 경계가 점점 흐려지고 있다.</p>
-<a class="next" href="#ch-17">다음 장 · 17. 첨단 패키징 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/packaging.html">패키징과 테스트</a></li><li><a href="v2/e/packaging-materials.html">패키징 소재</a></li></ul></aside><a class="next" href="#ch-17">다음 장 · 17. 첨단 패키징 →</a></section>
 <section class="chapter" id="sec-ch-17" data-ch="ch-17"><div class="ch-head"><h2 id="ch-17">17. 첨단 패키징: 후공정이 성능을 결정하는 시대</h2><button class="read-btn" data-ch="ch-17" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>트랜지스터 미세화만으로는 성능 향상이 둔화되면서, 여러 칩을 짧고 촘촘하게 연결하는 첨단 패키징이 시스템 성능의 핵심 변수가 됐다. 방향은 하나다 — <strong>연결 거리를 줄이고, 연결 밀도(I/O 수)를 높이는 것.</strong></p>
 <div class="table-wrap"><table>
@@ -1763,7 +1768,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://www.youtube.com/watch?v=2ACiuKgYUkI" target="_blank" rel="noopener">Why Wafer Bonding is the Future of Semiconductors — Asianometry</a> — 웨이퍼 본딩이 왜 첨단 기술의 공통분모인지 (영어)</li>
 </ul>
-<a class="next" href="#ch-18">다음 장 · 18. HBM →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/advanced-packaging.html">첨단 패키징</a></li><li><a href="v2/e/tsv.html">TSV</a></li></ul></aside><a class="next" href="#ch-18">다음 장 · 18. HBM →</a></section>
 <section class="chapter" id="sec-ch-18" data-ch="ch-18"><div class="ch-head"><h2 id="ch-18">18. HBM: 적층 메모리</h2><button class="read-btn" data-ch="ch-18" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p><abbr class="term" tabindex="0" data-def="High Bandwidth Memory. DRAM 다이를 TSV로 쌓은 고대역폭 메모리">HBM</abbr>은 DRAM 다이 여러 장을 <abbr class="term" tabindex="0" data-def="Through-Silicon Via. 실리콘을 수직으로 관통하는 전극">TSV</abbr>로 수직으로 쌓고, 맨 아래 베이스 다이를 통해 GPU 옆 인터포저(<a class="xref" href="#ch-17">17장</a>)에 붙인 메모리다. I/O 수천 개를 짧은 거리로 연결해 대역폭을 크게 얻는다. 공정 경쟁의 초점은 <strong>정해진 높이 안에 더 많은 다이를 쌓는 본딩 기술</strong>이다.</p>
 <h3 id="s-18-1">18-1. 구조와 세대</h3>
@@ -1867,7 +1872,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://www.youtube.com/watch?v=3qK3Cvu6qbI" target="_blank" rel="noopener">HBM Packaging Explained — AMS Tech</a> — HBM이 인터포저와 마이크로범프를 거쳐 GPU와 연결되는 구조 해설 (영어)</li>
 </ul>
-<a class="next" href="#ch-19">다음 장 · 19. 공정에 쓰이는 주요 물질과 역할 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/hbm.html">HBM</a></li><li><a href="v2/e/tsv.html">TSV</a></li></ul></aside><a class="next" href="#ch-19">다음 장 · 19. 공정에 쓰이는 주요 물질과 역할 →</a></section>
 <section class="chapter" id="sec-ch-19" data-ch="ch-19"><div class="ch-head"><h2 id="ch-19">19. 공정에 쓰이는 주요 물질과 역할</h2><button class="read-btn" data-ch="ch-19" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>같은 물질도 놓이는 위치에 따라 역할이 바뀐다. 예를 들어 Si₃N₄는 하드마스크, 스페이서, 식각 정지막, 응력 라이너, 패시베이션, 전하 트랩층으로 모두 쓰인다. 아래에서는 물질을 기능별로 일곱 묶음으로 나눠 정리한다.</p>
 <h3 id="s-19-1">19-1. 반도체·채널 물질</h3>
@@ -1969,7 +1974,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 </tr>
 <tr>
 <td>SiOCN / SiBCN</td>
-<td>~4~5</td>
+<td>~4~5.2</td>
 <td>저유전 스페이서 (게이트–컨택 기생 용량 감소)</td>
 <td>FEOL·MOL (최신 노드)</td>
 </tr>
@@ -2445,7 +2450,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 </tr>
 </tbody></table></div>
 <p>이 쌍들의 선택비가 곧 공정 마진이 되므로, 새 물질이 들어올 때마다 &quot;무엇과 짝지어 식각되는가&quot;를 먼저 확인하는 것이 좋다.</p>
-<a class="next" href="#ch-20">다음 장 · 20. 각 단계에서 플라즈마 공정이 하는 일 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/channel-materials.html">반도체·채널 물질</a></li><li><a href="v2/e/silicon-wafer.html">실리콘 웨이퍼</a></li><li><a href="v2/e/dielectrics.html">절연막</a></li><li><a href="v2/e/sio2.html">SiO₂</a></li><li><a href="v2/e/si3n4.html">Si₃N₄</a></li><li><a href="v2/e/al2o3.html">Al₂O₃</a></li><li><a href="v2/e/siocn.html">SiOCN</a></li><li><a href="v2/e/metals.html">금속·도체</a></li><li><a href="v2/e/sacrificial-materials.html">공정 보조·희생 물질</a></li><li><a href="v2/e/dopants-memory-materials.html">도펀트와 메모리 물질</a></li><li><a href="v2/e/packaging-materials.html">패키징 소재</a></li><li><a href="v2/e/chemical-bonding.html">화학 결합과 결합 에너지</a></li><li><a href="v2/e/material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a></li></ul></aside><a class="next" href="#ch-20">다음 장 · 20. 각 단계에서 플라즈마 공정이 하는 일 →</a></section>
 <section class="chapter" id="sec-ch-20" data-ch="ch-20"><div class="ch-head"><h2 id="ch-20">20. 각 단계에서 플라즈마 공정이 하는 일</h2><button class="read-btn" data-ch="ch-20" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>플라즈마 식각·증착은 <abbr class="term" tabindex="0" data-def="Front-End-Of-Line. 실리콘 기판에 트랜지스터를 만드는 공정 단계">FEOL</abbr>부터 패키징까지 전 단계에 걸쳐 있지만, 단계마다 요구 조건이 다르다. FEOL은 소자 손상 최소화, <abbr class="term" tabindex="0" data-def="Middle-Of-Line. 트랜지스터 단자와 첫 금속 배선을 잇는 컨택 층">MOL</abbr>은 선택비, <abbr class="term" tabindex="0" data-def="Back-End-Of-Line. 트랜지스터 위의 다층 금속 배선 공정">BEOL</abbr>은 low-k 손상, 패키징은 고속·고종횡비가 핵심이다.</p>
 <p>식각 원리는 <a class="xref" href="#ch-4">4장</a>, 증착은 <a class="xref" href="#ch-5">5장</a>, <abbr class="term" tabindex="0" data-def="Atomic Layer Deposition. 자기제한 반응을 한 층씩 반복하는 증착">ALD</abbr>·<abbr class="term" tabindex="0" data-def="Atomic Layer Etching. 개질과 제거를 자기제한적으로 반복하는 식각">ALE</abbr>는 <a class="xref" href="#ch-6">6장</a>에서 다뤘다. 이 장은 그 원리가 각 단계에서 어떻게 쓰이는지 한눈에 모은 지도다.</p>
@@ -2539,7 +2544,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 </tbody></table></div>
 <p><strong>읽는 법.</strong> 아래층(FEOL)으로 갈수록 &quot;전기적 손상&quot;과 원자 단위 정밀도(ALE 등)가 중요해지고, 위층·패키징으로 갈수록 &quot;얼마나 빨리, 얼마나 깊게&quot;가 중요해진다.</p>
 <p>표에 없는 축이 하나 더 있다. 이온을 쓰는가, 라디칼만 쓰는가다. 리모트·다운스트림 플라즈마는 이온 손상 없이 라디칼 화학만으로 표면을 바꾸는데, 건식 프리클린과 SiGe 릴리스가 그 예다. 이 라디칼 화학이 염(AFS) 형성과 만나면 선택 식각의 또 다른 계열이 되며, <a href="#deep-afs">심화편</a>에서 깊이 다룬다.</p>
-<a class="next" href="#ch-21">다음 장 · 21. 계측과 분석 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/plasma-map.html">단계별 플라즈마 지도</a></li><li><a href="v2/e/plasma-basics.html">플라즈마 기초</a></li><li><a href="v2/e/plasma-resistant-parts.html">내플라즈마 부품 소재</a></li><li><a href="v2/e/exhaust-abatement.html">배기·저감</a></li></ul></aside><a class="next" href="#ch-21">다음 장 · 21. 계측과 분석 →</a></section>
 <section class="chapter" id="sec-ch-21" data-ch="ch-21"><div class="ch-head"><h2 id="ch-21">21. 계측과 분석</h2><button class="read-btn" data-ch="ch-21" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <p>공정 결과는 측정으로만 확인할 수 있다. 계측은 크게 <strong>라인 안에서 빠르게 매번 보는 인라인 계측</strong>과, <strong>웨이퍼를 잘라 깊이 보는 오프라인 분석</strong>으로 나뉜다. 인라인은 공정 제어에, 오프라인은 원인 분석과 신공정 개발에 쓴다.</p>
 <h3 id="s-21-1">21-1. 무엇을 무엇으로 재나</h3>
@@ -2648,7 +2653,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <ul>
 <li><a href="https://doi.org/10.1109/PROC.1964.3442" target="_blank" rel="noopener">Cost-size optima of monolithic integrated circuits</a> — Murphy, Proc. IEEE 52, 1537 (1964). 수율 모델과 다이 크기의 경제학을 세운 원전</li>
 </ul>
-<a class="next" href="#ch-22">다음 장 · 22. 요약 →</a></section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a></li><li><a href="v2/e/ocd.html">OCD</a></li><li><a href="v2/e/tem.html">TEM (투과전자현미경)</a></li><li><a href="v2/e/yield-model.html">수율 모델</a></li><li><a href="v2/e/process-control.html">공정 제어</a></li><li><a href="v2/e/defect-control.html">결함·오염 관리</a></li></ul></aside><a class="next" href="#ch-22">다음 장 · 22. 요약 →</a></section>
 <section class="chapter" id="sec-ch-22" data-ch="ch-22"><div class="ch-head"><h2 id="ch-22">22. 요약</h2><button class="read-btn" data-ch="ch-22" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>
 <div class="table-wrap"><table>
 <thead>
@@ -2707,7 +2712,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li>단위 공정(패터닝·식각·증착·주입·<abbr class="term" tabindex="0" data-def="Chemical Mechanical Polishing. 슬러리와 패드로 표면을 평탄화하는 연마 공정">CMP</abbr>)은 모든 구조의 공통 언어다. 새 구조가 나오면 &quot;어떤 막을 무엇으로 쌓고, 무엇과 짝지어 깎는가&quot;로 읽으면 된다.</li>
 <li>메모리는 층수(3D NAND)와 셀 구조 전환(4F²·3D DRAM)으로, AI 패키징은 본딩 기술(HBM·CoWoS)로 한계를 넘고 있으며, 그 중심에는 고종횡비 식각과 웨이퍼 본딩이 있다.</li>
 </ol>
-</section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/d/process.html">공정</a></li><li><a href="v2/d/structure-materials.html">구조·재료</a></li><li><a href="v2/d/metrology.html">계측·분석</a></li><li><a href="v2/d/principles-ops.html">원리·운영</a></li></ul></aside></section>
 <section class="chapter appendix" id="sec-deep-afs" data-ch="deep-afs"><h2 id="deep-afs">심화편: AFS 염 선택 식각 — SiOCN을 골라 깎는다는 것</h2>
 <p>이 편은 본편의 원리들을 하나의 연구 주제로 모아 깊이 파는 심화 트랙이다. 주제는 플라즈마로 만든 염(鹽), AFS(ammonium fluorosilicate, (NH₄)₂SiF₆)를 이용해 특정 물질만 골라 깎는 선택 식각이다. 왜 그런 공정이 필요한지에서 출발해, 염이 생기고 사라지는 화학, 물질마다 갈리는 선택비, 염이 생겼는지 확인하는 진단, 그리고 아직 비어 있는 자리를 출판 논문을 근거로 따라간다.</p>
 <h3 id="s-deep-1">S-1. 왜 SiOCN을 골라 깎아야 하나</h3>
@@ -2821,7 +2826,7 @@ table { overflow-wrap: normal; word-break: keep-all; }
 <li><a href="https://doi.org/10.1116/6.0004019" target="_blank" rel="noopener">Low-temperature etching of silicon oxide and silicon nitride with hydrogen fluoride</a> — Lill et al., J. Vac. Sci. Technol. A 42, 063006 (2024)</li>
 <li><a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma</a> — Goya et al., J. Vac. Sci. Technol. A 44, 053213 (2026)</li>
 </ul>
-</section>
+<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul><li><a href="v2/e/afs-selective-etch.html">AFS 선택 식각</a></li><li><a href="v2/e/afs-chemistry.html">AFS 화학</a></li><li><a href="v2/e/afs-removal.html">AFS 염의 제거와 잔류물</a></li><li><a href="v2/e/spacer-materials.html">스페이서 소재 비교</a></li><li><a href="v2/e/siocn.html">SiOCN</a></li><li><a href="v2/e/ftir.html">FTIR</a></li><li><a href="v2/e/xps.html">XPS</a></li></ul></aside></section>
 <section class="chapter appendix" id="sec-sources" data-ch="sources"><h2 id="sources">출처</h2>
 <p>2026년 10월 25일 기준으로 검색해 확인한 최신 현황의 참고 자료다. 원리 설명은 일반 교재 수준의 내용이며, 표의 수치는 대략적인 값이다. 각 장 끝의 &#39;참고 논문&#39;에는 장별 원전·리뷰 논문을 DOI 링크와 함께 표기했다.</p>
 <p><strong>교재</strong></p>
