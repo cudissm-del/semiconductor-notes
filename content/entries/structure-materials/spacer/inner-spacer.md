@@ -103,7 +103,7 @@ LPCVD SiN에서는 ③·④를 무보이드 충전과 ICP 에치백으로 실증
   - Sun et al., Nanomaterials 14, 928 (2024), [doi:10.3390/nano14110928](https://doi.org/10.3390/nano14110928) — 캐비티 사이클 식각(Fig. 5)과 SiN 에치백 O₂/NF₃ 비 스캔(본문). Joy Crossref 대조 2026-11-02.
   - Lee et al., Nanomaterials 12, 3349 (2022), [doi:10.3390/nano12193349](https://doi.org/10.3390/nano12193349) — 위치별 내부 스페이서 두께 변동 민감도(TCAD).
   - Schmidt et al., IEEE Trans. Semicond. Manuf. (2022), [doi:10.1109/TSM.2022.3168585](https://doi.org/10.1109/TSM.2022.3168585) — 인덴트 계측.
-  - Durfee et al., ECS Trans. 104(4), 217 (2021) [DOI 대조 대기] — 인덴트와 릴리스의 요구 조건 분리(Table 1).
+  - Durfee et al., ECS Trans. 104(4), 217 (2021), [doi:10.1149/10404.0217ecst](https://doi.org/10.1149/10404.0217ecst) — 인덴트와 릴리스의 요구 조건 분리(Table 1).
   - 위 DOI는 Joy가 Crossref로 대조했다(2026-11-02).
   - Loubet 2017의 5 nm·Lg 12 nm·CPP 44/48 nm는 Joy 딥리서치 보고서의 사본 열람 기록을 따랐다. 수치 위치는 원문 대조 대기다.
 - 산술 — 변동 예산 배분(±0.3 nm → 0.6 nm, 남는 0.4 nm)은 두 연구의 값을 겹친 설명용 산술이며 가정값이다.
