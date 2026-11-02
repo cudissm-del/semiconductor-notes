@@ -48,6 +48,7 @@ LPCVD SiN에서는 ③·④를 무보이드 충전과 ICP 에치백으로 실증
 | Sun et al. (2024) — 에치백 | 공정 실측 | SiN 에치백 NF₃/O₂/Ar, O₂/NF₃ 비 스캔 | 비 0.5에서 SiN : Si 5.4, SiN 거칠기 0.19 nm. 비 1.0 이상은 선택비 포화 + 거칠기 급증 | 본문 |
 | Lee et al. (2022) | TCAD | 3단 나노시트, 위치별 두께 변동 민감도 | 하단 두께 변동 ΔTIS,B < 1 nm 필요. S/D 두께 5 nm에서 Ioff의 ΔTIS,B 민감도 ×22.5 (nFET) | 본문 |
 | Lee et al. (2023) | TCAD | 내부 스페이서 길이(LIS) 최적화 | RC 지연 −19.5 % | 본문 |
+| Durfee et al. (2021) | 산업 정리 (IBM/TEL) | 인덴트와 릴리스를 요구 조건이 다른 두 공정으로 분리 | 인덴트 깊이·형상 ↔ 겹침 용량·외부 저항·DIBL 대응표. 계측은 인라인 OCD | Table 1 |
 | Schmidt et al. (2022) | 계측 실측 | 인덴트 깊이를 4–10.5 nm로 1.5 nm씩 바꾼 시편 | 산란계측 + 분광 간섭으로 평균 인덴트, XRF + 머신러닝으로 시트별 인덴트. 학습에는 X-TEM 기준값이 필요 | 본문 |
 
 &#91;embedded content: 하단 내부 스페이서 변동 예산 · 재구성: Lee 2022 허용폭에 Sun 2024 깊이 편차를 얹은 산술]
@@ -100,7 +101,9 @@ LPCVD SiN에서는 ③·④를 무보이드 충전과 ICP 에치백으로 실증
   - Lee et al., IEEE TED (2023), [doi:10.1109/TED.2023.3326789](https://doi.org/10.1109/TED.2023.3326789) — LIS 최적화로 RC 지연 −19.5%.
 - 「깊이와 두께의 실측」 절의 추가 문헌 (수치와 위치는 Joy의 원문 추출 패키지, 2026-11-02)
   - Sun et al., Nanomaterials 14, 928 (2024), [doi:10.3390/nano14110928](https://doi.org/10.3390/nano14110928) — 캐비티 사이클 식각(Fig. 5)과 SiN 에치백 O₂/NF₃ 비 스캔(본문). Joy Crossref 대조 2026-11-02.
-  - Lee et al., Nanomaterials 12, 3349 (2022) — 위치별 내부 스페이서 두께 변동 민감도(TCAD). [DOI 대조 대기]
-  - Schmidt et al., IEEE Trans. Semicond. Manuf. (2022), arXiv:2201.04725 — 인덴트 계측. [DOI 대조 대기]
+  - Lee et al., Nanomaterials 12, 3349 (2022), [doi:10.3390/nano12193349](https://doi.org/10.3390/nano12193349) — 위치별 내부 스페이서 두께 변동 민감도(TCAD).
+  - Schmidt et al., IEEE Trans. Semicond. Manuf. (2022), [doi:10.1109/TSM.2022.3168585](https://doi.org/10.1109/TSM.2022.3168585) — 인덴트 계측.
+  - Durfee et al., ECS Trans. 104(4), 217 (2021) [DOI 대조 대기] — 인덴트와 릴리스의 요구 조건 분리(Table 1).
+  - 위 DOI는 Joy가 Crossref로 대조했다(2026-11-02).
   - Loubet 2017의 5 nm·Lg 12 nm·CPP 44/48 nm는 Joy 딥리서치 보고서의 사본 열람 기록을 따랐다. 수치 위치는 원문 대조 대기다.
 - 산술 — 변동 예산 배분(±0.3 nm → 0.6 nm, 남는 0.4 nm)은 두 연구의 값을 겹친 설명용 산술이며 가정값이다.
