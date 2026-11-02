@@ -461,9 +461,9 @@
    "module": "sd",
    "cite": "Fan et al., IITC (2020)",
    "kind": "학회",
-   "note": "적층 나노시트 S/D 기생 저항 감소, 감싸는 컨택(WAC) — 조사 보고서는 Lanzillo로 표기, Crossref 제목 일치 레코드의 저자는 Fan 외(대조 확인 대기)",
+   "note": "적층 나노시트 S/D 기생 저항 감소 — 조사 보고서의 Lanzillo 표기는 오류, Crossref 저자 Fan·Xie·Wu·Liu 외(Joy 대조 11/02). WAC는 초록에 없어 원문 미확인",
    "doi": "10.1109/iitc47697.2020.9515644",
-   "doi_state": "대기",
+   "doi_state": "대조",
    "orig": false,
    "used": []
   },
