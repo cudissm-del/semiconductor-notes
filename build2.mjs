@@ -2,6 +2,7 @@
 // 설계: DESIGN.md (영역 4 > 주제(허브형·목록형) > 항목, 3단 통일). 기존 build.mjs(강의노트)는 전환까지 병행 유지.
 import fs from 'node:fs';
 import path from 'node:path';
+import { loadFlow } from './tools/flow.mjs';
 import { fileURLToPath } from 'node:url';
 import * as esbuild from 'esbuild';
 import { marked } from 'marked';
@@ -326,6 +327,10 @@ const sideScriptFor = P => `<script>
 </script>
 </body></html>`;
 
+// 사전 층 → 흐름 층: content/flow.json에서 항목 페이지 「강의에서의 위치」를 만든다
+const flow = loadFlow(ROOT);
+for (const w of flow?.warnings || []) console.warn('⚠', w);
+
 // ── 항목 페이지 ──────────────────────────────────────────────────
 for (const e of entries) {
   const outs = [...(outLinks.get(e.slug) || [])].map(s => bySlug.get(s)).filter(Boolean);
@@ -338,6 +343,8 @@ for (const e of entries) {
   const prevNext = (prev || next) ? `<nav class="prevnext">${prev ? `<a href="${prev.slug}.html">← 이전 · ${prev.title}</a>` : '<span></span>'}${next ? `<a href="${next.slug}.html">다음 · ${next.title} →</a>` : '<span></span>'}</nav>` : '';
   const prereqResolved = (e.prereq || []).map(n => { const t = resolveWiki(n); if (!t) console.warn(`⚠ [${e.slug}] prereq를 찾지 못함:`, n); return t; }).filter(Boolean);
   const prereqBox = prereqResolved.length ? `<div class="prereq"><span class="pl-t">먼저 읽을 항목</span>${prereqResolved.map(x => `<a href="${x.slug}.html">${x.title}</a>`).join(' · ')}</div>` : '';
+  const flowPos = (flow?.byEntry.get(e.slug) || []);
+  const flowBox = flowPos.length ? `<div class="prereq flowpos"><span class="pl-t">강의에서의 위치</span>${flowPos.map(c => `<a href="../../index.html#${c.id}">${c.label} ${c.title.replace(/\s*[:—].*$/, '')}</a>`).join(' · ')}</div>` : '';
   const crumb = e.domainHub
     ? `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › ${e.title}`
     : `<a href="../index.html">대문</a> › <a href="../d/${e.domain}.html">${domainName(e.domain)}</a> › <a href="../${topicPage(e.domain, e.topic)}">${topicName(e)}</a> › ${e.title}`;
@@ -352,6 +359,7 @@ for (const e of entries) {
   <div class="meta"><span class="chip cat">${domainName(e.domain)} &gt; ${topicName(e)}</span>${e.hub ? '<span class="badge">주제 허브</span>' : ''}${e.domainHub ? '<span class="badge">영역 허브</span>' : ''}${e.tags.map(tagChip).join('')}</div>
   <button id="favBtn" class="fav-btn" type="button">☆ 즐겨찾기</button>
   ${prereqBox}
+  ${flowBox}
   <article>${bodies.get(e.slug)}</article>
   ${prevNext}
   <div class="links-box"><h3>이 항목에서 링크한 항목</h3>${linkList(outs)}<h3>이 항목을 링크한 항목</h3>${linkList(backs)}${siblings.length ? `<h3>같은 주제의 다른 항목</h3>${linkList(siblings)}` : ''}</div>
@@ -588,5 +596,6 @@ fs.writeFileSync(path.join(OUT, 'search-index.json'), JSON.stringify(index));
 
 const topicCount = DOMAINS.reduce((a, d) => a + d.topics.length, 0);
 console.log(`✓ v2 — 항목 ${entries.length}개, 위키 링크 ${[...outLinks.values()].reduce((a, s) => a + s.size, 0)}개, 영역 ${DOMAINS.length}개, 주제 ${topicCount}개, 태그 ${exposedTags.length}개 페이지 (전체 태그 ${tagList.length}개 중 2회 이상)`);
+if (flow) console.log(`  · 흐름 층 매핑: 항목 ${flow.byEntry.size}/${flow.total}개가 강의 장에 연결 (미연결 ${flow.unmapped.length}개)`);
 if (hubFallbacks.length) console.log(`  · 개요 절이 없어 정의+첫 문단으로 폴백한 허브: ${hubFallbacks.join(', ')}`);
 for (const [slug, miss] of missLinks) console.log(`  · ${slug}: 미작성 링크 ${miss.join(', ')}`);
