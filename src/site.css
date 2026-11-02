@@ -146,6 +146,11 @@ strong { font-weight: 700; }
 .read-btn[aria-pressed="true"] .box { background: var(--ok); border-color: var(--ok); }
 .read-btn[aria-pressed="true"] .box::after { content: ""; width: 7px; height: 4px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px); }
 .next { display: inline-block; margin: 26px 0 8px; font-weight: 650; font-size: 15px; }
+.flow-deeper { margin: 28px 0 4px; padding: 12px 16px 10px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
+.flow-deeper .fd-t { font-size: 13px; font-weight: 700; color: var(--ink-2); margin-bottom: 6px; }
+.flow-deeper ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.flow-deeper li a { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); font-size: 13.5px; font-weight: 600; }
+.flow-deeper li a:hover { text-decoration: underline; }
 
 .table-wrap { overflow-x: auto; margin: 6px 0 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.6; }
@@ -210,7 +215,7 @@ dialog#lightbox::backdrop { background: rgb(10 12 16 / .6); }
   th, td { padding: 8px 10px; }
 }
 @media print {
-  .top, .sidebar, .read-btn, .next { display: none !important; }
+  .top, .sidebar, .read-btn, .next, .flow-deeper { display: none !important; }
   .layout { display: block; }
   .chapter { break-inside: auto; }
 }

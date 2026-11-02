@@ -8,6 +8,7 @@ import * as esbuild from 'esbuild';
 import { marked } from 'marked';
 import katex from 'katex';
 import { glossary } from './src/glossary.js';
+import { loadFlow } from './tools/flow.mjs';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const r = p => path.join(ROOT, p);
@@ -151,12 +152,25 @@ const toc = PARTS.map(([name, nums]) => `
     ${byId.sources ? '<li class="toc-ch" data-ch="sources"><a href="#sources"><span class="num">B</span><span class="t">출처</span></a></li>' : ''}
   </ul></li>`;
 
+// 흐름 층 → 사전 층: content/flow.json에서 장 끝 「백과에서 더 깊이」 블록을 만든다 (본문에 손으로 링크를 넣지 않는다)
+const flow = loadFlow(ROOT);
+for (const w of flow?.warnings || []) console.warn('⚠', w);
+const deeper = id => {
+  const f = flow?.byChapter.get(id);
+  if (!f) return '';
+  const items = f.mode === 'domains'
+    ? f.domains.map(([d, name]) => `<li><a href="v2/d/${d}.html">${name}</a></li>`).join('')
+    : f.entries.map(x => `<li><a href="v2/e/${x.slug}.html">${x.title}</a></li>`).join('');
+  if (!items) return '';
+  return `<aside class="flow-deeper"><div class="fd-t">백과에서 더 깊이</div><ul>${items}</ul></aside>`;
+};
+
 const content = chapters.map(c => {
   const i = numbered.indexOf(c);
   const isCh = i >= 0;
   const head = isCh ? c.body.replace(/(<h2 id="[^"]+">[\s\S]*?<\/h2>)/, `<div class="ch-head">$1<button class="read-btn" data-ch="${c.id}" aria-pressed="false"><span class="box" aria-hidden="true"></span>읽음</button></div>`) : c.body;
   const next = isCh && numbered[i + 1] ? `<a class="next" href="#${numbered[i + 1].id}">다음 장 · ${numbered[i + 1].heading.replace(/:.*$/, '')} →</a>` : '';
-  return `<section class="chapter${isCh ? '' : ' appendix'}" id="sec-${c.id}" data-ch="${c.id}">${head}${next}</section>`;
+  return `<section class="chapter${isCh ? '' : ' appendix'}" id="sec-${c.id}" data-ch="${c.id}">${head}${deeper(c.id)}${next}</section>`;
 }).join('\n');
 
 const gloss = `<section class="chapter appendix" id="sec-glossary" data-ch="glossary"><h2 id="glossary">용어 사전</h2>
@@ -200,4 +214,5 @@ fs.copyFileSync(path.join(kroot, 'katex.min.css'), r('assets/katex/katex.min.css
 for (const f of fs.readdirSync(path.join(kroot, 'fonts')).filter(f => f.endsWith('.woff2')))
   fs.copyFileSync(path.join(kroot, 'fonts', f), r(`assets/katex/fonts/${f}`));
 
+if (flow) console.log(`  · 백과에서 더 깊이: ${flow.chapters.length}개 장, 링크 ${flow.chapters.reduce((n, c) => n + (c.mode === 'domains' ? c.domains.length : c.entries.length), 0)}개`);
 console.log(`✓ index.html — ${numbered.length}개 장, 그림 ${figNo}개, 수식 ${slots.length - figNo}개, 용어 ${glossary.length}개 (${(page.length / 1024).toFixed(0)} KB) + search-index.json (${(JSON.stringify(index).length / 1024).toFixed(0)} KB)`);

@@ -1,0 +1,31 @@
+{
+  "_설명": "흐름 층(v1 강의노트 22장)과 사전 층(v2 백과)을 잇는 유일한 매핑. 키는 v1 장 앵커(ch-n, deep-afs), entries는 v2 항목 slug를 읽는 순서대로. build.mjs가 장 끝 「백과에서 더 깊이」를, build2.mjs가 항목 페이지 「강의에서의 위치」를 이 파일에서 만든다. 본문에 손으로 링크를 넣지 않는다. 한 항목은 max_per_entry개 장까지만 — 넘기려면 exceptions에 slug와 이유를 적는다. mode \"domains\"인 장은 항목 대신 영역 4개 페이지로 잇는다(역링크를 만들지 않는다). 고친 뒤 npm run build·node build2.mjs.",
+  "as_of": "2026-11-02",
+  "max_per_entry": 2,
+  "exceptions": {},
+  "chapters": {
+    "ch-1": { "entries": ["process-flow", "packaging", "chemeng-basics"], "note": "입구: 전공정·후공정 두 축 + 기초 원리(화학공학) 입구" },
+    "ch-2": { "entries": ["process-flow", "feol", "mol", "beol"], "note": "입구: 전체 흐름과 칩 단면" },
+    "ch-3": { "entries": ["lithography", "multipatterning", "euv", "high-na-euv"] },
+    "ch-4": { "entries": ["dry-etch", "plasma-basics", "etch-gas-chemistry", "thermo-volatility", "plasma-sources", "etch-equipment", "etch-nonidealities", "etch-troubleshooting", "har-etch"] },
+    "ch-5": { "entries": ["deposition", "epitaxy", "precursor-chemistry", "nucleation-growth", "reaction-transport-limit", "vacuum-gas-transport"] },
+    "ch-6": { "entries": ["ald", "ale", "adsorption-kinetics"] },
+    "ch-7": { "entries": ["ion-implantation", "annealing"] },
+    "ch-8": { "entries": ["cmp", "cleaning", "ultra-high-purity"] },
+    "ch-9": { "entries": ["feol", "sti", "finfet", "spacer", "outer-spacer"] },
+    "ch-10": { "entries": ["gate-stack", "high-k-oxides", "rmg"] },
+    "ch-11": { "entries": ["gaa", "recess", "inner-spacer", "cfet"] },
+    "ch-12": { "entries": ["mol", "sac", "parasitic-capacitance", "air-spacer"] },
+    "ch-13": { "entries": ["beol", "cu-electroplating", "sioc", "lowk-damage", "bspdn"] },
+    "ch-14": { "entries": ["dram"] },
+    "ch-15": { "entries": ["nand-3d"] },
+    "ch-16": { "entries": ["packaging", "packaging-materials"] },
+    "ch-17": { "entries": ["advanced-packaging", "tsv"] },
+    "ch-18": { "entries": ["hbm", "tsv"] },
+    "ch-19": { "entries": ["channel-materials", "silicon-wafer", "dielectrics", "sio2", "si3n4", "al2o3", "siocn", "metals", "sacrificial-materials", "dopants-memory-materials", "packaging-materials", "chemical-bonding", "material-selectivity"] },
+    "ch-20": { "entries": ["plasma-map", "plasma-basics", "plasma-resistant-parts", "exhaust-abatement"] },
+    "ch-21": { "entries": ["metrology-overview", "ocd", "tem", "yield-model", "process-control", "defect-control"] },
+    "ch-22": { "mode": "domains", "note": "출구: 전체 요약 — 영역 4개로 잇는다" },
+    "deep-afs": { "entries": ["afs-selective-etch", "afs-chemistry", "afs-removal", "spacer-materials", "siocn", "ftir", "xps"] }
+  }
+}
