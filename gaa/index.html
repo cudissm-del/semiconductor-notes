@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>GAA 문헌 지도 — 반도체 백과 작업실</title>
+<style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main, header.top .in { max-width: 1120px; }
+.hello h1 { font-size: 26px; margin: 4px 0 2px; }
+.lead { color: var(--sub); font-size: 14px; margin: 0 0 16px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; }
+.stat .k { color: var(--sub); font-size: 12.5px; }
+.stat .v { font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.stat .v small { font-size: 14px; color: var(--sub); font-weight: 600; }
+.mods { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 16px; margin-top: 12px; }
+.mb { display: grid; grid-template-columns: 170px minmax(0, 1fr) 60px; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; color: var(--ink); }
+.mb + .mb { border-top: 1px solid var(--line); }
+.mb:hover { text-decoration: none; color: var(--accent); }
+.bar { position: relative; height: 9px; background: var(--chip); border-radius: 99px; overflow: hidden; }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); }
+.num { text-align: right; color: var(--sub); font-size: 13px; font-variant-numeric: tabular-nums; }
+.find { width: 100%; margin: 18px 0 4px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); font-size: 15px; }
+.mod h2 { font-size: 17px; margin: 26px 0 8px; }
+.mod h2 small { color: var(--sub); font-weight: 500; font-size: 13px; margin-left: 6px; }
+.tw { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; min-width: 720px; table-layout: fixed; font-size: 13.5px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { color: var(--sub); font-weight: 600; font-size: 12.5px; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+ td.c b { font-weight: 600; } .k { display: block; color: var(--sub); font-size: 12px; }
+td.m { white-space: nowrap; }
+.st { font-size: 12px; border-radius: 99px; padding: 1px 8px; }
+.st.ok { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+.st.wait { background: var(--chip); color: var(--missing); }
+.st.none { color: var(--sub); }
+.chip { display: inline-block; background: var(--accent-soft); border-radius: 99px; padding: 1px 9px; font-size: 12.5px; margin: 1px 0; }
+.note { color: var(--sub); font-size: 12.5px; margin-top: 18px; }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mb { grid-template-columns: 120px minmax(0, 1fr) 50px; } }
+</style></head><body>
+<header class="top"><div class="in"><a class="brand" href="../home/">작업실</a><span class="tag">GAA 문헌 지도</span></div></header>
+<main>
+<div class="hello"><h1>GAA 나노시트 문헌 지도</h1></div>
+<p class="lead">Claude 조사와 Joy 딥리서치를 합친 공정 모듈별 문헌 목록(2026-11-02 기준). 원문을 확보했는지, DOI를 Crossref로 대조했는지, 백과 어느 항목에 근거로 쓰였는지를 함께 보인다.</p>
+<div class="stats">
+  <div class="stat"><div class="k">문헌</div><div class="v">59</div></div>
+  <div class="stat"><div class="k">원문 보유</div><div class="v">32<small> / 59</small></div></div>
+  <div class="stat"><div class="k">DOI 대조</div><div class="v">52<small> / 59</small></div></div>
+  <div class="stat"><div class="k">백과 반영</div><div class="v">20<small> / 59</small></div></div>
+</div>
+<div class="mods"><a class="mb" href="#flow"><span>전체 흐름·플랫폼</span><span class="bar"><i style="width:50%"></i></span><span class="num">3 / 6</span></a>
+<a class="mb" href="#epi"><span>Si/SiGe 초격자 에피</span><span class="bar"><i style="width:33%"></i></span><span class="num">1 / 3</span></a>
+<a class="mb" href="#indent"><span>측면 리세스·내부 스페이서</span><span class="bar"><i style="width:100%"></i></span><span class="num">10 / 10</span></a>
+<a class="mb" href="#release"><span>채널 릴리스</span><span class="bar"><i style="width:38%"></i></span><span class="num">3 / 8</span></a>
+<a class="mb" href="#reverse"><span>역방향 Si 선택 식각</span><span class="bar"><i style="width:100%"></i></span><span class="num">2 / 2</span></a>
+<a class="mb" href="#rmg"><span>RMG·다중 Vt</span><span class="bar"><i style="width:0%"></i></span><span class="num">0 / 6</span></a>
+<a class="mb" href="#sd"><span>S/D·바닥 절연·BPR</span><span class="bar"><i style="width:0%"></i></span><span class="num">0 / 5</span></a>
+<a class="mb" href="#cfet"><span>포크시트·CFET</span><span class="bar"><i style="width:8%"></i></span><span class="num">1 / 12</span></a>
+<a class="mb" href="#review"><span>계측·리뷰·튜토리얼</span><span class="bar"><i style="width:0%"></i></span><span class="num">0 / 7</span></a></div>
+<input class="find" type="search" placeholder="저자·연도·키워드·항목 이름으로 거르기 (예: CFET, Sun, 릴리스)" aria-label="문헌 거르기">
+<section class="mod" id="flow"><h2>전체 흐름·플랫폼 <small>6건 · 원문 6 · 백과 반영 3</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="loubet et al., vlsi (2017) 적층 나노시트 첫 실증. 내부 스페이서 5 nm, lg 12 nm @ cpp 44/48 nm, 기상 hcl 릴리스 gaa 나노시트 내부 스페이서">
+<td class="c"><b>Loubet et al., VLSI (2017)</b><span class="k">학회</span></td>
+<td>적층 나노시트 첫 실증. 내부 스페이서 5 nm, Lg 12 nm @ CPP 44/48 nm, 기상 HCl 릴리스</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.23919/VLSIT.2017.7998183" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a> <a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="bae et al., iedm (2018) 삼성 3 nm mbcfet. ss 65/67 mv/dec, finfet 대비 ion +31 % gaa 나노시트">
+<td class="c"><b>Bae et al., IEDM (2018)</b><span class="k">학회</span></td>
+<td>삼성 3 nm MBCFET. SS 65/67 mV/dec, FinFET 대비 Ion +31 %</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM.2018.8614629" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="jeong et al., vlsi (2023) 삼성 sf3. 4 nm finfet 대비 전력 34 %·로직 면적 0.79배(초록) ">
+<td class="c"><b>Jeong et al., VLSI (2023)</b><span class="k">학회</span></td>
+<td>삼성 SF3. 4 nm FinFET 대비 전력 34 %·로직 면적 0.79배(초록)</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.23919/VLSITechnologyandCir57934.2023.10185353" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="yeap et al., iedm (2024) tsmc n2. n3 대비 속도 +15 % 또는 전력 −30 %, sram 약 38 mb/mm² gaa 나노시트">
+<td class="c"><b>Yeap et al., IEDM (2024)</b><span class="k">학회</span></td>
+<td>TSMC N2. N3 대비 속도 +15 % 또는 전력 −30 %, SRAM 약 38 Mb/mm²</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM50854.2024.10873475" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="fischer et al., vlsi (2025) intel 18a — ribbonfet + powervia 후면 전력 ">
+<td class="c"><b>Fischer et al., VLSI (2025)</b><span class="k">학회</span></td>
+<td>Intel 18A — RibbonFET + PowerVia 후면 전력</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.23919/VLSITechnologyandCir65189.2025.11075006" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="mukesh &amp; zhang, electronics 11, 3589 (2022) ibm 단계별 공정 흐름 리뷰, 바닥 절연(fbdi) 트레이드오프 ">
+<td class="c"><b>Mukesh &amp; Zhang, Electronics 11, 3589 (2022)</b><span class="k">리뷰</span></td>
+<td>IBM 단계별 공정 흐름 리뷰, 바닥 절연(FBDI) 트레이드오프</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/electronics11213589" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="epi"><h2>Si/SiGe 초격자 에피 <small>3건 · 원문 3 · 백과 반영 1</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="loo et al., ecs trans. (2024) 다중 조성 sige 스택 — 나노시트·포크시트·cfet 공용 에피(기탁본) ">
+<td class="c"><b>Loo et al., ECS Trans. (2024)</b><span class="k">학회</span></td>
+<td>다중 조성 SiGe 스택 — 나노시트·포크시트·CFET 공용 에피(기탁본)</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1149/11402.0015ecst" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="loo et al., ecs j. solid state sci. technol. 14, 015003 (2025) 위 2024의 저널 전문판 ">
+<td class="c"><b>Loo et al., ECS J. Solid State Sci. Technol. 14, 015003 (2025)</b><span class="k">저널</span></td>
+<td>위 2024의 저널 전문판</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1149/2162-8777/ada79f" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="yao et al., arxiv:2605.05667 (2026) 650 → 600 °c 분할 성장, 하층 ge 20 → 약 18.5 % 희석 gaa 나노시트">
+<td class="c"><b>Yao et al., arXiv:2605.05667 (2026)</b><span class="k">프리프린트</span></td>
+<td>650 → 600 °C 분할 성장, 하층 Ge 20 → 약 18.5 % 희석</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.48550/arXiv.2605.05667" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="indent"><h2>측면 리세스·내부 스페이서 <small>10건 · 원문 9 · 백과 반영 10</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="sun et al., nanomaterials 14, 928 (2024) 원격 nf₃ 사이클 식각 레시피 4종, 캐비티 ≤5 ± 0.3 nm, sin 에치백 5.4 리세스와 채널 릴리스 내부 스페이서 gaa 나노시트">
+<td class="c"><b>Sun et al., Nanomaterials 14, 928 (2024)</b><span class="k">저널</span></td>
+<td>원격 NF₃ 사이클 식각 레시피 4종, 캐비티 ≤5 ± 0.3 nm, SiN 에치백 5.4</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/nano14110928" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a> <a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a> <a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="durfee et al., ecs trans. 104(4), 217 (2021) ibm/tel — 인덴트와 릴리스를 요구 조건이 다른 두 공정으로 분리(table 1) 리세스와 채널 릴리스 내부 스페이서">
+<td class="c"><b>Durfee et al., ECS Trans. 104(4), 217 (2021)</b><span class="k">학회</span></td>
+<td>IBM/TEL — 인덴트와 릴리스를 요구 조건이 다른 두 공정으로 분리(Table 1)</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1149/10404.0217ecst" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a> <a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="schmidt et al., ieee trans. semicond. manuf. (2022) 인덴트 4–10.5 nm 계측: 산란계측 + xrf + 머신러닝 내부 스페이서">
+<td class="c"><b>Schmidt et al., IEEE Trans. Semicond. Manuf. (2022)</b><span class="k">저널</span></td>
+<td>인덴트 4–10.5 nm 계측: 산란계측 + XRF + 머신러닝</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/TSM.2022.3168585" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="lee et al., nanomaterials 12, 3349 (2022) tcad — 하단 내부 스페이서 두께 변동 &lt; 1 nm 요구 내부 스페이서 gaa 나노시트">
+<td class="c"><b>Lee et al., Nanomaterials 12, 3349 (2022)</b><span class="k">저널</span></td>
+<td>TCAD — 하단 내부 스페이서 두께 변동 &lt; 1 nm 요구</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/nano12193349" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a> <a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="li et al., nanomaterials 10, 793 (2020) lpcvd sin 내부 스페이서 무보이드 충전 + 에치백, si 대비 &gt; 100:1 내부 스페이서 gaa 나노시트">
+<td class="c"><b>Li et al., Nanomaterials 10, 793 (2020)</b><span class="k">저널</span></td>
+<td>LPCVD SiN 내부 스페이서 무보이드 충전 + 에치백, Si 대비 &gt; 100:1</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/nano10040793" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a> <a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="barraud et al., iedm (2016) rmg 나노와이어 소자의 내부 스페이서 실증 내부 스페이서">
+<td class="c"><b>Barraud et al., IEDM (2016)</b><span class="k">학회</span></td>
+<td>RMG 나노와이어 소자의 내부 스페이서 실증</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM.2016.7838441" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="rawat et al., essderc (2021) tcad — 내부 스페이서 k와 에피 응력의 성능 기여 내부 스페이서">
+<td class="c"><b>Rawat et al., ESSDERC (2021)</b><span class="k">학회</span></td>
+<td>TCAD — 내부 스페이서 k와 에피 응력의 성능 기여</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/ESSDERC53440.2021.9631815" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="lee &amp; park, electronics 10, 1395 (2021) tcad — 릴리스 중 나노시트 기계적 안정성 내부 스페이서">
+<td class="c"><b>Lee &amp; Park, Electronics 10, 1395 (2021)</b><span class="k">저널</span></td>
+<td>TCAD — 릴리스 중 나노시트 기계적 안정성</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/electronics10121395" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="lee et al., ieee ted (2023) tcad — 내부 스페이서 길이 최적화로 rc 지연 −19.5 % 내부 스페이서 리세스와 채널 릴리스">
+<td class="c"><b>Lee et al., IEEE TED (2023)</b><span class="k">저널</span></td>
+<td>TCAD — 내부 스페이서 길이 최적화로 RC 지연 −19.5 %</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/TED.2023.3326789" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a> <a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a></td></tr>
+<tr data-q="benoit et al., iedm (2015) 저온(400 °c) sico 스페이서 k = 4.5 gaa 나노시트">
+<td class="c"><b>Benoit et al., IEDM (2015)</b><span class="k">학회</span></td>
+<td>저온(400 °C) SiCO 스페이서 k = 4.5</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM.2015.7409656" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="release"><h2>채널 릴리스 <small>8건 · 원문 4 · 백과 반영 3</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="loubet et al., iedm (2019) 건식 등방 sige 선택 식각 약 150:1, 식각률 ∝ ge %, 인덴트 균일도 리세스와 채널 릴리스 내부 스페이서">
+<td class="c"><b>Loubet et al., IEDM (2019)</b><span class="k">학회</span></td>
+<td>건식 등방 SiGe 선택 식각 약 150:1, 식각률 ∝ Ge %, 인덴트 균일도</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM19573.2019.8993615" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a> <a class="chip" href="../v2/e/inner-spacer.html">내부 스페이서</a></td></tr>
+<tr data-q="sun et al., nanomaterials 13, 504 (2023) 다단 릴리스 + 산화 처리, 168:1(터널 깊이 ÷ si 손실), 시트 응력 리세스와 채널 릴리스 gaa 나노시트">
+<td class="c"><b>Sun et al., Nanomaterials 13, 504 (2023)</b><span class="k">저널</span></td>
+<td>다단 릴리스 + 산화 처리, 168:1(터널 깊이 ÷ Si 손실), 시트 응력</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/nano13030504" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a> <a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="pargon et al., j. vac. sci. technol. a 37, 040601 (2019) 원격 he/o₂ 산화 + nh₃/nf₃/o₂ 디지털 식각 — 사이클 식각의 원형 리세스와 채널 릴리스">
+<td class="c"><b>Pargon et al., J. Vac. Sci. Technol. A 37, 040601 (2019)</b><span class="k">저널</span></td>
+<td>원격 He/O₂ 산화 + NH₃/NF₃/O₂ 디지털 식각 — 사이클 식각의 원형</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1116/1.5100087" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a></td></tr>
+<tr data-q="loo et al., ecs trans. 109(4), 135 (2022) 저온 br₂ 증기 sige 식각 — 용도는 소자 절연 ">
+<td class="c"><b>Loo et al., ECS Trans. 109(4), 135 (2022)</b><span class="k">학회</span></td>
+<td>저온 Br₂ 증기 SiGe 식각 — 용도는 소자 절연</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1149/10904.0135ecst" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="lee, lee &amp; lim, solid state phenom. 346, 40 (2023) h₂o₂/ch₃cooh/hf 습식, 과아세트산이 속도 결정 ">
+<td class="c"><b>Lee, Lee &amp; Lim, Solid State Phenom. 346, 40 (2023)</b><span class="k">저널</span></td>
+<td>H₂O₂/CH₃COOH/HF 습식, 과아세트산이 속도 결정</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/p-Bv9to5" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="harada et al., solid state phenom. 314, 71 (2021) sige 선택 식각액 3종 비교 ">
+<td class="c"><b>Harada et al., Solid State Phenom. 314, 71 (2021)</b><span class="k">저널</span></td>
+<td>SiGe 선택 식각액 3종 비교</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/www.scientific.net/SSP.314.71" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="kawarazaki et al., solid state phenom. 346, 23 (2023) sige30 : sige15 = 338 습식 — 바닥·중간 절연용(초록) ">
+<td class="c"><b>Kawarazaki et al., Solid State Phenom. 346, 23 (2023)</b><span class="k">저널</span></td>
+<td>SiGe30 : SiGe15 = 338 습식 — 바닥·중간 절연용(초록)</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/p-MsGv7Q" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="kim et al., solid state phenom. 346, 34 (2023) apm + hf/hcl, sige 15/25/40 % ph 의존 ">
+<td class="c"><b>Kim et al., Solid State Phenom. 346, 34 (2023)</b><span class="k">저널</span></td>
+<td>APM + HF/HCl, SiGe 15/25/40 % pH 의존</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/p-irgat2" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="reverse"><h2>역방향 Si 선택 식각 <small>2건 · 원문 2 · 백과 반영 2</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="li et al., nanomaterials 15, 1469 (2025) cf₄/o₂/n₂로 si : sige 최대 58, si-tip을 f:o 비로 억제 리세스와 채널 릴리스">
+<td class="c"><b>Li et al., Nanomaterials 15, 1469 (2025)</b><span class="k">저널</span></td>
+<td>CF₄/O₂/N₂로 Si : SiGe 최대 58, Si-tip을 F:O 비로 억제</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/nano15191469" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a></td></tr>
+<tr data-q="li et al., nanomaterials 16, 13 (2026) 같은 화학으로 서브핀을 화살 → 종 모양으로 조절, si 4.2 nm/s·약 46 리세스와 채널 릴리스">
+<td class="c"><b>Li et al., Nanomaterials 16, 13 (2026)</b><span class="k">저널</span></td>
+<td>같은 화학으로 서브핀을 화살 → 종 모양으로 조절, Si 4.2 nm/s·약 46</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.3390/nano16010013" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/recess.html">리세스와 채널 릴리스</a></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="rmg"><h2>RMG·다중 Vt <small>6건 · 원문 0 · 백과 반영 0</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="zhang et al., iedm (2017) 적층 나노시트 hkmg 기초와 다중 vt 선택지 ">
+<td class="c"><b>Zhang et al., IEDM (2017)</b><span class="k">학회</span></td>
+<td>적층 나노시트 HKMG 기초와 다중 Vt 선택지</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/iedm.2017.8268438" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="bao et al., iedm (2019) 부피 없는(다이폴) 다중 vt + 금속 다중 vt 결합 ">
+<td class="c"><b>Bao et al., IEDM (2019)</b><span class="k">학회</span></td>
+<td>부피 없는(다이폴) 다중 Vt + 금속 다중 Vt 결합</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/iedm19573.2019.8993480" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="yao et al., iedm (2022) wfm 없이 la/al 다이폴만으로 n 7 + p 7 vt ">
+<td class="c"><b>Yao et al., IEDM (2022)</b><span class="k">학회</span></td>
+<td>WFM 없이 La/Al 다이폴만으로 n 7 + p 7 Vt</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/iedm45625.2022.10019361" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="oniki et al., solid state phenom. 314, 119 (2021) imec rmg 패터닝과 다이폴 패터닝 ">
+<td class="c"><b>Oniki et al., Solid State Phenom. 314, 119 (2021)</b><span class="k">저널</span></td>
+<td>imec RMG 패터닝과 다이폴 패터닝</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/www.scientific.net/SSP.314.119" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="oniki et al., solid state phenom. 282, 132 (2018) 다결정 tin의 자기제한 「디지털」 습식 식각 ">
+<td class="c"><b>Oniki et al., Solid State Phenom. 282, 132 (2018)</b><span class="k">저널</span></td>
+<td>다결정 TiN의 자기제한 「디지털」 습식 식각</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/www.scientific.net/SSP.282.132" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="iwahata et al., solid state phenom. 314, 127 (2021) 열 활성 오존으로 soc 하드마스크 제거 — tin 대비 선택 ">
+<td class="c"><b>Iwahata et al., Solid State Phenom. 314, 127 (2021)</b><span class="k">저널</span></td>
+<td>열 활성 오존으로 SOC 하드마스크 제거 — TiN 대비 선택</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/www.scientific.net/SSP.314.127" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="sd"><h2>S/D·바닥 절연·BPR <small>5건 · 원문 1 · 백과 반영 0</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="zhang et al., iedm (2019) 완전 바닥 절연(fbdi) — 상부 ge % 저하로 릴리스 선택비 감소 ">
+<td class="c"><b>Zhang et al., IEDM (2019)</b><span class="k">학회</span></td>
+<td>완전 바닥 절연(FBDI) — 상부 Ge % 저하로 릴리스 선택비 감소</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/iedm19573.2019.8993490" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="rosseel et al., ecs trans. 109(4), 93 (2022) 500 °c 이하 선택 si:p, 480 °c에서 0.28 mω·cm ">
+<td class="c"><b>Rosseel et al., ECS Trans. 109(4), 93 (2022)</b><span class="k">학회</span></td>
+<td>500 °C 이하 선택 Si:P, 480 °C에서 0.28 mΩ·cm</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1149/10904.0093ecst" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="fan et al., iitc (2020) 적층 나노시트 s/d 기생 저항 감소, 감싸는 컨택(wac) — 조사 보고서는 lanzillo로 표기, crossref 제목 일치 레코드의 저자는 fan 외(대조 확인 대기) ">
+<td class="c"><b>Fan et al., IITC (2020)</b><span class="k">학회</span></td>
+<td>적층 나노시트 S/D 기생 저항 감소, 감싸는 컨택(WAC) — 조사 보고서는 Lanzillo로 표기, Crossref 제목 일치 레코드의 저자는 Fan 외(대조 확인 대기)</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><span class="st wait" title="10.1109/iitc47697.2020.9515644">대기</span></td>
+<td></td></tr>
+<tr data-q="wang et al., ieee ted 71, 4021 (2024) s/d 가둠·단일 확산 차단 dtco ">
+<td class="c"><b>Wang et al., IEEE TED 71, 4021 (2024)</b><span class="k">저널</span></td>
+<td>S/D 가둠·단일 확산 차단 DTCO</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/ted.2024.3403794" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="gupta et al., vlsi (2020) imec 매립 전원선(bpr) 모듈 — w bpr + ru 비아 ">
+<td class="c"><b>Gupta et al., VLSI (2020)</b><span class="k">학회</span></td>
+<td>imec 매립 전원선(BPR) 모듈 — W BPR + Ru 비아</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/vlsitechnology18217.2020.9265113" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="cfet"><h2>포크시트·CFET <small>12건 · 원문 6 · 백과 반영 1</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="weckx et al., iedm (2019) 포크시트 개념 — n·p 사이 유전체 벽 ">
+<td class="c"><b>Weckx et al., IEDM (2019)</b><span class="k">학회</span></td>
+<td>포크시트 개념 — n·p 사이 유전체 벽</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/iedm19573.2019.8993635" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="mertens et al., vlsi (2021) 포크시트 첫 전기 소자, n–p 간격 17 nm 이중 wfm ">
+<td class="c"><b>Mertens et al., VLSI (2021)</b><span class="k">학회</span></td>
+<td>포크시트 첫 전기 소자, n–p 간격 17 nm 이중 WFM</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><span class="st none">없음</span></td>
+<td></td></tr>
+<tr data-q="subramanian et al., vlsi (2020) 300 mm 첫 모놀리식 cfet ">
+<td class="c"><b>Subramanian et al., VLSI (2020)</b><span class="k">학회</span></td>
+<td>300 mm 첫 모놀리식 CFET</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/vlsitechnology18217.2020.9265073" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="huang et al., iedm (2020) intel 자기정렬 nmos-on-pmos 적층 나노리본 ">
+<td class="c"><b>Huang et al., IEDM (2020)</b><span class="k">학회</span></td>
+<td>Intel 자기정렬 NMOS-on-PMOS 적층 나노리본</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM13553.2020.9372066" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="mertens et al., vlsi (2023) cfet 중간 유전체 절연(mdi) ">
+<td class="c"><b>Mertens et al., VLSI (2023)</b><span class="k">학회</span></td>
+<td>CFET 중간 유전체 절연(MDI)</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.23919/vlsitechnologyandcir57934.2023.10185218" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="liao et al., iedm (2023) tsmc cfet 게이트 피치 48 nm 실증, 고 ge 층으로 mdi 조기 형성 ">
+<td class="c"><b>Liao et al., IEDM (2023)</b><span class="k">학회</span></td>
+<td>TSMC CFET 게이트 피치 48 nm 실증, 고 Ge 층으로 MDI 조기 형성</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM45741.2023.10413672" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="park et al., iedm (2023) 삼성 3d 적층 fet — 상하 s/d 절연, 절연층 건식 리세스. cpp 48·lg 13 nm gaa 나노시트">
+<td class="c"><b>Park et al., IEDM (2023)</b><span class="k">학회</span></td>
+<td>삼성 3D 적층 FET — 상하 S/D 절연, 절연층 건식 리세스. CPP 48·Lg 13 nm</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM45741.2023.10413694" target="_blank" rel="noopener">대조</a></td>
+<td><a class="chip" href="../v2/e/gaa.html">GAA 나노시트</a></td></tr>
+<tr data-q="radosavljević et al., iedm (2023) intel 적층 cmos 인버터 60 nm 피치 + powervia·후면 컨택 ">
+<td class="c"><b>Radosavljević et al., IEDM (2023)</b><span class="k">학회</span></td>
+<td>Intel 적층 CMOS 인버터 60 nm 피치 + PowerVia·후면 컨택</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM45741.2023.10413678" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="liao et al., iedm (2024) 모놀리식 cfet 인버터 48 nm 피치, 수직 다이폴 패터닝 ">
+<td class="c"><b>Liao et al., IEDM (2024)</b><span class="k">학회</span></td>
+<td>모놀리식 CFET 인버터 48 nm 피치, 수직 다이폴 패터닝</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM50854.2024.10873334" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="demuynck et al., vlsi (2024) imec mdi + 적층 컨택 — 전면 하부 컨택 제거로 생존율 11 → 79 %(초록) ">
+<td class="c"><b>Demuynck et al., VLSI (2024)</b><span class="k">학회</span></td>
+<td>imec MDI + 적층 컨택 — 전면 하부 컨택 제거로 생존율 11 → 79 %(초록)</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/vlsitechnologyandcir46783.2024.10631349" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="liao et al., iedm (2025) cfet 링 오실레이터·sram 비트셀, 48 nm 미만 피치 ">
+<td class="c"><b>Liao et al., IEDM (2025)</b><span class="k">학회</span></td>
+<td>CFET 링 오실레이터·SRAM 비트셀, 48 nm 미만 피치</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><a href="https://doi.org/10.1109/IEDM50572.2025.11353820" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="vandooren et al., iedm (2025) 층 전사로 넣는 mdi(emdi) 하이브리드 채널 cfet ">
+<td class="c"><b>Vandooren et al., IEDM (2025)</b><span class="k">학회</span></td>
+<td>층 전사로 넣는 MDI(eMDI) 하이브리드 채널 CFET</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1109/iedm50572.2025.11353866" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+</tbody></table></div></section>
+<section class="mod" id="review"><h2>계측·리뷰·튜토리얼 <small>7건 · 원문 1 · 백과 반영 0</small></h2>
+<div class="tw"><table><colgroup><col style="width:26%"><col style="width:37%"><col style="width:7%"><col style="width:7%"><col style="width:23%"></colgroup><thead><tr><th>문헌</th><th>핵심</th><th>원문</th><th>DOI</th><th>쓴 백과 항목</th></tr></thead><tbody>
+<tr data-q="breton et al., j. micro/nanopattern. mater. metrol. 21, 021206 (2022) 나노시트 계측 리뷰 — 원문 미확보(spie 구독 없음) ">
+<td class="c"><b>Breton et al., J. Micro/Nanopattern. Mater. Metrol. 21, 021206 (2022)</b><span class="k">리뷰</span></td>
+<td>나노시트 계측 리뷰 — 원문 미확보(SPIE 구독 없음)</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.1117/1.JMM.21.2.021206" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="mertens, solid state phenom. 346, 8 (2023) 좁은 공간의 습식·기상 식각 난제 — 식각 엔지니어용 개관 ">
+<td class="c"><b>Mertens, Solid State Phenom. 346, 8 (2023)</b><span class="k">리뷰</span></td>
+<td>좁은 공간의 습식·기상 식각 난제 — 식각 엔지니어용 개관</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><a href="https://doi.org/10.4028/p-TzN0MD" target="_blank" rel="noopener">대조</a></td>
+<td></td></tr>
+<tr data-q="horiguchi (imec), 강연 덱 (2020) 나노시트 → 포크시트 → cfet 흐름과 세정 ">
+<td class="c"><b>Horiguchi (imec), 강연 덱 (2020)</b><span class="k">업계</span></td>
+<td>나노시트 → 포크시트 → CFET 흐름과 세정</td>
+<td class="m"><span class="st ok">보유</span></td>
+<td class="m"><span class="st none">없음</span></td>
+<td></td></tr>
+<tr data-q="horiguchi, ee times (2021) 「나노시트 시대」 튜토리얼 기사 ">
+<td class="c"><b>Horiguchi, EE Times (2021)</b><span class="k">업계</span></td>
+<td>「나노시트 시대」 튜토리얼 기사</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><span class="st none">없음</span></td>
+<td></td></tr>
+<tr data-q="bowonder (intel), iedm 튜토리얼 (2024) ribbonfet → 포크시트 → cfet 셀 높이 축소 ">
+<td class="c"><b>Bowonder (Intel), IEDM 튜토리얼 (2024)</b><span class="k">업계</span></td>
+<td>RibbonFET → 포크시트 → CFET 셀 높이 축소</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><span class="st none">없음</span></td>
+<td></td></tr>
+<tr data-q="chao (intel), iedm 단기 강좌 (2024) ribbonfet 공정 난제 — ge %·초격자 두께·시트 간격 ">
+<td class="c"><b>Chao (Intel), IEDM 단기 강좌 (2024)</b><span class="k">업계</span></td>
+<td>RibbonFET 공정 난제 — Ge %·초격자 두께·시트 간격</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><span class="st none">없음</span></td>
+<td></td></tr>
+<tr data-q="cai &amp; horiguchi, vlsi 단기 강좌 (2021) 2 nm 공정·소자 단기 강좌 ">
+<td class="c"><b>Cai &amp; Horiguchi, VLSI 단기 강좌 (2021)</b><span class="k">업계</span></td>
+<td>2 nm 공정·소자 단기 강좌</td>
+<td class="m"><span class="st none">—</span></td>
+<td class="m"><span class="st none">없음</span></td>
+<td></td></tr>
+</tbody></table></div></section>
+<p class="note">DOI 「대기」는 DOI 문자열은 있으나 Crossref 대조 전이다(마우스를 올리면 DOI). 「없음」은 DOI를 아직 확보하지 않은 학회 발표·업계 자료다. 원본 데이터: gaa/map.json.</p>
+</main>
+<script>
+const q = document.querySelector('.find');
+q.addEventListener('input', () => {
+  const v = q.value.trim().toLowerCase();
+  document.querySelectorAll('tbody tr').forEach(tr => { tr.style.display = !v || tr.dataset.q.includes(v) ? '' : 'none'; });
+  document.querySelectorAll('section.mod').forEach(s => { s.style.display = [...s.querySelectorAll('tbody tr')].some(tr => tr.style.display !== 'none') ? '' : 'none'; });
+});
+</script>
+</body></html>
