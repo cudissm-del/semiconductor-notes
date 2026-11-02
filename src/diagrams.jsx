@@ -43,6 +43,7 @@ import ftirAfs from './figs/ftirafs.jsx';
 import sorianoTab from './figs/sorianotab.jsx';
 import sunRecipes from './figs/sunrecipes.jsx';
 import isBudget from './figs/isbudget.jsx';
+import gaaModules from './figs/gaamodules.jsx';
 import actino from './figs/actino.jsx';
 import ohProbe from './figs/ohprobe.jsx';
 import lillQms from './figs/lillqms.jsx';
@@ -390,6 +391,7 @@ export const byCaption = {
   'VUV 흡수로 본 NF₃·NH₃ 해리와 HF 생성': sorianoTab,
   '원격 NF₃ 사이클 식각의 Si 손실과 패턴 선택비': sunRecipes,
   '하단 내부 스페이서 변동 예산': isBudget,
+  'GAA 모듈별 실측 수치 지도': gaaModules,
   '액티노메트리의 두 오차 원천': actino,
   '이중 프로브로 본 Ar와 CF₄ 플라즈마': ohProbe,
   'QMS 대리 신호로 가른 식각과 염 분해': lillQms,
