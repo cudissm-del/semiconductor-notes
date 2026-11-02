@@ -56,6 +56,33 @@ F/C를 내린 대가는 공간적으로도 나타난다. 폴리머 전구체도 
 
 **NF₃/NH₃·NF₃/H₂ — 염을 거치는 계열.** NF₃에 NH₃나 H₂를 섞은 원격 플라즈마는 표면을 바로 깎는 대신 (NH₄)₂SiF₆ 같은 염을 먼저 만들고, 이 염을 가열로 날려 막을 제거한다. 막마다 염이 생기는 정도가 달라 선택비가 생기므로, 이온 없이 SiN·SiO₂·SiCN 등을 서로 가려 깎는 데 쓴다. 화학과 반응 경로는 [[AFS 화학]], 선택 식각 응용은 [[AFS 선택 식각]], 제거 단계는 [[AFS 염의 제거와 잔류물]]이 맡는다.
 
+### 논문으로 본 조성 변수 — 통합 표
+
+이 항목은 레시피 수치를 넣지 않는다. 아래 표도 그 원칙을 지킨다. 조건 열은 각 연구가 측정한 조건이고, 값 열은 「조성 변수가 표면을 얼마나 바꾸는가」의 측정값이다. 연구마다 장치·에너지가 달라 **행끼리 비교하는 표가 아니다**.
+
+| 문헌 | 조성 변수 | 조건 | 보고 값 | 원문 위치 |
+| --- | --- | --- | --- | --- |
+| Schaepkens et al. 1999 | 공급 가스의 중합성(F/C 축의 실측) | ICP 1400 W, 6 mTorr, **무바이어스** 증착, 각 40 sccm(C₃F₆/H₂만 20/15 sccm) | FC 증착 속도 CHF₃·C₂F₆ ≪ C₃F₆·C₃F₆/H₂(순서는 본문, 절대값은 그림). H가 든 조성에서 막의 F/C 비가 낮다 | Fig. 2(a)·(c), 본문 |
+| Schaepkens et al. 1999 | 막이 바꾸는 정상상태 FC 두께 | 같은 장치, 자기 바이어스 −100 V | SiO₂ ≲1.5 · Si₃N₄ 약 1.25–3.75 · Si 2–7 nm. 충분히 높은 바이어스에서는 산화막 식각률이 공급 가스에 거의 무관해진다 | 본문·Fig. 6, 초록 |
+| Metzler et al. 2016 (JVST A) | 전구체 교체 C₄F₈ ↔ CHF₃ (FC-ALE) | Ar 플라즈마 + 전구체 주기 주입, 이온 25 eV, 식각 스텝 40 s | 사이클당 제거량 C₄F₈ Si ≈3 · SiO₂ ≈2 Å, CHF₃ Si ≈6 · SiO₂ ≈4 Å. FC 증착은 C₄F₈ 약 5 Å/cycle, CHF₃는 Si 위에 약 11 Å/cycle | Si: Fig. 2·5, SiO₂·증착: 본문 |
+| Metzler et al. 2017 (J. Chem. Phys.) | FC 증착 두께 자체(5 vs 11 Å) | Ar/C₄F₈ 사이클릭, 이온 25 · 30 eV | 11 Å로 두껍게 쌓으면 표면의 불화 산화물층 조성이 크게 바뀐다. SiO₂는 30 eV에서 식각 스텝 길이에 대해 포화하고 25 eV에서는 포화 전이다 | Fig. 6·9, 본문 |
+| Kaler et al. 2017 | 증착과 제거를 분리한 빔 실험 | c-C₄F₈ ICP 빔 증착 + Ar⁺ 빔 130 eV, SiO₂ | 증착막은 3–6 Å의 CF₂가 많은 박막으로 거의 자기제한. SiO₂ 1.9 Å/cycle, 수율 약 1.3 SiO₂/Ar⁺. 남은 FC 막은 O₂가 든 빔으로 걷힌다 | 초록·본문 |
+
+&#91;embedded content: FC-ALE 전구체와 사이클당 제거량 · Metzler et al. (2016) Fig. 2·5·본문 재구성]
+
+**산술로 읽기.** Metzler 등(2016)의 근사값으로 Si : SiO₂ 제거량 비를 내면 C₄F₈ 3/2, CHF₃ 6/4로 둘 다 약 1.5다(**산술**). 전구체를 바꾸자 제거량은 두 막 모두 약 두 배가 됐지만, 두 막 사이의 비는 그대로였다. 근사값끼리의 비라 소수점 아래는 읽지 않는다.
+
+### 논문 사이의 긴장
+
+- **F/C 축에는 성립 영역이 있다.** 위 「CxHyFz 가족과 F/C 축」 절의 방향 서술은 Schaepkens 등(1999)의 무바이어스 증착 순서와 맞는다. 그런데 같은 논문의 초록은 충분히 높은 자기 바이어스에서 산화막 식각률이 공급 가스 화학에 거의 무관해진다고 쓴다. F/C 축이 지배하는 것은 증착과 저에너지 영역이고, 이온 에너지가 커지면 막 두께의 균형이 다시 쓰인다.
+- **「폴리머가 두꺼우면 느려진다」가 ALE 창에서는 깨진다.** Schaepkens의 정상상태 연속 식각에서는 FC 막이 두꺼울수록 식각률이 낮다. 반면 Metzler 등(2016)의 FC-ALE에서는 CHF₃가 C₄F₈보다 두 배 넘게 두껍게 쌓이면서(약 11 vs 5 Å) 제거량도 두 배였다. 사이클 공정에서는 쌓인 막이 다음 이온 스텝의 반응물이 되므로, 두께와 함께 막의 F 함량·혼합층 조성이 움직인다는 해석이 본문과 맞는다. 두 결과는 정상상태와 사이클이라는 영역 차이로 읽는다(해석).
+- **조성 창만큼 에너지 창도 좁다.** Metzler 등(2017, J. Chem. Phys.)에서 SiO₂의 포화는 30 eV에서 나타나고 25 eV에서는 나타나지 않았다. 가스 조성을 맞춰도 이온 에너지 5 eV 차이가 자기제한 여부를 가른다. 가스 절과 [[ALE (원자층 식각)]]을 잇는 고리다.
+
+### 실패 모드
+
+- **무바이어스 순서를 바이어스 조건에 옮기는 실수.** Schaepkens Fig. 2의 증착 순서는 바이어스가 없는 값이다. 바이어스를 건 식각 조건에서도 같은 순서가 유지된다고 보면 틀린다. 그래서 통합 표의 행마다 바이어스 유무를 적었다.
+- **같은 이름의 다른 논문.** CH₃F/O₂ 빔 실험(Kaler 등 2016)과 C₄F₈/Ar⁺ 빔 ALE(Kaler 등 2017)는 같은 그룹의 다른 논문이다. 앞의 것은 원문 대조 전이라 본문의 정성 서술에만 쓰고 표에는 넣지 않았다.
+
 ### 가스 선택의 트레이드오프
 
 수치 없이 방향만 적는다. 조건값은 장비와 구조마다 달라 일반화할 수 없다.
@@ -104,6 +131,7 @@ GWP는 배출된 양에 곱해지는 계수다. 그래서 공정 쪽에서 줄�
   - [Silicon nitride and silicon etching by CH₃F/O₂ and CH₃F/CO₂ plasma beams](https://doi.org/10.1116/1.4949261) — Kaler, Lou, Donnelly, Economou, J. Vac. Sci. Technol. A 34, 041301 (2016). O₂ 비율에 따른 HFC 막 두께와 SiN 식각률. SiO₂는 직접 재지 않았으므로 "역전"이 아니라 "SiN 우세 가능"의 근거로만 쓴다.
   - Kogelschatz et al., Contrib. Plasma Phys. (2004), [doi:10.1002/ctpp.200410082](https://doi.org/10.1002/ctpp.200410082) — HBr/Cl₂/O₂ Si 게이트 식각의 측벽 패시베이션 형성과 조성.
   - Reichardt et al., Microelectron. Eng. (2001), [doi:10.1016/S0167-9317(00)00505-0](https://doi.org/10.1016/S0167-9317(00)00505-0) — 원격 NF₃ 플라즈마 챔버 세정을 PFC 저감 대안으로 제시.
+- **통합 표** — 수치·조건·원문 위치는 Joy의 원문 추출(2026-11-02)이다. Schaepkens et al., J. Vac. Sci. Technol. A 17, 26 (1999), [doi:10.1116/1.582108](https://doi.org/10.1116/1.582108); Metzler et al., "Fluorocarbon assisted atomic layer etching of SiO₂ and Si using cyclic Ar/C₄F₈ and Ar/CHF₃ plasma", J. Vac. Sci. Technol. A 34 (2016), [doi:10.1116/1.4935462](https://doi.org/10.1116/1.4935462); Metzler et al., "Characterizing fluorocarbon assisted atomic layer etching of Si using cyclic Ar/C₄F₈ and Ar/CHF₃ plasma", J. Chem. Phys. 146, 052801 (2017, 온라인 2016), [doi:10.1063/1.4961458](https://doi.org/10.1063/1.4961458) (서지는 Crossref 레코드로 Joy 확인); Kaler et al., J. Phys. D: Appl. Phys. 50 (2017), [doi:10.1088/1361-6463/aa6f40](https://doi.org/10.1088/1361-6463/aa6f40). 모두 저장소에서 이미 대조된 인용이다. 표 아래 비는 근사값으로 낸 **산술**이다.
 - **GWP** — IPCC, Climate Change 2021: The Physical Science Basis (AR6 WGI), Chapter 7 Supplementary Material, Table 7.SM.7 (GWP-100, 정수값). 원표 대조는 Joy(2026-10-27), 값 5종은 표 출처를 같은 표로 명시한 2차 자료와도 일치함을 Claude가 확인했다.
 
 ## 관련 항목
