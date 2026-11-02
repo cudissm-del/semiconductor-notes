@@ -37,6 +37,7 @@ import lowkKeff from './figs/lowkkeff.jsx';
 import kimArde from './figs/kimarde.jsx';
 import iedSplit from './figs/iedsplit.jsx';
 import metzlerEpc from './figs/metzlerepc.jsx';
+import bondLadder from './figs/bondladder.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -374,4 +375,5 @@ export const byCaption = {
   '펄스 바이어스와 ARDE': kimArde,
   'RF 쉬스의 이온 에너지 갈라짐': iedSplit,
   'FC-ALE 전구체와 사이클당 제거량': metzlerEpc,
+  '결합 세기의 세 층': bondLadder,
 };
