@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>홈 — 반도체 백과 작업실</title>
+<style>/* 반도체 백과 (v2 프리뷰) — 항목 페이지·대문 공용 스타일 */
+:root {
+  --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --missing: #c2410c;
+  --cds-text-primary: #1d2126; --cds-text-secondary: #5d6672; --cds-chart-axis: #9aa4b0;
+  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eceff3;
+  --cds-chart-categorical-1: #2f7fc4; --cds-chart-categorical-2: #e08a2e; --cds-chart-categorical-3: #3aa655;
+  --cds-chart-categorical-4: #b0529e; --cds-chart-categorical-5: #718096;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --missing: #f09368;
+    --cds-text-primary: #e8eaed; --cds-text-secondary: #9aa3ad; --cds-chart-axis: #59626e;
+    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #262a31;
+    --cds-chart-categorical-1: #4aa3e0; --cds-chart-categorical-2: #eda93f; --cds-chart-categorical-3: #4cc26e;
+    --cds-chart-categorical-4: #cf7bc0; --cds-chart-categorical-5: #93a3b8;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.65; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
+header.top .in { max-width: 880px; margin: 0 auto; padding: 10px 18px; display: flex; gap: 14px; align-items: baseline; }
+header.top .brand { font-weight: 800; color: var(--ink); font-size: 16px; }
+header.top .tag { color: var(--sub); font-size: 12.5px; }
+main { max-width: 880px; margin: 0 auto; padding: 22px 18px 60px; }
+.crumb { font-size: 13px; color: var(--sub); margin-bottom: 6px; }
+.crumb a { color: var(--sub); }
+h1.title { font-size: 30px; margin: 2px 0 0; line-height: 1.25; }
+.en { color: var(--sub); font-size: 15px; margin-top: 2px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--sub); }
+.chip.cat { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+article { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 26px 20px; margin-top: 14px; }
+article h2 { font-size: 20px; margin: 26px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line); }
+article h3 { font-size: 16.5px; margin: 20px 0 6px; }
+article p { margin: 8px 0; }
+article blockquote { margin: 14px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; font-size: 16.5px; }
+article blockquote p { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+th { background: var(--chip); }
+.fig { margin: 16px 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.fig svg { max-width: 100%; height: auto; }
+.fig img { max-width: 100%; height: auto; border-radius: 8px; }
+.fig figcaption { font-size: 13px; color: var(--sub); margin-top: 8px; }
+.fig .credit { display: block; font-size: 12px; }
+a.wiki { font-weight: 600; }
+.wiki-missing { color: var(--missing); border-bottom: 1px dashed var(--missing); }
+.links-box { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 20px; }
+.links-box h3 { margin: 6px 0 8px; font-size: 15px; }
+.links-box ul { margin: 0; padding-left: 18px; }
+footer.bot { max-width: 880px; margin: 0 auto; padding: 0 18px 40px; color: var(--sub); font-size: 13px; }
+/* 대문 */
+.hero h1 { font-size: 32px; margin: 8px 0 4px; }
+.hero p { color: var(--sub); margin: 0 0 6px; }
+.search { margin: 18px 0 6px; }
+.search input { width: 100%; padding: 12px 14px; font-size: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+#results { margin-top: 8px; }
+#results .hit { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 8px 0; color: var(--ink); }
+#results .hit .t { font-weight: 700; }
+#results .hit .m { color: var(--sub); font-size: 13px; }
+#results .hit .x { color: var(--sub); font-size: 13.5px; margin-top: 3px; }
+.cat-sec { margin-top: 30px; }
+.cat-sec > h2 { font-size: 22px; border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+.sub-name { font-size: 14px; font-weight: 700; color: var(--sub); margin: 14px 0 6px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink); display: block; }
+.card:hover { border-color: var(--accent); text-decoration: none; }
+.card .t { font-weight: 700; font-size: 16px; }
+.card .e { color: var(--sub); font-size: 12.5px; }
+.card .d { color: var(--sub); font-size: 13.5px; margin-top: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.count { color: var(--sub); font-size: 13px; }
+code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: 0.92em; }
+/* 즐겨찾기 */
+:root { --star: #d97706; }
+@media (prefers-color-scheme: dark) { :root { --star: #f5b544; } }
+.tabs { display: flex; gap: 8px; margin: 18px 0 2px; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; font-family: inherit; }
+.tab:hover { border-color: var(--accent); }
+.tab.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.fav-btn { margin: 10px 0 2px; border: 1px solid var(--line); background: var(--card); color: var(--sub); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+.fav-btn:hover { border-color: var(--star); }
+.fav-btn.on { color: var(--star); border-color: var(--star); font-weight: 700; }
+#favWrap { margin-top: 18px; }
+
+/* 표 안에서는 단어 중간에서 끊지 않고 표가 가로로 스크롤되게 (site.css에서 이식, 2026-10-26) */
+table { overflow-wrap: normal; word-break: keep-all; }
+@media (max-width: 520px) { th, td { min-width: 6.5em; } td:first-child { min-width: 7em; } }
+
+/* 수식 — 넓은 식은 .math 안에서 가로 스크롤 (site.css에서 이식, 2026-10-26 넓이 병합. wiki.css 변수에 맞춰 배경은 --chip, 모서리는 10px) */
+.math { margin: 8px 0 20px; padding: 14px 16px; overflow-x: auto; border-radius: 10px; background: var(--chip); text-align: center; }
+.katex { font-size: 1.12em; }
+
+/* 긴 링크(URL 등)가 모바일 폭을 밀어내지 않게 어디서든 꺾는다 (site.css body 규칙의 a 한정 이식, 2026-10-26) */
+a { overflow-wrap: anywhere; }
+
+/* 접근성 — 건너뛰기 링크·포커스 표시·동작 줄이기·인쇄 (2026-10-27 1차 묶음) */
+.skip-link { position: absolute; left: 12px; top: -56px; z-index: 20; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 0 0 10px 10px; font-size: 14px; transition: top .15s ease; }
+.skip-link:focus { top: 0; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media print {
+  header.top, footer.bot, .side, .fav-btn, .tabs, .search, .prevnext, .skip-link { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block !important; }
+  main { max-width: none; padding: 0; }
+  article { border: 0; border-radius: 0; padding: 0; }
+  a { color: inherit; }
+  .table-wrap { overflow: visible; }
+}
+
+main, header.top .in { max-width: 1040px; }
+.hello { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; margin: 4px 0 16px; }
+.hello h1 { font-size: 26px; margin: 0; }
+.hello .when { color: var(--sub); font-size: 13px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.stat .k { color: var(--sub); font-size: 12.5px; }
+.stat .v { font-size: 26px; font-weight: 800; line-height: 1.2; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.stat .v small { font-size: 14px; color: var(--sub); font-weight: 600; }
+.stat .s { color: var(--sub); font-size: 12.5px; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+h2.sec { font-size: 15px; color: var(--sub); margin: 26px 0 10px; letter-spacing: .02em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.tile { display: flex; flex-direction: column; gap: 3px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; color: var(--ink); min-height: 78px; }
+a.tile:hover { border-color: var(--accent); text-decoration: none; }
+.tile b { font-size: 15.5px; }
+.tile span { color: var(--sub); font-size: 13px; }
+.tile.wait { border-style: dashed; opacity: .75; }
+.tile.wait em { font-style: normal; font-size: 12px; color: var(--missing); font-weight: 700; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; }
+.dom { display: grid; grid-template-columns: 82px minmax(0, 1fr) 92px; gap: 10px; align-items: center; padding: 7px 0; font-size: 14px; }
+.dom + .dom { border-top: 1px solid var(--line); }
+.bar { position: relative; height: 10px; background: var(--chip); border-radius: 99px; overflow: hidden; }
+.bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 99px; }
+.dom .num { text-align: right; color: var(--sub); font-variant-numeric: tabular-nums; font-size: 13px; }
+.recent { list-style: none; margin: 0; padding: 0; }
+.recent li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; font-size: 14px; }
+.recent li + li { border-top: 1px solid var(--line); }
+.recent .d { color: var(--sub); font-size: 12.5px; white-space: nowrap; }
+.recent .dm { color: var(--sub); font-size: 12.5px; margin-left: 6px; }
+.note { color: var(--sub); font-size: 12.5px; margin-top: 8px; }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .two { grid-template-columns: minmax(0, 1fr); } }
+</style></head><body>
+<header class="top"><div class="in"><a class="brand" href="../v2/">반도체 백과</a><span class="tag">작업실 홈</span></div></header>
+<main>
+<div class="hello"><h1>작업실</h1><span class="when">현황은 2026-11-02 14:45 KST 빌드 기준</span></div>
+<div class="stats">
+  <div class="stat"><div class="k">항목</div><div class="v">112</div><div class="s">4개 영역</div></div>
+  <div class="stat"><div class="k">기본형</div><div class="v">112<small> / 112</small></div><div class="s">100%</div></div>
+  <div class="stat"><div class="k">심화형 형식 요건</div><div class="v">16<small> / 112</small></div><div class="s">14% · audit.py --deep</div></div>
+  <div class="stat"><div class="k">빌드 기준 커밋</div><div class="v" style="font-size:20px"><a href="https://github.com/cudissm-del/semiconductor-notes/commit/a4e9708" target="_blank" rel="noopener">a4e9708</a></div><div class="s" title="병합: 홈 대시보드 (claude/home 5869dbe, AG-20)">2026-11-02 · 병합: 홈 대시보드 (claude/home 5869dbe, AG-20)</div></div>
+</div>
+<h2 class="sec">백과</h2>
+<div class="grid"><a class="tile" href="../v2/"><b>반도체 백과 (v2)</b><span>항목 단위 위키 — 영역·주제·태그</span></a><a class="tile" href="../"><b>강의노트 (22장)</b><span>기존 장 구조 사이트</span></a><a class="tile" href="https://github.com/cudissm-del/semiconductor-notes" target="_blank" rel="noopener"><b>GitHub 저장소</b><span>소스·커밋·브랜치</span></a><a class="tile" href="https://github.com/cudissm-del/semiconductor-notes/issues/3" target="_blank" rel="noopener"><b>토론 정리 (이슈 #3)</b><span>6시간마다 Claude 정리</span></a></div>
+<h2 class="sec">연구</h2>
+<div class="grid"><div class="tile wait"><b>GAA 나노시트 공정 조사</b><span>Claude·Joy 조사 통합본 (AG-21)</span><em>링크 대기</em></div><a class="tile" href="https://app.notion.com/p/35c33730faaf80cf9669c7484f8d7941" target="_blank" rel="noopener"><b>논문 DB</b><span>노션 논문 데이터베이스</span></a><div class="tile wait"><b>Zotero 라이브러리</b><span>원문 PDF·서지</span><em>링크 대기</em></div></div>
+<h2 class="sec">협업</h2>
+<div class="grid"><a class="tile" href="https://app.notion.com/p/9130d5da454c4131bad2a154770c011d" target="_blank" rel="noopener"><b>안건 보드</b><span>Claude·Joy 토론과 정식 결정</span></a></div>
+<div class="two" style="margin-top:26px">
+  <section><h2 class="sec" style="margin-top:0">영역별 심화 진행</h2><div class="panel">
+  <div class="dom"><span>공정</span><div class="bar" title="심화형 5/26"><i style="width:19%"></i></div><span class="num">5 / 26</span></div>
+  <div class="dom"><span>구조·재료</span><div class="bar" title="심화형 0/30"><i style="width:0%"></i></div><span class="num">0 / 30</span></div>
+  <div class="dom"><span>계측·분석</span><div class="bar" title="심화형 5/34"><i style="width:15%"></i></div><span class="num">5 / 34</span></div>
+  <div class="dom"><span>원리·운영</span><div class="bar" title="심화형 6/22"><i style="width:27%"></i></div><span class="num">6 / 22</span></div>
+  <div class="note">막대 = 심화형 형식 요건 통과 / 영역 항목 수. 형식 요건은 내용 판정이 아니다.</div></div></section>
+  <section><h2 class="sec" style="margin-top:0">최근 갱신 항목</h2><div class="panel"><ul class="recent">
+  <li><span><a href="../v2/e/xps.html">XPS</a><span class="dm">계측·분석</span></span><span class="d">2026-11-02</span></li>
+  <li><span><a href="../v2/e/langmuir.html">랭뮤어 프로브</a><span class="dm">계측·분석</span></span><span class="d">2026-11-02</span></li>
+  <li><span><a href="../v2/e/oes.html">OES</a><span class="dm">계측·분석</span></span><span class="d">2026-11-02</span></li>
+  <li><span><a href="../v2/e/qms.html">QMS</a><span class="dm">계측·분석</span></span><span class="d">2026-11-02</span></li>
+  <li><span><a href="../v2/e/ftir.html">FTIR</a><span class="dm">계측·분석</span></span><span class="d">2026-11-02</span></li>
+  <li><span><a href="../v2/e/vuv.html">VUV 분광</a><span class="dm">계측·분석</span></span><span class="d">2026-11-02</span></li>
+  </ul></div></section>
+</div>
+</main></body></html>
