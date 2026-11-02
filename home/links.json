@@ -1,0 +1,28 @@
+{
+  "_설명": "홈 대시보드 링크 목록. url이 비어 있으면 「링크 대기」로 뜬다. 고친 뒤 npm run build.",
+  "groups": [
+    {
+      "name": "백과",
+      "items": [
+        { "name": "반도체 백과 (v2)", "url": "../v2/", "desc": "항목 단위 위키 — 영역·주제·태그" },
+        { "name": "강의노트 (22장)", "url": "../", "desc": "기존 장 구조 사이트" },
+        { "name": "GitHub 저장소", "url": "https://github.com/cudissm-del/semiconductor-notes", "desc": "소스·커밋·브랜치" },
+        { "name": "토론 정리 (이슈 #3)", "url": "https://github.com/cudissm-del/semiconductor-notes/issues/3", "desc": "6시간마다 Claude 정리" }
+      ]
+    },
+    {
+      "name": "연구",
+      "items": [
+        { "name": "GAA 나노시트 공정 조사", "url": "", "desc": "Claude·Joy 조사 통합본 (AG-21)" },
+        { "name": "논문 DB", "url": "https://app.notion.com/p/35c33730faaf80cf9669c7484f8d7941", "desc": "노션 논문 데이터베이스" },
+        { "name": "Zotero 라이브러리", "url": "", "desc": "원문 PDF·서지" }
+      ]
+    },
+    {
+      "name": "협업",
+      "items": [
+        { "name": "안건 보드", "url": "https://app.notion.com/p/9130d5da454c4131bad2a154770c011d", "desc": "Claude·Joy 토론과 정식 결정" }
+      ]
+    }
+  ]
+}
