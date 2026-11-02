@@ -38,6 +38,13 @@ import kimArde from './figs/kimarde.jsx';
 import iedSplit from './figs/iedsplit.jsx';
 import metzlerEpc from './figs/metzlerepc.jsx';
 import bondLadder from './figs/bondladder.jsx';
+import xpsComp from './figs/xpscomp.jsx';
+import ftirAfs from './figs/ftirafs.jsx';
+import sorianoTab from './figs/sorianotab.jsx';
+import actino from './figs/actino.jsx';
+import ohProbe from './figs/ohprobe.jsx';
+import lillQms from './figs/lillqms.jsx';
+import eepf from './figs/eepf.jsx';
 
 const ink = 'var(--cds-text-primary)', quiet = 'var(--cds-text-secondary)', edge = 'var(--cds-chart-axis)', tint = 'var(--cds-chart-reference-tint)';
 const c1 = 'var(--cds-chart-categorical-1)', c2 = 'var(--cds-chart-categorical-2)', c3 = 'var(--cds-chart-categorical-3)', c4 = 'var(--cds-chart-categorical-4)', c5 = 'var(--cds-chart-categorical-5)';
@@ -376,4 +383,11 @@ export const byCaption = {
   'RF 쉬스의 이온 에너지 갈라짐': iedSplit,
   'FC-ALE 전구체와 사이클당 제거량': metzlerEpc,
   '결합 세기의 세 층': bondLadder,
+  'XPS로 본 H₂ 플라즈마 전후 표면 조성': xpsComp,
+  'AFS 층의 적외 지문': ftirAfs,
+  'VUV 흡수로 본 NF₃·NH₃ 해리와 HF 생성': sorianoTab,
+  '액티노메트리의 두 오차 원천': actino,
+  '이중 프로브로 본 Ar와 CF₄ 플라즈마': ohProbe,
+  'QMS 대리 신호로 가른 식각과 염 분해': lillQms,
+  'EEPF 개형과 압력 전이': eepf,
 };
