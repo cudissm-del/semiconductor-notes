@@ -287,6 +287,72 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <p>Si 식각에서 m/z 85(SiF₃⁺)가 떨어지는 시점은 Si가 다 깎였다는 종말점 신호가 되고, 챔버를 열고 닫은 뒤의 18(H₂O⁺)·28·32(O₂⁺) 잔류가스 수준은 챔버가 공정 투입 가능한 상태인지 판단하는 기준이 된다. 라디칼 자체를 보려면 전자 에너지를 모분자가 깨지는 에너지보다 낮게 맞춰 라디칼만 이온화하는 문턱 이온화법을 쓴다.</p>
 <p>감도 계수는 기체마다, 그리고 같은 장비에서도 시간에 따라 바뀐다. 이온원 필라멘트가 소모되거나 검출기 이득이 떨어지면 같은 분압에서도 신호가 줄므로, 정량하려면 알려진 분압의 표준 기체로 주기적으로 교정한다. 공정 기체가 이온원이나 질량 필터에 막을 쌓으면 감도가 빠르게 변하므로, 부식성 기체 공정에서는 측정하지 않을 때 밸브를 닫아 분석실을 보호한다. 신호의 절대값보다 공정 조건에 따른 상대 변화를 볼 때 QMS가 가장 믿을 만하다.</p>
 <p>그래서 QMS 결과는 <a class="wiki" href="oes.html">OES</a>·<a class="wiki" href="vuv.html">VUV 분광</a>과 짝지어 읽는다. 발광이나 흡수로 본 라디칼 변화와 QMS로 본 안정 생성물 변화가 같은 방향이면 해석에 자신이 붙고, 엇갈리면 샘플링 경로에서 반응이 일어났는지부터 의심한다. 측정 기록에는 오리피스 위치, 이온화 전자 에너지, 교정 날짜를 함께 남겨 둔다. 분석실 바탕 스펙트럼(공정 기체를 넣기 전)도 매번 저장해 두면, 나중에 신호가 오염인지 공정 변화인지를 가를 기준이 된다. 이 바탕을 뺀 차이 스펙트럼이 공정의 몫이다.</p>
+<h2 id="논문으로-본-QMS-통합-표">논문으로 본 QMS — 통합 표</h2>
+<p>QMS 신호가 실제로 무엇을 정량했는지를 모았다. 세 실측 모두 절대 밀도가 아니라 <strong>대리 신호·정규화·상대 비교</strong>라는 공통점이 있고, 그 한계가 이 표의 두 번째 메시지다. 장치가 달라 행끼리 비교하는 표가 아니다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>문헌</th>
+<th>측정 대상 · m/z</th>
+<th>샘플링</th>
+<th>조건</th>
+<th>보고 값</th>
+<th>원문 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lill et al. 2024</td>
+<td>SiF₃⁺ — SiF₄의 조각 이온을 대리 신호로</td>
+<td>시료 챔버 → 개구 → 스키머 → 차등 배기된 2차 챔버의 QMS(분자빔 샘플링)</td>
+<td>SiN 분말 + HF 0.5 Torr, H₂O 분압 가변, 20 °C 자발 식각 45분 뒤 200 °C까지 선형 승온</td>
+<td>H₂O를 넣으면 SiF₃⁺ 신호가 오른다. 승온 중 AFS 분해 생성물 탈착이 100–120 °C에서 나타난다. 적분 신호는 H₂O 분압이 HF의 4배일 때 포화하고, 자발 식각 쪽이 AFS 증발 쪽의 2.75배</td>
+<td>Fig. 2(c)·8·9, 본문</td>
+</tr>
+<tr>
+<td>Volynets et al. 2020 (I편)</td>
+<td>H₂ — 잔류 가스 분석기</td>
+<td>뷰포트에 단 잔류 가스 분석기</td>
+<td>원격 플라즈마, H₂ 0–90 sccm, 350 mTorr</td>
+<td>[H₂]는 H₂ 20 sccm에서 급증하고, 같은 지점에서 OES로 잰 [F]는 검출 한계 아래로 떨어진다. 절대값은 그림에만</td>
+<td>본문 II·III.A, Fig. 2</td>
+</tr>
+<tr>
+<td>Volynets et al. 2020 (I편)</td>
+<td>H₂O·HF</td>
+<td>같은 분석기</td>
+<td>H₂ 유량 스캔</td>
+<td>실측 밀도를 H₂ 90 sccm의 모델 값에 <strong>정규화</strong>해 비교 — 추세만 일치를 확인</td>
+<td>본문, Fig. 11</td>
+</tr>
+<tr>
+<td>Coburn &amp; Winters 1979</td>
+<td>SiF₃⁺ 피크로 SiF₄ 분압</td>
+<td>UHV 장치, 사중극자 질량 필터 + 이온 건</td>
+<td>Si 표면 + XeF₂(배경 약 3×10⁻⁵ Pa), Ar⁺ 유무</td>
+<td>Ar⁺를 켜면 SiF₄ 발생이 XeF₂ 단독보다 훨씬 커지고, 신호가 이온 충격에 거의 즉각 응답한다 — 이온 보조 식각의 기상 증거</td>
+<td>본문, Fig. 7</td>
+</tr>
+<tr>
+<td>Donnelly &amp; Kornblit 2013 (리뷰)</td>
+<td>샘플링·피크 배정</td>
+<td>리뷰 서술</td>
+<td>—</td>
+<td>반응성 중성종을 보려면 벽 개구 + 시선 + 2단 차등 배기 + 빔 초핑이 필요하고, 통상 조건(챔버 반경 15 cm 초과, 5 mTorr 이상)에서는 벽 근처 종에 강하게 치우친다. 질량 우연보다 이온화기 안의 부모/딸 이온 구분이 더 흔한 문제이고, 출현 전위 측정이 분리 수단이다(Singh 등 1999·2000 인용)</td>
+<td>본문(질량분석 절)</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 760 340" role="img" aria-label="SiF₃⁺ 신호 하나로 자발 식각과 AFS 분해를 갈라 본다" font-size="12"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">QMS 신호 하나로 식각과 염 분해를 갈라 본다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">SiN 분말 + HF 0.5 Torr + H₂O. 20 °C 자발 식각 45분 뒤 200 °C까지 승온 — SiF₄를 조각 이온 SiF₃⁺로 추적</text><text x="24" y="84" font-size="12" font-weight="600" fill="var(--cds-text-primary)">적분 신호 비 (상대)</text><line x1="60" y1="250" x2="320" y2="250" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><rect x="90" y="112.5" width="70" height="137.5" fill="var(--cds-chart-categorical-1)"></rect><rect x="210" y="200" width="70" height="50" fill="var(--cds-chart-categorical-2)"></rect><text x="125" y="104.5" text-anchor="middle" font-size="12" fill="var(--cds-text-primary)">2.75</text><text x="245" y="192" text-anchor="middle" font-size="12" fill="var(--cds-text-primary)">1</text><text x="125" y="268" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">20 °C 자발 식각</text><text x="245" y="268" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">승온 중 AFS 증발</text><text x="60" y="296" font-size="11" fill="var(--cds-text-secondary)">두 적분 신호 모두 H₂O 분압이 HF의 4배에서 포화</text><text x="400" y="84" font-size="12" font-weight="600" fill="var(--cds-text-primary)">승온 구간에서 염 분해가 나오는 온도</text><rect x="560" y="110" width="32" height="110" fill="var(--cds-chart-reference-tint)"></rect><text x="576" y="104" text-anchor="middle" font-size="11" fill="var(--cds-text-primary)">100–120 °C</text><g><line x1="400" y1="110" x2="400" y2="220" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="400" y="238" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">0</text></g><g><line x1="480" y1="110" x2="480" y2="220" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="480" y="238" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">50</text></g><g><line x1="560" y1="110" x2="560" y2="220" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="560" y="238" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">100</text></g><g><line x1="640" y1="110" x2="640" y2="220" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="640" y="238" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">150</text></g><g><line x1="720" y1="110" x2="720" y2="220" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="720" y="238" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">200</text></g><line x1="400" y1="220" x2="720" y2="220" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><line x1="432" y1="120" x2="432" y2="220" stroke="var(--cds-chart-categorical-1)" stroke-width="2.5"></line><text x="438" y="134" font-size="11" fill="var(--cds-text-primary)">20 °C 유지</text><text x="560" y="258" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">시료 온도 (°C)</text><text x="24" y="318" font-size="11" fill="var(--cds-text-secondary)">재구성: Lill et al., J. Vac. Sci. Technol. A 42, 063006 (2024), doi:10.1116/6.0004019 — Fig. 8·9·본문 수치. 신호는 정규화값이라 절대 식각률이 아니다.</text><text x="24" y="334" font-size="11" fill="var(--cds-text-secondary)">시간에 따른 신호 개형은 그림 판독이 필요해 그리지 않았다</text></svg><figcaption>그림 1. QMS 대리 신호로 가른 식각과 염 분해 · Lill et al. (2024) Fig. 8·9·본문 재구성</figcaption></figure>
+<h2 id="논문-사이의-긴장">논문 사이의 긴장</h2>
+<ul>
+<li><strong>대리 신호의 대가.</strong> Lill 등(2024)의 SiF₃⁺는 SiF₄ 자체가 아니라 이온화기에서 깨진 딸 이온이고, 신호는 정규화값이다. 상대 변화와 온도 위치(100–120 °C)는 믿을 수 있지만 절대 식각률로는 바꿀 수 없다. 리뷰가 지적한 부모/딸 구분 문제가 AFS 연구의 핵심 실측에도 그대로 걸려 있다.</li>
+<li><strong>정규화 대조는 모양 검증이다.</strong> Volynets 등(2020)의 H₂O·HF 밀도는 모델 값에 맞춰 붙인 것이라, 모델과 실측의 일치는 추세 검증이지 절대 밀도 검증이 아니다.</li>
+<li><strong>살아남은 것만 본다.</strong> Lill 장치의 분자빔·스키머는 벽 손실을 줄이는 설계지만, 검출된 SiF₄는 안정 분자라 살아남은 것이고 짧게 사는 SiFₓ 라디칼은 이 구성으로도 직접 보지 못한다. 위 「검출 신호는 챔버 안 밀도의 하한」 서술의 실측판이다.</li>
+</ul>
+<h2 id="실패-모드">실패 모드</h2>
+<ul>
+<li><strong>잔류 가스 분석기 신호를 절대 밀도로 읽는 실수.</strong> 정규화했다면 기준점과 기준값을 함께 적어야 다른 조건·다른 날의 신호와 비교할 수 있다.</li>
+<li><strong>출현 전위 수치를 기억으로 적는 실수.</strong> 문턱 이온화의 원전(Singh, Coburn &amp; Graves 2000)은 원문 대조 전이라, 이 항목은 출현 전위 값과 라디칼 밀도 수치를 싣지 않는다.</li>
+</ul>
 <h2 id="한계-주의점">한계·주의점</h2>
 <p>m/z가 겹치는 종(예: 28의 N₂와 CO)은 분해 패턴 없이는 분리할 수 없고, 배경 수분·대기 누설 피크가 미량 종을 가린다. 샘플링 오리피스와 이온원까지의 거리가 종마다 다른 손실과 시간 지연을 만들어 실시간 추적에 한계가 있으며, 검출기 이득은 시간에 따라 표류해 주기적 교정이 필요하다. 압력이 높은 공정은 차등 배기로 감압해 들이므로, 측정 조성은 그 변환을 거친 값임을 감안한다.</p>
 <h2 id="관련-항목">관련 항목</h2>
@@ -299,6 +365,8 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <ul>
 <li>사중극자 질량 필터 원리와 RGA 용도는 진공·질량분석 표준 교재의 일반 서술에 근거한다: O&#39;Hanlon, <em>A User&#39;s Guide to Vacuum Technology</em> (Wiley).</li>
 <li>문턱 이온화로 라디칼과 해리 이온화 생성물을 가르는 원전: Singh, Coburn &amp; Graves, J. Vac. Sci. Technol. A 18, 299–305 (2000), <a href="https://doi.org/10.1116/1.582183" target="_blank" rel="noopener">doi:10.1116/1.582183</a> (Crossref 대조: Joy).</li>
+<li>통합 표의 수치·조건·원문 위치 — Joy의 원문 추출(2026-11-02). Lill et al., J. Vac. Sci. Technol. A 42, 063006 (2024), <a href="https://doi.org/10.1116/6.0004019" target="_blank" rel="noopener">doi:10.1116/6.0004019</a>; Volynets et al. (2020), <a href="https://doi.org/10.1116/1.5125568" target="_blank" rel="noopener">doi:10.1116/1.5125568</a>; Coburn &amp; Winters (1979), <a href="https://doi.org/10.1063/1.326355" target="_blank" rel="noopener">doi:10.1063/1.326355</a>; Donnelly &amp; Kornblit (2013), <a href="https://doi.org/10.1116/1.4819316" target="_blank" rel="noopener">doi:10.1116/1.4819316</a>. 모두 저장소에서 이미 대조된 인용이다.</li>
+<li>원문 대기: Singh, Coburn &amp; Graves (2000)의 출현 전위·라디칼 밀도 수치(OA 없음, 기관 접근 필요 — Joy 판정), Singh 등 (1999).</li>
 </ul>
 </article>
   <nav class="prevnext"><a href="langmuir.html">← 이전 · 랭뮤어 프로브</a><a href="vuv.html">다음 · VUV 분광 →</a></nav>

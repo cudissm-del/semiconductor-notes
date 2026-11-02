@@ -258,12 +258,126 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 </tr>
 </tbody></table></div>
 <p>표의 값이 하나로 고정된 상수는 아니다. 막의 조성·전하 보정 상태에 따라 수 0.1 eV에서 1 eV 가까이 움직일 수 있으므로, 절대 위치 하나보다 <strong>피크들의 상대 간격과 면적비</strong>로 화학 상태를 판정하는 것이 안전하다.</p>
+<h3 id="실측으로-본-결합-상태별-BE">실측으로 본 결합 상태별 BE</h3>
+<p>위 전형값을 공정 논문의 실측과 나란히 둔다. 결합 이름은 <a class="wiki" href="chemical-bonding.html">화학 결합과 결합 에너지</a>와 맞췄다. 문헌마다 전하 보정 방식이 달라(아래 긴장 절) 절대값에는 수 0.1 eV의 체계 오차가 깔려 있다. 그 전제 위에서도 같은 결합끼리는 0.2 eV 안에서 일치한다.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>피크</th>
+<th>결합 상태</th>
+<th>실측 BE (eV)</th>
+<th>문헌 · 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Si 2p</td>
+<td>Si⁰ (원소 Si, 이중선)</td>
+<td>99.4 · 100.0</td>
+<td>Pranda 2023, 본문 §II</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>Si–N</td>
+<td>101.5 / 101.7</td>
+<td>Possémé 2016 Fig. 4 / Pranda 2023 §II</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>Oₓ–Si–C_y (SiCO)</td>
+<td>102.2</td>
+<td>Possémé 2018, Fig. 6</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>Si–O–N · Si–O–C 등 혼합</td>
+<td>102.4</td>
+<td>Pranda 2023, §II</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>Si–O</td>
+<td>103.4 / 103.5</td>
+<td>Pranda 2023 §II / Possémé 2016 Fig. 4</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>SiOF 개질층</td>
+<td>103.7 (SiOC(H)) · 103.9 (SiC(H))</td>
+<td>Eon 2007, §3.2.1</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>Si–O₄ 환경 (완전 산화된 SiCO)</td>
+<td>104</td>
+<td>Possémé 2018, §III.B.1</td>
+</tr>
+<tr>
+<td>Si 2p</td>
+<td>Si–O–F</td>
+<td>104.5</td>
+<td>Pranda 2023, §II</td>
+</tr>
+<tr>
+<td>N 1s</td>
+<td>N–Si (질화물)</td>
+<td>397.5</td>
+<td>Possémé 2016, Fig. 4·11</td>
+</tr>
+<tr>
+<td>N 1s</td>
+<td>NH₄⁺ (AFS 염)</td>
+<td>402 · 402.2</td>
+<td>Possémé 2016 Fig. 11 · Shinoda 2016 Fig. 2(a) / Cho 2020 Fig. 3</td>
+</tr>
+<tr>
+<td>F 1s</td>
+<td>(NH₄)₂SiF₆ 염의 F</td>
+<td>686</td>
+<td>Possémé 2016, Fig. 11</td>
+</tr>
+<tr>
+<td>F 1s</td>
+<td>F–Si (SiN 표면)</td>
+<td>687.3</td>
+<td>Possémé 2016, Fig. 11</td>
+</tr>
+<tr>
+<td>F 1s</td>
+<td>SiOF 속의 F (FC층 아님)</td>
+<td>687.4 (SiC(H)) · 687.6 (SiOC(H))</td>
+<td>Eon 2007, §3.2.1</td>
+</tr>
+<tr>
+<td>O 1s</td>
+<td>O–Si</td>
+<td>532.5</td>
+<td>Possémé 2016 Fig. 4 · 2018 Fig. 6</td>
+</tr>
+<tr>
+<td>O 1s</td>
+<td>SiO₂에 가까운 산화층</td>
+<td>533.3 · 533.5</td>
+<td>Eon 2007 §3.2.1 · Possémé 2018 §III.B.1</td>
+</tr>
+<tr>
+<td>C 1s</td>
+<td>C–Si / C–C</td>
+<td>283.5 / 285</td>
+<td>Possémé 2018, Fig. 6</td>
+</tr>
+<tr>
+<td>C 1s</td>
+<td>C–F / C–F₂ / C–F₃ (FC층)</td>
+<td>287.5 / 289.7 / 291.2</td>
+<td>Eon 2007, §3.3.1</td>
+</tr>
+</tbody></table></div>
 <h2 id="읽는-법-정량과-깊이-감도">읽는 법 — 정량과 깊이 감도</h2>
 <ul>
 <li><strong>정량 분석</strong> — 각 원소 피크의 면적에 상대감도인자(RSF, relative sensitivity factor)를 나눠 정규화하면 원자 농도(at%)가 된다. 통상 수 at% 수준의 검출 한계를 가지며, 수소는 원리상 검출되지 않는다.</li>
 <li><strong>정보 깊이</strong> — 광전자는 막 안에서 비탄성 산란으로 에너지를 잃기 쉽다. 손상 없이 빠져나올 수 있는 깊이(비탄성 평균자유행로의 수 배)가 곧 정보 깊이로, 보통 <strong>수 nm</strong>다. 그래서 XPS는 본질적으로 표면 분석이다.</li>
 <li><strong>깊이 감도 조절</strong> — 시료를 기울여 전자가 나오는 각도(take-off angle)를 바꾸면 실효 정보 깊이가 달라진다. 비스듬히(낮은 take-off angle) 보면 더 표면만, 수직에 가깝게 보면 더 깊이까지 본다. 파괴 없이 최표면과 그 아래를 가르는 각도 분해 측정(ARXPS)이 이 원리를 쓴다.</li>
-<li><strong>전하 보정</strong> — 절연체 시료는 광전자가 빠져나간 만큼 양으로 대전돼 전체 스펙트럼이 밀린다. 보정 기준은 표면 흡착 탄소의 C 1s를 <strong>284.8 eV</strong>로 맞추는 것이 관행이다. 이 기준이 흔들리면 화학 이동 해석 전체가 어긋나므로, 보정 근거를 항상 함께 기록해야 한다.</li>
+<li><strong>전하 보정</strong> — 절연체 시료는 광전자가 빠져나간 만큼 양으로 대전돼 전체 스펙트럼이 밀린다. 보정 기준은 표면 흡착 탄소의 C 1s를 <strong>284.8 eV</strong>로 맞추는 것이 관행이다. 다만 공정 논문에서는 재료 자체의 피크를 기준으로 삼는 경우도 많다(아래 긴장 절). 이 기준이 흔들리면 화학 이동 해석 전체가 어긋나므로, 보정 근거를 항상 함께 기록해야 한다.</li>
 <li><strong>피크 피팅</strong> — 겹친 피크를 화학 상태별로 나누는 작업이 해석의 본체다. 절차는 배경(Shirley 배경이 관행)을 빼고, 각 화학 상태에 피크 성분(보통 Gaussian-Lorentzian 혼합형)을 배치한 뒤, 위치·너비·면적을 맞춰 분리한다. 이때 2p처럼 스핀-궤도 이중선(doublet)은 면적비와 간격이 물리로 고정되므로 그 제약을 걸어야 하고, 성분을 몇 개까지 허용할지는 <a class="wiki" href="ftir.html">FTIR</a> 같은 다른 증거와 함께 정한다 — 피팅은 자유도가 큰 만큼, 성분 수를 늘리면 숫자상으로는 얼마든지 잘 맞기 때문이다.</li>
 </ul>
 <h2 id="AFS-ALE-진단에서의-XPS-염이-생겼다는-증거">AFS·ALE 진단에서의 XPS — 염이 생겼다는 증거</h2>
@@ -272,6 +386,82 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><strong>NH₄⁺의 지문, N 1s 약 402 eV</strong> — 질화물 자체의 N(약 397~398 eV)과 떨어진 이 피크가 나타나면 표면에 암모늄염이 생긴 것이다. 열 사이클 전후로 이 피크가 생겼다 사라지는 것을 보이면 염의 형성-탈착 사이클이 실제로 돌았다는 증거가 된다. Possémé 등(2016)은 NH₃/NF₃ 리모트 플라즈마의 SiN 박층 제거를 XPS와 적외 분광으로 해부해 이 2단계 그림을 보였다.</li>
 <li><strong>F:N 화학양론</strong> — (NH₄)₂SiF₆의 화학양론은 F/Si = 6, N/Si = 2, 즉 F:N = 3:1이다. 정량한 원자비가 이 비율에 가까우면 표면층이 AFS 조성과 모순이 없고, F가 과잉이면 불소탄소 잔류나 Si-F 종결 같은 다른 불소 상이 섞인 것으로 읽는다. Cho 등(2020)은 CF₄/NH₃ 플라즈마에서 형성된 AFS가 이 화학양론을 만족함을 확인하고 SiO₂ 식각을 논했다.</li>
 <li><strong>표면 보호층·개질층의 판정</strong> — 선택 식각에서 깎이지 않는 쪽에 생기는 보호층도 XPS로 구분한다. Goya 등(2026)은 NF₃ 플라즈마에 H₂를 늘려 갈 때 SiOCN 표면의 화학 상태 변화를 XPS로 추적해, 식각 가속 구간과 NHx 보호층이 생기는 구간을 나눴다. 조성 변화가 식각률 곡선의 꺾이는 점과 함께 움직이는지가 해석의 핵심이다.</li>
+</ul>
+<h2 id="논문으로-본-XPS-통합-표">논문으로 본 XPS — 통합 표</h2>
+<p>XPS로 「무엇을 정량했는가」의 사례를 모았다. 장비·막·처리가 달라 <strong>행끼리 수치를 비교하는 표가 아니다</strong>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>문헌</th>
+<th>분석 대상 / 처리</th>
+<th>조건</th>
+<th>보고 값</th>
+<th>원문 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Possémé et al. 2016</td>
+<td>증착 직후 SiN (50 nm)</td>
+<td>단색 Al Kα, 병렬 ARXPS(take-off 23.75–76.25°), pass 50 eV, 분해능 1 eV, Scofield 단면적, flood gun</td>
+<td>조성 Si 40 % (Si–N 33 + Si–O 7) · O 16 · N 44 %</td>
+<td>본문 §II.C.2, Fig. 4·5</td>
+</tr>
+<tr>
+<td>Possémé et al. 2016</td>
+<td>H₂ 개질 SiN(SiN*)에 NF₃–NH₃ 리모트 플라즈마(3:100, 45 s) → 어닐(&gt;100 °C, 2 min)</td>
+<td>같은 장비</td>
+<td>노출 전 SiN*: 탐지 깊이(약 10 nm) 안에서 완전 산화, F·C &lt;1 %. 노출 후 F 1s 686 + N 1s 402 eV 출현 = (NH₄)₂SiF₆, O 1s 급감. 염 조성이 take-off 각에 무의존 → 층 전체가 염으로 「전환」. 어닐 뒤 두 피크 소멸, pristine 조성에 근접</td>
+<td>본문 §III.B.1·B.3, Fig. 10·11</td>
+</tr>
+<tr>
+<td>Possémé et al. 2018</td>
+<td>SiCO 스페이서와 H₂ 플라즈마 뒤 SiCO*</td>
+<td>같은 계열 장비</td>
+<td>pristine Si 37 · O 48 · C 15 % (C–Si 13 + C–C 2) → SiCO* O 60 · Si 40 %, Si 2p 104 eV, O 1s 533.5 eV로 이동, 벽 기원 F &lt;3 %</td>
+<td>본문 §III.B.1, Fig. 6·7</td>
+</tr>
+<tr>
+<td>Eon et al. 2007</td>
+<td>SiOC(H)·SiC(H), Ar·SF₆ 플라즈마</td>
+<td>ICP 800 W, 10 mTorr, 40 sccm, 10 s, −100~−300 V. Mg Kα, 진공 이송</td>
+<td>Ar: SiOC(H) O 38 → 약 60 %, C 30 → 약 10 %(바이어스 무관). SF₆: F 25–30 at% 도입, Si 2p 두 성분(벌크 + SiOF), FC층 없음</td>
+<td>본문 §3.1, Fig. 1</td>
+</tr>
+<tr>
+<td>Eon et al. 2007</td>
+<td>SiOC(H)·SiC(H), C₂F₆/O₂·C₂F₆/Ar·C₂F₆/H₂</td>
+<td>800 W, 10 mTorr, −100 V</td>
+<td>C₂F₆/O₂에서 Si 2p 103.7·103.9, F 1s 687.6·687.4 eV 단일 성분, C 1s에 FC 성분 없음 → F는 산화물 속. 개질층 + FC층 총두께(0–3.5 nm 축)는 H₂ 비율과 함께 뚜렷이 늘고, SiOC(H)가 SiC(H)보다 항상 두껍다. Si 2p 감쇠로 낸 두께가 C 1s로 낸 두께보다 항상 크며, 두 층의 분리 산정은 불가</td>
+<td>본문 §3.2.1·§3.3.1, Fig. 2·6·7</td>
+</tr>
+<tr>
+<td>Pranda et al. 2023</td>
+<td>SiN·SiOCN·SiCN·SiBCN(약 20 nm), CF₄계·NF₃계 원격 식각</td>
+<td>ICP 27 MHz, 300 mTorr, 500 W, 무바이어스, 20 °C, 20 s. 단색 Al Kα, take-off 90°, 대기 노출 30 min 이내</td>
+<td>처리 뒤 모든 막에 F 6–20 % (표면 불화), Si·N 감소, O 증가. 두 화학 모두 Si–N 감소와 Si–O·Si–O–F 형성, SiOCN에서는 NF₃계 쪽이 더 크다. 막별 at%·결합 분율 값은 그림에만 있다</td>
+<td>본문 §II·§III.C, Fig. 3–6</td>
+</tr>
+<tr>
+<td>Cho et al. 2020 / Shinoda et al. 2016</td>
+<td>AFS 층</td>
+<td>램프 가열 30 s (Cho)</td>
+<td>N 1s 402.2 eV, 100 °C 위에서 감소·160 °C 위에서 소멸, 포화 화학양론 N/Si 2 · F/Si 6 (Cho). 조성 F 67.7 · N 22.4 · Si 9.8 at% → N:Si:F ≈ 2:1:6 (Shinoda)</td>
+<td>Cho Fig. 2·3 / Shinoda Fig. 2</td>
+</tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 760 400" role="img" aria-label="H₂ 플라즈마 뒤 XPS 탐지 깊이 안에서 SiCO 표면은 산화물로 바뀐다" font-size="12"><text x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">XPS가 보는 수 nm 안에서는 막이 다른 재료가 된다</text><text x="24" y="48" font-size="11.5" fill="var(--cds-text-secondary)">표면 조성(at%, H 제외). H₂ 플라즈마 뒤 SiCO의 C가 사라지고 O가 늘어 산화물에 가까워진다</text><g><line x1="230" y1="76" x2="230" y2="262" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="230" y="278" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">0</text></g><g><line x1="347.5" y1="76" x2="347.5" y2="262" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="347.5" y="278" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">25</text></g><g><line x1="465" y1="76" x2="465" y2="262" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="465" y="278" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">50</text></g><g><line x1="582.5" y1="76" x2="582.5" y2="262" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="582.5" y="278" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">75</text></g><g><line x1="700" y1="76" x2="700" y2="262" stroke="var(--cds-chart-grid)" stroke-dasharray="4 4"></line><text x="700" y="278" text-anchor="middle" font-size="11" fill="var(--cds-text-secondary)">100</text></g><line x1="230" y1="262" x2="700" y2="262" stroke="var(--cds-chart-axis)" stroke-width="1.25"></line><g><text x="24" y="111" font-size="12" font-weight="600" fill="var(--cds-text-primary)">SiN 증착 직후</text><text x="24" y="127" font-size="11" fill="var(--cds-text-secondary)">Possémé 2016</text><g><rect x="230" y="96" width="188" height="34" fill="var(--cds-chart-categorical-1)"></rect><text x="324" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Si 40</text></g><g><rect x="418" y="96" width="75.19999999999999" height="34" fill="var(--cds-chart-categorical-2)"></rect><text x="455.6" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">O 16</text></g><g><rect x="493.2" y="96" width="206.8" height="34" fill="var(--cds-chart-categorical-3)"></rect><text x="596.6" y="118" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">N 44</text></g></g><g><text x="24" y="173" font-size="12" font-weight="600" fill="var(--cds-text-primary)">SiCO 증착 직후</text><text x="24" y="189" font-size="11" fill="var(--cds-text-secondary)">Possémé 2018</text><g><rect x="230" y="158" width="173.89999999999998" height="34" fill="var(--cds-chart-categorical-1)"></rect><text x="317" y="180" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Si 37</text></g><g><rect x="403.9" y="158" width="225.60000000000002" height="34" fill="var(--cds-chart-categorical-2)"></rect><text x="516.7" y="180" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">O 48</text></g><g><rect x="629.5" y="158" width="70.5" height="34" fill="var(--cds-chart-categorical-4)"></rect><text x="664.8" y="180" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">C 15</text></g></g><g><text x="24" y="235" font-size="12" font-weight="600" fill="var(--cds-text-primary)">SiCO* (H₂ 플라즈마 뒤)</text><text x="24" y="251" font-size="11" fill="var(--cds-text-secondary)">Possémé 2018</text><g><rect x="230" y="220" width="188" height="34" fill="var(--cds-chart-categorical-1)"></rect><text x="324" y="242" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Si 40</text></g><g><rect x="418" y="220" width="282" height="34" fill="var(--cds-chart-categorical-2)"></rect><text x="559" y="242" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">O 60</text></g></g><path d="M714 175l18 0l0 62l-12 0" fill="none" stroke="var(--cds-text-secondary)" stroke-width="1.2"></path><path d="M726 233l-6 4l6 4" fill="none" stroke="var(--cds-text-secondary)" stroke-width="1.2"></path><text x="230" y="298" font-size="11.5" fill="var(--cds-text-secondary)">원자 농도 (at%)</text><text x="24" y="326" font-size="11.5" fill="var(--cds-text-primary)">SiN*(H₂ 플라즈마 뒤 SiN): 탐지 깊이 약 10 nm 안에서 완전 산화, F·C &lt;1 % — 정확한 조성은 본문에 없어 막대로 그리지 않았다.</text><text x="24" y="344" font-size="11.5" fill="var(--cds-text-primary)">같은 논문들의 적외 분광은 벌크 결합이 남아 있음을 보인다 — 「완전 산화」는 표면 수 nm의 이야기다.</text><text x="24" y="374" font-size="11" fill="var(--cds-text-secondary)">재구성: Possémé et al., J. Vac. Sci. Technol. A 34, 061301 (2016), doi:10.1116/1.4963072 — Fig. 5·본문;</text><text x="24" y="390" font-size="11" fill="var(--cds-text-secondary)">Possémé et al., J. Vac. Sci. Technol. B 36, 052201 (2018), doi:10.1116/1.5038617 — Fig. 7·본문. 본문에 확정된 값만 그렸다</text></svg><figcaption>그림 2. XPS로 본 H₂ 플라즈마 전후 표면 조성 · Possémé et al. (2016·2018) 재구성</figcaption></figure>
+<h2 id="논문-사이의-긴장">논문 사이의 긴장</h2>
+<ul>
+<li><strong>전하 보정 기준이 셋으로 갈린다.</strong> 위 「읽는 법」의 C 1s 284.8 eV 관행과 달리, 이 실측들에서는 Pranda 등(2023)이 Si 2p 피크를, Eon 등(2007)이 처리 뒤에도 변하지 않는 재료 자체의 C 1s를 눈금 기준으로 썼고, Possémé 등(2016·2018)은 flood gun 보상만 밝혔다. 그럼에도 Si–N 101.5 vs 101.7, Si–O 103.4 vs 103.5로 차이는 0.2 eV 안이다. 보정 방식을 적어 두면 문헌 간 값을 나란히 놓을 수 있다는 실측 근거다.</li>
+<li><strong>F 1s는 1.6 eV 안에서 세 상태가 겹친다.</strong> 염의 F(686), SiN 표면의 F–Si(687.3), SiOF 속의 F(687.4–687.6)가 한 구간에 몰린다. F 1s 위치만으로는 염·표면 불화·SiOF를 가를 수 없고, Possémé 등(2016)처럼 N 1s 402 eV가 함께 나타나는지가 염의 결정 증거다. 위 전형값 표의 「Si–F 686~687 / C–F 688~689」 구분은 방향은 맞지만 실측 경계는 더 좁다.</li>
+<li><strong>SF₆ 뒤 FC층은 있었나.</strong> Eon 등(2007)은 SF₆ 플라즈마 뒤 SiOC(H)·SiC(H) 모두에서 FC층을 보지 못했다고 쓰면서, 같은 SiC(H)에서 앞선 연구(Possémé 등)는 FC층을 관찰했다고 스스로 대조했다(§3.1). 같은 재료·같은 가스라도 이송과 노출 이력에 따라 XPS가 보는 층이 달라질 수 있다는 뜻이다(해석).</li>
+<li><strong>「완전 산화」는 탐지 깊이 안의 이야기다.</strong> Possémé 등(2016·2018)의 SiN*·SiCO* 완전 산화는 XPS 정보 깊이(약 10 nm) 안에서의 결과이고, 같은 논문들의 적외 분광은 벌크 결합이 남아 있음을 보인다(<a class="wiki" href="ftir.html">FTIR</a>). 표면 조성을 막 전체로 일반화하면 틀린다.</li>
+</ul>
+<h2 id="실패-모드">실패 모드</h2>
+<ul>
+<li><strong>두께는 모델이 정한다.</strong> Eon 등(2007)에서 같은 스펙트럼으로 Si 2p 감쇠를 쓰면 C 1s 감쇠보다 두께가 항상 크게 나왔다. 저자들의 해석은 개질층이 순수 SiOF가 아니라 탄소를 품고 있어 「두 층 모델」 가정이 깨진다는 것이다. XPS 두께는 가정한 층 구조에 의존하는 값으로 읽어야 한다.</li>
+<li><strong>FC층이 있어도 정량에 안 잡히는 조건.</strong> Eon 등(2007)의 C₂F₆/Ar에서는 C 1s의 FC 성분이 약하고 불명확했고, C₂F₆/H₂에서야 뚜렷해졌다. 「FC 성분이 없다」를 「FC층이 없다」로 바로 읽지 않는다.</li>
+<li><strong>그림에만 있는 값을 표로 옮기는 실수.</strong> Pranda 등(2023)의 막별 at%와 결합 분율, Eon 등(2007)의 두께 점 값은 본문에 절대값이 없다. 이 항목도 그 값은 범위와 방향으로만 적었다.</li>
 </ul>
 <h2 id="핵심-수치">핵심 수치</h2>
 <div class="table-wrap"><table>
@@ -315,15 +505,17 @@ details.allfold > summary { cursor: pointer; font-weight: 700; font-size: 15.5px
 <li><a class="wiki" href="ftir.html">FTIR</a> — 결합 진동으로 화학 결합과 수소를 보는 상호 보완 기법</li>
 <li><a class="wiki" href="sims.html">SIMS</a> — 스퍼터링으로 깊이 방향 조성을 파는 질량 분석 (감도는 훨씬 높고 정량은 어렵다)</li>
 <li><a class="wiki" href="ellipsometer.html">엘립소미터</a> — 층 구조를 먼저 확정해 XPS 해석을 돕는 관계</li>
+<li><a class="wiki" href="chemical-bonding.html">화학 결합과 결합 에너지</a> — 화학 이동을 만드는 결합의 이름과 세기</li>
 </ul>
 <h2 id="근거">근거</h2>
 <ul>
 <li>광전효과 식과 화학 이동, 정량·정보 깊이의 서술은 표면 분석 표준 교재에 근거한다: Briggs &amp; Grant (eds.), <em>Surface Analysis by Auger and X-ray Photoelectron Spectroscopy</em> (IM Publications, 2003); 전하 보정 C 1s 284.8 eV는 표면 분석 관행값이다. 화학 상태별 BE 전형값은 표준 핸드북·NIST XPS 데이터베이스의 수록 범위에 근거한다.</li>
 <li>AFS 진단 사례: Possémé et al., <em>J. Vac. Sci. Technol. A</em> 34, 061301 (2016). DOI: <a href="https://doi.org/10.1116/1.4963072" target="_blank" rel="noopener">10.1116/1.4963072</a> — NH₃/NF₃ SiN 박층 제거의 XPS·IR 분석; Cho et al., <em>J. Vac. Sci. Technol. A</em> 38, 022604 (2020). DOI: <a href="https://doi.org/10.1116/1.5132986" target="_blank" rel="noopener">10.1116/1.5132986</a> — CF₄/NH₃에서 AFS 화학양론(F/Si = 6, N/Si = 2) 확인; Goya et al., <em>J. Vac. Sci. Technol. A</em> 44, 053213 (2026). DOI: <a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">10.1116/6.0005595</a> — H₂ 첨가 SiOCN 식각의 표면 화학 상태 추적.</li>
+<li>실측 BE 표와 통합 표의 수치·조건·원문 위치 — Joy의 원문 추출(2026-11-02). Eon et al., J. Phys. D: Appl. Phys. 40, 3951 (2007), <a href="https://doi.org/10.1088/0022-3727/40/13/007" target="_blank" rel="noopener">doi:10.1088/0022-3727/40/13/007</a>; Pranda et al., J. Vac. Sci. Technol. A 41, 063009 (2023), <a href="https://doi.org/10.1116/6.0003014" target="_blank" rel="noopener">doi:10.1116/6.0003014</a>; Possémé et al., J. Vac. Sci. Technol. B 36, 052201 (2018), <a href="https://doi.org/10.1116/1.5038617" target="_blank" rel="noopener">doi:10.1116/1.5038617</a>; Shinoda et al., Appl. Phys. Express 9, 106201 (2016), <a href="https://doi.org/10.7567/APEX.9.106201" target="_blank" rel="noopener">doi:10.7567/APEX.9.106201</a>. 모두 저장소에서 이미 대조된 인용이다. Possémé 2016 SiN*의 정확한 조성, Pranda Fig. 3–6과 Eon Fig. 6·7의 점 값은 그림에만 있어 넣지 않았다.</li>
 </ul>
 </article>
   <nav class="prevnext"><span></span><a href="aes.html">다음 · AES →</a></nav>
-  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
+  <div class="links-box"><h3>이 항목에서 링크한 항목</h3><ul><li><a href="afs-chemistry.html">AFS 화학</a> <span style="color:var(--sub)">— 원리·운영 &gt; 표면 반응·선택비</span></li><li><a href="chemical-bonding.html">화학 결합과 결합 에너지</a> <span style="color:var(--sub)">— 원리·운영 &gt; 화학공학 기초</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ellipsometer.html">엘립소미터</a> <span style="color:var(--sub)">— 계측·분석 &gt; 박막 두께</span></li></ul><h3>이 항목을 링크한 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="txrf.html">TXRF</a> <span style="color:var(--sub)">— 계측·분석 &gt; 결함·오염</span></li><li><a href="metrology-overview.html">계측 개요 — 무엇을 무엇으로 재나</a> <span style="color:var(--sub)">— 계측·분석 &gt; 영역 허브</span></li><li><a href="afm.html">AFM</a> <span style="color:var(--sub)">— 계측·분석 &gt; 형상·치수</span></li></ul><h3>같은 주제의 다른 항목</h3><ul><li><a href="aes.html">AES</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="sims.html">SIMS</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="edx.html">EDX</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="ftir.html">FTIR</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="raman.html">라만 분광</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li><li><a href="xrd.html">XRD</a> <span style="color:var(--sub)">— 계측·분석 &gt; 조성·화학</span></li></ul></div>
   </div>
  </div>
 </main>
