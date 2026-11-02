@@ -5,8 +5,8 @@ import { c1, c2, ink, quiet, edge, grid } from './_c.js';
 const X0 = 150, X1 = 700, LO = 10, HI = 11.6;
 const lx = v => X0 + (Math.log10(v) - LO) / (HI - LO) * (X1 - X0);
 
-export default () => <svg viewBox='0 0 760 360' role='img' aria-label='같은 장치에서 CF₄ 플라즈마의 전자 밀도는 Ar보다 약 다섯 배 낮다' fontSize='12'>
-  <text x='24' y='28' fontSize='15' fontWeight='600' fill={ink}>같은 ICP, 같은 전력 — CF₄의 전자 밀도는 Ar의 약 1/5</text>
+export default () => <svg viewBox='0 0 760 360' role='img' aria-label='같은 장치에서 CF₄ 플라즈마의 전자 밀도 범위는 Ar보다 낮고 겹치지 않는다' fontSize='12'>
+  <text x='24' y='28' fontSize='15' fontWeight='600' fill={ink}>같은 ICP, 같은 전력 범위 — CF₄와 Ar의 전자 밀도는 겹치지 않는다</text>
   <text x='24' y='48' fontSize='11.5' fill={quiet}>이중 랭뮤어 프로브, 입력 300–700 W에서 잰 전자 밀도 범위(막대 양 끝). 10 mTorr, 바이어스 100 W</text>
   {[1e10, 2e10, 5e10, 1e11, 2e11].map(v => <g><line x1={lx(v)} y1='80' x2={lx(v)} y2='200' stroke={grid} strokeDasharray='4 4'/><text x={lx(v)} y='218' textAnchor='middle' fontSize='11' fill={quiet}>{v >= 1e11 ? `${v / 1e11}×10¹¹` : `${v / 1e10}×10¹⁰`}</text></g>)}
   <line x1={X0} y1='200' x2={X1} y2='200' stroke={edge} strokeWidth='1.25'/>
