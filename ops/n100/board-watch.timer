@@ -1,0 +1,10 @@
+[Unit]
+Description=안건 보드 감시 — 5분 간격
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=안건 보드 감시 (Joy 새 글 → 텔레그램)
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=%h/.config/board-watch/env
+ExecStart=/usr/bin/python3 %h/board-watch/board_watch.py
