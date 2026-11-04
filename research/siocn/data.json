@@ -52,157 +52,1254 @@
   "calib": {
     "h2o": {
       "points": [
-        { "ui": 4, "sccm": 12, "state": "미확정", "date": null },
-        { "ui": 5, "sccm": 16, "state": "확정", "date": "2026-11-04" },
-        { "ui": 6, "sccm": 20, "state": "확정", "date": "2026-11-02" }
+        {
+          "ui": 4,
+          "sccm": 12,
+          "state": "미확정",
+          "date": null
+        },
+        {
+          "ui": 5,
+          "sccm": 16,
+          "state": "확정",
+          "date": "2026-11-04"
+        },
+        {
+          "ui": 6,
+          "sccm": 20,
+          "state": "확정",
+          "date": "2026-11-02"
+        }
       ],
       "note": "확정 두 점을 잇는 직선(4 sccm/UI, 절편 −4)으로 환산한다 — 두 점 직선 가정이다. 미확정점 UI 4 → 12와도 맞지만, 원점 비례(약 3.3 sccm/UI)로 보면 UI 7·8에서 23·27로 갈라진다. 확정점 밖은 [외삽]으로 표시하고 P-cal 실측이 결정한다."
     },
-    "cf4": { "factor": 0.8, "note": "CHF₃ 라인을 쓴다. 실제 = UI × 4/5 (UI 20 = 16 sccm). 사용 전 라인에 연결된 가스를 확인한다." }
+    "cf4": {
+      "factor": 0.8,
+      "note": "CHF₃ 라인을 쓴다. 실제 = UI × 4/5 (UI 20 = 16 sccm). 사용 전 라인에 연결된 가스를 확인한다."
+    }
   },
   "papers": [
-    { "id": "goya2026", "authors": "Goya et al.", "year": 2026, "journal": "J. Vac. Sci. Technol. A", "title": "Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma", "doi": "10.1116/6.0005595", "note": "SiOCN 고선택 식각 — 주제 정중앙 (화학계는 NF₃, 참고)" },
-    { "id": "bang2026", "authors": "Bang et al.", "year": 2026, "journal": "J. Vac. Sci. Technol. A", "title": "Cryogenic NF₃/NH₃ plasma RIE: SiN etch suppression by AFS formation", "doi": "10.1116/6.0005206", "note": "저온에서 AFS 형성이 식각을 억제하는 사례 — 선택비 메커니즘 대조용" },
-    { "id": "cho2020", "authors": "Cho et al.", "year": 2020, "journal": "J. Vac. Sci. Technol. A", "title": "Atomic layer etching of SiO₂ for surface cleaning using ammonium fluorosilicate with CF₄/NH₃ plasma", "doi": "10.1116/1.5132986", "note": "CF₄ 계열 AFS ALE — 주력 화학계와 가장 가까운 문헌" },
-    { "id": "knolle1988", "authors": "Knolle & Huttemann", "year": 1988, "journal": "J. Electrochem. Soc.", "title": "Ammonium Hexafluorosilicate Formation during Plasma Etching of Silicon Nitride", "doi": "10.1149/1.2095383", "note": "AFS 형성 고전 문헌" },
-    { "id": "shinoda2016", "authors": "Shinoda et al.", "year": 2016, "journal": "Appl. Phys. Express", "title": "Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate", "doi": "10.7567/apex.9.106201", "note": "AFS 형성·탈착 사이클 식각의 원형" },
-    { "id": "miyoshi2017", "authors": "Miyoshi et al.", "year": 2017, "journal": "Jpn. J. Appl. Phys.", "title": "Atomic layer etching of silicon nitride using infrared annealing for short desorption time of ammonium fluorosilicate", "doi": "10.7567/jjap.56.06hb01", "note": "AFS 탈착(Removal 단계) 가속" },
-    { "id": "shinoda2019", "authors": "Shinoda et al.", "year": 2019, "journal": "J. Vac. Sci. Technol. A", "title": "Self-limiting reactions of ammonium salt in CHF₃/O₂ downstream plasma", "doi": "10.1116/1.5111663", "note": "암모늄염 자기제한 반응" },
-    { "id": "matsui2021", "authors": "Matsui et al.", "year": 2021, "journal": "J. Vac. Sci. Technol. A", "title": "Mechanism of highly selective etching of SiCN by using NF₃/Ar-based plasma", "doi": "10.1116/6.0000711", "note": "SiCN 고선택 메커니즘" },
-    { "id": "pranda2023", "authors": "Pranda et al.", "year": 2023, "journal": "J. Vac. Sci. Technol. A", "title": "Significance of plasma-surface interactions in the etch behavior of low-k materials", "doi": "10.1116/6.0003014", "note": "low-k(SiCN·SiOCN·SiBCN) 식각 거동 비교" },
-    { "id": "oh2022", "authors": "Oh", "year": 2022, "journal": "Thin Solid Films", "title": "Etching kinetics and dielectric properties of SiOC films exposed to Ar and CF₄ plasmas", "doi": "10.1016/j.tsf.2022.139185", "note": "비교 상대 SiOC의 CF₄ 플라즈마 식각 속도론" },
-    { "id": "lee2026", "authors": "Lee et al.", "year": 2026, "journal": "J. Vac. Sci. Technol. A", "title": "Current status of atomic layer etching and its adoption to low-k fine patterning", "doi": "10.1116/6.0005592", "note": "low-k 패터닝 ALE 산업 관점" },
-    { "id": "imai2026", "authors": "Imai et al.", "year": 2026, "journal": "J. Vac. Sci. Technol. A", "title": "Cryogenic etching characteristics of SiO₂, SiN, and a-C films with HF/fluorocarbon plasma", "doi": "10.1116/6.0005614", "note": "저온 HF/플루오로카본 식각 특성 (2026-11-04 확보)" },
-    { "id": "gu2020", "authors": "Gu et al.", "year": 2020, "journal": "Electron. Lett.", "title": "Hybrid low-k spacer scheme for advanced FinFET technology parasitic capacitance reduction", "doi": "10.1049/el.2019.3954", "note": "SiOCN outer spacer 실증 — 응용 맥락" }
+    {
+      "id": "goya2026",
+      "authors": "Goya et al.",
+      "year": 2026,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma",
+      "doi": "10.1116/6.0005595",
+      "note": "SiOCN 고선택 식각 — 주제 정중앙 (화학계는 NF₃, 참고)"
+    },
+    {
+      "id": "bang2026",
+      "authors": "Bang et al.",
+      "year": 2026,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Cryogenic NF₃/NH₃ plasma RIE: SiN etch suppression by AFS formation",
+      "doi": "10.1116/6.0005206",
+      "note": "저온에서 AFS 형성이 식각을 억제하는 사례 — 선택비 메커니즘 대조용"
+    },
+    {
+      "id": "cho2020",
+      "authors": "Cho et al.",
+      "year": 2020,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Atomic layer etching of SiO₂ for surface cleaning using ammonium fluorosilicate with CF₄/NH₃ plasma",
+      "doi": "10.1116/1.5132986",
+      "note": "CF₄ 계열 AFS ALE — 주력 화학계와 가장 가까운 문헌"
+    },
+    {
+      "id": "knolle1988",
+      "authors": "Knolle & Huttemann",
+      "year": 1988,
+      "journal": "J. Electrochem. Soc.",
+      "title": "Ammonium Hexafluorosilicate Formation during Plasma Etching of Silicon Nitride",
+      "doi": "10.1149/1.2095383",
+      "note": "AFS 형성 고전 문헌"
+    },
+    {
+      "id": "shinoda2016",
+      "authors": "Shinoda et al.",
+      "year": 2016,
+      "journal": "Appl. Phys. Express",
+      "title": "Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate",
+      "doi": "10.7567/apex.9.106201",
+      "note": "AFS 형성·탈착 사이클 식각의 원형"
+    },
+    {
+      "id": "miyoshi2017",
+      "authors": "Miyoshi et al.",
+      "year": 2017,
+      "journal": "Jpn. J. Appl. Phys.",
+      "title": "Atomic layer etching of silicon nitride using infrared annealing for short desorption time of ammonium fluorosilicate",
+      "doi": "10.7567/jjap.56.06hb01",
+      "note": "AFS 탈착(Removal 단계) 가속"
+    },
+    {
+      "id": "shinoda2019",
+      "authors": "Shinoda et al.",
+      "year": 2019,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Self-limiting reactions of ammonium salt in CHF₃/O₂ downstream plasma",
+      "doi": "10.1116/1.5111663",
+      "note": "암모늄염 자기제한 반응"
+    },
+    {
+      "id": "matsui2021",
+      "authors": "Matsui et al.",
+      "year": 2021,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Mechanism of highly selective etching of SiCN by using NF₃/Ar-based plasma",
+      "doi": "10.1116/6.0000711",
+      "note": "SiCN 고선택 메커니즘"
+    },
+    {
+      "id": "pranda2023",
+      "authors": "Pranda et al.",
+      "year": 2023,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Significance of plasma-surface interactions in the etch behavior of low-k materials",
+      "doi": "10.1116/6.0003014",
+      "note": "low-k(SiCN·SiOCN·SiBCN) 식각 거동 비교"
+    },
+    {
+      "id": "oh2022",
+      "authors": "Oh",
+      "year": 2022,
+      "journal": "Thin Solid Films",
+      "title": "Etching kinetics and dielectric properties of SiOC films exposed to Ar and CF₄ plasmas",
+      "doi": "10.1016/j.tsf.2022.139185",
+      "note": "비교 상대 SiOC의 CF₄ 플라즈마 식각 속도론"
+    },
+    {
+      "id": "lee2026",
+      "authors": "Lee et al.",
+      "year": 2026,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Current status of atomic layer etching and its adoption to low-k fine patterning",
+      "doi": "10.1116/6.0005592",
+      "note": "low-k 패터닝 ALE 산업 관점"
+    },
+    {
+      "id": "imai2026",
+      "authors": "Imai et al.",
+      "year": 2026,
+      "journal": "J. Vac. Sci. Technol. A",
+      "title": "Cryogenic etching characteristics of SiO₂, SiN, and a-C films with HF/fluorocarbon plasma",
+      "doi": "10.1116/6.0005614",
+      "note": "저온 HF/플루오로카본 식각 특성 (2026-11-04 확보)"
+    },
+    {
+      "id": "gu2020",
+      "authors": "Gu et al.",
+      "year": 2020,
+      "journal": "Electron. Lett.",
+      "title": "Hybrid low-k spacer scheme for advanced FinFET technology parasitic capacitance reduction",
+      "doi": "10.1049/el.2019.3954",
+      "note": "SiOCN outer spacer 실증 — 응용 맥락"
+    }
   ],
   "hypotheses": [
-    { "id": "H1", "status": "재현됨", "asof": "2026-11-01", "by": "Joy", "statement": "Modi 성장은 고온(20 °C)에서 크고 −20 °C에서 소멸한다.", "evidence": "11/01 온도 3수준 스텝 분해(Modi 5분): 구 SiOC Modi Δ 20 °C −22.80 → −20 °C +0.98. 소멸의 내부 메커니즘은 H7", "runs": ["R1101-p20", "R1101-0", "R1101-m20"], "papers": [] },
-    { "id": "H2", "status": "재현됨", "asof": "2026-11-01", "by": "Joy", "statement": "반복 측정 흩어짐은 ±1–3 Å 수준이다.", "evidence": "11/01 동일 풀사이클 반복 3회 표준편차: SiOCN ±1.06, 구 SiOC ±0.96. 엘립소 모델·계통 오차 ±10 Å와는 별개(측정 기준 참조)", "runs": ["R1101-rep"], "papers": [] },
-    { "id": "H3", "status": "재현됨", "asof": "2026-10-07", "by": "Joy", "statement": "NH₃계 Modi 성장은 사이클마다 재현성 있게 일어난다 (참고 화학계).", "evidence": "10/07 1step 330 s 블록 SiOCN −12.66 ± 0.51 Å. Removal이 성장을 다 지우지 못해 순식각은 불안정", "runs": [], "papers": [] },
-    { "id": "H4", "status": "기각됨", "asof": "2026-11-04", "by": "Joy", "statement": "사이클 구조(짧은 Modi + RTP 반복)가 구 SiOC 총량을 연속 노출보다 줄인다 — 사이클 억제.", "evidence": "11/04 풀사이클 120초 ×4의 구 SiOC 총량 23.83 Å ≈ 연속 480초 Modi 단독 25.17 Å. 사전 고정 판정 기준(~12 이하 = 억제 / ~25 = 연속과 동일)에서 '연속과 동일'", "runs": ["R1104-x4", "R1104-480"], "papers": ["shinoda2016"] },
-    { "id": "H5", "status": "재현됨", "asof": "2026-11-04", "by": "Joy", "statement": "풀사이클 총량 = 연속 노출 총량이다 (−20 °C · H₂O UI 5 · 50 W 조건 한정).", "evidence": "구 SiOC 23.83 vs 25.17, SiO₂ 4.89 vs Modi+RTP 합 4.86. 이 조건에서는 '직접 식각 반복' 그림과 맞는다 [추론]", "runs": ["R1104-x4", "R1104-480"], "papers": [] },
-    { "id": "H6", "status": "미해소", "asof": "2026-11-04", "by": "Joy", "statement": "짧은 Modi에서는 구 SiOC가 첫 사이클 뒤 정지해 구간 선택비가 크게 벌어진다.", "evidence": "11/02 2분 궤적: 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80(정지). 11/04 풀사이클 ×4(사이클당 평균 5.96 Å)에서는 재현 안 됨. 차이 변수 — H₂O UI 4 vs 5, 시료 이력, 벽 상태", "runs": ["R1102-2m", "R1104-x4"], "papers": ["shinoda2019"] },
-    { "id": "H7", "status": "미해소", "asof": "2026-11-01", "by": "Joy", "statement": "−20 °C에서 Modi 성장이 사라지는 것은 염 형성 억제 때문이다 (vs 형성과 동시 식각의 상쇄).", "evidence": "스텝 중 in-situ 관찰이 없어 두 해석을 분리할 수 없다. 판별: −20 °C Modi 직후 XPS (N-xps)", "runs": ["R1101-m20"], "papers": ["bang2026"] },
-    { "id": "H8", "status": "미해소", "asof": "2026-10-11", "by": "Joy", "statement": "New SiOC의 큰 EPC는 AFS 사이클이 아니라 Modi 중 직접 식각 성분이다.", "evidence": "10/10 EPC 91.9, 10/11 EPC 11.5–19.2로 전 조건 최대. 반증 조건 일부 관측, 확정 아님 [추론]. 신규 실험에서 New SiOC는 쓰지 않음", "runs": ["R1011-10w5", "R1011-50w5", "R1011-50w2"], "papers": [] },
-    { "id": "H9", "status": "미해소", "asof": "2026-11-04", "by": "Joy", "statement": "RTP 단계에서 SiOCN만 추가로 식각되는 '원하는 서명'이 존재한다.", "evidence": "11/04 480초 Modi 후 RTP Δ SiOCN +6.76 (구 SiOC −2.32). ±10 Å 기준으로는 단독 확정 불가 — 반복 쌍 실험 필요 (N-rtp)", "runs": ["R1104-480"], "papers": ["miyoshi2017"] },
-    { "id": "H10", "status": "미해소", "asof": "2026-11-02", "by": "Joy", "statement": "선택비는 Modi 시간이 짧을수록 커진다.", "evidence": "11/02 split: 4분 1.54 → 5분 1.34 → 6분 1.31 단조 감소 경향. 블록마다 시료가 달라 교락 가능, 6분 점프와 함께 재확인 필요", "runs": ["R1102-4m", "R1102-5m", "R1102-6m"], "papers": [] },
-    { "id": "H11", "status": "기각됨", "asof": "2026-11-04", "by": "Joy", "statement": "파워를 내리면(10 W) 선택비가 좋아진다.", "evidence": "11/04 Modi 단독 240초: 10 W에서 SiOCN +7.72 < 구 SiOC +13.61 역선택 (50 W에서는 15.57 > 10.18)", "runs": ["R1104-240-10w", "R1104-240"], "papers": [] },
-    { "id": "H12", "status": "미해소", "asof": "2026-11-05", "by": "Claude", "statement": "SiOCN의 AFS 형성은 막 내 N 소진으로 포화하는 자기제한 반응이고 구 SiOC 개질은 시간에 비례한다 → Modi 시간에 선택비 창이 있다.", "evidence": "반대 증거: 11/04 −20 °C·50 W에서 SiOCN Modi Δ가 240 → 480초에 15.57 → 33.77로 포화 없이 늘었다. 이 조건에서는 성립하지 않는다. +20 °C에서는 미검증", "runs": ["R1104-240", "R1104-480"], "papers": ["shinoda2019"] },
-    { "id": "H13", "status": "미해소", "asof": "2026-11-02", "by": "Claude", "statement": "20 °C에서 구 SiOC에 자라는 층은 RTP로 빠지는 가역 불화·수화층이다.", "evidence": "11/01 20 °C: Modi −22.80 / RTP +22.52 / 순변화 −0.28 (n=1, ±10 Å 안). 판별: 다사이클 궤적 기울기 + RTP 전 XPS F 1s·O 1s", "runs": ["R1101-p20"], "papers": [] },
-    { "id": "H14", "status": "미해소", "asof": "2026-11-04", "by": "Claude", "statement": "−20 °C의 구 SiOC 식각은 응축 HF/H₂O 기여다 → H₂O 분율을 낮추면 구 SiOC가 SiOCN보다 크게 줄어든다.", "evidence": "직접 판별 데이터 없음. 11/02(UI 4)와 11/04(UI 5)는 시간·시료가 함께 달라 비교 불가. 판별: −20 °C 16:16 vs 12:20 sccm", "runs": [], "papers": ["imai2026"] },
-    { "id": "H15", "status": "미해소", "asof": "2026-11-04", "by": "정식", "statement": "20 °C에서는 반응성이 올라 구 SiOC 직접 식각이 늘어난다.", "evidence": "11/01 20 °C 1패스 순변화는 ≈0 (n=1)이라 반대 방향 단서. 단 H5로 보면 −20 °C에서도 이미 직접 식각형 거동 [추론]. 판별: 16:16 −20 / +20 °C 궤적 쌍 (N-pair)", "runs": ["R1101-p20"], "papers": ["oh2022"] },
-    { "id": "H16", "status": "아이디어", "asof": "2026-11-04", "by": "Claude", "statement": "RTP 온도를 낮추면 AFS만 탈리하고 구 SiOC 층은 남아 보호층이 된다.", "evidence": "RTP 온도 조절 범위 확인 필요", "runs": [], "papers": ["miyoshi2017"] },
-    { "id": "H17", "status": "기각됨", "asof": "2026-11-02", "by": "정식 전제", "statement": "−20 °C에서는 SiOC·SiO₂가 식각되지 않는다.", "evidence": "10/11 −20 °C 10 W 5사이클: 구 SiOC 3.43, SiO₂ 5.18 Å/cycle로 식각됨", "runs": ["R1011-10w5"], "papers": [] }
+    {
+      "id": "H1",
+      "status": "재현됨",
+      "asof": "2026-11-01",
+      "by": "Joy",
+      "statement": "Modi 성장은 고온(20 °C)에서 크고 −20 °C에서 소멸한다.",
+      "evidence": "11/01 온도 3수준 스텝 분해(Modi 5분): 구 SiOC Modi Δ 20 °C −22.80 → −20 °C +0.98. 소멸의 내부 메커니즘은 H7",
+      "runs": [
+        "R1101-p20",
+        "R1101-0",
+        "R1101-m20"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H2",
+      "status": "재현됨",
+      "asof": "2026-11-01",
+      "by": "Joy",
+      "statement": "반복 측정 흩어짐은 ±1–3 Å 수준이다.",
+      "evidence": "11/01 동일 풀사이클 반복 3회 표준편차: SiOCN ±1.06, 구 SiOC ±0.96. 엘립소 모델·계통 오차 ±10 Å와는 별개(측정 기준 참조)",
+      "runs": [
+        "R1101-rep"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H3",
+      "status": "재현됨",
+      "asof": "2026-10-07",
+      "by": "Joy",
+      "statement": "NH₃계 Modi 성장은 사이클마다 재현성 있게 일어난다 (참고 화학계).",
+      "evidence": "10/07 1step 330 s 블록 SiOCN −12.66 ± 0.51 Å. Removal이 성장을 다 지우지 못해 순식각은 불안정",
+      "runs": [],
+      "papers": []
+    },
+    {
+      "id": "H4",
+      "status": "기각됨",
+      "asof": "2026-11-04",
+      "by": "Joy",
+      "statement": "사이클 구조(짧은 Modi + RTP 반복)가 구 SiOC 총량을 연속 노출보다 줄인다 — 사이클 억제.",
+      "evidence": "11/04 풀사이클 120초 ×4의 구 SiOC 총량 23.83 Å ≈ 연속 480초 Modi 단독 25.17 Å. 사전 고정 판정 기준(~12 이하 = 억제 / ~25 = 연속과 동일)에서 '연속과 동일' · Claude 교차검토(11/05): 「단순 합」 기준을 RTP까지 넣어 계산하면 120초 1사이클 ×4 = 4 × (4.29 − 2.13) = 8.64 Å다. 관측 23.83은 그 약 2.8배라, RTP가 Modi의 초기 지연을 리셋하지 못한다고 읽는 편이 정확하다 [추론]",
+      "runs": [
+        "R1104-x4",
+        "R1104-480"
+      ],
+      "papers": [
+        "shinoda2016"
+      ]
+    },
+    {
+      "id": "H5",
+      "status": "재현됨",
+      "asof": "2026-11-04",
+      "by": "Joy",
+      "statement": "풀사이클 총량 = 연속 노출 총량이다 (−20 °C · H₂O UI 5 · 50 W 조건 한정).",
+      "evidence": "구 SiOC 23.83 vs 25.17, SiO₂ 4.89 vs Modi+RTP 합 4.86. 이 조건에서는 '직접 식각 반복' 그림과 맞는다 [추론]",
+      "runs": [
+        "R1104-x4",
+        "R1104-480"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H6",
+      "status": "미해소",
+      "asof": "2026-11-04",
+      "by": "Joy",
+      "statement": "짧은 Modi에서는 구 SiOC가 첫 사이클 뒤 정지해 구간 선택비가 크게 벌어진다.",
+      "evidence": "11/02 2분 궤적: 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80(정지). 11/04 풀사이클 ×4(사이클당 평균 5.96 Å)에서는 재현 안 됨. 차이 변수 — H₂O UI 4 vs 5, 시료 이력, 벽 상태",
+      "runs": [
+        "R1102-2m",
+        "R1104-x4"
+      ],
+      "papers": [
+        "shinoda2019"
+      ]
+    },
+    {
+      "id": "H7",
+      "status": "미해소",
+      "asof": "2026-11-01",
+      "by": "Joy",
+      "statement": "−20 °C에서 Modi 성장이 사라지는 것은 염 형성 억제 때문이다 (vs 형성과 동시 식각의 상쇄).",
+      "evidence": "스텝 중 in-situ 관찰이 없어 두 해석을 분리할 수 없다. 판별: −20 °C Modi 직후 XPS (N-xps)",
+      "runs": [
+        "R1101-m20"
+      ],
+      "papers": [
+        "bang2026"
+      ]
+    },
+    {
+      "id": "H8",
+      "status": "미해소",
+      "asof": "2026-10-11",
+      "by": "Joy",
+      "statement": "New SiOC의 큰 EPC는 AFS 사이클이 아니라 Modi 중 직접 식각 성분이다.",
+      "evidence": "10/10 EPC 91.9, 10/11 EPC 11.5–19.2로 전 조건 최대. 반증 조건 일부 관측, 확정 아님 [추론]. 신규 실험에서 New SiOC는 쓰지 않음",
+      "runs": [
+        "R1011-10w5",
+        "R1011-50w5",
+        "R1011-50w2"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H9",
+      "status": "미해소",
+      "asof": "2026-11-04",
+      "by": "Joy",
+      "statement": "RTP 단계에서 SiOCN만 추가로 식각되는 '원하는 서명'이 존재한다.",
+      "evidence": "11/04 480초 Modi 후 RTP Δ SiOCN +6.76 (구 SiOC −2.32). ±10 Å 기준으로는 단독 확정 불가 — 반복 쌍 실험 필요 (N-rtp)",
+      "runs": [
+        "R1104-480"
+      ],
+      "papers": [
+        "miyoshi2017"
+      ]
+    },
+    {
+      "id": "H10",
+      "status": "미해소",
+      "asof": "2026-11-02",
+      "by": "Joy",
+      "statement": "선택비는 Modi 시간이 짧을수록 커진다.",
+      "evidence": "11/02 split: 4분 1.54 → 5분 1.34 → 6분 1.31 단조 감소 경향. 블록마다 시료가 달라 교락 가능, 6분 점프와 함께 재확인 필요",
+      "runs": [
+        "R1102-4m",
+        "R1102-5m",
+        "R1102-6m"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H11",
+      "status": "기각됨",
+      "asof": "2026-11-04",
+      "by": "Joy",
+      "statement": "파워를 내리면(10 W) 선택비가 좋아진다.",
+      "evidence": "11/04 Modi 단독 240초: 10 W에서 SiOCN +7.72 < 구 SiOC +13.61 역선택 (50 W에서는 15.57 > 10.18)",
+      "runs": [
+        "R1104-240-10w",
+        "R1104-240"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H12",
+      "status": "미해소",
+      "asof": "2026-11-05",
+      "by": "Claude",
+      "statement": "SiOCN의 AFS 형성은 막 내 N 소진으로 포화하는 자기제한 반응이고 구 SiOC 개질은 시간에 비례한다 → Modi 시간에 선택비 창이 있다.",
+      "evidence": "반대 증거: 11/04 −20 °C·50 W에서 SiOCN Modi Δ가 240 → 480초에 15.57 → 33.77로 포화 없이 늘었다 (시점마다 별도 쿠폰). 이 조건에서는 성립하지 않는다. +20 °C에서는 미검증",
+      "runs": [
+        "R1104-240",
+        "R1104-480"
+      ],
+      "papers": [
+        "shinoda2019"
+      ]
+    },
+    {
+      "id": "H13",
+      "status": "미해소",
+      "asof": "2026-11-02",
+      "by": "Claude",
+      "statement": "20 °C에서 구 SiOC에 자라는 층은 RTP로 빠지는 가역 불화·수화층이다.",
+      "evidence": "11/01 20 °C: Modi −22.80 / RTP +22.52 / 순변화 −0.28 (n=1, ±10 Å 안). 판별: 다사이클 궤적 기울기 + RTP 전 XPS F 1s·O 1s",
+      "runs": [
+        "R1101-p20"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H14",
+      "status": "미해소",
+      "asof": "2026-11-04",
+      "by": "Claude",
+      "statement": "−20 °C의 구 SiOC 식각은 응축 HF/H₂O 기여다 → H₂O 분율을 낮추면 구 SiOC가 SiOCN보다 크게 줄어든다.",
+      "evidence": "직접 판별 데이터 없음. 단서 [추론]: 11/04 240초에서 구 SiOC는 10 W(13.61)가 50 W(10.18)보다 더 깎였다 — 구 SiOC 식각이 이온 구동이 아니고, 덜 가열된 표면에서 더 진행된다는 그림과 맞는다(처킹 없음). 11/02(UI 4)와 11/04(UI 5)는 시간·시료가 함께 달라 비교 불가. 판별: −20 °C 16:16 vs 12:20 sccm",
+      "runs": [
+        "R1104-240-10w",
+        "R1104-240"
+      ],
+      "papers": [
+        "imai2026"
+      ]
+    },
+    {
+      "id": "H15",
+      "status": "미해소",
+      "asof": "2026-11-04",
+      "by": "정식",
+      "statement": "20 °C에서는 반응성이 올라 구 SiOC 직접 식각이 늘어난다.",
+      "evidence": "11/01 20 °C 1패스 순변화는 ≈0 (n=1)이라 반대 방향 단서. 단 H5로 보면 −20 °C에서도 이미 직접 식각형 거동 [추론]. 판별: 16:16 −20 / +20 °C 궤적 쌍 (N-pair)",
+      "runs": [
+        "R1101-p20"
+      ],
+      "papers": [
+        "oh2022"
+      ]
+    },
+    {
+      "id": "H16",
+      "status": "아이디어",
+      "asof": "2026-11-04",
+      "by": "Claude",
+      "statement": "RTP 온도를 낮추면 AFS만 탈리하고 구 SiOC 층은 남아 보호층이 된다.",
+      "evidence": "RTP 온도 조절 범위 확인 필요",
+      "runs": [],
+      "papers": [
+        "miyoshi2017"
+      ]
+    },
+    {
+      "id": "H17",
+      "status": "기각됨",
+      "asof": "2026-11-02",
+      "by": "정식 전제",
+      "statement": "−20 °C에서는 SiOC·SiO₂가 식각되지 않는다.",
+      "evidence": "10/11 −20 °C 10 W 5사이클: 구 SiOC 3.43, SiO₂ 5.18 Å/cycle로 식각됨",
+      "runs": [
+        "R1011-10w5"
+      ],
+      "papers": []
+    },
+    {
+      "id": "H18",
+      "status": "미해소",
+      "asof": "2026-11-05",
+      "by": "Claude",
+      "statement": "Modi 시간에 따른 식각 가속과 풀사이클이 연속 노출을 따라가는 현상은 표면이 아니라 쿠폰 온도 이력 때문이다 — 처킹이 없어 플라즈마 가열과 RTP(300 °C) 뒤 잔열이 쿠폰 온도를 척 설정값보다 높인다.",
+      "evidence": "[추론] 11/04 시간 시리즈는 시점마다 별도 쿠폰이라 가속이 표면 상태인지 가열·챔버 드리프트인지 분리되지 않는다. ×4에서 RTP와 다음 Modi 사이 stable 시간 기록 필요. 판별: 같은 쿠폰 240초 ×2 (사이 5분 stable) vs 480초 1회, ×4를 RTP 후 stable 5분 넣은 판과 비교",
+      "runs": [
+        "R1104-120",
+        "R1104-240",
+        "R1104-480",
+        "R1104-x4"
+      ],
+      "papers": []
+    }
   ],
   "runs": [
-    { "id": "R1011-10w5", "date": "2026-10-11", "status": "완료", "temp": -20, "power": 10, "pressure": 50, "h2o_ui": 6, "cf4_ui": 20, "mode": "풀사이클", "modi": null, "cycles": 5, "kind": "epc",
-      "res": { "SiOCN": { "v": 5.08 }, "구 SiOC": { "v": 3.43 }, "SiO₂": { "v": 5.18 }, "New SiOC": { "v": 19.21 } },
-      "dir": "SiOCN 약한 우위. New SiOC 역선택 (0.26)", "note": "압력·유량은 시트 10/11 탭 조건 행 (Joy 확인). Modi 10사이클 선행 후 RTP" },
-    { "id": "R1011-50w5", "date": "2026-10-11", "status": "완료", "temp": -20, "power": 50, "pressure": null, "h2o_ui": null, "cf4_ui": null, "mode": "풀사이클", "modi": null, "cycles": 5, "kind": "epc",
-      "res": { "SiOCN": { "v": 3.19 }, "구 SiOC": { "v": -1.61 }, "SiO₂": { "v": 5.18 }, "New SiOC": { "v": 11.5 } },
-      "dir": "구 SiOC 성장. SiO₂가 SiOCN을 넘는 역선택", "note": "" },
-    { "id": "R1011-50w2", "date": "2026-10-11", "status": "완료", "temp": -20, "power": 50, "pressure": null, "h2o_ui": null, "cf4_ui": null, "mode": "풀사이클", "modi": null, "cycles": 2, "kind": "epc",
-      "res": { "SiOCN": { "v": 7.10 }, "구 SiOC": { "v": 4.72 }, "SiO₂": { "v": 1.29 }, "New SiOC": { "v": 17.66 } },
-      "dir": "SiOCN 약한 우위", "note": "" },
-    { "id": "R1101-p20", "date": "2026-11-01", "status": "완료", "temp": 20, "power": null, "pressure": null, "h2o_ui": 6, "cf4_ui": null, "mode": "스텝 분해 1패스", "modi": 300, "cycles": 1, "kind": "delta", "series": "temp1101",
-      "res": { "SiOCN": { "v": 1.78, "modi": -6.88, "rtp": 8.66 }, "구 SiOC": { "v": -0.28, "modi": -22.80, "rtp": 22.52 }, "SiO₂": { "modi": -2.0 }, "New SiOC": { "modi": 2.67 } },
-      "dir": "양막 Modi 성장, RTP에서 거의 원상 복귀", "note": "n=1. 파워·압력은 시트에 구조화된 기록 없음" },
-    { "id": "R1101-0", "date": "2026-11-01", "status": "완료", "temp": 0, "power": null, "pressure": null, "h2o_ui": 6, "cf4_ui": null, "mode": "스텝 분해 1패스", "modi": 300, "cycles": 1, "kind": "delta", "series": "temp1101",
-      "res": { "SiOCN": { "v": -1.72, "modi": -5.57, "rtp": 3.85 }, "구 SiOC": { "v": -0.48, "modi": -7.10, "rtp": 6.62 }, "SiO₂": { "modi": 1.64 }, "New SiOC": { "modi": -4.66 } },
-      "dir": "성장 축소", "note": "n=1" },
-    { "id": "R1101-m20", "date": "2026-11-01", "status": "완료", "temp": -20, "power": null, "pressure": null, "h2o_ui": 6, "cf4_ui": null, "mode": "스텝 분해 1패스", "modi": 300, "cycles": 1, "kind": "delta", "series": "temp1101",
-      "res": { "SiOCN": { "v": 3.77, "modi": 1.36, "rtp": 2.41 }, "구 SiOC": { "v": 4.54, "modi": 0.98, "rtp": 3.56 }, "SiO₂": { "modi": -0.7 }, "New SiOC": { "modi": 2.16 } },
-      "dir": "성장 소멸. 1패스 선택비 약 0.8", "note": "n=1" },
-    { "id": "R1101-rep", "date": "2026-11-01", "status": "완료", "temp": null, "power": null, "pressure": null, "h2o_ui": null, "cf4_ui": null, "mode": "풀사이클 반복 3회", "modi": null, "cycles": 1, "kind": "delta",
-      "res": { "SiOCN": { "v": 3.76, "sd": 1.06 }, "구 SiOC": { "v": 5.75, "sd": 0.96 }, "SiO₂": { "v": 1.26, "sd": 3.17 } },
-      "dir": "노이즈 바닥 확인용", "note": "평균 ± 표준편차" },
-    { "id": "R1102-4m", "date": "2026-11-02", "status": "완료", "temp": -20, "power": null, "pressure": null, "h2o_ui": 4, "cf4_ui": null, "mode": "풀사이클", "modi": 240, "cycles": 3, "kind": "epc",
-      "res": { "SiOCN": { "v": 9.38 }, "구 SiOC": { "v": 6.09 }, "SiO₂": { "v": 2.6 }, "New SiOC": { "v": 119.25 } },
-      "dir": "이 블록 최대 선택비", "note": "H₂O UI 4는 미확정 보정점" },
-    { "id": "R1102-5m", "date": "2026-11-02", "status": "완료", "temp": -20, "power": null, "pressure": null, "h2o_ui": 4, "cf4_ui": null, "mode": "풀사이클", "modi": 300, "cycles": 3, "kind": "epc",
-      "res": { "SiOCN": { "v": 8.80 }, "구 SiOC": { "v": 6.57 }, "SiO₂": { "v": 3.6 }, "New SiOC": { "v": 79.89 } },
-      "dir": "4분과 유사", "note": "" },
-    { "id": "R1102-6m", "date": "2026-11-02", "status": "완료", "temp": -20, "power": null, "pressure": null, "h2o_ui": 4, "cf4_ui": null, "mode": "풀사이클", "modi": 360, "cycles": 3, "kind": "epc",
-      "res": { "SiOCN": { "v": 15.68 }, "구 SiOC": { "v": 11.93 }, "SiO₂": { "v": 3.68 }, "New SiOC": { "v": 269.97 } },
-      "dir": "SiO₂만 불변, 나머지 EPC 점프", "note": "" },
-    { "id": "R1102-2m", "date": "2026-11-02", "status": "완료", "temp": -20, "power": null, "pressure": null, "h2o_ui": 4, "cf4_ui": null, "mode": "풀사이클 궤적", "modi": 120, "cycles": null, "kind": "epc",
-      "res": {}, "dir": "1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80 — 구 SiOC 정지 패턴", "note": "실험 보드 보고 인용. 11/04에 재현 실패. 사이클별 원값은 시트에서 이식 대기" },
-    { "id": "R1104-30", "date": "2026-11-04", "status": "완료", "temp": -20, "power": 50, "pressure": 50, "h2o_ui": 5, "cf4_ui": 20, "mode": "Modi 단독", "modi": 30, "cycles": 1, "kind": "delta", "series": "modi1104",
-      "res": { "SiOCN": { "v": -1.26 }, "구 SiOC": { "v": -5.39 }, "SiO₂": { "v": 2.05 } },
-      "dir": "순성장 구간", "note": "새 쿠폰. RTP Δ 전부 ≈0" },
-    { "id": "R1104-120", "date": "2026-11-04", "status": "완료", "temp": -20, "power": 50, "pressure": 50, "h2o_ui": 5, "cf4_ui": 20, "mode": "Modi 단독", "modi": 120, "cycles": 1, "kind": "delta", "series": "modi1104",
-      "res": { "SiOCN": { "v": 5.40 }, "구 SiOC": { "v": 4.29 }, "SiO₂": { "v": 3.03 } },
-      "dir": "식각 전환", "note": "RTP Δ ≈0 또는 음수" },
-    { "id": "R1104-240", "date": "2026-11-04", "status": "완료", "temp": -20, "power": 50, "pressure": 50, "h2o_ui": 5, "cf4_ui": 20, "mode": "Modi 단독", "modi": 240, "cycles": 1, "kind": "delta", "series": "modi1104",
-      "res": { "SiOCN": { "v": 15.57 }, "구 SiOC": { "v": 10.18 }, "SiO₂": { "v": 5.73 } },
-      "dir": "식각 가속", "note": "" },
-    { "id": "R1104-480", "date": "2026-11-04", "status": "완료", "temp": -20, "power": 50, "pressure": 50, "h2o_ui": 5, "cf4_ui": 20, "mode": "Modi 단독", "modi": 480, "cycles": 1, "kind": "delta", "series": "modi1104",
-      "res": { "SiOCN": { "v": 33.77, "rtp": 6.76 }, "구 SiOC": { "v": 25.17, "rtp": -2.32 }, "SiO₂": { "v": 6.18 } },
-      "dir": "후반 안정 (구간 속도 SiOCN 4.55 · 구 SiOC 3.75 Å/min)", "note": "Δ는 Modi 단독 누적. RTP Δ SiOCN +6.76은 서명 후보 (±10 Å로 미확정)" },
-    { "id": "R1104-240-10w", "date": "2026-11-04", "status": "완료", "temp": -20, "power": 10, "pressure": 50, "h2o_ui": 5, "cf4_ui": 20, "mode": "Modi 단독", "modi": 240, "cycles": 1, "kind": "delta",
-      "res": { "SiOCN": { "v": 7.72 }, "구 SiOC": { "v": 13.61 }, "SiO₂": { "v": 0.45 } },
-      "dir": "역선택 (구 SiOC > SiOCN). SiO₂ 정지", "note": "" },
-    { "id": "R1104-x4", "date": "2026-11-04", "status": "완료", "temp": -20, "power": 50, "pressure": 50, "h2o_ui": 5, "cf4_ui": 20, "mode": "풀사이클 ×4 (총량)", "modi": 120, "cycles": 4, "kind": "delta", "flags": ["하한"],
-      "res": { "SiOCN": { "v": 44.91 }, "구 SiOC": { "v": 23.83 }, "SiO₂": { "v": 4.89 } },
-      "dir": "구 SiOC 총량이 연속 480초와 동등 — 사이클 억제 없음", "note": "SiOCN 쿠폰 소진 가능성 — 총량·선택비는 하한 추정치. 중간 계측 없음",
-      "coupons": { "SiOCN": "C-SiOCN-1104", "구 SiOC": "C-SiOC-1104" } },
-    { "id": "R-ratio-a", "date": null, "status": "정리 대기", "temp": null, "power": null, "pressure": null, "h2o_ui": 5, "cf4_ui": 20, "mode": "H₂O 분율 비교", "modi": null, "cycles": null, "kind": "delta",
-      "res": {}, "dir": "", "note": "포스트잇 1번 줄 (목표 16:16 sccm). 원값은 시트 11/01 탭 128–141행 (Joy 확인) — 이식 대기" },
-    { "id": "R-ratio-b", "date": null, "status": "정리 대기", "temp": null, "power": null, "pressure": null, "h2o_ui": 6, "cf4_ui": 10, "mode": "H₂O 분율 비교", "modi": null, "cycles": null, "kind": "delta",
-      "res": {}, "dir": "", "note": "포스트잇 2번 줄. 목표 24:8이었으나 UI 6 → 실제 20:8 sccm. 원값 이식 대기" }
+    {
+      "id": "R1011-10w5",
+      "date": "2026-10-11",
+      "status": "완료",
+      "temp": -20,
+      "power": 10,
+      "pressure": 50,
+      "h2o_ui": 6,
+      "cf4_ui": 20,
+      "mode": "풀사이클",
+      "modi": null,
+      "cycles": 5,
+      "kind": "epc",
+      "res": {
+        "SiOCN": {
+          "v": 5.08
+        },
+        "구 SiOC": {
+          "v": 3.43
+        },
+        "SiO₂": {
+          "v": 5.18
+        },
+        "New SiOC": {
+          "v": 19.21
+        }
+      },
+      "dir": "SiOCN 약한 우위. New SiOC 역선택 (0.26)",
+      "note": "압력·유량은 시트 10/11 탭 조건 행 (Joy 확인). Modi 10사이클 선행 후 RTP"
+    },
+    {
+      "id": "R1011-50w5",
+      "date": "2026-10-11",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": null,
+      "h2o_ui": null,
+      "cf4_ui": null,
+      "mode": "풀사이클",
+      "modi": null,
+      "cycles": 5,
+      "kind": "epc",
+      "res": {
+        "SiOCN": {
+          "v": 3.19
+        },
+        "구 SiOC": {
+          "v": -1.61
+        },
+        "SiO₂": {
+          "v": 5.18
+        },
+        "New SiOC": {
+          "v": 11.5
+        }
+      },
+      "dir": "구 SiOC 성장. SiO₂가 SiOCN을 넘는 역선택",
+      "note": ""
+    },
+    {
+      "id": "R1011-50w2",
+      "date": "2026-10-11",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": null,
+      "h2o_ui": null,
+      "cf4_ui": null,
+      "mode": "풀사이클",
+      "modi": null,
+      "cycles": 2,
+      "kind": "epc",
+      "res": {
+        "SiOCN": {
+          "v": 7.1
+        },
+        "구 SiOC": {
+          "v": 4.72
+        },
+        "SiO₂": {
+          "v": 1.29
+        },
+        "New SiOC": {
+          "v": 17.66
+        }
+      },
+      "dir": "SiOCN 약한 우위",
+      "note": ""
+    },
+    {
+      "id": "R1101-p20",
+      "date": "2026-11-01",
+      "status": "완료",
+      "temp": 20,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 6,
+      "cf4_ui": null,
+      "mode": "스텝 분해 1패스",
+      "modi": 300,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "temp1101",
+      "res": {
+        "SiOCN": {
+          "v": 1.78,
+          "modi": -6.88,
+          "rtp": 8.66
+        },
+        "구 SiOC": {
+          "v": -0.28,
+          "modi": -22.8,
+          "rtp": 22.52
+        },
+        "SiO₂": {
+          "modi": -2.0
+        },
+        "New SiOC": {
+          "modi": 2.67
+        }
+      },
+      "dir": "양막 Modi 성장, RTP에서 거의 원상 복귀",
+      "note": "n=1. 파워·압력은 시트에 구조화된 기록 없음"
+    },
+    {
+      "id": "R1101-0",
+      "date": "2026-11-01",
+      "status": "완료",
+      "temp": 0,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 6,
+      "cf4_ui": null,
+      "mode": "스텝 분해 1패스",
+      "modi": 300,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "temp1101",
+      "res": {
+        "SiOCN": {
+          "v": -1.72,
+          "modi": -5.57,
+          "rtp": 3.85
+        },
+        "구 SiOC": {
+          "v": -0.48,
+          "modi": -7.1,
+          "rtp": 6.62
+        },
+        "SiO₂": {
+          "modi": 1.64
+        },
+        "New SiOC": {
+          "modi": -4.66
+        }
+      },
+      "dir": "성장 축소",
+      "note": "n=1"
+    },
+    {
+      "id": "R1101-m20",
+      "date": "2026-11-01",
+      "status": "완료",
+      "temp": -20,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 6,
+      "cf4_ui": null,
+      "mode": "스텝 분해 1패스",
+      "modi": 300,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "temp1101",
+      "res": {
+        "SiOCN": {
+          "v": 3.77,
+          "modi": 1.36,
+          "rtp": 2.41
+        },
+        "구 SiOC": {
+          "v": 4.54,
+          "modi": 0.98,
+          "rtp": 3.56
+        },
+        "SiO₂": {
+          "modi": -0.7
+        },
+        "New SiOC": {
+          "modi": 2.16
+        }
+      },
+      "dir": "성장 소멸. 1패스 선택비 약 0.8",
+      "note": "n=1"
+    },
+    {
+      "id": "R1101-rep",
+      "date": "2026-11-01",
+      "status": "완료",
+      "temp": null,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": null,
+      "cf4_ui": null,
+      "mode": "풀사이클 반복 3회",
+      "modi": null,
+      "cycles": 1,
+      "kind": "delta",
+      "res": {
+        "SiOCN": {
+          "v": 3.76,
+          "sd": 1.06
+        },
+        "구 SiOC": {
+          "v": 5.75,
+          "sd": 0.96
+        },
+        "SiO₂": {
+          "v": 1.26,
+          "sd": 3.17
+        }
+      },
+      "dir": "노이즈 바닥 확인용",
+      "note": "평균 ± 표준편차"
+    },
+    {
+      "id": "R1102-4m",
+      "date": "2026-11-02",
+      "status": "완료",
+      "temp": -20,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 4,
+      "cf4_ui": null,
+      "mode": "풀사이클",
+      "modi": 240,
+      "cycles": 3,
+      "kind": "epc",
+      "res": {
+        "SiOCN": {
+          "v": 9.38
+        },
+        "구 SiOC": {
+          "v": 6.09
+        },
+        "SiO₂": {
+          "v": 2.6
+        },
+        "New SiOC": {
+          "v": 119.25
+        }
+      },
+      "dir": "이 블록 최대 선택비",
+      "note": "H₂O UI 4는 미확정 보정점"
+    },
+    {
+      "id": "R1102-5m",
+      "date": "2026-11-02",
+      "status": "완료",
+      "temp": -20,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 4,
+      "cf4_ui": null,
+      "mode": "풀사이클",
+      "modi": 300,
+      "cycles": 3,
+      "kind": "epc",
+      "res": {
+        "SiOCN": {
+          "v": 8.8
+        },
+        "구 SiOC": {
+          "v": 6.57
+        },
+        "SiO₂": {
+          "v": 3.6
+        },
+        "New SiOC": {
+          "v": 79.89
+        }
+      },
+      "dir": "4분과 유사",
+      "note": ""
+    },
+    {
+      "id": "R1102-6m",
+      "date": "2026-11-02",
+      "status": "완료",
+      "temp": -20,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 4,
+      "cf4_ui": null,
+      "mode": "풀사이클",
+      "modi": 360,
+      "cycles": 3,
+      "kind": "epc",
+      "res": {
+        "SiOCN": {
+          "v": 15.68
+        },
+        "구 SiOC": {
+          "v": 11.93
+        },
+        "SiO₂": {
+          "v": 3.68
+        },
+        "New SiOC": {
+          "v": 269.97
+        }
+      },
+      "dir": "SiO₂만 불변, 나머지 EPC 점프",
+      "note": ""
+    },
+    {
+      "id": "R1102-2m",
+      "date": "2026-11-02",
+      "status": "완료",
+      "temp": -20,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 4,
+      "cf4_ui": null,
+      "mode": "풀사이클 궤적",
+      "modi": 120,
+      "cycles": null,
+      "kind": "epc",
+      "res": {},
+      "dir": "1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80 — 구 SiOC 정지 패턴",
+      "note": "실험 보드 보고 인용. 11/04에 재현 실패. 사이클별 원값은 시트에서 이식 대기"
+    },
+    {
+      "id": "R1104-30",
+      "date": "2026-11-04",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": 50,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "Modi 단독",
+      "modi": 30,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "modi1104",
+      "res": {
+        "SiOCN": {
+          "v": -1.26
+        },
+        "구 SiOC": {
+          "v": -5.39
+        },
+        "SiO₂": {
+          "v": 2.05
+        }
+      },
+      "dir": "성장 경향 (±10 Å 안)",
+      "note": "시점마다 별도 새 쿠폰 (Modi → 측정 → RTP → 측정). Δ는 Modi 단계 값. 새 쿠폰. RTP Δ 전부 ≈0"
+    },
+    {
+      "id": "R1104-120",
+      "date": "2026-11-04",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": 50,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "Modi 단독",
+      "modi": 120,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "modi1104",
+      "res": {
+        "SiOCN": {
+          "v": 5.4,
+          "rtp": -0.39
+        },
+        "구 SiOC": {
+          "v": 4.29,
+          "rtp": -2.13
+        },
+        "SiO₂": {
+          "v": 3.03,
+          "rtp": -2.25
+        }
+      },
+      "dir": "식각 전환",
+      "note": "시점마다 별도 새 쿠폰 (Modi → 측정 → RTP → 측정). Δ는 Modi 단계 값. RTP Δ ≈0 또는 음수"
+    },
+    {
+      "id": "R1104-240",
+      "date": "2026-11-04",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": 50,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "Modi 단독",
+      "modi": 240,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "modi1104",
+      "res": {
+        "SiOCN": {
+          "v": 15.57,
+          "rtp": 0.99
+        },
+        "구 SiOC": {
+          "v": 10.18,
+          "rtp": -1.02
+        },
+        "SiO₂": {
+          "v": 5.73,
+          "rtp": -3.59
+        }
+      },
+      "dir": "식각 가속",
+      "note": "시점마다 별도 새 쿠폰 (Modi → 측정 → RTP → 측정). Δ는 Modi 단계 값."
+    },
+    {
+      "id": "R1104-480",
+      "date": "2026-11-04",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": 50,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "Modi 단독",
+      "modi": 480,
+      "cycles": 1,
+      "kind": "delta",
+      "series": "modi1104",
+      "res": {
+        "SiOCN": {
+          "v": 33.77,
+          "rtp": 6.76
+        },
+        "구 SiOC": {
+          "v": 25.17,
+          "rtp": -2.32
+        },
+        "SiO₂": {
+          "v": 6.18,
+          "rtp": -1.32
+        }
+      },
+      "dir": "후반 안정 (구간 속도 SiOCN 4.55 · 구 SiOC 3.75 Å/min)",
+      "note": "시점마다 별도 새 쿠폰. Δ는 Modi 단계 값. RTP Δ SiOCN +6.76은 서명 후보 (±10 Å로 미확정)"
+    },
+    {
+      "id": "R1104-240-10w",
+      "date": "2026-11-04",
+      "status": "완료",
+      "temp": -20,
+      "power": 10,
+      "pressure": 50,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "Modi 단독",
+      "modi": 240,
+      "cycles": 1,
+      "kind": "delta",
+      "res": {
+        "SiOCN": {
+          "v": 7.72
+        },
+        "구 SiOC": {
+          "v": 13.61
+        },
+        "SiO₂": {
+          "v": 0.45
+        }
+      },
+      "dir": "역선택 (구 SiOC > SiOCN). SiO₂ 정지",
+      "note": "시점마다 별도 새 쿠폰 (Modi → 측정 → RTP → 측정). Δ는 Modi 단계 값."
+    },
+    {
+      "id": "R1104-x4",
+      "date": "2026-11-04",
+      "status": "완료",
+      "temp": -20,
+      "power": 50,
+      "pressure": 50,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "풀사이클 ×4 (총량)",
+      "modi": 120,
+      "cycles": 4,
+      "kind": "delta",
+      "flags": [
+        "하한"
+      ],
+      "res": {
+        "SiOCN": {
+          "v": 44.91
+        },
+        "구 SiOC": {
+          "v": 23.83
+        },
+        "SiO₂": {
+          "v": 4.89
+        }
+      },
+      "dir": "구 SiOC 총량이 연속 480초와 동등 — 사이클 억제 없음",
+      "note": "SiOCN 쿠폰 소진 가능성 — 총량·선택비는 하한 추정치. 중간 계측 없음. 참고: 별도 쿠폰 480초 Modi+RTP 합은 SiOCN 40.53 · 구 SiOC 22.85 · SiO₂ 4.86",
+      "coupons": {
+        "SiOCN": "C-SiOCN-1104",
+        "구 SiOC": "C-SiOC-1104"
+      }
+    },
+    {
+      "id": "R-ratio-a",
+      "date": null,
+      "status": "정리 대기",
+      "temp": null,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 5,
+      "cf4_ui": 20,
+      "mode": "H₂O 분율 비교",
+      "modi": null,
+      "cycles": null,
+      "kind": "delta",
+      "res": {},
+      "dir": "",
+      "note": "포스트잇 1번 줄 (목표 16:16 sccm). 원값은 시트 11/01 탭 128–141행 (Joy 확인) — 이식 대기"
+    },
+    {
+      "id": "R-ratio-b",
+      "date": null,
+      "status": "정리 대기",
+      "temp": null,
+      "power": null,
+      "pressure": null,
+      "h2o_ui": 6,
+      "cf4_ui": 10,
+      "mode": "H₂O 분율 비교",
+      "modi": null,
+      "cycles": null,
+      "kind": "delta",
+      "res": {},
+      "dir": "",
+      "note": "포스트잇 2번 줄. 목표 24:8이었으나 UI 6 → 실제 20:8 sccm. 원값 이식 대기"
+    }
   ],
   "coupons": [
-    { "id": "C-SiOCN-1104", "film": "SiOCN", "start": 55.67, "history": [ { "run": "R1104-x4", "before": 55.67, "after": 10.76 } ], "note": "잔막이 ±10 Å 안 — 막이 전부 식각됐을 수 있음. 재검증은 두꺼운 쿠폰으로" },
-    { "id": "C-SiOC-1104", "film": "구 SiOC", "start": 205.61, "history": [ { "run": "R1104-x4", "before": 205.61, "after": 181.78 } ], "note": "소진과 무관 — 판정 유효. after는 before − 총 Δ로 계산" }
+    {
+      "id": "C-SiOCN-1104",
+      "film": "SiOCN",
+      "start": 55.67,
+      "history": [
+        {
+          "run": "R1104-x4",
+          "before": 55.67,
+          "after": 10.76
+        }
+      ],
+      "note": "잔막이 ±10 Å 안 — 막이 전부 식각됐을 수 있음. 재검증은 두꺼운 쿠폰으로"
+    },
+    {
+      "id": "C-SiOC-1104",
+      "film": "구 SiOC",
+      "start": 205.61,
+      "history": [
+        {
+          "run": "R1104-x4",
+          "before": 205.61,
+          "after": 181.78
+        }
+      ],
+      "note": "소진과 무관 — 판정 유효. after는 before − 총 Δ로 계산"
+    }
   ],
   "timeline": [
-    { "date": "2026-08-29", "label": "풀사이클 — H₂O UI 4/6/10 비교", "conditions": "CF₄+H₂O, H₂O UI 4 / 6 / 10", "result": "풀사이클 EPC 표준편차 ±8–18 Å. 같은 시료를 Modi 단독 → RTP 단독 → 합산으로 재사용한 행이 섞여 있음", "verdict": "스크리닝 근거로는 부적합, 경향 참고용" },
-    { "date": "2026-08-30 – 08-31", "label": "NH₃ 1스텝 추가 변형", "conditions": "NH₃+CF₄+H₂O, −20 ~ 20 °C, 50 / 120 mTorr", "result": null, "verdict": null },
-    { "date": "2026-10-07 – 10-08", "label": "스텝 분해 (1Step NH₃ / Modi / Removal)", "conditions": "NH₃계, 1step 30 s vs 300–330 s", "result": "330 s 블록 Modi 성장 SiOCN −12.66 ± 0.51 Å로 재현. Removal이 성장을 다 지우지 못해 Full Δ가 ±5 Å에서 진동. 30 s 블록은 편차 ±6–9", "verdict": "Modi 성장은 재현됨. NH₃ 변형은 제거 불완전·사이클이 길어 중단 [추론 포함]" },
-    { "date": "2026-10-10", "label": "Modi–RTP 2스텝 — 온도 가설 검증", "conditions": null, "result": "New SiOC가 Modi 5사이클에 459 Å 소실 (EPC 91.9 Å/cycle)", "verdict": "New SiOC의 큰 EPC는 직접 식각 성분일 가능성 [추론] → H8" },
-    { "date": "2026-10-11", "label": "−20 °C 풀사이클 — 10 W vs 50 W", "conditions": "척 −20 °C, Modi 10사이클 선행 후 RTP, 풀사이클 2·5사이클", "result": "SiOCN:구 SiOC 1.48–1.50. New SiOC 상대는 전 조건 역선택. 50 W·5cyc에서 SiO₂ > SiOCN", "verdict": "출발점 선택비 약 1.5. '−20 °C에서 SiOC·SiO₂ 안 깎임' 전제 기각 → H17" },
-    { "date": "2026-11-01", "label": "온도 3수준 스텝 분해 + 반복 3회", "conditions": "척 20 / 0 / −20 °C, H₂O UI 6, Modi 5분 후 RTP", "result": "구 SiOC Modi Δ 20 °C −22.80 → −20 °C +0.98. 1패스 순변화 SiOCN 1.78 / −1.72 / 3.77, 구 SiOC −0.28 / −0.48 / 4.54 (20 / 0 / −20 °C). 반복 3회 SiOCN 3.76±1.06, 구 SiOC 5.75±0.96", "verdict": "노이즈 바닥 ±1–3 Å 확정. Modi 성장은 고온에서 크고 −20 °C에서 소멸 (H1). RTP 단계 Δ(8.66 > 3.85 > 2.41)는 순제거가 아님 — 순변화는 −20 °C가 가장 큼 (2026-11-02 정정)" },
-    { "date": "2026-11-02", "label": "H₂O UI 6 → 4 + Modi 시간 split", "conditions": "척 −20 °C, H₂O UI 4, Modi 4 / 5 / 6분, 풀사이클 3사이클", "result": "선택비 4분 1.54 → 5분 1.34 → 6분 1.31. 6분에서 SiOCN·구 SiOC·New SiOC EPC 점프, SiO₂ 불변. 2분 궤적: 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80", "verdict": "짧은 Modi일수록 선택비가 큰 경향 (H10). '구 SiOC 정지' 패턴은 핵심 가설로 승격 (H6)" },
-    { "date": "2026-11-04", "label": "Modi 단독 시간 시리즈 + 풀사이클 ×4 검증", "conditions": "척 −20 °C, 50 W, 50 mTorr, 16:16 sccm (H₂O UI 5 · CF₄ UI 20), 새 쿠폰", "result": "Modi 단독 Δ 30 → 480초: SiOCN −1.26 → 33.77, 구 SiOC −5.39 → 25.17. 10 W 240초 역선택. 풀사이클 120초 ×4: SiOCN 44.91(하한), 구 SiOC 23.83 — 연속 480초와 동등", "verdict": "사이클 억제 기각 (H4), 총량 = 연속 노출 (H5), 저파워 개선 기각 (H11). 짧은 Modi 정지 패턴 재현 실패 (H6 미해소)" }
+    {
+      "date": "2026-08-29",
+      "label": "풀사이클 — H₂O UI 4/6/10 비교",
+      "conditions": "CF₄+H₂O, H₂O UI 4 / 6 / 10",
+      "result": "풀사이클 EPC 표준편차 ±8–18 Å. 같은 시료를 Modi 단독 → RTP 단독 → 합산으로 재사용한 행이 섞여 있음",
+      "verdict": "스크리닝 근거로는 부적합, 경향 참고용"
+    },
+    {
+      "date": "2026-08-30 – 08-31",
+      "label": "NH₃ 1스텝 추가 변형",
+      "conditions": "NH₃+CF₄+H₂O, −20 ~ 20 °C, 50 / 120 mTorr",
+      "result": null,
+      "verdict": null
+    },
+    {
+      "date": "2026-10-07 – 10-08",
+      "label": "스텝 분해 (1Step NH₃ / Modi / Removal)",
+      "conditions": "NH₃계, 1step 30 s vs 300–330 s",
+      "result": "330 s 블록 Modi 성장 SiOCN −12.66 ± 0.51 Å로 재현. Removal이 성장을 다 지우지 못해 Full Δ가 ±5 Å에서 진동. 30 s 블록은 편차 ±6–9",
+      "verdict": "Modi 성장은 재현됨. NH₃ 변형은 제거 불완전·사이클이 길어 중단 [추론 포함]"
+    },
+    {
+      "date": "2026-10-10",
+      "label": "Modi–RTP 2스텝 — 온도 가설 검증",
+      "conditions": null,
+      "result": "New SiOC가 Modi 5사이클에 459 Å 소실 (EPC 91.9 Å/cycle)",
+      "verdict": "New SiOC의 큰 EPC는 직접 식각 성분일 가능성 [추론] → H8"
+    },
+    {
+      "date": "2026-10-11",
+      "label": "−20 °C 풀사이클 — 10 W vs 50 W",
+      "conditions": "척 −20 °C, Modi 10사이클 선행 후 RTP, 풀사이클 2·5사이클",
+      "result": "SiOCN:구 SiOC 1.48–1.50. New SiOC 상대는 전 조건 역선택. 50 W·5cyc에서 SiO₂ > SiOCN",
+      "verdict": "출발점 선택비 약 1.5. '−20 °C에서 SiOC·SiO₂ 안 깎임' 전제 기각 → H17"
+    },
+    {
+      "date": "2026-11-01",
+      "label": "온도 3수준 스텝 분해 + 반복 3회",
+      "conditions": "척 20 / 0 / −20 °C, H₂O UI 6, Modi 5분 후 RTP",
+      "result": "구 SiOC Modi Δ 20 °C −22.80 → −20 °C +0.98. 1패스 순변화 SiOCN 1.78 / −1.72 / 3.77, 구 SiOC −0.28 / −0.48 / 4.54 (20 / 0 / −20 °C). 반복 3회 SiOCN 3.76±1.06, 구 SiOC 5.75±0.96",
+      "verdict": "노이즈 바닥 ±1–3 Å 확정. Modi 성장은 고온에서 크고 −20 °C에서 소멸 (H1). RTP 단계 Δ(8.66 > 3.85 > 2.41)는 순제거가 아님 — 순변화는 −20 °C가 가장 큼 (2026-11-02 정정)"
+    },
+    {
+      "date": "2026-11-02",
+      "label": "H₂O UI 6 → 4 + Modi 시간 split",
+      "conditions": "척 −20 °C, H₂O UI 4, Modi 4 / 5 / 6분, 풀사이클 3사이클",
+      "result": "선택비 4분 1.54 → 5분 1.34 → 6분 1.31. 6분에서 SiOCN·구 SiOC·New SiOC EPC 점프, SiO₂ 불변. 2분 궤적: 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80",
+      "verdict": "짧은 Modi일수록 선택비가 큰 경향 (H10). '구 SiOC 정지' 패턴은 핵심 가설로 승격 (H6)"
+    },
+    {
+      "date": "2026-11-04",
+      "label": "Modi 단독 시간 시리즈 + 풀사이클 ×4 검증",
+      "conditions": "척 −20 °C, 50 W, 50 mTorr, 16:16 sccm (H₂O UI 5 · CF₄ UI 20), 새 쿠폰",
+      "result": "Modi 단독 Δ 30 → 480초: SiOCN −1.26 → 33.77, 구 SiOC −5.39 → 25.17. 10 W 240초 역선택. 풀사이클 120초 ×4: SiOCN 44.91(하한), 구 SiOC 23.83 — 연속 480초와 동등",
+      "verdict": "사이클 억제 기각 (H4), 총량 = 연속 노출 (H5), 저파워 개선 기각 (H11). 짧은 Modi 정지 패턴 재현 실패 (H6 미해소)"
+    }
   ],
   "measurement": [
-    { "title": "엘립소 오차 ±10 Å 판정 기준", "date": "2026-11-04 정식", "body": "엘립소 두께 오차는 크게 ±10 Å까지 본다. 반복 측정 흩어짐(±1–3 Å)과 별개로 모델·계통 오차를 포함한 값이다. 10 Å 미만의 스텝 Δ(Modi/RTP 분리 측정, 짧은 성장, RTP Δ 등)는 단독 판정 근거가 되지 못하고, 큰 누적 Δ나 반복 일관성으로만 판단한다." },
-    { "title": "막 소진 — 하한 처리", "date": "2026-11-04 사례", "body": "SiOCN 쿠폰이 55.67 → 10.76 Å로 81% 소진됐다. 잔막이 ±10 Å 안이라 실제로는 막이 전부 식각됐을 수 있다. 이런 런의 총 Δ·선택비는 하한 추정치로 표시하고, 소진 시점을 모르므로 사이클당 EPC를 계산하지 않는다. 재검증에는 예상 소모보다 충분히 두꺼운 쿠폰이 필요하다 — 쿠폰 이력 표의 '소진 위험' 표시를 장입 전에 확인한다." },
-    { "title": "블록 간 비교의 한계", "date": null, "body": "블록마다 쿠폰이 다르고 시료 재활용이 잦아 같은 시료가 여러 날·조건을 누적해서 거친다(이전 After = 다음 Before로 체인 연결). 조건 효과와 시료 개체성·이력이 교락할 수 있어, 큰 효과만 신뢰하고 작은 차이는 반복으로 확인한다." },
-    { "title": "H₂O 유량은 UI가 아니라 보정 환산으로 읽는다", "date": "2026-11-04", "body": "확정점은 UI 5 → 16, UI 6 → 20 sccm 두 개다. 두 점 직선(4 sccm/UI)으로 환산하며, 확정점 밖은 외삽이다. CF₄ 실제 유량 = UI × 4/5." },
-    { "title": "온도 안정화 (stable time)", "date": null, "body": "처킹이 없어 장입 직후 시료 온도가 척 설정값과 다를 수 있다. 장입 후 진공 상태로 약 5분 대기가 표준이며, 이를 줄인 런(2026-11-02 1번 시료)은 재현성 변수로 플래그한다. 온도 값은 설정값 기준으로 읽는다." },
-    { "title": "초기 데이터(2026-08-29)의 큰 편차", "date": null, "body": "풀사이클 EPC 표준편차 ±8–18 Å. 시료 재사용 행이 섞여 있어 그룹 평균 비교·스크리닝 근거로는 부적합하고 경향 참고용으로만 둔다." },
-    { "title": "EPC 비교 시 사이클 수와 총 Modi 시간을 맞춘다", "date": null, "body": "EPC는 사이클 수에 따라 달라질 수 있어 2사이클과 5사이클 값을 직접 비교하지 않는다. 총 Modi 시간이 같은 조건끼리(예: 연속 480초 vs 120초 ×4) 비교한다." },
-    { "title": "10 : 1 입증에 필요한 사이클 수", "date": "2026-11-02 계산", "body": "SiOCN이 2 Å/cycle이면 구 SiOC는 0.2 Å/cycle 이하여야 한다. ±10 Å 기준으로 구 SiOC의 '0'을 말하려면 같은 쿠폰 궤적의 기울기로 판정하고, 검증 런은 20–30사이클로 잡는다." }
+    {
+      "title": "엘립소 오차 ±10 Å 판정 기준",
+      "date": "2026-11-04 정식",
+      "body": "엘립소 두께 오차는 크게 ±10 Å까지 본다. 반복 측정 흩어짐(±1–3 Å)과 별개로 모델·계통 오차를 포함한 값이다. 10 Å 미만의 스텝 Δ(Modi/RTP 분리 측정, 짧은 성장, RTP Δ 등)는 단독 판정 근거가 되지 못하고, 큰 누적 Δ나 반복 일관성으로만 판단한다."
+    },
+    {
+      "title": "막 소진 — 하한 처리",
+      "date": "2026-11-04 사례",
+      "body": "SiOCN 쿠폰이 55.67 → 10.76 Å로 81% 소진됐다. 잔막이 ±10 Å 안이라 실제로는 막이 전부 식각됐을 수 있다. 이런 런의 총 Δ·선택비는 하한 추정치로 표시하고, 소진 시점을 모르므로 사이클당 EPC를 계산하지 않는다. 재검증에는 예상 소모보다 충분히 두꺼운 쿠폰이 필요하다 — 쿠폰 이력 표의 '소진 위험' 표시를 장입 전에 확인한다."
+    },
+    {
+      "title": "블록 간 비교의 한계",
+      "date": null,
+      "body": "블록마다 쿠폰이 다르고 시료 재활용이 잦아 같은 시료가 여러 날·조건을 누적해서 거친다(이전 After = 다음 Before로 체인 연결). 조건 효과와 시료 개체성·이력이 교락할 수 있어, 큰 효과만 신뢰하고 작은 차이는 반복으로 확인한다."
+    },
+    {
+      "title": "H₂O 유량은 UI가 아니라 보정 환산으로 읽는다",
+      "date": "2026-11-04",
+      "body": "확정점은 UI 5 → 16, UI 6 → 20 sccm 두 개다. 두 점 직선(4 sccm/UI)으로 환산하며, 확정점 밖은 외삽이다. CF₄ 실제 유량 = UI × 4/5."
+    },
+    {
+      "title": "온도 안정화 (stable time)",
+      "date": null,
+      "body": "처킹이 없어 장입 직후 시료 온도가 척 설정값과 다를 수 있다. 장입 후 진공 상태로 약 5분 대기가 표준이며, 이를 줄인 런(2026-11-02 1번 시료)은 재현성 변수로 플래그한다. 온도 값은 설정값 기준으로 읽는다."
+    },
+    {
+      "title": "초기 데이터(2026-08-29)의 큰 편차",
+      "date": null,
+      "body": "풀사이클 EPC 표준편차 ±8–18 Å. 시료 재사용 행이 섞여 있어 그룹 평균 비교·스크리닝 근거로는 부적합하고 경향 참고용으로만 둔다."
+    },
+    {
+      "title": "EPC 비교 시 사이클 수와 총 Modi 시간을 맞춘다",
+      "date": null,
+      "body": "EPC는 사이클 수에 따라 달라질 수 있어 2사이클과 5사이클 값을 직접 비교하지 않는다. 총 Modi 시간이 같은 조건끼리(예: 연속 480초 vs 120초 ×4) 비교한다."
+    },
+    {
+      "title": "10 : 1 입증에 필요한 사이클 수",
+      "date": "2026-11-02 계산",
+      "body": "SiOCN이 2 Å/cycle이면 구 SiOC는 0.2 Å/cycle 이하여야 한다. ±10 Å 기준으로 구 SiOC의 '0'을 말하려면 같은 쿠폰 궤적의 기울기로 판정하고, 검증 런은 20–30사이클로 잡는다."
+    },
+    {
+      "title": "얇은 잔막 판정 — 맨 Si 기준 측정",
+      "date": "2026-11-05 제안",
+      "body": "잔막이 ±10 Å 근처면, 같은 엘립소 모델로 맨 Si 조각(자연 산화막)을 함께 재서 그 값과 비교한다. 맨 Si도 ~10 Å로 읽히면 막은 소진된 것이다."
+    }
   ],
   "plans": [
-    { "id": "N-cal", "status": "미결정", "what": "H₂O UI 7·8 보정 실측", "why": "24·28 sccm 조건이 외삽값이고, 두 점 직선과 원점 비례 모델이 여기서 갈라진다", "temp": null, "hyp": [] },
-    { "id": "N-thick", "status": "미결정", "what": "두꺼운 SiOCN 쿠폰으로 풀사이클 120초 ×4 재검증", "why": "11/04 막 소진을 제거하고 SiOCN 총량·선택비를 하한이 아닌 실측으로 확정", "temp": -20, "hyp": ["H4", "H5"] },
-    { "id": "N-rtp", "status": "미결정", "what": "480초 Modi 1사이클 × RTP 유/무 쌍 반복 (2–3세트)", "why": "RTP 서명 후보 +6.76 Å를 ±10 Å를 넘는 반복 일관성으로 검증", "temp": -20, "hyp": ["H9"] },
-    { "id": "N-pair", "status": "미결정", "what": "16:16 sccm 같은 조건 −20 / +20 °C 궤적 쌍 (0·2·5사이클) + 스텝 분해", "why": "온도만 다른 쌍 — 20 °C 직접 식각 증가 여부와 +20 °C RTP 거동", "temp": null, "hyp": ["H13", "H15"] },
-    { "id": "N-sweep", "status": "미결정", "what": "총유량 32 sccm 고정 H₂O 분율 스윕", "why": "체류시간 고정, H₂O:CF₄ 비만 분리", "temp": 20, "hyp": ["H14"], "targets": [[12, 20], [16, 16], [24, 8], [28, 4]] },
-    { "id": "N-xps", "status": "미결정", "what": "Modi 직후 XPS (N 1s · F 1s · C 1s · O 1s) — −20 °C, 가능하면 +20 °C", "why": "표면층이 AFS 염인지 CFₓ 퇴적인지, 20 °C 가역층의 정체 판별", "temp": null, "hyp": ["H7", "H13"] },
-    { "id": "N-ctrl", "status": "미결정", "what": "열 단독 대조군 (플라즈마 없이 RTP 5회)", "why": "구 SiOC 열 수축분 분리 — '구 SiOC 0' 주장의 전제", "temp": null, "hyp": [] },
-    { "id": "N-verify", "status": "미결정", "what": "최적 후보 20–30사이클 검증 + XPS", "why": "10:1 입증 — 같은 쿠폰 궤적 기울기로 판정", "temp": null, "hyp": [] },
-    { "id": "N-doe", "status": "보류", "what": "스크리닝 DOE (6요인 DSD) 재개 여부", "why": "설계안은 실험 보드에 참고용으로 보존 (2026-11-04 정식 지시로 실행 보류)", "temp": null, "hyp": [] }
+    {
+      "id": "N-cal",
+      "status": "미결정",
+      "what": "H₂O UI 7·8 보정 실측",
+      "why": "24·28 sccm 조건이 외삽값이고, 두 점 직선과 원점 비례 모델이 여기서 갈라진다",
+      "temp": null,
+      "hyp": []
+    },
+    {
+      "id": "N-thick",
+      "status": "미결정",
+      "what": "두꺼운 SiOCN 쿠폰으로 풀사이클 120초 ×4 재검증",
+      "why": "11/04 막 소진을 제거하고 SiOCN 총량·선택비를 하한이 아닌 실측으로 확정",
+      "temp": -20,
+      "hyp": [
+        "H4",
+        "H5"
+      ]
+    },
+    {
+      "id": "N-rtp",
+      "status": "미결정",
+      "what": "480초 Modi 1사이클 × RTP 유/무 쌍 반복 (2–3세트)",
+      "why": "RTP 서명 후보 +6.76 Å를 ±10 Å를 넘는 반복 일관성으로 검증",
+      "temp": -20,
+      "hyp": [
+        "H9"
+      ]
+    },
+    {
+      "id": "N-therm",
+      "status": "미결정",
+      "what": "온도 이력 판별 — 같은 쿠폰 240초 ×2 (사이 stable 5분) vs 480초 1회, ×4 재검증 때 RTP 후 stable 5분 고정",
+      "why": "가속·사이클 비억제가 쿠폰 가열 때문인지 확인 (H18). N-thick와 같은 날 묶을 수 있음",
+      "temp": -20,
+      "hyp": [
+        "H18",
+        "H4"
+      ]
+    },
+    {
+      "id": "N-pair",
+      "status": "미결정",
+      "what": "16:16 sccm 같은 조건 −20 / +20 °C 궤적 쌍 (0·2·5사이클) + 스텝 분해",
+      "why": "온도만 다른 쌍 — 20 °C 직접 식각 증가 여부와 +20 °C RTP 거동",
+      "temp": null,
+      "hyp": [
+        "H13",
+        "H15"
+      ]
+    },
+    {
+      "id": "N-sweep",
+      "status": "미결정",
+      "what": "총유량 32 sccm 고정 H₂O 분율 스윕",
+      "why": "체류시간 고정, H₂O:CF₄ 비만 분리",
+      "temp": 20,
+      "hyp": [
+        "H14"
+      ],
+      "targets": [
+        [
+          12,
+          20
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          24,
+          8
+        ],
+        [
+          28,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "N-xps",
+      "status": "미결정",
+      "what": "Modi 직후 XPS (N 1s · F 1s · C 1s · O 1s) — −20 °C, 가능하면 +20 °C",
+      "why": "표면층이 AFS 염인지 CFₓ 퇴적인지, 20 °C 가역층의 정체 판별",
+      "temp": null,
+      "hyp": [
+        "H7",
+        "H13"
+      ]
+    },
+    {
+      "id": "N-ctrl",
+      "status": "미결정",
+      "what": "열 단독 대조군 (플라즈마 없이 RTP 5회)",
+      "why": "구 SiOC 열 수축분 분리 — '구 SiOC 0' 주장의 전제",
+      "temp": null,
+      "hyp": []
+    },
+    {
+      "id": "N-verify",
+      "status": "미결정",
+      "what": "최적 후보 20–30사이클 검증 + XPS",
+      "why": "10:1 입증 — 같은 쿠폰 궤적 기울기로 판정",
+      "temp": null,
+      "hyp": []
+    },
+    {
+      "id": "N-doe",
+      "status": "보류",
+      "what": "스크리닝 DOE (6요인 DSD) 재개 여부",
+      "why": "설계안은 실험 보드에 참고용으로 보존 (2026-11-04 정식 지시로 실행 보류)",
+      "temp": null,
+      "hyp": []
+    }
   ],
   "roadmap": [
-    { "when": "2026-11 장비 기간", "state": "진행 중", "what": "스크리닝 → 방향 확인 → 후보 검증. 메커니즘 판별은 스크리닝 안에 녹인다" },
-    { "when": "다음 장비 기간", "state": "예정", "what": "지렛대 요인 반응표면 — 선택비 창 확정" },
-    { "when": "2027", "state": "자리 표시", "what": "메커니즘 정리(XPS) · 논문화 — 정식 확정 필요" }
+    {
+      "when": "2026-11 장비 기간",
+      "state": "진행 중",
+      "what": "스크리닝 → 방향 확인 → 후보 검증. 메커니즘 판별은 스크리닝 안에 녹인다"
+    },
+    {
+      "when": "다음 장비 기간",
+      "state": "예정",
+      "what": "지렛대 요인 반응표면 — 선택비 창 확정"
+    },
+    {
+      "when": "2027",
+      "state": "자리 표시",
+      "what": "메커니즘 정리(XPS) · 논문화 — 정식 확정 필요"
+    }
   ],
   "decisions": [
-    { "date": "2026-11-02", "what": "성공 기준 SiOCN : 구 SiOC = 10 : 1" },
-    { "date": "2026-11-02", "what": "온도 2수준(−20 / +20 °C), 반응표면은 이번 기간 제외" },
-    { "date": "2026-11-04", "what": "6요인 DSD 실행 보류 — 당분간 방향성 논의" },
-    { "date": "2026-11-04", "what": "엘립소 판정 오차 ±10 Å, H₂O UI 5 → 16 sccm 확정" },
-    { "date": "2026-11-04", "what": "SiOC는 구 SiOC로 통일, 런당 1개 장입" },
-    { "date": "2026-11-05", "what": "연구 대시보드 공개 범위 C안(GitHub Pages) 선택 — 개편본 확인 후 최종" }
+    {
+      "date": "2026-11-02",
+      "what": "성공 기준 SiOCN : 구 SiOC = 10 : 1"
+    },
+    {
+      "date": "2026-11-02",
+      "what": "온도 2수준(−20 / +20 °C), 반응표면은 이번 기간 제외"
+    },
+    {
+      "date": "2026-11-04",
+      "what": "6요인 DSD 실행 보류 — 당분간 방향성 논의"
+    },
+    {
+      "date": "2026-11-04",
+      "what": "엘립소 판정 오차 ±10 Å, H₂O UI 5 → 16 sccm 확정"
+    },
+    {
+      "date": "2026-11-04",
+      "what": "SiOC는 구 SiOC로 통일, 런당 1개 장입"
+    },
+    {
+      "date": "2026-11-05",
+      "what": "연구 대시보드 공개 범위 C안(GitHub Pages) 선택 — 개편본 확인 후 최종"
+    }
   ],
   "links": [
-    { "name": "실험 보드 (노션)", "url": "https://app.notion.com/p/4d8861a261fe4f8bb8c034496ca95bd0" },
-    { "name": "장비 운전 규칙·보정표", "url": "https://app.notion.com/p/40c33730faaf818584c3d4b90224f074" },
-    { "name": "논문 보유 목록", "url": "../../papers/" },
-    { "name": "홈 대시보드", "url": "../../home/" }
+    {
+      "name": "실험 보드 (노션)",
+      "url": "https://app.notion.com/p/4d8861a261fe4f8bb8c034496ca95bd0"
+    },
+    {
+      "name": "장비 운전 규칙·보정표",
+      "url": "https://app.notion.com/p/40c33730faaf818584c3d4b90224f074"
+    },
+    {
+      "name": "논문 보유 목록",
+      "url": "../../papers/"
+    },
+    {
+      "name": "홈 대시보드",
+      "url": "../../home/"
+    }
   ]
 }

@@ -136,7 +136,7 @@ const tempRows = D.runs.filter(x => x.series === 'temp1101').sort((a, b) => a.te
 const figs = figure({
   id: 'fig-modi', title: '11/04 Modi 단독 시간 시리즈 — −20 °C · 50 W · 16:16 sccm', rows: modiRows, films: ['SiOCN', '구 SiOC', 'SiO₂'],
   chart: { xOf: x => x.modi, xTick: x => modiTxt(x.modi), yLabel: 'Modi Δ (Å, + = 식각)', xLabel: 'Modi 시간 (비례 축)', aria: '11월 4일 Modi 시간별 두께 변화' },
-  caption: '30초 순성장 → 식각 전환·가속. 240 → 480초에서 SiOCN이 포화 없이 늘어 H12(자기제한)와 맞지 않는다. 같은 쿠폰 연속 측정인지는 시트 확인.',
+  caption: '30초 순성장 → 식각 전환·가속. 240 → 480초에서 SiOCN이 포화 없이 늘어 H12(자기제한)와 맞지 않는다. 시점마다 별도 새 쿠폰이라 누적 궤적이 아닌 독립 점이다.',
 }) + figure({
   id: 'fig-temp', title: '11/01 온도별 1패스 순변화 — Modi 5분 + RTP, H₂O UI 6', rows: tempRows, films: ['SiOCN', '구 SiOC'],
   chart: { xOf: x => x.temp, xTick: x => tempTxt(x.temp), yLabel: '순변화 Δ (Å, + = 식각)', aria: '11월 1일 온도별 순변화' },
