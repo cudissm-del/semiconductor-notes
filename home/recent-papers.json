@@ -2,6 +2,12 @@
   "_설명": "최근 확보 논문 수동 목록 (최신이 위). Zotero 등록 때 한 줄씩 위에 보탠다. url은 대조된 DOI·arXiv만 넣고, 없으면 비운다. 고친 뒤 npm run build.",
   "papers": [
     {
+      "date": "2026-11-04",
+      "cite": "Imai et al., J. Vac. Sci. Technol. A 44, 053008 (2026)",
+      "note": "저온(cryo) HF/플루오로카본 식각 (SiO₂·SiN·a-C)",
+      "url": "https://doi.org/10.1116/6.0005614"
+    },
+    {
       "date": "2026-11-02",
       "cite": "Godyak & Piejak, Plasma Sources Sci. Technol. 1, 36 (1992)",
       "note": "랭뮤어 프로브 EEDF — 원문 대기 해소",
