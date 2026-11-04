@@ -5,215 +5,509 @@
 <style>
 :root {
   --bg: #f7f7f4; --card: #ffffff; --ink: #1d2126; --sub: #5d6672; --line: #e2e5e9;
-  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3;
-  --cds-chart-grid: #e2e5e9; --cds-chart-reference-tint: #eef0f3;
-  --series-1: #2f7fc4; --series-2: #e08a2e;
+  --accent: #2563eb; --accent-soft: #eef3fe; --chip: #eef0f3; --grid: #e2e5e9; --band: #eef0f3;
+  --s1: #2f7fc4; --s2: #e08a2e; --s3: #a8509a;
   --ok: #1f7a3d; --ok-bg: #e6f4ea; --warn: #9a5b00; --warn-bg: #fdf1dc; --no: #a83232; --no-bg: #fbe7e7; --idea: #6b4fa8; --idea-bg: #efeafa;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #131518; --card: #1b1e23; --ink: #e8eaed; --sub: #9aa3ad; --line: #2c3037;
-    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31;
-    --cds-chart-grid: #2c3037; --cds-chart-reference-tint: #23272d;
-    --series-1: #3a8ad0; --series-2: #b87d24;
+    --accent: #6ea8fe; --accent-soft: #1d2739; --chip: #262a31; --grid: #2c3037; --band: #23272d;
+    --s1: #3a8ad0; --s2: #b87d24; --s3: #b062a6;
     --ok: #7bd194; --ok-bg: #1b2e22; --warn: #f0b860; --warn-bg: #33281a; --no: #f08b8b; --no-bg: #362020; --idea: #c0a8f0; --idea-bg: #29223a;
   }
 }
 * { box-sizing: border-box; }
+html { scroll-padding-top: 100px; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.6; }
 a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
 header.top { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--line); z-index: 5; }
-header.top .in { max-width: 1040px; margin: 0 auto; padding: 10px 16px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
-header.top .brand { font-weight: 800; font-size: 16px; color: var(--ink); }
-header.top nav a { font-size: 13.5px; margin-right: 12px; color: var(--sub); }
-main { max-width: 1040px; margin: 0 auto; padding: 18px 16px 60px; }
+header.top .in { max-width: 1080px; margin: 0 auto; padding: 8px 16px 0; }
+.brandrow { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.brand { font-weight: 800; font-size: 15px; color: var(--ink); } .brandrow .t { font-weight: 700; } .brandrow .muted { font-size: 12.5px; }
+nav.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-top: 4px; }
+nav.tabs::-webkit-scrollbar { display: none; }
+nav.tabs a { flex: none; padding: 8px 12px; font-size: 14px; color: var(--sub); border-bottom: 2px solid transparent; white-space: nowrap; }
+nav.tabs a[aria-current="page"] { color: var(--accent); border-color: var(--accent); font-weight: 700; text-decoration: none; }
+main { max-width: 1080px; margin: 0 auto; padding: 16px 16px 60px; }
+.js .tab { display: none; } .js .tab.on { display: block; }
+.tab + .tab { margin-top: 34px; } .js .tab + .tab { margin-top: 0; }
 .draft { background: var(--warn-bg); color: var(--warn); border-radius: 10px; padding: 8px 14px; font-size: 13.5px; margin-bottom: 14px; }
-h1 { font-size: 28px; margin: 4px 0 0; line-height: 1.25; }
-.en { color: var(--sub); font-size: 14px; }
-.goal { margin: 10px 0 0; font-size: 15.5px; }
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 16px 0 4px; }
+h1 { font-size: 26px; margin: 0; line-height: 1.25; } .en { color: var(--sub); font-size: 14px; }
+section > h2 { font-size: 20px; margin: 0 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
+section > h2 .count { color: var(--sub); font-size: 13px; font-weight: 400; margin-left: 8px; }
+h3 { font-size: 15.5px; margin: 22px 0 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 14px 0; }
 .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
-.stat .k { color: var(--sub); font-size: 12.5px; } .stat .v { font-size: 20px; font-weight: 800; } .stat .v.s { font-size: 15px; }
-section { margin-top: 30px; scroll-margin-top: 56px; }
-section > h2 { font-size: 20px; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
-section > h2 .count { color: var(--sub); font-size: 13px; font-weight: 400; margin-left: 6px; }
-.grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
-.hyp, .plan, .box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
-.hyp.no { opacity: .75; } .hyp p, .plan p { margin: 6px 0; font-size: 14.5px; }
-.hh { display: flex; gap: 8px; align-items: center; }
-.hid { font-weight: 800; font-size: 13px; color: var(--sub); }
-.test { color: var(--sub); font-size: 13.5px !important; }
-.st, .chip, .flag { display: inline-block; border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; white-space: nowrap; }
-.chip { background: var(--chip); color: var(--sub); font-weight: 600; }
-.st.yes { background: var(--ok-bg); color: var(--ok); } .st.run, .st.hint { background: var(--accent-soft); color: var(--accent); }
-.st.wait { background: var(--chip); color: var(--sub); } .st.no { background: var(--no-bg); color: var(--no); } .st.idea { background: var(--idea-bg); color: var(--idea); }
+.stat .k { color: var(--sub); font-size: 12.5px; } .stat .v { font-size: 20px; font-weight: 800; line-height: 1.3; } .stat .v.s { font-size: 15px; } .stat .d { color: var(--sub); font-size: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; }
+.box, .hyp, .plan, .rule { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+.box > b:first-child { display: block; margin-bottom: 4px; }
+.mech { background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 10px 0; font-size: 15px; }
+ul.plain { margin: 4px 0 0; padding-left: 18px; } ul.plain li { margin: 3px 0; font-size: 14.5px; }
+.hh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; } .hid { font-weight: 800; font-size: 13px; color: var(--sub); }
+.hyp p, .plan p, .rule p { margin: 6px 0; font-size: 14.5px; } .hyp .ev { color: var(--sub); font-size: 13.5px; }
+.hyp.no .stm { text-decoration: line-through; text-decoration-color: var(--sub); } .plan.hold { opacity: .7; }
+.hyp:target, tr:target { outline: 2px solid var(--accent); outline-offset: 2px; }
+.refs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.st, .chip, .flag, .sel { display: inline-block; border-radius: 999px; padding: 1px 9px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.chip { background: var(--chip); color: var(--sub); font-weight: 600; margin: 2px 2px 0 0; } .chip.hy { background: var(--accent-soft); color: var(--accent); } .chip.pp { background: var(--idea-bg); color: var(--idea); }
+a.chip:hover { text-decoration: none; filter: brightness(.96); }
+.st.yes { background: var(--ok-bg); color: var(--ok); } .st.run { background: var(--accent-soft); color: var(--accent); } .st.wait { background: var(--chip); color: var(--sub); } .st.no { background: var(--no-bg); color: var(--no); } .st.idea { background: var(--idea-bg); color: var(--idea); }
 .flag { margin-left: 4px; font-size: 11px; padding: 0 7px; } .flag.ext { background: var(--warn-bg); color: var(--warn); } .flag.tbd { background: var(--chip); color: var(--sub); }
-.muted { color: var(--sub); } .ui { color: var(--sub); font-size: 12px; }
-.table-wrap { overflow-x: auto; }
+.sel { font-variant-numeric: tabular-nums; } .sel.pos { background: var(--ok-bg); color: var(--ok); } .sel.goal { background: var(--ok); color: var(--card); } .sel.rev { background: var(--no-bg); color: var(--no); } .sel.grow { background: var(--chip); color: var(--sub); }
+.muted { color: var(--sub); } .sm { font-size: 12px; } .ui { color: var(--sub); font-size: 12px; } .na { color: var(--sub); font-size: 12px; font-style: italic; } .old { color: var(--sub); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
 table { border-collapse: collapse; width: 100%; font-size: 13.5px; background: var(--card); }
 th, td { border-bottom: 1px solid var(--line); padding: 7px 9px; text-align: left; vertical-align: top; }
-th { background: var(--chip); font-size: 12.5px; color: var(--sub); white-space: nowrap; }
-td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
-.runs-box { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-#runs-t { min-width: 880px; }
-table.mini { margin-top: 8px; border: 1px solid var(--line); border-radius: 8px; }
-.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.filters button { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; cursor: pointer; }
+thead th { background: var(--chip); font-size: 12.5px; color: var(--sub); white-space: nowrap; }
+td.n { font-variant-numeric: tabular-nums; white-space: nowrap; } td.note { min-width: 200px; font-size: 13px; }
+#runs-t { min-width: 980px; } #coupon-t { min-width: 720px; } #paper-t { min-width: 820px; }
+table.mini { margin-top: 8px; border: 1px solid var(--line); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; align-items: center; } .filters .lb { color: var(--sub); font-size: 12.5px; margin-right: 2px; }
+.filters button { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; cursor: pointer; font-family: inherit; }
 .filters button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 700; }
-.fig { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
-.fig svg { width: 100%; max-width: 680px; height: auto; display: block; margin: 0 auto; }
-.fig .ax { fill: var(--sub); font-size: 12px; } .fig .lab { fill: var(--ink); font-size: 13px; font-weight: 700; }
-.fig .pt { cursor: default; } .fig .pt:hover circle:last-of-type { r: 7; }
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.fig { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 0; }
+.fig svg { width: 100%; height: auto; display: block; } .fig .ax { fill: var(--sub); font-size: 12px; } .fig .lab { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+.fig .pt:hover > :last-of-type { opacity: .8; } .fig .ft { color: var(--ink); font-weight: 700; font-size: 14px; margin: 0 0 4px; }
 .fig figcaption { color: var(--sub); font-size: 13px; margin-top: 6px; }
-.legend { display: flex; gap: 14px; font-size: 13px; margin-bottom: 4px; } .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
-details summary { cursor: pointer; color: var(--sub); font-size: 13px; margin-top: 8px; }
-ul.plain { margin: 0; padding-left: 18px; } ul.plain li { margin: 3px 0; font-size: 14.5px; }
-.tl { list-style: none; margin: 0; padding: 0; } .tl li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; } .tl .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.tl li:last-child { border-bottom: 0; } .tl .w { font-weight: 700; }
-.dec li { display: flex; gap: 12px; } .dec .d { color: var(--sub); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; } .legend span { white-space: nowrap; display: inline-flex; gap: 5px; align-items: center; }
+details summary { cursor: pointer; color: var(--sub); font-size: 13px; margin-top: 6px; }
+table.map { min-width: 760px; } table.map td, table.map th.rk { min-width: 110px; } table.map th.rk { background: var(--card); font-size: 13.5px; white-space: nowrap; }
+.cell { display: block; border-radius: 8px; padding: 4px 8px; margin: 2px 0; font-size: 12.5px; color: var(--ink); border: 1px solid var(--line); }
+.cell:hover { text-decoration: none; border-color: var(--accent); } .cell .cm { display: block; color: var(--sub); font-size: 11.5px; }
+.cell.pos { background: var(--ok-bg); } .cell.goal { background: var(--ok-bg); border-color: var(--ok); } .cell.rev { background: var(--no-bg); }
+.empty { color: var(--sub); font-size: 12px; opacity: .6; }
+.cover { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; margin: 0 0 10px; } .cover b { margin-right: 4px; }
+ol.tl { list-style: none; margin: 0; padding: 0; } ol.tl li { padding: 12px 0 12px 18px; border-left: 2px solid var(--line); position: relative; }
+ol.tl li::before { content: ""; position: absolute; left: -6px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+ol.tl .d { color: var(--sub); font-size: 12.5px; font-variant-numeric: tabular-nums; } ol.tl .l { font-weight: 700; } ol.tl p { margin: 3px 0; font-size: 14px; }
+ol.tl .vd { background: var(--chip); border-radius: 8px; padding: 4px 10px; font-size: 13.5px; }
+.dec li { display: flex; gap: 12px; list-style: none; } .dec .d { color: var(--sub); white-space: nowrap; font-size: 13px; font-variant-numeric: tabular-nums; }
 .links a { display: inline-block; margin: 4px 14px 4px 0; }
-footer { max-width: 1040px; margin: 0 auto; padding: 0 16px 40px; color: var(--sub); font-size: 12.5px; }
-@media (max-width: 640px) { h1 { font-size: 23px; } }
+footer { max-width: 1080px; margin: 0 auto; padding: 0 16px 40px; color: var(--sub); font-size: 12.5px; }
+@media (max-width: 640px) { h1 { font-size: 22px; } .figs { grid-template-columns: 1fr; } .grid2 { grid-template-columns: 1fr; } }
+@media print { header.top { position: static; } .js .tab { display: block !important; } nav.tabs, .filters { display: none; } }
 </style></head>
 <body>
-<header class="top"><div class="in"><a class="brand" href="../../home/">반도체 백과 작업실</a>
-<nav><a href="#hyp">가설</a><a href="#plan">다음 실험</a><a href="#runs">실험 기록</a><a href="#eq">장비·보정</a><a href="#road">로드맵</a></nav></div></header>
+<header class="top"><div class="in">
+<div class="brandrow"><a class="brand" href="../../home/">반도체 백과 작업실</a><span class="t">SiOCN 선택 식각 연구</span><span class="muted">데이터 2026-11-04 실험까지</span></div>
+<nav class="tabs" aria-label="섹션"><a href="#overview" data-tab="overview">개요</a><a href="#timeline" data-tab="timeline">타임라인</a><a href="#runs" data-tab="runs">실험 기록</a><a href="#map" data-tab="map">조건 지도</a><a href="#hyp" data-tab="hyp">가설</a><a href="#plan" data-tab="plan">다음 실험</a><a href="#rules" data-tab="rules">측정 기준</a><a href="#papers" data-tab="papers">논문</a></nav></div></header>
 <main>
-<div class="draft">가편본 — 구조 확인용입니다. 수치는 노션 원본(실험 보드·장비 페이지) 기준이며 아직 배포 전입니다.</div>
-<h1>SiOCN 선택 식각 연구</h1>
-<div class="en">SiOCN-over-SiOC selective etch via CF₄ + H₂O AFS cycling</div>
-<p class="goal">SiOCN을 구 SiOC 대비 선택 식각 (1순위). SiO₂·SiN은 2순위.</p>
+<div class="draft">개편 가편 — Claude 가편 + Joy판 병합본입니다. 아직 배포 전이며, 수치는 시트·노션 원본에서 옮긴 값입니다.</div>
+
+<section id="overview" class="tab">
+<h1>SiOCN 선택 식각 연구</h1><div class="en">SiOCN-over-SiOC selective etch via CF₄ + H₂O AFS cycling</div>
 <div class="stats">
-<div class="stat"><div class="k">성공 기준</div><div class="v s">SiOCN : 구 SiOC = 10 : 1</div></div>
-<div class="stat"><div class="k">현재 단계</div><div class="v s">스크리닝 — 2026-11 장비 기간</div></div>
-<div class="stat"><div class="k">실험 기록</div><div class="v">4<span class="muted" style="font-size:13px;font-weight:400"> 완료 · 2 정리 대기</span></div></div>
-<div class="stat"><div class="k">열린 가설</div><div class="v">5</div></div>
-<div class="stat"><div class="k">최근 런</div><div class="v s">2026-11-04</div></div>
+<div class="stat"><div class="k">성공 기준</div><div class="v s">SiOCN : 구 SiOC = 10 : 1</div><div class="d">성공 기준, 2026-11-02 정식 확정</div></div>
+<div class="stat"><div class="k">지금까지 최고</div><div class="v">≥ 1.88</div><div class="d"><a href="#run-R1104-x4">R1104-x4</a> · 하한</div></div>
+<div class="stat"><div class="k">현재 단계</div><div class="v s">스크리닝 · 방향 확인 — 2026-11 장비 기간</div></div>
+<div class="stat"><div class="k">실험 기록</div><div class="v">17</div><div class="d">완료 · 정리 대기 2 · 최근 2026-11-04</div></div>
+<div class="stat"><div class="k">가설</div><div class="v">9<span class="d"> 미해소</span></div><div class="d">재현 4 · 기각 3 · 아이디어 1</div></div>
 </div>
-
-<section id="hyp"><h2>가설과 판정<span class="count">6개</span></h2>
-<div class="grid2"><div class="hyp run">
-<div class="hh"><span class="hid">H1</span><span class="st run">확인 중</span></div>
-<p>SiOCN의 AFS 형성은 막 내 N 소진으로 포화하는 자기제한 반응이고, 구 SiOC 개질은 시간에 비례한다 → Modi 시간에 선택비 창이 있다.</p><p class="test"><b>판정</b> 20 °C Modi 시간 스캔으로 SiOCN 포화점 찾기 (경계 단서 2–2.5분)</p></div><div class="hyp hint">
-<div class="hh"><span class="hid">H2</span><span class="st hint">단서 (n=1)</span></div>
-<p>20 °C에서 구 SiOC에 자라는 층은 RTP로 빠지는 가역 불화·수화층이다 (Modi −22.8 Å / RTP +22.5 Å).</p><p class="test"><b>판정</b> 다사이클 궤적 기울기 + RTP 전 XPS F 1s·O 1s</p></div><div class="hyp wait">
-<div class="hh"><span class="hid">H3</span><span class="st wait">확인 대기</span></div>
-<p>−20 °C의 구 SiOC 식각은 응축 HF/H₂O 기여다 → H₂O 분율을 낮추면 구 SiOC가 SiOCN보다 크게 줄어든다.</p><p class="test"><b>판정</b> −20 °C 16:16 vs 12:20 sccm 비교</p></div><div class="hyp wait">
-<div class="hh"><span class="hid">H4</span><span class="st wait">확인 대기</span></div>
-<p>(정식) 20 °C에서는 반응성이 올라 구 SiOC 직접 식각이 늘어난다.</p><p class="test"><b>판정</b> 같은 조건 −20 / +20 °C 궤적 쌍 — 구 SiOC RTP 후 순두께 기울기</p></div><div class="hyp idea">
-<div class="hh"><span class="hid">H5</span><span class="st idea">아이디어</span></div>
-<p>RTP 온도를 낮추면 AFS만 탈리하고 구 SiOC 층은 남아 보호층이 된다.</p><p class="test"><b>판정</b> RTP 온도 조절 범위 확인 필요</p></div><div class="hyp no">
-<div class="hh"><span class="hid">X1</span><span class="st no">기각</span></div>
-<p>−20 °C에서는 SiOC·SiO₂가 식각되지 않는다.</p><p class="test"><b>판정</b> 10/11 −20 °C 10 W 5사이클: 구 SiOC 3.43, SiO₂ 5.18 Å/cycle로 식각됨</p></div></div></section>
-
-<section id="plan"><h2>다음 실험<span class="count">5건</span></h2>
-<div class="grid2"><div class="plan"><div class="hh"><span class="hid">P-cal</span></div>
-<p><b>H₂O UI 7·8 보정 실측</b></p><p class="muted">24·28 sccm 조건이 외삽값이라 비율축이 흔들림</p></div><div class="plan"><div class="hh"><span class="hid">P-sweep</span><span class="chip">+20 °C</span></div>
-<p><b>총유량 32 sccm 고정 H₂O 분율 스윕</b></p><p class="muted">체류시간 고정, H₂O:CF₄ 비만 분리</p><div class="table-wrap"><table class="mini"><thead><tr><th>H₂O : CF₄ sccm</th><th>H₂O %</th><th>넣을 UI</th></tr></thead><tbody><tr><td class="n">12 : 20</td><td class="n">38</td><td class="n"><b>4 : 25</b><span class="flag tbd">미확정</span></td></tr><tr><td class="n">16 : 16</td><td class="n">50</td><td class="n"><b>5 : 20</b></td></tr><tr><td class="n">24 : 8</td><td class="n">75</td><td class="n"><b>7 : 10</b><span class="flag ext">외삽</span></td></tr><tr><td class="n">28 : 4</td><td class="n">88</td><td class="n"><b>8 : 5</b><span class="flag ext">외삽</span></td></tr></tbody></table></div></div><div class="plan"><div class="hh"><span class="hid">P-pair</span></div>
-<p><b>16:16 sccm 기준 런 −20 / +20 °C 궤적 쌍 (0·2·5사이클)</b></p><p class="muted">H4 판정 — 온도만 다른 쌍</p></div><div class="plan"><div class="hh"><span class="hid">P-ctrl</span></div>
-<p><b>열 단독 대조군 (플라즈마 없이 RTP 5회)</b></p><p class="muted">구 SiOC 열 수축분 분리 — '구 SiOC 0' 주장의 전제</p></div><div class="plan"><div class="hh"><span class="hid">P-verify</span></div>
-<p><b>최적 후보 20–30사이클 검증 + XPS</b></p><p class="muted">10:1 입증 — SiOCN 2 Å/cycle이면 구 SiOC ≤ 0.2 Å/cycle</p></div></div>
-<p class="muted" style="font-size:13px">넣을 UI는 보정표(H₂O 기울기 4 sccm/UI, CF₄ ×0.8)로 자동 계산합니다. <span class="flag ext">외삽</span>은 실측 전 값입니다.</p></section>
-
-<section id="runs"><h2>실험 기록<span class="count">6건</span></h2>
-<div class="filters" role="group" aria-label="온도 필터">
-<button data-f="all" aria-pressed="true">전체</button><button data-f="-20" aria-pressed="false">−20 °C</button><button data-f="0" aria-pressed="false">0 °C</button><button data-f="20" aria-pressed="false">+20 °C</button><button data-f="pending" aria-pressed="false">정리 대기</button></div>
-<div class="runs-box table-wrap"><table id="runs-t"><thead><tr><th>런</th><th>상태</th><th>척 온도</th><th>파워</th><th>압력</th><th>H₂O : CF₄ (실제)</th><th>Modi · 사이클</th><th>결과 Δ (Å, + = 식각)</th><th>메모</th></tr></thead>
-<tbody><tr data-temp="-20" data-status="정리 대기">
-<td><b>R-1104-a</b><div class="muted">2026-11-04</div></td>
-<td><span class="st wait">정리 대기</span></td>
-<td class="n">−20 °C</td>
-<td class="n">—</td>
-<td class="n">—</td>
-<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
-<td class="n">— · —</td>
-<td><span class="muted">—</span></td>
-<td class="muted">포스트잇 1번 줄 (목표 16:16 sccm). 두께 기록 막 표기 필요</td></tr><tr data-temp="-20" data-status="정리 대기">
-<td><b>R-1104-b</b><div class="muted">2026-11-04</div></td>
-<td><span class="st wait">정리 대기</span></td>
-<td class="n">−20 °C</td>
-<td class="n">—</td>
-<td class="n">—</td>
-<td><b>20 : 8</b> <span class="muted">sccm</span><div class="ui">UI 6 : 10</div></td>
-<td class="n">— · —</td>
-<td><span class="muted">—</span></td>
-<td class="muted">포스트잇 2번 줄. 목표 24:8이었으나 UI 6 → 실제 20:8 sccm</td></tr><tr data-temp="-20" data-status="완료">
-<td><b>R-1101-m20</b><div class="muted">2026-11-01</div></td>
-<td><span class="st yes">완료</span></td>
-<td class="n">−20 °C</td>
-<td class="n">—</td>
-<td class="n">—</td>
-<td><span class="muted">시트 확인</span></td>
-<td class="n">5분 · 1회</td>
-<td><div>SiOCN <b>3.77</b> <span class="muted">(M 1.36 / R 2.41)</span></div><div>구 SiOC <b>4.54</b> <span class="muted">(M 0.98 / R 3.56)</span></div></td>
-<td class="muted">단일 패스, n=1</td></tr><tr data-temp="0" data-status="완료">
-<td><b>R-1101-0</b><div class="muted">2026-11-01</div></td>
-<td><span class="st yes">완료</span></td>
-<td class="n">0 °C</td>
-<td class="n">—</td>
-<td class="n">—</td>
-<td><span class="muted">시트 확인</span></td>
-<td class="n">5분 · 1회</td>
-<td><div>SiOCN <b>−1.72</b> <span class="muted">(M −5.57 / R 3.85)</span></div><div>구 SiOC <b>−0.48</b> <span class="muted">(M −7.1 / R 6.62)</span></div></td>
-<td class="muted">단일 패스, n=1</td></tr><tr data-temp="20" data-status="완료">
-<td><b>R-1101-20</b><div class="muted">2026-11-01</div></td>
-<td><span class="st yes">완료</span></td>
-<td class="n">+20 °C</td>
-<td class="n">—</td>
-<td class="n">—</td>
-<td><span class="muted">시트 확인</span></td>
-<td class="n">5분 · 1회</td>
-<td><div>SiOCN <b>1.78</b> <span class="muted">(M −6.88 / R 8.66)</span></div><div>구 SiOC <b>−0.28</b> <span class="muted">(M −22.8 / R 22.52)</span></div></td>
-<td class="muted">단일 패스, n=1</td></tr><tr data-temp="-20" data-status="완료">
-<td><b>R-1011</b><div class="muted">2026-10-11</div></td>
-<td><span class="st yes">완료</span></td>
-<td class="n">−20 °C</td>
-<td class="n">10 W</td>
-<td class="n">—</td>
-<td><span class="muted">시트 확인</span></td>
-<td class="n">— · 5회</td>
-<td><div>구 SiOC <b>3.43</b> <span class="muted">Å/cyc</span></div><div>SiO₂ <b>5.18</b> <span class="muted">Å/cyc</span></div></td>
-<td class="muted">EPC(Å/cycle). 가스 조건은 원본 시트 확인 필요</td></tr></tbody></table></div>
-<p class="muted" style="font-size:13px">M = Modi 단계 Δ, R = RTP 단계 Δ. 결과는 막별로 같은 쿠폰 기준입니다.</p>
-
-<figure class="fig" style="margin:16px 0 0">
-<div class="legend"><span><i style="background:var(--series-1)"></i>SiOCN</span><span><i style="background:var(--series-2)"></i>구 SiOC</span></div>
-<svg viewBox="0 0 620 300" role="img" aria-label="11월 1일 온도별 1패스 순변화"><rect x="56" y="43.166666666666664" width="454" height="191.66666666666666" fill="var(--cds-chart-reference-tint)"/><text x="504" y="57.166666666666664" text-anchor="end" class="ax">엘립소 판정 오차 ±10 Å</text><line x1="56" x2="510" y1="234.83333333333331" y2="234.83333333333331" stroke="var(--cds-chart-grid)" stroke-width="1"/><text x="48" y="238.83333333333331" text-anchor="end" class="ax">−10</text><line x1="56" x2="510" y1="186.91666666666669" y2="186.91666666666669" stroke="var(--cds-chart-grid)" stroke-width="1"/><text x="48" y="190.91666666666669" text-anchor="end" class="ax">−5</text><line x1="56" x2="510" y1="139" y2="139" stroke="var(--cds-chart-grid)" stroke-width="1.5"/><text x="48" y="143" text-anchor="end" class="ax">0</text><line x1="56" x2="510" y1="91.08333333333334" y2="91.08333333333334" stroke="var(--cds-chart-grid)" stroke-width="1"/><text x="48" y="95.08333333333334" text-anchor="end" class="ax">5</text><line x1="56" x2="510" y1="43.166666666666664" y2="43.166666666666664" stroke="var(--cds-chart-grid)" stroke-width="1"/><text x="48" y="47.166666666666664" text-anchor="end" class="ax">10</text><text x="56" y="274" text-anchor="middle" class="ax">−20 °C</text><text x="283" y="274" text-anchor="middle" class="ax">0 °C</text><text x="510" y="274" text-anchor="middle" class="ax">+20 °C</text><text x="12" y="139" transform="rotate(-90 12 139)" text-anchor="middle" class="ax">순변화 Δ (Å, + = 식각)</text><polyline fill="none" stroke="var(--series-1)" stroke-width="2" points="56,102.87083333333334 283,155.48333333333332 510,121.94166666666666"/><g class="pt"><circle cx="56" cy="102.87083333333334" r="14" fill="transparent"/><circle cx="56" cy="102.87083333333334" r="5" fill="var(--series-1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · −20 °C
-순변화 3.77 Å (Modi 1.36 / RTP 2.41)</title></g><g class="pt"><circle cx="283" cy="155.48333333333332" r="14" fill="transparent"/><circle cx="283" cy="155.48333333333332" r="5" fill="var(--series-1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · 0 °C
-순변화 −1.72 Å (Modi −5.57 / RTP 3.85)</title></g><g class="pt"><circle cx="510" cy="121.94166666666666" r="14" fill="transparent"/><circle cx="510" cy="121.94166666666666" r="5" fill="var(--series-1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · +20 °C
-순변화 1.78 Å (Modi −6.88 / RTP 8.66)</title></g><text x="522" y="115.94166666666666" class="lab">SiOCN</text><polyline fill="none" stroke="var(--series-2)" stroke-width="2" points="56,95.49166666666667 283,143.60000000000002 510,141.68333333333334"/><g class="pt"><circle cx="56" cy="95.49166666666667" r="14" fill="transparent"/><circle cx="56" cy="95.49166666666667" r="5" fill="var(--series-2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · −20 °C
-순변화 4.54 Å (Modi 0.98 / RTP 3.56)</title></g><g class="pt"><circle cx="283" cy="143.60000000000002" r="14" fill="transparent"/><circle cx="283" cy="143.60000000000002" r="5" fill="var(--series-2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · 0 °C
-순변화 −0.48 Å (Modi −7.1 / RTP 6.62)</title></g><g class="pt"><circle cx="510" cy="141.68333333333334" r="14" fill="transparent"/><circle cx="510" cy="141.68333333333334" r="5" fill="var(--series-2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · +20 °C
-순변화 −0.28 Å (Modi −22.8 / RTP 22.52)</title></g><text x="522" y="155.68333333333334" class="lab">구 SiOC</text></svg>
-<figcaption>11/01 온도별 1패스(Modi 5분 + RTP) 순변화. 모두 n=1이고 회색 띠(±10 Å) 안이라 방향 참고용입니다. 점에 마우스를 올리면 단계별 Δ가 보입니다.</figcaption>
-<details><summary>표로 보기</summary><table class="mini"><thead><tr><th>온도</th><th>SiOCN 순변화 (Å)</th><th>구 SiOC 순변화 (Å)</th></tr></thead><tbody><tr><td class="n">−20 °C</td><td class="n">3.77</td><td class="n">4.54</td></tr><tr><td class="n">0 °C</td><td class="n">−1.72</td><td class="n">−0.48</td></tr><tr><td class="n">+20 °C</td><td class="n">1.78</td><td class="n">−0.28</td></tr></tbody></table></details>
-</figure></section>
-
-<section id="eq"><h2>장비·보정</h2>
+<p style="font-size:15.5px;margin:4px 0">AFS 염의 형성·제거 사이클로 SiOCN을 구 SiOC 대비 선택 식각한다. <span class="muted">출발점 선택비 약 1.5 (2026-10-11, −20 °C 풀사이클 EPC 기준)</span></p>
+<div class="mech">Modi에서 생긴 AFS ((NH₄)₂SiF₆) 염 층이 RTP에서 분해·휘발하며 막의 Si를 함께 내보내는 것이 순식각의 실체이고, 염 형성이 막마다 다른 것이 선택비의 원천이다. 단 11/04 −20 °C 조건에서는 풀사이클 총량이 연속 노출 총량과 같아, Modi 중 직접 식각이 주성분일 수 있다 [추론]</div>
 <div class="grid2">
-<div class="box"><b>공정 개요</b><ul class="plain" style="margin-top:6px"><li>LAT CCP (소스 파워만, 바이어스 없음), 처킹 없음 — 4인치 Si 캐리어 정중앙에 1 cm 쿠폰</li><li>1사이클 = Modi (CF₄ + H₂O 플라즈마) → Ar 퍼지 → Removal (RTP 300 °C), 진공 유지 클러스터</li><li>사이클 1회 약 30분, 장입 후 stable 약 5분</li><li>측정: 엘립소 스텝 전후 두께 — 판정 오차 ±10 Å (10 Å 미만 Δ는 단독 판정 금지)</li><li>운전 범위: 파워 10–50 W · 압력 50–100 mTorr · 척 −20 ~ +20 °C (야간 20 °C 고정)</li><li>시료: SiOCN · 구 SiOC · SiO₂ (SiOC는 구 SiOC로 통일, 런당 1개). AFS는 막 내 N을 쓰는 SiOCN에서만 형성</li></ul></div>
-<div class="box"><b>H₂O 보정 (UI → 실제)</b>
-<table class="mini"><tbody><tr><td class="n">UI 4</td><td class="n">12 sccm</td><td><span class="st wait">미확정</span></td></tr><tr><td class="n">UI 5</td><td class="n">16 sccm</td><td><span class="st yes">확정</span> <span class="muted">2026-11-04</span></td></tr><tr><td class="n">UI 6</td><td class="n">20 sccm</td><td><span class="st yes">확정</span> <span class="muted">2026-11-02</span></td></tr></tbody></table>
-<p class="muted" style="font-size:13px">확정 두 점의 기울기 4 sccm/UI로 선형 환산. 확정점 밖은 외삽 — 실측 전까지 [외삽] 표시.</p>
-<b>CF₄</b><p class="muted" style="font-size:13px;margin:4px 0">CHF₃ 라인 사용, 실제 = UI × 4/5. 사용 전 라인 연결 가스 확인.</p></div>
+<div class="box"><b>목표 우선순위</b><ul class="plain"><li>1순위 — SiOCN vs 구 SiOC (실제 소자에서 어느 SiOC가 맞닿는지는 미확인)</li><li>2순위 — SiOCN vs SiO₂ · Si₃N₄</li></ul>
+<b style="display:block;margin-top:10px">화학계·사이클</b><ul class="plain"><li>주력: CF₄ + H₂O</li><li>참고: NF₃ / NH₃ — 문헌 참고 체계로만 다룸</li><li>Modi(CF₄ + H₂O 플라즈마, 표면 개질·AFS 염 형성) → Ar 퍼지 → Removal(RTP 300 °C, 염 분해·제거)</li></ul></div>
+<div class="box"><b>시료</b><ul class="plain"><li>SiOCN — 주 타깃. 막 내 N을 가진 유일한 막이라 AFS는 SiOCN에서만 형성</li><li>구 SiOC — 1순위 비교 상대. 2026-11-04부터 SiOC는 구 SiOC로 통일, 시료가 적어 런당 1개</li><li>SiO₂ — 기준</li><li>New SiOC — 과거 데이터의 관찰 대상 (신규 실험에서는 쓰지 않음)</li></ul></div>
+<div class="box"><b>장비</b><ul class="plain"><li>LAT CCP (랩 호칭 'CCP'), 4인치용. 소스 RF만, 바이어스 없음</li><li>처킹 없음 — 1 cm 쿠폰을 4인치 Si 캐리어 정중앙에 얹어 장입. 실제 시료 온도는 척 설정값과 다를 수 있음</li><li>2챔버 클러스터 — 프로세스 챔버(Modi) + RTP 챔버, 진공 유지 이송. 병렬 용량이 아님</li><li>사이클 1회 약 30분, 장입 후 stable 약 5분</li><li>운전 범위: 파워 10–50 W · 압력 50–100 mTorr · 척 −20 ~ +20 °C. 척 온도 변경 1–2시간, 야간 20 °C 고정</li><li>측정: 엘립소(주, 장비 옆) · XPS는 차량 30분 거리라 배치 측정</li></ul></div>
+<div class="box"><b>유량 보정 (UI → 실제)</b>
+<table class="mini"><thead><tr><th>H₂O UI</th><th>실제</th><th>상태</th></tr></thead><tbody><tr><td class="n">UI 4</td><td class="n">12 sccm</td><td><span class="st wait">미확정</span></td></tr><tr><td class="n">UI 5</td><td class="n">16 sccm</td><td><span class="st yes">확정</span> <span class="muted sm">2026-11-04</span></td></tr><tr><td class="n">UI 6</td><td class="n">20 sccm</td><td><span class="st yes">확정</span> <span class="muted sm">2026-11-02</span></td></tr></tbody></table>
+<p class="muted sm" style="margin:6px 0">확정 두 점을 잇는 직선(4 sccm/UI, 절편 −4)으로 환산한다 — 두 점 직선 가정이다. 미확정점 UI 4 → 12와도 맞지만, 원점 비례(약 3.3 sccm/UI)로 보면 UI 7·8에서 23·27로 갈라진다. 확정점 밖은 [외삽]으로 표시하고 P-cal 실측이 결정한다.</p><p class="sm" style="margin:4px 0"><b>CF₄</b> <span class="muted">CHF₃ 라인을 쓴다. 실제 = UI × 4/5 (UI 20 = 16 sccm). 사용 전 라인에 연결된 가스를 확인한다.</span></p></div>
+</div>
+<h3>로드맵</h3>
+<div class="table-wrap"><table><tbody><tr><td style="width:170px"><b>2026-11 장비 기간</b></td><td style="width:90px"><span class="st run">진행 중</span></td><td>스크리닝 → 방향 확인 → 후보 검증. 메커니즘 판별은 스크리닝 안에 녹인다</td></tr><tr><td style="width:170px"><b>다음 장비 기간</b></td><td style="width:90px"><span class="st wait">예정</span></td><td>지렛대 요인 반응표면 — 선택비 창 확정</td></tr><tr><td style="width:170px"><b>2027</b></td><td style="width:90px"><span class="st wait">자리 표시</span></td><td>메커니즘 정리(XPS) · 논문화 — 정식 확정 필요</td></tr></tbody></table></div>
+<p class="links"><a href="https://app.notion.com/p/4d8861a261fe4f8bb8c034496ca95bd0" target="_blank" rel="noopener">실험 보드 (노션) →</a><a href="https://app.notion.com/p/40c33730faaf818584c3d4b90224f074" target="_blank" rel="noopener">장비 운전 규칙·보정표 →</a><a href="../../papers/">논문 보유 목록 →</a><a href="../../home/">홈 대시보드 →</a></p></section>
+
+<section id="timeline" class="tab"><h2>실험 회차 타임라인<span class="count">8회차</span></h2>
+<div class="grid2" style="grid-template-columns:minmax(0,2fr) minmax(260px,1fr)">
+<ol class="tl"><li><div class="d">2026-11-04</div><div class="l">Modi 단독 시간 시리즈 + 풀사이클 ×4 검증</div>
+<p class="muted">척 −20 °C, 50 W, 50 mTorr, 16:16 sccm (H₂O UI 5 · CF₄ UI 20), 새 쿠폰</p><p>Modi 단독 Δ 30 → 480초: SiOCN −1.26 → 33.77, 구 SiOC −5.39 → 25.17. 10 W 240초 역선택. 풀사이클 120초 ×4: SiOCN 44.91(하한), 구 SiOC 23.83 — 연속 480초와 동등</p><p class="vd">사이클 억제 기각 (H4), 총량 = 연속 노출 (H5), 저파워 개선 기각 (H11). 짧은 Modi 정지 패턴 재현 실패 (H6 미해소)</p></li><li><div class="d">2026-11-02</div><div class="l">H₂O UI 6 → 4 + Modi 시간 split</div>
+<p class="muted">척 −20 °C, H₂O UI 4, Modi 4 / 5 / 6분, 풀사이클 3사이클</p><p>선택비 4분 1.54 → 5분 1.34 → 6분 1.31. 6분에서 SiOCN·구 SiOC·New SiOC EPC 점프, SiO₂ 불변. 2분 궤적: 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80</p><p class="vd">짧은 Modi일수록 선택비가 큰 경향 (H10). '구 SiOC 정지' 패턴은 핵심 가설로 승격 (H6)</p></li><li><div class="d">2026-11-01</div><div class="l">온도 3수준 스텝 분해 + 반복 3회</div>
+<p class="muted">척 20 / 0 / −20 °C, H₂O UI 6, Modi 5분 후 RTP</p><p>구 SiOC Modi Δ 20 °C −22.80 → −20 °C +0.98. 1패스 순변화 SiOCN 1.78 / −1.72 / 3.77, 구 SiOC −0.28 / −0.48 / 4.54 (20 / 0 / −20 °C). 반복 3회 SiOCN 3.76±1.06, 구 SiOC 5.75±0.96</p><p class="vd">노이즈 바닥 ±1–3 Å 확정. Modi 성장은 고온에서 크고 −20 °C에서 소멸 (H1). RTP 단계 Δ(8.66 &gt; 3.85 &gt; 2.41)는 순제거가 아님 — 순변화는 −20 °C가 가장 큼 (2026-11-02 정정)</p></li><li><div class="d">2026-10-11</div><div class="l">−20 °C 풀사이클 — 10 W vs 50 W</div>
+<p class="muted">척 −20 °C, Modi 10사이클 선행 후 RTP, 풀사이클 2·5사이클</p><p>SiOCN:구 SiOC 1.48–1.50. New SiOC 상대는 전 조건 역선택. 50 W·5cyc에서 SiO₂ &gt; SiOCN</p><p class="vd">출발점 선택비 약 1.5. '−20 °C에서 SiOC·SiO₂ 안 깎임' 전제 기각 → H17</p></li><li><div class="d">2026-10-10</div><div class="l">Modi–RTP 2스텝 — 온도 가설 검증</div>
+<p class="muted"><span class="na">기록 없음</span></p><p>New SiOC가 Modi 5사이클에 459 Å 소실 (EPC 91.9 Å/cycle)</p><p class="vd">New SiOC의 큰 EPC는 직접 식각 성분일 가능성 [추론] → H8</p></li><li><div class="d">2026-10-07 – 10-08</div><div class="l">스텝 분해 (1Step NH₃ / Modi / Removal)</div>
+<p class="muted">NH₃계, 1step 30 s vs 300–330 s</p><p>330 s 블록 Modi 성장 SiOCN −12.66 ± 0.51 Å로 재현. Removal이 성장을 다 지우지 못해 Full Δ가 ±5 Å에서 진동. 30 s 블록은 편차 ±6–9</p><p class="vd">Modi 성장은 재현됨. NH₃ 변형은 제거 불완전·사이클이 길어 중단 [추론 포함]</p></li><li><div class="d">2026-08-30 – 08-31</div><div class="l">NH₃ 1스텝 추가 변형</div>
+<p class="muted">NH₃+CF₄+H₂O, −20 ~ 20 °C, 50 / 120 mTorr</p><p><span class="na">기록 없음</span></p></li><li><div class="d">2026-08-29</div><div class="l">풀사이클 — H₂O UI 4/6/10 비교</div>
+<p class="muted">CF₄+H₂O, H₂O UI 4 / 6 / 10</p><p>풀사이클 EPC 표준편차 ±8–18 Å. 같은 시료를 Modi 단독 → RTP 단독 → 합산으로 재사용한 행이 섞여 있음</p><p class="vd">스크리닝 근거로는 부적합, 경향 참고용</p></li></ol>
+<div class="box" style="align-self:start"><b>결정 기록</b><ul class="dec" style="padding:0;margin:6px 0 0"><li><span class="d">2026-11-05</span><span>연구 대시보드 공개 범위 C안(GitHub Pages) 선택 — 개편본 확인 후 최종</span></li><li><span class="d">2026-11-04</span><span>SiOC는 구 SiOC로 통일, 런당 1개 장입</span></li><li><span class="d">2026-11-04</span><span>엘립소 판정 오차 ±10 Å, H₂O UI 5 → 16 sccm 확정</span></li><li><span class="d">2026-11-04</span><span>6요인 DSD 실행 보류 — 당분간 방향성 논의</span></li><li><span class="d">2026-11-02</span><span>온도 2수준(−20 / +20 °C), 반응표면은 이번 기간 제외</span></li><li><span class="d">2026-11-02</span><span>성공 기준 SiOCN : 구 SiOC = 10 : 1</span></li></ul></div>
 </div></section>
 
-<section id="road"><h2>로드맵과 결정</h2>
-<div class="grid2">
-<div class="box"><ol class="tl"><li><div class="row"><span class="w">2026-11 (장비 기간)</span><span class="st run">진행 중</span></div><div>스크리닝 → 방향 확인 → 후보 검증. 메커니즘 판별은 스크리닝 안에 녹임</div></li><li><div class="row"><span class="w">다음 장비 기간</span><span class="st wait">예정</span></div><div>지렛대 요인 반응표면 — 선택비 창 확정</div></li><li><div class="row"><span class="w">2027 (가편 — 정식 확정 필요)</span><span class="st wait">예정</span></div><div>메커니즘 정리(XPS) · 논문화</div></li></ol></div>
-<div class="box"><b>결정 기록</b><ul class="plain dec" style="list-style:none;padding:0;margin-top:6px"><li><span class="d">2026-11-04</span><span>SiOC는 구 SiOC로 통일, 런당 1개 장입</span></li><li><span class="d">2026-11-04</span><span>엘립소 판정 오차 ±10 Å, H₂O UI 5 → 16 sccm 확정</span></li><li><span class="d">2026-11-04</span><span>6요인 DSD 실행 보류 — 당분간 방향성 논의</span></li><li><span class="d">2026-11-02</span><span>온도 2수준 (−20 / +20 °C), 반응표면은 이번 기간 제외</span></li><li><span class="d">2026-11-02</span><span>성공 기준 SiOCN : 구 SiOC = 10 : 1</span></li></ul></div>
-</div>
-<p class="links"><a href="https://app.notion.com/p/4d8861a261fe4f8bb8c034496ca95bd0" target="_blank" rel="noopener">실험 보드 (노션) →</a><a href="https://app.notion.com/p/40c33730faaf818584c3d4b90224f074" target="_blank" rel="noopener">장비 운전 규칙·보정표 →</a><a href="https://app.notion.com/p/40c33730faaf8187a26dff3f833fc7a2" target="_blank" rel="noopener">방향 설정 안건 →</a><a href="../../home/">홈 대시보드 →</a></p>
-</section>
+<section id="runs" class="tab"><h2>실험 기록<span class="count">19건</span></h2>
+<div class="figs"><figure class="fig" id="fig-modi"><figcaption class="ft">11/04 Modi 단독 시간 시리즈 — −20 °C · 50 W · 16:16 sccm</figcaption>
+<div class="legend"><span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7.5" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/></svg>SiOCN</span><span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="3" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/></svg>구 SiOC</span><span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5 L12.5 11.5 L1.5 11.5 Z" fill="var(--s3)" stroke="var(--card)" stroke-width="2"/></svg>SiO₂</span></div>
+<svg viewBox="0 0 640 300" role="img" aria-label="11월 4일 Modi 시간별 두께 변화"><rect x="58" y="151.84615384615384" width="490" height="89.23076923076925" fill="var(--band)"/><text x="64" y="164.84615384615384" class="ax">±10 Å 판정 오차</text><line x1="58" x2="548" y1="241.0769230769231" y2="241.0769230769231" stroke="var(--grid)" stroke-width="1"/><text x="50" y="245.0769230769231" text-anchor="end" class="ax">−10</text><line x1="58" x2="548" y1="196.46153846153848" y2="196.46153846153848" stroke="var(--grid)" stroke-width="1.4"/><text x="50" y="200.46153846153848" text-anchor="end" class="ax">0</text><line x1="58" x2="548" y1="151.84615384615384" y2="151.84615384615384" stroke="var(--grid)" stroke-width="1"/><text x="50" y="155.84615384615384" text-anchor="end" class="ax">10</text><line x1="58" x2="548" y1="107.23076923076924" y2="107.23076923076924" stroke="var(--grid)" stroke-width="1"/><text x="50" y="111.23076923076924" text-anchor="end" class="ax">20</text><line x1="58" x2="548" y1="62.61538461538462" y2="62.61538461538462" stroke="var(--grid)" stroke-width="1"/><text x="50" y="66.61538461538461" text-anchor="end" class="ax">30</text><line x1="58" x2="548" y1="18" y2="18" stroke="var(--grid)" stroke-width="1"/><text x="50" y="22" text-anchor="end" class="ax">40</text><text x="58" y="270" text-anchor="middle" class="ax">30초</text><text x="156" y="270" text-anchor="middle" class="ax">2분</text><text x="286.66666666666663" y="270" text-anchor="middle" class="ax">4분</text><text x="548" y="270" text-anchor="middle" class="ax">8분</text><text x="303" y="292" text-anchor="middle" class="ax">Modi 시간 (비례 축)</text><text transform="translate(16 134) rotate(-90)" text-anchor="middle" class="ax">Modi Δ (Å, + = 식각)</text><polyline fill="none" stroke="var(--s1)" stroke-width="2" points="58,202.08307692307693 156,172.3692307692308 286.66666666666663,126.99538461538462 548,45.795384615384606"/><g class="pt"><circle cx="58" cy="202.08307692307693" r="13" fill="transparent"/><circle cx="58" cy="202.08307692307693" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · 30초
+Δ −1.26 Å</title></g><g class="pt"><circle cx="156" cy="172.3692307692308" r="13" fill="transparent"/><circle cx="156" cy="172.3692307692308" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · 2분
+Δ 5.4 Å</title></g><g class="pt"><circle cx="286.66666666666663" cy="126.99538461538462" r="13" fill="transparent"/><circle cx="286.66666666666663" cy="126.99538461538462" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · 4분
+Δ 15.57 Å</title></g><g class="pt"><circle cx="548" cy="45.795384615384606" r="13" fill="transparent"/><circle cx="548" cy="45.795384615384606" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · 8분
+Δ 33.77 Å · RTP Δ 6.76</title></g><polyline fill="none" stroke="var(--s2)" stroke-width="2" points="58,220.50923076923075 156,177.32153846153847 286.66666666666663,151.0430769230769 548,84.16461538461537"/><g class="pt"><circle cx="58" cy="220.50923076923075" r="13" fill="transparent"/><rect x="53.5" y="216.00923076923075" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · 30초
+Δ −5.39 Å</title></g><g class="pt"><circle cx="156" cy="177.32153846153847" r="13" fill="transparent"/><rect x="151.5" y="172.82153846153847" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · 2분
+Δ 4.29 Å</title></g><g class="pt"><circle cx="286.66666666666663" cy="151.0430769230769" r="13" fill="transparent"/><rect x="282.16666666666663" y="146.5430769230769" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · 4분
+Δ 10.18 Å</title></g><g class="pt"><circle cx="548" cy="84.16461538461537" r="13" fill="transparent"/><rect x="543.5" y="79.66461538461537" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · 8분
+Δ 25.17 Å · RTP Δ −2.32</title></g><polyline fill="none" stroke="var(--s3)" stroke-width="2" points="58,187.31538461538463 156,182.94307692307692 286.66666666666663,170.89692307692306 548,168.88923076923075"/><g class="pt"><circle cx="58" cy="187.31538461538463" r="13" fill="transparent"/><path d="M58 181.31538461538463 L63.5 191.31538461538463 L52.5 191.31538461538463 Z" fill="var(--s3)" stroke="var(--card)" stroke-width="2"/><title>SiO₂ · 30초
+Δ 2.05 Å</title></g><g class="pt"><circle cx="156" cy="182.94307692307692" r="13" fill="transparent"/><path d="M156 176.94307692307692 L161.5 186.94307692307692 L150.5 186.94307692307692 Z" fill="var(--s3)" stroke="var(--card)" stroke-width="2"/><title>SiO₂ · 2분
+Δ 3.03 Å</title></g><g class="pt"><circle cx="286.66666666666663" cy="170.89692307692306" r="13" fill="transparent"/><path d="M286.66666666666663 164.89692307692306 L292.16666666666663 174.89692307692306 L281.16666666666663 174.89692307692306 Z" fill="var(--s3)" stroke="var(--card)" stroke-width="2"/><title>SiO₂ · 4분
+Δ 5.73 Å</title></g><g class="pt"><circle cx="548" cy="168.88923076923075" r="13" fill="transparent"/><path d="M548 162.88923076923075 L553.5 172.88923076923075 L542.5 172.88923076923075 Z" fill="var(--s3)" stroke="var(--card)" stroke-width="2"/><title>SiO₂ · 8분
+Δ 6.18 Å</title></g><text x="558" y="49.795384615384606" class="lab">SiOCN</text><text x="558" y="88.16461538461537" class="lab">구 SiOC</text><text x="558" y="172.88923076923075" class="lab">SiO₂</text></svg>
+<figcaption>30초 순성장 → 식각 전환·가속. 240 → 480초에서 SiOCN이 포화 없이 늘어 H12(자기제한)와 맞지 않는다. 같은 쿠폰 연속 측정인지는 시트 확인.</figcaption><details><summary>표로 보기</summary><table class="mini"><thead><tr><th>조건</th><th>SiOCN Δ (Å)</th><th>구 SiOC Δ (Å)</th><th>SiO₂ Δ (Å)</th></tr></thead><tbody><tr><td>30초</td><td class="n">−1.26</td><td class="n">−5.39</td><td class="n">2.05</td></tr><tr><td>2분</td><td class="n">5.4</td><td class="n">4.29</td><td class="n">3.03</td></tr><tr><td>4분</td><td class="n">15.57</td><td class="n">10.18</td><td class="n">5.73</td></tr><tr><td>8분</td><td class="n">33.77</td><td class="n">25.17</td><td class="n">6.18</td></tr></tbody></table></details></figure><figure class="fig" id="fig-temp"><figcaption class="ft">11/01 온도별 1패스 순변화 — Modi 5분 + RTP, H₂O UI 6</figcaption>
+<div class="legend"><span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7.5" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/></svg>SiOCN</span><span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><rect x="2.5" y="3" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/></svg>구 SiOC</span></div>
+<svg viewBox="0 0 640 300" role="img" aria-label="11월 1일 온도별 순변화"><rect x="58" y="37.33333333333333" width="490" height="193.33333333333331" fill="var(--band)"/><text x="64" y="50.33333333333333" class="ax">±10 Å 판정 오차</text><line x1="58" x2="548" y1="230.66666666666666" y2="230.66666666666666" stroke="var(--grid)" stroke-width="1"/><text x="50" y="234.66666666666666" text-anchor="end" class="ax">−10</text><line x1="58" x2="548" y1="182.33333333333334" y2="182.33333333333334" stroke="var(--grid)" stroke-width="1"/><text x="50" y="186.33333333333334" text-anchor="end" class="ax">−5</text><line x1="58" x2="548" y1="134" y2="134" stroke="var(--grid)" stroke-width="1.4"/><text x="50" y="138" text-anchor="end" class="ax">0</text><line x1="58" x2="548" y1="85.66666666666667" y2="85.66666666666667" stroke="var(--grid)" stroke-width="1"/><text x="50" y="89.66666666666667" text-anchor="end" class="ax">5</text><line x1="58" x2="548" y1="37.33333333333333" y2="37.33333333333333" stroke="var(--grid)" stroke-width="1"/><text x="50" y="41.33333333333333" text-anchor="end" class="ax">10</text><text x="58" y="270" text-anchor="middle" class="ax">−20 °C</text><text x="303" y="270" text-anchor="middle" class="ax">0 °C</text><text x="548" y="270" text-anchor="middle" class="ax">+20 °C</text><text transform="translate(16 134) rotate(-90)" text-anchor="middle" class="ax">순변화 Δ (Å, + = 식각)</text><polyline fill="none" stroke="var(--s1)" stroke-width="2" points="58,97.55666666666667 303,150.62666666666667 548,116.79333333333334"/><g class="pt"><circle cx="58" cy="97.55666666666667" r="13" fill="transparent"/><circle cx="58" cy="97.55666666666667" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · −20 °C
+Δ 3.77 Å (Modi 1.36 / RTP 2.41)</title></g><g class="pt"><circle cx="303" cy="150.62666666666667" r="13" fill="transparent"/><circle cx="303" cy="150.62666666666667" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · 0 °C
+Δ −1.72 Å (Modi −5.57 / RTP 3.85)</title></g><g class="pt"><circle cx="548" cy="116.79333333333334" r="13" fill="transparent"/><circle cx="548" cy="116.79333333333334" r="5" fill="var(--s1)" stroke="var(--card)" stroke-width="2"/><title>SiOCN · +20 °C
+Δ 1.78 Å (Modi −6.88 / RTP 8.66)</title></g><polyline fill="none" stroke="var(--s2)" stroke-width="2" points="58,90.11333333333334 303,138.64 548,136.70666666666665"/><g class="pt"><circle cx="58" cy="90.11333333333334" r="13" fill="transparent"/><rect x="53.5" y="85.61333333333334" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · −20 °C
+Δ 4.54 Å (Modi 0.98 / RTP 3.56)</title></g><g class="pt"><circle cx="303" cy="138.64" r="13" fill="transparent"/><rect x="298.5" y="134.14" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · 0 °C
+Δ −0.48 Å (Modi −7.1 / RTP 6.62)</title></g><g class="pt"><circle cx="548" cy="136.70666666666665" r="13" fill="transparent"/><rect x="543.5" y="132.20666666666665" width="9" height="9" rx="1.5" fill="var(--s2)" stroke="var(--card)" stroke-width="2"/><title>구 SiOC · +20 °C
+Δ −0.28 Å (Modi −22.8 / RTP 22.52)</title></g><text x="558" y="120.79333333333334" class="lab">SiOCN</text><text x="558" y="140.70666666666665" class="lab">구 SiOC</text></svg>
+<figcaption>모두 n=1이고 ±10 Å 띠 안이라 방향 참고용이다. 점에 마우스를 올리면 Modi·RTP 단계 Δ가 보인다.</figcaption><details><summary>표로 보기</summary><table class="mini"><thead><tr><th>조건</th><th>SiOCN Δ (Å)</th><th>구 SiOC Δ (Å)</th></tr></thead><tbody><tr><td>−20 °C</td><td class="n">3.77</td><td class="n">4.54</td></tr><tr><td>0 °C</td><td class="n">−1.72</td><td class="n">−0.48</td></tr><tr><td>+20 °C</td><td class="n">1.78</td><td class="n">−0.28</td></tr></tbody></table></details></figure></div>
+<div class="filters" role="group" aria-label="실험 기록 필터"><span class="lb">온도</span>
+<button data-f="all" aria-pressed="true">전체</button><button data-f="t:-20" aria-pressed="false">−20 °C</button><button data-f="t:0" aria-pressed="false">0 °C</button><button data-f="t:20" aria-pressed="false">+20 °C</button>
+<span class="lb" style="margin-left:8px">종류</span><button data-f="k:epc" aria-pressed="false">풀사이클 EPC</button><button data-f="k:delta" aria-pressed="false">Δ·총량</button><button data-f="pending" aria-pressed="false">정리 대기</button></div>
+<div class="table-wrap"><table id="runs-t"><thead><tr><th>런</th><th>척 온도</th><th>파워 · 압력</th><th>H₂O : CF₄ (실제)</th><th>모드</th><th>결과 (+ = 식각)</th><th>SiOCN : 구 SiOC</th><th>해석 · 메모</th></tr></thead><tbody><tr id="run-R1104-30" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1104-30</b><div class="muted">2026-11-04</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">50 mTorr</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>Modi 단독<div class="ui">Modi 30초 · 1사이클</div></td>
+<td><div class="">SiOCN <b>−1.26</b></div><div class="">구 SiOC <b>−5.39</b></div><div class="">SiO₂ <b>2.05</b></div><div class="ui">Å</div></td>
+<td><span class="sel grow">구 SiOC 성장</span></td>
+<td class="note">순성장 구간<div class="muted">새 쿠폰. RTP Δ 전부 ≈0</div></td></tr><tr id="run-R1104-120" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1104-120</b><div class="muted">2026-11-04</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">50 mTorr</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>Modi 단독<div class="ui">Modi 2분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>5.4</b></div><div class="">구 SiOC <b>4.29</b></div><div class="">SiO₂ <b>3.03</b></div><div class="ui">Å</div></td>
+<td><span class="sel pos">1.26</span></td>
+<td class="note">식각 전환<div class="muted">RTP Δ ≈0 또는 음수</div></td></tr><tr id="run-R1104-x4" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1104-x4</b><div class="muted">2026-11-04</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">50 mTorr</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>풀사이클 ×4 (총량)<div class="ui">Modi 2분 · 4사이클</div></td>
+<td><div class="">SiOCN <b>44.91</b></div><div class="">구 SiOC <b>23.83</b></div><div class="">SiO₂ <b>4.89</b></div><div class="ui">Å</div></td>
+<td><span class="sel pos">≥ 1.88</span><span class="flag ext">하한</span></td>
+<td class="note">구 SiOC 총량이 연속 480초와 동등 — 사이클 억제 없음<div class="muted">SiOCN 쿠폰 소진 가능성 — 총량·선택비는 하한 추정치. 중간 계측 없음</div><a class="chip hy" href="#hyp-H4">H4</a><a class="chip hy" href="#hyp-H5">H5</a><a class="chip hy" href="#hyp-H6">H6</a></td></tr><tr id="run-R1104-240" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1104-240</b><div class="muted">2026-11-04</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">50 mTorr</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>Modi 단독<div class="ui">Modi 4분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>15.57</b></div><div class="">구 SiOC <b>10.18</b></div><div class="">SiO₂ <b>5.73</b></div><div class="ui">Å</div></td>
+<td><span class="sel pos">1.53</span></td>
+<td class="note">식각 가속<a class="chip hy" href="#hyp-H11">H11</a><a class="chip hy" href="#hyp-H12">H12</a></td></tr><tr id="run-R1104-240-10w" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1104-240-10w</b><div class="muted">2026-11-04</div></td>
+<td class="n">−20 °C</td>
+<td class="n">10 W<div class="ui">50 mTorr</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>Modi 단독<div class="ui">Modi 4분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>7.72</b></div><div class="">구 SiOC <b>13.61</b></div><div class="">SiO₂ <b>0.45</b></div><div class="ui">Å</div></td>
+<td><span class="sel rev">0.57</span></td>
+<td class="note">역선택 (구 SiOC &gt; SiOCN). SiO₂ 정지<a class="chip hy" href="#hyp-H11">H11</a></td></tr><tr id="run-R1104-480" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1104-480</b><div class="muted">2026-11-04</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">50 mTorr</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>Modi 단독<div class="ui">Modi 8분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>33.77</b> <span class="muted">(R 6.76)</span></div><div class="">구 SiOC <b>25.17</b> <span class="muted">(R −2.32)</span></div><div class="">SiO₂ <b>6.18</b></div><div class="ui">Å</div></td>
+<td><span class="sel pos">1.34</span></td>
+<td class="note">후반 안정 (구간 속도 SiOCN 4.55 · 구 SiOC 3.75 Å/min)<div class="muted">Δ는 Modi 단독 누적. RTP Δ SiOCN +6.76은 서명 후보 (±10 Å로 미확정)</div><a class="chip hy" href="#hyp-H4">H4</a><a class="chip hy" href="#hyp-H5">H5</a><a class="chip hy" href="#hyp-H9">H9</a><a class="chip hy" href="#hyp-H12">H12</a></td></tr><tr id="run-R1102-2m" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1102-2m</b><div class="muted">2026-11-02</div></td>
+<td class="n">−20 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>12<span class="flag tbd">미확정</span> : ?</b> <span class="muted">sccm</span><div class="ui">UI 4 : ?</div></td>
+<td>풀사이클 궤적<div class="ui">Modi 2분 · 사이클 기록 없음</div></td>
+<td><span class="na">기록 없음</span></td>
+<td><span class="na">기록 없음</span></td>
+<td class="note">1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80 — 구 SiOC 정지 패턴<div class="muted">실험 보드 보고 인용. 11/04에 재현 실패. 사이클별 원값은 시트에서 이식 대기</div><a class="chip hy" href="#hyp-H6">H6</a></td></tr><tr id="run-R1102-4m" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1102-4m</b><div class="muted">2026-11-02</div></td>
+<td class="n">−20 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>12<span class="flag tbd">미확정</span> : ?</b> <span class="muted">sccm</span><div class="ui">UI 4 : ?</div></td>
+<td>풀사이클<div class="ui">Modi 4분 · 3사이클</div></td>
+<td><div class="">SiOCN <b>9.38</b></div><div class="">구 SiOC <b>6.09</b></div><div class="">SiO₂ <b>2.6</b></div><div class="old">New SiOC <b>119.25</b></div><div class="ui">Å/cyc</div></td>
+<td><span class="sel pos">1.54</span></td>
+<td class="note">이 블록 최대 선택비<div class="muted">H₂O UI 4는 미확정 보정점</div><a class="chip hy" href="#hyp-H10">H10</a></td></tr><tr id="run-R1102-5m" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1102-5m</b><div class="muted">2026-11-02</div></td>
+<td class="n">−20 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>12<span class="flag tbd">미확정</span> : ?</b> <span class="muted">sccm</span><div class="ui">UI 4 : ?</div></td>
+<td>풀사이클<div class="ui">Modi 5분 · 3사이클</div></td>
+<td><div class="">SiOCN <b>8.8</b></div><div class="">구 SiOC <b>6.57</b></div><div class="">SiO₂ <b>3.6</b></div><div class="old">New SiOC <b>79.89</b></div><div class="ui">Å/cyc</div></td>
+<td><span class="sel pos">1.34</span></td>
+<td class="note">4분과 유사<a class="chip hy" href="#hyp-H10">H10</a></td></tr><tr id="run-R1102-6m" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1102-6m</b><div class="muted">2026-11-02</div></td>
+<td class="n">−20 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>12<span class="flag tbd">미확정</span> : ?</b> <span class="muted">sccm</span><div class="ui">UI 4 : ?</div></td>
+<td>풀사이클<div class="ui">Modi 6분 · 3사이클</div></td>
+<td><div class="">SiOCN <b>15.68</b></div><div class="">구 SiOC <b>11.93</b></div><div class="">SiO₂ <b>3.68</b></div><div class="old">New SiOC <b>269.97</b></div><div class="ui">Å/cyc</div></td>
+<td><span class="sel pos">1.31</span></td>
+<td class="note">SiO₂만 불변, 나머지 EPC 점프<a class="chip hy" href="#hyp-H10">H10</a></td></tr><tr id="run-R1101-rep" data-temp="na" data-kind="delta" data-status="완료">
+<td><b>R1101-rep</b><div class="muted">2026-11-01</div></td>
+<td class="n"><span class="na">기록 없음</span></td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><span class="na">기록 없음</span></td>
+<td>풀사이클 반복 3회<div class="ui">Modi 기록 없음 · 1사이클</div></td>
+<td><div class="">SiOCN <b>3.76</b> ± 1.06</div><div class="">구 SiOC <b>5.75</b> ± 0.96</div><div class="">SiO₂ <b>1.26</b> ± 3.17</div><div class="ui">Å</div></td>
+<td><span class="sel rev">0.65</span></td>
+<td class="note">노이즈 바닥 확인용<div class="muted">평균 ± 표준편차</div><a class="chip hy" href="#hyp-H2">H2</a></td></tr><tr id="run-R1101-m20" data-temp="-20" data-kind="delta" data-status="완료">
+<td><b>R1101-m20</b><div class="muted">2026-11-01</div></td>
+<td class="n">−20 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>20 : ?</b> <span class="muted">sccm</span><div class="ui">UI 6 : ?</div></td>
+<td>스텝 분해 1패스<div class="ui">Modi 5분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>3.77</b> <span class="muted">(M 1.36 / R 2.41)</span></div><div class="">구 SiOC <b>4.54</b> <span class="muted">(M 0.98 / R 3.56)</span></div><div class="">SiO₂ <span class="muted">M −0.7</span></div><div class="old">New SiOC <span class="muted">M 2.16</span></div><div class="ui">Å</div></td>
+<td><span class="sel rev">0.83</span></td>
+<td class="note">성장 소멸. 1패스 선택비 약 0.8<div class="muted">n=1</div><a class="chip hy" href="#hyp-H1">H1</a><a class="chip hy" href="#hyp-H7">H7</a></td></tr><tr id="run-R1101-0" data-temp="0" data-kind="delta" data-status="완료">
+<td><b>R1101-0</b><div class="muted">2026-11-01</div></td>
+<td class="n">0 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>20 : ?</b> <span class="muted">sccm</span><div class="ui">UI 6 : ?</div></td>
+<td>스텝 분해 1패스<div class="ui">Modi 5분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>−1.72</b> <span class="muted">(M −5.57 / R 3.85)</span></div><div class="">구 SiOC <b>−0.48</b> <span class="muted">(M −7.1 / R 6.62)</span></div><div class="">SiO₂ <span class="muted">M 1.64</span></div><div class="old">New SiOC <span class="muted">M −4.66</span></div><div class="ui">Å</div></td>
+<td><span class="sel grow">구 SiOC 성장</span></td>
+<td class="note">성장 축소<div class="muted">n=1</div><a class="chip hy" href="#hyp-H1">H1</a></td></tr><tr id="run-R1101-p20" data-temp="20" data-kind="delta" data-status="완료">
+<td><b>R1101-p20</b><div class="muted">2026-11-01</div></td>
+<td class="n">+20 °C</td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>20 : ?</b> <span class="muted">sccm</span><div class="ui">UI 6 : ?</div></td>
+<td>스텝 분해 1패스<div class="ui">Modi 5분 · 1사이클</div></td>
+<td><div class="">SiOCN <b>1.78</b> <span class="muted">(M −6.88 / R 8.66)</span></div><div class="">구 SiOC <b>−0.28</b> <span class="muted">(M −22.8 / R 22.52)</span></div><div class="">SiO₂ <span class="muted">M −2</span></div><div class="old">New SiOC <span class="muted">M 2.67</span></div><div class="ui">Å</div></td>
+<td><span class="sel grow">구 SiOC 성장</span></td>
+<td class="note">양막 Modi 성장, RTP에서 거의 원상 복귀<div class="muted">n=1. 파워·압력은 시트에 구조화된 기록 없음</div><a class="chip hy" href="#hyp-H1">H1</a><a class="chip hy" href="#hyp-H13">H13</a><a class="chip hy" href="#hyp-H15">H15</a></td></tr><tr id="run-R1011-10w5" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1011-10w5</b><div class="muted">2026-10-11</div></td>
+<td class="n">−20 °C</td>
+<td class="n">10 W<div class="ui">50 mTorr</div></td>
+<td><b>20 : 16</b> <span class="muted">sccm</span><div class="ui">UI 6 : 20</div></td>
+<td>풀사이클<div class="ui">Modi 기록 없음 · 5사이클</div></td>
+<td><div class="">SiOCN <b>5.08</b></div><div class="">구 SiOC <b>3.43</b></div><div class="">SiO₂ <b>5.18</b></div><div class="old">New SiOC <b>19.21</b></div><div class="ui">Å/cyc</div></td>
+<td><span class="sel pos">1.48</span></td>
+<td class="note">SiOCN 약한 우위. New SiOC 역선택 (0.26)<div class="muted">압력·유량은 시트 10/11 탭 조건 행 (Joy 확인). Modi 10사이클 선행 후 RTP</div><a class="chip hy" href="#hyp-H8">H8</a><a class="chip hy" href="#hyp-H17">H17</a></td></tr><tr id="run-R1011-50w5" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1011-50w5</b><div class="muted">2026-10-11</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">압력 기록 없음</div></td>
+<td><span class="na">기록 없음</span></td>
+<td>풀사이클<div class="ui">Modi 기록 없음 · 5사이클</div></td>
+<td><div class="">SiOCN <b>3.19</b></div><div class="">구 SiOC <b>−1.61</b></div><div class="">SiO₂ <b>5.18</b></div><div class="old">New SiOC <b>11.5</b></div><div class="ui">Å/cyc</div></td>
+<td><span class="sel grow">구 SiOC 성장</span></td>
+<td class="note">구 SiOC 성장. SiO₂가 SiOCN을 넘는 역선택<a class="chip hy" href="#hyp-H8">H8</a></td></tr><tr id="run-R1011-50w2" data-temp="-20" data-kind="epc" data-status="완료">
+<td><b>R1011-50w2</b><div class="muted">2026-10-11</div></td>
+<td class="n">−20 °C</td>
+<td class="n">50 W<div class="ui">압력 기록 없음</div></td>
+<td><span class="na">기록 없음</span></td>
+<td>풀사이클<div class="ui">Modi 기록 없음 · 2사이클</div></td>
+<td><div class="">SiOCN <b>7.1</b></div><div class="">구 SiOC <b>4.72</b></div><div class="">SiO₂ <b>1.29</b></div><div class="old">New SiOC <b>17.66</b></div><div class="ui">Å/cyc</div></td>
+<td><span class="sel pos">1.5</span></td>
+<td class="note">SiOCN 약한 우위<a class="chip hy" href="#hyp-H8">H8</a></td></tr><tr id="run-R-ratio-a" data-temp="na" data-kind="delta" data-status="정리 대기">
+<td><b>R-ratio-a</b><div class="muted"><span class="na">기록 없음</span></div><span class="st wait">정리 대기</span></td>
+<td class="n"><span class="na">기록 없음</span></td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>16 : 16</b> <span class="muted">sccm</span><div class="ui">UI 5 : 20</div></td>
+<td>H₂O 분율 비교<div class="ui">Modi 기록 없음 · 사이클 기록 없음</div></td>
+<td><span class="na">기록 없음</span></td>
+<td><span class="na">기록 없음</span></td>
+<td class="note"><div class="muted">포스트잇 1번 줄 (목표 16:16 sccm). 원값은 시트 11/01 탭 128–141행 (Joy 확인) — 이식 대기</div></td></tr><tr id="run-R-ratio-b" data-temp="na" data-kind="delta" data-status="정리 대기">
+<td><b>R-ratio-b</b><div class="muted"><span class="na">기록 없음</span></div><span class="st wait">정리 대기</span></td>
+<td class="n"><span class="na">기록 없음</span></td>
+<td class="n"><span class="na">기록 없음</span><div class="ui">압력 기록 없음</div></td>
+<td><b>20 : 8</b> <span class="muted">sccm</span><div class="ui">UI 6 : 10</div></td>
+<td>H₂O 분율 비교<div class="ui">Modi 기록 없음 · 사이클 기록 없음</div></td>
+<td><span class="na">기록 없음</span></td>
+<td><span class="na">기록 없음</span></td>
+<td class="note"><div class="muted">포스트잇 2번 줄. 목표 24:8이었으나 UI 6 → 실제 20:8 sccm. 원값 이식 대기</div></td></tr></tbody></table></div>
+<p class="muted sm">M = Modi 단계 Δ, R = RTP 단계 Δ. 선택비는 SiOCN ÷ 구 SiOC로 자동 계산하며 구 SiOC가 성장(≤ 0)이면 비를 내지 않는다. <span class="flag ext">하한</span>은 막 소진 가능성이 있는 값이다.</p>
+<h3>쿠폰 이력</h3>
+<div class="table-wrap"><table id="coupon-t"><thead><tr><th>쿠폰</th><th>막</th><th>시작 (Å)</th><th>현재 (Å)</th><th>이력 (이전 After = 다음 Before)</th><th>메모</th></tr></thead><tbody><tr><td><b>C-SiOCN-1104</b></td><td>SiOCN</td><td class="n">55.67</td><td class="n"><b>10.76</b> <span class="flag ext">소진 위험</span></td><td><a href="#run-R1104-x4">R1104-x4</a> 55.67 → 10.76</td><td class="muted">잔막이 ±10 Å 안 — 막이 전부 식각됐을 수 있음. 재검증은 두꺼운 쿠폰으로</td></tr><tr><td><b>C-SiOC-1104</b></td><td>구 SiOC</td><td class="n">205.61</td><td class="n"><b>181.78</b> </td><td><a href="#run-R1104-x4">R1104-x4</a> 205.61 → 181.78</td><td class="muted">소진과 무관 — 판정 유효. after는 before − 총 Δ로 계산</td></tr></tbody></table></div>
+<p class="muted sm">현재 두께가 30 Å 미만이면 <span class="flag ext">소진 위험</span>, 앞 런의 After와 다음 런의 Before가 다르면 <span class="flag ext">체인 끊김</span>이 붙는다. 나머지 쿠폰 체인은 시트에서 이식 예정.</p></section>
+
+<section id="map" class="tab"><h2>조건 지도</h2>
+<div class="cover"><span><b>척 온도</b>−20 °C · 0 °C · +20 °C</span><span><b>H₂O</b>12 sccm (UI 4) · 16 sccm (UI 5) · 20 sccm (UI 6)</span><span><b>파워</b>10 W · 50 W</span></div>
+<div class="table-wrap"><table class="map"><thead><tr><th>척 온도 · 파워 · H₂O</th><th>Modi 30초</th><th>Modi 2분</th><th>Modi 4분</th><th>Modi 5분</th><th>Modi 6분</th><th>Modi 8분</th><th>Modi 기록 없음</th></tr></thead><tbody><tr><th class="rk">+20 °C<div class="ui">파워 기록 없음 · H₂O 20 sccm (UI 6)</div></th><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell grow" href="#run-R1101-p20" title="R1101-p20 · 스텝 분해 1패스 · 양막 Modi 성장, RTP에서 거의 원상 복귀">
+<span class="cm">스텝 분해 1패스</span><b>구 SiOC 성장</b></a></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td></tr><tr><th class="rk">0 °C<div class="ui">파워 기록 없음 · H₂O 20 sccm (UI 6)</div></th><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell grow" href="#run-R1101-0" title="R1101-0 · 스텝 분해 1패스 · 성장 축소">
+<span class="cm">스텝 분해 1패스</span><b>구 SiOC 성장</b></a></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td></tr><tr><th class="rk">−20 °C<div class="ui">파워 기록 없음 · H₂O 12 sccm (UI 4)</div></th><td><span class="empty">미시도</span></td><td><a class="cell none" href="#run-R1102-2m" title="R1102-2m · 풀사이클 궤적 · 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80 — 구 SiOC 정지 패턴">
+<span class="cm">풀사이클 궤적</span><span class="muted">1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80 — 구 SiOC 정지 패턴</span></a></td><td><a class="cell pos" href="#run-R1102-4m" title="R1102-4m · 풀사이클 · 이 블록 최대 선택비">
+<span class="cm">풀사이클 ×3</span><b>1.54</b></a></td><td><a class="cell pos" href="#run-R1102-5m" title="R1102-5m · 풀사이클 · 4분과 유사">
+<span class="cm">풀사이클 ×3</span><b>1.34</b></a></td><td><a class="cell pos" href="#run-R1102-6m" title="R1102-6m · 풀사이클 · SiO₂만 불변, 나머지 EPC 점프">
+<span class="cm">풀사이클 ×3</span><b>1.31</b></a></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td></tr><tr><th class="rk">−20 °C<div class="ui">파워 기록 없음 · H₂O 20 sccm (UI 6)</div></th><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell rev" href="#run-R1101-m20" title="R1101-m20 · 스텝 분해 1패스 · 성장 소멸. 1패스 선택비 약 0.8">
+<span class="cm">스텝 분해 1패스</span><b>0.83</b></a></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td></tr><tr><th class="rk">−20 °C<div class="ui">10 W · H₂O 16 sccm (UI 5)</div></th><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell rev" href="#run-R1104-240-10w" title="R1104-240-10w · Modi 단독 · 역선택 (구 SiOC &gt; SiOCN). SiO₂ 정지">
+<span class="cm">Modi 단독</span><b>0.57</b></a></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td></tr><tr><th class="rk">−20 °C<div class="ui">10 W · H₂O 20 sccm (UI 6)</div></th><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell pos" href="#run-R1011-10w5" title="R1011-10w5 · 풀사이클 · SiOCN 약한 우위. New SiOC 역선택 (0.26)">
+<span class="cm">풀사이클 ×5</span><b>1.48</b></a></td></tr><tr><th class="rk">−20 °C<div class="ui">50 W · H₂O 기록 없음</div></th><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell grow" href="#run-R1011-50w5" title="R1011-50w5 · 풀사이클 · 구 SiOC 성장. SiO₂가 SiOCN을 넘는 역선택">
+<span class="cm">풀사이클 ×5</span><b>구 SiOC 성장</b></a><a class="cell pos" href="#run-R1011-50w2" title="R1011-50w2 · 풀사이클 · SiOCN 약한 우위">
+<span class="cm">풀사이클 ×2</span><b>1.5</b></a></td></tr><tr><th class="rk">−20 °C<div class="ui">50 W · H₂O 16 sccm (UI 5)</div></th><td><a class="cell grow" href="#run-R1104-30" title="R1104-30 · Modi 단독 · 순성장 구간">
+<span class="cm">Modi 단독</span><b>구 SiOC 성장</b></a></td><td><a class="cell pos" href="#run-R1104-120" title="R1104-120 · Modi 단독 · 식각 전환">
+<span class="cm">Modi 단독</span><b>1.26</b></a><a class="cell pos" href="#run-R1104-x4" title="R1104-x4 · 풀사이클 ×4 (총량) · 구 SiOC 총량이 연속 480초와 동등 — 사이클 억제 없음">
+<span class="cm">풀사이클 ×4</span><b>≥ 1.88</b></a></td><td><a class="cell pos" href="#run-R1104-240" title="R1104-240 · Modi 단독 · 식각 가속">
+<span class="cm">Modi 단독</span><b>1.53</b></a></td><td><span class="empty">미시도</span></td><td><span class="empty">미시도</span></td><td><a class="cell pos" href="#run-R1104-480" title="R1104-480 · Modi 단독 · 후반 안정 (구간 속도 SiOCN 4.55 · 구 SiOC 3.75 Å/min)">
+<span class="cm">Modi 단독</span><b>1.34</b></a></td><td><span class="empty">미시도</span></td></tr></tbody></table></div>
+<p class="muted sm">칸의 숫자는 SiOCN : 구 SiOC 선택비이고, 초록은 1 초과, 빨강은 역선택이다. 「미시도」 칸이 다음 실험 후보가 되는 빈 조합이다. 칸을 누르면 실험 기록으로 간다. 파워·H₂O 기록이 없는 런은 별도 행으로 모인다.</p></section>
+
+<section id="hyp" class="tab"><h2>가설·판정 상태판<span class="count">17건</span></h2>
+<div class="filters" role="group" aria-label="가설 필터"><button data-h="all" aria-pressed="true">전체 17</button><button data-h="미해소" aria-pressed="false">미해소 9</button><button data-h="아이디어" aria-pressed="false">아이디어 1</button><button data-h="재현됨" aria-pressed="false">재현됨 4</button><button data-h="기각됨" aria-pressed="false">기각됨 3</button></div>
+<div class="grid2"><article class="hyp run" id="hyp-H6" data-status="미해소">
+<div class="hh"><span class="hid">H6</span><span class="st run">미해소</span><span class="muted sm">Joy · 2026-11-04</span></div>
+<p class="stm">짧은 Modi에서는 구 SiOC가 첫 사이클 뒤 정지해 구간 선택비가 크게 벌어진다.</p><p class="ev"><b>근거</b> 11/02 2분 궤적: 1사이클 구 SiOC Δ 15.12 후 구간 EPC 0.80(정지). 11/04 풀사이클 ×4(사이클당 평균 5.96 Å)에서는 재현 안 됨. 차이 변수 — H₂O UI 4 vs 5, 시료 이력, 벽 상태</p>
+<div class="refs"><a class="chip" href="#run-R1102-2m">R1102-2m</a><a class="chip" href="#run-R1104-x4">R1104-x4</a><a class="chip pp" href="#paper-shinoda2019">Shinoda 2019</a></div></article><article class="hyp run" id="hyp-H7" data-status="미해소">
+<div class="hh"><span class="hid">H7</span><span class="st run">미해소</span><span class="muted sm">Joy · 2026-11-01</span></div>
+<p class="stm">−20 °C에서 Modi 성장이 사라지는 것은 염 형성 억제 때문이다 (vs 형성과 동시 식각의 상쇄).</p><p class="ev"><b>근거</b> 스텝 중 in-situ 관찰이 없어 두 해석을 분리할 수 없다. 판별: −20 °C Modi 직후 XPS (N-xps)</p>
+<div class="refs"><a class="chip" href="#run-R1101-m20">R1101-m20</a><a class="chip pp" href="#paper-bang2026">Bang 2026</a></div></article><article class="hyp run" id="hyp-H8" data-status="미해소">
+<div class="hh"><span class="hid">H8</span><span class="st run">미해소</span><span class="muted sm">Joy · 2026-10-11</span></div>
+<p class="stm">New SiOC의 큰 EPC는 AFS 사이클이 아니라 Modi 중 직접 식각 성분이다.</p><p class="ev"><b>근거</b> 10/10 EPC 91.9, 10/11 EPC 11.5–19.2로 전 조건 최대. 반증 조건 일부 관측, 확정 아님 [추론]. 신규 실험에서 New SiOC는 쓰지 않음</p>
+<div class="refs"><a class="chip" href="#run-R1011-10w5">R1011-10w5</a><a class="chip" href="#run-R1011-50w5">R1011-50w5</a><a class="chip" href="#run-R1011-50w2">R1011-50w2</a></div></article><article class="hyp run" id="hyp-H9" data-status="미해소">
+<div class="hh"><span class="hid">H9</span><span class="st run">미해소</span><span class="muted sm">Joy · 2026-11-04</span></div>
+<p class="stm">RTP 단계에서 SiOCN만 추가로 식각되는 '원하는 서명'이 존재한다.</p><p class="ev"><b>근거</b> 11/04 480초 Modi 후 RTP Δ SiOCN +6.76 (구 SiOC −2.32). ±10 Å 기준으로는 단독 확정 불가 — 반복 쌍 실험 필요 (N-rtp)</p>
+<div class="refs"><a class="chip" href="#run-R1104-480">R1104-480</a><a class="chip pp" href="#paper-miyoshi2017">Miyoshi 2017</a></div></article><article class="hyp run" id="hyp-H10" data-status="미해소">
+<div class="hh"><span class="hid">H10</span><span class="st run">미해소</span><span class="muted sm">Joy · 2026-11-02</span></div>
+<p class="stm">선택비는 Modi 시간이 짧을수록 커진다.</p><p class="ev"><b>근거</b> 11/02 split: 4분 1.54 → 5분 1.34 → 6분 1.31 단조 감소 경향. 블록마다 시료가 달라 교락 가능, 6분 점프와 함께 재확인 필요</p>
+<div class="refs"><a class="chip" href="#run-R1102-4m">R1102-4m</a><a class="chip" href="#run-R1102-5m">R1102-5m</a><a class="chip" href="#run-R1102-6m">R1102-6m</a></div></article><article class="hyp run" id="hyp-H12" data-status="미해소">
+<div class="hh"><span class="hid">H12</span><span class="st run">미해소</span><span class="muted sm">Claude · 2026-11-05</span></div>
+<p class="stm">SiOCN의 AFS 형성은 막 내 N 소진으로 포화하는 자기제한 반응이고 구 SiOC 개질은 시간에 비례한다 → Modi 시간에 선택비 창이 있다.</p><p class="ev"><b>근거</b> 반대 증거: 11/04 −20 °C·50 W에서 SiOCN Modi Δ가 240 → 480초에 15.57 → 33.77로 포화 없이 늘었다. 이 조건에서는 성립하지 않는다. +20 °C에서는 미검증</p>
+<div class="refs"><a class="chip" href="#run-R1104-240">R1104-240</a><a class="chip" href="#run-R1104-480">R1104-480</a><a class="chip pp" href="#paper-shinoda2019">Shinoda 2019</a></div></article><article class="hyp run" id="hyp-H13" data-status="미해소">
+<div class="hh"><span class="hid">H13</span><span class="st run">미해소</span><span class="muted sm">Claude · 2026-11-02</span></div>
+<p class="stm">20 °C에서 구 SiOC에 자라는 층은 RTP로 빠지는 가역 불화·수화층이다.</p><p class="ev"><b>근거</b> 11/01 20 °C: Modi −22.80 / RTP +22.52 / 순변화 −0.28 (n=1, ±10 Å 안). 판별: 다사이클 궤적 기울기 + RTP 전 XPS F 1s·O 1s</p>
+<div class="refs"><a class="chip" href="#run-R1101-p20">R1101-p20</a></div></article><article class="hyp run" id="hyp-H14" data-status="미해소">
+<div class="hh"><span class="hid">H14</span><span class="st run">미해소</span><span class="muted sm">Claude · 2026-11-04</span></div>
+<p class="stm">−20 °C의 구 SiOC 식각은 응축 HF/H₂O 기여다 → H₂O 분율을 낮추면 구 SiOC가 SiOCN보다 크게 줄어든다.</p><p class="ev"><b>근거</b> 직접 판별 데이터 없음. 11/02(UI 4)와 11/04(UI 5)는 시간·시료가 함께 달라 비교 불가. 판별: −20 °C 16:16 vs 12:20 sccm</p>
+<div class="refs"><a class="chip pp" href="#paper-imai2026">Imai 2026</a></div></article><article class="hyp run" id="hyp-H15" data-status="미해소">
+<div class="hh"><span class="hid">H15</span><span class="st run">미해소</span><span class="muted sm">정식 · 2026-11-04</span></div>
+<p class="stm">20 °C에서는 반응성이 올라 구 SiOC 직접 식각이 늘어난다.</p><p class="ev"><b>근거</b> 11/01 20 °C 1패스 순변화는 ≈0 (n=1)이라 반대 방향 단서. 단 H5로 보면 −20 °C에서도 이미 직접 식각형 거동 [추론]. 판별: 16:16 −20 / +20 °C 궤적 쌍 (N-pair)</p>
+<div class="refs"><a class="chip" href="#run-R1101-p20">R1101-p20</a><a class="chip pp" href="#paper-oh2022">Oh 2022</a></div></article><article class="hyp idea" id="hyp-H16" data-status="아이디어">
+<div class="hh"><span class="hid">H16</span><span class="st idea">아이디어</span><span class="muted sm">Claude · 2026-11-04</span></div>
+<p class="stm">RTP 온도를 낮추면 AFS만 탈리하고 구 SiOC 층은 남아 보호층이 된다.</p><p class="ev"><b>근거</b> RTP 온도 조절 범위 확인 필요</p>
+<div class="refs"><a class="chip pp" href="#paper-miyoshi2017">Miyoshi 2017</a></div></article><article class="hyp yes" id="hyp-H1" data-status="재현됨">
+<div class="hh"><span class="hid">H1</span><span class="st yes">재현됨</span><span class="muted sm">Joy · 2026-11-01</span></div>
+<p class="stm">Modi 성장은 고온(20 °C)에서 크고 −20 °C에서 소멸한다.</p><p class="ev"><b>근거</b> 11/01 온도 3수준 스텝 분해(Modi 5분): 구 SiOC Modi Δ 20 °C −22.80 → −20 °C +0.98. 소멸의 내부 메커니즘은 H7</p>
+<div class="refs"><a class="chip" href="#run-R1101-p20">R1101-p20</a><a class="chip" href="#run-R1101-0">R1101-0</a><a class="chip" href="#run-R1101-m20">R1101-m20</a></div></article><article class="hyp yes" id="hyp-H2" data-status="재현됨">
+<div class="hh"><span class="hid">H2</span><span class="st yes">재현됨</span><span class="muted sm">Joy · 2026-11-01</span></div>
+<p class="stm">반복 측정 흩어짐은 ±1–3 Å 수준이다.</p><p class="ev"><b>근거</b> 11/01 동일 풀사이클 반복 3회 표준편차: SiOCN ±1.06, 구 SiOC ±0.96. 엘립소 모델·계통 오차 ±10 Å와는 별개(측정 기준 참조)</p>
+<div class="refs"><a class="chip" href="#run-R1101-rep">R1101-rep</a></div></article><article class="hyp yes" id="hyp-H3" data-status="재현됨">
+<div class="hh"><span class="hid">H3</span><span class="st yes">재현됨</span><span class="muted sm">Joy · 2026-10-07</span></div>
+<p class="stm">NH₃계 Modi 성장은 사이클마다 재현성 있게 일어난다 (참고 화학계).</p><p class="ev"><b>근거</b> 10/07 1step 330 s 블록 SiOCN −12.66 ± 0.51 Å. Removal이 성장을 다 지우지 못해 순식각은 불안정</p>
+<div class="refs"></div></article><article class="hyp yes" id="hyp-H5" data-status="재현됨">
+<div class="hh"><span class="hid">H5</span><span class="st yes">재현됨</span><span class="muted sm">Joy · 2026-11-04</span></div>
+<p class="stm">풀사이클 총량 = 연속 노출 총량이다 (−20 °C · H₂O UI 5 · 50 W 조건 한정).</p><p class="ev"><b>근거</b> 구 SiOC 23.83 vs 25.17, SiO₂ 4.89 vs Modi+RTP 합 4.86. 이 조건에서는 '직접 식각 반복' 그림과 맞는다 [추론]</p>
+<div class="refs"><a class="chip" href="#run-R1104-x4">R1104-x4</a><a class="chip" href="#run-R1104-480">R1104-480</a></div></article><article class="hyp no" id="hyp-H4" data-status="기각됨">
+<div class="hh"><span class="hid">H4</span><span class="st no">기각됨</span><span class="muted sm">Joy · 2026-11-04</span></div>
+<p class="stm">사이클 구조(짧은 Modi + RTP 반복)가 구 SiOC 총량을 연속 노출보다 줄인다 — 사이클 억제.</p><p class="ev"><b>근거</b> 11/04 풀사이클 120초 ×4의 구 SiOC 총량 23.83 Å ≈ 연속 480초 Modi 단독 25.17 Å. 사전 고정 판정 기준(~12 이하 = 억제 / ~25 = 연속과 동일)에서 '연속과 동일'</p>
+<div class="refs"><a class="chip" href="#run-R1104-x4">R1104-x4</a><a class="chip" href="#run-R1104-480">R1104-480</a><a class="chip pp" href="#paper-shinoda2016">Shinoda 2016</a></div></article><article class="hyp no" id="hyp-H11" data-status="기각됨">
+<div class="hh"><span class="hid">H11</span><span class="st no">기각됨</span><span class="muted sm">Joy · 2026-11-04</span></div>
+<p class="stm">파워를 내리면(10 W) 선택비가 좋아진다.</p><p class="ev"><b>근거</b> 11/04 Modi 단독 240초: 10 W에서 SiOCN +7.72 &lt; 구 SiOC +13.61 역선택 (50 W에서는 15.57 &gt; 10.18)</p>
+<div class="refs"><a class="chip" href="#run-R1104-240-10w">R1104-240-10w</a><a class="chip" href="#run-R1104-240">R1104-240</a></div></article><article class="hyp no" id="hyp-H17" data-status="기각됨">
+<div class="hh"><span class="hid">H17</span><span class="st no">기각됨</span><span class="muted sm">정식 전제 · 2026-11-02</span></div>
+<p class="stm">−20 °C에서는 SiOC·SiO₂가 식각되지 않는다.</p><p class="ev"><b>근거</b> 10/11 −20 °C 10 W 5사이클: 구 SiOC 3.43, SiO₂ 5.18 Å/cycle로 식각됨</p>
+<div class="refs"><a class="chip" href="#run-R1011-10w5">R1011-10w5</a></div></article></div>
+<p class="muted sm">상태 변경은 실험 보드 교차검토가 끝난 뒤에만 반영한다. 「기각됨」은 사전에 고정한 판정 기준에 근거한 경우만 쓴다. 보라 칩은 근거 후보 논문이다.</p></section>
+
+<section id="plan" class="tab"><h2>다음 실험 후보<span class="count">9건</span></h2>
+<div class="grid2"><article class="plan "><div class="hh"><span class="hid">N-cal</span><span class="st idea">미결정</span></div>
+<p><b>H₂O UI 7·8 보정 실측</b></p><p class="muted">24·28 sccm 조건이 외삽값이고, 두 점 직선과 원점 비례 모델이 여기서 갈라진다</p>
+</article><article class="plan "><div class="hh"><span class="hid">N-thick</span><span class="st idea">미결정</span><span class="chip">−20 °C</span></div>
+<p><b>두꺼운 SiOCN 쿠폰으로 풀사이클 120초 ×4 재검증</b></p><p class="muted">11/04 막 소진을 제거하고 SiOCN 총량·선택비를 하한이 아닌 실측으로 확정</p>
+<div class="refs"><a class="chip hy" href="#hyp-H4">H4</a><a class="chip hy" href="#hyp-H5">H5</a></div></article><article class="plan "><div class="hh"><span class="hid">N-rtp</span><span class="st idea">미결정</span><span class="chip">−20 °C</span></div>
+<p><b>480초 Modi 1사이클 × RTP 유/무 쌍 반복 (2–3세트)</b></p><p class="muted">RTP 서명 후보 +6.76 Å를 ±10 Å를 넘는 반복 일관성으로 검증</p>
+<div class="refs"><a class="chip hy" href="#hyp-H9">H9</a></div></article><article class="plan "><div class="hh"><span class="hid">N-pair</span><span class="st idea">미결정</span></div>
+<p><b>16:16 sccm 같은 조건 −20 / +20 °C 궤적 쌍 (0·2·5사이클) + 스텝 분해</b></p><p class="muted">온도만 다른 쌍 — 20 °C 직접 식각 증가 여부와 +20 °C RTP 거동</p>
+<div class="refs"><a class="chip hy" href="#hyp-H13">H13</a><a class="chip hy" href="#hyp-H15">H15</a></div></article><article class="plan "><div class="hh"><span class="hid">N-sweep</span><span class="st idea">미결정</span><span class="chip">+20 °C</span></div>
+<p><b>총유량 32 sccm 고정 H₂O 분율 스윕</b></p><p class="muted">체류시간 고정, H₂O:CF₄ 비만 분리</p><table class="mini"><thead><tr><th>H₂O : CF₄ sccm</th><th>H₂O %</th><th>넣을 UI</th></tr></thead><tbody><tr><td class="n">12 : 20</td><td class="n">38</td><td class="n"><b>4 : 25</b><span class="flag tbd">미확정</span></td></tr><tr><td class="n">16 : 16</td><td class="n">50</td><td class="n"><b>5 : 20</b></td></tr><tr><td class="n">24 : 8</td><td class="n">75</td><td class="n"><b>7 : 10</b><span class="flag ext">외삽</span></td></tr><tr><td class="n">28 : 4</td><td class="n">88</td><td class="n"><b>8 : 5</b><span class="flag ext">외삽</span></td></tr></tbody></table>
+<div class="refs"><a class="chip hy" href="#hyp-H14">H14</a></div></article><article class="plan "><div class="hh"><span class="hid">N-xps</span><span class="st idea">미결정</span></div>
+<p><b>Modi 직후 XPS (N 1s · F 1s · C 1s · O 1s) — −20 °C, 가능하면 +20 °C</b></p><p class="muted">표면층이 AFS 염인지 CFₓ 퇴적인지, 20 °C 가역층의 정체 판별</p>
+<div class="refs"><a class="chip hy" href="#hyp-H7">H7</a><a class="chip hy" href="#hyp-H13">H13</a></div></article><article class="plan "><div class="hh"><span class="hid">N-ctrl</span><span class="st idea">미결정</span></div>
+<p><b>열 단독 대조군 (플라즈마 없이 RTP 5회)</b></p><p class="muted">구 SiOC 열 수축분 분리 — '구 SiOC 0' 주장의 전제</p>
+</article><article class="plan "><div class="hh"><span class="hid">N-verify</span><span class="st idea">미결정</span></div>
+<p><b>최적 후보 20–30사이클 검증 + XPS</b></p><p class="muted">10:1 입증 — 같은 쿠폰 궤적 기울기로 판정</p>
+</article><article class="plan hold"><div class="hh"><span class="hid">N-doe</span><span class="st wait">보류</span></div>
+<p><b>스크리닝 DOE (6요인 DSD) 재개 여부</b></p><p class="muted">설계안은 실험 보드에 참고용으로 보존 (2026-11-04 정식 지시로 실행 보류)</p>
+</article></div>
+<p class="muted sm">정식 결정 전에는 실행 항목이 아니다. 「넣을 UI」는 보정표(H₂O 4 sccm/UI 직선, CF₄ ×0.8)로 자동 계산한다.</p></section>
+
+<section id="rules" class="tab"><h2>측정 기준·주의<span class="count">8건</span></h2>
+<div class="box" style="margin-bottom:10px"><b>표기 규약</b><ul class="plain"><li>Δ 양수 = 식각(두께 감소), 음수 = 성장(염 형성·퇴적 등 두께 증가). 단위 Å</li><li>풀사이클 행은 EPC(Å/cycle), Modi 단독·총량 행은 Δ(Å) — 두 종류를 한 열에 섞지 않는다</li><li>원본에 없는 값은 '기록 없음'으로 표시한다. 0이나 추정값으로 채우지 않는다</li><li>유량은 UI값을 기록하고 실제 sccm은 보정표로 환산해 보여 준다</li></ul></div>
+<div class="grid2"><article class="rule"><div class="hh"><b>엘립소 오차 ±10 Å 판정 기준</b><span class="muted sm">2026-11-04 정식</span></div><p>엘립소 두께 오차는 크게 ±10 Å까지 본다. 반복 측정 흩어짐(±1–3 Å)과 별개로 모델·계통 오차를 포함한 값이다. 10 Å 미만의 스텝 Δ(Modi/RTP 분리 측정, 짧은 성장, RTP Δ 등)는 단독 판정 근거가 되지 못하고, 큰 누적 Δ나 반복 일관성으로만 판단한다.</p></article><article class="rule"><div class="hh"><b>막 소진 — 하한 처리</b><span class="muted sm">2026-11-04 사례</span></div><p>SiOCN 쿠폰이 55.67 → 10.76 Å로 81% 소진됐다. 잔막이 ±10 Å 안이라 실제로는 막이 전부 식각됐을 수 있다. 이런 런의 총 Δ·선택비는 하한 추정치로 표시하고, 소진 시점을 모르므로 사이클당 EPC를 계산하지 않는다. 재검증에는 예상 소모보다 충분히 두꺼운 쿠폰이 필요하다 — 쿠폰 이력 표의 '소진 위험' 표시를 장입 전에 확인한다.</p></article><article class="rule"><div class="hh"><b>블록 간 비교의 한계</b></div><p>블록마다 쿠폰이 다르고 시료 재활용이 잦아 같은 시료가 여러 날·조건을 누적해서 거친다(이전 After = 다음 Before로 체인 연결). 조건 효과와 시료 개체성·이력이 교락할 수 있어, 큰 효과만 신뢰하고 작은 차이는 반복으로 확인한다.</p></article><article class="rule"><div class="hh"><b>H₂O 유량은 UI가 아니라 보정 환산으로 읽는다</b><span class="muted sm">2026-11-04</span></div><p>확정점은 UI 5 → 16, UI 6 → 20 sccm 두 개다. 두 점 직선(4 sccm/UI)으로 환산하며, 확정점 밖은 외삽이다. CF₄ 실제 유량 = UI × 4/5.</p></article><article class="rule"><div class="hh"><b>온도 안정화 (stable time)</b></div><p>처킹이 없어 장입 직후 시료 온도가 척 설정값과 다를 수 있다. 장입 후 진공 상태로 약 5분 대기가 표준이며, 이를 줄인 런(2026-11-02 1번 시료)은 재현성 변수로 플래그한다. 온도 값은 설정값 기준으로 읽는다.</p></article><article class="rule"><div class="hh"><b>초기 데이터(2026-08-29)의 큰 편차</b></div><p>풀사이클 EPC 표준편차 ±8–18 Å. 시료 재사용 행이 섞여 있어 그룹 평균 비교·스크리닝 근거로는 부적합하고 경향 참고용으로만 둔다.</p></article><article class="rule"><div class="hh"><b>EPC 비교 시 사이클 수와 총 Modi 시간을 맞춘다</b></div><p>EPC는 사이클 수에 따라 달라질 수 있어 2사이클과 5사이클 값을 직접 비교하지 않는다. 총 Modi 시간이 같은 조건끼리(예: 연속 480초 vs 120초 ×4) 비교한다.</p></article><article class="rule"><div class="hh"><b>10 : 1 입증에 필요한 사이클 수</b><span class="muted sm">2026-11-02 계산</span></div><p>SiOCN이 2 Å/cycle이면 구 SiOC는 0.2 Å/cycle 이하여야 한다. ±10 Å 기준으로 구 SiOC의 '0'을 말하려면 같은 쿠폰 궤적의 기울기로 판정하고, 검증 런은 20–30사이클로 잡는다.</p></article></div></section>
+
+<section id="papers" class="tab"><h2>관련 논문<span class="count">13편</span></h2>
+<div class="table-wrap"><table id="paper-t"><thead><tr><th>논문</th><th>이 연구와의 관계</th><th>관련 가설</th><th>백과 항목</th></tr></thead><tbody><tr id="paper-goya2026">
+<td><b>Goya et al.</b> <span class="muted">(2026)</span><div>Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/6.0005595" target="_blank" rel="noopener">doi:10.1116/6.0005595</a></div></td>
+<td>SiOCN 고선택 식각 — 주제 정중앙 (화학계는 NF₃, 참고)</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/xps.html">XPS</a><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a><a class="chip" href="../../v2/e/plasma-sources.html">플라즈마 소스 (CCP·ICP·원격)</a><a class="chip" href="../../v2/e/siocn.html">SiOCN</a><a class="chip" href="../../v2/e/spacer-materials.html">스페이서 소재 비교</a></td></tr><tr id="paper-bang2026">
+<td><b>Bang et al.</b> <span class="muted">(2026)</span><div>Cryogenic NF₃/NH₃ plasma RIE: SiN etch suppression by AFS formation</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/6.0005206" target="_blank" rel="noopener">doi:10.1116/6.0005206</a></div></td>
+<td>저온에서 AFS 형성이 식각을 억제하는 사례 — 선택비 메커니즘 대조용</td>
+<td><a class="chip hy" href="#hyp-H7">H7</a></td>
+<td><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a><a class="chip" href="../../v2/e/har-etch.html">고종횡비 식각</a><a class="chip" href="../../v2/e/si3n4.html">Si₃N₄</a></td></tr><tr id="paper-lee2026">
+<td><b>Lee et al.</b> <span class="muted">(2026)</span><div>Current status of atomic layer etching and its adoption to low-k fine patterning</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/6.0005592" target="_blank" rel="noopener">doi:10.1116/6.0005592</a></div></td>
+<td>low-k 패터닝 ALE 산업 관점</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/ale.html">ALE (원자층 식각)</a></td></tr><tr id="paper-imai2026">
+<td><b>Imai et al.</b> <span class="muted">(2026)</span><div>Cryogenic etching characteristics of SiO₂, SiN, and a-C films with HF/fluorocarbon plasma</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/6.0005614" target="_blank" rel="noopener">doi:10.1116/6.0005614</a></div></td>
+<td>저온 HF/플루오로카본 식각 특성 (2026-11-04 확보)</td>
+<td><a class="chip hy" href="#hyp-H14">H14</a></td>
+<td><span class="flag ext">본문 인용 없음</span></td></tr><tr id="paper-pranda2023">
+<td><b>Pranda et al.</b> <span class="muted">(2023)</span><div>Significance of plasma-surface interactions in the etch behavior of low-k materials</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/6.0003014" target="_blank" rel="noopener">doi:10.1116/6.0003014</a></div></td>
+<td>low-k(SiCN·SiOCN·SiBCN) 식각 거동 비교</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/xps.html">XPS</a><a class="chip" href="../../v2/e/lowk-damage.html">low-k 플라즈마 손상</a><a class="chip" href="../../v2/e/material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a><a class="chip" href="../../v2/e/siocn.html">SiOCN</a><a class="chip" href="../../v2/e/spacer-materials.html">스페이서 소재 비교</a></td></tr><tr id="paper-oh2022">
+<td><b>Oh</b> <span class="muted">(2022)</span><div>Etching kinetics and dielectric properties of SiOC films exposed to Ar and CF₄ plasmas</div><div class="ui">Thin Solid Films · <a href="https://doi.org/10.1016/j.tsf.2022.139185" target="_blank" rel="noopener">doi:10.1016/j.tsf.2022.139185</a></div></td>
+<td>비교 상대 SiOC의 CF₄ 플라즈마 식각 속도론</td>
+<td><a class="chip hy" href="#hyp-H15">H15</a></td>
+<td><a class="chip" href="../../v2/e/langmuir.html">랭뮤어 프로브</a><a class="chip" href="../../v2/e/lowk-damage.html">low-k 플라즈마 손상</a><a class="chip" href="../../v2/e/sioc.html">SiOC</a></td></tr><tr id="paper-matsui2021">
+<td><b>Matsui et al.</b> <span class="muted">(2021)</span><div>Mechanism of highly selective etching of SiCN by using NF₃/Ar-based plasma</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/6.0000711" target="_blank" rel="noopener">doi:10.1116/6.0000711</a></div></td>
+<td>SiCN 고선택 메커니즘</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a><a class="chip" href="../../v2/e/siocn.html">SiOCN</a></td></tr><tr id="paper-cho2020">
+<td><b>Cho et al.</b> <span class="muted">(2020)</span><div>Atomic layer etching of SiO₂ for surface cleaning using ammonium fluorosilicate with CF₄/NH₃ plasma</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/1.5132986" target="_blank" rel="noopener">doi:10.1116/1.5132986</a></div></td>
+<td>CF₄ 계열 AFS ALE — 주력 화학계와 가장 가까운 문헌</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/xps.html">XPS</a><a class="chip" href="../../v2/e/afs-chemistry.html">AFS 화학</a><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a></td></tr><tr id="paper-gu2020">
+<td><b>Gu et al.</b> <span class="muted">(2020)</span><div>Hybrid low-k spacer scheme for advanced FinFET technology parasitic capacitance reduction</div><div class="ui">Electron. Lett. · <a href="https://doi.org/10.1049/el.2019.3954" target="_blank" rel="noopener">doi:10.1049/el.2019.3954</a></div></td>
+<td>SiOCN outer spacer 실증 — 응용 맥락</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a><a class="chip" href="../../v2/e/siocn.html">SiOCN</a><a class="chip" href="../../v2/e/outer-spacer.html">외부 스페이서</a><a class="chip" href="../../v2/e/parasitic-capacitance.html">기생 커패시턴스</a><a class="chip" href="../../v2/e/spacer-materials.html">스페이서 소재 비교</a><a class="chip" href="../../v2/e/spacer.html">스페이서</a></td></tr><tr id="paper-shinoda2019">
+<td><b>Shinoda et al.</b> <span class="muted">(2019)</span><div>Self-limiting reactions of ammonium salt in CHF₃/O₂ downstream plasma</div><div class="ui">J. Vac. Sci. Technol. A · <a href="https://doi.org/10.1116/1.5111663" target="_blank" rel="noopener">doi:10.1116/1.5111663</a></div></td>
+<td>암모늄염 자기제한 반응</td>
+<td><a class="chip hy" href="#hyp-H6">H6</a><a class="chip hy" href="#hyp-H12">H12</a></td>
+<td><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a></td></tr><tr id="paper-miyoshi2017">
+<td><b>Miyoshi et al.</b> <span class="muted">(2017)</span><div>Atomic layer etching of silicon nitride using infrared annealing for short desorption time of ammonium fluorosilicate</div><div class="ui">Jpn. J. Appl. Phys. · <a href="https://doi.org/10.7567/jjap.56.06hb01" target="_blank" rel="noopener">doi:10.7567/jjap.56.06hb01</a></div></td>
+<td>AFS 탈착(Removal 단계) 가속</td>
+<td><a class="chip hy" href="#hyp-H9">H9</a><a class="chip hy" href="#hyp-H16">H16</a></td>
+<td><a class="chip" href="../../v2/e/chemical-bonding.html">화학 결합과 결합 에너지</a><a class="chip" href="../../v2/e/afs-chemistry.html">AFS 화학</a><a class="chip" href="../../v2/e/cleaning.html">세정</a><a class="chip" href="../../v2/e/afs-removal.html">AFS 염의 제거와 잔류물</a><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a></td></tr><tr id="paper-shinoda2016">
+<td><b>Shinoda et al.</b> <span class="muted">(2016)</span><div>Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate</div><div class="ui">Appl. Phys. Express · <a href="https://doi.org/10.7567/apex.9.106201" target="_blank" rel="noopener">doi:10.7567/apex.9.106201</a></div></td>
+<td>AFS 형성·탈착 사이클 식각의 원형</td>
+<td><a class="chip hy" href="#hyp-H4">H4</a></td>
+<td><a class="chip" href="../../v2/e/xps.html">XPS</a><a class="chip" href="../../v2/e/afs-chemistry.html">AFS 화학</a><a class="chip" href="../../v2/e/material-selectivity.html">한 물질, 여러 역할 — 선택비 쌍</a><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a><a class="chip" href="../../v2/e/si3n4.html">Si₃N₄</a><a class="chip" href="../../v2/e/sacrificial-materials.html">공정 보조·희생 물질</a></td></tr><tr id="paper-knolle1988">
+<td><b>Knolle &amp; Huttemann</b> <span class="muted">(1988)</span><div>Ammonium Hexafluorosilicate Formation during Plasma Etching of Silicon Nitride</div><div class="ui">J. Electrochem. Soc. · <a href="https://doi.org/10.1149/1.2095383" target="_blank" rel="noopener">doi:10.1149/1.2095383</a></div></td>
+<td>AFS 형성 고전 문헌</td>
+<td><span class="muted">—</span></td>
+<td><a class="chip" href="../../v2/e/afs-selective-etch.html">AFS 선택 식각</a></td></tr></tbody></table></div>
+<p class="muted sm">백과 항목은 그 DOI를 본문에서 인용한 항목을 자동으로 찾아 단다. 전체 보유 목록은 <a href="../../papers/">논문 보유 목록</a>에 있다.</p></section>
 </main>
-<footer>원본: research/siocn/data.json · 빌드: tools/build_research.mjs · 갱신 2026-11-05</footer>
+<footer>원본 research/siocn/data.json · 빌드 tools/build_research.mjs · 갱신 2026-11-05 · 출처 Google Sheets 「SiOCN CCP」 — 실험 원본 로그 / 노션 실험 보드 — 토론·판정 기록 / 노션 장비 운전 규칙·보정표</footer>
 <script>
-document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
-  const f = b.dataset.f;
-  document.querySelectorAll('#runs-t tbody tr').forEach(tr => {
-    tr.hidden = !(f === 'all' || (f === 'pending' ? tr.dataset.status !== '완료' : tr.dataset.temp === f));
+(function () {
+  document.documentElement.classList.add('js');
+  var tabs = ["overview","timeline","runs","map","hyp","plan","rules","papers"];
+  function show() {
+    var h = decodeURIComponent(location.hash.slice(1)) || 'overview', tab = h, el = null;
+    if (tabs.indexOf(h) < 0) { el = document.getElementById(h); var s = el && el.closest('.tab'); tab = s ? s.id : 'overview'; }
+    document.querySelectorAll('.tab').forEach(function (s) { s.classList.toggle('on', s.id === tab); });
+    document.querySelectorAll('nav.tabs a').forEach(function (a) { if (a.dataset.tab === tab) { a.setAttribute('aria-current', 'page'); var n = a.parentNode; n.scrollLeft = a.offsetLeft - n.offsetLeft - 16; } else a.removeAttribute('aria-current'); });
+    if (el) { var r = el.closest('tr'); if (r) r.hidden = false; requestAnimationFrame(function () { el.scrollIntoView({ block: 'center' }); }); }
+    else window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show); show();
+  function group(sel, attr, apply) {
+    var bs = document.querySelectorAll(sel);
+    bs.forEach(function (b) { b.addEventListener('click', function () { bs.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); apply(b.getAttribute(attr)); }); });
+  }
+  group('#runs .filters button', 'data-f', function (f) {
+    document.querySelectorAll('#runs-t tbody tr').forEach(function (tr) {
+      var d = tr.dataset, ok = f === 'all' || (f === 'pending' ? d.status !== '완료' : f.indexOf('t:') === 0 ? d.temp === f.slice(2) : d.kind === f.slice(2));
+      tr.hidden = !ok;
+    });
   });
-}));
+  group('#hyp .filters button', 'data-h', function (f) {
+    document.querySelectorAll('#hyp .hyp').forEach(function (c) { c.hidden = !(f === 'all' || c.dataset.status === f); });
+  });
+})();
 </script>
 </body></html>
