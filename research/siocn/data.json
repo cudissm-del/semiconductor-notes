@@ -1,0 +1,79 @@
+{
+  "_설명": "SiOCN 선택 식각 연구 대시보드 원본. 이 파일만 고치고 node tools/build_research.mjs (또는 npm run build). 수치는 노션 실험 보드·장비 페이지 원본 기준. 부호: Δ 양수 = 두께 감소(식각), 음수 = 두께 증가.",
+  "meta": {
+    "title": "SiOCN 선택 식각 연구",
+    "en": "SiOCN-over-SiOC selective etch via CF₄ + H₂O AFS cycling",
+    "goal": "SiOCN을 구 SiOC 대비 선택 식각 (1순위). SiO₂·SiN은 2순위.",
+    "target": "SiOCN : 구 SiOC = 10 : 1 (2026-11-02 정식 확정)",
+    "stage": "스크리닝 — 2026-11 장비 기간",
+    "updated": "2026-11-05",
+    "draft": true
+  },
+  "process": [
+    "LAT CCP (소스 파워만, 바이어스 없음), 처킹 없음 — 4인치 Si 캐리어 정중앙에 1 cm 쿠폰",
+    "1사이클 = Modi (CF₄ + H₂O 플라즈마) → Ar 퍼지 → Removal (RTP 300 °C), 진공 유지 클러스터",
+    "사이클 1회 약 30분, 장입 후 stable 약 5분",
+    "측정: 엘립소 스텝 전후 두께 — 판정 오차 ±10 Å (10 Å 미만 Δ는 단독 판정 금지)",
+    "운전 범위: 파워 10–50 W · 압력 50–100 mTorr · 척 −20 ~ +20 °C (야간 20 °C 고정)",
+    "시료: SiOCN · 구 SiOC · SiO₂ (SiOC는 구 SiOC로 통일, 런당 1개). AFS는 막 내 N을 쓰는 SiOCN에서만 형성"
+  ],
+  "calib": {
+    "h2o": {
+      "points": [
+        { "ui": 5, "sccm": 16, "state": "확정", "date": "2026-11-04" },
+        { "ui": 6, "sccm": 20, "state": "확정", "date": "2026-11-02" },
+        { "ui": 4, "sccm": 12, "state": "미확정", "date": "" }
+      ],
+      "note": "확정 두 점의 기울기 4 sccm/UI로 선형 환산. 확정점 밖은 외삽 — 실측 전까지 [외삽] 표시."
+    },
+    "cf4": { "factor": 0.8, "note": "CHF₃ 라인 사용, 실제 = UI × 4/5. 사용 전 라인 연결 가스 확인." }
+  },
+  "hypotheses": [
+    { "id": "H1", "state": "확인 중", "claim": "SiOCN의 AFS 형성은 막 내 N 소진으로 포화하는 자기제한 반응이고, 구 SiOC 개질은 시간에 비례한다 → Modi 시간에 선택비 창이 있다.", "test": "20 °C Modi 시간 스캔으로 SiOCN 포화점 찾기 (경계 단서 2–2.5분)" },
+    { "id": "H2", "state": "단서 (n=1)", "claim": "20 °C에서 구 SiOC에 자라는 층은 RTP로 빠지는 가역 불화·수화층이다 (Modi −22.8 Å / RTP +22.5 Å).", "test": "다사이클 궤적 기울기 + RTP 전 XPS F 1s·O 1s" },
+    { "id": "H3", "state": "확인 대기", "claim": "−20 °C의 구 SiOC 식각은 응축 HF/H₂O 기여다 → H₂O 분율을 낮추면 구 SiOC가 SiOCN보다 크게 줄어든다.", "test": "−20 °C 16:16 vs 12:20 sccm 비교" },
+    { "id": "H4", "state": "확인 대기", "claim": "(정식) 20 °C에서는 반응성이 올라 구 SiOC 직접 식각이 늘어난다.", "test": "같은 조건 −20 / +20 °C 궤적 쌍 — 구 SiOC RTP 후 순두께 기울기" },
+    { "id": "H5", "state": "아이디어", "claim": "RTP 온도를 낮추면 AFS만 탈리하고 구 SiOC 층은 남아 보호층이 된다.", "test": "RTP 온도 조절 범위 확인 필요" },
+    { "id": "X1", "state": "기각", "claim": "−20 °C에서는 SiOC·SiO₂가 식각되지 않는다.", "test": "10/11 −20 °C 10 W 5사이클: 구 SiOC 3.43, SiO₂ 5.18 Å/cycle로 식각됨" }
+  ],
+  "runs": [
+    { "id": "R-1011", "date": "2026-10-11", "status": "완료", "temp": -20, "power": 10, "pressure": null, "h2o_ui": null, "cf4_ui": null, "modi_min": null, "cycles": 5,
+      "result": { "구 SiOC": { "epc": 3.43 }, "SiO₂": { "epc": 5.18 } }, "note": "EPC(Å/cycle). 가스 조건은 원본 시트 확인 필요" },
+    { "id": "R-1101-20", "date": "2026-11-01", "status": "완료", "temp": 20, "power": null, "pressure": null, "h2o_ui": null, "cf4_ui": null, "modi_min": 5, "cycles": 1,
+      "result": { "SiOCN": { "modi": -6.88, "rtp": 8.66, "net": 1.78 }, "구 SiOC": { "modi": -22.80, "rtp": 22.52, "net": -0.28 } }, "note": "단일 패스, n=1" },
+    { "id": "R-1101-0", "date": "2026-11-01", "status": "완료", "temp": 0, "power": null, "pressure": null, "h2o_ui": null, "cf4_ui": null, "modi_min": 5, "cycles": 1,
+      "result": { "SiOCN": { "modi": -5.57, "rtp": 3.85, "net": -1.72 }, "구 SiOC": { "modi": -7.10, "rtp": 6.62, "net": -0.48 } }, "note": "단일 패스, n=1" },
+    { "id": "R-1101-m20", "date": "2026-11-01", "status": "완료", "temp": -20, "power": null, "pressure": null, "h2o_ui": null, "cf4_ui": null, "modi_min": 5, "cycles": 1,
+      "result": { "SiOCN": { "modi": 1.36, "rtp": 2.41, "net": 3.77 }, "구 SiOC": { "modi": 0.98, "rtp": 3.56, "net": 4.54 } }, "note": "단일 패스, n=1" },
+    { "id": "R-1104-a", "date": "2026-11-04", "status": "정리 대기", "temp": -20, "power": null, "pressure": null, "h2o_ui": 5, "cf4_ui": 20, "modi_min": null, "cycles": null,
+      "result": {}, "note": "포스트잇 1번 줄 (목표 16:16 sccm). 두께 기록 막 표기 필요" },
+    { "id": "R-1104-b", "date": "2026-11-04", "status": "정리 대기", "temp": -20, "power": null, "pressure": null, "h2o_ui": 6, "cf4_ui": 10, "modi_min": null, "cycles": null,
+      "result": {}, "note": "포스트잇 2번 줄. 목표 24:8이었으나 UI 6 → 실제 20:8 sccm" }
+  ],
+  "plans": [
+    { "id": "P-cal", "what": "H₂O UI 7·8 보정 실측", "why": "24·28 sccm 조건이 외삽값이라 비율축이 흔들림", "temp": null },
+    { "id": "P-sweep", "what": "총유량 32 sccm 고정 H₂O 분율 스윕", "why": "체류시간 고정, H₂O:CF₄ 비만 분리", "temp": 20,
+      "targets": [ [12, 20], [16, 16], [24, 8], [28, 4] ] },
+    { "id": "P-pair", "what": "16:16 sccm 기준 런 −20 / +20 °C 궤적 쌍 (0·2·5사이클)", "why": "H4 판정 — 온도만 다른 쌍", "temp": null },
+    { "id": "P-ctrl", "what": "열 단독 대조군 (플라즈마 없이 RTP 5회)", "why": "구 SiOC 열 수축분 분리 — '구 SiOC 0' 주장의 전제", "temp": null },
+    { "id": "P-verify", "what": "최적 후보 20–30사이클 검증 + XPS", "why": "10:1 입증 — SiOCN 2 Å/cycle이면 구 SiOC ≤ 0.2 Å/cycle", "temp": null }
+  ],
+  "roadmap": [
+    { "when": "2026-11 (장비 기간)", "state": "진행 중", "what": "스크리닝 → 방향 확인 → 후보 검증. 메커니즘 판별은 스크리닝 안에 녹임" },
+    { "when": "다음 장비 기간", "state": "예정", "what": "지렛대 요인 반응표면 — 선택비 창 확정" },
+    { "when": "2027 (가편 — 정식 확정 필요)", "state": "예정", "what": "메커니즘 정리(XPS) · 논문화" }
+  ],
+  "decisions": [
+    { "date": "2026-11-02", "what": "성공 기준 SiOCN : 구 SiOC = 10 : 1" },
+    { "date": "2026-11-02", "what": "온도 2수준 (−20 / +20 °C), 반응표면은 이번 기간 제외" },
+    { "date": "2026-11-04", "what": "6요인 DSD 실행 보류 — 당분간 방향성 논의" },
+    { "date": "2026-11-04", "what": "엘립소 판정 오차 ±10 Å, H₂O UI 5 → 16 sccm 확정" },
+    { "date": "2026-11-04", "what": "SiOC는 구 SiOC로 통일, 런당 1개 장입" }
+  ],
+  "links": [
+    { "name": "실험 보드 (노션)", "url": "https://app.notion.com/p/4d8861a261fe4f8bb8c034496ca95bd0" },
+    { "name": "장비 운전 규칙·보정표", "url": "https://app.notion.com/p/40c33730faaf818584c3d4b90224f074" },
+    { "name": "방향 설정 안건", "url": "https://app.notion.com/p/40c33730faaf8187a26dff3f833fc7a2" },
+    { "name": "홈 대시보드", "url": "../../home/" }
+  ]
+}
