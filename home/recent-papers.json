@@ -2,6 +2,18 @@
   "_설명": "최근 확보 논문 수동 목록 (최신이 위). Zotero 등록 때 한 줄씩 위에 보탠다. url은 대조된 DOI·arXiv만 넣고, 없으면 비운다. 고친 뒤 npm run build.",
   "papers": [
     {
+      "date": "2026-11-05",
+      "cite": "Hsiao et al., Chem. Eng. J. (2026)",
+      "note": "저온(cryo) HF 플라즈마 SiN 식각 메커니즘",
+      "url": "https://doi.org/10.1016/j.cej.2026.177378"
+    },
+    {
+      "date": "2026-11-05",
+      "cite": "Mo et al., Surf. Interfaces 101, 110829 (2026)",
+      "note": "저온(cryo) CF₄/H₂ SiN 식각 — 표면 반응·광학 진단",
+      "url": "https://doi.org/10.1016/j.surfin.2026.110829"
+    },
+    {
       "date": "2026-11-04",
       "cite": "Imai et al., J. Vac. Sci. Technol. A 44, 053008 (2026)",
       "note": "저온(cryo) HF/플루오로카본 식각 (SiO₂·SiN·a-C)",
