@@ -42,10 +42,13 @@ function sel(run) {
   const a = run.res?.SiOCN?.v, b = run.res?.['구 SiOC']?.v;
   if (a == null || b == null) return null;
   const lo = (run.flags || []).includes('하한');
+  const tot = x => run.kind === 'epc' && run.cycles ? x * run.cycles : x;
+  if (!(run.kind === 'epc' && !run.cycles) && Math.abs(tot(a)) < 10 && Math.abs(tot(b)) < 10) return { txt: '±10 Å 안', cls: 'grow', noise: true };
   if (b <= 0) return { txt: '구 SiOC 성장', cls: 'grow' };
   if (a <= 0) return { txt: 'SiOCN 성장', cls: 'rev' };
   const s = a / b;
-  return { txt: `${lo ? '≥ ' : ''}${num(s, 2)}`, cls: s >= 10 ? 'goal' : s > 1 ? 'pos' : 'rev', v: s, lo };
+  const part = (run.flags || []).includes('구간');
+  return { txt: `${lo ? '≥ ' : ''}${num(s, 2)}${part ? ' (구간)' : ''}`, cls: s >= 10 ? 'goal' : s > 1 ? 'pos' : 'rev', v: part ? null : s, lo };
 }
 const selChip = s => s ? `<span class="sel ${s.cls}">${esc(s.txt)}</span>` : NA;
 
@@ -370,7 +373,7 @@ ${sec('runs', '실험 기록', `
 <button data-f="all" aria-pressed="true">전체</button>${temps.map(t => `<button data-f="t:${t}" aria-pressed="false">${tempTxt(t)}</button>`).join('')}
 <span class="lb" style="margin-left:8px">종류</span><button data-f="k:epc" aria-pressed="false">풀사이클 EPC</button><button data-f="k:delta" aria-pressed="false">Δ·총량</button><button data-f="pending" aria-pressed="false">정리 대기</button></div>
 <div class="table-wrap"><table id="runs-t"><thead><tr><th>런</th><th>척 온도</th><th>파워 · 압력</th><th>H₂O : CF₄ (실제)</th><th>모드</th><th>결과 (+ = 식각)</th><th>SiOCN : 구 SiOC</th><th>해석 · 메모</th></tr></thead><tbody>${runRows}</tbody></table></div>
-<p class="muted sm">M = Modi 단계 Δ, R = RTP 단계 Δ. 선택비는 SiOCN ÷ 구 SiOC로 자동 계산하며 구 SiOC가 성장(≤ 0)이면 비를 내지 않는다. <span class="flag ext">하한</span>은 막 소진 가능성이 있는 값이다.</p>
+<p class="muted sm">M = Modi 단계 Δ, R = RTP 단계 Δ. 선택비는 SiOCN ÷ 구 SiOC로 자동 계산한다. 구 SiOC가 성장(≤ 0)이면 비를 내지 않고, 두 막의 총 Δ가 모두 ±10 Å 안이면 「±10 Å 안」으로 표시한다. 「(구간)」은 런 전체가 아닌 구간 선택비라 최고치 집계에서 뺀다. <span class="flag ext">하한</span>은 막 소진 가능성이 있는 값이다.</p>
 <h3>쿠폰 이력</h3>
 <div class="table-wrap"><table id="coupon-t"><thead><tr><th>쿠폰</th><th>막</th><th>시작 (Å)</th><th>현재 (Å)</th><th>이력 (이전 After = 다음 Before)</th><th>메모</th></tr></thead><tbody>${couponRows}</tbody></table></div>
 <p class="muted sm">현재 두께가 30 Å 미만이면 <span class="flag ext">소진 위험</span>, 앞 런의 After와 다음 런의 Before가 다르면 <span class="flag ext">체인 끊김</span>이 붙는다. 나머지 쿠폰 체인은 시트에서 이식 예정.</p>`, `${D.runs.length}건`)}
