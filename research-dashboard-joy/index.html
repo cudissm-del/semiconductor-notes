@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SiOCN 선택식각 연구 대시보드 — 반도체 노트</title>
+<style>
+  :root{
+    --ink:#23272e; --sub:#5b6470; --line:#dfe3e8; --bg:#f7f8f9;
+    --accent:#33606b; --accent-bg:#eef4f5;
+    --ok:#2e6b46; --no:#a03d2d; --mid:#8a6d1f;
+    --ok-bg:#edf5f0; --no-bg:#f9efec; --mid-bg:#faf5e4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+    font-size:15px;line-height:1.65}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 64px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+  .subtitle{color:var(--sub);font-size:15px;margin:0}
+  .meta-line{color:var(--sub);font-size:13px;margin-top:8px}
+  h2{font-size:19px;margin:38px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h2 .no{color:var(--accent);margin-right:8px}
+  h3{font-size:15.5px;margin:24px 0 4px;padding-left:9px;border-left:3px solid var(--accent)}
+  p{margin:8px 0}
+  .small{font-size:13px;color:var(--sub)}
+  .goalbox{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+    padding:14px 18px;margin:14px 0}
+  .goalbox .big{font-size:17px;font-weight:600}
+  table{border-collapse:collapse;width:100%;background:#fff;margin:10px 0 16px;font-size:13.5px}
+  th,td{border:1px solid var(--line);padding:7px 9px;vertical-align:top;text-align:left}
+  th{background:var(--accent-bg);font-weight:600;white-space:nowrap}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.date{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .scroll{overflow-x:auto}
+  .badge{display:inline-block;padding:1px 8px;border-radius:9px;font-size:12px;font-weight:600;white-space:nowrap}
+  .b-ok{background:var(--ok-bg);color:var(--ok)}
+  .b-no{background:var(--no-bg);color:var(--no)}
+  .b-mid{background:var(--mid-bg);color:var(--mid)}
+  .note{background:#fff;border:1px solid var(--line);padding:10px 14px;margin:8px 0}
+  .note b.t{display:block;margin-bottom:2px}
+  ul{margin:6px 0 6px 18px;padding:0}
+  li{margin:3px 0}
+  a{color:var(--accent)}
+  footer{margin-top:44px;border-top:1px solid var(--line);padding-top:12px;color:var(--sub);font-size:13px}
+  .tag{color:var(--sub);font-size:12.5px}
+  /* 탭 메뉴 (2026-11-05 피드백 반영 — 메뉴화) */
+  .tabbar{position:sticky;top:0;z-index:40;display:flex;gap:4px;overflow-x:auto;
+    background:var(--bg);border-bottom:2px solid var(--ink);padding:10px 0 8px;margin-bottom:6px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .tabbtn{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--sub);
+    font:inherit;font-size:14px;font-weight:600;padding:6px 14px;border-radius:16px;cursor:pointer;white-space:nowrap}
+  .tabbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .tabbtn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .tabpanel{display:none}
+  .tabpanel.active{display:block}
+  .tabpanel h2{margin-top:16px}
+  @media print{.tabbar{display:none}.tabpanel{display:block}}
+</style>
+<noscript><style>.tabbar{display:none}.tabpanel{display:block}</style></noscript>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>SiOCN 선택식각 연구 대시보드</h1>
+  <p class="subtitle">CF₄+H₂O 기반 AFS (Ammonium Fluorosilicate) 염 형성·제거를 이용한 SiOCN 선택 식각</p>
+  <p class="meta-line">공개 페이지 (반도체 노트 연구 섹션) · 데이터 기준: 2026-11-04 실험까지 · 초안 작성 2026-11-05 · 원본: Google Sheets 「SiOCN CCP」, Notion 실험 보드</p>
+  <p class="meta-line">표기 규약 — Δ 양수 = 식각, 음수 = 성장 · 두께 단위 Å · 해석 문장에는 [추론] 표기 · 소스에 없는 값은 "기록 없음"</p>
+</header>
+
+<nav class="tabbar" id="tabbar" role="tablist" aria-label="연구 대시보드 메뉴">
+  <button type="button" class="tabbtn active" data-tab="overview" role="tab" aria-selected="true">개요</button>
+  <button type="button" class="tabbtn" data-tab="timeline" role="tab" aria-selected="false">실험 타임라인</button>
+  <button type="button" class="tabbtn" data-tab="condmap" role="tab" aria-selected="false">조건 지도</button>
+  <button type="button" class="tabbtn" data-tab="hypotheses" role="tab" aria-selected="false">가설 상태판</button>
+  <button type="button" class="tabbtn" data-tab="notes" role="tab" aria-selected="false">측정 기준·주의</button>
+  <button type="button" class="tabbtn" data-tab="next" role="tab" aria-selected="false">다음 후보</button>
+  <button type="button" class="tabbtn" data-tab="papers" role="tab" aria-selected="false">관련 논문</button>
+</nav>
+
+<section class="tabpanel active" id="overview" role="tabpanel">
+<h2><span class="no">1</span>연구 개요</h2>
+
+<div class="goalbox">
+  <p class="big">목표 — AFS 염의 형성/제거 사이클로 SiOCN을 구 SiOC 대비 선택비 10 : 1 로 식각</p>
+  <ul>
+    <li>선택비 우선순위: <b>1순위 SiOCN vs 구 SiOC</b> (상대는 구 SiOC로 확정 — 실제 소자에서 어느 SiOC가 맞닿는지는 미확인) · 2순위 SiOCN vs SiO₂ · Si₃N₄</li>
+    <li>출발점: 선택비 약 1.5 (2026-10-11, −20 °C 풀사이클 EPC 기준)</li>
+    <li>대상 재료: SiOCN (주 타깃), SiOC (구형, 비교 상대), New SiOC (관찰 대상), SiO₂ (기준)</li>
+  </ul>
+</div>
+
+<table>
+  <tr><th style="width:130px">화학계</th>
+      <td>주력: <b>CF₄ + H₂O</b> (「동일」 화학계) · 참고: NF₃/NH₃ (「유사」 화학계 — 문헌 참고 체계로만 다룸)</td></tr>
+  <tr><th>사이클 구조</th>
+      <td>Modi (CF₄+H₂O 플라즈마로 표면 개질·AFS 염 형성) → Ar 퍼지 → Removal (RTP 300 °C 열처리로 염 분해·제거)</td></tr>
+  <tr><th>메커니즘 한 줄</th>
+      <td>Modi 단계에서 형성된 AFS ((NH₄)₂SiF₆) 염 층이 RTP 열처리에서 분해·휘발하며 막의 Si를 함께 내보내는 것이 순식각의 실체이고, 염 형성이 막 종류마다 다른 것이 선택비의 원천이다 [추론]</td></tr>
+  <tr><th>장비</th>
+      <td>LAT CCP (랩 호칭 "CCP"), 성균관대 랩, 4인치용. 2챔버 — 프로세스 챔버 (Modi) + RTP 챔버, 시료 물리 이송. CCP 소스 RF만 (바이어스 없음), 처킹 없음 (쿠폰 1 cm × 1 cm를 4인치 Si 캐리어 정중앙에 얹어 장입). 통상 범위: 소스 파워 10–50 W · 압력 50–100 mTorr · 척 온도 −20~+20 °C. 주 측정은 엘립소메트리, XPS는 ex-situ 배치 측정</td></tr>
+</table>
+</section>
+
+<section class="tabpanel" id="timeline" role="tabpanel">
+<h2><span class="no">2</span>실험 회차 타임라인</h2>
+
+<h3>2026년 8월 – 10월</h3>
+<div class="scroll">
+<table>
+  <tr><th>날짜</th><th>회차</th><th>조건</th><th>핵심 결과</th><th>판정</th></tr>
+  <tr>
+    <td class="date">2026-08-29</td>
+    <td>풀사이클 (Modi+RTP) — H₂O UI 4/6/10 비교<br><span class="tag">CF₄+H₂O</span></td>
+    <td>H₂O UI 4 / 6 / 10</td>
+    <td>풀사이클 EPC 표준편차 ±8~18 Å로 이후 데이터보다 큼. 같은 시료를 Modi 단독 → RTP 단독 → 합산으로 재사용한 행이 섞여 있음</td>
+    <td>조건 스크리닝 근거로는 부적합, 경향 참고용으로만 보존</td>
+  </tr>
+  <tr>
+    <td class="date">2026-08-30 – 08-31</td>
+    <td>NH₃ 1스텝 추가 변형<br><span class="tag">NH₃+CF₄+H₂O</span></td>
+    <td>온도 −20~20 °C, 압력 50 / 120 mTorr</td>
+    <td>기록 없음 (분석 정리본에 조건 범위만 존재)</td>
+    <td>기록 없음</td>
+  </tr>
+  <tr>
+    <td class="date">2026-10-07 – 10-08</td>
+    <td>스텝 분해 (1Step NH₃ / Modi / Removal)<br><span class="tag">NH₃계</span></td>
+    <td>1step 30 s vs 300–330 s 블록</td>
+    <td>1step 330 s 블록 Modi 성장 SiOCN −12.66 ± 0.51 Å로 재현성 양호. Removal이 성장을 전부 지우지 못하는 사이클이 섞여 Full Δ가 ±5 Å에서 진동. 30 s 블록은 편차 ±6~9로 우열 판단 불가</td>
+    <td>Modi 성장 자체는 재현됨. NH₃ 변형은 제거 불완전 + 사이클이 길어 이후 중단 [추론 포함]</td>
+  </tr>
+  <tr>
+    <td class="date">2026-10-10</td>
+    <td>Modi–RTP 2스텝 — 온도 가설 검증 목적<br><span class="tag">CF₄+H₂O</span></td>
+    <td>기록 없음 (분석 정리본에 목적만 존재)</td>
+    <td>New SiOC가 Modi 5사이클에 459 Å 소실 (EPC 91.9 Å/cycle) — 이상 구간</td>
+    <td>New SiOC의 큰 EPC는 AFS 사이클이 아니라 Modi 중 direct etch 성분일 가능성 [추론] — 후속 쟁점</td>
+  </tr>
+  <tr>
+    <td class="date">2026-10-11</td>
+    <td>−20 °C 풀사이클 — 파워 10 W vs 50 W<br><span class="tag">CF₄+H₂O</span></td>
+    <td>척 −20 °C, Modi 10사이클 선행 후 RTP, 풀사이클 2·5사이클</td>
+    <td>EPC (Å/cycle) — 10 W·5cyc: SiOCN 5.08, SiOC 3.43, New SiOC 19.21, SiO₂ 5.18 / 50 W·5cyc: SiOCN 3.19, SiOC −1.61 (성장), New SiOC 11.50, SiO₂ 5.18 / 50 W·2cyc: SiOCN 7.10, SiOC 4.72, New SiOC 17.66, SiO₂ 1.29</td>
+    <td>구 SiOC 상대 선택비 1.48~1.50의 약한 우위. New SiOC 상대는 전 조건 역선택 (0.26~0.40). 50 W·5cyc에서는 SiO₂ EPC (5.18)가 SiOCN (3.19)을 넘는 역선택</td>
+  </tr>
+</table>
+</div>
+
+<h3>2026년 11월</h3>
+<div class="scroll">
+<table>
+  <tr><th>날짜</th><th>회차</th><th>조건</th><th>핵심 결과</th><th>판정</th></tr>
+  <tr>
+    <td class="date">2026-11-01</td>
+    <td>온도 3수준 스텝 분해 + 반복 3회 (노이즈 바닥)<br><span class="tag">CF₄+H₂O</span></td>
+    <td>척 20 / 0 / −20 °C, H₂O UI 6, Modi 5분 후 RTP</td>
+    <td>Modi Δ — 20 °C: SiOCN −6.88, SiOC −22.80 (성장) / 0 °C: SiOCN −5.57, SiOC −7.10 / −20 °C: SiOCN +1.36, SiOC +0.98 (성장 소멸). RTP 후 순제거도 20 °C (SiOCN 8.66) &gt; 0 °C (3.85) &gt; −20 °C (2.41). 동일 풀사이클 반복 3회: SiOCN Δ 3.76±1.06, SiOC 5.75±0.96, SiO₂ 1.26±3.17</td>
+    <td>측정 노이즈 바닥 ±1~3 Å 확정. Modi 성장은 고온에서 크고 −20 °C에서 소멸 — 소멸의 메커니즘 (염 형성 억제 vs 동시 식각 상쇄)은 미해소</td>
+  </tr>
+  <tr>
+    <td class="date">2026-11-02</td>
+    <td>H₂O UI 6→4 변경 + Modi 시간 split (풀사이클 3사이클)<br><span class="tag">CF₄+H₂O</span></td>
+    <td>척 −20 °C, H₂O UI 4, Modi 4 / 5 / 6분</td>
+    <td>EPC (Å/cycle) — 4분: SiOCN 9.38, SiOC 6.09, 선택비 1.54 / 5분: 8.80, 6.57, 1.34 / 6분: 15.68, 11.93, 1.31. 6분에서 SiOCN·SiOC·New SiOC EPC만 점프하고 SiO₂는 불변 (2.60~3.68). 별도 2분 궤적에서는 1사이클 SiOC Δ 15.12 후 구간 EPC 0.80으로 SiOC가 사실상 정지하는 패턴이 관측됨</td>
+    <td>선택비는 Modi가 짧을수록 큰 경향. 2분 궤적의 "SiOC 정지" 패턴은 핵심 가설로 승격 — 단, 재현 여부가 관건 (11/04 대조 참조)</td>
+  </tr>
+  <tr>
+    <td class="date">2026-11-04</td>
+    <td>Modi 단독 시간 시리즈 + 풀사이클 ×4 검증<br><span class="tag">CF₄+H₂O</span></td>
+    <td>척 −20 °C, 50 W, 50 mTorr, 실유량 16:16 sccm (H₂O UI 5, CF₄ UI 20), 새 쿠폰</td>
+    <td>Modi 단독 Δ — 30초: SiOCN −1.26, SiOC −5.39 / 120초: +5.40, +4.29 / 240초: +15.57, +10.18 / 480초: +33.77, +25.17. 10 W·240초에서는 SiOCN +7.72 &lt; SiOC +13.61 역선택. 풀사이클 120초 ×4 총 Δ — SiOCN 44.91 (55.67→10.76), SiOC 23.83 (205.61→181.78), SiO₂ 4.89</td>
+    <td>사전 고정 기준으로 판정: SiOC 총량 23.83은 연속 480초 노출 (25.17)과 동등 — 사이클 억제·RTP 삽입 효과 없음. 11/02의 SiOC 정지 패턴은 재현되지 않음. SiOCN은 막 소진 가능성으로 총량·선택비 (1.88) 모두 하한 추정치</td>
+  </tr>
+</table>
+</div>
+</section>
+
+<section class="tabpanel" id="condmap" role="tabpanel">
+<h2><span class="no">3</span>조건 지도</h2>
+<p class="small">풀사이클 행의 재료 값은 EPC (Å/cycle), Modi 단독·총량 행은 Δ (Å)다. 선택비는 SiOCN : 구 SiOC. "기록 없음"은 원본 소스에 값이 없는 항목이다.</p>
+
+<h3>2026-10-11</h3>
+<div class="scroll">
+<table>
+  <tr><th>날짜</th><th>온도</th><th>H₂O UI</th><th>Modi</th><th>파워</th><th>압력</th><th>방식</th><th>SiOCN</th><th>SiOC</th><th>New SiOC</th><th>SiO₂</th><th>선택비</th><th>결과 방향</th></tr>
+  <tr><td class="date">2026-10-11</td><td class="num">−20 °C</td><td>기록 없음</td><td>기록 없음</td><td class="num">10 W</td><td>기록 없음</td><td>풀사이클 5cyc</td><td class="num">5.08</td><td class="num">3.43</td><td class="num">19.21</td><td class="num">5.18</td><td class="num">1.48</td><td>SiOCN 약한 우위. New SiOC 역선택 (0.26)</td></tr>
+  <tr><td class="date">2026-10-11</td><td class="num">−20 °C</td><td>기록 없음</td><td>기록 없음</td><td class="num">50 W</td><td>기록 없음</td><td>풀사이클 5cyc</td><td class="num">3.19</td><td class="num">−1.61</td><td class="num">11.50</td><td class="num">5.18</td><td>기록 없음</td><td>SiOC 성장이라 수치상 우위이나 SiO₂가 SiOCN을 넘는 역선택 (선택비 0.62)</td></tr>
+  <tr><td class="date">2026-10-11</td><td class="num">−20 °C</td><td>기록 없음</td><td>기록 없음</td><td class="num">50 W</td><td>기록 없음</td><td>풀사이클 2cyc</td><td class="num">7.10</td><td class="num">4.72</td><td class="num">17.66</td><td class="num">1.29</td><td class="num">1.50</td><td>SiOCN 약한 우위. SiO₂ 상대 5.52</td></tr>
+</table>
+</div>
+
+<h3>2026-11-01</h3>
+<div class="scroll">
+<table>
+  <tr><th>날짜</th><th>온도</th><th>H₂O UI</th><th>Modi</th><th>파워</th><th>압력</th><th>방식</th><th>SiOCN</th><th>SiOC</th><th>New SiOC</th><th>SiO₂</th><th>선택비</th><th>결과 방향</th></tr>
+  <tr><td class="date">2026-11-01</td><td class="num">20 °C</td><td class="num">6</td><td>5분</td><td>기록 없음</td><td>기록 없음</td><td>Modi 단독 (스텝 분해)</td><td class="num">−6.88</td><td class="num">−22.80</td><td class="num">+2.67</td><td class="num">−2.00</td><td>기록 없음</td><td>양막 모두 성장 (SiOC 성장이 더 큼). RTP Δ SiOCN +8.66, SiOC +22.52</td></tr>
+  <tr><td class="date">2026-11-01</td><td class="num">0 °C</td><td class="num">6</td><td>5분</td><td>기록 없음</td><td>기록 없음</td><td>Modi 단독 (스텝 분해)</td><td class="num">−5.57</td><td class="num">−7.10</td><td class="num">−4.66</td><td class="num">+1.64</td><td>기록 없음</td><td>성장 축소 구간. RTP Δ SiOCN +3.85, SiOC +6.62</td></tr>
+  <tr><td class="date">2026-11-01</td><td class="num">−20 °C</td><td class="num">6</td><td>5분</td><td>기록 없음</td><td>기록 없음</td><td>Modi 단독 (스텝 분해)</td><td class="num">+1.36</td><td class="num">+0.98</td><td class="num">+2.16</td><td class="num">−0.70</td><td>기록 없음</td><td>성장 소멸. RTP Δ SiOCN +2.41, SiOC +3.56 (0이 아님)</td></tr>
+</table>
+</div>
+
+<h3>2026-11-02</h3>
+<div class="scroll">
+<table>
+  <tr><th>날짜</th><th>온도</th><th>H₂O UI</th><th>Modi</th><th>파워</th><th>압력</th><th>방식</th><th>SiOCN</th><th>SiOC</th><th>New SiOC</th><th>SiO₂</th><th>선택비</th><th>결과 방향</th></tr>
+  <tr><td class="date">2026-11-02</td><td class="num">−20 °C</td><td class="num">4</td><td>4분</td><td>기록 없음</td><td>기록 없음</td><td>풀사이클 3cyc</td><td class="num">9.38</td><td class="num">6.09</td><td class="num">119.25</td><td class="num">2.60</td><td class="num">1.54</td><td>짧은 Modi에서 선택비 최대 (이 블록 기준)</td></tr>
+  <tr><td class="date">2026-11-02</td><td class="num">−20 °C</td><td class="num">4</td><td>5분</td><td>기록 없음</td><td>기록 없음</td><td>풀사이클 3cyc</td><td class="num">8.80</td><td class="num">6.57</td><td class="num">79.89</td><td class="num">3.60</td><td class="num">1.34</td><td>4분과 유사</td></tr>
+  <tr><td class="date">2026-11-02</td><td class="num">−20 °C</td><td class="num">4</td><td>6분</td><td>기록 없음</td><td>기록 없음</td><td>풀사이클 3cyc</td><td class="num">15.68</td><td class="num">11.93</td><td class="num">269.97</td><td class="num">3.68</td><td class="num">1.31</td><td>SiO₂만 불변, 나머지 EPC 점프</td></tr>
+  <tr><td class="date">2026-11-02</td><td class="num">−20 °C</td><td class="num">4</td><td>2분</td><td>기록 없음</td><td>기록 없음</td><td>풀사이클 궤적</td><td colspan="4">수치 요약은 타임라인 참조 (SiOC 구간 EPC 0.80)</td><td>기록 없음</td><td>1사이클 SiOC Δ 15.12 후 구간 EPC 0.80 — SiOC 정지 패턴 (11/04에 재현 실패)</td></tr>
+</table>
+</div>
+
+<h3>2026-11-04</h3>
+<div class="scroll">
+<table>
+  <tr><th>날짜</th><th>온도</th><th>H₂O UI</th><th>Modi</th><th>파워</th><th>압력</th><th>방식</th><th>SiOCN</th><th>SiOC</th><th>New SiOC</th><th>SiO₂</th><th>선택비</th><th>결과 방향</th></tr>
+  <tr><td class="date">2026-11-04</td><td class="num">−20 °C</td><td class="num">5</td><td>30초</td><td class="num">50 W</td><td class="num">50 mTorr</td><td>Modi 단독</td><td class="num">−1.26</td><td class="num">−5.39</td><td>기록 없음</td><td class="num">+2.05</td><td>기록 없음</td><td>순성장 구간 (RTP Δ 전부 ~0)</td></tr>
+  <tr><td class="date">2026-11-04</td><td class="num">−20 °C</td><td class="num">5</td><td>120초</td><td class="num">50 W</td><td class="num">50 mTorr</td><td>Modi 단독</td><td class="num">+5.40</td><td class="num">+4.29</td><td>기록 없음</td><td class="num">+3.03</td><td>기록 없음</td><td>식각 전환. RTP Δ ~0 또는 음수</td></tr>
+  <tr><td class="date">2026-11-04</td><td class="num">−20 °C</td><td class="num">5</td><td>240초</td><td class="num">50 W</td><td class="num">50 mTorr</td><td>Modi 단독</td><td class="num">+15.57</td><td class="num">+10.18</td><td>기록 없음</td><td class="num">+5.73</td><td>기록 없음</td><td>식각 가속 구간</td></tr>
+  <tr><td class="date">2026-11-04</td><td class="num">−20 °C</td><td class="num">5</td><td>480초</td><td class="num">50 W</td><td class="num">50 mTorr</td><td>Modi 단독</td><td class="num">+33.77</td><td class="num">+25.17</td><td>기록 없음</td><td class="num">+6.18</td><td>기록 없음</td><td>후반 안정 (구간 속도 SiOCN 4.55 Å/min). RTP Δ SiOCN +6.76 — 서명 후보 (±10 Å로 미확정)</td></tr>
+  <tr><td class="date">2026-11-04</td><td class="num">−20 °C</td><td class="num">5</td><td>240초</td><td class="num">10 W</td><td class="num">50 mTorr</td><td>Modi 단독</td><td class="num">+7.72</td><td class="num">+13.61</td><td>기록 없음</td><td class="num">+0.45</td><td>기록 없음</td><td>역선택 (SiOC &gt; SiOCN). SiO₂ 정지</td></tr>
+  <tr><td class="date">2026-11-04</td><td class="num">−20 °C</td><td class="num">5</td><td>120초 ×4</td><td class="num">50 W</td><td class="num">50 mTorr</td><td>풀사이클 ×4 (중간 계측 없음)</td><td class="num">44.91</td><td class="num">23.83</td><td>기록 없음</td><td class="num">4.89</td><td class="num">1.88 (하한)</td><td>SiOC 총량이 연속 480초 (25.17)와 동등 — 사이클 억제 없음. SiOCN은 막 소진 가능성으로 하한</td></tr>
+</table>
+</div>
+</section>
+
+<section class="tabpanel" id="hypotheses" role="tabpanel">
+<h2><span class="no">4</span>가설·판정 상태판</h2>
+
+<h3>재현됨</h3>
+<table>
+  <tr><th style="width:76px">상태</th><th>가설</th><th>근거</th><th style="width:96px">기준일</th></tr>
+  <tr><td><span class="badge b-ok">재현됨</span></td><td>풀사이클 총량 = 연속 노출 총량이다 (−20 °C · H₂O UI 5 조건 한정)</td><td>2026-11-04: 풀사이클 ×4 vs Modi 단독 480초 — SiOC 23.83 vs 25.17, SiO₂ 4.89 vs Modi+RTP 합 4.86. [추론] 이 조건에서는 "다이렉트 에치 반복" 그림과 정합</td><td class="date">2026-11-04</td></tr>
+  <tr><td><span class="badge b-ok">재현됨</span></td><td>Modi 성장은 고온 (20 °C)에서 크고 −20 °C에서 소멸한다</td><td>2026-11-01 온도 3수준 스텝 분해 (Modi 5분): SiOC 성장 20 °C −22.80 → −20 °C +0.98. 단, 소멸의 내부 메커니즘은 미해소 항목 참조</td><td class="date">2026-11-01</td></tr>
+  <tr><td><span class="badge b-ok">재현됨</span></td><td>측정 노이즈 바닥은 ±1~3 Å 수준이다</td><td>2026-11-01 동일 풀사이클 반복 3회 표준편차 (SiOCN ±1.06, SiOC ±0.96). 단, 엘립소 모델·계통 오차 ±10 Å는 별개 — 측정 기준 절 참조</td><td class="date">2026-11-01</td></tr>
+  <tr><td><span class="badge b-ok">재현됨</span></td><td>NH₃계 Modi 성장은 사이클마다 재현성 있게 일어난다</td><td>2026-10-07 1step 330 s 블록 SiOCN −12.66 ± 0.51 Å. 단, Removal이 성장을 다 지우지 못해 순식각은 불안정</td><td class="date">2026-10-07</td></tr>
+</table>
+
+<h3>기각됨</h3>
+<table>
+  <tr><th style="width:76px">상태</th><th>가설</th><th>근거</th><th style="width:96px">기준일</th></tr>
+  <tr><td><span class="badge b-no">기각됨</span></td><td>사이클 구조 (짧은 Modi + RTP 반복)가 SiOC 총량을 연속 노출보다 줄인다 — 사이클 억제</td><td>2026-11-04 풀사이클 120초 ×4의 SiOC 총량 23.83 Å ≈ 연속 480초 Modi 단독 25.17 Å. 사전에 고정한 판정 기준 (~12 이하 = 억제 / ~25 = 연속과 동일)에서 "연속과 동일" 구간</td><td class="date">2026-11-04</td></tr>
+  <tr><td><span class="badge b-no">기각됨</span></td><td>파워를 내리면 (10 W) 선택비가 좋아진다</td><td>2026-11-04 Modi 단독 240초: 10 W에서 SiOCN +7.72 &lt; SiOC +13.61로 역선택 (50 W에서는 15.57 &gt; 10.18). 파워는 분포만 바꿀 뿐 우위 방향을 만들지 못함</td><td class="date">2026-11-04</td></tr>
+</table>
+
+<h3>미해소</h3>
+<table>
+  <tr><th style="width:76px">상태</th><th>가설</th><th>근거</th><th style="width:96px">기준일</th></tr>
+  <tr><td><span class="badge b-mid">미해소</span></td><td>짧은 Modi에서는 SiOC가 첫 사이클 뒤 정지해 구간 선택비가 크게 벌어진다</td><td>2026-11-02 2분 궤적: 1사이클 SiOC Δ 15.12 후 구간 EPC 0.80 (정지). 그러나 2026-11-04 풀사이클 ×4 (사이클당 SiOC 평균 5.96 Å)에서는 재현되지 않음. 차이 변수 — H₂O UI 4 vs 5, 샘플 이력, 벽 상태</td><td class="date">2026-11-04</td></tr>
+  <tr><td><span class="badge b-mid">미해소</span></td><td>RTP 단계에서 SiOCN만 추가로 식각되는 "원하는 서명"이 존재한다</td><td>후보 신호: 2026-11-04 480초 Modi 후 RTP Δ SiOCN +6.76 (SiOC −2.32). 단 ±10 Å 오차 기준으로는 단독 확정 불가 — 반복 쌍 실험 필요</td><td class="date">2026-11-04</td></tr>
+  <tr><td><span class="badge b-mid">미해소</span></td><td>선택비는 Modi 시간이 짧을수록 커진다</td><td>2026-11-02 split: 4분 1.54 → 5분 1.34 → 6분 1.31로 단조 감소 경향. 단 블록마다 샘플이 달라 교락 가능, 6분 점프 현상과 함께 재확인 필요</td><td class="date">2026-11-02</td></tr>
+  <tr><td><span class="badge b-mid">미해소</span></td><td>−20 °C에서 Modi 성장이 사라지는 것은 염 형성 억제 때문이다 (vs 형성과 동시 식각의 상쇄)</td><td>스텝 중 in-situ 관찰이 없어 두 해석을 분리할 수 없음. 판별 설계가 필요 (파일럿 쟁점)</td><td class="date">2026-11-01</td></tr>
+  <tr><td><span class="badge b-mid">미해소</span></td><td>New SiOC의 큰 EPC는 AFS 사이클이 아니라 Modi 중 direct etch 성분이다</td><td>2026-10-10 EPC 91.9, 10-11 EPC 11.5~19.2로 전 조건 최대. 반증 조건 (성장해야 할 저온·저파워 조건에서도 감소하는가) 일부 방향은 관측됐으나 확정 아님 [추론]</td><td class="date">2026-10-11</td></tr>
+</table>
+</section>
+
+<section class="tabpanel" id="notes" role="tabpanel">
+<h2><span class="no">5</span>측정 기준·주의</h2>
+
+<div class="note"><b class="t">엘립소 오차 ±10 Å 판정 기준 (2026-11-04 정식)</b>
+엘립소미터 두께 오차는 크게 ±10 Å까지 본다 — 반복 측정 흩어짐 (±1–3 Å)과 별개로 모델·계통 오차를 포함한 값. 10 Å 미만의 스텝 Δ (Modi/RTP 분리 측정, 짧은 성장, RTP Δ 등)는 단독으로 판정 근거가 되지 못하고, 큰 누적 Δ나 반복 일관성으로만 판단한다.</div>
+
+<div class="note"><b class="t">막 소진 사례 — 2026-11-04 SiOCN 풀사이클</b>
+SiOCN 쿠폰이 55.67 → 10.76 Å로 81% 소진. 잔막 10.76 Å는 ±10 Å 오차 범위 안이라 실제로는 막이 전부 식각되고 0이 ~10으로 보였을 수 있다. 따라서 총 Δ 44.91과 선택비 1.88은 하한 추정치이고, 소진 시점을 모르므로 사이클당 EPC 계산은 성립하지 않는다. 재검증에는 예상 소모보다 충분히 두꺼운 쿠폰이 필요하다. (SiOC는 205.61 Å에서 시작해 소진과 무관 — 판정 유효)</div>
+
+<div class="note"><b class="t">블록 간 비교의 한계</b>
+블록마다 쿠폰이 서로 다르고, 샘플 재활용이 잦아 같은 샘플이 여러 날·조건을 누적해서 거친다 (이전 After = 다음 Before로 체인 연결). 조건 효과와 샘플 개체성·이력이 교락할 수 있어, 큰 효과만 신뢰하고 작은 차이는 반복으로 확인한다.</div>
+
+<div class="note"><b class="t">H₂O 유량은 UI값이 아니라 보정 환산으로 읽는다</b>
+H₂O 보정 (정식 실측): UI 6 → 20 sccm (2026-11-02 확정), UI 5 → 16 sccm (2026-11-04 확정). UI 4 ≈ 12–13 sccm은 기울기 (~3.3 sccm/UI) 정합이나 미확정. CF₄ 실제 유량 = UI × 4/5 (UI 20 = 16 sccm).</div>
+
+<div class="note"><b class="t">재현성 변수 — 온도 안정화 (stable time)</b>
+처킹이 없어 장입 직후 샘플 온도가 척 설정값과 다를 수 있다. 장입 후 진공 상태로 약 5분 대기하는 것이 표준 절차이며, 이를 줄인 런 (2026-11-02 1번 샘플)은 재현성 변수로 플래그한다. 척 온도 변경에는 1–2시간이 들고 야간 미사용 시 척은 20 °C로 고정된다.</div>
+
+<div class="note"><b class="t">초기 데이터 (2026-08-29)의 큰 편차</b>
+풀사이클 EPC 표준편차 ±8~18 Å. 시료 재사용 행이 섞여 있어 그룹 평균 비교·조건 스크리닝 근거로는 부적합하고 경향 참고용으로만 둔다.</div>
+
+<div class="note"><b class="t">EPC 비교 시 사이클 수를 맞춘다</b>
+EPC는 사이클 수에 따라 달라질 수 있어 2사이클과 5사이클 값을 직접 비교하지 않는다. 총 Modi 시간이 같은 조건끼리 (예: 연속 480초 vs 120초 ×4) 맞춘 비교를 기본으로 한다.</div>
+</section>
+
+<section class="tabpanel" id="next" role="tabpanel">
+<h2><span class="no">6</span>다음 실험 후보</h2>
+<table>
+  <tr><th>후보</th><th>이유</th><th style="width:130px">상태</th></tr>
+  <tr><td>두꺼운 SiOCN 쿠폰으로 풀사이클 ×4 재검증</td><td>2026-11-04 런의 막 소진 문제를 제거하고 SiOCN 총량·선택비를 하한이 아닌 실측으로 확정</td><td>미결정 (정식 판단)</td></tr>
+  <tr><td>480초 Modi 1사이클 × RTP 유/무 쌍 반복 (2–3세트)</td><td>RTP 서명 (SiOCN만 추가 식각) 후보 신호 +6.76 Å를 ±10 Å 오차를 넘는 반복 일관성으로 검증</td><td>미결정</td></tr>
+  <tr><td>+20 °C 스텝 분해</td><td>Modi 성장이 큰 온도에서 원하는 서명의 후반 (RTP 거동) 확인, −20 °C 결과와 대조</td><td>미결정</td></tr>
+  <tr><td>−20 °C Modi 직후 XPS 1회 (N 1s · F 1s · C 1s)</td><td>Modi 후 표면층이 AFS 염인지 CFx 퇴적인지 판별 — 메커니즘 방향 (성장 소멸 해석 포함)을 정하는 측정</td><td>미결정</td></tr>
+  <tr><td>스크리닝 DOE (6요인 DSD) 재개 여부</td><td>설계안은 실험 보드에 참고용으로 보존 중 (2026-11-04 정식 지시로 실행 보류). 당분간 방향성 논의 중심</td><td>보류</td></tr>
+</table>
+</section>
+
+<section class="tabpanel" id="papers" role="tabpanel">
+<h2><span class="no">7</span>관련 논문 (보유분)</h2>
+<p class="small">보유 목록 137편 중 AFS·SiOCN 직결분. 전체 목록은 <a href="https://cudissm-del.github.io/semiconductor-notes/papers/">논문 보유 목록</a> 참조.</p>
+
+<h3>AFS 염 형성·제거와 선택식각</h3>
+<table>
+  <tr><th style="width:150px">저자 (연도)</th><th>제목</th><th style="width:170px">저널</th><th>비고</th></tr>
+  <tr><td>Goya et al. (2026)</td><td><a href="https://doi.org/10.1116/6.0005595">Effects of H₂ addition on highly selective SiOCN etching using NF₃-based plasma</a></td><td>J. Vac. Sci. Technol. A</td><td>SiOCN 고선택 식각 — 주제 정중앙 (화학계는 NF₃ 「유사」)</td></tr>
+  <tr><td>Bang et al. (2026)</td><td><a href="https://doi.org/10.1116/6.0005206">Cryogenic NF₃/NH₃ plasma RIE: SiN etch suppression by AFS formation</a></td><td>J. Vac. Sci. Technol. A</td><td>AFS 형성으로 식각이 억제되는 사례 — 선택비 메커니즘 대조용</td></tr>
+  <tr><td>Cho et al. (2020)</td><td><a href="https://doi.org/10.1116/1.5132986">Atomic layer etching of SiO₂ for surface cleaning using ammonium fluorosilicate with CF₄/NH₃ plasma</a></td><td>J. Vac. Sci. Technol. A</td><td>CF₄ 계열 AFS ALE — 주력 화학계와 가장 가까운 문헌</td></tr>
+  <tr><td>Knolle &amp; Huttemann (1988)</td><td><a href="https://doi.org/10.1149/1.2095383">Ammonium Hexafluorosilicate Formation during Plasma Etching of Silicon Nitride</a></td><td>J. Electrochem. Soc.</td><td>AFS 형성 고전 문헌</td></tr>
+  <tr><td>Shinoda et al. (2016)</td><td><a href="https://doi.org/10.7567/apex.9.106201">Thermal cyclic etching of silicon nitride using formation and desorption of ammonium fluorosilicate</a></td><td>Appl. Phys. Express</td><td>AFS 형성/탈착 사이클 식각의 원형</td></tr>
+  <tr><td>Miyoshi et al. (2017)</td><td><a href="https://doi.org/10.7567/jjap.56.06hb01">Atomic layer etching of silicon nitride using infrared annealing for short desorption time of ammonium fluorosilicate</a></td><td>Jpn. J. Appl. Phys.</td><td>AFS 탈착 (Removal 단계) 가속 방식</td></tr>
+  <tr><td>Shinoda et al. (2019)</td><td><a href="https://doi.org/10.1116/1.5111663">Self-limiting reactions of ammonium salt in CHF₃/O₂ downstream plasma for thermal-cyclic atomic layer etching of silicon nitride</a></td><td>J. Vac. Sci. Technol. A</td><td>암모늄염 자기제한 반응</td></tr>
+</table>
+
+<h3>재료 식각 거동·응용</h3>
+<table>
+  <tr><th style="width:150px">저자 (연도)</th><th>제목</th><th style="width:170px">저널</th><th>비고</th></tr>
+  <tr><td>Matsui et al. (2021)</td><td><a href="https://doi.org/10.1116/6.0000711">Mechanism of highly selective etching of SiCN by using NF₃/Ar-based plasma</a></td><td>J. Vac. Sci. Technol. A</td><td>SiCN 고선택 메커니즘</td></tr>
+  <tr><td>Pranda et al. (2023)</td><td><a href="https://doi.org/10.1116/6.0003014">Significance of plasma-surface interactions in the etch behavior of low-k materials</a></td><td>J. Vac. Sci. Technol. A</td><td>low-k (SiCN·SiOCN·SiBCN) 식각 거동 비교</td></tr>
+  <tr><td>Oh (2022)</td><td><a href="https://doi.org/10.1016/j.tsf.2022.139185">Etching kinetics and dielectric properties of SiOC films exposed to Ar and CF₄ plasmas</a></td><td>Thin Solid Films</td><td>비교 상대 SiOC의 CF₄ 플라즈마 식각 속도론</td></tr>
+  <tr><td>Lee et al. (2026)</td><td><a href="https://doi.org/10.1116/6.0005592">Current status of atomic layer etching and its adoption to low-k fine patterning: An industrial perspective</a></td><td>J. Vac. Sci. Technol. A</td><td>low-k 패터닝 ALE 산업 관점</td></tr>
+  <tr><td>Imai et al. (2026)</td><td><a href="https://doi.org/10.1116/6.0005614">Cryogenic etching characteristics of SiO₂, SiN, and a-C films with HF/fluorocarbon-containing plasmas</a></td><td>J. Vac. Sci. Technol. A</td><td>저온 HF/플루오로카본 식각 특성 (2026-11-04 신규 확보)</td></tr>
+  <tr><td>Gu et al. (2020)</td><td><a href="https://doi.org/10.1049/el.2019.3954">Hybrid low-k spacer scheme for advanced FinFET technology parasitic capacitance reduction</a></td><td>Electron. Lett.</td><td>SiOCN outer spacer 실증 — 응용 맥락</td></tr>
+</table>
+</section>
+
+<footer>
+  이 페이지는 실험 원본의 뷰(view)다 — 원본 로그: Google Sheets 「SiOCN CCP」 · 토론·판정 기록: Notion 실험 보드 · 구조화 데이터: data.json (이 페이지와 같은 위치에 보관). 수치는 전부 원본 실측 인용이며, 해석에는 [추론]을 표기했다. 초안 (2026-11-05) — 정식 빌드 파이프라인 편입 전 검토용.
+</footer>
+
+</div>
+<script>
+(function(){
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.tabbtn'));
+  var panels = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.tabpanel'), function(p){ panels[p.id] = p; });
+  var bar = document.getElementById('tabbar');
+  function show(id, scroll){
+    if(!panels[id]) id = 'overview';
+    btns.forEach(function(b){
+      var on = b.getAttribute('data-tab') === id;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    Object.keys(panels).forEach(function(k){ panels[k].classList.toggle('active', k === id); });
+    try{ history.replaceState(null, '', '#' + id); }catch(e){}
+    if(scroll && bar){ window.scrollTo(0, bar.getBoundingClientRect().top + window.pageYOffset); }
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ show(b.getAttribute('data-tab'), true); });
+  });
+  window.addEventListener('hashchange', function(){ show(location.hash.replace('#',''), false); });
+  show(location.hash.replace('#',''), false);
+})();
+</script>
+</body>
+</html>
